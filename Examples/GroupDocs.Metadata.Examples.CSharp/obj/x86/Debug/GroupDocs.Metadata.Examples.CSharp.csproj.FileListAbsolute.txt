@@ -1,0 +1,6 @@
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\bin\Debug\GroupDocs.Metadata.Examples.CSharp.exe
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\bin\Debug\GroupDocs.Metadata.Examples.CSharp.pdb
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\bin\Debug\GroupDocs.Metadata.xml
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.exe
+c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.pdb
