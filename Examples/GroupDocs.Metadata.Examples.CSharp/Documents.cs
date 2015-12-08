@@ -18,16 +18,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             private const string filePath = "Documents/Doc/sample.doc";
 
-            #region working with built-in properties
+            #region working with built-in document properties
             
             /// <summary>
-            /// Gets document properties from Doc file 
+            /// Gets builtin document properties from Doc file 
             /// </summary> 
             public static void GetDocumentProperties()
             {
                 try
                 {
-                    //ExStart:GetDocumentProperties
+                    //ExStart:GetBuiltinDocumentPropertiesDocFormat
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
@@ -44,19 +44,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("{0} : {1}", property.Key, property.Value);
                         }
                     }
-
-                    Console.WriteLine("\nCustom Properties");
-                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in docMetadata)
-                    {
-                        // check if prooerty is not built-in
-                        if (!docMetadata.IsBuiltIn(keyValuePair.Key))
-                        {
-                            // get property value
-                            PropertyValue propertyValue = docMetadata[keyValuePair.Key];
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
-                        }
-                    }
-                    //ExEnd:GetDocumentProperties
+                    //ExEnd:GetBuiltinDocumentPropertiesDocFormat
                 }
                 catch (Exception exp)
                 {
@@ -70,7 +58,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    //ExStart:UpdateDocumentProperties
+                    //ExStart:UpdateBuiltinDocumentPropertiesDocFormat
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
@@ -85,7 +73,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
 
-                    //ExEnd:UpdateDocumentProperties
+                    //ExEnd:UpdateBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("Updated Successfully.");
                     
                 }
@@ -102,7 +90,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    //ExStart:RemoveDocumentProperties
+                    //ExStart:RemoveBuiltinDocumentPropertiesDocFormat
                     // initialize Docformat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
                     
@@ -112,7 +100,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
 
-                    //ExEnd:RemoveDocumentProperties
+                    //ExEnd:RemoveBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
@@ -132,18 +120,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:AddCustomPropertyDocFormat
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize DocMetadata
                     DocMetadata metadata = docFormat.DocumentProperties;
 
-                    // get property details from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
-                    Console.WriteLine("Enter Property Value:");
-                    string propertyValue = Console.ReadLine();
+
+                    string propertyName = "New Custom Property";
+                    string propertyValue = "123";
 
                     // add boolean key
                     if (!metadata.ContainsKey(propertyName))
@@ -154,10 +140,43 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:AddCustomPropertyDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets custom properties of Doc file
+            /// </summary>
+            public static void GetCustomProperties()
+            {
+                try
+                {
+                    //ExStart:GetCustomPropertiesDocFormat
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize metadata
+                    DocMetadata docMetadata = docFormat.DocumentProperties;
+
+                    // get properties  
+                    Console.WriteLine("\nCustom Properties");
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in docMetadata)
+                    {
+                        // check if property is not built-in
+                        if (!docMetadata.IsBuiltIn(keyValuePair.Key))
+                        {
+                            // get property value
+                            PropertyValue propertyValue = docMetadata[keyValuePair.Key];
+                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                        }
+                    }
+                    //ExEnd:GetCustomPropertiesDocFormat
                 }
                 catch (Exception exp)
                 {
@@ -171,16 +190,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveCustomPropertyDocFormat
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize DocMetadata
                     DocMetadata metadata = docFormat.DocumentProperties;
 
-                    // get property from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
+                    string propertyName = "New Custom Property";
 
                     // check if property is not built-in
                     if (metadata.ContainsKey(propertyName))
@@ -191,7 +208,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             metadata.Remove(propertyName);
 
                         }
-
                         else
                         {
                             Console.WriteLine("Can not remove built-in property.");
@@ -206,7 +222,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     
                     // save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveCustomPropertyDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -313,15 +329,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             private const string filePath = "Documents/Pdf/sample.pdf";
 
-            #region working with document properties
+            #region working with builtin document properties
             /// <summary>
-            /// Gets document properties of Pdf file  
+            /// Gets builtin document properties of Pdf file  
             /// </summary> 
             public static void GetDocumentProperties()
             {
                 try
                 {
-                    
+                    //ExStart:GetBuiltinDocumentPropertyPdfFormat
                     // initialize Pdfformat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
 
@@ -338,19 +354,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("{0} : {1}", property.Key, property.Value);
                         }
                     }
-
-                    // custom properties
-                    Console.WriteLine("\nCustom Properties");
-                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in pdfMetadata)
-                    {
-                        // check if prooerty is not built-in
-                        if (!pdfMetadata.IsBuiltIn(keyValuePair.Key))
-                        {
-                            // get property value
-                            PropertyValue propertyValue = pdfMetadata[keyValuePair.Key];
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
-                        }
-                    }
+                    //ExEnd:GetBuiltinDocumentPropertyPdfFormat
                 }
                 catch (Exception exp)
                 {
@@ -365,27 +369,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
 
-                     
+                    //ExStart:UpdateBuiltinDocumentPropertyPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
                     
                     // initialize PdfMetadata
                     PdfMetadata pdfMetadata = pdfFormat.DocumentProperties;
-
-                    //get properties from user...
-                    Console.WriteLine("Enter Author's Name: ");
-                    string author = Console.ReadLine();
-                    Console.WriteLine("Enter Subject: ");
-                    string subject = Console.ReadLine();
-
+                     
                     //update document property...
-                    pdfMetadata.Author = author;
-                    pdfMetadata.Subject = subject;
+                    pdfMetadata.Author = "New author";
+                    pdfMetadata.Subject = "New subject";
                     pdfMetadata.CreatedDate = DateTime.Now;
 
                     //save output file...
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-                    
+
+                    //ExEnd:UpdateBuiltinDocumentPropertyPdfFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -402,7 +401,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveBuiltinDocumentPropertyPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
                     
@@ -410,7 +409,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     
                     //save output file...
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveBuiltinDocumentPropertyPdfFormat
+                    
                     Console.WriteLine("File saved in destination folder.");
 
 
@@ -430,20 +430,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:AddCustomDocumentPropertyPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize PdfMetadata
                     PdfMetadata metadata = pdfFormat.DocumentProperties;
+                     
+                    string propertyName = "New Custom Property";
+                    string propertyValue = "123";
 
-                    // get property details from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
-                    Console.WriteLine("Enter Property Value:");
-                    string propertyValue = Console.ReadLine();
 
-                    // add boolean key
+                    // check if property already exists
                     if (!metadata.ContainsKey(propertyName))
                     {
                         // add property
@@ -452,10 +450,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:AddCustomDocumentPropertyPdfFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets custom properties of Pdf file
+            /// </summary>
+            public static void GetCustomProperties()
+            {
+                try
+                {
+                    //ExStart:GetCustomDocumentPropertiesPdfFormat
+                    // initialize Pdfformat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize PdfMetadata
+                    PdfMetadata pdfMetadata = pdfFormat.DocumentProperties;
+
+                    Console.WriteLine("\nCustom Properties");
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in pdfMetadata)
+                    {
+                        // check if property is not built-in
+                        if (!pdfMetadata.IsBuiltIn(keyValuePair.Key))
+                        {
+                            // get property value
+                            PropertyValue propertyValue = pdfMetadata[keyValuePair.Key];
+                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                        }
+                    }
+                    //ExEnd:GetCustomDocumentPropertiesPdfFormat
                 }
                 catch (Exception exp)
                 {
@@ -469,16 +499,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveCustomDocumentPropertiesPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize PdfMetadata
                     PdfMetadata metadata = pdfFormat.DocumentProperties;
 
-                    // get property from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
+                    string propertyName = "New Custom Property";
 
                     // check if property is not built-in
                     if (!metadata.IsBuiltIn(propertyName))
@@ -493,7 +521,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveCustomDocumentPropertiesPdfFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -510,15 +538,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             private const string filePath = "Documents/Ppt/sample.ppt";
 
-            #region working with document properties
+            #region working with builtin document properties
             /// <summary>
-            /// Gets document properties of Ppt file  
+            /// Gets builtin document properties of Ppt file  
             /// </summary> 
             public static void GetDocumentProperties()
             {
                 try
                 {
-                    
+                    // ExStart:GetBuiltinDocumentPropertiesPptFormat
                     // initialize PptFormat
                     PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
 
@@ -529,21 +557,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("\nBuilt-in Properties");
                     foreach (var property in pptMetadata)
                     {
-                        Console.WriteLine("{0} : {1}", property.Key, property.Value);
-                    }
-
-                    // custom properties
-                    Console.WriteLine("\nCustom Properties");
-                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in pptMetadata)
-                    {
-                        // check if prooerty is not built-in
-                        if (!pptMetadata.IsBuiltIn(keyValuePair.Key))
+                        if (pptMetadata.IsBuiltIn(property.Key))
                         {
-                            // get property value
-                            PropertyValue propertyValue = pptMetadata[keyValuePair.Key];
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                            Console.WriteLine("{0} : {1}", property.Key, property.Value);
                         }
                     }
+                    //ExEnd:GetBuiltinDocumentPropertiesPptFormat
                 }
                 catch (Exception exp)
                 {
@@ -557,26 +576,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:UpdateBuiltinDocumentPropertiesPptFormat
                     // initialize PptFormat
                     PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize PptMetadata
                     PptMetadata pptMetadata = pptFormat.DocumentProperties;
-
-                    //get properties from user...
-                    Console.WriteLine("Enter Author's Name: ");
-                    string author = Console.ReadLine();
-                    Console.WriteLine("Enter Subject: ");
-                    string subject = Console.ReadLine();
-
-                    //update document property...
-                    pptMetadata.Author = author;
-                    pptMetadata.Subject = subject;
+                      
+                    // update document property
+                    pptMetadata.Author = "New author";
+                    pptMetadata.Subject = "New subject";
+                    pptMetadata.Manager = "Usman";
 
                     //save output file...
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:UpdateBuiltinDocumentPropertiesPptFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -593,7 +607,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveBuiltinDocumentPropertiesPptFormat
                     // initialize PptFormat
                     PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
 
@@ -602,7 +616,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save output file...
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveBuiltinDocumentPropertiesPptFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
@@ -622,20 +636,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:AddCustomDocumentPropertiesPptFormat
                     // initialize PptFormat
                     PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize PptMetadata
                     PptMetadata metadata = pptFormat.DocumentProperties;
 
-                    // get property details from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
-                    Console.WriteLine("Enter Property Value:");
-                    string propertyValue = Console.ReadLine();
+                    // set property details 
+                    string propertyName = "New custom property";
+                    string propertyValue = "Value";
 
-                    // add boolean key
+                    // check if property already exists
                     if (!metadata.ContainsKey(propertyName))
                     {
                         // add property
@@ -644,10 +656,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:AddCustomDocumentPropertiesPptFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets custom properties of Ppt file  
+            /// </summary> 
+            public static void GetCustomProperties()
+            {
+                try
+                {
+                    //ExStart:GetCustomDocumentPropertiesPptFormat
+                    // initialize PptFormat
+                    PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize PptMetadata
+                    PptMetadata pptMetadata = pptFormat.DocumentProperties;
+
+                    Console.WriteLine("\nCustom Properties");
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in pptMetadata)
+                    {
+                        // check if property is not built-in
+                        if (!pptMetadata.IsBuiltIn(keyValuePair.Key))
+                        {
+                            // get property value
+                            PropertyValue propertyValue = pptMetadata[keyValuePair.Key];
+                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                        }
+                    }
+                    //ExEnd:GetCustomDocumentPropertiesPptFormat
                 }
                 catch (Exception exp)
                 {
@@ -661,16 +705,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveCustomDocumentPropertiesPptFormat
                     // initialize PptFormat
                     PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize PptMetadata
                     PptMetadata metadata = pptFormat.DocumentProperties;
-
-                    // get property from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
+                     
+                    string propertyName = "New custom property";
 
                     // check if property is not built-in
                     if (!metadata.IsBuiltIn(propertyName))
@@ -685,7 +727,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveCustomDocumentPropertiesPptFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -702,15 +744,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             private const string filePath = "Documents/Xls/sample.xls";
 
-            #region working with document properties
+            #region working with builtin document properties
             /// <summary>
-            /// Gets document properties of Xls file  
+            /// Gets builtin document properties of Xls file  
             /// </summary> 
             public static void GetDocumentProperties()
             {
                 try
                 {
-                    
+                    //ExStart:GetBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
 
@@ -721,21 +763,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("\nBuilt-in Properties");
                     foreach (var property in xlsMetadata)
                     {
-                        Console.WriteLine("{0} : {1}", property.Key, property.Value);
-                    }
-
-                    // custom properties
-                    Console.WriteLine("\nCustom Properties");
-                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in xlsMetadata)
-                    {
-                        // check if prooerty is not built-in
-                        if (!xlsMetadata.IsBuiltIn(keyValuePair.Key))
+                        // check if property is biltin
+                        if (xlsMetadata.IsBuiltIn(property.Key))
                         {
-                            // get property value
-                            PropertyValue propertyValue = xlsMetadata[keyValuePair.Key];
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                            Console.WriteLine("{0} : {1}", property.Key, property.Value);
                         }
                     }
+                    //ExEnd:GetBuiltinDocumentPropertiesXlsFormat
                 }
                 catch (Exception exp)
                 {
@@ -749,26 +783,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:UpdateBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize XlsMetadata
                     XlsMetadata xlsMetadata = xlsFormat.DocumentProperties;
-
-                    //get properties from user...
-                    Console.WriteLine("Enter Author's Name: ");
-                    string author = Console.ReadLine();
-                    Console.WriteLine("Enter Subject: ");
-                    string subject = Console.ReadLine();
-
+                     
                     //update document property...
-                    xlsMetadata.Author = author;
-                    xlsMetadata.Subject = subject;
+                    xlsMetadata.Author = "New author";
+                    xlsMetadata.Subject = "New subject";
 
                     //save output file...
                     xlsFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:UpdateBuiltinDocumentPropertiesXlsFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -785,7 +813,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
 
@@ -794,7 +822,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //save output file...
                     xlsFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveBuiltinDocumentPropertiesXlsFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
@@ -814,20 +842,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:AddCustomDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize XlsMetadata
                     XlsMetadata metadata = xlsFormat.DocumentProperties;
 
-                    // get property details from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
-                    Console.WriteLine("Enter Property Value:");
-                    string propertyValue = Console.ReadLine();
+                    string propertyName = "New Custom Property";
+                    string propertyValue = "123";
 
-                    // add boolean key
+                    // check if property already exists
                     if (!metadata.ContainsKey(propertyName))
                     {
                         // add property
@@ -836,10 +861,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     xlsFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:AddCustomDocumentPropertiesXlsFormat
                     Console.WriteLine("File saved in destination folder.");
 
 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets custom properties of Xls file  
+            /// </summary> 
+            public static void GetCustomProperties()
+            {
+                try
+                {
+                    //ExStart:GetCustomDocumentPropertiesXlsFormat
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize XlsMetadata
+                    XlsMetadata xlsMetadata = xlsFormat.DocumentProperties;
+                       
+                    Console.WriteLine("\nCustom Properties");
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in xlsMetadata)
+                    {
+                        // check if property is not built-in
+                        if (!xlsMetadata.IsBuiltIn(keyValuePair.Key))
+                        {
+                            // get property value
+                            PropertyValue propertyValue = xlsMetadata[keyValuePair.Key];
+                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                        }
+                    }
+                    //ExEnd:GetCustomDocumentPropertiesXlsFormat
                 }
                 catch (Exception exp)
                 {
@@ -853,16 +910,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+                    //ExStart:RemoveCustomDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize XlsMetadata
                     XlsMetadata metadata = xlsFormat.DocumentProperties;
 
-                    // get property from user
-                    Console.WriteLine("Enter Property Name:");
-                    string propertyName = Console.ReadLine();
+                    string propertyName = "New Custom Property";
 
                     // check if property is not built-in
                     if (!metadata.IsBuiltIn(propertyName))
@@ -877,7 +932,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save file in destination folder
                     xlsFormat.Save(Common.MapDestinationFilePath(filePath));
-
+                    //ExEnd:RemoveCustomDocumentPropertiesXlsFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
