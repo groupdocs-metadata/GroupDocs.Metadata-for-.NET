@@ -1,0 +1,196 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+GroupDocs.Metadata.Examples.VBasic
+</name>
+</assembly>
+<members>
+<member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetXMPProperties">
+	<summary>
+Gets XMP properties from Jpeg file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateXMPProperties">
+	<summary>
+ Updates XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveXMPData">
+	<summary>
+ Removes XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetExifInfo">
+	<summary>
+ Gets Exif info from Jpeg file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateExifInfo">
+	<summary>
+ Updates Exif info of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveExifInfo">
+	<summary>
+ Removes Exif info of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.GetXMPProperties">
+	<summary>
+Gets XMP properties of Gif file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdateXMPProperties">
+	<summary>
+ Updates XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.RemoveXMPProperties">
+	<summary>
+ Removes XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.GetXMPProperties">
+	<summary>
+Gets XMP properties from Png file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdateXMPData">
+	<summary>
+ Updates XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.RemoveXMPData">
+	<summary>
+ Removes XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetDocumentProperties">
+	<summary>
+ Gets builtin document properties from Doc file 
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.UpdateDocumentProperties">
+	<summary>
+ Updates document properties of Doc file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.RemoveDocumentProperties">
+	<summary>
+ Removes document properties of Doc file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.AddCustomProperty">
+	<summary>
+ Adds custom property in Doc file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetCustomProperties">
+	<summary>
+ Gets custom properties of Doc file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.RemoveCustomProperties">
+	<summary>
+ Removes custom properties of Doc file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetDocumentComments">
+	<summary>
+ Gets document comments of Doc file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.RemoveComments">
+	<summary>
+ Removes document comments of Doc file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetWordAndPageCount">
+	<summary>
+ Gets word count and page count of Doc file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.GetDocumentProperties">
+	<summary>
+ Gets builtin document properties of Pdf file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.UpdateDocumentProperties">
+	<summary>
+ Updates document properties of Pdf file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.RemoveDocumentProperties">
+	<summary>
+ Removes document properties of Pdf file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.AddCustomProperty">
+	<summary>
+ Adds custom property in Pdf file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.GetCustomProperties">
+	<summary>
+ Gets custom properties of Pdf file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.RemoveCustomProperties">
+	<summary>
+ Removes custom property of Pdf file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.GetDocumentProperties">
+	<summary>
+ Gets builtin document properties of Ppt file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.UpdateDocumentProperties">
+	<summary>
+ Updates document properties of Ppt file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.RemoveDocumentProperties">
+	<summary>
+ Removes document properties of Ppt file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.AddCustomProperty">
+	<summary>
+ Adds custom property in Ppt file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.GetCustomProperties">
+	<summary>
+ Gets custom properties of Ppt file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.RemoveCustomProperties">
+	<summary>
+ Removes custom property of Ppt file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.GetDocumentProperties">
+	<summary>
+ Gets builtin document properties of Xls file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.UpdateDocumentProperties">
+	<summary>
+ Updates document properties of Xls file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.RemoveDocumentProperties">
+	<summary>
+ Removes document properties of Xls file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.AddCustomProperty">
+	<summary>
+ Adds custom property in Xls file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.GetCustomProperties">
+	<summary>
+ Gets custom properties of Xls file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.RemoveCustomProperties">
+	<summary>
+ Removes custom property of Xls file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.MapSourceFilePath(System.String)">
+	<summary>
+ Maps source file path
+ </summary>
+	<param name="SourceFileName">Source File Name</param>
+	<returns>Returns complete path of source file</returns>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.MapDestinationFilePath(System.String)">
+	<summary>
+ Maps destination file path
+ </summary>
+	<param name="DestinationFileName">Destination File Name</param>
+	<returns>Returns complete path of destination file</returns>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.ApplyLicense">
+	<summary>
+ Applies product license
+ </summary>
+</member><member name="P:GroupDocs.Metadata.Examples.VBasic.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:GroupDocs.Metadata.Examples.VBasic.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:GroupDocs.Metadata.Examples.VBasic.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
