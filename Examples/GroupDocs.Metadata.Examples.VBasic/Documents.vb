@@ -17,7 +17,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourceDocFilePath
             Private Const filePath As String = "Documents/Doc/sample.doc"
+            'ExEnd:SourceDocFilePath
 
 #Region "working with built-in document properties"
 
@@ -281,7 +283,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourcePdfFilePath
             Private Const filePath As String = "Documents/Pdf/sample.pdf"
+            'ExEnd:SourcePdfFilePath
 
 #Region "working with builtin document properties"
             ''' <summary>
@@ -459,7 +463,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourcePptFilePath
             Private Const filePath As String = "Documents/Ppt/sample.ppt"
+            'ExEnd:SourcePptFilePath
 
 #Region "working with builtin document properties"
             ''' <summary>
@@ -634,7 +640,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourceXlsFilePath
             Private Const filePath As String = "Documents/Xls/sample.xls"
+            'ExEnd:SourceXlsFilePath
 
 #Region "working with builtin document properties"
             ''' <summary>

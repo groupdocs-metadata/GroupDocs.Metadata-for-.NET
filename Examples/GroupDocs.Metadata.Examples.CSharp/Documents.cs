@@ -16,8 +16,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static class Doc
         {
             // initialize file path
+            //ExStart:SourceDocFilePath
             private const string filePath = "Documents/Doc/sample.doc";
-
+            //ExEnd:SourceDocFilePath
             #region working with built-in document properties
             
             /// <summary>
@@ -36,7 +37,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // get properties
                     Console.WriteLine("Built-in Properties: ");
-                    foreach (var property in docMetadata)
+                    foreach (KeyValuePair<string, PropertyValue> property in docMetadata)
                     {
                         // check if built-in property
                         if (docMetadata.IsBuiltIn(property.Key))
@@ -327,8 +328,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static class Pdf
         {
             // initialize file path
+            //ExStart:SourcePdfFilePath
             private const string filePath = "Documents/Pdf/sample.pdf";
-
+            //ExEnd:SourcePdfFilePath
             #region working with builtin document properties
             /// <summary>
             /// Gets builtin document properties of Pdf file  
@@ -346,7 +348,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // built-in properties
                     Console.WriteLine("Built-in Properties");
-                    foreach (var property in pdfMetadata)
+                    foreach (KeyValuePair<string, PropertyValue> property in pdfMetadata)
                     {
                         // check if built-in property
                         if (pdfMetadata.IsBuiltIn(property.Key))
@@ -536,8 +538,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static class Ppt
         {
             // initialize file path
+            //ExStart:SourcePptFilePath
             private const string filePath = "Documents/Ppt/sample.ppt";
-
+            //ExEnd:SourcePptFilePath
             #region working with builtin document properties
             /// <summary>
             /// Gets builtin document properties of Ppt file  
@@ -555,7 +558,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // built-in properties
                     Console.WriteLine("\nBuilt-in Properties");
-                    foreach (var property in pptMetadata)
+                    foreach (KeyValuePair<string, PropertyValue> property in pptMetadata)
                     {
                         if (pptMetadata.IsBuiltIn(property.Key))
                         {
@@ -742,8 +745,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static class Xls
         {
             // initialize file path
+            //ExStart:SourceXlsFilePath
             private const string filePath = "Documents/Xls/sample.xls";
-
+            //ExEnd:SourceXlsFilePath
             #region working with builtin document properties
             /// <summary>
             /// Gets builtin document properties of Xls file  
@@ -761,7 +765,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // built-in properties
                     Console.WriteLine("\nBuilt-in Properties");
-                    foreach (var property in xlsMetadata)
+                    foreach (KeyValuePair<string, PropertyValue> property in xlsMetadata)
                     {
                         // check if property is biltin
                         if (xlsMetadata.IsBuiltIn(property.Key))
