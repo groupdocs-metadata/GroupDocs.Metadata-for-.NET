@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using GroupDocs.Metadata.Utils;
+using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
     public static class Common
     {
+        //ExStart:CommonProperties
         private const string SourceFolderPath = "../../../Data/Source/";
         private const string DestinationFolderPath = "../../../Data/Destination/";
         private const string LicenseFilePath = "Groupdocs.Metadata.lic";
+        //ExEnd:CommonProperties
 
+        //ExStart:MapSourceFilePath
         /// <summary>
         /// Maps source file path
         /// </summary>
         /// <param name="FileName">Source File Name</param>
-        /// <returns>Returns complete source file path</returns>
+        /// <returns>Returns complete path of source file</returns>
         public static string MapSourceFilePath(string SourceFileName)
         {
             try
@@ -31,12 +34,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 return exp.Message;
             }
         }
-
+        //ExEnd:MapSourceFilePath
+        //ExStart:MapDestinationFilePath
         /// <summary>
         /// Maps destination file path
         /// </summary>
         /// <param name="DestinationFileName">Destination File Name</param>
-        /// <returns>Returns complete destination file path</returns>
+        /// <returns>Returns complete path of destination file</returns>
         public static string MapDestinationFilePath(string DestinationFileName)
         {
             try
@@ -49,51 +53,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 return exp.Message;
             }
         }
-        public static string GetFilePathFromUser(string statement)
-        {
-            try
-            {
-                Console.WriteLine(statement);
-                string filePath = Console.ReadLine();
-                return filePath;
+        //ExEnd:MapDestinationFilePath
 
-            }
-            catch (Exception exp)
-            {
-                Console.Write(exp.Message);
-                return exp.Message;
-            }
-        }
-        /// <summary>
-        /// Retrieves format of the file
-        /// </summary>
-        /// <param name="FilePath">File Path</param>
-        /// <returns>Returns file format</returns>
-        public static string GetFileFormat(string FilePath)
-        {
-            try
-            {
-                // path to the dir with files
-                string path = MapSourceFilePath(FilePath);
-                string fileFormat = "Invalid Format";
-
-                // recognize file by it's signature
-                GroupDocs.Metadata.Formats.FormatBase format = FormatFactory.RecognizeFormat(path);
-
-                if (format != null)
-                {
-                    fileFormat = format.Type.ToString();
-                }
-
-                return fileFormat;
-
-            }
-            catch (Exception exp)
-            {
-                return exp.Message;
-            }
-
-        }
+        //ExStart:ApplyLicense
         /// <summary>
         /// Applies product license
         /// </summary>
@@ -104,6 +66,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 // initialize License
                 License lic = new License();
 
+                // apply license
                 lic.SetLicense(LicenseFilePath);
             }
             catch (Exception exp)
@@ -111,6 +74,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 Console.WriteLine(exp.Message);
             }
         }
+        //ExEnd:ApplyLicense
 
     }
 }

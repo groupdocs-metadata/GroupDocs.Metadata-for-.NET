@@ -10,9 +10,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
     {
         static void Main(string[] args)
         {
-            /*
-             *  Apply product license
-             *  Uncomment following function if you have product license.
+            /* Apply product license
+             * Uncomment following function if you have product license.
              */
             //Common.ApplyLicense();
 
@@ -31,7 +30,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             
             //Add custom property in Doc file
             //Documents.Doc.AddCustomProperty();
-            
+
+            //Get custom properties in Doc file
+            //Documents.Doc.GetCustomProperties();
+
             //Remove custom property of Doc file
             //Documents.Doc.RemoveCustomProperties(); 
 
@@ -50,7 +52,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             
             //Add custom property in Ppt file
             //Documents.Ppt.AddCustomProperty();
-            
+
+            //Get custom properties in Ppt file
+            //Documents.Ppt.GetCustomProperties();
+
             //Remove custom property of Ppt file
             //Documents.Ppt.RemoveCustomProperties();
 
@@ -69,7 +74,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
            
             //Add custom property in Xls file
             //Documents.Xls.AddCustomProperty();
-            
+
+            //Get custom properties in Xls file
+            //Documents.Xls.GetCustomProperties();
+
             //Remove custom property of Xls file
             //Documents.Xls.RemoveCustomProperties();
 
@@ -88,7 +96,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
            
             //Add custom property in Pdf file
             //Documents.Pdf.AddCustomProperty();
-           
+
+            //Get custom properties in Pdf file
+            //Documents.Pdf.GetCustomProperties();
+
             //Remove custom property of Pdf file
             //Documents.Pdf.RemoveCustomProperties();
 
@@ -162,7 +173,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
-             
+            Console.ReadLine();
 
         }
 
