@@ -5,8 +5,9 @@ using System.Text;
 using System.IO;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
+using GroupDocs.Metadata.MetadataProperties;
 
-namespace GroupDocs.Metadata.Examples.CSharp
+namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {
     public static class Common
     {
@@ -20,7 +21,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         /// <summary>
         /// Maps source file path
         /// </summary>
-        /// <param name="FileName">Source File Name</param>
+        /// <param name="SourceFileName">Source File Name</param>
         /// <returns>Returns complete path of source file</returns>
         public static string MapSourceFilePath(string SourceFileName)
         {
@@ -75,6 +76,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
         //ExEnd:ApplyLicense
+
+        
 
     }
 }

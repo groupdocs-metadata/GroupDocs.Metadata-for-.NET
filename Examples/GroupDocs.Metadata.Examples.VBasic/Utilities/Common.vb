@@ -6,7 +6,7 @@ Imports System.IO
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
 
-Namespace GroupDocs.Metadata.Examples.VBasic
+Namespace Utilities
     Public NotInheritable Class Common
         Private Sub New()
         End Sub

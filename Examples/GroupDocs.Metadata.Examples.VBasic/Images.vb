@@ -7,6 +7,7 @@ Imports GroupDocs.Metadata.Xmp.Schemas.DublinCore
 Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Standards.Exif
 Imports GroupDocs.Metadata.Standards.Exif.Jpeg
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -16,15 +17,16 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourceJpegFilePath
             Private Const filePath As String = "Images/Jpeg/sample.jpg"
-
+            'ExEnd:SourceJpegFilePath
 #Region "working with XMP data"
             ''' <summary>
             '''Gets XMP properties from Jpeg file
             ''' </summary> 
             Public Shared Sub GetXMPProperties()
                 Try
-
+                    'ExStart:GetXmpPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
@@ -35,6 +37,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     For Each key As String In xmpProperties.Keys
                         Dim xmpNodeView As XmpNodeView = xmpProperties(key)
                         Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value)
+                        'ExEnd:GetXmpPropertiesJpegImage
                     Next
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -45,42 +48,32 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub UpdateXMPProperties()
                 Try
-
+                    'ExStart:UpdateXmpPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
                     ' get xmp wrapper
                     Dim xmpPacket As XmpPacketWrapper = jpegFormat.GetXmpData()
 
-                    ' create xmp wrapper is not exist
+                    ' create xmp wrapper if not exists
                     If xmpPacket Is Nothing Then
                         xmpPacket = New XmpPacketWrapper()
                     End If
 
-                    ' check if DublinCore schema is exist
+                    ' check if DublinCore schema exists
                     If Not xmpPacket.ContainsPackage(Namespaces.DublinCore) Then
-                        ' if no - add DublinCore schema
+                        ' if not - add DublinCore schema
                         xmpPacket.AddPackage(New DublinCorePackage())
                     End If
 
                     ' get DublinCore package
                     Dim dublinCorePackage As DublinCorePackage = DirectCast(xmpPacket.GetPackage(Namespaces.DublinCore), DublinCorePackage)
 
-                    ' get details from user
-                    Console.WriteLine("Enter author's name:")
-                    Dim authorName As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter description name:")
-                    Dim description As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter subject:")
-                    Dim subject As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter publisher:")
-                    Dim publisher As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter title:")
-                    Dim title As String = Console.ReadLine()
+                    Dim authorName As String = "New author"
+                    Dim description As String = "New description"
+                    Dim subject As String = "New subject"
+                    Dim publisher As String = "New publisher"
+                    Dim title As String = "New title"
 
                     ' set author
                     dublinCorePackage.SetAuthor(authorName)
@@ -97,6 +90,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateXmpPropertiesJpegImage
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -107,7 +101,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub RemoveXMPData()
                 Try
-
+                    'ExStart:RemoveXmpPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
@@ -116,7 +110,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:RemoveXmpPropertiesJpegImage
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -130,7 +124,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub GetExifInfo()
                 Try
-
+                    'ExStart:GetExifPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
@@ -150,6 +144,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         Console.WriteLine("Make: {0}", exif.Make)
                         ' get user's CameraOwnerName 
                         Console.WriteLine("CameraOwnerName: {0}", exif.CameraOwnerName)
+                        'ExEnd:GetExifPropertiesJpegImage
                     End If
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -160,7 +155,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub UpdateExifInfo()
                 Try
-
+                    'ExStart:UpdateExifPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
@@ -174,7 +169,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' set artist
                     exif.Artist = "Usman"
                     ' set make
-                    exif.Make = "Sony"
+                    exif.Make = "ABC"
                     ' set model
                     exif.Model = "S120"
                     ' set the name of the camera's owner
@@ -187,7 +182,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:UpdateExifPropertiesJpegImage
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -198,7 +193,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub RemoveExifInfo()
                 Try
-
+                    'ExStart:RemoveExifPropertiesJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
@@ -207,6 +202,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:RemoveExifPropertiesJpegImage
+                    Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -218,14 +215,15 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourceGifFilePath
             Private Const filePath As String = "Images/Gif/sample.gif"
-
+            'ExEnd:SourceGifFilePath
             ''' <summary>
             '''Gets XMP properties of Gif file
             ''' </summary> 
             Public Shared Sub GetXMPProperties()
                 Try
-
+                    'ExStart:GetXMPPropertiesGifImage
                     ' initialize GifFormat
                     Dim gifFormat As New GifFormat(Common.MapSourceFilePath(filePath))
 
@@ -236,6 +234,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     For Each key As String In xmpProperties.Keys
                         Dim xmpNodeView As XmpNodeView = xmpProperties(key)
                         Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value)
+                        'ExEnd:GetXMPPropertiesGifImage
                     Next
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -246,42 +245,32 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub UpdateXMPProperties()
                 Try
-
+                    'ExStart:UpdateXMPPropertiesGifImage
                     ' initialize GifFormat
                     Dim gifFormat As New GifFormat(Common.MapSourceFilePath(filePath))
 
                     ' get xmp wrapper
                     Dim xmpPacket As XmpPacketWrapper = gifFormat.GetXmpData()
 
-                    ' create xmp wrapper is not exist
+                    ' create xmp wrapper if not exists
                     If xmpPacket Is Nothing Then
                         xmpPacket = New XmpPacketWrapper()
                     End If
 
-                    ' check if DublinCore schema is exist
+                    ' check if DublinCore schema exists
                     If Not xmpPacket.ContainsPackage(Namespaces.DublinCore) Then
-                        ' if no - add DublinCore schema
+                        ' if not - add DublinCore schema
                         xmpPacket.AddPackage(New DublinCorePackage())
                     End If
 
                     ' get DublinCore package
                     Dim dublinCorePackage As DublinCorePackage = DirectCast(xmpPacket.GetPackage(Namespaces.DublinCore), DublinCorePackage)
 
-                    ' get details from user
-                    Console.WriteLine("Enter author's name:")
-                    Dim authorName As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter description:")
-                    Dim description As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter subject:")
-                    Dim subject As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter publisher:")
-                    Dim publisher As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter title:")
-                    Dim title As String = Console.ReadLine()
+                    Dim authorName As String = "New author"
+                    Dim description As String = "New description"
+                    Dim subject As String = "New subject"
+                    Dim publisher As String = "New publisher"
+                    Dim title As String = "New title"
 
                     ' set author
                     dublinCorePackage.SetAuthor(authorName)
@@ -298,7 +287,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     gifFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:UpdateXMPPropertiesGifImage
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -309,7 +298,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub RemoveXMPProperties()
                 Try
-
+                    'ExStart:RemoveXMPPropertiesGifImage 
                     ' initialize GifFormat
                     Dim gifFormat As New GifFormat(Common.MapSourceFilePath(filePath))
 
@@ -318,7 +307,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     gifFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:RemoveXMPPropertiesGifImage 
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -332,14 +321,15 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Sub New()
             End Sub
             ' initialize file path
+            'ExStart:SourcePngFilePath
             Private Const filePath As String = "Images/Png/sample.png"
-
+            'ExEnd:SourcePngFilePath
             ''' <summary>
             '''Gets XMP properties from Png file
             ''' </summary> 
             Public Shared Sub GetXMPProperties()
                 Try
-
+                    'ExStart:GetXMPPropertiesPngImage 
                     ' initialize PngFormat
                     Dim pngFormat As New PngFormat(Common.MapSourceFilePath(filePath))
 
@@ -353,7 +343,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                             Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value)
                         Next
                     Else
-                        Console.WriteLine("No XMP property found.")
+                        Console.WriteLine("No XMP data found.")
+                        'ExEnd:GetXMPPropertiesPngImage 
                     End If
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -364,42 +355,32 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub UpdateXMPData()
                 Try
-
+                    'ExStart:UpdateXMPPropertiesPngImage 
                     ' initialize PngFormat
                     Dim pngFormat As New PngFormat(Common.MapSourceFilePath(filePath))
 
                     ' get xmp wrapper
                     Dim xmpPacket As XmpPacketWrapper = pngFormat.GetXmpData()
 
-                    ' create xmp wrapper is not exist
+                    ' create xmp wrapper if not exists
                     If xmpPacket Is Nothing Then
                         xmpPacket = New XmpPacketWrapper()
                     End If
 
-                    ' check if DublinCore schema is exist
+                    ' check if DublinCore schema exists
                     If Not xmpPacket.ContainsPackage(Namespaces.DublinCore) Then
-                        ' if no - add DublinCore schema
+                        ' if not - add DublinCore schema
                         xmpPacket.AddPackage(New DublinCorePackage())
                     End If
 
                     ' get DublinCore package
                     Dim dublinCorePackage As DublinCorePackage = DirectCast(xmpPacket.GetPackage(Namespaces.DublinCore), DublinCorePackage)
 
-                    ' get details from user
-                    Console.WriteLine("Enter author's name:")
-                    Dim authorName As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter description name:")
-                    Dim description As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter subject:")
-                    Dim subject As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter publisher:")
-                    Dim publisher As String = Console.ReadLine()
-
-                    Console.WriteLine("Enter title:")
-                    Dim title As String = Console.ReadLine()
+                    Dim authorName As String = "New author"
+                    Dim description As String = "New description"
+                    Dim subject As String = "New subject"
+                    Dim publisher As String = "New publisher"
+                    Dim title As String = "New title"
 
                     ' set author
                     dublinCorePackage.SetAuthor(authorName)
@@ -416,7 +397,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     pngFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:UpdateXMPPropertiesPngImage 
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -427,7 +408,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub RemoveXMPData()
                 Try
-
+                    'ExStart:RemoveXMPPropertiesPngImage 
                     ' initialize PngFormat
                     Dim pngFormat As New PngFormat(Common.MapSourceFilePath(filePath))
 
@@ -436,7 +417,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' commit changes
                     pngFormat.Save(Common.MapDestinationFilePath(filePath))
-
+                    'ExEnd:RemoveXMPPropertiesPngImage 
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -446,11 +427,4 @@ Namespace GroupDocs.Metadata.Examples.VBasic
         End Class
     End Class
 End Namespace
-
-'=======================================================
-'Service provided by Telerik (www.telerik.com)
-'Conversion powered by NRefactory.
-'Twitter: @telerik
-'Facebook: facebook.com/telerik
-'=======================================================
 
