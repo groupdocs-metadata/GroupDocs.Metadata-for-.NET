@@ -171,9 +171,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExEnd:DocCleanerUsage
 
             'ExStart:MetadataComparerUsage
-            'MetadataComparer: Compares metadata of two files and returns properties that which are different in second file
-            Dim metadataComparer As New MetadataComparer()
-            metadataComparer.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc")
+            'MetadataComparer: Compares metadata of two files and returns properties that which are different in second file 
+            Common.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc")
             'ExEnd:MetadataComparerUsage
 
             'ExStart:PhotoCleanerUsage
@@ -189,9 +188,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExEnd:JpegPhotoParserUsage
 
             'ExStart:FormatRecognizerUsage
-            'FormatRecognizer: Recognizes the format of all files in a directory
-            Dim formatRecognizer As New FormatRecognizer()
-            formatRecognizer.GetFileFormats("Documents/Pdf")
+            'FormatRecognizer: Recognizes the format of all files in a directory 
+            Common.GetFileFormats("Documents/Pdf")
             'ExEnd:FormatRecognizerUsage
 
             '#End Region
