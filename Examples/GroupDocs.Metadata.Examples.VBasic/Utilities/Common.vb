@@ -6,6 +6,7 @@ Imports System.IO
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
 Imports GroupDocs.Metadata.Formats
+Imports GroupDocs.Metadata.MetadataProperties
 
 Namespace Utilities
     Public NotInheritable Class Common
@@ -91,6 +92,33 @@ Namespace Utilities
             End Try
         End Sub
         'ExEnd:FormatRecognizer
+
+        'ExStart:MetadataComparer
+        ''' <summary>
+        ''' Compares and finds metadata difference of two files 
+        ''' </summary>
+        ''' <param name="filePath1">First file path</param>
+        ''' <param name="filePath2">Second file path</param>
+        Public Shared Sub CompareFilesMetadata(filePath1 As String, filePath2 As String)
+            Try
+                ' path to the document
+                filePath1 = Common.MapSourceFilePath(filePath1)
+
+                ' path to the compared document
+                filePath2 = Common.MapSourceFilePath(filePath2)
+
+                ' get diffences between metadata
+                Dim diffenceProperties As MetadataPropertyCollection = MetadataUtility.CompareDoc(filePath1, filePath2)
+
+                ' go through collection and show differences
+                For Each [property] As MetadataProperty In diffenceProperties
+                    Console.WriteLine("Property = {0}, value = {1}", [property].Name, [property].Value)
+                Next
+            Catch exp As Exception
+                Console.WriteLine(exp.Message)
+            End Try
+        End Sub
+        'ExEnd:MetadataComparer
     End Class
 End Namespace
 

@@ -110,5 +110,37 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
         }
         //ExEnd:FormatRecognizer
+
+        //ExStart:MetadataComparer
+        /// <summary>
+        /// Compares and finds metadata difference of two files 
+        /// </summary>
+        /// <param name="filePath1">First file path</param>
+        /// <param name="filePath2">Second file path</param>
+        public static void CompareFilesMetadata(string filePath1, string filePath2)
+        {
+            try
+            {
+                // path to the document
+                filePath1 = Common.MapSourceFilePath(filePath1);
+
+                // path to the compared document
+                filePath2 = Common.MapSourceFilePath(filePath2);
+
+                // get diffences between metadata
+                MetadataPropertyCollection diffenceProperties = MetadataUtility.CompareDoc(filePath1, filePath2);
+
+                // go through collection and show differences
+                foreach (MetadataProperty property in diffenceProperties)
+                {
+                    Console.WriteLine("Property = {0}, value = {1}", property.Name, property.Value);
+                }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        //ExEnd:MetadataComparer
     }
 }

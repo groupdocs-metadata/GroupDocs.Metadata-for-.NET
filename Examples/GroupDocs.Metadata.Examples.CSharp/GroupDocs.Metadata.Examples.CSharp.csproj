@@ -54,7 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DocCleaner.cs" />
     <Compile Include="Utilities\JpegPhotoParser.cs" />
-    <Compile Include="Utilities\MetadataComparer.cs" />
     <Compile Include="Utilities\PhotoCleaner.cs" />
     <Compile Include="Utilities\Tempclass.cs" />
   </ItemGroup>

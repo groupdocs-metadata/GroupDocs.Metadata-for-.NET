@@ -171,9 +171,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExEnd:DocCleanerUsage
 
             //ExStart:MetadataComparerUsage
-            //MetadataComparer: Compares metadata of two files and returns properties that which are different in second file
-            MetadataComparer metadataComparer = new MetadataComparer();
-            metadataComparer.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc");
+            //MetadataComparer: Compares metadata of two files and returns properties that which are different in second file 
+            Common.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc");
             //ExEnd:MetadataComparerUsage
 
             //ExStart:PhotoCleanerUsage

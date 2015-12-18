@@ -171,9 +171,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExEnd:DocCleanerUsage
 
             'ExStart:MetadataComparerUsage
-            'MetadataComparer: Compares metadata of two files and returns properties that which are different in second file
-            Dim metadataComparer As New MetadataComparer()
-            metadataComparer.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc")
+            'MetadataComparer: Compares metadata of two files and returns properties that which are different in second file 
+            Common.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc")
             'ExEnd:MetadataComparerUsage
 
             'ExStart:PhotoCleanerUsage

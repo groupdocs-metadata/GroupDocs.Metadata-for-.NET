@@ -95,7 +95,6 @@
     </Compile>
     <Compile Include="Utilities\DocCleaner.vb" />
     <Compile Include="Utilities\JpegPhotoParser.vb" />
-    <Compile Include="Utilities\MetadataComparer.vb" />
     <Compile Include="Utilities\PhotoCleaner.vb" />
     <Compile Include="Utilities\Tempclass.vb" />
   </ItemGroup>
