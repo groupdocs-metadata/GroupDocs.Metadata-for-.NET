@@ -164,27 +164,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #region Working with Utilities
-
+            //ExStart:DocCleanerUsage
             //DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
             DocCleaner docCleaner = new DocCleaner("Documents/Doc");
             docCleaner.RemoveMetadataByAuthor("Usman Aziz");
+            //ExEnd:DocCleanerUsage
 
-            //PhotoCleaner: Cleans GPS data from photos in a directory
-            PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
-            photoCleaner.RemoveExifLocation();
-
-            //FormatRecognizer: Recognizes the format of all files in a directory
-            FormatRecognizer formatRecognizer = new FormatRecognizer();
-            formatRecognizer.GetFileFormats("Documents/Pdf");
-
-            //JpegPhotoParser: Finds photos taken on a specific camera in a directory
-            JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
-            jpegPhotoParser.FilterByCameraManufacturer("Sony");
-
+            //ExStart:MetadataComparerUsage
             //MetadataComparer: Compares metadata of two files and returns properties that which are different in second file
             MetadataComparer metadataComparer = new MetadataComparer();
             metadataComparer.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc");
+            //ExEnd:MetadataComparerUsage
 
+            //ExStart:PhotoCleanerUsage
+            //PhotoCleaner: Cleans GPS data from photos in a directory
+            PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
+            photoCleaner.RemoveExifLocation();
+            //ExEnd:PhotoCleanerUsage
+
+            //ExStart:JpegPhotoParserUsage
+            //JpegPhotoParser: Finds photos taken on a specific camera in a directory
+            JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
+            jpegPhotoParser.FilterByCameraManufacturer("Sony");
+            //ExEnd:JpegPhotoParserUsage
+
+            //ExStart:FormatRecognizerUsage
+            //FormatRecognizer: Recognizes the format of all files in a directory
+            FormatRecognizer formatRecognizer = new FormatRecognizer();
+            formatRecognizer.GetFileFormats("Documents/Pdf");
+            //ExEnd:FormatRecognizerUsage
+
+            
             #endregion
 
             Console.ReadKey();
