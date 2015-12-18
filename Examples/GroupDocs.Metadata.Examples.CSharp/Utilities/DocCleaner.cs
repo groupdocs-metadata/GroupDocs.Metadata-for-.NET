@@ -25,7 +25,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             /* set product license 
              * uncomment following function if you have product license
              * */
-            SetInternalLicense();
+            //SetInternalLicense();
         }
 
         public DocCleaner(string documentsPath)

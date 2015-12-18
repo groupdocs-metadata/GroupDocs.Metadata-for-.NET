@@ -17,7 +17,7 @@ Namespace Utilities
             '             * uncomment following function if you have product license
             '             * 
 
-            SetInternalLicense()
+            'SetInternalLicense()
         End Sub
 
         ''' <summary>
