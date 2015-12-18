@@ -8,6 +8,8 @@ using GroupDocs.Metadata.MetadataProperties;
 using GroupDocs.Metadata.Standards.Pdf;
 using GroupDocs.Metadata.Standards.Ppt;
 using GroupDocs.Metadata.Standards.Xls;
+using GroupDocs.Metadata.Tools;
+using GroupDocs.Metadata.Examples.Utilities.CSharp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -756,6 +758,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
+                    
                     //ExStart:GetBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));

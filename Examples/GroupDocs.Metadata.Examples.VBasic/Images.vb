@@ -7,6 +7,7 @@ Imports GroupDocs.Metadata.Xmp.Schemas.DublinCore
 Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Standards.Exif
 Imports GroupDocs.Metadata.Standards.Exif.Jpeg
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images

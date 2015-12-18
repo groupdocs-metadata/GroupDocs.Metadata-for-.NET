@@ -8,6 +8,8 @@ Imports GroupDocs.Metadata.MetadataProperties
 Imports GroupDocs.Metadata.Standards.Pdf
 Imports GroupDocs.Metadata.Standards.Ppt
 Imports GroupDocs.Metadata.Standards.Xls
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
+
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Documents

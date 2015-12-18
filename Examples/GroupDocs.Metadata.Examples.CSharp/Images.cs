@@ -7,6 +7,7 @@ using GroupDocs.Metadata.Xmp.Schemas.DublinCore;
 using GroupDocs.Metadata.Xmp; 
 using GroupDocs.Metadata.Standards.Exif;
 using GroupDocs.Metadata.Standards.Exif.Jpeg;
+using GroupDocs.Metadata.Examples.Utilities.CSharp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -356,8 +357,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
         }
-
-         
+                
         public static class Png
         {
             // initialize file path

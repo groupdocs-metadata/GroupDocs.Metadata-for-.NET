@@ -63,6 +63,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
+    <Import Include="GroupDocs.Metadata.Examples.Utilities.VBasic" />
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -73,7 +74,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.vb" />
+    <Compile Include="Utilities\Common.vb" />
     <Compile Include="Documents.vb" />
     <Compile Include="Images.vb" />
     <Compile Include="Module1.vb" />
@@ -92,6 +93,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilities\DocCleaner.vb" />
+    <Compile Include="Utilities\JpegPhotoParser.vb" />
+    <Compile Include="Utilities\MetadataComparer.vb" />
+    <Compile Include="Utilities\PhotoCleaner.vb" />
+    <Compile Include="Utilities\FormatRecognizer.vb" />
+    <Compile Include="Utilities\Tempclass.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
