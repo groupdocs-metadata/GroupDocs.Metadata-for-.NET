@@ -194,18 +194,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             formatRecognizer.GetFileFormats("Documents/Pdf")
             'ExEnd:FormatRecognizerUsage
 
-            '=======================================================
-            'Service provided by Telerik (www.telerik.com)
-            'Conversion powered by NRefactory.
-            'Twitter: @telerik
-            'Facebook: facebook.com/telerik
-            '=======================================================
-
-
             '#End Region
-
-           
-
             Console.ReadKey()
 
         End Sub
