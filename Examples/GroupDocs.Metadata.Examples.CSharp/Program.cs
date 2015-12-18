@@ -189,9 +189,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExEnd:JpegPhotoParserUsage
 
             //ExStart:FormatRecognizerUsage
-            //FormatRecognizer: Recognizes the format of all files in a directory
-            FormatRecognizer formatRecognizer = new FormatRecognizer();
-            formatRecognizer.GetFileFormats("Documents/Pdf");
+            //FormatRecognizer: Recognizes the format of all files in a directory 
+            Common.GetFileFormats("Documents/Pdf");
             //ExEnd:FormatRecognizerUsage
 
             

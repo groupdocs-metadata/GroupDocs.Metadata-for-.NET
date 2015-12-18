@@ -97,7 +97,6 @@
     <Compile Include="Utilities\JpegPhotoParser.vb" />
     <Compile Include="Utilities\MetadataComparer.vb" />
     <Compile Include="Utilities\PhotoCleaner.vb" />
-    <Compile Include="Utilities\FormatRecognizer.vb" />
     <Compile Include="Utilities\Tempclass.vb" />
   </ItemGroup>
   <ItemGroup>

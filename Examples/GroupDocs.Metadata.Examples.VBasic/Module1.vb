@@ -189,9 +189,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExEnd:JpegPhotoParserUsage
 
             'ExStart:FormatRecognizerUsage
-            'FormatRecognizer: Recognizes the format of all files in a directory
-            Dim formatRecognizer As New FormatRecognizer()
-            formatRecognizer.GetFileFormats("Documents/Pdf")
+            'FormatRecognizer: Recognizes the format of all files in a directory 
+            Common.GetFileFormats("Documents/Pdf")
             'ExEnd:FormatRecognizerUsage
 
             '#End Region

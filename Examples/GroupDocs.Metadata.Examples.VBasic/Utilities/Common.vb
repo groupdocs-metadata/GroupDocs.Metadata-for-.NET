@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.IO
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
+Imports GroupDocs.Metadata.Formats
 
 Namespace Utilities
     Public NotInheritable Class Common
@@ -64,8 +65,34 @@ Namespace Utilities
         End Sub
         'ExEnd:ApplyLicense
 
+        'ExStart:FormatRecognizer
+        ''' <summary>
+        ''' Gets directory name and recognizes format of files in that directory
+        ''' </summary>
+        ''' <param name="directorPath">Directory path</param>
+        Public Shared Sub GetFileFormats(directorPath As String)
+            Try
+                ' path to the document
+                directorPath = Common.MapSourceFilePath(directorPath)
+
+                ' get array of files inside directory
+                Dim files As String() = Directory.GetFiles(directorPath)
+
+                For Each path__1 As String In files
+                    ' recognize file by it's signature
+                    Dim format As FormatBase = FormatFactory.RecognizeFormat(path__1)
+
+                    If format IsNot Nothing Then
+                        Console.WriteLine("File: {0}, type: {1}", Path.GetFileName(path__1), format.Type)
+                    End If
+                Next
+            Catch exp As Exception
+                Console.WriteLine(exp.Message)
+            End Try
+        End Sub
+        'ExEnd:FormatRecognizer
     End Class
 End Namespace
 
- 
+
 
