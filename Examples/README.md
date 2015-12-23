@@ -10,4 +10,4 @@ This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for
 
 ## How to Run the Examples?
 
-The package contains two Visual projects, one for C# and other for Visual Basic examples. You can download the ZIP, extract the files and open the solution file in Visual Studio. For more details, visit our [documentation website](http://support.groupdocs.dynabic.com/wiki/display/GDDR/4m.+How+to+Run+Examples).
+The package contains two projects, one for C# examples and other for Visual Basic examples. You can download the ZIP, extract the files and open the solution file in Visual Studio. For more details, visit our [documentation website](http://support.groupdocs.dynabic.com/wiki/display/GDDR/4m.+How+to+Run+Examples).
