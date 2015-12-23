@@ -1,6 +1,6 @@
 ##GroupDocs.Metadata for .NET
 
-This package contains [Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples) for [GroupDocs.Metadata for .NET](#) and will help you understand API's working and write your own applications.
+This package contains [Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples) for [GroupDocs.Metadata for .NET](#) that will help you understand API's working and write your own applications.
 
 GroupDocs.Metadata for .NET provides easy ways to manage metadata in various formats. It enables user to read, write, update and remove the metadata of documents (word, spreadsheet, presentation, pdf) and images (jpeg, png, gif). Its also provides the fucntionality to compare metadata in document files.
 
@@ -13,7 +13,7 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) and sample files that help you learn how to use product features.
+[Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) and sample files that will help you learn how to use product features.
 
 ## Resources
 
