@@ -13,7 +13,7 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) that help you learn how to use product features.
+[Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) and sample files that help you learn how to use product features.
 
 ## Resources
 
