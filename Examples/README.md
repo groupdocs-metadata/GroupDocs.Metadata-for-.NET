@@ -1,6 +1,6 @@
 ##GroupDocs.Metadata for .NET Examples
 
-This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for .NET](http://www.aspose.com/categories/.net-components/aspose.pdf-for-.net/default.aspx).
+This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for .NET](#).
 
 <p align="center">
   <a title="Download complete GroupDocs.Metadata for .NET source code" href="https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/archive/master.zip">
