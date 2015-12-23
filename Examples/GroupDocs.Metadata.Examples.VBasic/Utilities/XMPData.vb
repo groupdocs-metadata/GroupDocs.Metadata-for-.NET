@@ -21,7 +21,7 @@ Imports GroupDocs.Metadata.Xmp.Types.Complex.Version
 
 
 Namespace Utilities
-    Public Class XMPdata
+    Public Class XMPData
         Public Sub GetXMPData()
             Try
                 'ExStart:GetXMPData
