@@ -8,6 +8,8 @@ using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Standards.Exif;
 using GroupDocs.Metadata.Standards.Exif.Jpeg;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
+using GroupDocs.Metadata.Tools;
+using GroupDocs.Metadata.Standards.Xmp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -37,8 +39,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // show XMP data
                     foreach (string key in xmpProperties.Keys)
                     {
-                        XmpNodeView xmpNodeView = xmpProperties[key];
-                        Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                        try
+                        {
+                            XmpNodeView xmpNodeView = xmpProperties[key];
+                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                        }
+                        catch { }
                     }
                     //ExEnd:GetXmpPropertiesJpegImage
                 }
@@ -116,10 +122,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveXmpPropertiesJpegImage
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
+                   
                     // remove XMP package
-                    jpegFormat.RemoveXmpData();
-
+                    jpegFormat.RemoveXmpData(); 
                     // commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveXmpPropertiesJpegImage
@@ -201,7 +206,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // update EXIF data
                     jpegFormat.SetExifInfo(exif);
-
+                    
                     // commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:UpdateExifPropertiesJpegImage
@@ -253,18 +258,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:GetXMPPropertiesGifImage
-                    // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                    
+                        // initialize GifFormat
+                        GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                        if (gifFormat.IsSupportedXmp)
+                        {
+                            // get XMP data
+                            XmpProperties xmpProperties = gifFormat.GetXmpProperties();
 
-                    // get XMP data
-                    XmpProperties xmpProperties = gifFormat.GetXmpProperties();
-
-                    // show XMP data
-                    foreach (string key in xmpProperties.Keys)
-                    {
-                        XmpNodeView xmpNodeView = xmpProperties[key];
-                        Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
-                    }
+                            // show XMP data
+                            foreach (string key in xmpProperties.Keys)
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
+                        }
                     //ExEnd:GetXMPPropertiesGifImage
                 }
                 catch (Exception exp)
@@ -282,49 +290,52 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:UpdateXMPPropertiesGifImage
                     // initialize GifFormat
                     GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp wrapper
-                    XmpPacketWrapper xmpPacket = gifFormat.GetXmpData();
-
-                    // create xmp wrapper if not exists
-                    if (xmpPacket == null)
+                    if (gifFormat.IsSupportedXmp)
                     {
-                        xmpPacket = new XmpPacketWrapper();
+                        // get xmp wrapper
+                        XmpPacketWrapper xmpPacket = gifFormat.GetXmpData();
+
+                        // create xmp wrapper if not exists
+                        if (xmpPacket == null)
+                        {
+                            xmpPacket = new XmpPacketWrapper();
+                        }
+
+                        // check if DublinCore schema exists
+                        if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+                        {
+                            // if not - add DublinCore schema
+                            xmpPacket.AddPackage(new DublinCorePackage());
+                        }
+
+                        // get DublinCore package
+                        DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+                        string authorName = "New author";
+                        string description = "New description";
+                        string subject = "New subject";
+                        string publisher = "New publisher";
+                        string title = "New title";
+
+                        // set author
+                        dublinCorePackage.SetAuthor(authorName);
+                        // set description
+                        dublinCorePackage.SetDescription(description);
+                        // set subject
+                        dublinCorePackage.SetSubject(subject);
+                        // set publisher
+                        dublinCorePackage.SetPublisher(publisher);
+                        // set title
+                        dublinCorePackage.SetTitle(title);
+                        // update XMP package
+                        gifFormat.SetXmpData(xmpPacket);
+
+                        // commit changes
+                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
                     }
-
-                    // check if DublinCore schema exists
-                    if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
-                    {
-                        // if not - add DublinCore schema
-                        xmpPacket.AddPackage(new DublinCorePackage());
-                    }
-
-                    // get DublinCore package
-                    DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
-
-                    string authorName = "New author";
-                    string description = "New description";
-                    string subject = "New subject";
-                    string publisher = "New publisher";
-                    string title = "New title";
-
-                    // set author
-                    dublinCorePackage.SetAuthor(authorName);
-                    // set description
-                    dublinCorePackage.SetDescription(description);
-                    // set subject
-                    dublinCorePackage.SetSubject(subject);
-                    // set publisher
-                    dublinCorePackage.SetPublisher(publisher);
-                    // set title
-                    dublinCorePackage.SetTitle(title);
-                    // update XMP package
-                    gifFormat.SetXmpData(xmpPacket);
-
-                    // commit changes
-                    gifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXMPPropertiesGifImage
-                    Console.WriteLine("File saved in destination folder.");
+                        //ExEnd:UpdateXMPPropertiesGifImage
+                        Console.WriteLine("File saved in destination folder.");
+                    
                 }
                 catch (Exception exp)
                 {
@@ -341,12 +352,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveXMPPropertiesGifImage 
                     // initialize GifFormat
                     GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                    if (gifFormat.IsSupportedXmp)
+                    {
+                        // remove XMP package
+                        gifFormat.RemoveXmpData();
 
-                    // remove XMP package
-                    gifFormat.RemoveXmpData();
-
-                    // commit changes
-                    gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                    }
                     //ExEnd:RemoveXMPPropertiesGifImage 
                     Console.WriteLine("File saved in destination folder.");
                 }
@@ -362,7 +375,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourcePngFilePath
-            private const string filePath = "Images/Png/sample.png";
+            private const string filePath = "Images/Png/image2.png";
             //ExEnd:SourcePngFilePath
             /// <summary>
             ///Gets XMP properties from Png file
@@ -377,7 +390,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // get XMP data
                     XmpProperties xmpProperties = pngFormat.GetXmpProperties();
-
                     if (xmpProperties != null)
                     {
                         // show XMP data
@@ -433,7 +445,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     string subject = "New subject";
                     string publisher = "New publisher";
                     string title = "New title";
-
                     // set author
                     dublinCorePackage.SetAuthor(authorName);
                     // set description
@@ -470,7 +481,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // remove XMP package
                     pngFormat.RemoveXmpData();
-
+                    
                     // commit changes
                     pngFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveXMPPropertiesPngImage 
@@ -480,8 +491,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
-            }
-
+            } 
         } 
     }
 }
