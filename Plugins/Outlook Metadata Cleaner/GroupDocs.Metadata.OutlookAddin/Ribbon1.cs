@@ -65,7 +65,7 @@ namespace GroupDocs.Metadata.OutlookAddin
                         try
                         {
                             //Clean metadata of file...
-                            message = MetadataCleaner.CleanDocument(strFileName);
+                            message = MetadataCleaner.CleanFile(strFileName);
                         }
                         catch (Exception exp)
                         {
