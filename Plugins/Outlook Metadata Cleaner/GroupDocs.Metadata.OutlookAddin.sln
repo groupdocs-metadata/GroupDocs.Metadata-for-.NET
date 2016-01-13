@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Metadata.OutlookAddin", "GroupDocs.Metadata.OutlookAddin\GroupDocs.Metadata.OutlookAddin.csproj", "{5F074529-B192-4907-87A8-71A64E95CA93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F074529-B192-4907-87A8-71A64E95CA93}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{5F074529-B192-4907-87A8-71A64E95CA93}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

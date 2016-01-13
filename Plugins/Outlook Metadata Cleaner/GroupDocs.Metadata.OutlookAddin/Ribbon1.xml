@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabNewMailMessage" >
+        <group id="GroupDocs"  insertAfterMso="GroupNames" label="GroupDocs" >
+          <button id="sendButton" label="Attach File" size="large"
+               screentip="GroupDocs.Metadata Add-in" onAction="SendMessageUsingGroupDocsMetadata" getImage="GetCustomImage"
+               supertip="Cleans attachment's metadata"/>
+           
+        </group>
+      
+      </tab>
+      
+    </tabs>
+    
+  </ribbon>
+  
+</customUI>
+
+
