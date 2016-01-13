@@ -46,7 +46,7 @@ namespace GroupDocs.Metadata.OutlookAddin
             }
         }
         //ExEnd:ApplyLicense
-        public static string CleanDocument(string filePath)
+        public static string CleanFile(string filePath)
         {
 
             try
