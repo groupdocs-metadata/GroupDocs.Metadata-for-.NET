@@ -221,7 +221,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' display comments
                     For Each comment As DocComment In comments
-                        Console.WriteLine("Author: ", comment)
+                        Console.WriteLine("Author: ", comment.Author)
                         Console.WriteLine("Created on Date: ", comment.CreatedDate)
                         Console.WriteLine("Initials: ", comment.Initials)
                         Console.WriteLine(vbLf)
