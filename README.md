@@ -14,7 +14,7 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
 Directory | Description
 --------- | -----------
 [Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) and sample files that will help you learn how to use product features.
-[Plugins](https://github.com/usmanazizgroupdocs/GroupDocs_Metadata_NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) | Contains Outlook Metadata Cleaner add-in that cleans metadata of the files before attachment in email.
+[Plugins](https://github.com/usmanazizgroupdocs/GroupDocs_Metadata_NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) | Contains Outlook Metadata Cleaner add-in that cleans metadata of the selected files and attaches them with email.
 
 ## Resources
 
