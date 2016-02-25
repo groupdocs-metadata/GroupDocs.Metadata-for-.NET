@@ -209,7 +209,7 @@ namespace GroupDocsMetadataVisualStudioPlugin.GUI
             this.MinimizeBox = false;
             this.Name = "ComponentWizardPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GroupDpcs Visual Studio Plugin";
+            this.Text = "GroupDocs Visual Studio Plugin";
             this.groupBoxCommonUses.ResumeLayout(false);
             this.groupBoxCommonUses.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
