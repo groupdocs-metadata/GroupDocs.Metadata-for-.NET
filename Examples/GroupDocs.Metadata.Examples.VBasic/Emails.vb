@@ -34,9 +34,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine("Body: " + metadata.Body)
                     Console.WriteLine("DeliveryTime: " + metadata.DeliveryTime)
                     Console.WriteLine("Recipients: " + metadata.Recipients(0))
-                    Console.WriteLine("Subject: " + metadata.Subject)
-                    'ExEnd:GetOutlookEmailMessageMetadata
+                    Console.WriteLine("Subject: " + metadata.Subject)                    
                     Console.WriteLine("Attachments: " + metadata.Attachments(0))
+		   'ExEnd:GetOutlookEmailMessageMetadata
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -54,9 +54,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' remove attachments
                     outlookFormat.RemoveAttachments()
 
-                    ' commit changes
-                    'ExEnd:RemoveOutlookEmailAttachments
+                    ' commit changes                    
                     outlookFormat.Save(Common.MapDestinationFilePath(filePath))
+		   'ExEnd:RemoveOutlookEmailAttachments
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -74,9 +74,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' remove metadata
                     outlookFormat.CleanMetadata()
 
-                    ' commit changes
-                    'ExEnd:RemoveOutlookEmailMetadata
+                    ' commit changes                    
                     outlookFormat.Save(Common.MapDestinationFilePath(filePath))
+		    'ExEnd:RemoveOutlookEmailMetadata
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -105,9 +105,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' display metadata
                     Console.WriteLine("CC: {0}", metadata.CC(0))
                     Console.WriteLine("Mail Address From: {0}", metadata.MailAddressFrom)
-                    Console.WriteLine("Subject: {0}", metadata.Subject)
-                    'ExEnd:GetEmailMessageMetadata
+                    Console.WriteLine("Subject: {0}", metadata.Subject)                    
                     Console.WriteLine("Attachments: {0}", metadata.Attachments(0))
+		    'ExEnd:GetEmailMessageMetadata
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -124,9 +124,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' remove attachments
                     emlFormat.RemoveAttachments()
 
-                    ' commit changes
-                    'ExEnd:RemoveEmailAttachments
+                    ' commit changes                    
                     emlFormat.Save(Common.MapDestinationFilePath(filePath))
+		    'ExEnd:RemoveEmailAttachments
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -144,8 +144,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     emlFormat.CleanMetadata()
 
                     ' commit changes
-                    'ExEnd:RemoveEmailMetadata
                     emlFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:RemoveEmailMetadata
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
