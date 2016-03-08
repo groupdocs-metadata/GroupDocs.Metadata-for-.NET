@@ -14,7 +14,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
             
 
             #region Working with Documents
