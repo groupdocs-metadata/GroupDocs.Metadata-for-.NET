@@ -4,7 +4,6 @@ Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-
 Namespace GroupDocs.Metadata.Examples.VBasic
 
     Module Module1
@@ -15,6 +14,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '             
 
             'Common.ApplyLicense()
+
 
             '#Region "Working with Documents"
 
@@ -37,6 +37,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove custom property of Doc file
             Documents.Doc.RemoveCustomProperties()
+
+            'Clear custom property of Doc file
+            Documents.Doc.ClearCustomProperties()
 
             '#End Region
 
@@ -106,6 +109,16 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             '#End Region
 
+            '#Region "Working with OneNote Files"
+
+            'Get metadata of OneNote file
+            Documents.OneNote.GetMetadata()
+
+            'Get Pages Info of OneNote file 
+            Documents.OneNote.GetPagesInfo()
+
+            '#End Region
+
             '#End Region
 
 
@@ -154,16 +167,66 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Update XMP properties of Png image
             Images.Png.UpdateXMPData()
 
+            'Update XMP values of Png image
+            Images.Png.UpdateXMPValues()
+
+            'Update Camera Raw XMP values of Png image
+            Images.Png.UpdateCameraRawXMPProperties()
+
+            'Update Pagged Text XMP values of Png image
+            Images.Png.UpdatePagedTextXMPProperties()
+
             'Remove XMP properties of Png image
             Images.Png.RemoveXMPData()
 
+            '#End Region
+            '#Region "Working with Tiff"
+
+            'Get Exif Info of Tiff image
+            Images.Tiff.GetExifInfo()
+
+            'Update Exif Info of Tiff image
+            Images.Tiff.UpdateExifInfo()
+
+            'Remove Exif Info of Tiff image
+            Images.Tiff.RemoveExifInfo()
+
+            '#End Region
+
+            '#End Region
+            '#Region "Working with PSD"
+
+            'Get metadata of PSD file
+            Images.Psd.GetPsdInfo()
+
+            '#End Region
+
+            '#Region "Working emails"
+            '#Region "Working with Outlook Email"
+            'Get Outlook email metadata
+            Emails.OutLook.GetOutlookEmailMetadata()
+
+            'Remove Outlook email attachment
+            Emails.OutLook.RemoveOutlookEmailAttachments()
+
+            'Remove Outlook email metadata
+            Emails.OutLook.RemoveOutlookEmailMetadata()
+            '#End Region
+
+            '#Region "Working with Email message"
+            'Get email metadata
+            Emails.Eml.GetEmailMetadata()
+
+            'Remove email attachment
+            Emails.Eml.RemoveEmailAttachments()
+
+            'Remove email metadata
+            Emails.Eml.RemoveEmailMetadata()
             '#End Region
             '#End Region
 
 
             '#Region "Working with Utilities"
-
-
             'ExStart:DocCleanerUsage
             'DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
             Dim docCleaner As New DocCleaner("Documents/Doc")
@@ -192,7 +255,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Common.GetFileFormats("Documents/Pdf")
             'ExEnd:FormatRecognizerUsage
 
+
             '#End Region
+
+
             Console.ReadKey()
 
         End Sub

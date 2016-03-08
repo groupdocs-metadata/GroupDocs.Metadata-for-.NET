@@ -4,3 +4,8 @@ c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.exe
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.pdb
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.CSharp\bin\Debug\GroupDocs.Metadata.Examples.CSharp.exe
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.CSharp\bin\Debug\GroupDocs.Metadata.Examples.CSharp.pdb
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.exe
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.CSharp\obj\x86\Debug\GroupDocs.Metadata.Examples.CSharp.pdb
