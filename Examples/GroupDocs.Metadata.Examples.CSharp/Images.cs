@@ -167,15 +167,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // get access to PagedText schema
                     var package = jpegFormat.XmpValues.Schemes.PagedText;
 
-                    // update fonts
-                    package.Fonts = new Font[1];
-                    package.Fonts[0] = new Font("Arial");
-
+                    
                     // update MaxPageSize
                     package.MaxPageSize = new Dimensions(600, 800);
 
                     // update number of pages
-                    package.NumberOfPages = 10;                    
+                    package.NumberOfPages = 10;  
+
+		    // update plate names
+                    package.PlateNames = new string[] { "1", "2", "3" };                   
 
                     // commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
@@ -498,15 +498,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // get access to PagedText schema
                     var package = GifFormat.XmpValues.Schemes.PagedText;
 
-                    // update fonts
-                    package.Fonts = new Font[1];
-                    package.Fonts[0] = new Font("Arial");
-
                     // update MaxPageSize
                     package.MaxPageSize = new Dimensions(600, 800);
 
                     // update number of pages
                     package.NumberOfPages = 10;
+
+		    // update plate names
+                    package.PlateNames = new string[] { "1", "2", "3" }; 
 
                     // commit changes
                     GifFormat.Save(Common.MapDestinationFilePath(filePath));
@@ -725,15 +724,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // get access to PagedText schema
                     var package = PngFormat.XmpValues.Schemes.PagedText;
 
-                    // update fonts
-                    package.Fonts = new Font[1];
-                    package.Fonts[0] = new Font("Arial");
-
                     // update MaxPageSize
                     package.MaxPageSize = new Dimensions(600, 800);
 
                     // update number of pages
                     package.NumberOfPages = 10;
+
+	            // update plate names
+                    package.PlateNames = new string[] { "1", "2", "3" }; 
 
                     // commit changes
                     PngFormat.Save(Common.MapDestinationFilePath(filePath));
@@ -862,12 +860,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     exif.BodySerialNumber = "New Body Serial Number";
                     exif.CameraOwnerName = "New Camera Owner Name";
 
-                    // use one of the following methods
+                    // update EXIF info
+                    tiffFormat.UpdateExifInfo(exif);
+
                     // commit changes and save output file
                     tiffFormat.Save(Common.MapDestinationFilePath(filePath));
-
-                    // commit changes and update input file
-                    //tiffFormat.UpdateExifInfo(exif);
                     //ExEnd:UpdateExifPropertiesTiffImage
                 }
                 catch (Exception exp)

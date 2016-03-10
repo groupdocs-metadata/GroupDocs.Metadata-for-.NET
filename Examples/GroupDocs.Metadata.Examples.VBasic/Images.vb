@@ -148,15 +148,14 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' get access to PagedText schema
                     Dim package = jpegFormat.XmpValues.Schemes.PagedText
 
-                    ' update fonts
-                    package.Fonts = New Font(0) {}
-                    package.Fonts(0) = New Font("Arial")
-
                     ' update MaxPageSize
                     package.MaxPageSize = New Dimensions(600, 800)
 
                     ' update number of pages
                     package.NumberOfPages = 10
+
+		    ' update plate names
+		    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -437,15 +436,14 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' get access to PagedText schema
                     Dim package = GifFormat.XmpValues.Schemes.PagedText
 
-                    ' update fonts
-                    package.Fonts = New Font(0) {}
-                    package.Fonts(0) = New Font("Arial")
-
                     ' update MaxPageSize
                     package.MaxPageSize = New Dimensions(600, 800)
 
                     ' update number of pages
                     package.NumberOfPages = 10
+
+		    ' update plate names
+		    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     GifFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -634,15 +632,14 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' get access to PagedText schema
                     Dim package = PngFormat.XmpValues.Schemes.PagedText
 
-                    ' update fonts
-                    package.Fonts = New Font(0) {}
-                    package.Fonts(0) = New Font("Arial")
-
                     ' update MaxPageSize
                     package.MaxPageSize = New Dimensions(600, 800)
 
                     ' update number of pages
                     package.NumberOfPages = 10
+
+		    ' update plate names
+		    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     PngFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -755,13 +752,13 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     exif.BodySerialNumber = "New Body Serial Number"
                     exif.CameraOwnerName = "New Camera Owner Name"
 
-                    ' use one of the following methods
-                    ' commit changes and save output file
+		    ' update EXIF info
+                    tiffFormat.UpdateExifInfo(exif);
 
-                    ' commit changes and update input file
-                    'tiffFormat.UpdateExifInfo(exif);
+                    ' commit changes and save output file
+		    tiffFormat.Save(Common.MapDestinationFilePath(filePath))                    
                     'ExEnd:UpdateExifPropertiesTiffImage
-                    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
+                    
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -780,8 +777,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     tiffFormat.RemoveExifInfo()
 
                     ' commit changes and save output file
+		    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:RemoveExifPropertiesTiffImage
-                    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
+                    
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
