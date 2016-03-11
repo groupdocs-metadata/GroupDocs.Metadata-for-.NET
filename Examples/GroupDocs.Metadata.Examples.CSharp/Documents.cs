@@ -10,6 +10,8 @@ using GroupDocs.Metadata.Standards.Ppt;
 using GroupDocs.Metadata.Standards.Xls;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
+using GroupDocs.Metadata.Formats.OneNote;
+using GroupDocs.Metadata.Standards.OneNote;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -174,9 +176,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // check if property is not built-in
                         if (!docMetadata.IsBuiltIn(keyValuePair.Key))
                         {
-                            // get property value
-                            PropertyValue propertyValue = docMetadata[keyValuePair.Key];
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                            try
+                            {
+                                // get property value
+                                PropertyValue propertyValue = docMetadata[keyValuePair.Key];
+                                Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
+                            }
+                            catch { }
                         }
                     }
                     //ExEnd:GetCustomPropertiesDocFormat
@@ -226,6 +232,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveCustomPropertyDocFormat
+                    Console.WriteLine("File saved in destination folder.");
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Clears custom properties of Doc file and creates output file
+            /// </summary> 
+            public static void ClearCustomProperties()
+            {
+                try
+                {
+                    //ExStart:ClearCustomPropertyDocFormat
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // use one of the following methods
+                    // method:1 - clear custom properties 
+                    docFormat.ClearCustomProperties();
+
+                    // method:2 - clear custom properties 
+                    docFormat.DocumentProperties.ClearCustomData();
+                    
+                    // save file in destination folder
+                    docFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:ClearCustomPropertyDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -534,6 +569,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// Clears custom properties of Pdf file and creates output file
+            /// </summary> 
+            public static void ClearCustomProperties()
+            {
+                try
+                {
+                    //ExStart:ClearCustomPropertyPdfFormat
+                    // initialize PdfFormat
+                    PdfFormat PdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // use one of the following methods
+                    // method:1 - clear custom properties 
+                    PdfFormat.ClearCustomProperties();
+
+                    // method:2 - clear custom properties
+                    PdfFormat.DocumentProperties.ClearCustomData();
+
+                    // save file in destination folder
+                    PdfFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:ClearCustomPropertyPdfFormat
+                    Console.WriteLine("File saved in destination folder.");
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
             #endregion
         }
 
@@ -733,6 +797,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // save file in destination folder
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveCustomDocumentPropertiesPptFormat
+                    Console.WriteLine("File saved in destination folder.");
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Clears custom properties of Ppt file and creates output file
+            /// </summary> 
+            public static void ClearCustomProperties()
+            {
+                try
+                {
+                    //ExStart:ClearCustomPropertyPptFormat
+                    // initialize PptFormat
+                    PptFormat PptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
+
+                    // use one of the following methods
+                    // method:1 - clear custom properties
+                    PptFormat.ClearCustomProperties();
+
+                    // method:2 - clear custom properties 
+                    PptFormat.DocumentProperties.ClearCustomData();
+
+                    // save file in destination folder
+                    PptFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:ClearCustomPropertyPptFormat
                     Console.WriteLine("File saved in destination folder.");
 
                 }
@@ -948,7 +1041,117 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// Clears custom properties of Xls file and creates output file
+            /// </summary> 
+            public static void ClearCustomProperties()
+            {
+                try
+                {
+                    //ExStart:ClearCustomPropertyXlsFormat
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // use one of the following methods
+                    // method:1 - clear custom properties
+                    xlsFormat.ClearCustomProperties();
+
+                    // method:2 - clear custom properties
+                    xlsFormat.DocumentProperties.ClearCustomData();
+
+                    // save file in destination folder
+                    xlsFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:ClearCustomPropertyXlsFormat
+                    Console.WriteLine("File saved in destination folder.");
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
             #endregion
+        }
+
+        public static class OneNote
+        {
+            // initialize file path
+            //ExStart:SourceOneNoteFilePath
+            private const string filePath = "Documents/OneNote/sample.one";
+            //ExEnd:SourceOneNoteFilePath
+
+            /// <summary>
+            /// Gets metadata of OneNote file  
+            /// </summary> 
+            public static void GetMetadata()
+            {
+                try
+                {
+
+                    //ExStart:GetMetadataOneNoteFormat
+                    // initialize OneNoteFormat
+                    OneNoteFormat oneNoteFormat = new OneNoteFormat(Common.MapSourceFilePath(filePath));
+
+                    // get metadata
+                    var oneNoteMetadata = oneNoteFormat.GetMetadata();
+                    if (oneNoteFormat != null)
+                    {
+                        // get IsFixedSize 
+                        Console.WriteLine("IsFixedSize: {0}", oneNoteMetadata.IsFixedSize);
+                        // get IsReadOnly 
+                        Console.WriteLine("IsReadOnly: {0}", oneNoteMetadata.IsReadOnly);
+                        // get IsSynchronized 
+                        Console.WriteLine("IsSynchronized: {0}", oneNoteMetadata.IsSynchronized);
+                        // get Length 
+                        Console.WriteLine("Length: {0}", oneNoteMetadata.Length);
+                        // get Rank 
+                        Console.WriteLine("Rank: {0}", oneNoteMetadata.Rank);
+                    }
+                    //ExEnd:GetMetadataOneNoteFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Gets pages of OneNote file  
+            /// </summary> 
+            public static void GetPagesInfo()
+            {
+                try
+                {
+
+                    //ExStart:GetPagesOneNoteFormat
+                    // initialize OneNoteFormat
+                    OneNoteFormat oneNoteFormat = new OneNoteFormat(Common.MapSourceFilePath(filePath));
+
+                    // get pages
+                    OneNotePageInfo[] pages = oneNoteFormat.GetPages();
+
+                    foreach (OneNotePageInfo info in pages)
+                    {
+                        // get Author 
+                        Console.WriteLine("Author: {0}", info.Author);
+                        // get CreationTime 
+                        Console.WriteLine("CreationTime: {0}", info.CreationTime);
+                        // get LastModifiedTime 
+                        Console.WriteLine("LastModifiedTime: {0}", info.LastModifiedTime);
+                        // get Title 
+                        Console.WriteLine("Title: {0}", info.Title);
+
+                        Console.WriteLine("\n\n");
+                    } 
+                    //ExEnd:GetPagesOneNoteFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+           
         }
     }
 }

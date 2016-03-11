@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Emails.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Documents.cs" />
     <Compile Include="Images.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="Utilities\DocCleaner.cs" />
     <Compile Include="Utilities\JpegPhotoParser.cs" />
     <Compile Include="Utilities\PhotoCleaner.cs" />
-    <Compile Include="Utilities\Tempclass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\GroupDocs.Metadata.dll" />

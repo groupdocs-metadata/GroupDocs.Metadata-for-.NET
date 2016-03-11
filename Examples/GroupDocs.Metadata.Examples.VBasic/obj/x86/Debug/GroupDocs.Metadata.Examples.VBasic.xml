@@ -6,54 +6,57 @@ GroupDocs.Metadata.Examples.VBasic
 </name>
 </assembly>
 <members>
-<member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetXMPProperties">
+<member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.OutLook.GetOutlookEmailMetadata">
 	<summary>
-Gets XMP properties from Jpeg file
+ Gets Outlook email file's metadata
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateXMPProperties">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.OutLook.RemoveOutlookEmailAttachments">
 	<summary>
- Updates XMP data of Jpeg file and creates output file
+ Removes Outlook email attachments
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveXMPData">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.OutLook.RemoveOutlookEmailMetadata">
 	<summary>
- Removes XMP data of Jpeg file and creates output file
+ Removes email metadata
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetExifInfo">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.Eml.GetEmailMetadata">
 	<summary>
- Gets Exif info from Jpeg file
+ Gets email file's metadata
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateExifInfo">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.Eml.RemoveEmailAttachments">
 	<summary>
- Updates Exif info of Jpeg file and creates output file
+ Removes email attachments
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveExifInfo">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Emails.Eml.RemoveEmailMetadata">
 	<summary>
- Removes Exif info of Jpeg file and creates output file
+ Removes email metadata
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.GetXMPProperties">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.Common.MapSourceFilePath(System.String)">
 	<summary>
-Gets XMP properties of Gif file
+ Maps source file path
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdateXMPProperties">
+	<param name="SourceFileName">Source File Name</param>
+	<returns>Returns complete path of source file</returns>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.Common.MapDestinationFilePath(System.String)">
 	<summary>
- Updates XMP data of Gif file and creates output file
+ Maps destination file path
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.RemoveXMPProperties">
+	<param name="DestinationFileName">Destination File Name</param>
+	<returns>Returns complete path of destination file</returns>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.Common.ApplyLicense">
 	<summary>
- Removes XMP data of Gif file and creates output file
+ Applies product license
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.GetXMPProperties">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.Common.GetFileFormats(System.String)">
 	<summary>
-Gets XMP properties from Png file
+ Gets directory name and recognizes format of files in that directory
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdateXMPData">
+	<param name="directorPath">Directory path</param>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.Common.CompareFilesMetadata(System.String,System.String)">
 	<summary>
- Updates XMP data of Png file and creates output file
+ Compares and finds metadata difference of two files 
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.RemoveXMPData">
-	<summary>
- Removes XMP data of Png file and creates output file
- </summary>
+	<param name="filePath1">First file path</param>
+	<param name="filePath2">Second file path</param>
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetDocumentProperties">
 	<summary>
  Gets builtin document properties from Doc file 
@@ -77,6 +80,10 @@ Gets XMP properties from Png file
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.RemoveCustomProperties">
 	<summary>
  Removes custom properties of Doc file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.ClearCustomProperties">
+	<summary>
+ Clears custom properties of Doc file and creates output file
  </summary>
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Doc.GetDocumentComments">
 	<summary>
@@ -114,6 +121,10 @@ Gets XMP properties from Png file
 	<summary>
  Removes custom property of Pdf file and creates output file
  </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Pdf.ClearCustomProperties">
+	<summary>
+ Clears custom properties of Pdf file and creates output file
+ </summary>
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.GetDocumentProperties">
 	<summary>
  Gets builtin document properties of Ppt file  
@@ -137,6 +148,10 @@ Gets XMP properties from Png file
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.RemoveCustomProperties">
 	<summary>
  Removes custom property of Ppt file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Ppt.ClearCustomProperties">
+	<summary>
+ Clears custom properties of Ppt file and creates output file
  </summary>
 </member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.GetDocumentProperties">
 	<summary>
@@ -162,21 +177,143 @@ Gets XMP properties from Png file
 	<summary>
  Removes custom property of Xls file and creates output file
  </summary>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.MapSourceFilePath(System.String)">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.Xls.ClearCustomProperties">
 	<summary>
- Maps source file path
+ Clears custom properties of Xls file and creates output file
  </summary>
-	<param name="SourceFileName">Source File Name</param>
-	<returns>Returns complete path of source file</returns>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.MapDestinationFilePath(System.String)">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.OneNote.GetMetadata">
 	<summary>
- Maps destination file path
+ Gets metadata of OneNote file  
  </summary>
-	<param name="DestinationFileName">Destination File Name</param>
-	<returns>Returns complete path of destination file</returns>
-</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Common.ApplyLicense">
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Documents.OneNote.GetPagesInfo">
 	<summary>
- Applies product license
+ Gets pages of OneNote file  
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.JpegPhotoParser.SetInternalLicense">
+	<summary>
+ Applies the product license
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.JpegPhotoParser.FilterByCameraManufacturer(System.String)">
+	<summary>
+ Takes manufacturer as input and returns photos made on particular camera
+ </summary>
+	<param name="manufacturer">Camera manufacturer name</param>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.DocCleaner.SetInternalLicense">
+	<summary>
+ Applies the product license
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.DocCleaner.RemoveMetadataByAuthor(System.String)">
+	<summary>
+ Takes author name and removes metadata in files created by specified author
+ </summary>
+	<param name="authorName">Author name</param>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.PhotoCleaner.SetInternalLicense">
+	<summary>
+ Applies the product license
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.Utilities.PhotoCleaner.RemoveExifLocation">
+	<summary>
+ Removes GPS data and updates the image files in a directory
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetXMPProperties">
+	<summary>
+Gets XMP properties from Jpeg file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateXMPProperties">
+	<summary>
+ Updates XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateXMPValues">
+	<summary>
+ Updates XMP values of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdatePagedTextXMPProperties">
+	<summary>
+ Updates PagedText XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateCameraRawXMPProperties">
+	<summary>
+ Updates CameraRaw XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveXMPData">
+	<summary>
+ Removes XMP data of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.GetExifInfo">
+	<summary>
+ Gets Exif info from Jpeg file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.UpdateExifInfo">
+	<summary>
+ Updates Exif info of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Jpeg.RemoveExifInfo">
+	<summary>
+ Removes Exif info of Jpeg file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.GetXMPProperties">
+	<summary>
+Gets XMP properties of Gif file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdateXMPProperties">
+	<summary>
+ Updates XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdateXMPValues">
+	<summary>
+ Updates XMP values of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdatePagedTextXMPProperties">
+	<summary>
+ Updates PagedText XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.UpdateCameraRawXMPProperties">
+	<summary>
+ Updates CameraRaw XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Gif.RemoveXMPProperties">
+	<summary>
+ Removes XMP data of Gif file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.GetXMPProperties">
+	<summary>
+Gets XMP properties from Png file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdateXMPData">
+	<summary>
+ Updates XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdateXMPValues">
+	<summary>
+ Updates XMP values of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdatePagedTextXMPProperties">
+	<summary>
+ Updates PagedText XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.UpdateCameraRawXMPProperties">
+	<summary>
+ Updates CameraRaw XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Png.RemoveXMPData">
+	<summary>
+ Removes XMP data of Png file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Tiff.GetExifInfo">
+	<summary>
+ Gets Exif info from Tiff file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Tiff.UpdateExifInfo">
+	<summary>
+ Updates Exif info of Tiff file and creates output file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Tiff.RemoveExifInfo">
+	<summary>
+ Removes Exif info from Tiff file
+ </summary>
+</member><member name="M:GroupDocs.Metadata.Examples.VBasic.GroupDocs.Metadata.Examples.VBasic.Images.Psd.GetPsdInfo">
+	<summary>
+ Gets Psd Info
  </summary>
 </member><member name="P:GroupDocs.Metadata.Examples.VBasic.My.Resources.Resources.ResourceManager">
 	<summary>

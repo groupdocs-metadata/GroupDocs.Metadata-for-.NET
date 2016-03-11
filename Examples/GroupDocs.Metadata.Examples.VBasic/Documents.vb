@@ -9,6 +9,8 @@ Imports GroupDocs.Metadata.Standards.Pdf
 Imports GroupDocs.Metadata.Standards.Ppt
 Imports GroupDocs.Metadata.Standards.Xls
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
+Imports GroupDocs.Metadata.Standards.OneNote
+Imports GroupDocs.Metadata.Formats.OneNote 
 
 
 Namespace GroupDocs.Metadata.Examples.VBasic
@@ -22,7 +24,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExStart:SourceDocFilePath
             Private Const filePath As String = "Documents/Doc/sample.doc"
             'ExEnd:SourceDocFilePath
-
 #Region "working with built-in document properties"
 
             ''' <summary>
@@ -153,9 +154,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     For Each keyValuePair As KeyValuePair(Of String, PropertyValue) In docMetadata
                         ' check if property is not built-in
                         If Not docMetadata.IsBuiltIn(keyValuePair.Key) Then
-                            ' get property value
-                            Dim propertyValue As PropertyValue = docMetadata(keyValuePair.Key)
-                            Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue)
+                            Try
+                                ' get property value
+                                Dim propertyValue As PropertyValue = docMetadata(keyValuePair.Key)
+                                Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue)
+                            Catch
+                            End Try
                         End If
                         'ExEnd:GetCustomPropertiesDocFormat
                     Next
@@ -195,6 +199,31 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:RemoveCustomPropertyDocFormat
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Clears custom properties of Doc file and creates output file
+            ''' </summary> 
+            Public Shared Sub ClearCustomProperties()
+                Try
+                    'ExStart:ClearCustomPropertyDocFormat
+                    ' initialize DocFormat
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' use one of the following methods
+                    ' method:1 - clear custom properties 
+                    docFormat.ClearCustomProperties()
+
+                    ' method:2 - clear custom properties 
+                    docFormat.DocumentProperties.ClearCustomData()
+
+                    ' save file in destination folder
+                    docFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:ClearCustomPropertyDocFormat
 
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
@@ -288,7 +317,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExStart:SourcePdfFilePath
             Private Const filePath As String = "Documents/Pdf/sample.pdf"
             'ExEnd:SourcePdfFilePath
-
 #Region "working with builtin document properties"
             ''' <summary>
             ''' Gets builtin document properties of Pdf file  
@@ -458,6 +486,31 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+            ''' <summary>
+            ''' Clears custom properties of Pdf file and creates output file
+            ''' </summary> 
+            Public Shared Sub ClearCustomProperties()
+                Try
+                    'ExStart:ClearCustomPropertyPdfFormat
+                    ' initialize PdfFormat
+                    Dim PdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' use one of the following methods
+                    ' method:1 - clear custom properties 
+                    PdfFormat.ClearCustomProperties()
+
+                    ' method:2 - clear custom properties
+                    PdfFormat.DocumentProperties.ClearCustomData()
+
+                    ' save file in destination folder
+                    PdfFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:ClearCustomPropertyPdfFormat
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
 #End Region
         End Class
 
@@ -468,7 +521,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExStart:SourcePptFilePath
             Private Const filePath As String = "Documents/Ppt/sample.ppt"
             'ExEnd:SourcePptFilePath
-
 #Region "working with builtin document properties"
             ''' <summary>
             ''' Gets builtin document properties of Ppt file  
@@ -635,6 +687,31 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+            ''' <summary>
+            ''' Clears custom properties of Ppt file and creates output file
+            ''' </summary> 
+            Public Shared Sub ClearCustomProperties()
+                Try
+                    'ExStart:ClearCustomPropertyPptFormat
+                    ' initialize PptFormat
+                    Dim PptFormat As New PptFormat(Common.MapSourceFilePath(filePath))
+
+                    ' use one of the following methods
+                    ' method:1 - clear custom properties
+                    PptFormat.ClearCustomProperties()
+
+                    ' method:2 - clear custom properties 
+                    PptFormat.DocumentProperties.ClearCustomData()
+
+                    ' save file in destination folder
+                    PptFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:ClearCustomPropertyPptFormat
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
 #End Region
         End Class
 
@@ -645,13 +722,13 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExStart:SourceXlsFilePath
             Private Const filePath As String = "Documents/Xls/sample.xls"
             'ExEnd:SourceXlsFilePath
-
 #Region "working with builtin document properties"
             ''' <summary>
             ''' Gets builtin document properties of Xls file  
             ''' </summary> 
             Public Shared Sub GetDocumentProperties()
                 Try
+
                     'ExStart:GetBuiltinDocumentPropertiesXlsFormat
                     ' initialize XlsFormat
                     Dim xlsFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
@@ -811,7 +888,104 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+            ''' <summary>
+            ''' Clears custom properties of Xls file and creates output file
+            ''' </summary> 
+            Public Shared Sub ClearCustomProperties()
+                Try
+                    'ExStart:ClearCustomPropertyXlsFormat
+                    ' initialize XlsFormat
+                    Dim xlsFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
+
+                    ' use one of the following methods
+                    ' method:1 - clear custom properties
+                    xlsFormat.ClearCustomProperties()
+
+                    ' method:2 - clear custom properties
+                    xlsFormat.DocumentProperties.ClearCustomData()
+
+                    ' save file in destination folder
+                    xlsFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:ClearCustomPropertyXlsFormat
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
 #End Region
+        End Class
+
+        Public NotInheritable Class OneNote
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceOneNoteFilePath
+            Private Const filePath As String = "Documents/OneNote/sample.one"
+            'ExEnd:SourceOneNoteFilePath
+
+            ''' <summary>
+            ''' Gets metadata of OneNote file  
+            ''' </summary> 
+            Public Shared Sub GetMetadata()
+                Try
+
+                    'ExStart:GetMetadataOneNoteFormat
+                    ' initialize OneNoteFormat
+                    Dim oneNoteFormat As New OneNoteFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get metadata
+                    Dim oneNoteMetadata = oneNoteFormat.GetMetadata()
+                    If oneNoteFormat IsNot Nothing Then
+                        ' get IsFixedSize 
+                        Console.WriteLine("IsFixedSize: {0}", oneNoteMetadata.IsFixedSize)
+                        ' get IsReadOnly 
+                        Console.WriteLine("IsReadOnly: {0}", oneNoteMetadata.IsReadOnly)
+                        ' get IsSynchronized 
+                        Console.WriteLine("IsSynchronized: {0}", oneNoteMetadata.IsSynchronized)
+                        ' get Length 
+                        Console.WriteLine("Length: {0}", oneNoteMetadata.Length)
+                        ' get Rank 
+                        Console.WriteLine("Rank: {0}", oneNoteMetadata.Rank)
+                        'ExEnd:GetMetadataOneNoteFormat
+                    End If
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Gets pages of OneNote file  
+            ''' </summary> 
+            Public Shared Sub GetPagesInfo()
+                Try
+
+                    'ExStart:GetPagesOneNoteFormat
+                    ' initialize OneNoteFormat
+                    Dim oneNoteFormat As New Formats.OneNote.OneNoteFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get pages
+                    Dim pages As OneNotePageInfo() = oneNoteFormat.GetPages()
+
+                    For Each info As OneNotePageInfo In pages
+                        ' get Author 
+                        Console.WriteLine("Author: {0}", info.Author)
+                        ' get CreationTime 
+                        Console.WriteLine("CreationTime: {0}", info.CreationTime)
+                        ' get LastModifiedTime 
+                        Console.WriteLine("LastModifiedTime: {0}", info.LastModifiedTime)
+                        ' get Title 
+                        Console.WriteLine("Title: {0}", info.Title)
+
+                        Console.WriteLine(vbLf & vbLf)
+                        'ExEnd:GetPagesOneNoteFormat
+                    Next
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+
         End Class
     End Class
 End Namespace

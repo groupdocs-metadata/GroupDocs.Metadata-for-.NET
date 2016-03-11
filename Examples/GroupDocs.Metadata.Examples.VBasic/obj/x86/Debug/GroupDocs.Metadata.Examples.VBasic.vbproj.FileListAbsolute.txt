@@ -8,3 +8,12 @@ c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.VBasic\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.exe
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.VBasic\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.xml
 c:\users\acer\documents\visual studio 2010\Projects\GroupDocs.Metadata.Examples.VBasic\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.pdb
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.exe
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.xml
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.pdb
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.Resources.resources
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.vbproj.GenerateResource.Cache
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\bin\Debug\GroupDocs.Metadata.Examples.VBasic.exe
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\bin\Debug\GroupDocs.Metadata.Examples.VBasic.pdb
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\bin\Debug\GroupDocs.Metadata.Examples.VBasic.xml
+C:\Users\Acer\Documents\Visual Studio 2010\Projects\GroupDocs.Metadata New Release\GroupDocs_Metadata_NET\Examples\GroupDocs.Metadata.Examples.VBasic\obj\x86\Debug\GroupDocs.Metadata.Examples.VBasic.vbprojResolveAssemblyReference.cache

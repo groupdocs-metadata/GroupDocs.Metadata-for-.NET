@@ -15,6 +15,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
              * Uncomment following function if you have product license.
              */
             //Common.ApplyLicense();
+            
 
             #region Working with Documents
 
@@ -37,6 +38,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove custom property of Doc file
             Documents.Doc.RemoveCustomProperties();
+
+            //Clear custom property of Doc file
+            Documents.Doc.ClearCustomProperties();
 
             #endregion
 
@@ -106,6 +110,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
+            #region Working with OneNote Files
+
+            //Get metadata of OneNote file
+            Documents.OneNote.GetMetadata();
+
+            //Get Pages Info of OneNote file 
+            Documents.OneNote.GetPagesInfo();
+
+            #endregion
+
             #endregion
 
 
@@ -154,14 +168,64 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update XMP properties of Png image
             Images.Png.UpdateXMPData();
 
+            //Update XMP values of Png image
+            Images.Png.UpdateXMPValues();
+
+            //Update Camera Raw XMP values of Png image
+            Images.Png.UpdateCameraRawXMPProperties();
+
+            //Update Pagged Text XMP values of Png image
+            Images.Png.UpdatePagedTextXMPProperties();
+
             //Remove XMP properties of Png image
             Images.Png.RemoveXMPData();
 
             #endregion
+            #region Working with Tiff
 
+            //Get Exif Info of Tiff image
+            Images.Tiff.GetExifInfo();
 
+            //Update Exif Info of Tiff image
+            Images.Tiff.UpdateExifInfo();
+
+            //Remove Exif Info of Tiff image
+            Images.Tiff.RemoveExifInfo();
 
             #endregion
+
+            #endregion
+            #region Working with PSD
+
+            //Get metadata of PSD file
+            Images.Psd.GetPsdInfo(); 
+
+            #endregion
+            
+            #region Working emails
+            #region Working with Outlook Email
+            //Get Outlook email metadata
+            Emails.OutLook.GetOutlookEmailMetadata();
+
+            //Remove Outlook email attachment
+            Emails.OutLook.RemoveOutlookEmailAttachments();
+
+            //Remove Outlook email metadata
+            Emails.OutLook.RemoveOutlookEmailMetadata();
+            #endregion
+
+            #region Working with Email message
+            //Get email metadata
+            Emails.Eml.GetEmailMetadata();
+
+            //Remove email attachment
+            Emails.Eml.RemoveEmailAttachments();
+
+            //Remove email metadata
+            Emails.Eml.RemoveEmailMetadata();
+            #endregion
+            #endregion
+             
 
             #region Working with Utilities
             //ExStart:DocCleanerUsage
@@ -194,6 +258,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             
             #endregion
+
 
             Console.ReadKey();
 
