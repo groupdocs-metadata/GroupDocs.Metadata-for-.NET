@@ -12,6 +12,8 @@ using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Formats.OneNote;
 using GroupDocs.Metadata.Standards.OneNote;
+using GroupDocs.Metadata.Tools.Comparison;
+using GroupDocs.Metadata.Tools.Search;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -353,6 +355,94 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("Pages: {0}", pageCounts);
 
 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
+
+            #region working with hidden fields
+            /// <summary>
+            /// Gets comments, merge fields and hidden fields of Doc file
+            /// </summary> 
+            public static void GetHiddenData()
+            {
+                try
+                {
+                    //ExStart:GetHiddenDataInDocument
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // inspect document
+                    InspectionResult inspectionResult = docFormat.InspectDocument();
+
+                    // display comments
+                    if (inspectionResult.Comments.Length > 0)
+                    {
+                        Console.WriteLine("Comments in document:");
+                        foreach (DocComment comment in inspectionResult.Comments)
+                        {
+                            Console.WriteLine("Comment: {0}", comment.Text);
+                            Console.WriteLine("Author: {0}", comment.Author);
+                            Console.WriteLine("Date: {0}", comment.CreatedDate);
+                        }
+                    }
+
+                    // display merge fields
+                    if (inspectionResult.Fields.Length > 0)
+                    {
+                        Console.WriteLine("\nMerge Fields in document:");
+                        foreach (DocField field in inspectionResult.Fields)
+                        {
+                            Console.WriteLine(field.Name);
+                        }
+                    }
+
+                    // display hidden fields 
+                    if (inspectionResult.HiddenText.Length > 0)
+                    {
+                        Console.WriteLine("\nHiddent text in document:");
+                        foreach (string word in inspectionResult.HiddenText)
+                        {
+                            Console.WriteLine(word);
+                        }
+                    }
+                    //ExEnd:GetHiddenDataInDocument
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets comments, merge fields and hidden fields of Doc file
+            /// </summary> 
+            public static void RemoveMergeFields()
+            {
+                try
+                {
+                    //ExStart:RemoveHiddenDataInDocument
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+                     
+                    // inspect document
+                    InspectionResult inspectionResult = docFormat.InspectDocument();
+
+                    // if merge fields are presented
+                    if (inspectionResult.Fields.Length > 0)
+                    {
+                        // remove it
+                        docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.Fields));
+
+                        // save file in destination folder
+                        docFormat.Save(Common.MapDestinationFilePath(filePath));
+                    }
+                    //ExEnd:RemoveHiddenDataInDocument
+
+                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -1152,6 +1242,56 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
            
+        }
+
+        /// <summary>
+        /// Compares metadata of two documents and displays result 
+        /// </summary> 
+        public static void CompareDocument(string firstDocument, string secondDocument, ComparerSearchType type)
+        {
+            try
+            {
+                //ExStart:ComparisonAPI
+                firstDocument = Common.MapSourceFilePath(firstDocument);
+                secondDocument = Common.MapSourceFilePath(secondDocument);
+
+                MetadataPropertyCollection differnces = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type);
+
+                foreach(MetadataProperty property in differnces)
+                {
+                    Console.WriteLine("{0} : {1}", property.Name, property.Value);
+                }
+                //ExEnd:ComparisonAPI
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+        /// <summary>
+        /// Searches metadata in document 
+        /// </summary> 
+        public static void SearchMetadata(string filePath, string propertyName, SearchCondition searchCondition)
+        {
+            try
+            {
+                //ExStart:DocumentSearchAPI
+                filePath = Common.MapSourceFilePath(filePath);
+
+                MetadataPropertyCollection properties = SearchFacade.ScanDocument(filePath, propertyName, searchCondition);
+
+                foreach (MetadataProperty property in properties)
+                {
+                    Console.WriteLine("{0} : {1}", property.Name, property.Value);
+                }
+                //ExEnd:DocumentSearchAPI
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
         }
     }
 }

@@ -14,6 +14,12 @@ Imports GroupDocs.Metadata.Xmp.Types.Complex.Font
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Dimensions
 Imports GroupDocs.Metadata.Xmp.Schemas.CameraRaw
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Colorant
+Imports GroupDocs.Metadata.Tools.Search
+Imports GroupDocs.Metadata.Xmp.Schemas.BasicJob
+Imports GroupDocs.Metadata.Xmp.Types.Complex.BasicJob
+Imports System.Drawing
+Imports System.IO
+Imports GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -148,14 +154,15 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' get access to PagedText schema
                     Dim package = jpegFormat.XmpValues.Schemes.PagedText
 
+
                     ' update MaxPageSize
                     package.MaxPageSize = New Dimensions(600, 800)
 
                     ' update number of pages
                     package.NumberOfPages = 10
 
-		    ' update plate names
-		    package.PlateNames = New String() {"1", "2", "3"}
+                    ' update plate names
+                    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -188,6 +195,102 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' commit changes
                     JpegFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:UpdateCameraRawXmpPropertiesJpegImage
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates Basic Job XMP data of Jpeg file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateBasicJobXMPProperties()
+                Try
+                    'ExStart:UpdateBasicJobTicketXmpPropertiesJpegImage
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get xmp data
+                    Dim xmp = jpegFormat.GetXmpData()
+
+                    Dim package As BasicJobTicketPackage = Nothing
+
+                    ' looking for the BasicJob schema if xmp data is presented
+                    If xmp IsNot Nothing Then
+                        package = TryCast(xmp.GetPackage(Namespaces.BasicJob), BasicJobTicketPackage)
+                    Else
+                        xmp = New XmpPacketWrapper()
+                    End If
+
+                    If package Is Nothing Then
+                        ' create package if not exist
+                        package = New BasicJobTicketPackage()
+
+                        ' and add it to xmp data
+                        xmp.AddPackage(package)
+                    End If
+
+                    ' create array of jobs
+                    Dim jobs As Job() = New Job(0) {}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
+
+                    ' update schema
+                    package.SetJobs(jobs)
+
+                    ' update xmp data
+                    jpegFormat.SetXmpData(xmp)
+
+                    ' commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateBasicJobTicketXmpPropertiesJpegImage
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates thumbnails in XMP data of Jpeg file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateThumbnailInXMPData()
+                Try
+                    'ExStart:UpdateThumbnailXmpPropertiesJpegImage
+
+                    Dim path As String = Common.MapSourceFilePath(filePath)
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get image base64 string
+                    Dim base64String As String
+                    Using image__1 As Image = Image.FromFile(path)
+                        Using m As New MemoryStream()
+                            image__1.Save(m, image__1.RawFormat)
+                            Dim imageBytes As Byte() = m.ToArray()
+
+                            ' Convert byte[] to Base64 String
+                            base64String = Convert.ToBase64String(imageBytes)
+                        End Using
+                    End Using
+
+                    ' create image thumbnail
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
+
+                    ' initialize array and add thumbnail
+                    Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
+                    thumbnails(0) = thumbnail
+
+                    ' update thumbnails property in XMP Basic schema
+                    jpegFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails
+
+                    ' commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:UpdateThumbnailXmpPropertiesJpegImage
+
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -240,6 +343,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         Console.WriteLine("Make: {0}", exif.Make)
                         ' get user's CameraOwnerName 
                         Console.WriteLine("CameraOwnerName: {0}", exif.CameraOwnerName)
+                        ' get longitude
+                        Console.WriteLine("Longitude: {0}", exif.GPSData.Longitude(0).ToString())
+                        ' get latitude
+                        Console.WriteLine("Latitude: {0}", exif.GPSData.Latitude(0).ToString())
                         'ExEnd:GetExifPropertiesJpegImage
                     End If
                 Catch exp As Exception
@@ -279,6 +386,61 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:UpdateExifPropertiesJpegImage
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates Exif info using properties and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateExifInfoUsingProperties()
+                Try
+                    'ExStart:UpdateExifValuesUsingPropertiesJpegImage
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get EXIF data
+                    Dim exif As JpegExifInfo = DirectCast(jpegFormat.ExifValues, JpegExifInfo)
+
+                    ' set artist
+                    exif.Artist = "new test artist"
+
+                    ' set the name of the camera's owner
+                    exif.CameraOwnerName = "new camera owner's name"
+
+                    ' set description
+                    exif.ImageDescription = "update test description"
+
+                    ' commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateExifValuesUsingPropertiesJpegImage
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Removes GPS Data of Jpeg file and creates output file
+            ''' </summary> 
+            Public Shared Sub RemoveGPSData()
+                Try
+                    'ExStart:RemoveGPSDataJpegImage
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get location
+                    Dim location As GpsLocation = jpegFormat.GetGpsLocation()
+                    If location IsNot Nothing Then
+                        ' remove GPS location
+                        jpegFormat.RemoveGpsLocation()
+                    End If
+
+                    ' commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:RemoveGPSDataJpegImage
+
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -442,8 +604,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' update number of pages
                     package.NumberOfPages = 10
 
-		    ' update plate names
-		    package.PlateNames = New String() {"1", "2", "3"}
+                    ' update plate names
+                    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     GifFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -476,6 +638,102 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' commit changes
                     GifFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:UpdateCameraRawXmpPropertiesGifImage
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates Basic Job XMP data of Gif file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateBasicJobXMPProperties()
+                Try
+                    'ExStart:UpdateBasicJobTicketXmpPropertiesGifImage
+                    ' initialize GifFormat
+                    Dim gifFormat As New GifFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get xmp data
+                    Dim xmp = gifFormat.GetXmpData()
+
+                    Dim package As BasicJobTicketPackage = Nothing
+
+                    ' looking for the BasicJob schema if xmp data is presented
+                    If xmp IsNot Nothing Then
+                        package = TryCast(xmp.GetPackage(Namespaces.BasicJob), BasicJobTicketPackage)
+                    Else
+                        xmp = New XmpPacketWrapper()
+                    End If
+
+                    If package Is Nothing Then
+                        ' create package if not exist
+                        package = New BasicJobTicketPackage()
+
+                        ' and add it to xmp data
+                        xmp.AddPackage(package)
+                    End If
+
+                    ' create array of jobs
+                    Dim jobs As Job() = New Job(0) {}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
+
+                    ' update schema
+                    package.SetJobs(jobs)
+
+                    ' update xmp data
+                    gifFormat.SetXmpData(xmp)
+
+                    ' commit changes
+                    gifFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateBasicJobTicketXmpPropertiesGifImage
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates thumbnails in XMP data of Gif file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateThumbnailInXMPData()
+                Try
+                    'ExStart:UpdateThumbnailXmpPropertiesGifImage
+
+                    Dim path As String = Common.MapSourceFilePath(filePath)
+                    ' initialize GifFormat
+                    Dim gifFormat As New GifFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get image base64 string
+                    Dim base64String As String
+                    Using image__1 As Image = Image.FromFile(path)
+                        Using m As New MemoryStream()
+                            image__1.Save(m, image__1.RawFormat)
+                            Dim imageBytes As Byte() = m.ToArray()
+
+                            ' Convert byte[] to Base64 String
+                            base64String = Convert.ToBase64String(imageBytes)
+                        End Using
+                    End Using
+
+                    ' create image thumbnail
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
+
+                    ' initialize array and add thumbnail
+                    Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
+                    thumbnails(0) = thumbnail
+
+                    ' update thumbnails property in XMP Basic schema
+                    gifFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails
+
+                    ' commit changes
+                    gifFormat.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:UpdateThumbnailXmpPropertiesGifImage
+
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -638,8 +896,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' update number of pages
                     package.NumberOfPages = 10
 
-		    ' update plate names
-		    package.PlateNames = New String() {"1", "2", "3"}
+                    ' update plate names
+                    package.PlateNames = New String() {"1", "2", "3"}
 
                     ' commit changes
                     PngFormat.Save(Common.MapDestinationFilePath(filePath))
@@ -672,6 +930,102 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' commit changes
                     PngFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:UpdateCameraRawXmpPropertiesPngImage
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates Basic Job XMP data of Png file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateBasicJobXMPProperties()
+                Try
+                    'ExStart:UpdateBasicJobTicketXmpPropertiesPngImage
+                    ' initialize PngFormat
+                    Dim pngFormat As New PngFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get xmp data
+                    Dim xmp = pngFormat.GetXmpData()
+
+                    Dim package As BasicJobTicketPackage = Nothing
+
+                    ' looking for the BasicJob schema if xmp data is presented
+                    If xmp IsNot Nothing Then
+                        package = TryCast(xmp.GetPackage(Namespaces.BasicJob), BasicJobTicketPackage)
+                    Else
+                        xmp = New XmpPacketWrapper()
+                    End If
+
+                    If package Is Nothing Then
+                        ' create package if not exist
+                        package = New BasicJobTicketPackage()
+
+                        ' and add it to xmp data
+                        xmp.AddPackage(package)
+                    End If
+
+                    ' create array of jobs
+                    Dim jobs As Job() = New Job(0) {}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
+
+                    ' update schema
+                    package.SetJobs(jobs)
+
+                    ' update xmp data
+                    pngFormat.SetXmpData(xmp)
+
+                    ' commit changes
+                    pngFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateBasicJobTicketXmpPropertiesPngImage
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates thumbnails in XMP data of Png file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateThumbnailInXMPData()
+                Try
+                    'ExStart:UpdateThumbnailXmpPropertiesPngImage
+
+                    Dim path As String = Common.MapSourceFilePath(filePath)
+                    ' initialize PngFormat
+                    Dim pngFormat As New PngFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get image base64 string
+                    Dim base64String As String
+                    Using image__1 As Image = Image.FromFile(path)
+                        Using m As New MemoryStream()
+                            image__1.Save(m, image__1.RawFormat)
+                            Dim imageBytes As Byte() = m.ToArray()
+
+                            ' Convert byte[] to Base64 String
+                            base64String = Convert.ToBase64String(imageBytes)
+                        End Using
+                    End Using
+
+                    ' create image thumbnail
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
+
+                    ' initialize array and add thumbnail
+                    Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
+                    thumbnails(0) = thumbnail
+
+                    ' update thumbnails property in XMP Basic schema
+                    pngFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails
+
+                    ' commit changes
+                    pngFormat.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:UpdateThumbnailXmpPropertiesPngImage
+
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -752,18 +1106,39 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     exif.BodySerialNumber = "New Body Serial Number"
                     exif.CameraOwnerName = "New Camera Owner Name"
 
-		    ' update EXIF info
-                    tiffFormat.UpdateExifInfo(exif);
+                    ' update EXIF info
+                    tiffFormat.UpdateExifInfo(exif)
 
                     ' commit changes and save output file
-		    tiffFormat.Save(Common.MapDestinationFilePath(filePath))                    
                     'ExEnd:UpdateExifPropertiesTiffImage
-                    
+                    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+            ''' <summary>
+            ''' Updates Exif info using properties and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateExifInfoUsingProperties()
+                Try
+                    'ExStart:UpdateExifValuesUsingPropertiesTiffImage
+                    ' initialize TiffFormat
+                    Dim tiffFormat As New TiffFormat(Common.MapSourceFilePath(filePath))
 
+                    tiffFormat.ExifValues.CameraOwnerName = "camera owner's name"
+
+                    ' set user comment
+                    tiffFormat.ExifValues.UserComment = "user's comment"
+
+                    ' commit changes
+                    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateExifValuesUsingPropertiesTiffImage
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
             ''' <summary>
             ''' Removes Exif info from Tiff file
             ''' </summary> 
@@ -777,9 +1152,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     tiffFormat.RemoveExifInfo()
 
                     ' commit changes and save output file
-		    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:RemoveExifPropertiesTiffImage
-                    
+                    tiffFormat.Save(Common.MapDestinationFilePath(filePath))
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -830,6 +1204,28 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 
         End Class
+
+        ''' <summary>
+        ''' Searches metadata in image 
+        ''' </summary> 
+        Public Shared Sub SearchMetadata(filePath As String, propertyName As String, searchCondition As SearchCondition)
+            Try
+                'ExStart:ImageSearchAPI
+                filePath = Common.MapSourceFilePath(filePath)
+
+                ' looking the software
+                Dim properties As ExifProperty() = SearchFacade.ScanExif(filePath, propertyName, searchCondition)
+
+                For Each [property] As ExifProperty In properties
+                    Console.WriteLine("{0} : {1}", [property].Name, [property].ToString())
+                    'ExEnd:ImageSearchAPI
+                Next
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
     End Class
+
 End Namespace
 
