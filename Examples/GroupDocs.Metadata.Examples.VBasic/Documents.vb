@@ -10,7 +10,9 @@ Imports GroupDocs.Metadata.Standards.Ppt
 Imports GroupDocs.Metadata.Standards.Xls
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Standards.OneNote
-Imports GroupDocs.Metadata.Formats.OneNote 
+Imports GroupDocs.Metadata.Formats.OneNote
+Imports GroupDocs.Metadata.Tools.Comparison
+Imports GroupDocs.Metadata.Tools.Search
 
 
 Namespace GroupDocs.Metadata.Examples.VBasic
@@ -303,6 +305,78 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 
                     Console.WriteLine("Pages: {0}", pageCounts)
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
+
+#Region "working with hidden fields"
+            ''' <summary>
+            ''' Gets comments, merge fields and hidden fields of Doc file
+            ''' </summary> 
+            Public Shared Sub GetHiddenData()
+                Try
+                    'ExStart:GetHiddenDataInDocument
+                    ' initialize DocFormat
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' inspect document
+                    Dim inspectionResult As InspectionResult = docFormat.InspectDocument()
+
+                    ' display comments
+                    If inspectionResult.Comments.Length > 0 Then
+                        Console.WriteLine("Comments in document:")
+                        For Each comment As DocComment In inspectionResult.Comments
+                            Console.WriteLine("Comment: {0}", comment.Text)
+                            Console.WriteLine("Author: {0}", comment.Author)
+                            Console.WriteLine("Date: {0}", comment.CreatedDate)
+                        Next
+                    End If
+
+                    ' display merge fields
+                    If inspectionResult.Fields.Length > 0 Then
+                        Console.WriteLine(vbLf & "Merge Fields in document:")
+                        For Each field As DocField In inspectionResult.Fields
+                            Console.WriteLine(field.Name)
+                        Next
+                    End If
+
+                    ' display hidden fields 
+                    If inspectionResult.HiddenText.Length > 0 Then
+                        Console.WriteLine(vbLf & "Hiddent text in document:")
+                        For Each word As String In inspectionResult.HiddenText
+                            Console.WriteLine(word)
+                        Next
+                    End If
+                    'ExEnd:GetHiddenDataInDocument
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Gets comments, merge fields and hidden fields of Doc file
+            ''' </summary> 
+            Public Shared Sub RemoveMergeFields()
+                Try
+                    'ExStart:RemoveHiddenDataInDocument
+                    ' initialize DocFormat
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' inspect document
+                    Dim inspectionResult As InspectionResult = docFormat.InspectDocument()
+
+                    ' if merge fields are presented
+                    If inspectionResult.Fields.Length > 0 Then
+                        ' remove it
+                        docFormat.RemoveHiddenData(New DocInspectionOptions(DocInspectorOptionsEnum.Fields))
+
+                        ' save file in destination folder
+                        docFormat.Save(Common.MapDestinationFilePath(filePath))
+                    End If
+                    'ExEnd:RemoveHiddenDataInDocument
+
+                    Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -962,7 +1036,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     'ExStart:GetPagesOneNoteFormat
                     ' initialize OneNoteFormat
-                    Dim oneNoteFormat As New Formats.OneNote.OneNoteFormat(Common.MapSourceFilePath(filePath))
+                    Dim oneNoteFormat As New OneNoteFormat(Common.MapSourceFilePath(filePath))
 
                     ' get pages
                     Dim pages As OneNotePageInfo() = oneNoteFormat.GetPages()
@@ -987,6 +1061,46 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 
         End Class
+
+        ''' <summary>
+        ''' Compares metadata of two documents and displays result 
+        ''' </summary> 
+        Public Shared Sub CompareDocument(firstDocument As String, secondDocument As String, type As ComparerSearchType)
+            Try
+                'ExStart:ComparisonAPI
+                firstDocument = Common.MapSourceFilePath(firstDocument)
+                secondDocument = Common.MapSourceFilePath(secondDocument)
+
+                Dim differnces As MetadataPropertyCollection = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type)
+
+                For Each [property] As MetadataProperty In differnces
+                    Console.WriteLine("{0} : {1}", [property].Name, [property].Value)
+                Next
+                'ExEnd:ComparisonAPI
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+        ''' <summary>
+        ''' Searches metadata in document 
+        ''' </summary> 
+        Public Shared Sub SearchMetadata(filePath As String, propertyName As String, searchCondition As SearchCondition)
+            Try
+                'ExStart:DocumentSearchAPI
+                filePath = Common.MapSourceFilePath(filePath)
+
+                Dim properties As MetadataPropertyCollection = SearchFacade.ScanDocument(filePath, propertyName, searchCondition)
+
+                For Each [property] As MetadataProperty In properties
+                    Console.WriteLine("{0} : {1}", [property].Name, [property].Value)
+                Next
+                'ExEnd:DocumentSearchAPI
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
     End Class
 End Namespace
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using GroupDocs.Metadata;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
+using GroupDocs.Metadata.Tools.Search;
+using GroupDocs.Metadata.Tools.Comparison;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -15,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
              * Uncomment following function if you have product license.
              */
             //Common.ApplyLicense();
-            
+
 
             #region Working with Documents
 
@@ -35,6 +37,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Get custom properties in Doc file
             Documents.Doc.GetCustomProperties();
+
+            //Get hidden fields, merge fields and comments in Doc file
+            Documents.Doc.GetHiddenData();
+
+            //Remove merge fields in Doc file
+            Documents.Doc.RemoveMergeFields();
 
             //Remove custom property of Doc file
             Documents.Doc.RemoveCustomProperties();
@@ -146,6 +154,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update XMP properties of Jpeg image
             Images.Jpeg.UpdateXMPProperties();
 
+            //Update Camera Raw XMP values of Jpeg image
+            Images.Jpeg.UpdateCameraRawXMPProperties();
+
+            //Update Pagged Text XMP values of Jpeg image
+            Images.Jpeg.UpdatePagedTextXMPProperties();
+
+            //Update Basic Job XMP properties of Jpeg image
+            Images.Jpeg.UpdateBasicJobXMPProperties();
+
+            //Update thumbnail in XMP data of Jpeg image
+            Images.Jpeg.UpdateThumbnailInXMPData();
+
             //Remove XMP properties of Jpeg image
             Images.Jpeg.RemoveXMPData();
 
@@ -154,6 +174,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update Exif Info of Jpeg image
             Images.Jpeg.UpdateExifInfo();
+
+            //Update Exif Info of Jpeg image using properties
+            Images.Jpeg.UpdateExifInfoUsingProperties();
+
+            //Remove GPS Info of Jpeg image
+            Images.Jpeg.RemoveGPSData();
 
             //Remove Exif Info of Jpeg image
             Images.Jpeg.RemoveExifInfo();
@@ -189,6 +215,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update Exif Info of Tiff image
             Images.Tiff.UpdateExifInfo();
 
+            //Update Exif Info of Tiff image
+            Images.Tiff.UpdateExifInfoUsingProperties();
+
             //Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo();
 
@@ -197,11 +226,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
             #region Working with PSD
 
-            //Get metadata of PSD file
-            Images.Psd.GetPsdInfo(); 
+            ////Get metadata of PSD file
+            //Images.Psd.GetPsdInfo(); 
 
             #endregion
-            
+
             #region Working emails
             #region Working with Outlook Email
             //Get Outlook email metadata
@@ -225,7 +254,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Emails.Eml.RemoveEmailMetadata();
             #endregion
             #endregion
-             
+
+            #region Working with APIs
+
+            //// Compare document metadata
+            Documents.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
+
+            //// Search document metadata in document
+            Documents.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
+
+            //// Search document metadata in image
+            Images.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
+
+            #endregion
 
             #region Working with Utilities
             //ExStart:DocCleanerUsage
@@ -233,11 +274,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
             DocCleaner docCleaner = new DocCleaner("Documents/Doc");
             docCleaner.RemoveMetadataByAuthor("Usman Aziz");
             //ExEnd:DocCleanerUsage
-
-            //ExStart:MetadataComparerUsage
-            //MetadataComparer: Compares metadata of two files and returns properties that which are different in second file 
-            Common.CompareFilesMetadata("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc");
-            //ExEnd:MetadataComparerUsage
 
             //ExStart:PhotoCleanerUsage
             //PhotoCleaner: Cleans GPS data from photos in a directory
@@ -256,7 +292,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Common.GetFileFormats("Documents/Pdf");
             //ExEnd:FormatRecognizerUsage
 
-            
+
             #endregion
 
 
