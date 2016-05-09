@@ -17,9 +17,13 @@ Imports GroupDocs.Metadata.Xmp.Types.Complex.Colorant
 Imports GroupDocs.Metadata.Tools.Search
 Imports GroupDocs.Metadata.Xmp.Schemas.BasicJob
 Imports GroupDocs.Metadata.Xmp.Types.Complex.BasicJob
+Imports GroupDocs.Metadata.Xmp.Schemas.Photoshop.ColorMode
 Imports System.Drawing
 Imports System.IO
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail
+Imports GroupDocs.Metadata.Formats.Cad
+Imports GroupDocs.Metadata.Standards.Cad
+Imports GroupDocs.Metadata.Tools.Comparison
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -1201,10 +1205,91 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+            ''' <summary>
+            ''' Gets XMP Properies in PSD file
+            ''' </summary> 
+            Public Shared Sub GetXMPProperties()
+                Try
+                    'ExStart:GetXMPPropertiesPSDFormat
+                    ' initialize PsdFormat 
+                    Dim psdFormat As New PsdFormat(Common.MapSourceFilePath(filePath))
 
+                    ' get photoshop namespace
+                    Dim photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop
+
+                    ' get color mode
+                    Dim colorMode As Global.GroupDocs.Metadata.Xmp.Schemas.Photoshop.ColorMode = photoshopMetadata.ColorMode
+
+                    ' get IIC profile
+
+                    Dim iicProfile = photoshopMetadata.ICCProfile
+                    'ExEnd:GetXMPPropertiesPSDFormat
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
 
         End Class
+        Public NotInheritable Class Cad
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceCADFilePath
+            Private Const dxfFilePath As String = "Images/Cad/sample.dxf"
+            Private Const dwgFilePath As String = "Images/Cad/sample.dwg"
+            'ExEnd:SourceCADFilePath
 
+            ''' <summary>
+            ''' Reads metadata from dwg file
+            ''' </summary> 
+            Public Shared Sub GetMetadatPropertiesInDWG()
+                Try
+                    'ExStart:GetMetadatPropertiesInDWG 
+                    ' initialize DwgFormat class
+                    Dim dwgFormat As New DwgFormat(Common.MapSourceFilePath(dwgFilePath))
+
+                    ' get metadata
+                    Dim metadata As CadMetadata = dwgFormat.GetDwgMetadata()
+
+                    ' get width
+                    Dim width As Integer = metadata.Width
+
+                    ' get height
+                    Dim height As Integer = metadata.Height
+
+                    ' get header attribute
+                    'ExEnd:GetMetadatPropertiesInDWG
+                    Dim attributes As String() = metadata.HeaderAttributes
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Reads metadata from dxf file
+            ''' </summary> 
+            Public Shared Sub GetMetadatPropertiesInDXF()
+                Try
+                    'ExStart:GetMetadatPropertiesInDXF 
+                    ' initialize DwgFormat class
+                    Dim dxfFormat As New DxfFormat(Common.MapSourceFilePath(dxfFilePath))
+
+                    ' get metadata
+                    Dim metadata As CadMetadata = dxfFormat.GetDfxMetadata()
+
+                    ' get width
+                    Dim width As Integer = metadata.Width
+
+                    ' get height
+                    Dim height As Integer = metadata.Height
+
+                    ' get header attribute
+                    'ExEnd:GetMetadatPropertiesInDXF
+                    Dim attributes As String() = metadata.HeaderAttributes
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
         ''' <summary>
         ''' Searches metadata in image 
         ''' </summary> 
@@ -1219,6 +1304,27 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 For Each [property] As ExifProperty In properties
                     Console.WriteLine("{0} : {1}", [property].Name, [property].ToString())
                     'ExEnd:ImageSearchAPI
+                Next
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+
+        ''' <summary>
+        ''' Compares EXIF metadata of two jpeg files 
+        ''' </summary> 
+        Public Shared Sub CompareExifMetadata(firstFile As String, secondFile As String, type As ComparerSearchType)
+            Try
+                'ExStart:ExifComparisonAPI
+                firstFile = Common.MapSourceFilePath(firstFile)
+                secondFile = Common.MapSourceFilePath(secondFile)
+
+                Dim differences As ExifProperty() = ComparisonFacade.CompareExif(firstFile, secondFile, type)
+
+                For Each [property] As ExifProperty In differences
+                    Console.WriteLine("{0} : {1}", [property].Name, [property].ToString())
+                    'ExEnd:ExifComparisonAPI
                 Next
             Catch exp As Exception
                 Console.WriteLine("Exception occurred: " + exp.Message)
