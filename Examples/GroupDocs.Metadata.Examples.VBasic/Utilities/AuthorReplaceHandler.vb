@@ -6,21 +6,12 @@ Imports GroupDocs.Metadata.MetadataProperties
 ''' </summary>
 Public Class AuthorReplaceHandler
     Implements IReplaceHandler(Of MetadataProperty)
-    Private m_OutputPath As String
+
+    Private _outputPath As String
+
     Public Sub New(outputPath As String)
-        Me.OutputPath = outputPath
+        Me._outputPath = outputPath
     End Sub
-
-    Public Property OutputPath As String Implements IReplaceHandler(Of MetadataProperty).OutputPath
-
-        Get
-            Return m_OutputPath
-        End Get
-        Private Set(value As String)
-            m_OutputPath = value
-        End Set
-    End Property
-
 
     Public Function Handle([property] As MetadataProperty) As Boolean Implements IReplaceHandler(Of MetadataProperty).Handle
         ' if property name is 'author'
@@ -36,6 +27,10 @@ Public Class AuthorReplaceHandler
         Return False
     End Function
 
-
+    Public ReadOnly Property OutputPath() As String Implements IReplaceHandler(Of MetadataProperty).OutputPath
+        Get
+            Return _outputPath
+        End Get
+    End Property
 End Class
 'ExEnd:AuthorReplaceHandler
