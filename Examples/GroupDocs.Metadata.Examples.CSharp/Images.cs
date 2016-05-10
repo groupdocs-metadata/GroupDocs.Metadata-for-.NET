@@ -22,6 +22,9 @@ using System.Drawing;
 using System.IO;
 using GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail;
 using GroupDocs.Metadata.Tools.Search;
+using GroupDocs.Metadata.Formats.Cad;
+using GroupDocs.Metadata.Standards.Cad;
+using GroupDocs.Metadata.Tools.Comparison;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -1371,7 +1374,100 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
 
+            /// <summary>
+            /// Gets XMP Properies in PSD file
+            /// </summary> 
+            public static void GetXMPProperties()
+            {
+                try
+                {
+                    //ExStart:GetXMPPropertiesPSDFormat
+                    // initialize PsdFormat 
+                    PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
 
+                    // get photoshop namespace
+                    var photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop;
+
+                    // get color mode
+                    ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
+                    
+                    // get IIC profile
+                    var iicProfile = photoshopMetadata.ICCProfile;
+                    //ExEnd:GetXMPPropertiesPSDFormat
+                }
+                catch(Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
+        public static class Cad
+        {
+            // initialize file path
+            //ExStart:SourceCADFilePath
+            private const string dxfFilePath = "Images/Cad/sample.dxf";
+            private const string dwgFilePath = "Images/Cad/sample.dwg";
+            //ExEnd:SourceCADFilePath
+
+            /// <summary>
+            /// Reads metadata from dwg file
+            /// </summary> 
+            public static void GetMetadatPropertiesInDWG()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInDWG 
+                    // initialize DwgFormat class
+                    DwgFormat dwgFormat = new DwgFormat(Common.MapSourceFilePath(dwgFilePath));
+
+                    // get metadata
+                    CadMetadata metadata = dwgFormat.GetDwgMetadata();
+
+                    // get width
+                    int width = metadata.Width;
+
+                    // get height
+                    int height = metadata.Height;
+
+                    // get header attribute
+                    string[] attributes = metadata.HeaderAttributes;
+                    //ExEnd:GetMetadatPropertiesInDWG
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Reads metadata from dxf file
+            /// </summary> 
+            public static void GetMetadatPropertiesInDXF()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInDXF 
+                    // initialize DwgFormat class
+                    DxfFormat dxfFormat = new DxfFormat(Common.MapSourceFilePath(dxfFilePath));
+
+                    // get metadata
+                    CadMetadata metadata = dxfFormat.GetDfxMetadata();
+
+                    // get width
+                    int width = metadata.Width;
+
+                    // get height
+                    int height = metadata.Height;
+
+                    // get header attribute
+                    string[] attributes = metadata.HeaderAttributes;
+                    //ExEnd:GetMetadatPropertiesInDXF
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
         }
 
         /// <summary>
@@ -1393,6 +1489,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
 
                 //ExEnd:ImageSearchAPI
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Compares EXIF metadata of two jpeg files 
+        /// </summary> 
+        public static void CompareExifMetadata(string firstFile, string secondFile, ComparerSearchType type)
+        {
+            try
+            {
+                //ExStart:ExifComparisonAPI
+                firstFile = Common.MapSourceFilePath(firstFile);
+                secondFile = Common.MapSourceFilePath(secondFile);
+
+                ExifProperty[] differences = ComparisonFacade.CompareExif(firstFile, secondFile, type);
+
+                foreach (ExifProperty property in differences)
+                {
+                    Console.WriteLine("{0} : {1}", property.Name, property.ToString());
+                }
+                //ExEnd:ExifComparisonAPI
             }
             catch (Exception exp)
             {

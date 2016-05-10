@@ -15,7 +15,7 @@ Namespace Utilities
         'ExStart:CommonProperties
         Private Const SourceFolderPath As String = "../../../Data/Source/"
         Private Const DestinationFolderPath As String = "../../../Data/Destination/"
-        Private Const LicenseFilePath As String = "Groupdocs.Metadata.lic"
+        Private Const LicenseFilePath As String = "Groupdocs.Total.lic"
         'ExEnd:CommonProperties
 
         'ExStart:MapSourceFilePath

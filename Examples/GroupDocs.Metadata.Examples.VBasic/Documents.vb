@@ -13,6 +13,9 @@ Imports GroupDocs.Metadata.Standards.OneNote
 Imports GroupDocs.Metadata.Formats.OneNote
 Imports GroupDocs.Metadata.Tools.Comparison
 Imports GroupDocs.Metadata.Tools.Search
+Imports GroupDocs.Metadata.Xmp.Schemas.Pdf
+Imports GroupDocs.Metadata.Formats
+Imports GroupDocs.Metadata.Tools
 
 
 Namespace GroupDocs.Metadata.Examples.VBasic
@@ -277,6 +280,42 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     docFormat.Save(Common.MapDestinationFilePath(filePath))
 
 
+
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates document comments of Doc file  
+            ''' </summary> 
+            Public Shared Sub UpdateComments()
+                Try
+                    'ExStart:UpdateDocumentComment
+                    ' initialize DocFormat
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' extract comments
+                    Dim comments As DocComment() = docFormat.ExtractComments()
+
+                    If comments.Length > 0 Then
+                        ' get first comment if exist
+                        Dim comment = comments(0)
+
+                        ' change comment's author
+                        comment.Author = "Jack London"
+
+                        ' change comment's text
+                        comment.Text = "This comment is created using GroupDocs.Metadata"
+
+                        ' update comment
+                        docFormat.UpdateComment(comment.Id, comment)
+                    End If
+
+                    ' save file in destination folder
+                    docFormat.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:UpdateDocumentComment
 
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
@@ -581,6 +620,86 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     'ExEnd:ClearCustomPropertyPdfFormat
 
                     Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
+
+#Region "working with XMP data"
+            ''' <summary>
+            ''' Gets XMP Data of Pdf file  
+            ''' </summary> 
+            Public Shared Sub GetXMPProperties()
+                Try
+                    'ExStart:GetXMPPropertiesPdfFormat
+                    ' initialize Pdfformat
+                    Dim pdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get pdf schema
+                    Dim pdfPackage As PdfPackage = pdfFormat.XmpValues.Schemes.Pdf
+
+                    Console.WriteLine("Keywords: {0}", pdfPackage.Keywords)
+                    Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion) 
+                    Console.WriteLine("Producer: {0}", pdfPackage.Producer)
+                    'ExEnd:GetXMPPropertiesPdfFormat
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Updates XMP Data of Pdf file  
+            ''' </summary> 
+            Public Shared Sub UpdateXMPProperties()
+                Try
+                    'ExStart:UpdateXMPPropertiesPdfFormat
+                    ' initialize Pdfformat
+                    Dim pdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get pdf schema
+                    Dim pdfPackage As PdfPackage = pdfFormat.XmpValues.Schemes.Pdf
+
+                    ' update keywords
+                    pdfPackage.Keywords = "literature, programming"
+
+                    ' update pdf version
+                    pdfPackage.PdfVersion = "1.0"
+
+                    ' pdf:Producer could not be updated
+                    'pdfPackage.Producer="";
+
+                    'save output file...
+                    'ExEnd:UpdateXMPPropertiesPdfFormat
+                    pdfFormat.Save(Common.MapDestinationFilePath(filePath))
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
+
+#Region "Working with Hidden Data"
+            Public Shared Sub RemoveHiddenData()
+                Try
+                    'ExStart:RemoveHiddenDataPdfFormat
+                    ' initialize Pdfformat
+                    Dim pdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' inspect document
+                    Dim inspectionResult As PdfInspectionResult = pdfFormat.InspectDocument()
+
+                    ' get annotations
+                    Dim annotation As PdfAnnotation() = inspectionResult.Annotations
+
+                    ' if annotations are presented
+                    If annotation.Length > 0 Then
+                        ' remove all annotation
+                        pdfFormat.RemoveHiddenData(New PdfInspectionOptions(PdfInspectorOptionsEnum.Annotations))
+
+                        'save output file...
+                        pdfFormat.Save(Common.MapDestinationFilePath(filePath))
+                        'ExEnd:RemoveHiddenDataPdfFormat
+                    End If
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -1096,6 +1215,83 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine("{0} : {1}", [property].Name, [property].Value)
                 Next
                 'ExEnd:DocumentSearchAPI
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+
+        ''' <summary>
+        ''' Detects document protection
+        ''' </summary> 
+        Public Shared Sub DetectProtection(filePath As String)
+            Try
+                'ExStart:DetectProtection
+                Dim format As FormatBase = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath))
+
+                If format.Type.ToString().ToLower() = "doc" Then
+                    ' initialize DocFormat
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' determines whether document is protected by password
+                    Console.WriteLine(If(docFormat.IsProtected, "Document is protected", "Document is protected"))
+                ElseIf format.Type.ToString().ToLower() = "pdf" Then
+                    ' initialize DocFormat
+                    Dim pdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' determines whether document is protected by password
+                    Console.WriteLine(If(pdfFormat.IsProtected, "Document is protected", "Document is protected"))
+                ElseIf format.Type.ToString().ToLower() = "xls" Then
+                    ' initialize DocFormat
+                    Dim xlsFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
+
+                    ' determines whether document is protected by password
+                    Console.WriteLine(If(xlsFormat.IsProtected, "Document is protected", "Document is protected"))
+                ElseIf format.Type.ToString().ToLower() = "ppt" Then
+                    ' initialize DocFormat
+                    Dim pptFormat As New PptFormat(Common.MapSourceFilePath(filePath))
+
+                    ' determines whether document is protected by password
+                    Console.WriteLine(If(pptFormat.IsProtected, "Document is protected", "Document is protected"))
+                Else
+                    Console.WriteLine("Invalid Format.")
+                    'ExEnd:DetectProtection
+                End If
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+        ''' <summary>
+        ''' Replaces author name in document using custom ReplaceHandler
+        ''' </summary> 
+        Public Shared Sub ReplaceAuthorName(filePath As String)
+            Try
+                'ExStart:ReplaceAuthorName
+                ' initialize custom handler, send output path using constructor
+                Dim replaceHandler As IReplaceHandler(Of MetadataProperty) = New AuthorReplaceHandler(Common.MapDestinationFilePath(filePath))
+
+                ' replace author
+                Dim affectedPropertiesCount As Integer = SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), replaceHandler)
+                'ExEnd:ReplaceAuthorName
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+        ''' <summary>
+        ''' Replaces author name in document using custom ReplaceHandler
+        ''' </summary> 
+        Public Shared Sub ReplaceMetadataProperties(filePath As String)
+            Try
+                'ExStart:ReplaceMetadataProperties
+                ' replace 'author' value
+                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "Author", "Jack London", SearchCondition.Matches, Common.MapDestinationFilePath(filePath))
+
+                ' replace all properties contained 'co' to 'some value'
+
+                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "co", "some value", SearchCondition.Contains, Common.MapDestinationFilePath(filePath))
+                'ExEnd:ReplaceMetadataProperties
             Catch exp As Exception
                 Console.WriteLine("Exception occurred: " + exp.Message)
             End Try

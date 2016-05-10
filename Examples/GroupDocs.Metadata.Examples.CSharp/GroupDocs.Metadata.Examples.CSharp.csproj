@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GroupDocs.Metadata, Version=1.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\GroupDocs.Metadata.dll</HintPath>
     </Reference>
@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Emails.cs" />
+    <Compile Include="Utilities\AuthorReplaceHandler.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Documents.cs" />
     <Compile Include="Images.cs" />
@@ -64,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\GroupDocs.Metadata.Examples.CSharp.vshost.exe.manifest" />
+    <None Include="bin\Debug\Groupdocs.Metadata.lic" />
+    <None Include="bin\Debug\GroupDocs.Total.lic" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

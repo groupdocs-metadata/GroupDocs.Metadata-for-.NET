@@ -16,284 +16,322 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
 
-            #region Working with Documents
+            //#region Working with Documents
 
-            #region Working with Doc Files
+            //#region Working with Doc Files
 
-            //Get document properties of Doc file
-            Documents.Doc.GetDocumentProperties();
+            ////Get document properties of Doc file
+            //Documents.Doc.GetDocumentProperties();
 
-            //Update document properties of Doc file
-            Documents.Doc.UpdateDocumentProperties();
+            ////Update document properties of Doc file
+            //Documents.Doc.UpdateDocumentProperties();
 
-            //Remove document properties of Doc file
-            Documents.Doc.RemoveDocumentProperties();
+            ////Remove document properties of Doc file
+            //Documents.Doc.RemoveDocumentProperties();
 
-            //Add custom property in Doc file
-            Documents.Doc.AddCustomProperty();
+            ////Add custom property in Doc file
+            //Documents.Doc.AddCustomProperty();
 
-            //Get custom properties in Doc file
-            Documents.Doc.GetCustomProperties();
+            ////Get custom properties in Doc file
+            //Documents.Doc.GetCustomProperties();
 
-            //Get hidden fields, merge fields and comments in Doc file
-            Documents.Doc.GetHiddenData();
+            ////Get hidden fields, merge fields and comments in Doc file
+            //Documents.Doc.GetHiddenData();
 
-            //Remove merge fields in Doc file
-            Documents.Doc.RemoveMergeFields();
+            ////Remove merge fields in Doc file
+            //Documents.Doc.RemoveMergeFields();
 
-            //Remove custom property of Doc file
-            Documents.Doc.RemoveCustomProperties();
+            ////Remove custom property of Doc file
+            //Documents.Doc.RemoveCustomProperties();
 
-            //Clear custom property of Doc file
-            Documents.Doc.ClearCustomProperties();
+            ////Clear custom property of Doc file
+            //Documents.Doc.ClearCustomProperties();
 
-            #endregion
+            ////Remove document comments
+            //Documents.Doc.RemoveComments();
 
-            #region Working with Ppt Files
+            ////Update document comments
+            //Documents.Doc.UpdateComments();
 
-            //Get document properties of Ppt file
-            Documents.Ppt.GetDocumentProperties();
+            //#endregion
 
-            //Update document properties of Ppt file
-            Documents.Ppt.UpdateDocumentProperties();
+            //#region Working with Ppt Files
 
-            //Remove document properties of Ppt file
-            Documents.Ppt.RemoveDocumentProperties();
+            ////Get document properties of Ppt file
+            //Documents.Ppt.GetDocumentProperties();
 
-            //Add custom property in Ppt file
-            Documents.Ppt.AddCustomProperty();
+            ////Update document properties of Ppt file
+            //Documents.Ppt.UpdateDocumentProperties();
 
-            //Get custom properties in Ppt file
-            Documents.Ppt.GetCustomProperties();
+            ////Remove document properties of Ppt file
+            //Documents.Ppt.RemoveDocumentProperties();
 
-            //Remove custom property of Ppt file
-            Documents.Ppt.RemoveCustomProperties();
+            ////Add custom property in Ppt file
+            //Documents.Ppt.AddCustomProperty();
 
-            #endregion
+            ////Get custom properties in Ppt file
+            //Documents.Ppt.GetCustomProperties();
 
-            #region Working with Xls Files
+            ////Remove custom property of Ppt file
+            //Documents.Ppt.RemoveCustomProperties();
 
-            //Get document properties of Xls file
-            Documents.Xls.GetDocumentProperties();
+            //#endregion
 
-            //Update document properties of Xls file
-            Documents.Xls.UpdateDocumentProperties();
+            //#region Working with Xls Files
 
-            //Remove document properties of Xls file
-            Documents.Xls.RemoveDocumentProperties();
+            ////Get document properties of Xls file
+            //Documents.Xls.GetDocumentProperties();
 
-            //Add custom property in Xls file
-            Documents.Xls.AddCustomProperty();
+            ////Update document properties of Xls file
+            //Documents.Xls.UpdateDocumentProperties();
 
-            //Get custom properties in Xls file
-            Documents.Xls.GetCustomProperties();
+            ////Remove document properties of Xls file
+            //Documents.Xls.RemoveDocumentProperties();
 
-            //Remove custom property of Xls file
-            Documents.Xls.RemoveCustomProperties();
+            ////Add custom property in Xls file
+            //Documents.Xls.AddCustomProperty();
 
-            #endregion
+            ////Get custom properties in Xls file
+            //Documents.Xls.GetCustomProperties();
 
-            #region Working with Pdf Files
+            ////Remove custom property of Xls file
+            //Documents.Xls.RemoveCustomProperties();
 
-            //Get document properties of Pdf file
-            Documents.Pdf.GetDocumentProperties();
+            //#endregion
 
-            //Update document properties of Pdf file
-            Documents.Pdf.UpdateDocumentProperties();
+            //#region Working with Pdf Files
 
-            //Remove document properties of Pdf file
-            Documents.Pdf.RemoveDocumentProperties();
+            ////Get document properties of Pdf file
+            //Documents.Pdf.GetDocumentProperties();
 
-            //Add custom property in Pdf file
-            Documents.Pdf.AddCustomProperty();
+            ////Update document properties of Pdf file
+            //Documents.Pdf.UpdateDocumentProperties();
 
-            //Get custom properties in Pdf file
-            Documents.Pdf.GetCustomProperties();
+            ////Remove document properties of Pdf file
+            //Documents.Pdf.RemoveDocumentProperties();
 
-            //Remove custom property of Pdf file
-            Documents.Pdf.RemoveCustomProperties();
+            ////Add custom property in Pdf file
+            //Documents.Pdf.AddCustomProperty();
 
-            #endregion
+            ////Get custom properties in Pdf file
+            //Documents.Pdf.GetCustomProperties();
 
-            #region Working with OneNote Files
+            ////Remove custom property of Pdf file
+            //Documents.Pdf.RemoveCustomProperties();
 
-            //Get metadata of OneNote file
-            Documents.OneNote.GetMetadata();
+            ////Get XMP data in Pdf file
+            //Documents.Pdf.GetXMPProperties();
 
-            //Get Pages Info of OneNote file 
-            Documents.OneNote.GetPagesInfo();
+            ////Update XMP data in Pdf file
+            //Documents.Pdf.UpdateXMPProperties();
+         
+            ////Remove hidden data in Pdf file
+            Documents.Pdf.RemoveHiddenData();
 
-            #endregion
+            //#endregion
 
-            #endregion
+            //#region Working with OneNote Files
 
+            ////Get metadata of OneNote file
+            //Documents.OneNote.GetMetadata();
 
-            #region Working with Images
+            ////Get Pages Info of OneNote file 
+            //Documents.OneNote.GetPagesInfo();
 
-            #region Working with Gif
+            //#endregion
 
-            //Get XMP properties of Gif image
-            Images.Gif.GetXMPProperties();
+            
+            //#endregion
 
-            //Update XMP properties of Gif image
-            Images.Gif.UpdateXMPProperties();
 
-            //Remove XMP properties of Gif image
-            Images.Gif.RemoveXMPProperties();
+            //#region Working with Images
 
-            #endregion
+            //#region Working with Gif
 
-            #region Working with Jpeg
+            ////Get XMP properties of Gif image
+            //Images.Gif.GetXMPProperties();
 
-            //Get XMP properties of Jpeg image
-            Images.Jpeg.GetXMPProperties();
+            ////Update XMP properties of Gif image
+            //Images.Gif.UpdateXMPProperties();
 
-            //Update XMP properties of Jpeg image
-            Images.Jpeg.UpdateXMPProperties();
+            ////Remove XMP properties of Gif image
+            //Images.Gif.RemoveXMPProperties();
 
-            //Update Camera Raw XMP values of Jpeg image
-            Images.Jpeg.UpdateCameraRawXMPProperties();
+            //#endregion
 
-            //Update Pagged Text XMP values of Jpeg image
-            Images.Jpeg.UpdatePagedTextXMPProperties();
+            //#region Working with Jpeg
 
-            //Update Basic Job XMP properties of Jpeg image
-            Images.Jpeg.UpdateBasicJobXMPProperties();
+            ////Get XMP properties of Jpeg image
+            //Images.Jpeg.GetXMPProperties();
 
-            //Update thumbnail in XMP data of Jpeg image
-            Images.Jpeg.UpdateThumbnailInXMPData();
+            ////Update XMP properties of Jpeg image
+            //Images.Jpeg.UpdateXMPProperties();
 
-            //Remove XMP properties of Jpeg image
-            Images.Jpeg.RemoveXMPData();
+            ////Update Camera Raw XMP values of Jpeg image
+            //Images.Jpeg.UpdateCameraRawXMPProperties();
 
-            //Get Exif Info of Jpeg image
-            Images.Jpeg.GetExifInfo();
+            ////Update Pagged Text XMP values of Jpeg image
+            //Images.Jpeg.UpdatePagedTextXMPProperties();
 
-            //Update Exif Info of Jpeg image
-            Images.Jpeg.UpdateExifInfo();
+            ////Update Basic Job XMP properties of Jpeg image
+            //Images.Jpeg.UpdateBasicJobXMPProperties();
 
-            //Update Exif Info of Jpeg image using properties
-            Images.Jpeg.UpdateExifInfoUsingProperties();
+            ////Update thumbnail in XMP data of Jpeg image
+            //Images.Jpeg.UpdateThumbnailInXMPData();
 
-            //Remove GPS Info of Jpeg image
-            Images.Jpeg.RemoveGPSData();
+            ////Remove XMP properties of Jpeg image
+            //Images.Jpeg.RemoveXMPData();
 
-            //Remove Exif Info of Jpeg image
-            Images.Jpeg.RemoveExifInfo();
+            ////Get Exif Info of Jpeg image
+            //Images.Jpeg.GetExifInfo();
 
-            #endregion
+            ////Update Exif Info of Jpeg image
+            //Images.Jpeg.UpdateExifInfo();
 
-            #region Working with Png
+            ////Update Exif Info of Jpeg image using properties
+            //Images.Jpeg.UpdateExifInfoUsingProperties();
 
-            //Get XMP properties of Png image
-            Images.Png.GetXMPProperties();
+            ////Remove GPS Info of Jpeg image
+            //Images.Jpeg.RemoveGPSData();
 
-            //Update XMP properties of Png image
-            Images.Png.UpdateXMPData();
+            ////Remove Exif Info of Jpeg image
+            //Images.Jpeg.RemoveExifInfo();
 
-            //Update XMP values of Png image
-            Images.Png.UpdateXMPValues();
+            //#endregion
 
-            //Update Camera Raw XMP values of Png image
-            Images.Png.UpdateCameraRawXMPProperties();
+            //#region Working with Png
 
-            //Update Pagged Text XMP values of Png image
-            Images.Png.UpdatePagedTextXMPProperties();
+            ////Get XMP properties of Png image
+            //Images.Png.GetXMPProperties();
 
-            //Remove XMP properties of Png image
-            Images.Png.RemoveXMPData();
+            ////Update XMP properties of Png image
+            //Images.Png.UpdateXMPData();
 
-            #endregion
-            #region Working with Tiff
+            ////Update XMP values of Png image
+            //Images.Png.UpdateXMPValues();
 
-            //Get Exif Info of Tiff image
-            Images.Tiff.GetExifInfo();
+            ////Update Camera Raw XMP values of Png image
+            //Images.Png.UpdateCameraRawXMPProperties();
 
-            //Update Exif Info of Tiff image
-            Images.Tiff.UpdateExifInfo();
+            ////Update Pagged Text XMP values of Png image
+            //Images.Png.UpdatePagedTextXMPProperties();
 
-            //Update Exif Info of Tiff image
-            Images.Tiff.UpdateExifInfoUsingProperties();
+            ////Remove XMP properties of Png image
+            //Images.Png.RemoveXMPData();
 
-            //Remove Exif Info of Tiff image
-            Images.Tiff.RemoveExifInfo();
+            //#endregion
+            //#region Working with Tiff
 
-            #endregion
+            ////Read Exif Info of Tiff image
+            //Images.Tiff.GetExifInfo();
 
-            #endregion
-            #region Working with PSD
+            ////Update Exif Info of Tiff image
+            //Images.Tiff.UpdateExifInfo();
 
-            ////Get metadata of PSD file
-            //Images.Psd.GetPsdInfo(); 
+            ////Update Exif Info of Tiff image
+            //Images.Tiff.UpdateExifInfoUsingProperties();
 
-            #endregion
+            ////Remove Exif Info of Tiff image
+            //Images.Tiff.RemoveExifInfo();
 
-            #region Working emails
-            #region Working with Outlook Email
-            //Get Outlook email metadata
-            Emails.OutLook.GetOutlookEmailMetadata();
+            //#endregion
 
-            //Remove Outlook email attachment
-            Emails.OutLook.RemoveOutlookEmailAttachments();
+            //#endregion
+            //#region Working with PSD
 
-            //Remove Outlook email metadata
-            Emails.OutLook.RemoveOutlookEmailMetadata();
-            #endregion
+            ////Read metadata of PSD file
+            //Images.Psd.GetPsdInfo();
 
-            #region Working with Email message
-            //Get email metadata
-            Emails.Eml.GetEmailMetadata();
+            ////Read XMP metadata of PSD file
+            //Images.Psd.GetXMPProperties();
 
-            //Remove email attachment
-            Emails.Eml.RemoveEmailAttachments();
+            //#endregion
+            //#region Working CAD files
 
-            //Remove email metadata
-            Emails.Eml.RemoveEmailMetadata();
-            #endregion
-            #endregion
+            ////Read basic metadata properties in DWG file
+            //Images.Cad.GetMetadatPropertiesInDWG();
 
-            #region Working with APIs
+            ////Read basic metadata properties in DXF file
+            //Images.Cad.GetMetadatPropertiesInDXF();
+            //#endregion
 
-            //// Compare document metadata
-            Documents.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
+            //#region Working emails
+            //#region Working with Outlook Email
+            ////Get Outlook email metadata
+            //Emails.OutLook.GetOutlookEmailMetadata();
 
-            //// Search document metadata in document
-            Documents.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
+            ////Remove Outlook email attachment
+            //Emails.OutLook.RemoveOutlookEmailAttachments();
 
-            //// Search document metadata in image
-            Images.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
+            ////Remove Outlook email metadata
+            //Emails.OutLook.RemoveOutlookEmailMetadata();
+            //#endregion
 
-            #endregion
+            //#region Working with Email message
+            ////Get email metadata
+            //Emails.Eml.GetEmailMetadata();
 
-            #region Working with Utilities
-            //ExStart:DocCleanerUsage
-            //DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
-            DocCleaner docCleaner = new DocCleaner("Documents/Doc");
-            docCleaner.RemoveMetadataByAuthor("Usman Aziz");
-            //ExEnd:DocCleanerUsage
+            ////Remove email attachment
+            //Emails.Eml.RemoveEmailAttachments();
 
-            //ExStart:PhotoCleanerUsage
-            //PhotoCleaner: Cleans GPS data from photos in a directory
-            PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
-            photoCleaner.RemoveExifLocation();
-            //ExEnd:PhotoCleanerUsage
+            ////Remove email metadata
+            //Emails.Eml.RemoveEmailMetadata();
+            //#endregion
+            //#endregion
 
-            //ExStart:JpegPhotoParserUsage
-            //JpegPhotoParser: Finds photos taken on a specific camera in a directory
-            JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
-            jpegPhotoParser.FilterByCameraManufacturer("Sony");
-            //ExEnd:JpegPhotoParserUsage
+            //#region Working with APIs
 
-            //ExStart:FormatRecognizerUsage
-            //FormatRecognizer: Recognizes the format of all files in a directory 
-            Common.GetFileFormats("Documents/Pdf");
-            //ExEnd:FormatRecognizerUsage
+            ////Compare document metadata
+            //Documents.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
 
+            ////Search document metadata in document
+            //Documents.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
 
-            #endregion
+            ////Search document metadata in image
+            //Images.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
+
+            ////Replace metadata properties in documents
+            //Documents.ReplaceMetadataProperties("Documents/Doc/sample.doc");
+
+            ////Replace author name using custom Replace Handler in documents
+            //Documents.ReplaceAuthorName("Documents/Doc/sample.doc");
+
+            ////Detect protection in documents
+            //Documents.DetectProtection("Documents/Doc/sample.doc");
+
+            ////Compare Exif metadata in images
+            //Images.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
+            //#endregion
+
+            //#region Working with Utilities
+            ////ExStart:DocCleanerUsage
+            ////DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
+            //DocCleaner docCleaner = new DocCleaner("Documents/Doc");
+            //docCleaner.RemoveMetadataByAuthor("Usman Aziz");
+            ////ExEnd:DocCleanerUsage
+
+            ////ExStart:PhotoCleanerUsage
+            ////PhotoCleaner: Cleans GPS data from photos in a directory
+            //PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
+            //photoCleaner.RemoveExifLocation();
+            ////ExEnd:PhotoCleanerUsage
+
+            ////ExStart:JpegPhotoParserUsage
+            ////JpegPhotoParser: Finds photos taken on a specific camera in a directory
+            //JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
+            //jpegPhotoParser.FilterByCameraManufacturer("Sony");
+            ////ExEnd:JpegPhotoParserUsage
+
+            ////ExStart:FormatRecognizerUsage
+            ////FormatRecognizer: Recognizes the format of all files in a directory 
+            //Common.GetFileFormats("Documents/Doc");
+            ////ExEnd:FormatRecognizerUsage
+             
+
+            //#endregion
 
 
             Console.ReadKey();

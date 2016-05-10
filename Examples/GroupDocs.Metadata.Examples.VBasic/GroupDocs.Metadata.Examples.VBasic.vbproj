@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Emails.vb" />
+    <Compile Include="Utilities\AuthorReplaceHandler.vb" />
     <Compile Include="Utilities\Common.vb" />
     <Compile Include="Documents.vb" />
     <Compile Include="Images.vb" />

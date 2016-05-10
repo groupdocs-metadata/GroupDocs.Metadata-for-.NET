@@ -14,6 +14,9 @@ using GroupDocs.Metadata.Formats.OneNote;
 using GroupDocs.Metadata.Standards.OneNote;
 using GroupDocs.Metadata.Tools.Comparison;
 using GroupDocs.Metadata.Tools.Search;
+using GroupDocs.Metadata.Xmp.Schemas.Pdf;
+using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Examples.CSharp.Utilities;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -26,7 +29,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             private const string filePath = "Documents/Doc/sample.doc";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
-            
+
             /// <summary>
             /// Gets builtin document properties from Doc file 
             /// </summary> 
@@ -71,7 +74,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize DocMetadata
                     DocMetadata docMetadata = docFormat.DocumentProperties;
-                    
+
                     //update document property...
                     docMetadata.Author = "Usman";
                     docMetadata.Company = "Aspose";
@@ -82,7 +85,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //ExEnd:UpdateBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("Updated Successfully.");
-                    
+
                 }
                 catch (Exception exp)
                 {
@@ -100,7 +103,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveBuiltinDocumentPropertiesDocFormat
                     // initialize Docformat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
-                    
+
                     //Clean metadata
                     docFormat.CleanMetadata();
 
@@ -230,7 +233,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     }
 
                     bool isexist = metadata.ContainsKey(propertyName);
-                    
+
                     // save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveCustomPropertyDocFormat
@@ -259,7 +262,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // method:2 - clear custom properties 
                     docFormat.DocumentProperties.ClearCustomData();
-                    
+
                     // save file in destination folder
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:ClearCustomPropertyDocFormat
@@ -281,7 +284,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
@@ -312,7 +315,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
@@ -331,6 +334,48 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Updates document comments of Doc file  
+            /// </summary> 
+            public static void UpdateComments()
+            {
+                try
+                {
+                    //ExStart:UpdateDocumentComment
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // extract comments
+                    DocComment[] comments = docFormat.ExtractComments();
+
+                    if (comments.Length > 0)
+                    {
+                        // get first comment if exist
+                        var comment = comments[0];
+
+                        // change comment's author
+                        comment.Author = "Jack London";
+
+                        // change comment's text
+                        comment.Text = "This comment is created using GroupDocs.Metadata";
+
+                        // update comment
+                        docFormat.UpdateComment(comment.Id, comment);
+                    }
+
+                    // save file in destination folder
+                    docFormat.Save(Common.MapDestinationFilePath(filePath));
+
+                    Console.WriteLine("File saved in destination folder.");
+                    //ExEnd:UpdateDocumentComment
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
             #endregion
 
             #region working with pages and words
@@ -341,7 +386,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                     
+
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
@@ -427,7 +472,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveHiddenDataInDocument
                     // initialize DocFormat
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
-                     
+
                     // inspect document
                     InspectionResult inspectionResult = docFormat.InspectDocument();
 
@@ -456,7 +501,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourcePdfFilePath
-            private const string filePath = "Documents/Pdf/sample.pdf";
+            private const string filePath = "Documents/Pdf/Annotated.pdf";
             //ExEnd:SourcePdfFilePath
             #region working with builtin document properties
             /// <summary>
@@ -501,10 +546,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:UpdateBuiltinDocumentPropertyPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
-                    
+
                     // initialize PdfMetadata
                     PdfMetadata pdfMetadata = pdfFormat.DocumentProperties;
-                     
+
                     //update document property...
                     pdfMetadata.Author = "New author";
                     pdfMetadata.Subject = "New subject";
@@ -533,13 +578,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveBuiltinDocumentPropertyPdfFormat
                     // initialize PdfFormat
                     PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
-                    
+
                     pdfFormat.CleanMetadata();
-                    
+
                     //save output file...
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveBuiltinDocumentPropertyPdfFormat
-                    
+
                     Console.WriteLine("File saved in destination folder.");
 
 
@@ -565,7 +610,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize PdfMetadata
                     PdfMetadata metadata = pdfFormat.DocumentProperties;
-                     
+
                     string propertyName = "New Custom Property";
                     string propertyValue = "123";
 
@@ -689,6 +734,99 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            #region working with XMP data
+            /// <summary>
+            /// Gets XMP Data of Pdf file  
+            /// </summary> 
+            public static void GetXMPProperties()
+            {
+                try
+                {
+                    //ExStart:GetXMPPropertiesPdfFormat
+                    // initialize Pdfformat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // get pdf schema
+                    PdfPackage pdfPackage = pdfFormat.XmpValues.Schemes.Pdf;
+
+                    Console.WriteLine("Keywords: {0}", pdfPackage.Keywords);
+                    Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion);
+                    Console.WriteLine("Producer: {0}", pdfPackage.Producer);
+                    //ExEnd:GetXMPPropertiesPdfFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Updates XMP Data of Pdf file  
+            /// </summary> 
+            public static void UpdateXMPProperties()
+            {
+                try
+                {
+                    //ExStart:UpdateXMPPropertiesPdfFormat
+                    // initialize Pdfformat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // get pdf schema
+                    PdfPackage pdfPackage = pdfFormat.XmpValues.Schemes.Pdf;
+
+                    // update keywords
+                    pdfPackage.Keywords = "literature, programming";
+
+                    // update pdf version
+                    pdfPackage.PdfVersion = "1.0";
+
+                    // pdf:Producer could not be updated
+                    //pdfPackage.Producer="";
+
+                    //save output file...
+                    pdfFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:UpdateXMPPropertiesPdfFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
+
+            #region Working with Hidden Data
+            public static void RemoveHiddenData()
+            {
+                try
+                {
+                    //ExStart:RemoveHiddenDataPdfFormat
+                    // initialize Pdfformat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // inspect document
+                    PdfInspectionResult inspectionResult = pdfFormat.InspectDocument();
+
+                    // get annotations
+                    PdfAnnotation[] annotation = inspectionResult.Annotations;
+
+                    // if annotations are presented
+                    if (annotation.Length > 0)
+                    {
+                        // remove all annotation
+                        pdfFormat.RemoveHiddenData(new PdfInspectionOptions(PdfInspectorOptionsEnum.Annotations));
+
+                        //save output file...
+                        pdfFormat.Save(Common.MapDestinationFilePath(filePath));
+                    }
+                    //ExEnd:RemoveHiddenDataPdfFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
         }
 
         public static class Ppt
@@ -741,7 +879,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize PptMetadata
                     PptMetadata pptMetadata = pptFormat.DocumentProperties;
-                      
+
                     // update document property
                     pptMetadata.Author = "New author";
                     pptMetadata.Subject = "New subject";
@@ -870,7 +1008,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize PptMetadata
                     PptMetadata metadata = pptFormat.DocumentProperties;
-                     
+
                     string propertyName = "New custom property";
 
                     // check if property is not built-in
@@ -941,7 +1079,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    
+
                     //ExStart:GetBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
@@ -979,7 +1117,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize XlsMetadata
                     XlsMetadata xlsMetadata = xlsFormat.DocumentProperties;
-                     
+
                     //update document property...
                     xlsMetadata.Author = "New author";
                     xlsMetadata.Subject = "New subject";
@@ -1074,7 +1212,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize XlsMetadata
                     XlsMetadata xlsMetadata = xlsFormat.DocumentProperties;
-                       
+
                     Console.WriteLine("\nCustom Properties");
                     foreach (KeyValuePair<string, PropertyValue> keyValuePair in xlsMetadata)
                     {
@@ -1232,7 +1370,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine("Title: {0}", info.Title);
 
                         Console.WriteLine("\n\n");
-                    } 
+                    }
                     //ExEnd:GetPagesOneNoteFormat
                 }
                 catch (Exception exp)
@@ -1241,7 +1379,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
 
-           
+
         }
 
         /// <summary>
@@ -1255,15 +1393,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 firstDocument = Common.MapSourceFilePath(firstDocument);
                 secondDocument = Common.MapSourceFilePath(secondDocument);
 
-                MetadataPropertyCollection differnces = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type);
+                MetadataPropertyCollection differences = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type);
 
-                foreach(MetadataProperty property in differnces)
+                foreach (MetadataProperty property in differences)
                 {
                     Console.WriteLine("{0} : {1}", property.Name, property.Value);
                 }
                 //ExEnd:ComparisonAPI
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine("Exception occurred: " + exp.Message);
             }
@@ -1286,6 +1424,103 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("{0} : {1}", property.Name, property.Value);
                 }
                 //ExEnd:DocumentSearchAPI
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Detects document protection
+        /// </summary> 
+        public static void DetectProtection(string filePath)
+        {
+            try
+            {
+                //ExStart:DetectProtection
+                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath)); 
+
+                if(format.Type.ToString().ToLower()=="doc")
+                {
+                    // initialize DocFormat
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // determines whether document is protected by password
+                    Console.WriteLine(docFormat.IsProtected ? "Document is protected" : "Document is protected");
+                }
+                else if(format.Type.ToString().ToLower()=="pdf")
+                {
+                    // initialize DocFormat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // determines whether document is protected by password
+                    Console.WriteLine(pdfFormat.IsProtected ? "Document is protected" : "Document is protected");
+                }
+                else if (format.Type.ToString().ToLower() == "xls")
+                {
+                    // initialize DocFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // determines whether document is protected by password
+                    Console.WriteLine(xlsFormat.IsProtected ? "Document is protected" : "Document is protected");
+                }
+                else if(format.Type.ToString().ToLower()=="ppt")
+                {
+                    // initialize DocFormat
+                    PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath));
+
+                    // determines whether document is protected by password
+                    Console.WriteLine(pptFormat.IsProtected ? "Document is protected" : "Document is protected");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Format.");
+                }                
+                //ExEnd:DetectProtection
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+        /// <summary>
+        /// Replaces author name in document using custom ReplaceHandler
+        /// </summary> 
+        public static void ReplaceAuthorName(string filePath)
+        {
+            try
+            {
+                //ExStart:ReplaceAuthorName
+                // initialize custom handler, send output path using constructor
+                IReplaceHandler<MetadataProperty> replaceHandler = new AuthorReplaceHandler(Common.MapDestinationFilePath(filePath));
+
+                // replace author
+                int affectedPropertiesCount = SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), replaceHandler);
+                //ExEnd:ReplaceAuthorName
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+        /// <summary>
+        /// Replaces author name in document using custom ReplaceHandler
+        /// </summary> 
+        public static void ReplaceMetadataProperties(string filePath)
+        {
+            try
+            {
+                //ExStart:ReplaceMetadataProperties
+                // replace 'author' value
+                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "Author", "Jack London", SearchCondition.Matches, Common.MapDestinationFilePath(filePath));
+
+                // replace all properties contained 'co' to 'some value'
+                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "co", "some value", SearchCondition.Contains, Common.MapDestinationFilePath(filePath));
+                //ExEnd:ReplaceMetadataProperties
             }
             catch (Exception exp)
             {
