@@ -16,6 +16,8 @@ Imports GroupDocs.Metadata.Tools.Search
 Imports GroupDocs.Metadata.Xmp.Schemas.Pdf
 Imports GroupDocs.Metadata.Formats
 Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Formats.Project
+Imports GroupDocs.Metadata.Standards.Project
 
 
 Namespace GroupDocs.Metadata.Examples.VBasic
@@ -640,7 +642,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim pdfPackage As PdfPackage = pdfFormat.XmpValues.Schemes.Pdf
 
                     Console.WriteLine("Keywords: {0}", pdfPackage.Keywords)
-                    Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion) 
+                    Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion)
                     Console.WriteLine("Producer: {0}", pdfPackage.Producer)
                     'ExEnd:GetXMPPropertiesPdfFormat
                 Catch exp As Exception
@@ -1178,6 +1180,41 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
 
+
+        End Class
+        Public NotInheritable Class MSProject
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceMSProjectFilePath
+            Private Const filePath As String = "Documents/MSProject/sample.mpp"
+            'ExEnd:SourceMSProjectFilePath
+
+            ''' <summary>
+            ''' Gets properties of MS Project file  
+            ''' </summary> 
+            Public Shared Sub GetMetadata()
+                Try
+                    'ExStart:GetMetadataMppFormat
+                    '' initialize MppFormat
+                    Dim mppFormat As New MppFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get document properties
+                    Dim properties As MppMetadata = mppFormat.GetProperties()
+
+                    If mppFormat IsNot Nothing Then
+                        ' get Author 
+                        Console.WriteLine("Author: {0}", properties.Author)
+                        ' get Company 
+                        Console.WriteLine("Company: {0}", properties.Company)
+                        ' get Keywords 
+                        Console.WriteLine("Keywords: {0}", properties.Keywords)
+                    End If
+                    'ExEnd:GetMetadataMppFormat
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
 
         End Class
 

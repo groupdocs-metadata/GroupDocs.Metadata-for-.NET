@@ -75,6 +75,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs.vb" />
     <Compile Include="Emails.vb" />
     <Compile Include="Utilities\AuthorReplaceHandler.vb" />
     <Compile Include="Utilities\Common.vb" />
@@ -97,6 +98,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utilities\DocCleaner.vb" />
+    <Compile Include="Utilities\ExportTypes.vb" />
     <Compile Include="Utilities\JpegPhotoParser.vb" />
     <Compile Include="Utilities\PhotoCleaner.vb" />
   </ItemGroup>

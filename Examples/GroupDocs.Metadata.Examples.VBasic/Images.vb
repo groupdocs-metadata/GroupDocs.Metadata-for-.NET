@@ -24,6 +24,10 @@ Imports GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail
 Imports GroupDocs.Metadata.Formats.Cad
 Imports GroupDocs.Metadata.Standards.Cad
 Imports GroupDocs.Metadata.Tools.Comparison
+Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Xmp.Schemas.Iptc
+Imports GroupDocs.Metadata.Standards.Xmp
+Imports GroupDocs.Metadata.Standards.Iptc
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -472,6 +476,118 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
 #End Region
 
+#Region "Working with IPTC Metadata"
+            ''' <summary>
+            ''' Gets IPTC metadata from Jpeg file
+            ''' </summary> 
+            Public Shared Sub GetIPTCMetadata()
+                Try
+                    'ExStart:GetIPTCMetadata
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' if file contains iptc metadata
+                    If jpegFormat.HasIptc Then
+                        ' get iptc collection
+                        Dim iptcCollection As IptcCollection = jpegFormat.GetIptc()
+
+                        ' go through array and write property name and formatted value
+                        For Each iptcProperty As IptcProperty In iptcCollection
+                            Console.WriteLine(String.Format("{0}: {1}", iptcProperty.Name, iptcProperty.GetFormattedValue()))
+                        Next
+
+                        ' initialize IptcDataSetCollection to read well-known properties
+                        Dim dsCollection As New IptcDataSetCollection(iptcCollection)
+
+                        ' try to read Application Record dataset
+                        If dsCollection.ApplicationRecord IsNot Nothing Then
+                            ' get category
+                            Dim category As String = dsCollection.ApplicationRecord.Category
+
+                            ' get headline
+                            Dim headline As String = dsCollection.ApplicationRecord.Headline
+                        End If
+
+                        If dsCollection.EnvelopeRecord IsNot Nothing Then
+                            ' get model version
+                            Dim modelVersion As System.Nullable(Of Integer) = dsCollection.EnvelopeRecord.ModelVersion
+
+                            ' get dataSent property
+                            Dim dataSent As System.Nullable(Of DateTime) = dsCollection.EnvelopeRecord.DataSent
+                        End If
+                        'ExEnd:GetIPTCMetadata
+                    End If
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Gets IPTC metadata from XMP in Jpeg file
+            ''' </summary>
+            Public Shared Sub GetIPTCPhotoMetadataFromXMP()
+                Try
+                    'ExStart:GetIPTCPhotoMetadataFromXMP
+                    ' get xmp metadata
+                    Dim xmpWrapper As XmpPacketWrapper = MetadataUtility.ExtractXmpPackage(Common.MapSourceFilePath(filePath))
+
+                    If xmpWrapper Is Nothing Then
+                        xmpWrapper = New XmpPacketWrapper()
+                    End If
+
+                    ' add iptc4xmpcore if not exist
+                    If Not xmpWrapper.ContainsPackage(Namespaces.Iptc4XmpCore) Then
+                        xmpWrapper.AddPackage(New IptcCorePackage())
+                    End If
+
+                    ' get iptc4XmpCore package
+                    Dim iptcCorePackage As IptcCorePackage = DirectCast(xmpWrapper.GetPackage(Namespaces.Iptc4XmpCore), IptcCorePackage)
+
+                    Console.WriteLine("Country Code: {0}", iptcCorePackage.CountryCode)
+                    Console.WriteLine("Sub Location: {0}", iptcCorePackage.Sublocation)
+                    Console.WriteLine("Intellectual Genre: {0}", iptcCorePackage.IntellectualGenre)
+                    'ExEnd:GetIPTCPhotoMetadataFromXMP
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates IPTC metadata in XMP in Jpeg file
+            ''' </summary>
+            Public Shared Sub UpdateIPTCPhotoMetadataFromXMP()
+                Try
+                    'ExStart:UpdateIPTCPhotoMetadataFromXMP
+                    ' get xmp metadata
+                    Dim xmpWrapper As XmpPacketWrapper = MetadataUtility.ExtractXmpPackage(Common.MapSourceFilePath(filePath))
+
+                    If xmpWrapper Is Nothing Then
+                        xmpWrapper = New XmpPacketWrapper()
+                    End If
+
+                    ' add iptc4xmpcore if not exist
+                    If Not xmpWrapper.ContainsPackage(Namespaces.Iptc4XmpCore) Then
+                        xmpWrapper.AddPackage(New IptcCorePackage())
+                    End If
+
+                    ' get iptc4XmpCore package
+                    Dim iptcCorePackage As IptcCorePackage = DirectCast(xmpWrapper.GetPackage(Namespaces.Iptc4XmpCore), IptcCorePackage)
+
+                    ' set country code
+                    iptcCorePackage.CountryCode = "new country code"
+
+                    ' set sublocation
+                    iptcCorePackage.Sublocation = "new sublocation"
+
+                    ' update intellectual genre
+                    iptcCorePackage.IntellectualGenre = "music"
+
+                    ' save changes to another file
+                    MetadataUtility.UpdateMetadata(Common.MapSourceFilePath(filePath), New XmpMetadata(xmpWrapper), Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateIPTCPhotoMetadataFromXMP
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
         End Class
         Public NotInheritable Class Gif
             Private Sub New()
