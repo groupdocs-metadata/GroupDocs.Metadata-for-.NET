@@ -16,285 +16,337 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '             * Uncomment following function if you have product license.
             '             
 
-            Common.ApplyLicense()
+            ''Common.ApplyLicense()
 
 
             ''#Region "Working with Documents"
 
             ''#Region "Working with Doc Files"
 
-            ''Get document properties of Doc file
-            'Documents.Doc.GetDocumentProperties()
+            'Get document properties of Doc file
+            Documents.Doc.GetDocumentProperties()
 
-            ''Update document properties of Doc file
-            'Documents.Doc.UpdateDocumentProperties()
+            'Update document properties of Doc file
+            Documents.Doc.UpdateDocumentProperties()
 
-            ''Remove document properties of Doc file
-            'Documents.Doc.RemoveDocumentProperties()
+            'Remove document properties of Doc file
+            Documents.Doc.RemoveDocumentProperties()
 
-            ''Add custom property in Doc file
-            'Documents.Doc.AddCustomProperty()
+            'Add custom property in Doc file
+            Documents.Doc.AddCustomProperty()
 
-            ''Get custom properties in Doc file
-            'Documents.Doc.GetCustomProperties()
+            'Get custom properties in Doc file
+            Documents.Doc.GetCustomProperties()
 
-            ''Get hidden fields, merge fields and comments in Doc file
-            'Documents.Doc.GetHiddenData()
+            'Get hidden fields, merge fields and comments in Doc file
+            Documents.Doc.GetHiddenData()
 
-            ''Remove merge fields in Doc file
-            'Documents.Doc.RemoveMergeFields()
+            'Remove merge fields in Doc file
+            Documents.Doc.RemoveMergeFields()
 
-            ''Remove custom property of Doc file
-            'Documents.Doc.RemoveCustomProperties()
+            'Remove custom property of Doc file
+            Documents.Doc.RemoveCustomProperties()
 
-            ''Clear custom property of Doc file
-            'Documents.Doc.ClearCustomProperties()
+            'Clear custom property of Doc file
+            Documents.Doc.ClearCustomProperties()
+
+            'Remove document comments
+            Documents.Doc.RemoveComments()
+
+            'Update document comments
+            Documents.Doc.UpdateComments()
 
             ''#End Region
 
             ''#Region "Working with Ppt Files"
 
-            ''Get document properties of Ppt file
-            'Documents.Ppt.GetDocumentProperties()
+            'Get document properties of Ppt file
+            Documents.Ppt.GetDocumentProperties()
 
-            ''Update document properties of Ppt file
-            'Documents.Ppt.UpdateDocumentProperties()
+            'Update document properties of Ppt file
+            Documents.Ppt.UpdateDocumentProperties()
 
-            ''Remove document properties of Ppt file
-            'Documents.Ppt.RemoveDocumentProperties()
+            'Remove document properties of Ppt file
+            Documents.Ppt.RemoveDocumentProperties()
 
-            ''Add custom property in Ppt file
-            'Documents.Ppt.AddCustomProperty()
+            'Add custom property in Ppt file
+            Documents.Ppt.AddCustomProperty()
 
-            ''Get custom properties in Ppt file
-            'Documents.Ppt.GetCustomProperties()
+            'Get custom properties in Ppt file
+            Documents.Ppt.GetCustomProperties()
 
-            ''Remove custom property of Ppt file
-            'Documents.Ppt.RemoveCustomProperties()
+            'Remove custom property of Ppt file
+            Documents.Ppt.RemoveCustomProperties()
 
             ''#End Region
 
             ''#Region "Working with Xls Files"
 
-            ''Get document properties of Xls file
-            'Documents.Xls.GetDocumentProperties()
+            'Get document properties of Xls file
+            Documents.Xls.GetDocumentProperties()
 
-            ''Update document properties of Xls file
-            'Documents.Xls.UpdateDocumentProperties()
+            'Update document properties of Xls file
+            Documents.Xls.UpdateDocumentProperties()
 
-            ''Remove document properties of Xls file
-            'Documents.Xls.RemoveDocumentProperties()
+            'Remove document properties of Xls file
+            Documents.Xls.RemoveDocumentProperties()
 
-            ''Add custom property in Xls file
-            'Documents.Xls.AddCustomProperty()
+            'Add custom property in Xls file
+            Documents.Xls.AddCustomProperty()
 
-            ''Get custom properties in Xls file
-            'Documents.Xls.GetCustomProperties()
+            'Get custom properties in Xls file
+            Documents.Xls.GetCustomProperties()
 
-            ''Remove custom property of Xls file
-            'Documents.Xls.RemoveCustomProperties()
+            'Remove custom property of Xls file
+            Documents.Xls.RemoveCustomProperties()
 
             ''#End Region
 
             ''#Region "Working with Pdf Files"
 
-            ''Get document properties of Pdf file
-            'Documents.Pdf.GetDocumentProperties()
+            'Get document properties of Pdf file
+            Documents.Pdf.GetDocumentProperties()
 
-            ''Update document properties of Pdf file
-            'Documents.Pdf.UpdateDocumentProperties()
+            'Update document properties of Pdf file
+            Documents.Pdf.UpdateDocumentProperties()
 
-            ''Remove document properties of Pdf file
-            'Documents.Pdf.RemoveDocumentProperties()
+            'Remove document properties of Pdf file
+            Documents.Pdf.RemoveDocumentProperties()
 
-            ''Add custom property in Pdf file
-            'Documents.Pdf.AddCustomProperty()
+            'Add custom property in Pdf file
+            Documents.Pdf.AddCustomProperty()
 
-            ''Get custom properties in Pdf file
-            'Documents.Pdf.GetCustomProperties()
+            'Get custom properties in Pdf file
+            Documents.Pdf.GetCustomProperties()
 
-            ''Remove custom property of Pdf file
-            'Documents.Pdf.RemoveCustomProperties()
+            'Remove custom property of Pdf file
+            Documents.Pdf.RemoveCustomProperties()
+
+            'Get XMP data in Pdf file
+            Documents.Pdf.GetXMPProperties()
+
+            'Update XMP data in Pdf file
+            Documents.Pdf.UpdateXMPProperties()
+
+            'Remove hidden data in Pdf file
+            Documents.Pdf.RemoveHiddenData()
 
             ''#End Region
 
             ''#Region "Working with OneNote Files"
 
-            ''Get metadata of OneNote file
-            'Documents.OneNote.GetMetadata()
+            'Get metadata of OneNote file
+            Documents.OneNote.GetMetadata()
 
-            ''Get Pages Info of OneNote file 
-            'Documents.OneNote.GetPagesInfo()
+            'Get Pages Info of OneNote file 
+            Documents.OneNote.GetPagesInfo()
+
+            ''#End Region
+
+            ''#Region ""
+            'Get metadata in MS Project file
+            Documents.MSProject.GetMetadata()
 
             ''#End Region
 
             ''#End Region
-
 
             ''#Region "Working with Images"
 
             ''#Region "Working with Gif"
 
-            ''Get XMP properties of Gif image
-            'Images.Gif.GetXMPProperties()
+            'Get XMP properties of Gif image
+            Images.Gif.GetXMPProperties()
 
-            ''Update XMP properties of Gif image
-            'Images.Gif.UpdateXMPProperties()
+            'Update XMP properties of Gif image
+            Images.Gif.UpdateXMPProperties()
 
-            ''Remove XMP properties of Gif image
-            'Images.Gif.RemoveXMPProperties()
+            'Remove XMP properties of Gif image
+            Images.Gif.RemoveXMPProperties()
 
             ''#End Region
 
             ''#Region "Working with Jpeg"
 
-            ''Get XMP properties of Jpeg image
-            'Images.Jpeg.GetXMPProperties()
+            'Get XMP properties of Jpeg image
+            Images.Jpeg.GetXMPProperties()
 
-            ''Update XMP properties of Jpeg image
-            'Images.Jpeg.UpdateXMPProperties()
+            'Update XMP properties of Jpeg image
+            Images.Jpeg.UpdateXMPProperties()
 
-            ''Update Camera Raw XMP values of Jpeg image
-            'Images.Jpeg.UpdateCameraRawXMPProperties()
+            'Update Camera Raw XMP values of Jpeg image
+            Images.Jpeg.UpdateCameraRawXMPProperties()
 
-            ''Update Pagged Text XMP values of Jpeg image
-            'Images.Jpeg.UpdatePagedTextXMPProperties()
+            'Update Pagged Text XMP values of Jpeg image
+            Images.Jpeg.UpdatePagedTextXMPProperties()
 
-            ''Update Basic Job XMP properties of Jpeg image
-            'Images.Jpeg.UpdateBasicJobXMPProperties()
+            'Update Basic Job XMP properties of Jpeg image
+            Images.Jpeg.UpdateBasicJobXMPProperties()
 
-            ''Update thumbnail in XMP data of Jpeg image
-            'Images.Jpeg.UpdateThumbnailInXMPData()
+            'Update thumbnail in XMP data of Jpeg image
+            Images.Jpeg.UpdateThumbnailInXMPData()
 
-            ''Remove XMP properties of Jpeg image
-            'Images.Jpeg.RemoveXMPData()
+            'Remove XMP properties of Jpeg image
+            Images.Jpeg.RemoveXMPData()
 
-            ''Get Exif Info of Jpeg image
-            'Images.Jpeg.GetExifInfo()
+            'Get Exif Info of Jpeg image
+            Images.Jpeg.GetExifInfo()
 
-            ''Update Exif Info of Jpeg image
-            'Images.Jpeg.UpdateExifInfo()
+            'Update Exif Info of Jpeg image
+            Images.Jpeg.UpdateExifInfo()
 
-            ''Update Exif Info of Jpeg image using properties
-            'Images.Jpeg.UpdateExifInfoUsingProperties()
+            'Update Exif Info of Jpeg image using properties
+            Images.Jpeg.UpdateExifInfoUsingProperties()
 
-            ''Remove GPS Info of Jpeg image
-            'Images.Jpeg.RemoveGPSData()
+            'Remove GPS Info of Jpeg image
+            Images.Jpeg.RemoveGPSData()
 
-            ''Remove Exif Info of Jpeg image
-            'Images.Jpeg.RemoveExifInfo()
+            'Remove Exif Info of Jpeg image
+            Images.Jpeg.RemoveExifInfo()
 
+            'Read IPTC properties in Jpeg image
+            Images.Jpeg.GetIPTCMetadata()
+
+            'Read IPTC XMP metadata in Jpeg image
+            Images.Jpeg.GetIPTCPhotoMetadataFromXMP()
+
+            'Update IPTC XMP metadata in Jpeg image
+            Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP()
             ''#End Region
 
             ''#Region "Working with Png"
 
-            ''Get XMP properties of Png image
-            'Images.Png.GetXMPProperties()
+            'Get XMP properties of Png image
+            Images.Png.GetXMPProperties()
 
-            ''Update XMP properties of Png image
-            'Images.Png.UpdateXMPData()
+            'Update XMP properties of Png image
+            Images.Png.UpdateXMPData()
 
-            ''Update XMP values of Png image
-            'Images.Png.UpdateXMPValues()
+            'Update XMP values of Png image
+            Images.Png.UpdateXMPValues()
 
-            ''Update Camera Raw XMP values of Png image
-            'Images.Png.UpdateCameraRawXMPProperties()
+            'Update Camera Raw XMP values of Png image
+            Images.Png.UpdateCameraRawXMPProperties()
 
-            ''Update Pagged Text XMP values of Png image
-            'Images.Png.UpdatePagedTextXMPProperties()
+            'Update Pagged Text XMP values of Png image
+            Images.Png.UpdatePagedTextXMPProperties()
 
-            ''Remove XMP properties of Png image
-            'Images.Png.RemoveXMPData()
+            'Remove XMP properties of Png image
+            Images.Png.RemoveXMPData()
 
             ''#End Region
             ''#Region "Working with Tiff"
 
-            ''Get Exif Info of Tiff image
-            'Images.Tiff.GetExifInfo()
+            'Read Exif Info of Tiff image
+            Images.Tiff.GetExifInfo()
 
-            ''Update Exif Info of Tiff image
-            'Images.Tiff.UpdateExifInfo()
+            'Update Exif Info of Tiff image
+            Images.Tiff.UpdateExifInfo()
 
-            ''Update Exif Info of Tiff image
-            'Images.Tiff.UpdateExifInfoUsingProperties()
+            'Update Exif Info of Tiff image
+            Images.Tiff.UpdateExifInfoUsingProperties()
 
-            ''Remove Exif Info of Tiff image
-            'Images.Tiff.RemoveExifInfo()
+            'Remove Exif Info of Tiff image
+            Images.Tiff.RemoveExifInfo()
 
             ''#End Region
 
             ''#End Region
             ''#Region "Working with PSD"
 
-            ' ''Get metadata of PSD file
-            'Images.Psd.GetPsdInfo()
+            'Read metadata of PSD file
+            Images.Psd.GetPsdInfo()
 
+            'Read XMP metadata of PSD file
+            Images.Psd.GetXMPProperties()
+
+            ''#End Region
+            ''#Region "Working CAD files"
+
+            'Read basic metadata properties in DWG file
+            Images.Cad.GetMetadatPropertiesInDWG()
+
+            'Read basic metadata properties in DXF file
+            Images.Cad.GetMetadatPropertiesInDXF()
             ''#End Region
 
             ''#Region "Working emails"
             ''#Region "Working with Outlook Email"
-            ''Get Outlook email metadata
-            'Emails.OutLook.GetOutlookEmailMetadata()
+            'Get Outlook email metadata
+            Emails.OutLook.GetOutlookEmailMetadata()
 
-            ''Remove Outlook email attachment
-            'Emails.OutLook.RemoveOutlookEmailAttachments()
+            'Remove Outlook email attachment
+            Emails.OutLook.RemoveOutlookEmailAttachments()
 
-            ''Remove Outlook email metadata
-            'Emails.OutLook.RemoveOutlookEmailMetadata()
+            'Remove Outlook email metadata
+            Emails.OutLook.RemoveOutlookEmailMetadata()
             ''#End Region
 
             ''#Region "Working with Email message"
-            ''Get email metadata
-            'Emails.Eml.GetEmailMetadata()
+            'Get email metadata
+            Emails.Eml.GetEmailMetadata()
 
-            ''Remove email attachment
-            'Emails.Eml.RemoveEmailAttachments()
+            'Remove email attachment
+            Emails.Eml.RemoveEmailAttachments()
 
-            ''Remove email metadata
-            'Emails.Eml.RemoveEmailMetadata()
+            'Remove email metadata
+            Emails.Eml.RemoveEmailMetadata()
             ''#End Region
             ''#End Region
 
             ''#Region "Working with APIs"
 
-            ' '' Compare document metadata
-            'Documents.CompareDocument("Documents/Doc/sample1.doc", "Documents/Doc/sample2.doc", ComparerSearchType.Difference)
+            'Compare document metadata
+            APIs.Document.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference)
 
-            ' '' Search document metadata in document
-            ''Documents.SearchMetadata("Documents/Xls/sample.xls","Author", SearchCondition.Contains);
+            'Search document metadata in document
+            APIs.Document.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains)
 
-            ' '' Search document metadata in image
-            'Images.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains)
+            'Search document metadata in image
+            APIs.Image.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains)
+
+            'Replace metadata properties in documents
+            APIs.Document.ReplaceMetadataProperties("Documents/Doc/sample.doc")
+
+            'Replace author name using custom Replace Handler in documents
+            APIs.Document.ReplaceAuthorName("Documents/Doc/sample.doc")
+
+            'Detect protection in documents
+            Documents.DetectProtection("Documents/Doc/sample.doc")
+
+            'Compare Exif metadata in images
+            APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference)
+
+            'Export metadata
+            APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel)
 
             ''#End Region
 
             ''#Region "Working with Utilities"
-            ''ExStart:DocCleanerUsage
-            ''DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
-            'Dim docCleaner As New DocCleaner("Documents/Doc")
-            'docCleaner.RemoveMetadataByAuthor("Usman Aziz")
-            ''ExEnd:DocCleanerUsage
+            'ExStart:DocCleanerUsage
+            'DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
+            Dim docCleaner As New DocCleaner("Documents/Doc")
+            docCleaner.RemoveMetadataByAuthor("Usman Aziz")
+            'ExEnd:DocCleanerUsage
 
-            ''ExStart:PhotoCleanerUsage
-            ''PhotoCleaner: Cleans GPS data from photos in a directory
-            'Dim photoCleaner As New PhotoCleaner("Images/Jpeg")
-            'photoCleaner.RemoveExifLocation()
-            ''ExEnd:PhotoCleanerUsage
+            'ExStart:PhotoCleanerUsage
+            'PhotoCleaner: Cleans GPS data from photos in a directory
+            Dim photoCleaner As New PhotoCleaner("Images/Jpeg")
+            photoCleaner.RemoveExifLocation()
+            'ExEnd:PhotoCleanerUsage
 
-            ''ExStart:JpegPhotoParserUsage
-            ''JpegPhotoParser: Finds photos taken on a specific camera in a directory
-            'Dim jpegPhotoParser As New JpegPhotoParser("Images/Jpeg")
-            'jpegPhotoParser.FilterByCameraManufacturer("Sony")
-            ''ExEnd:JpegPhotoParserUsage
+            'ExStart:JpegPhotoParserUsage
+            'JpegPhotoParser: Finds photos taken on a specific camera in a directory
+            Dim jpegPhotoParser As New JpegPhotoParser("Images/Jpeg")
+            jpegPhotoParser.FilterByCameraManufacturer("Sony")
+            'ExEnd:JpegPhotoParserUsage
 
-            ''ExStart:FormatRecognizerUsage
-            ''FormatRecognizer: Recognizes the format of all files in a directory 
-            'Common.GetFileFormats("Documents/Pdf")
-            ''ExEnd:FormatRecognizerUsage
-
+            'ExStart:FormatRecognizerUsage
+            'FormatRecognizer: Recognizes the format of all files in a directory 
+            Common.GetFileFormats("Documents/Doc")
+            'ExEnd:FormatRecognizerUsage
 
             ''#End Region
-            Documents.ReplaceAuthorName("Documents/Doc/sample.doc")
 
             Console.ReadKey()
 

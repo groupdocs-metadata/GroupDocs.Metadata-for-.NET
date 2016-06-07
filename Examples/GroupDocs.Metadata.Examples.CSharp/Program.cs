@@ -6,6 +6,7 @@ using GroupDocs.Metadata;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Tools.Search;
 using GroupDocs.Metadata.Tools.Comparison;
+using GroupDocs.Metadata.Examples.CSharp.Utilities;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -143,9 +144,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
+            #region
+            //Get metadata in MS Project file
+            Documents.MSProject.GetMetadata();
 
             #endregion
 
+            #endregion
 
             #region Working with Images
 
@@ -200,6 +205,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Remove Exif Info of Jpeg image
             Images.Jpeg.RemoveExifInfo();
 
+            //Read IPTC properties in Jpeg image
+            Images.Jpeg.GetIPTCMetadata();
+
+            //Read IPTC XMP metadata in Jpeg image
+            Images.Jpeg.GetIPTCPhotoMetadataFromXMP();
+
+            //Update IPTC XMP metadata in Jpeg image
+            Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP();
             #endregion
 
             #region Working with Png
@@ -285,25 +298,29 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region Working with APIs
 
             //Compare document metadata
-            Documents.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
+            APIs.Document.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
 
             //Search document metadata in document
-            Documents.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
+            APIs.Document.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
 
             //Search document metadata in image
-            Images.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
+            APIs.Image.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
 
             //Replace metadata properties in documents
-            Documents.ReplaceMetadataProperties("Documents/Doc/sample.doc");
+            APIs.Document.ReplaceMetadataProperties("Documents/Doc/sample.doc");
 
             //Replace author name using custom Replace Handler in documents
-            Documents.ReplaceAuthorName("Documents/Doc/sample.doc");
+            APIs.Document.ReplaceAuthorName("Documents/Doc/sample.doc");
 
             //Detect protection in documents
             Documents.DetectProtection("Documents/Doc/sample.doc");
 
             //Compare Exif metadata in images
-            Images.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
+            APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
+
+            //Export metadata
+            APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel);
+
             #endregion
 
             #region Working with Utilities
@@ -329,8 +346,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //FormatRecognizer: Recognizes the format of all files in a directory 
             Common.GetFileFormats("Documents/Doc");
             //ExEnd:FormatRecognizerUsage
-
-
+            
             #endregion
 
 

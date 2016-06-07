@@ -17,6 +17,8 @@ using GroupDocs.Metadata.Tools.Search;
 using GroupDocs.Metadata.Xmp.Schemas.Pdf;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Examples.CSharp.Utilities;
+using GroupDocs.Metadata.Formats.Project;
+using GroupDocs.Metadata.Standards.Project;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -1382,55 +1384,47 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
-        /// <summary>
-        /// Compares metadata of two documents and displays result 
-        /// </summary> 
-        public static void CompareDocument(string firstDocument, string secondDocument, ComparerSearchType type)
+
+        public static class MSProject
         {
-            try
+            // initialize file path
+            //ExStart:SourceMSProjectFilePath
+            private const string filePath = "Documents/MSProject/sample.mpp";
+            //ExEnd:SourceMSProjectFilePath
+
+            /// <summary>
+            /// Gets properties of MS Project file  
+            /// </summary> 
+            public static void GetMetadata()
             {
-                //ExStart:ComparisonAPI
-                firstDocument = Common.MapSourceFilePath(firstDocument);
-                secondDocument = Common.MapSourceFilePath(secondDocument);
-
-                MetadataPropertyCollection differences = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type);
-
-                foreach (MetadataProperty property in differences)
+                try
                 {
-                    Console.WriteLine("{0} : {1}", property.Name, property.Value);
+                    //ExStart:GetMetadataMppFormat
+                    // initialize MppFormat
+                    MppFormat mppFormat = new MppFormat(Common.MapSourceFilePath(filePath));
+
+                    // get document properties
+                    MppMetadata properties = mppFormat.GetProperties();
+                     
+                    if (mppFormat != null)
+                    {
+                        // get Author 
+                        Console.WriteLine("Author: {0}", properties.Author);
+                        // get Company 
+                        Console.WriteLine("Company: {0}", properties.Company);
+                        // get Keywords 
+                        Console.WriteLine("Keywords: {0}", properties.Keywords); 
+                    }
+                    //ExEnd:GetMetadataMppFormat
                 }
-                //ExEnd:ComparisonAPI
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
             }
 
         }
-        /// <summary>
-        /// Searches metadata in document 
-        /// </summary> 
-        public static void SearchMetadata(string filePath, string propertyName, SearchCondition searchCondition)
-        {
-            try
-            {
-                //ExStart:DocumentSearchAPI
-                filePath = Common.MapSourceFilePath(filePath);
-
-                MetadataPropertyCollection properties = SearchFacade.ScanDocument(filePath, propertyName, searchCondition);
-
-                foreach (MetadataProperty property in properties)
-                {
-                    Console.WriteLine("{0} : {1}", property.Name, property.Value);
-                }
-                //ExEnd:DocumentSearchAPI
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
-            }
-
-        }
+        
 
         /// <summary>
         /// Detects document protection
@@ -1486,47 +1480,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
         }
-        /// <summary>
-        /// Replaces author name in document using custom ReplaceHandler
-        /// </summary> 
-        public static void ReplaceAuthorName(string filePath)
-        {
-            try
-            {
-                //ExStart:ReplaceAuthorName
-                // initialize custom handler, send output path using constructor
-                IReplaceHandler<MetadataProperty> replaceHandler = new AuthorReplaceHandler(Common.MapDestinationFilePath(filePath));
-
-                // replace author
-                int affectedPropertiesCount = SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), replaceHandler);
-                //ExEnd:ReplaceAuthorName
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
-            }
-
-        }
-        /// <summary>
-        /// Replaces author name in document using custom ReplaceHandler
-        /// </summary> 
-        public static void ReplaceMetadataProperties(string filePath)
-        {
-            try
-            {
-                //ExStart:ReplaceMetadataProperties
-                // replace 'author' value
-                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "Author", "Jack London", SearchCondition.Matches, Common.MapDestinationFilePath(filePath));
-
-                // replace all properties contained 'co' to 'some value'
-                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "co", "some value", SearchCondition.Contains, Common.MapDestinationFilePath(filePath));
-                //ExEnd:ReplaceMetadataProperties
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
-            }
-
-        }
+        
     }
 }

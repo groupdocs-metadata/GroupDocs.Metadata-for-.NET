@@ -25,6 +25,8 @@ using GroupDocs.Metadata.Tools.Search;
 using GroupDocs.Metadata.Formats.Cad;
 using GroupDocs.Metadata.Standards.Cad;
 using GroupDocs.Metadata.Tools.Comparison;
+using GroupDocs.Metadata.Standards.Iptc;
+using GroupDocs.Metadata.Xmp.Schemas.Iptc;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -528,6 +530,139 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveExifPropertiesJpegImage
                     Console.WriteLine("File saved in destination folder.");
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
+
+            #region Working with IPTC Metadata 
+            /// <summary>
+            /// Gets IPTC metadata from Jpeg file
+            /// </summary> 
+            public static void GetIPTCMetadata()
+            {
+                try
+                {
+                    //ExStart:GetIPTCMetadata
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // if file contains iptc metadata
+                    if (jpegFormat.HasIptc)
+                    {
+                        // get iptc collection
+                        IptcCollection iptcCollection = jpegFormat.GetIptc();
+
+                        // go through array and write property name and formatted value
+                        foreach (IptcProperty iptcProperty in iptcCollection)
+                        {
+                            Console.WriteLine(string.Format("{0}: {1}", iptcProperty.Name, iptcProperty.GetFormattedValue()));
+                        }
+
+                        // initialize IptcDataSetCollection to read well-known properties
+                        IptcDataSetCollection dsCollection = new IptcDataSetCollection(iptcCollection);
+
+                        // try to read Application Record dataset
+                        if (dsCollection.ApplicationRecord != null)
+                        {
+                            // get category
+                            string category = dsCollection.ApplicationRecord.Category;
+
+                            // get headline
+                            string headline = dsCollection.ApplicationRecord.Headline;
+                        }
+
+                        if (dsCollection.EnvelopeRecord != null)
+                        {
+                            // get model version
+                            int? modelVersion = dsCollection.EnvelopeRecord.ModelVersion;
+
+                            // get dataSent property
+                            DateTime? dataSent = dsCollection.EnvelopeRecord.DataSent;
+                        }
+                    }
+                    //ExEnd:GetIPTCMetadata
+                 }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Gets IPTC metadata from XMP in Jpeg file
+            /// </summary>
+            public static void GetIPTCPhotoMetadataFromXMP()
+            {
+                try
+                {
+                    //ExStart:GetIPTCPhotoMetadataFromXMP
+                    // get xmp metadata
+                    XmpPacketWrapper xmpWrapper = MetadataUtility.ExtractXmpPackage(Common.MapSourceFilePath(filePath));
+
+                    if (xmpWrapper == null)
+                    {
+                        xmpWrapper = new XmpPacketWrapper();
+                    }
+
+                    // add iptc4xmpcore if not exist
+                    if (!xmpWrapper.ContainsPackage(Namespaces.Iptc4XmpCore))
+                    {
+                        xmpWrapper.AddPackage(new IptcCorePackage());
+                    }
+
+                    // get iptc4XmpCore package
+                    IptcCorePackage iptcCorePackage = (IptcCorePackage)xmpWrapper.GetPackage(Namespaces.Iptc4XmpCore);
+
+                    Console.WriteLine("Country Code: {0}", iptcCorePackage.CountryCode);
+                    Console.WriteLine("Sub Location: {0}", iptcCorePackage.Sublocation);
+                    Console.WriteLine("Intellectual Genre: {0}", iptcCorePackage.IntellectualGenre);   
+                    //ExEnd:GetIPTCPhotoMetadataFromXMP
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Updates IPTC metadata in XMP in Jpeg file
+            /// </summary>
+            public static void UpdateIPTCPhotoMetadataFromXMP()
+            {
+                try
+                {
+                    //ExStart:UpdateIPTCPhotoMetadataFromXMP
+                    // get xmp metadata
+                    XmpPacketWrapper xmpWrapper = MetadataUtility.ExtractXmpPackage(Common.MapSourceFilePath(filePath));
+
+                    if (xmpWrapper == null)
+                    {
+                        xmpWrapper = new XmpPacketWrapper();
+                    }
+
+                    // add iptc4xmpcore if not exist
+                    if (!xmpWrapper.ContainsPackage(Namespaces.Iptc4XmpCore))
+                    {
+                        xmpWrapper.AddPackage(new IptcCorePackage());
+                    }
+
+                    // get iptc4XmpCore package
+                    IptcCorePackage iptcCorePackage = (IptcCorePackage)xmpWrapper.GetPackage(Namespaces.Iptc4XmpCore);
+
+                    // set country code
+                    iptcCorePackage.CountryCode = "new country code";
+
+                    // set sublocation
+                    iptcCorePackage.Sublocation = "new sublocation";
+
+                    // update intellectual genre
+                    iptcCorePackage.IntellectualGenre = "music";
+
+                    // save changes to another file
+                    MetadataUtility.UpdateMetadata(Common.MapSourceFilePath(filePath), new XmpMetadata(xmpWrapper), Common.MapDestinationFilePath(filePath));
+                    //ExEnd:UpdateIPTCPhotoMetadataFromXMP
                 }
                 catch (Exception exp)
                 {
@@ -1470,57 +1605,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-        /// <summary>
-        /// Searches metadata in image 
-        /// </summary> 
-        public static void SearchMetadata(string filePath, string propertyName, SearchCondition searchCondition)
-        {
-            try
-            {
-                //ExStart:ImageSearchAPI
-                filePath = Common.MapSourceFilePath(filePath);
-
-                // looking the software
-                ExifProperty[] properties = SearchFacade.ScanExif(filePath, propertyName, searchCondition);
-                
-                foreach (ExifProperty property in properties)
-                {
-                    Console.WriteLine("{0} : {1}", property.Name, property.ToString());
-                }
-
-                //ExEnd:ImageSearchAPI
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// Compares EXIF metadata of two jpeg files 
-        /// </summary> 
-        public static void CompareExifMetadata(string firstFile, string secondFile, ComparerSearchType type)
-        {
-            try
-            {
-                //ExStart:ExifComparisonAPI
-                firstFile = Common.MapSourceFilePath(firstFile);
-                secondFile = Common.MapSourceFilePath(secondFile);
-
-                ExifProperty[] differences = ComparisonFacade.CompareExif(firstFile, secondFile, type);
-
-                foreach (ExifProperty property in differences)
-                {
-                    Console.WriteLine("{0} : {1}", property.Name, property.ToString());
-                }
-                //ExEnd:ExifComparisonAPI
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine("Exception occurred: " + exp.Message);
-            }
-
-        }
+       
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs.cs" />
     <Compile Include="Emails.cs" />
     <Compile Include="Utilities\AuthorReplaceHandler.cs" />
     <Compile Include="Utilities\Common.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DocCleaner.cs" />
+    <Compile Include="Utilities\ExportTypes.cs" />
     <Compile Include="Utilities\JpegPhotoParser.cs" />
     <Compile Include="Utilities\PhotoCleaner.cs" />
   </ItemGroup>
