@@ -8,19 +8,19 @@ Imports GroupDocs.Metadata.MetadataProperties
 Imports GroupDocs.Metadata.Standards.Pdf
 Imports GroupDocs.Metadata.Standards.Ppt
 Imports GroupDocs.Metadata.Standards.Xls
-Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Standards.OneNote
+Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Examples.Utilities.CSharp
 Imports GroupDocs.Metadata.Formats.OneNote
+Imports GroupDocs.Metadata.Standards.OneNote
 Imports GroupDocs.Metadata.Tools.Comparison
 Imports GroupDocs.Metadata.Tools.Search
 Imports GroupDocs.Metadata.Xmp.Schemas.Pdf
 Imports GroupDocs.Metadata.Formats
-Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Examples.CSharp.Utilities
 Imports GroupDocs.Metadata.Formats.Project
 Imports GroupDocs.Metadata.Standards.Project
 
-
-Namespace GroupDocs.Metadata.Examples.VBasic
+Namespace GroupDocs.Metadata.Examples.CSharp
     Public NotInheritable Class Documents
         Private Sub New()
         End Sub
@@ -288,6 +288,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
             ''' <summary>
             ''' Updates document comments of Doc file  
             ''' </summary> 
@@ -389,8 +390,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         For Each word As String In inspectionResult.HiddenText
                             Console.WriteLine(word)
                         Next
+                        'ExEnd:GetHiddenDataInDocument
+
                     End If
-                    'ExEnd:GetHiddenDataInDocument
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -423,6 +425,25 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
 #End Region
+
+#Region "Working with Original File Docs"
+            ''' <summary>
+            '''  Save Changes after updating metadata of specific format
+            ''' </summary>
+            Public Shared Sub SaveFileAfterMetadataUpdate()
+                'ExStart:SaveFileAfterMetadataUpdate
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' update document properties
+                docFormat.DocumentProperties.Author = "Joe Doe"
+                docFormat.DocumentProperties.Company = "Aspose"
+
+                ' and commit changes
+                docFormat.Save()
+                'ExEnd:SaveFileAfterMetadataUpdate
+            End Sub
+#End Region
         End Class
 
         Public NotInheritable Class Pdf
@@ -430,7 +451,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
             ' initialize file path
             'ExStart:SourcePdfFilePath
-            Private Const filePath As String = "Documents/Pdf/sample.pdf"
+            Private Const filePath As String = "Documents/Pdf/Annotated.pdf"
             'ExEnd:SourcePdfFilePath
 #Region "working with builtin document properties"
             ''' <summary>
@@ -643,8 +664,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     Console.WriteLine("Keywords: {0}", pdfPackage.Keywords)
                     Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion)
-                    Console.WriteLine("Producer: {0}", pdfPackage.Producer)
                     'ExEnd:GetXMPPropertiesPdfFormat
+                    Console.WriteLine("Producer: {0}", pdfPackage.Producer)
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -1182,6 +1203,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 
         End Class
+
+
         Public NotInheritable Class MSProject
             Private Sub New()
             End Sub
@@ -1196,7 +1219,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Public Shared Sub GetMetadata()
                 Try
                     'ExStart:GetMetadataMppFormat
-                    '' initialize MppFormat
+                    ' initialize MppFormat
                     Dim mppFormat As New MppFormat(Common.MapSourceFilePath(filePath))
 
                     ' get document properties
@@ -1209,54 +1232,67 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         Console.WriteLine("Company: {0}", properties.Company)
                         ' get Keywords 
                         Console.WriteLine("Keywords: {0}", properties.Keywords)
+                        'ExEnd:GetMetadataMppFormat
                     End If
-                    'ExEnd:GetMetadataMppFormat
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
+
+        Public NotInheritable Class MSVisio
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceMSProjectFilePath
+            Private Const filePath As String = "Documents/MSVisio/sample.vdx"
+            'ExEnd:SourceMSProjectFilePath
+
+            ''' <summary>
+            ''' Gets properties of MS Visio file  
+            ''' </summary> 
+            Public Shared Sub GetMetadata()
+                Try
+                    'ExStart:GetMetadataMppFormat
+                    ' initialize MppFormat
+                    Dim mppFormat As New MppFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get document properties
+                    Dim properties As MppMetadata = mppFormat.GetProperties()
+
+                    If mppFormat IsNot Nothing Then
+                        ' get Author 
+                        Console.WriteLine("Author: {0}", properties.Author)
+                        ' get Company 
+                        Console.WriteLine("Company: {0}", properties.Title)
+                        'ExEnd:GetMetadataMppFormat
+                    End If
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
 
+
+            ''' <summary>
+            ''' Sets properties of MS Project file  
+            ''' </summary> 
+            Public Shared Sub SetProperties()
+                ' initialize VisioFormat
+                Dim visioFormat As New VisioFormat(Common.MapSourceFilePath(filePath))
+
+                ' update creator
+                visioFormat.DocumentProperties.Creator = "John Doe"
+
+                ' update title
+                visioFormat.DocumentProperties.Title = "Example Title"
+
+                ' commit changes
+                visioFormat.Save()
+
+                Console.WriteLine("Creator: {0}: ", visioFormat.DocumentProperties.Creator)
+                Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title)
+            End Sub
         End Class
-
-        ''' <summary>
-        ''' Compares metadata of two documents and displays result 
-        ''' </summary> 
-        Public Shared Sub CompareDocument(firstDocument As String, secondDocument As String, type As ComparerSearchType)
-            Try
-                'ExStart:ComparisonAPI
-                firstDocument = Common.MapSourceFilePath(firstDocument)
-                secondDocument = Common.MapSourceFilePath(secondDocument)
-
-                Dim differnces As MetadataPropertyCollection = ComparisonFacade.CompareDocuments(firstDocument, secondDocument, type)
-
-                For Each [property] As MetadataProperty In differnces
-                    Console.WriteLine("{0} : {1}", [property].Name, [property].Value)
-                Next
-                'ExEnd:ComparisonAPI
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
-        ''' <summary>
-        ''' Searches metadata in document 
-        ''' </summary> 
-        Public Shared Sub SearchMetadata(filePath As String, propertyName As String, searchCondition As SearchCondition)
-            Try
-                'ExStart:DocumentSearchAPI
-                filePath = Common.MapSourceFilePath(filePath)
-
-                Dim properties As MetadataPropertyCollection = SearchFacade.ScanDocument(filePath, propertyName, searchCondition)
-
-                For Each [property] As MetadataProperty In properties
-                    Console.WriteLine("{0} : {1}", [property].Name, [property].Value)
-                Next
-                'ExEnd:DocumentSearchAPI
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
 
         ''' <summary>
         ''' Detects document protection
@@ -1299,42 +1335,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Try
 
         End Sub
-        ''' <summary>
-        ''' Replaces author name in document using custom ReplaceHandler
-        ''' </summary> 
-        Public Shared Sub ReplaceAuthorName(filePath As String)
-            Try
-                'ExStart:ReplaceAuthorName
-                ' initialize custom handler, send output path using constructor
-                Dim replaceHandler As IReplaceHandler(Of MetadataProperty) = New AuthorReplaceHandler(Common.MapDestinationFilePath(filePath))
 
-                ' replace author
-                Dim affectedPropertiesCount As Integer = SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), replaceHandler)
-                'ExEnd:ReplaceAuthorName
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
-        ''' <summary>
-        ''' Replaces author name in document using custom ReplaceHandler
-        ''' </summary> 
-        Public Shared Sub ReplaceMetadataProperties(filePath As String)
-            Try
-                'ExStart:ReplaceMetadataProperties
-                ' replace 'author' value
-                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "Author", "Jack London", SearchCondition.Matches, Common.MapDestinationFilePath(filePath))
-
-                ' replace all properties contained 'co' to 'some value'
-
-                SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), "co", "some value", SearchCondition.Contains, Common.MapDestinationFilePath(filePath))
-                'ExEnd:ReplaceMetadataProperties
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
     End Class
 End Namespace
-
-
