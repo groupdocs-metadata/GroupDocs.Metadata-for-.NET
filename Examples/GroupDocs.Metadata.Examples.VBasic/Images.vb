@@ -37,7 +37,7 @@ Namespace GroupDocs.Metadata.Examples.CSharp
             End Sub
             ' initialize file path
             'ExStart:SourceJP2FilePath
-            Private Const filePath As String = "Images/JP2/ExifSample.jpeg"
+            Private Const filePath As String = "Images/JP2/ExifSample.jp2"
             'ExEnd:SourceJP2FilePath
 
 #Region "working with XMP data"
@@ -67,11 +67,11 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                 End Try
             End Sub
             ''' <summary>
-            ''' Removes XMP data of Jpeg file and creates output file
+            ''' Removes XMP data of Jpeg2000 file and creates output file
             ''' </summary> 
             Public Shared Sub RemoveXMPData()
                 Try
-                    'ExStart:RemoveXmpPropertiesJpegImage
+                    'ExStart:RemoveXmpPropertiesJp2Image
                     ' initialize JP2Format
                     Dim jp2Format As New Jp2Format(Common.MapSourceFilePath(filePath))
 
@@ -81,7 +81,7 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     ' commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath))
 
-                    'ExEnd:RemoveXmpPropertiesJP2Image
+                    'ExEnd:RemoveXmpPropertiesJp2Image
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
@@ -141,7 +141,6 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
-
             ''' <summary>
             ''' Read Metadata of JP2 Format
             ''' </summary> 
@@ -162,7 +161,6 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
                     For Each comm As var In comments
                         Console.WriteLine("Comments: {0}", comm)
-
                         'ExEnd:ReadMetadataJP2
                     Next
                 Catch exp As Exception
@@ -735,11 +733,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp
             Public Shared Sub UpdateIPTCMetadataOfJPEG()
                 Try
                     'ExStart:UpdateIPTCMetadataOfJPEG
-                    ' path to the jpg file
-                    Dim path As String = "Images/Jpeg/sample.jpg"
 
                     ' initialize JpegFormat
-                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(path))
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
                     ' initialize IptcCollection
                     Dim collection As New IptcCollection()
@@ -766,11 +762,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp
             Public Shared Sub RemoveIPTCMetadataOfJPEG()
                 Try
                     'ExStart:RemoveIPTCMetadataOfJPEG
-                    ' path to the jpg file
-                    Dim path As String = "Images/Jpeg/sample.jpg"
 
                     ' initialize JpegFormat
-                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(path))
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
                     ' remove iptc
                     jpegFormat.RemoveIptc()

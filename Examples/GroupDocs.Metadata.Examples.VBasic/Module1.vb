@@ -158,6 +158,22 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
             '#Region "Working with Images"
 
+            '#Region "Working with Jpeg2000"
+
+            'Get XMP properties of Jpeg2000 image
+            Images.JP2.GetXMPProperties()
+
+            'Update XMP properties of Jpeg2000 image
+            Images.JP2.UpdateXMPProperties()
+
+            'Read Metadata of JP2 Format
+            Images.JP2.ReadMetadataJP2()
+
+            'Remove XMP properties of Jpeg2000 image
+            Images.JP2.RemoveXMPData()
+
+            '#End Region
+
             '#Region "Working with Gif"
 
             'Get XMP properties of Gif image

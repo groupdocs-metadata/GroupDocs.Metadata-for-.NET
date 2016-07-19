@@ -18,7 +18,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
              * Uncomment following function if you have product license.
              */
             Common.ApplyLicense();
-
+            
             #region Working with Documents
 
             #region Working with Doc Files
@@ -159,6 +159,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #region Working with Images
+            
+            #region Working with Jpeg2000
+            
+            //Get XMP properties of Jpeg2000 image
+            Images.JP2.GetXMPProperties();
+        
+            //Update XMP properties of Jpeg2000 image
+            Images.JP2.UpdateXMPProperties();
+            
+            //Read Metadata of JP2 Format
+            Images.JP2.ReadMetadataJP2();
+
+            //Remove XMP properties of Jpeg2000 image
+            Images.JP2.RemoveXMPData();
+            
+            #endregion
 
             #region Working with Gif
 
@@ -367,7 +383,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExEnd:FormatRecognizerUsage
 
             #endregion
-
+            
             Console.ReadKey();
 
         }

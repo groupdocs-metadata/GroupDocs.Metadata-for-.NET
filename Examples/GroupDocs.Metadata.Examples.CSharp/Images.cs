@@ -36,7 +36,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceJP2FilePath
-            private const string filePath = "Images/JP2/ExifSample.jpeg";
+            private const string filePath = "Images/JP2/ExifSample.jp2";
             //ExEnd:SourceJP2FilePath
 
             #region working with XMP data
@@ -72,13 +72,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             /// <summary>
-            /// Removes XMP data of Jpeg file and creates output file
+            /// Removes XMP data of Jpeg2000 file and creates output file
             /// </summary> 
             public static void RemoveXMPData()
             {
                 try
                 {
-                    //ExStart:RemoveXmpPropertiesJpegImage
+                    //ExStart:RemoveXmpPropertiesJp2Image
                     // initialize JP2Format
                     Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath));
 
@@ -88,7 +88,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath));
 
-                    //ExEnd:RemoveXmpPropertiesJP2Image
+                    //ExEnd:RemoveXmpPropertiesJp2Image
                     Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
@@ -156,7 +156,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-
             /// <summary>
             /// Read Metadata of JP2 Format
             /// </summary> 
@@ -181,7 +180,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         Console.WriteLine("Comments: {0}", comm);
                     }
-
                     //ExEnd:ReadMetadataJP2
                 }
                 catch (Exception exp)
@@ -840,11 +838,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:UpdateIPTCMetadataOfJPEG
-                    // path to the jpg file
-                    string path = @"Images/Jpeg/sample.jpg";
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(path));
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
 
                     // initialize IptcCollection
                     IptcCollection collection = new IptcCollection();
@@ -875,11 +871,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:RemoveIPTCMetadataOfJPEG
-                    // path to the jpg file
-                    string path = @"Images/Jpeg/sample.jpg";
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(path));
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
 
                     // remove iptc
                     jpegFormat.RemoveIptc();
