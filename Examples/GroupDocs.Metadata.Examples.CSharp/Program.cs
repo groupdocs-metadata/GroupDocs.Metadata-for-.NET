@@ -17,9 +17,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
-
-
+            Common.ApplyLicense();
+            
             #region Working with Documents
 
             #region Working with Doc Files
@@ -56,6 +55,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update document comments
             Documents.Doc.UpdateComments();
+
+            //update metadata and save the original file
+            Documents.Doc.SaveFileAfterMetadataUpdate();
 
             #endregion
 
@@ -144,15 +146,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
-            #region
-            //Get metadata in MS Project file
-            Documents.MSProject.GetMetadata();
+            #region Working with MSVisio Files
+
+            //Set metadata of MSVisio File
+            Documents.MSVisio.SetProperties();
+
+            //Get metadata of MSVisio file
+            Documents.OneNote.GetMetadata();
 
             #endregion
 
             #endregion
 
             #region Working with Images
+            
+            #region Working with Jpeg2000
+            
+            //Get XMP properties of Jpeg2000 image
+            Images.JP2.GetXMPProperties();
+        
+            //Update XMP properties of Jpeg2000 image
+            Images.JP2.UpdateXMPProperties();
+            
+            //Read Metadata of JP2 Format
+            Images.JP2.ReadMetadataJP2();
+
+            //Remove XMP properties of Jpeg2000 image
+            Images.JP2.RemoveXMPData();
+            
+            #endregion
 
             #region Working with Gif
 
@@ -213,6 +235,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update IPTC XMP metadata in Jpeg image
             Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP();
+
+            //Update IPTC metadata in Jpeg image
+            Images.Jpeg.UpdateIPTCMetadataOfJPEG();
+
+            //Remove IPTC metadata in Jpeg image
+            Images.Jpeg.RemoveIPTCMetadataOfJPEG();
+
+            //Detects Bar-Codes in teh Jpeg Image
+            Images.Jpeg.DetectBarcodeinJpeg();
+
             #endregion
 
             #region Working with Png
@@ -236,6 +268,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Images.Png.RemoveXMPData();
 
             #endregion
+
             #region Working with Tiff
 
             //Read Exif Info of Tiff image
@@ -253,6 +286,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #endregion
+
             #region Working with PSD
 
             //Read metadata of PSD file
@@ -262,6 +296,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Images.Psd.GetXMPProperties();
 
             #endregion
+
             #region Working CAD files
 
             //Read basic metadata properties in DWG file
@@ -346,15 +381,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //FormatRecognizer: Recognizes the format of all files in a directory 
             Common.GetFileFormats("Documents/Doc");
             //ExEnd:FormatRecognizerUsage
-            
+
             #endregion
-
-
+            
             Console.ReadKey();
 
         }
-
-
-
     }
 }

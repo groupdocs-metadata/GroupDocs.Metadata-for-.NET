@@ -497,6 +497,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            #region Working with Original File Docs
+            /// <summary>
+            ///  Save Changes after updating metadata of specific format
+            /// </summary>
+            public static void SaveFileAfterMetadataUpdate()
+            {
+                //ExStart:SaveFileAfterMetadataUpdate
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+                
+                // update document properties
+                docFormat.DocumentProperties.Author = "Joe Doe";
+                docFormat.DocumentProperties.Company = "Aspose";
+
+                // and commit changes
+                docFormat.Save();
+                //ExEnd:SaveFileAfterMetadataUpdate
+            }
+            #endregion
         }
 
         public static class Pdf
@@ -1391,7 +1411,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceMSProjectFilePath
             private const string filePath = "Documents/MSProject/sample.mpp";
             //ExEnd:SourceMSProjectFilePath
-
+            
             /// <summary>
             /// Gets properties of MS Project file  
             /// </summary> 
@@ -1422,9 +1442,66 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-
         }
-        
+
+        public static class MSVisio
+        {
+            // initialize file path
+            //ExStart:SourceMSProjectFilePath
+            private const string filePath = "Documents/MSVisio/sample.vdx";
+            //ExEnd:SourceMSProjectFilePath
+
+            /// <summary>
+            /// Gets properties of MS Visio file  
+            /// </summary> 
+            public static void GetMetadata()
+            {
+                try
+                {
+                    //ExStart:GetMetadataMppFormat
+                    // initialize MppFormat
+                    MppFormat mppFormat = new MppFormat(Common.MapSourceFilePath(filePath));
+
+                    // get document properties
+                    MppMetadata properties = mppFormat.GetProperties();
+
+                    if (mppFormat != null)
+                    {
+                        // get Author 
+                        Console.WriteLine("Author: {0}", properties.Author);
+                        // get Company 
+                        Console.WriteLine("Company: {0}", properties.Title);
+                    }
+                    //ExEnd:GetMetadataMppFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+
+            /// <summary>
+            /// Sets properties of MS Project file  
+            /// </summary> 
+            public static void SetProperties()
+            {
+                // initialize VisioFormat
+                VisioFormat visioFormat = new VisioFormat(Common.MapSourceFilePath(filePath));
+
+                // update creator
+                visioFormat.DocumentProperties.Creator = "John Doe";
+
+                // update title
+                visioFormat.DocumentProperties.Title = "Example Title";
+
+                // commit changes
+                visioFormat.Save();
+
+                Console.WriteLine("Creator: {0}: ", visioFormat.DocumentProperties.Creator);
+                Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title);
+            }
+        }
 
         /// <summary>
         /// Detects document protection

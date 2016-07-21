@@ -7,38 +7,178 @@ Imports GroupDocs.Metadata.Xmp.Schemas.DublinCore
 Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Standards.Exif
 Imports GroupDocs.Metadata.Standards.Exif.Jpeg
-Imports GroupDocs.Metadata.Examples.VBasic.Utilities
+Imports GroupDocs.Metadata.Examples.Utilities.CSharp
+Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Standards.Xmp
 Imports GroupDocs.Metadata.Formats.AdobeApplication
 Imports GroupDocs.Metadata.Standards.Psd
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Font
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Dimensions
 Imports GroupDocs.Metadata.Xmp.Schemas.CameraRaw
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Colorant
-Imports GroupDocs.Metadata.Tools.Search
 Imports GroupDocs.Metadata.Xmp.Schemas.BasicJob
 Imports GroupDocs.Metadata.Xmp.Types.Complex.BasicJob
-Imports GroupDocs.Metadata.Xmp.Schemas.Photoshop.ColorMode
 Imports System.Drawing
 Imports System.IO
 Imports GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail
+Imports GroupDocs.Metadata.Tools.Search
 Imports GroupDocs.Metadata.Formats.Cad
 Imports GroupDocs.Metadata.Standards.Cad
 Imports GroupDocs.Metadata.Tools.Comparison
-Imports GroupDocs.Metadata.Tools
-Imports GroupDocs.Metadata.Xmp.Schemas.Iptc
-Imports GroupDocs.Metadata.Standards.Xmp
 Imports GroupDocs.Metadata.Standards.Iptc
+Imports GroupDocs.Metadata.Xmp.Schemas.Iptc
 
-Namespace GroupDocs.Metadata.Examples.VBasic
+Namespace GroupDocs.Metadata.Examples.CSharp
     Public NotInheritable Class Images
         Private Sub New()
         End Sub
+        Public NotInheritable Class JP2
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceJP2FilePath
+            Private Const filePath As String = "Images/JP2/ExifSample.jp2"
+            'ExEnd:SourceJP2FilePath
+
+#Region "working with XMP data"
+            ''' <summary>
+            '''Gets XMP properties from JP2 file
+            ''' </summary> 
+            Public Shared Sub GetXMPProperties()
+                Try
+                    'ExStart:GetXmpPropertiesJP2Image
+                    ' initialize JP2Format
+                    Dim jp2Format As New Jp2Format(Common.MapSourceFilePath(filePath))
+
+                    ' get XMP data
+                    Dim xmpProperties As XmpProperties = jp2Format.GetXmpProperties()
+
+                    ' show XMP data
+                    For Each key As String In xmpProperties.Keys
+                        Try
+                            Dim xmpNodeView As XmpNodeView = xmpProperties(key)
+                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value)
+                        Catch
+                        End Try
+                        'ExEnd:GetXmpPropertiesJP2Image
+                    Next
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Removes XMP data of Jpeg2000 file and creates output file
+            ''' </summary> 
+            Public Shared Sub RemoveXMPData()
+                Try
+                    'ExStart:RemoveXmpPropertiesJp2Image
+                    ' initialize JP2Format
+                    Dim jp2Format As New Jp2Format(Common.MapSourceFilePath(filePath))
+
+                    ' remove XMP package
+                    jp2Format.RemoveXmpData()
+
+                    ' commit changes
+                    jp2Format.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:RemoveXmpPropertiesJp2Image
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates XMP data of JP2 file and creates output file
+            ''' </summary> 
+            Public Shared Sub UpdateXMPProperties()
+                Try
+                    'ExStart:UpdateXmpPropertiesJpegImage
+                    ' initialize JP2Format
+                    Dim jp2Format As New Jp2Format(Common.MapSourceFilePath(filePath))
+
+                    ' get xmp wrapper
+                    Dim xmpPacket As XmpPacketWrapper = jp2Format.GetXmpData()
+
+                    ' create xmp wrapper if not exists
+                    If xmpPacket Is Nothing Then
+                        xmpPacket = New XmpPacketWrapper()
+                    End If
+
+                    ' check if DublinCore schema exists
+                    If Not xmpPacket.ContainsPackage(Namespaces.DublinCore) Then
+                        ' if not - add DublinCore schema
+                        xmpPacket.AddPackage(New DublinCorePackage())
+                    End If
+
+                    ' get DublinCore package
+                    Dim dublinCorePackage As DublinCorePackage = DirectCast(xmpPacket.GetPackage(Namespaces.DublinCore), DublinCorePackage)
+
+                    Dim authorName As String = "New author"
+                    Dim description As String = "New description"
+                    Dim subject As String = "New subject"
+                    Dim publisher As String = "New publisher"
+                    Dim title As String = "New title"
+
+                    ' set author
+                    dublinCorePackage.SetAuthor(authorName)
+                    ' set description
+                    dublinCorePackage.SetDescription(description)
+                    ' set subject
+                    dublinCorePackage.SetSubject(subject)
+                    ' set publisher
+                    dublinCorePackage.SetPublisher(publisher)
+                    ' set title
+                    dublinCorePackage.SetTitle(title)
+                    ' update XMP package
+                    jp2Format.SetXmpData(xmpPacket)
+
+                    ' commit changes
+                    jp2Format.Save(Common.MapDestinationFilePath(filePath))
+
+                    'ExEnd:UpdateXmpPropertiesJP2Image
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Read Metadata of JP2 Format
+            ''' </summary> 
+            Public Shared Sub ReadMetadataJP2()
+                Try
+                    'ExStart:ReadMetadataJP2
+                    ' initialize Jpeg2000 format
+                    Dim jp2Format As New Jp2Format((Common.MapSourceFilePath(filePath)))
+
+                    ' get height
+                    Dim width As Integer = jp2Format.Width
+
+                    ' get height
+                    Dim height As Integer = jp2Format.Height
+
+                    ' get comments
+                    Dim comments As String() = jp2Format.Comments
+
+                    For Each comm As var In comments
+                        Console.WriteLine("Comments: {0}", comm)
+                        'ExEnd:ReadMetadataJP2
+                    Next
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
+        End Class
+
         Public NotInheritable Class Jpeg
             Private Sub New()
             End Sub
             ' initialize file path
             'ExStart:SourceJpegFilePath
-            Private Const filePath As String = "Images/Jpeg/sample.jpg"
+
+            Private Const filePath As String = "Images/Jpeg/ExifSample.jpeg"
+            Private Const barcodeFilePath As String = "Images/Jpeg/barcode.jpeg"
+
             'ExEnd:SourceJpegFilePath
 #Region "working with XMP data"
             ''' <summary>
@@ -239,10 +379,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
-                    }
+					jobs(0) = New Job() With { _
+						Key .Id = "1", _
+						Key .Name = "test job" _
+					}
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -283,9 +423,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
-                    }
+					Dim thumbnail As New Thumbnail() With { _
+						Key .ImageBase64 = base64String _
+					}
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -544,8 +684,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     Console.WriteLine("Country Code: {0}", iptcCorePackage.CountryCode)
                     Console.WriteLine("Sub Location: {0}", iptcCorePackage.Sublocation)
-                    Console.WriteLine("Intellectual Genre: {0}", iptcCorePackage.IntellectualGenre)
                     'ExEnd:GetIPTCPhotoMetadataFromXMP
+                    Console.WriteLine("Intellectual Genre: {0}", iptcCorePackage.IntellectualGenre)
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -581,14 +721,117 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     iptcCorePackage.IntellectualGenre = "music"
 
                     ' save changes to another file
-                    MetadataUtility.UpdateMetadata(Common.MapSourceFilePath(filePath), New XmpMetadata(xmpWrapper), Common.MapDestinationFilePath(filePath))
                     'ExEnd:UpdateIPTCPhotoMetadataFromXMP
+                    MetadataUtility.UpdateMetadata(Common.MapSourceFilePath(filePath), New XmpMetadata(xmpWrapper), Common.MapDestinationFilePath(filePath))
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Updates IPTC metadata of Jpeg file
+            ''' </summary>
+            Public Shared Sub UpdateIPTCMetadataOfJPEG()
+                Try
+                    'ExStart:UpdateIPTCMetadataOfJPEG
+
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' initialize IptcCollection
+                    Dim collection As New IptcCollection()
+
+                    ' add string property
+                    collection.Add(New IptcProperty(2, "category", 15, "formats"))
+
+                    ' add integer property
+                    collection.Add(New IptcProperty(2, "urgency", 10, 5))
+
+                    ' update iptc metadata
+                    jpegFormat.UpdateIptc(collection)
+
+                    ' and commit changes
+                    'ExEnd:UpdateIPTCPhotoMetadataFromXMP
+                    jpegFormat.Save()
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            ''' Remove IPTC metadata of Jpeg file
+            ''' </summary>
+            Public Shared Sub RemoveIPTCMetadataOfJPEG()
+                Try
+                    'ExStart:RemoveIPTCMetadataOfJPEG
+
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' remove iptc
+                    jpegFormat.RemoveIptc()
+
+                    ' and commit changes
+                    'ExEnd:RemoveIPTCMetadataOfJPEG
+                    jpegFormat.Save()
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+            ''' <summary>
+            '''Update ApplicationRecord/EnvelopeRecord datasets of IPTC metadata
+            ''' </summary>
+            Public Shared Sub UpdateIPTCMetadataOfApplicationRecord()
+                Try
+                    'ExStart:UpdateIPTCMetadataOfApplicationRecord
+
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' initialize dataset
+                    Dim applicationRecord As New IptcApplicationRecord()
+
+                    ' update category
+                    applicationRecord.Category = "category"
+
+                    ' update copyright notice
+                    applicationRecord.CopyrightNotice = "Aspose"
+
+                    ' update release date
+                    applicationRecord.ReleaseDate = DateTime.Now
+
+                    ' update iptc metadata
+                    jpegFormat.UpdateIptc(applicationRecord)
+
+                    ' and commit changes
+
+                    'EXEnd:UpdateIPTCMetadataOfApplicationRecord
+                    jpegFormat.Save()
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
 #End Region
+
+            ''' <summary>
+            ''' Detects barcodes in the Jpeg
+            ''' </summary>
+            Public Shared Sub DetectBarcodeinJpeg()
+                'ExStart:DetectBarcodeinJpeg
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(barcodeFilePath))
+
+                ' get barcodes:  UPCA, UPCE, EAN13
+                Dim barCodes As String() = jpegFormat.GetBarCodeTypes()
+
+                Console.WriteLine("Barcode Detected:" & vbLf)
+
+                For i As Integer = 0 To barCodes.Length - 1
+                    Console.WriteLine("Code Type: {0}", barCodes(i).ToString())
+                Next
+
+                'ExEnd:DetectBarcodeinJpeg
+            End Sub
         End Class
+
         Public NotInheritable Class Gif
             Private Sub New()
             End Sub
@@ -794,10 +1037,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
-                    }
+					jobs(0) = New Job() With { _
+						Key .Id = "1", _
+						Key .Name = "test job" _
+					}
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -838,9 +1081,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
-                    }
+					Dim thumbnail As New Thumbnail() With { _
+						Key .ImageBase64 = base64String _
+					}
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -1086,10 +1329,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
-                    }
+					jobs(0) = New Job() With { _
+						Key .Id = "1", _
+						Key .Name = "test job" _
+					}
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -1130,9 +1373,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
-                    }
+					Dim thumbnail As New Thumbnail() With { _
+						Key .ImageBase64 = base64String _
+					}
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -1321,6 +1564,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
             ''' <summary>
             ''' Gets XMP Properies in PSD file
             ''' </summary> 
@@ -1334,18 +1578,17 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop
 
                     ' get color mode
-                    Dim colorMode As Global.GroupDocs.Metadata.Xmp.Schemas.Photoshop.ColorMode = photoshopMetadata.ColorMode
+                    Dim colorMode As ColorMode = DirectCast(photoshopMetadata.ColorMode, ColorMode)
 
                     ' get IIC profile
-
-                    Dim iicProfile = photoshopMetadata.ICCProfile
                     'ExEnd:GetXMPPropertiesPSDFormat
+                    Dim iicProfile = photoshopMetadata.ICCProfile
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
-
         End Class
+
         Public NotInheritable Class Cad
             Private Sub New()
             End Sub
@@ -1406,48 +1649,5 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
         End Class
-        ''' <summary>
-        ''' Searches metadata in image 
-        ''' </summary> 
-        Public Shared Sub SearchMetadata(filePath As String, propertyName As String, searchCondition As SearchCondition)
-            Try
-                'ExStart:ImageSearchAPI
-                filePath = Common.MapSourceFilePath(filePath)
-
-                ' looking the software
-                Dim properties As ExifProperty() = SearchFacade.ScanExif(filePath, propertyName, searchCondition)
-
-                For Each [property] As ExifProperty In properties
-                    Console.WriteLine("{0} : {1}", [property].Name, [property].ToString())
-                    'ExEnd:ImageSearchAPI
-                Next
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
-
-        ''' <summary>
-        ''' Compares EXIF metadata of two jpeg files 
-        ''' </summary> 
-        Public Shared Sub CompareExifMetadata(firstFile As String, secondFile As String, type As ComparerSearchType)
-            Try
-                'ExStart:ExifComparisonAPI
-                firstFile = Common.MapSourceFilePath(firstFile)
-                secondFile = Common.MapSourceFilePath(secondFile)
-
-                Dim differences As ExifProperty() = ComparisonFacade.CompareExif(firstFile, secondFile, type)
-
-                For Each [property] As ExifProperty In differences
-                    Console.WriteLine("{0} : {1}", [property].Name, [property].ToString())
-                    'ExEnd:ExifComparisonAPI
-                Next
-            Catch exp As Exception
-                Console.WriteLine("Exception occurred: " + exp.Message)
-            End Try
-
-        End Sub
     End Class
-
 End Namespace
-

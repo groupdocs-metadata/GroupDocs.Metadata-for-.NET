@@ -15,7 +15,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
         //ExStart:CommonProperties
         private const string SourceFolderPath = "../../../Data/Source/";
         private const string DestinationFolderPath = "../../../Data/Destination/";
-        private const string LicenseFilePath = "Groupdocs.Total.lic";
+        private const string LicenseFilePath = @"D:\ASPOSE\LICENSE\GroupDocs.Total.lic";
         //ExEnd:CommonProperties
 
         //ExStart:MapSourceFilePath
