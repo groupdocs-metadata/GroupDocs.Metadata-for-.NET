@@ -1,5 +1,4 @@
-﻿
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata.Formats.Image
@@ -7,7 +6,7 @@ Imports GroupDocs.Metadata.Xmp.Schemas.DublinCore
 Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Standards.Exif
 Imports GroupDocs.Metadata.Standards.Exif.Jpeg
-Imports GroupDocs.Metadata.Examples.Utilities.CSharp
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata.Standards.Xmp
 Imports GroupDocs.Metadata.Formats.AdobeApplication
@@ -27,8 +26,10 @@ Imports GroupDocs.Metadata.Standards.Cad
 Imports GroupDocs.Metadata.Tools.Comparison
 Imports GroupDocs.Metadata.Standards.Iptc
 Imports GroupDocs.Metadata.Xmp.Schemas.Iptc
+Imports GroupDocs.Metadata.Standards.Tiff
+Imports GroupDocs.Metadata.Xmp.Schemas
 
-Namespace GroupDocs.Metadata.Examples.CSharp
+Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
         Private Sub New()
         End Sub
@@ -159,7 +160,7 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     ' get comments
                     Dim comments As String() = jp2Format.Comments
 
-                    For Each comm As var In comments
+                    For Each comm As String In comments
                         Console.WriteLine("Comments: {0}", comm)
                         'ExEnd:ReadMetadataJP2
                     Next
@@ -379,10 +380,10 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-					jobs(0) = New Job() With { _
-						Key .Id = "1", _
-						Key .Name = "test job" _
-					}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -423,9 +424,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     End Using
 
                     ' create image thumbnail
-					Dim thumbnail As New Thumbnail() With { _
-						Key .ImageBase64 = base64String _
-					}
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -1037,10 +1038,10 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-					jobs(0) = New Job() With { _
-						Key .Id = "1", _
-						Key .Name = "test job" _
-					}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -1081,9 +1082,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     End Using
 
                     ' create image thumbnail
-					Dim thumbnail As New Thumbnail() With { _
-						Key .ImageBase64 = base64String _
-					}
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -1329,10 +1330,10 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-					jobs(0) = New Job() With { _
-						Key .Id = "1", _
-						Key .Name = "test job" _
-					}
+                    jobs(0) = New Job() With { _
+                         .Id = "1", _
+                         .Name = "test job" _
+                    }
 
                     ' update schema
                     package.SetJobs(jobs)
@@ -1373,9 +1374,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     End Using
 
                     ' create image thumbnail
-					Dim thumbnail As New Thumbnail() With { _
-						Key .ImageBase64 = base64String _
-					}
+                    Dim thumbnail As New Thumbnail() With { _
+                         .ImageBase64 = base64String _
+                    }
 
                     ' initialize array and add thumbnail
                     Dim thumbnails As Thumbnail() = New Thumbnail(0) {}
@@ -1417,8 +1418,6 @@ Namespace GroupDocs.Metadata.Examples.CSharp
         End Class
 
         Public NotInheritable Class Tiff
-            Private Sub New()
-            End Sub
             ' initialize file path
             'ExStart:SourceTiffFilePath
             Private Const filePath As String = "Images/Tiff/sample.tif"
@@ -1503,7 +1502,7 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                 End Try
             End Sub
             ''' <summary>
-            ''' Removes Exif info from Tiff file
+            ''' Removes Exif info from Tiff image
             ''' </summary> 
             Public Shared Sub RemoveExifInfo()
                 Try
@@ -1520,6 +1519,76 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
+            End Sub
+
+            ''' <summary>
+            '''Gets XMP properties from Tiff file
+            ''' </summary> 
+            Public Shared Sub GetXMPProperties()
+                Try
+                    'ExStart:GetXMPPropertiesTiffImage 
+                    ' initialize PngFormat
+                    Dim tiff As New TiffFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get xmp
+                    Dim xmpPacket As XmpPacketWrapper = tiff.GetXmpData()
+
+                    If xmpPacket IsNot Nothing Then
+                        ' show XMP data
+                        Dim xmpProperties As XmpProperties = tiff.GetXmpProperties()
+
+                        ' show XMP data
+                        For Each key As String In xmpProperties.Keys
+                            Try
+                                Dim xmpNodeView As XmpNodeView = xmpProperties(key)
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value)
+                            Catch
+                            End Try
+                        Next
+                    Else
+                        Console.WriteLine("No XMP data found.")
+                        'ExEnd:GetXMPPropertiesTiffImage 
+                    End If
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            '''ReadTiff File Directory Tags from Tiff file
+            ''' </summary>
+            Public Shared Sub ReadTiffFileDirectoryTags()
+                'ExStart:ReadTiffFileDirectoryTags 
+                ' initialize PngFormat
+                Dim tiffFormat As New TiffFormat(Common.MapSourceFilePath(filePath))
+
+                ' get IFD
+                Dim directories As TiffIfd() = tiffFormat.ImageFileDirectories
+
+                If directories.Length > 0 Then
+                    ' get tags of the first IFD
+                    Dim tags As TiffTag() = tiffFormat.GetTags(directories(0))
+
+                    ' write tags to the console
+                    For Each tiffTag As TiffTag In tags
+                        Console.WriteLine("tag: {0}", tiffTag.DefinedTag)
+                        Select Case tiffTag.TagType
+                            Case TiffTagType.Ascii
+                                Dim asciiTag As TiffAsciiTag = TryCast(tiffTag, TiffAsciiTag)
+                                Console.WriteLine("Value: {0}", asciiTag.Value)
+                                Exit Select
+
+                            Case TiffTagType.[Short]
+                                Dim shortTag As TiffShortTag = TryCast(tiffTag, TiffShortTag)
+                                Console.WriteLine("Value: {0}", shortTag.Value)
+                                Exit Select
+                            Case Else
+
+                                Exit Select
+                        End Select
+                    Next
+                End If
+                'ExEnd:ReadTiffFileDirectoryTags
             End Sub
 
         End Class
@@ -1578,7 +1647,7 @@ Namespace GroupDocs.Metadata.Examples.CSharp
                     Dim photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop
 
                     ' get color mode
-                    Dim colorMode As ColorMode = DirectCast(photoshopMetadata.ColorMode, ColorMode)
+                    Dim colorMode As ColorMode = photoshopMetadata.ColorMode
 
                     ' get IIC profile
                     'ExEnd:GetXMPPropertiesPSDFormat

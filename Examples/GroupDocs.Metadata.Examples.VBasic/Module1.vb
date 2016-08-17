@@ -3,19 +3,18 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata
-Imports GroupDocs.Metadata.Examples.Utilities.CSharp
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Tools.Search
-Imports GroupDocs.Metadata.Tools.Comparison
-Imports GroupDocs.Metadata.Examples.CSharp.Utilities
+Imports GroupDocs.Metadata.Tools.Comparison 
 
-Namespace GroupDocs.Metadata.Examples.CSharp
+Namespace GroupDocs.Metadata.Examples.VBasic
     Class Program
-        Private Shared Sub Main(args As String())
+        Public Shared Sub Main(args As String())
             ' Apply product license
-            '             * Uncomment following function if you have product license.
+            ' Uncomment following function if you have product license.
             '             
 
-            Common.ApplyLicense()
+            'Common.ApplyLicense()
 
             '#Region "Working with Documents"
 
@@ -280,6 +279,13 @@ Namespace GroupDocs.Metadata.Examples.CSharp
 
             'Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo()
+
+            'Reads Xmp Metadata from Tiff Image
+            Images.Tiff.GetXMPProperties()
+
+            'Reads Image Directory Tags from Tiff Image
+            Images.Tiff.ReadTiffFileDirectoryTags()
+
 
             '#End Region
 

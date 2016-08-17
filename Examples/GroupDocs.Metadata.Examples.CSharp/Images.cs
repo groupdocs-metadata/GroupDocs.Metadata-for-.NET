@@ -27,6 +27,7 @@ using GroupDocs.Metadata.Standards.Cad;
 using GroupDocs.Metadata.Tools.Comparison;
 using GroupDocs.Metadata.Standards.Iptc;
 using GroupDocs.Metadata.Xmp.Schemas.Iptc;
+using GroupDocs.Metadata.Standards.Tiff;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -1716,7 +1717,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             /// <summary>
-            /// Removes Exif info from Tiff file
+            /// Removes Exif info from Tiff image
             /// </summary> 
             public static void RemoveExifInfo()
             {
@@ -1737,6 +1738,89 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
+            }
+
+            /// <summary>
+            ///Gets XMP properties from Tiff file
+            /// </summary> 
+            public static void GetXMPProperties()
+            {
+                try
+                {
+                    //ExStart:GetXMPPropertiesTiffImage 
+                    // initialize TiffFormat
+                    TiffFormat tiff = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // get xmp
+                    XmpPacketWrapper xmpPacket = tiff.GetXmpData();
+                    
+                    if (xmpPacket != null)
+                    {
+                        // show XMP data
+                        XmpProperties xmpProperties = tiff.GetXmpProperties();
+
+                        // show XMP data
+                        foreach (string key in xmpProperties.Keys)
+                        {
+                            try
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
+                            catch { }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No XMP data found.");
+                    }
+                    //ExEnd:GetXMPPropertiesTiffImage 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            ///Reads File Directory Tags from Tiff file
+            /// </summary>
+            public static void ReadTiffFileDirectoryTags()
+            {
+                //ExStart:ReadTiffFileDirectoryTags 
+                // initialize TiffFormat
+                TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                // get IFD
+                TiffIfd[] directories = tiffFormat.ImageFileDirectories;
+
+                if (directories.Length > 0)
+                {
+                    // get tags of the first IFD
+                    TiffTag[] tags = tiffFormat.GetTags(directories[0]);
+
+                    // write tags to the console
+                    foreach (TiffTag tiffTag in tags)
+                    {
+                        Console.WriteLine("tag: {0}", tiffTag.DefinedTag);
+                        switch (tiffTag.TagType)
+                        {
+                            case TiffTagType.Ascii:
+                                TiffAsciiTag asciiTag = tiffTag as TiffAsciiTag;
+                                Console.WriteLine("Value: {0}", asciiTag.Value);
+                                break;
+
+                            case TiffTagType.Short:
+                                TiffShortTag shortTag = tiffTag as TiffShortTag;
+                                Console.WriteLine("Value: {0}", shortTag.Value);
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                }
+                //ExEnd:ReadTiffFileDirectoryTags
             }
 
         }

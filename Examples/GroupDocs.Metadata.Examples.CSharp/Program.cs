@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
             
             #region Working with Documents
 
@@ -80,7 +80,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove custom property of Ppt file
             Documents.Ppt.RemoveCustomProperties();
+            
+            //Gets Comments, and Hidden Slides of Ppt file
+            Documents.Ppt.GetHiddenData();
 
+            //Removes Comments, and Hidden Slides of Ppt File
+            Documents.Ppt.RemoveHiddenData();
+           
             #endregion
 
             #region Working with Xls Files
@@ -102,7 +108,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove custom property of Xls file
             Documents.Xls.RemoveCustomProperties();
+            
+            //Get Comments and Hidden Sheets in Xls file
+            Documents.Xls.GetHiddenData();
 
+            //Remove HiddenSheets and Comments in Xls file
+            Documents.Xls.RemoveHiddenData();
+            
             #endregion
 
             #region Working with Pdf Files
@@ -270,7 +282,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #region Working with Tiff
-
+            
+            //Get XMP properties of Tiff image
+            Images.Tiff.GetXMPProperties();
+            
+            //Read File Directory Tags of Tiff Image
+            Images.Tiff.ReadTiffFileDirectoryTags();
+            
             //Read Exif Info of Tiff image
             Images.Tiff.GetExifInfo();
 
@@ -282,7 +300,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo();
-
+            
             #endregion
 
             #endregion
