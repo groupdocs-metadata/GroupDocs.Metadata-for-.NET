@@ -4,24 +4,21 @@ Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Tools.Comparison
 Imports GroupDocs.Metadata.Tools.Search
+Imports GroupDocs.Metadata.Tools.Comparison 
 
 Namespace GroupDocs.Metadata.Examples.VBasic
-
-    Module Module1
-
-        Sub Main()
+    Class Program
+        Public Shared Sub Main(args As String())
             ' Apply product license
-            '             * Uncomment following function if you have product license.
+            ' Uncomment following function if you have product license.
             '             
 
-            ''Common.ApplyLicense()
+            'Common.ApplyLicense()
 
+            '#Region "Working with Documents"
 
-            ''#Region "Working with Documents"
-
-            ''#Region "Working with Doc Files"
+            '#Region "Working with Doc Files"
 
             'Get document properties of Doc file
             Documents.Doc.GetDocumentProperties()
@@ -56,9 +53,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Update document comments
             Documents.Doc.UpdateComments()
 
-            ''#End Region
+            'update metadata and save the original file
+            Documents.Doc.SaveFileAfterMetadataUpdate()
 
-            ''#Region "Working with Ppt Files"
+            '#End Region
+
+            '#Region "Working with Ppt Files"
 
             'Get document properties of Ppt file
             Documents.Ppt.GetDocumentProperties()
@@ -78,9 +78,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove custom property of Ppt file
             Documents.Ppt.RemoveCustomProperties()
 
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with Xls Files"
+            '#Region "Working with Xls Files"
 
             'Get document properties of Xls file
             Documents.Xls.GetDocumentProperties()
@@ -100,9 +100,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove custom property of Xls file
             Documents.Xls.RemoveCustomProperties()
 
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with Pdf Files"
+            '#Region "Working with Pdf Files"
 
             'Get document properties of Pdf file
             Documents.Pdf.GetDocumentProperties()
@@ -131,9 +131,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove hidden data in Pdf file
             Documents.Pdf.RemoveHiddenData()
 
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with OneNote Files"
+            '#Region "Working with OneNote Files"
 
             'Get metadata of OneNote file
             Documents.OneNote.GetMetadata()
@@ -141,19 +141,39 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Get Pages Info of OneNote file 
             Documents.OneNote.GetPagesInfo()
 
-            ''#End Region
+            '#End Region
 
-            ''#Region ""
-            'Get metadata in MS Project file
-            Documents.MSProject.GetMetadata()
+            '#Region "Working with MSVisio Files"
 
-            ''#End Region
+            'Set metadata of MSVisio File
+            Documents.MSVisio.SetProperties()
 
-            ''#End Region
+            'Get metadata of MSVisio file
+            Documents.OneNote.GetMetadata()
 
-            ''#Region "Working with Images"
+            '#End Region
 
-            ''#Region "Working with Gif"
+            '#End Region
+
+            '#Region "Working with Images"
+
+            '#Region "Working with Jpeg2000"
+
+            'Get XMP properties of Jpeg2000 image
+            Images.JP2.GetXMPProperties()
+
+            'Update XMP properties of Jpeg2000 image
+            Images.JP2.UpdateXMPProperties()
+
+            'Read Metadata of JP2 Format
+            Images.JP2.ReadMetadataJP2()
+
+            'Remove XMP properties of Jpeg2000 image
+            Images.JP2.RemoveXMPData()
+
+            '#End Region
+
+            '#Region "Working with Gif"
 
             'Get XMP properties of Gif image
             Images.Gif.GetXMPProperties()
@@ -164,9 +184,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove XMP properties of Gif image
             Images.Gif.RemoveXMPProperties()
 
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with Jpeg"
+            '#Region "Working with Jpeg"
 
             'Get XMP properties of Jpeg image
             Images.Jpeg.GetXMPProperties()
@@ -212,9 +232,19 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Update IPTC XMP metadata in Jpeg image
             Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP()
-            ''#End Region
 
-            ''#Region "Working with Png"
+            'Update IPTC metadata in Jpeg image
+            Images.Jpeg.UpdateIPTCMetadataOfJPEG()
+
+            'Remove IPTC metadata in Jpeg image
+            Images.Jpeg.RemoveIPTCMetadataOfJPEG()
+
+            'Detects Bar-Codes in teh Jpeg Image
+            Images.Jpeg.DetectBarcodeinJpeg()
+
+            '#End Region
+
+            '#Region "Working with Png"
 
             'Get XMP properties of Png image
             Images.Png.GetXMPProperties()
@@ -234,8 +264,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove XMP properties of Png image
             Images.Png.RemoveXMPData()
 
-            ''#End Region
-            ''#Region "Working with Tiff"
+            '#End Region
+
+            '#Region "Working with Tiff"
 
             'Read Exif Info of Tiff image
             Images.Tiff.GetExifInfo()
@@ -249,10 +280,18 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo()
 
-            ''#End Region
+            'Reads Xmp Metadata from Tiff Image
+            Images.Tiff.GetXMPProperties()
 
-            ''#End Region
-            ''#Region "Working with PSD"
+            'Reads Image Directory Tags from Tiff Image
+            Images.Tiff.ReadTiffFileDirectoryTags()
+
+
+            '#End Region
+
+            '#End Region
+
+            '#Region "Working with PSD"
 
             'Read metadata of PSD file
             Images.Psd.GetPsdInfo()
@@ -260,18 +299,19 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Read XMP metadata of PSD file
             Images.Psd.GetXMPProperties()
 
-            ''#End Region
-            ''#Region "Working CAD files"
+            '#End Region
+
+            '#Region "Working CAD files"
 
             'Read basic metadata properties in DWG file
             Images.Cad.GetMetadatPropertiesInDWG()
 
             'Read basic metadata properties in DXF file
             Images.Cad.GetMetadatPropertiesInDXF()
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working emails"
-            ''#Region "Working with Outlook Email"
+            '#Region "Working emails"
+            '#Region "Working with Outlook Email"
             'Get Outlook email metadata
             Emails.OutLook.GetOutlookEmailMetadata()
 
@@ -280,9 +320,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove Outlook email metadata
             Emails.OutLook.RemoveOutlookEmailMetadata()
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with Email message"
+            '#Region "Working with Email message"
             'Get email metadata
             Emails.Eml.GetEmailMetadata()
 
@@ -291,10 +331,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove email metadata
             Emails.Eml.RemoveEmailMetadata()
-            ''#End Region
-            ''#End Region
+            '#End Region
+            '#End Region
 
-            ''#Region "Working with APIs"
+            '#Region "Working with APIs"
 
             'Compare document metadata
             APIs.Document.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference)
@@ -320,9 +360,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Export metadata
             APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel)
 
-            ''#End Region
+            '#End Region
 
-            ''#Region "Working with Utilities"
+            '#Region "Working with Utilities"
             'ExStart:DocCleanerUsage
             'DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
             Dim docCleaner As New DocCleaner("Documents/Doc")
@@ -346,11 +386,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Common.GetFileFormats("Documents/Doc")
             'ExEnd:FormatRecognizerUsage
 
-            ''#End Region
+            '#End Region
 
             Console.ReadKey()
 
         End Sub
-
-    End Module
+    End Class
 End Namespace
