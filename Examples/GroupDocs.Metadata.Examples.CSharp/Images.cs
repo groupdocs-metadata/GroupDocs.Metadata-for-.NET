@@ -3,31 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Formats.Image;
-using GroupDocs.Metadata.Xmp.Schemas.DublinCore;
+using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Xmp;
-using GroupDocs.Metadata.Standards.Exif;
-using GroupDocs.Metadata.Standards.Exif.Jpeg;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Standards.Xmp;
-using GroupDocs.Metadata.Formats.AdobeApplication;
-using GroupDocs.Metadata.Standards.Psd;
-using GroupDocs.Metadata.Xmp.Types.Complex.Font;
-using GroupDocs.Metadata.Xmp.Types.Complex.Dimensions;
-using GroupDocs.Metadata.Xmp.Schemas.CameraRaw;
-using GroupDocs.Metadata.Xmp.Types.Complex.Colorant;
-using GroupDocs.Metadata.Xmp.Schemas.BasicJob;
-using GroupDocs.Metadata.Xmp.Types.Complex.BasicJob;
+//using GroupDocs.Metadata.Formats.AdobeApplication;
 using System.Drawing;
 using System.IO;
-using GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail;
-using GroupDocs.Metadata.Tools.Search;
 using GroupDocs.Metadata.Formats.Cad;
-using GroupDocs.Metadata.Standards.Cad;
-using GroupDocs.Metadata.Tools.Comparison;
-using GroupDocs.Metadata.Standards.Iptc;
-using GroupDocs.Metadata.Xmp.Schemas.Iptc;
-using GroupDocs.Metadata.Standards.Tiff;
+using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Formats.Audio;
+//using GroupDocs.Metadata.Standards.Tiff;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -698,6 +684,62 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Read Specific Exif tag
+            /// </summary>
+            /// 
+            public static void ReadExifTag()
+            {
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                // get EXIF data
+                ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                if (exifInfo != null)
+                {
+                    // get specific tag using indexer
+                    TiffAsciiTag artist = (TiffAsciiTag)exifInfo[TiffTagIdEnum.Artist];
+                    if (artist != null)
+                    {
+                        Console.WriteLine("Artist: {0}", artist.Value);
+                    }
+                }
+
+            }
+
+            /// <summary>
+            /// Read All Exif tags
+            /// </summary>
+            /// 
+            public static void ReadAllExifTags()
+            {
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                // get EXIF data
+                ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                if (exifInfo != null)
+                {
+                    TiffTag[] allTags = exifInfo.Tags;
+
+                    foreach (TiffTag tag in allTags)
+                    {
+                        switch (tag.TagType)
+                        {
+                            case TiffTagType.Ascii:
+                                TiffAsciiTag asciiTag = tag as TiffAsciiTag;
+                                Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value);
+                                break;
+
+                            case TiffTagType.Rational:
+                                TiffRationalTag rationalTag = tag as TiffRationalTag;
+                                Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value);
+                                break;
+                        }//end of switch
+                    }//end of foreach
+                }//end of if (exifInfo != null)
+
+            }
+
             #endregion
 
             #region Working with IPTC Metadata
@@ -1885,8 +1927,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     var photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop;
 
                     // get color mode
-                    ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
-
+                    //ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
+                    PhotoshopColorMode colorMode = (PhotoshopColorMode)photoshopMetadata.ColorMode;
+                    
                     // get IIC profile
                     var iicProfile = photoshopMetadata.ICCProfile;
                     //ExEnd:GetXMPPropertiesPSDFormat
@@ -1965,5 +2008,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
+
+       
     }
 }
