@@ -374,6 +374,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Detect protection in documents
             Documents.DetectProtection("Documents/Doc/sample.doc");
 
+            //Detect document format at runtime in a folder
+            Documents.RuntimeFormatDetection("Documents/Doc");
+
+
             //Compare Exif metadata in images
             APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
 
