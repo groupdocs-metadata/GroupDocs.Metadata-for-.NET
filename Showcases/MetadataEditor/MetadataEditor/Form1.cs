@@ -21,7 +21,9 @@ namespace MetadataEditor
         static frmMain()
         {
             GroupDocs.Metadata.License license = new GroupDocs.Metadata.License();
-            license.SetLicense(@"D:\GroupDocs.Total.lic");
+           
+            //license.SetLicense(@"D:\GroupDocs.Total.lic");
+            license.SetLicense(@"E:\aspose\common\GroupDocs.Total.lic");
         }
 
         public frmMain()

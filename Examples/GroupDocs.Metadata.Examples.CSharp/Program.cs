@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using GroupDocs.Metadata;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Tools.Search;
-using GroupDocs.Metadata.Tools.Comparison;
+using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Examples.CSharp.Utilities;
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -257,6 +256,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Detects Bar-Codes in teh Jpeg Image
             Images.Jpeg.DetectBarcodeinJpeg();
 
+            // Read Specific Exif tag
+            Images.Jpeg.ReadExifTag();
+
+            // Read All Exif tags
+            Images.Jpeg.ReadAllExifTags();
+
             #endregion
 
             #region Working with Png
@@ -368,6 +373,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Detect protection in documents
             Documents.DetectProtection("Documents/Doc/sample.doc");
 
+            //Detect document format at runtime in a folder
+            Documents.RuntimeFormatDetection("Documents/Doc");
+
+
             //Compare Exif metadata in images
             APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
 
@@ -401,7 +410,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExEnd:FormatRecognizerUsage
 
             #endregion
+
+            #region Working with MP3 Files
             
+            //Export metadata of Mp3 format to Excel.
+            AudioFormats.Mp3.ExportMetadataToExcel();
+
+            // Detect MP3 audio format
+            AudioFormats.Mp3.DetectMp3Format();
+
+            //Read ID3v2 tag in MP3 format
+            AudioFormats.Mp3.ReadID3v2Tag();
+
+            //Read ID3v1 tag in MP3 format
+            AudioFormats.Mp3.ReadID3v1Tag();
+
+            //Read MPEG audio information
+            AudioFormats.Mp3.ReadMPEGAudioInfo();
+
+            #endregion
+       
             Console.ReadKey();
 
         }

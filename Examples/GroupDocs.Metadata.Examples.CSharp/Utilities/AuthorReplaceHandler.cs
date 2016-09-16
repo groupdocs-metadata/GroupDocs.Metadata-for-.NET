@@ -1,5 +1,5 @@
-﻿using GroupDocs.Metadata.MetadataProperties;
-using GroupDocs.Metadata.Tools.Search;
+﻿using GroupDocs.Metadata;
+using GroupDocs.Metadata.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;

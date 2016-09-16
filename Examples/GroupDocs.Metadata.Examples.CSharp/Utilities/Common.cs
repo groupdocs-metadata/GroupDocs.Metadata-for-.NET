@@ -5,7 +5,6 @@ using System.Text;
 using System.IO;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
-using GroupDocs.Metadata.MetadataProperties;
 using GroupDocs.Metadata.Formats;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
