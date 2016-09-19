@@ -1733,8 +1733,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         }
 
         /// <summary>
-        /// Detect document format at runtime
-        /// Code for a specific directory
+        /// Detect document format at runtime 
         /// Enhancement in ver. 1.7
         /// </summary>
         public static void RuntimeFormatDetection(string directoryPath)

@@ -1,11 +1,9 @@
-﻿
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata
-Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Tools.Search
-Imports GroupDocs.Metadata.Tools.Comparison 
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities 
+Imports GroupDocs.Metadata.Tools
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Class Program
@@ -78,6 +76,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove custom property of Ppt file
             Documents.Ppt.RemoveCustomProperties()
 
+            'Gets Comments, and Hidden Slides of Ppt file
+            Documents.Ppt.GetHiddenData()
+
+            'Removes Comments, and Hidden Slides of Ppt File
+            Documents.Ppt.RemoveHiddenData()
+
             '#End Region
 
             '#Region "Working with Xls Files"
@@ -99,6 +103,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove custom property of Xls file
             Documents.Xls.RemoveCustomProperties()
+
+            'Get Comments and Hidden Sheets in Xls file
+            Documents.Xls.GetHiddenData()
+
+            'Remove HiddenSheets and Comments in Xls file
+            Documents.Xls.RemoveHiddenData()
 
             '#End Region
 
@@ -242,6 +252,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Detects Bar-Codes in teh Jpeg Image
             Images.Jpeg.DetectBarcodeinJpeg()
 
+            ' Read Specific Exif tag
+            Images.Jpeg.ReadExifTag()
+
+            ' Read All Exif tags
+            Images.Jpeg.ReadAllExifTags()
+
             '#End Region
 
             '#Region "Working with Png"
@@ -268,6 +284,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             '#Region "Working with Tiff"
 
+            'Get XMP properties of Tiff image
+            Images.Tiff.GetXMPProperties()
+
+            'Read File Directory Tags of Tiff Image
+            Images.Tiff.ReadTiffFileDirectoryTags()
+
             'Read Exif Info of Tiff image
             Images.Tiff.GetExifInfo()
 
@@ -279,13 +301,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo()
-
-            'Reads Xmp Metadata from Tiff Image
-            Images.Tiff.GetXMPProperties()
-
-            'Reads Image Directory Tags from Tiff Image
-            Images.Tiff.ReadTiffFileDirectoryTags()
-
 
             '#End Region
 
@@ -354,6 +369,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Detect protection in documents
             Documents.DetectProtection("Documents/Doc/sample.doc")
 
+            'Detect document format at runtime in a folder
+            Documents.RuntimeFormatDetection("Documents/Doc")
+
+
             'Compare Exif metadata in images
             APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference)
 
@@ -387,6 +406,26 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExEnd:FormatRecognizerUsage
 
             '#End Region
+
+            '#Region "Working with MP3 Files"
+
+            'Export metadata of Mp3 format to Excel.
+            AudioFormats.Mp3.ExportMetadataToExcel()
+
+            ' Detect MP3 audio format
+            AudioFormats.Mp3.DetectMp3Format()
+
+            'Read ID3v2 tag in MP3 format
+            AudioFormats.Mp3.ReadID3v2Tag()
+
+            'Read ID3v1 tag in MP3 format
+            AudioFormats.Mp3.ReadID3v1Tag()
+
+            'Read MPEG audio information
+            AudioFormats.Mp3.ReadMPEGAudioInfo()
+
+            '#End Region
+
 
             Console.ReadKey()
 

@@ -1,24 +1,14 @@
-﻿
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata.Formats.Document
-Imports GroupDocs.Metadata.Standards.Doc
-Imports GroupDocs.Metadata.MetadataProperties
-Imports GroupDocs.Metadata.Standards.Pdf
-Imports GroupDocs.Metadata.Standards.Ppt
-Imports GroupDocs.Metadata.Standards.Xls
-Imports GroupDocs.Metadata.Tools 
-Imports GroupDocs.Metadata.Formats.OneNote
-Imports GroupDocs.Metadata.Standards.OneNote
-Imports GroupDocs.Metadata.Tools.Comparison
-Imports GroupDocs.Metadata.Tools.Search
-Imports GroupDocs.Metadata.Xmp.Schemas.Pdf
+Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata.Formats
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Formats.Project
-Imports GroupDocs.Metadata.Standards.Project
 Imports GroupDocs.Metadata.Exceptions
+Imports GroupDocs.Metadata.Xmp.Schemes 
+Imports System.IO
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Documents
@@ -364,7 +354,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
 
                     ' inspect document
-                    Dim inspectionResult As InspectionResult = docFormat.InspectDocument()
+                    Dim inspectionResult As DocInspectionResult = docFormat.InspectDocument()
 
                     ' display comments
                     If inspectionResult.Comments.Length > 0 Then
@@ -407,7 +397,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
 
                     ' inspect document
-                    Dim inspectionResult As InspectionResult = docFormat.InspectDocument()
+                    Dim inspectionResult As DocInspectionResult = docFormat.InspectDocument()
 
                     ' if merge fields are presented
                     If inspectionResult.Fields.Length > 0 Then
@@ -1480,6 +1470,32 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Try
 
         End Sub
+        ''' <summary>
+        ''' Detects document format at runtime 
+        ''' Enhancement in version 1.7
+        ''' </summary>
+        Public Shared Sub RuntimeFormatDetection(directoryPath As String)
+            'ExStart:RuntimeFormatDetection
+            'string directoryPath = @"C:\\download files";
+            Dim files As String() = Directory.GetFiles(directoryPath)
 
+            For Each path__1 As String In files
+                Dim metadata As Global.GroupDocs.Metadata.Metadata = MetadataUtility.ExtractSpecificMetadata(path__1, MetadataType.Document)
+                ' check if file has document format
+                If metadata Is Nothing Then
+                    Continue For
+                End If
+
+                Console.WriteLine("File: {0}" & vbLf, Path.GetFileName(path__1))
+
+                Dim values As IEnumerable(Of KeyValuePair(Of [String], PropertyValue)) = DirectCast(metadata, IEnumerable(Of KeyValuePair(Of [String], PropertyValue)))
+
+                For Each keyValuePair As KeyValuePair(Of String, PropertyValue) In values
+                    Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value)
+                Next
+                Console.WriteLine(vbLf & "**************************************************" & vbLf)
+            Next
+            'ExEnd:RuntimeFormatDetection
+        End Sub
     End Class
 End Namespace

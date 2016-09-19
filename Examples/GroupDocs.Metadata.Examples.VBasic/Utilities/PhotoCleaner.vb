@@ -1,10 +1,9 @@
-﻿
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
-Imports GroupDocs.Metadata.Tools
-Imports GroupDocs.Metadata.Standards.Exif
+Imports GroupDocs.Metadata.Tools 
 Imports System.IO
+Imports GroupDocs.Metadata.Formats.Image
 
 Namespace Utilities
     'ExStart:PhotoCleaner
@@ -82,4 +81,4 @@ Namespace Utilities
     'ExEnd:PhotoCleaner
 End Namespace
 
- 
+

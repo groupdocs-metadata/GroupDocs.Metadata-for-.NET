@@ -5,8 +5,7 @@ Imports System.Text
 Imports System.IO
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
-Imports GroupDocs.Metadata.Formats
-Imports GroupDocs.Metadata.MetadataProperties
+Imports GroupDocs.Metadata.Formats 
 
 Namespace Utilities
     Public NotInheritable Class Common
