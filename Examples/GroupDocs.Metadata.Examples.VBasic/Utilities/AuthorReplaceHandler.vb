@@ -1,5 +1,5 @@
-﻿Imports GroupDocs.Metadata.Tools.Search
-Imports GroupDocs.Metadata.MetadataProperties
+﻿Imports GroupDocs.Metadata.Tools
+
 'ExStart:AuthorReplaceHandler
 ''' <summary>
 ''' This class updates author to 'Jack London'

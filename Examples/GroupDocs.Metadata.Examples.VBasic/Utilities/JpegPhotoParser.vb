@@ -5,8 +5,7 @@ Imports System.Text
 Imports GroupDocs.Metadata.Formats
 Imports System.IO
 Imports GroupDocs.Metadata.Tools
-Imports GroupDocs.Metadata.Formats.Image
-Imports GroupDocs.Metadata.Standards.Exif.Jpeg
+Imports GroupDocs.Metadata.Formats.Image 
 
 Namespace Utilities
     'ExStart:JpegPhotoParser

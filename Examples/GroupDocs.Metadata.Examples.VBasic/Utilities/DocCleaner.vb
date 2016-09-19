@@ -3,11 +3,9 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata.Formats
-Imports GroupDocs.Metadata.Formats.Document
-Imports GroupDocs.Metadata.Standards.Doc
+Imports GroupDocs.Metadata.Formats.Document 
 Imports GroupDocs.Metadata.Tools
-Imports System.IO
-Imports GroupDocs.Metadata.MetadataProperties
+Imports System.IO 
 
 Namespace Utilities
     'ExStart:DocCleaner

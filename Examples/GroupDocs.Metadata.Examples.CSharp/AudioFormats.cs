@@ -17,8 +17,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path and directory path
             //ExStart:SourceMp3FilePath + SourceMp3DirectoryPath
             //string dir = @"C:\\download files";
-            private const string directoryPath = "Images/Mp3";
-            private const string filePath = "Images/Mp3/test.mp3";
+            private const string directoryPath = "Audio/Mp3";
+            private const string filePath = "Audio/Mp3/test.mp3";
             //ExEnd:SourceMp3FilePath + SourceMp3DirectoryPath
 
 

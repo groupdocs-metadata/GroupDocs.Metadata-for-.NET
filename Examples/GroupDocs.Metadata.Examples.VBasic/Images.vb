@@ -1,33 +1,15 @@
 ﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
-Imports GroupDocs.Metadata.Formats.Image
-Imports GroupDocs.Metadata.Xmp.Schemas.DublinCore
-Imports GroupDocs.Metadata.Xmp
-Imports GroupDocs.Metadata.Standards.Exif
-Imports GroupDocs.Metadata.Standards.Exif.Jpeg
+Imports GroupDocs.Metadata.Formats.Image 
+Imports GroupDocs.Metadata.Xmp 
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Tools
-Imports GroupDocs.Metadata.Standards.Xmp
-Imports GroupDocs.Metadata.Formats.AdobeApplication
-Imports GroupDocs.Metadata.Standards.Psd
-Imports GroupDocs.Metadata.Xmp.Types.Complex.Font
-Imports GroupDocs.Metadata.Xmp.Types.Complex.Dimensions
-Imports GroupDocs.Metadata.Xmp.Schemas.CameraRaw
-Imports GroupDocs.Metadata.Xmp.Types.Complex.Colorant
-Imports GroupDocs.Metadata.Xmp.Schemas.BasicJob
-Imports GroupDocs.Metadata.Xmp.Types.Complex.BasicJob
+Imports GroupDocs.Metadata.Tools 
 Imports System.Drawing
-Imports System.IO
-Imports GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail
-Imports GroupDocs.Metadata.Tools.Search
-Imports GroupDocs.Metadata.Formats.Cad
-Imports GroupDocs.Metadata.Standards.Cad
-Imports GroupDocs.Metadata.Tools.Comparison
-Imports GroupDocs.Metadata.Standards.Iptc
-Imports GroupDocs.Metadata.Xmp.Schemas.Iptc
-Imports GroupDocs.Metadata.Standards.Tiff
-Imports GroupDocs.Metadata.Xmp.Schemas
+Imports System.IO 
+Imports GroupDocs.Metadata.Formats.Cad 
+Imports GroupDocs.Metadata.Xmp.Schemes
+Imports System.Drawing.Imaging
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -614,6 +596,58 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
+            End Sub
+            ''' <summary>
+            ''' Reads Specific Exif tag
+            ''' </summary>
+            ''' 
+            Public Shared Sub ReadExifTag()
+
+                'ExStart:ReadExifTag
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                ' get EXIF data
+                Dim exifInfo As ExifInfo = jpegFormat.GetExifInfo()
+                If exifInfo IsNot Nothing Then
+                    ' get specific tag using indexer
+                    Dim artist As TiffAsciiTag = DirectCast(exifInfo(TiffTagIdEnum.Artist), TiffAsciiTag)
+                    If artist IsNot Nothing Then
+                        Console.WriteLine("Artist: {0}", artist.Value)
+                    End If
+                End If
+                'ExEnd:ReadExifTag
+            End Sub
+            ''' <summary>
+            ''' Reads All Exif tags
+            ''' </summary>
+            ''' 
+            Public Shared Sub ReadAllExifTags()
+                'ExStart:ReadAllExifTags
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                ' get EXIF data
+                Dim exifInfo As ExifInfo = jpegFormat.GetExifInfo()
+                If exifInfo IsNot Nothing Then
+                    Dim allTags As TiffTag() = exifInfo.Tags
+
+                    For Each tag As TiffTag In allTags
+                        Select Case tag.TagType
+                            Case TiffTagType.Ascii
+                                Dim asciiTag As TiffAsciiTag = TryCast(tag, TiffAsciiTag)
+                                Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value)
+                                Exit Select
+
+                            Case TiffTagType.Rational
+                                Dim rationalTag As TiffRationalTag = TryCast(tag, TiffRationalTag)
+                                Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value)
+                                Exit Select
+                                'end of switch
+                        End Select
+                        'end of foreach
+                    Next
+                End If
+                'ExEnd:ReadAllExifTags
+                'end of if (exifInfo != null)
             End Sub
 #End Region
 

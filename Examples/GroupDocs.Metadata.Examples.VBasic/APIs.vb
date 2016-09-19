@@ -1,16 +1,14 @@
 ﻿Imports GroupDocs.Metadata.Examples.VBasic.Utilities 
-Imports GroupDocs.Metadata.MetadataProperties
-Imports GroupDocs.Metadata.Standards.Exif
-Imports GroupDocs.Metadata.Tools.Comparison
-Imports GroupDocs.Metadata.Tools.Export
-Imports GroupDocs.Metadata.Tools.Search
+Imports GroupDocs.Metadata
+Imports GroupDocs.Metadata.Formats.Image
+Imports GroupDocs.Metadata.Tools
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.IO
 Imports System.Linq
 Imports System.Text
 
-Namespace GroupDocs.Metadata.Examples.Vbasic
+Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class APIs
         Private Sub New()
         End Sub
