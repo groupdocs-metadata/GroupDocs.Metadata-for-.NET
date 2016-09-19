@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Document;
-using GroupDocs.Metadata.Standards.Doc;
 using GroupDocs.Metadata.Tools;
 using System.IO;
-using GroupDocs.Metadata.MetadataProperties; 
+using GroupDocs.Metadata; 
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {

@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Formats.Document;
-using GroupDocs.Metadata.Standards.Doc;
-using GroupDocs.Metadata.MetadataProperties;
-using GroupDocs.Metadata.Standards.Pdf;
-using GroupDocs.Metadata.Standards.Ppt;
-using GroupDocs.Metadata.Standards.Xls;
+using GroupDocs.Metadata;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Formats.OneNote;
-using GroupDocs.Metadata.Standards.OneNote;
-using GroupDocs.Metadata.Tools.Comparison;
-using GroupDocs.Metadata.Tools.Search;
-using GroupDocs.Metadata.Xmp.Schemas.Pdf;
+using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Examples.CSharp.Utilities;
 using GroupDocs.Metadata.Formats.Project;
-using GroupDocs.Metadata.Standards.Project;
+//using GroupDocs.Metadata.Standards.Project;
 using GroupDocs.Metadata.Exceptions;
+using System.IO;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -424,7 +417,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
                     // inspect document
-                    InspectionResult inspectionResult = docFormat.InspectDocument();
+                    //InspectionResult inspectionResult = docFormat.InspectDocument();
+                    DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                     // display comments
                     if (inspectionResult.Comments.Length > 0)
@@ -477,7 +471,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
                     // inspect document
-                    InspectionResult inspectionResult = docFormat.InspectDocument();
+                    //InspectionResult inspectionResult = docFormat.InspectDocument();
+                    DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                     // if merge fields are presented
                     if (inspectionResult.Fields.Length > 0)
@@ -1681,6 +1676,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
+       
         /// <summary>
         /// Detects document protection
         /// </summary> 
@@ -1736,5 +1732,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
+        /// <summary>
+        /// Detect document format at runtime
+        /// Code for a specific directory
+        /// Enhancement in ver. 1.7
+        /// </summary>
+        public static void RuntimeFormatDetection(string directoryPath)
+        {
+            //string directoryPath = @"C:\\download files";
+            string[] files = Directory.GetFiles(directoryPath);
+
+            foreach (string path in files)
+            {
+                Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.Document);
+                // check if file has document format
+                if (metadata == null)
+                {
+                    continue;
+                }
+
+                Console.WriteLine("File: {0}\n", Path.GetFileName(path));
+
+                IEnumerable<KeyValuePair<String, PropertyValue>> values = (IEnumerable<KeyValuePair<String, PropertyValue>>)metadata;
+
+                foreach (KeyValuePair<string, PropertyValue> keyValuePair in values)
+                {
+                    Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value);
+                }
+
+                Console.WriteLine("\n**************************************************\n");
+            }
+        }
+    
     }
 }
