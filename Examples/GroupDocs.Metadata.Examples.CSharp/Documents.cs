@@ -10,7 +10,6 @@ using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Examples.CSharp.Utilities;
 using GroupDocs.Metadata.Formats.Project;
-//using GroupDocs.Metadata.Standards.Project;
 using GroupDocs.Metadata.Exceptions;
 using System.IO;
 

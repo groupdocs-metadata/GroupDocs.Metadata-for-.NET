@@ -6,14 +6,12 @@ using GroupDocs.Metadata.Formats.Image;
 using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Tools;
-//using GroupDocs.Metadata.Formats.AdobeApplication;
+using GroupDocs.Metadata.Tools; 
 using System.Drawing;
 using System.IO;
 using GroupDocs.Metadata.Formats.Cad;
 using GroupDocs.Metadata.Formats;
-using GroupDocs.Metadata.Formats.Audio;
-//using GroupDocs.Metadata.Standards.Tiff;
+using GroupDocs.Metadata.Formats.Audio; 
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
