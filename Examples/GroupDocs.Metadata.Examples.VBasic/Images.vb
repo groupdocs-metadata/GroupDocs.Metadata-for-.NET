@@ -865,6 +865,57 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                 'ExEnd:DetectBarcodeinJpeg
             End Sub
+
+            ''' <summary>
+            ''' Removes Photoshop Metadata in Jpeg format
+            ''' </summary> 
+            Public Shared Sub RemovePhotoshopMetadata()
+                Try
+                    'ExStart:RemovePhotoshopMetadataJpegImage
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+                    
+                        ' remove photoshop metadata
+                        jpegFormat.RemovePhotoshopData()
+
+                        ' and commit changes
+                        jpegFormat.Save()
+                    'ExEnd:RemovePhotoshopMetadataJpegImage 
+
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Reads Image Resource Blocks (native PSD metadata) in Jpeg format
+            ''' </summary> 
+            Public Shared Sub ReadImageResourceBlocks()
+                Try
+                    'ExStart:ReadImageResourceBlocksInJpeg
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' check if JPEG contain photoshop metadata
+                    If jpegFormat.HasImageResourceBlocks Then
+
+                        ' get native photoshop metadata
+                        Dim imageResource As ImageResourceMetadata = jpegFormat.GetImageResourceBlocks()
+
+                        ' display all blocks
+                        For Each imageResourceBlock As ImageResourceBlock In imageResource.Blocks
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize)
+
+                            ' create your own logic to parse image resource block
+                            Dim data As Byte() = imageResourceBlock.Data
+                        Next
+                    End If
+                    'ExEnd:ReadImageResourceBlocksInJpeg
+
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
         End Class
 
         Public NotInheritable Class Gif
@@ -1625,6 +1676,31 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 'ExEnd:ReadTiffFileDirectoryTags
             End Sub
 
+            ''' <summary>
+            ''' Gets IPTC metadata from Tiff file
+            ''' </summary> 
+            Public Shared Sub ReadIPTCMetadata()
+                Try
+                    'ExStart:GetIPTCMetadataInTiff
+                    ' initialize TiffFormat
+                    Dim tiffFormat As New TiffFormat(Common.MapSourceFilePath(filePath))
+
+                    ' check if TIFF contains IPTC metadata
+                    If tiffFormat.HasIptc Then
+                        ' get iptc collection
+                        Dim iptc As IptcCollection = tiffFormat.GetIptc()
+
+                        ' and display it
+                        For Each iptcProperty As IptcProperty In iptc
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name)
+                        Next
+                    End If
+                    'ExEnd:GetIPTCMetadataInTiff
+
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
         End Class
 
         Public NotInheritable Class Psd
@@ -1686,6 +1762,61 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' get IIC profile
                     'ExEnd:GetXMPPropertiesPSDFormat
                     Dim iicProfile = photoshopMetadata.ICCProfile
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Gets IPTC metadata from PSD file
+            ''' </summary> 
+            Public Shared Sub ReadIPTCMetadata()
+                Try
+                    'ExStart:GetIPTCMetadataInPSD
+                    ' initialize PsdFormat
+                    Dim psdFormat As New PsdFormat(Common.MapSourceFilePath(filePath))
+
+                    ' check if PSD contains IPTC metadata
+                    If psdFormat.HasIptc Then
+                        ' get iptc collection
+                        Dim iptc As IptcCollection = psdFormat.GetIptc()
+
+                        ' and display it
+                        For Each iptcProperty As IptcProperty In iptc
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name)
+                        Next
+                    End If
+                    'ExEnd:GetIPTCMetadataInPSD
+
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Reads Image Resource Blocks (native PSD metadata) in PSD format
+            ''' </summary> 
+            Public Shared Sub ReadImageResourceBlocks()
+                Try
+                    'ExStart:ReadImageResourceBlocksInPSD
+                    ' initialize PsdFormat
+                    Dim psdFormat As New PsdFormat(Common.MapSourceFilePath(filePath))
+
+                    ' check if contain Image Resource Blocks
+                    If psdFormat.HasImageResourceBlocks Then
+                        ' get native photoshop metadata
+                        Dim imageResource As ImageResourceMetadata = psdFormat.GetImageResourceBlocks()
+
+                        ' display all blocks
+                        For Each imageResourceBlock As ImageResourceBlock In imageResource.Blocks
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize)
+
+                            ' create your own logic to parse image resource block
+                            Dim data As Byte() = imageResourceBlock.Data
+                        Next
+                    End If
+                    'ExEnd:ReadImageResourceBlocksInPSD
+
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
