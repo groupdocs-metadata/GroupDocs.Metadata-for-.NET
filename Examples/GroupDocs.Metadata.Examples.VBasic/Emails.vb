@@ -2,8 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
-Imports GroupDocs.Metadata.Formats.Email
-Imports GroupDocs.Metadata.Standards.Email
+Imports GroupDocs.Metadata.Formats.Email 
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 
 Namespace GroupDocs.Metadata.Examples.VBasic

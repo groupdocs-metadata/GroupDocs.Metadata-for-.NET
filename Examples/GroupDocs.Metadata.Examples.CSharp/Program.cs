@@ -262,6 +262,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read All Exif tags
             Images.Jpeg.ReadAllExifTags();
 
+            // Read Image Resource Blocks
+            Images.Jpeg.ReadImageResourceBlocks();
+
+            // Remove Photoshop Metadata 
+            Images.Jpeg.RemovePhotoshopMetadata();
+
             #endregion
 
             #region Working with Png
@@ -306,17 +312,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo();
             
+            // Read IPTC Metadata 
+            Images.Tiff.ReadIPTCMetadata();
+
             #endregion
 
             #endregion
 
             #region Working with PSD
 
-            //Read metadata of PSD file
+            // Read metadata of PSD file
             Images.Psd.GetPsdInfo();
 
-            //Read XMP metadata of PSD file
+            // Read XMP metadata of PSD file
             Images.Psd.GetXMPProperties();
+
+            // Read Image Resource Block
+            Images.Psd.ReadImageResourceBlocks();
+
+            // Read IPTC Metadata 
+            Images.Psd.ReadIPTCMetadata();
 
             #endregion
 
@@ -428,8 +443,23 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Read MPEG audio information
             AudioFormats.Mp3.ReadMPEGAudioInfo();
 
+            // Read Layrics3 Tag
+            AudioFormats.Mp3.ReadLayrics3Tag();
+
+            // Update ID3v1Tag
+            AudioFormats.Mp3.UpdateID3v1Tag();
             #endregion
-       
+
+            #region Working with WAV Files
+
+            // Detect WAV format
+            AudioFormats.Wav.DetectWavFormat();
+
+            // Read Audio Details 
+            AudioFormats.Wav.ReadAudioDetails();
+
+            
+            #endregion
             Console.ReadKey();
 
         }

@@ -10,7 +10,6 @@ Namespace GroupDocs.Metadata.Examples.VBasic
         Public Shared Sub Main(args As String())
             ' Apply product license
             ' Uncomment following function if you have product license.
-            '             
 
             'Common.ApplyLicense()
 
@@ -258,6 +257,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ' Read All Exif tags
             Images.Jpeg.ReadAllExifTags()
 
+            ' Read Image Resource Blocks
+            Images.Jpeg.ReadImageResourceBlocks()
+
+            ' Remove Photoshop Metadata 
+            Images.Jpeg.RemovePhotoshopMetadata()
+
             '#End Region
 
             '#Region "Working with Png"
@@ -302,17 +307,26 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Remove Exif Info of Tiff image
             Images.Tiff.RemoveExifInfo()
 
+            ' Read IPTC Metadata 
+            Images.Tiff.ReadIPTCMetadata()
+
             '#End Region
 
             '#End Region
 
             '#Region "Working with PSD"
 
-            'Read metadata of PSD file
+            ' Read metadata of PSD file
             Images.Psd.GetPsdInfo()
 
-            'Read XMP metadata of PSD file
+            ' Read XMP metadata of PSD file
             Images.Psd.GetXMPProperties()
+
+            ' Read Image Resource Block
+            Images.Psd.ReadImageResourceBlocks()
+
+            ' Read IPTC Metadata 
+            Images.Psd.ReadIPTCMetadata()
 
             '#End Region
 
@@ -424,8 +438,22 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Read MPEG audio information
             AudioFormats.Mp3.ReadMPEGAudioInfo()
 
+            ' Read Layrics3 Tag
+            AudioFormats.Mp3.ReadLayrics3Tag()
+
+            ' Update ID3v1Tag
+            AudioFormats.Mp3.UpdateID3v1Tag()
             '#End Region
 
+            '#Region "Working with WAV Files"
+
+            ' Detect WAV format
+            AudioFormats.Wav.DetectWavFormat()
+
+            ' Read Audio Details 
+            AudioFormats.Wav.ReadAudioDetails()
+
+            '#End Region
 
             Console.ReadKey()
 

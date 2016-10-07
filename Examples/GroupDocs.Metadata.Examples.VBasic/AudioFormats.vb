@@ -155,6 +155,37 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
 
             ''' <summary>
+            ''' Updates ID3v1 tag in MP3 format
+            ''' </summary>  
+            Public Shared Sub UpdateID3v1Tag()
+                Try
+                    'ExStart:UpdateID3v1Tag
+                    ' initialize Mp3Format class
+                    Dim mp3Format As New Mp3Format((Common.MapSourceFilePath(filePath)))
+
+                    ' create id3v1 tag
+                    Dim id3Tag As New Id3v1Tag()
+
+                    ' set artist
+                    id3Tag.Artist = "A-ha"
+
+                    ' set title
+                    id3Tag.Title = "Take on me"
+
+                    ' update ID3v1 tag
+                    mp3Format.UpdateId3v1(id3Tag)
+
+                    ' and commit changes
+                    mp3Format.Save()
+                    'ExEnd:UpdateID3v1Tag
+
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+
+            ''' <summary>
             ''' Reads MPEG audio information
             ''' </summary> 
             ''' 
@@ -176,6 +207,103 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     ' display protected bit
                     'ExEnd:ReadMPEGAudioInfo
                     Console.WriteLine("Is protected: {0}", audioInfo.IsProtected)
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Reads Lyrics3 tag in Mp3 format
+            ''' </summary> 
+            Public Shared Sub ReadLayrics3Tag()
+                Try
+                    'ExStart:ReadLayrics3TagInMp3
+                    ' initialize Mp3Format class
+                    Dim mp3Format As New Mp3Format((Common.MapSourceFilePath(filePath)))
+
+                    ' get Lyrics3 v2.00 tag
+                    Dim lyrics3Tag As Lyrics3Tag = mp3Format.Lyrics3v2
+
+                    ' check if Lyrics3 is presented. It could be absent.
+                    If lyrics3Tag IsNot Nothing Then
+                        ' Display defined tag values
+                        Console.WriteLine("Album: {0}", lyrics3Tag.Album)
+                        Console.WriteLine("Artist: {0}", lyrics3Tag.Artist)
+                        Console.WriteLine("Track: {0}", lyrics3Tag.Track)
+
+                        ' get all fields presented in Lyrics3Tag
+                        Dim allFields As Lyrics3Field() = lyrics3Tag.Fields
+
+                        For Each lyrics3Field As Lyrics3Field In allFields
+
+                            Console.WriteLine("Name: {0}, value: {1}", lyrics3Field.Name, lyrics3Field.Value)
+                        Next
+                    End If
+                    'ExEnd:ReadLayrics3TagInMp3
+
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+        End Class
+
+        Public NotInheritable Class Wav
+            Private Sub New()
+            End Sub
+            ' initialize file path and directory path
+            'ExStart:SourceWavFilePath + SourceWavDirectoryPath 
+            Private Const directoryPath As String = "Audio/Wav"
+            Private Const filePath As String = "Audio/Wav/test.wav"
+            'ExEnd:SourceWavFilePath + SourceWavDirectoryPath
+
+            ''' <summary>
+            ''' Detects Wav audio format
+            ''' </summary>
+            Public Shared Sub DetectWavFormat()
+                'ExStart:DetectWavFormat
+                Dim files As String() = Directory.GetFiles(directoryPath)
+
+                For Each path__1 As String In files
+                    ' detect format
+                    Dim format As FormatBase = FormatFactory.RecognizeFormat(path__1)
+                    If format Is Nothing Then
+                        ' skip unsupported format
+                        Continue For
+                    End If
+
+                    If format.Type = DocumentType.Wav Then
+                        Console.WriteLine("File {0} has WAV format", Path.GetFileName(path__1))
+                    End If
+                Next
+                'ExEnd:DetectWavFormat
+            End Sub
+
+            ''' <summary>
+            ''' Reads audio details
+            ''' </summary>
+            Public Shared Sub ReadAudioDetails()
+                Try
+                    'ExStart:ReadAudioDetailsInWav
+                    ' initialize WavFormat class
+                    Dim wavFormat As New WavFormat((Common.MapSourceFilePath(filePath)))
+
+                    ' get audio info
+                    Dim audioInfo As WavAudioInfo = wavFormat.AudioInfo
+
+                    ' display bits per sample
+                    Console.WriteLine("Bits per sample: {0}", audioInfo.BitsPerSample)
+
+                    ' display audio format version
+                    Console.WriteLine("Audio format: {0}", audioInfo.AudioFormat)
+
+                    ' display number of channels
+                    Console.WriteLine("Number of channels: {0}", audioInfo.NumberOfChannels)
+
+                    ' display sample rate
+                    Console.WriteLine("Sample rate: {0}", audioInfo.SampleRate)
+                    'ExEnd:ReadAudioDetailsInWav
+
                 Catch ex As Exception
                     Console.WriteLine(ex.Message)
                 End Try

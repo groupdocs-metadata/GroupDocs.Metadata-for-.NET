@@ -6,12 +6,12 @@ using GroupDocs.Metadata.Formats.Image;
 using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Tools; 
+using GroupDocs.Metadata.Tools;
 using System.Drawing;
 using System.IO;
 using GroupDocs.Metadata.Formats.Cad;
 using GroupDocs.Metadata.Formats;
-using GroupDocs.Metadata.Formats.Audio; 
+using GroupDocs.Metadata.Formats.Audio;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -988,6 +988,65 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                 //ExEnd:DetectBarcodeinJpeg
             }
+
+            /// <summary>
+            /// Removes Photoshop Metadata in Jpeg format
+            /// </summary> 
+            public static void RemovePhotoshopMetadata()
+            {
+                try
+                {
+                    //ExStart:RemovePhotoshopMetadataJpegImage
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // remove photoshop metadata
+                    jpegFormat.RemovePhotoshopData();
+
+                    // and commit changes
+                    jpegFormat.Save();
+                    //ExEnd:RemovePhotoshopMetadataJpegImage 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads Image Resource Blocks (native PSD metadata) in Jpeg format
+            /// </summary> 
+            public static void ReadImageResourceBlocks()
+            {
+                try
+                {
+                    //ExStart:ReadImageResourceBlocksInJpeg
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if JPEG contain photoshop metadata
+                    if (jpegFormat.HasImageResourceBlocks)
+                    {
+
+                        // get native photoshop metadata
+                        ImageResourceMetadata imageResource = jpegFormat.GetImageResourceBlocks();
+
+                        // display all blocks
+                        foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                        {
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
+
+                            // create your own logic to parse image resource block
+                            byte[] data = imageResourceBlock.Data;
+                        }
+                    }
+                    //ExEnd:ReadImageResourceBlocksInJpeg
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
         }
 
         public static class Gif
@@ -1793,7 +1852,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // get xmp
                     XmpPacketWrapper xmpPacket = tiff.GetXmpData();
-                    
+
                     if (xmpPacket != null)
                     {
                         // show XMP data
@@ -1863,6 +1922,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:ReadTiffFileDirectoryTags
             }
 
+            /// <summary>
+            /// Gets IPTC metadata from Tiff file
+            /// </summary> 
+            public static void ReadIPTCMetadata()
+            {
+                try
+                {
+                    //ExStart:GetIPTCMetadataInTiff
+                    // initialize TiffFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if TIFF contains IPTC metadata
+                    if (tiffFormat.HasIptc)
+                    {
+                        // get iptc collection
+                        IptcCollection iptc = tiffFormat.GetIptc();
+
+                        // and display it
+                        foreach (IptcProperty iptcProperty in iptc)
+                        {
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                        }
+                    }
+                    //ExEnd:GetIPTCMetadataInTiff
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
         }
 
         public static class Psd
@@ -1927,10 +2016,75 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // get color mode
                     //ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
                     PhotoshopColorMode colorMode = (PhotoshopColorMode)photoshopMetadata.ColorMode;
-                    
+
                     // get IIC profile
                     var iicProfile = photoshopMetadata.ICCProfile;
                     //ExEnd:GetXMPPropertiesPSDFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Gets IPTC metadata from PSD file
+            /// </summary> 
+            public static void ReadIPTCMetadata()
+            {
+                try
+                {
+                    //ExStart:GetIPTCMetadataInPSD
+                    // initialize PsdFormat
+                    PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if PSD contains IPTC metadata
+                    if (psdFormat.HasIptc)
+                    {
+                        // get iptc collection
+                        IptcCollection iptc = psdFormat.GetIptc();
+
+                        // and display it
+                        foreach (IptcProperty iptcProperty in iptc)
+                        {
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                        }
+                    }
+                    //ExEnd:GetIPTCMetadataInPSD
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads Image Resource Blocks (native PSD metadata) in PSD format
+            /// </summary> 
+            public static void ReadImageResourceBlocks()
+            {
+                try
+                {
+                    //ExStart:ReadImageResourceBlocksInPSD
+                    // initialize PsdFormat
+                    PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if contain Image Resource Blocks
+                    if (psdFormat.HasImageResourceBlocks)
+                    {
+                        // get native photoshop metadata
+                        ImageResourceMetadata imageResource = psdFormat.GetImageResourceBlocks();
+
+                        // display all blocks
+                        foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                        {
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
+
+                            // create your own logic to parse image resource block
+                            byte[] data = imageResourceBlock.Data;
+                        }
+                    }
+                    //ExEnd:ReadImageResourceBlocksInPSD
                 }
                 catch (Exception exp)
                 {
@@ -2007,6 +2161,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-       
+
     }
 }
