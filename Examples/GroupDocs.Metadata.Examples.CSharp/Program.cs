@@ -6,6 +6,7 @@ using GroupDocs.Metadata;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Examples.CSharp.Utilities;
+using System.IO;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -423,6 +424,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //FormatRecognizer: Recognizes the format of all files in a directory 
             Common.GetFileFormats("Documents/Doc");
             //ExEnd:FormatRecognizerUsage
+
+            
+            //DocumentTypeDetector : Gets files of a specific document type
+            //ExStart:DocumentTypeDetectorUsage
+            // path to the input directory
+            const string dir = @"C:\download files";
+            // get all jpeg files
+            string[] files = DocumentTypeDetector.GetFiles(dir, DocumentType.Jpeg);
+            //ExEnd:DocumentTypeDetectorUsage
+
+            //DocumentTypeDetector : Gets files of a specific document type
+            //ExStart:DocumentTypeDetectorUsage2
+            // path to the input directory
+            const string dir1 = @"C:\download files";
+            // initialize DirectoryInfo
+            DirectoryInfo directoryInfo = new DirectoryInfo(dir1);
+            // get files using extension method
+            FileInfo[] files2 = directoryInfo.GetFiles(DocumentType.Jpeg);
+            //ExEnd:DocumentTypeDetectorUsage2
 
             #endregion
 

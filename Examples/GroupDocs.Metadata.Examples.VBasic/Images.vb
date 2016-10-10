@@ -685,10 +685,10 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                         If dsCollection.EnvelopeRecord IsNot Nothing Then
                             ' get model version
-                            Dim modelVersion As System.Nullable(Of Integer) = dsCollection.EnvelopeRecord.ModelVersion
+                            Dim modelVersion As Nullable(Of Integer) = dsCollection.EnvelopeRecord.ModelVersion
 
                             ' get dataSent property
-                            Dim dataSent As System.Nullable(Of DateTime) = dsCollection.EnvelopeRecord.DataSent
+                            Dim dataSent As Nullable(Of DateTime) = dsCollection.EnvelopeRecord.DataSent
                         End If
                         'ExEnd:GetIPTCMetadata
                     End If

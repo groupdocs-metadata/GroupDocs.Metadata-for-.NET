@@ -52,7 +52,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-	<Reference Include="GroupDocs.Metadata, Version=16.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+    <Reference Include="GroupDocs.Metadata, Version=16.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\groupdocs-metadata-dotnet.16.10.0\lib\net\GroupDocs.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -101,8 +101,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utilities\DocCleaner.vb" />
+    <Compile Include="Utilities\DocumentTypeDetector.vb" />
     <Compile Include="Utilities\ExportTypes.vb" />
     <Compile Include="Utilities\JpegPhotoParser.vb" />
+    <Compile Include="Utilities\MyExtension.vb" />
     <Compile Include="Utilities\PhotoCleaner.vb" />
   </ItemGroup>
   <ItemGroup>
