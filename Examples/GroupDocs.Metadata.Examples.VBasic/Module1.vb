@@ -2,8 +2,9 @@
 Imports System.Linq
 Imports System.Text
 Imports GroupDocs.Metadata
-Imports GroupDocs.Metadata.Examples.VBasic.Utilities 
+Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Tools
+Imports System.IO
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Class Program
@@ -418,6 +419,24 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'FormatRecognizer: Recognizes the format of all files in a directory 
             Common.GetFileFormats("Documents/Doc")
             'ExEnd:FormatRecognizerUsage
+
+            'DocumentTypeDetector : Gets files of a specific document type
+            'ExStart:DocumentTypeDetectorUsage
+            ' path to the input directory
+            Const dir As String = "C:\download files"
+            ' get all jpeg files
+            Dim files As String() = DocumentTypeDetector.GetFiles(dir, DocumentType.Jpeg)
+            'ExEnd:DocumentTypeDetectorUsage
+
+            'DocumentTypeDetector : Gets files of a specific document type
+            'ExStart:DocumentTypeDetectorUsage2
+            ' path to the input directory
+            Const dir1 As String = "C:\download files"
+            ' initialize DirectoryInfo
+            Dim directoryInfo As New DirectoryInfo(dir1)
+            ' get files using extension method
+            Dim files2 As FileInfo() = directoryInfo.GetFiles(DocumentType.Jpeg)
+            'ExEnd:DocumentTypeDetectorUsage2
 
             '#End Region
 
