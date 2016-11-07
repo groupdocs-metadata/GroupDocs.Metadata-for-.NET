@@ -94,16 +94,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
 
                     // get ID3 v2 tag
-                    Id3v2Tag id3v2 = mp3Format.Id3v2;
+                    Id3v2Tag id3v2 = mp3Format.Id3v2 ?? new Id3v2Tag();
                     if (id3v2 != null)
                     {
                         // write ID3v2 version
                         Console.WriteLine("Version: {0}", id3v2.Version);
 
                         // write known frames' values
+                        Console.WriteLine("Title: {0}", id3v2.Title);
+                        Console.WriteLine("Artist: {0}", id3v2.Artist);
                         Console.WriteLine("Album: {0}", id3v2.Album);
                         Console.WriteLine("Comment: {0}", id3v2.Comment);
                         Console.WriteLine("Composers: {0}", id3v2.Composers);
+                        Console.WriteLine("Band: {0}", id3v2.Band);
+                        Console.WriteLine("Track Number: {0}", id3v2.TrackNumber);
+                        Console.WriteLine("Year: {0}", id3v2.Year);
 
                         // in trial mode only first 5 frames are available
                         TagFrame[] idFrames = id3v2.Frames;
@@ -119,6 +124,68 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+            /// <summary>
+            /// Updates ID3v2 tag in MP3 format
+            /// </summary> 
+            /// 
+            public static void UpdateID3v2Tag()
+            {
+                try
+                {
+                    //ExStart:UpdateID3v2Tag
+                    // initialize Mp3Format class
+                    Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+
+                    // get id3v2 tag
+                    Id3v2Tag id3Tag = mp3Format.Id3v2 ?? new Id3v2Tag();
+
+                    // set artist
+                    id3Tag.Artist = "A-ha";
+
+                    // set title
+                    id3Tag.Title = "Take on me";
+
+                    // set band
+                    id3Tag.Band = "A-ha";
+
+                    // set comment
+                    id3Tag.Comment = "GroupDocs.Metadata creator";
+
+                    // set track number
+                    id3Tag.TrackNumber = "5";
+
+                    // set year
+                    id3Tag.Year = "1986";
+
+                    // update ID3v2 tag
+                    mp3Format.UpdateId3v2(id3Tag);
+
+                    // and commit changes
+                    mp3Format.Save();
+                    //ExEnd:UpdateID3v2Tag
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Removes ID3v2 tag in MP3 format
+            /// </summary> 
+            public static void RemoveID3v2Tag()
+            {
+                //ExStart:RemoveID3v2Tag
+                // init Mp3Format class
+                Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+
+                // remove ID3v2 tag
+                mp3Format.RemoveId3v2();
+
+                // and commit changes
+                mp3Format.Save();
+                //ExEnd:RemoveID3v2Tag
             }
 
             /// <summary>
@@ -224,6 +291,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // display layer version
                     Console.WriteLine("Layer version: {0}", audioInfo.LayerVersion);
+
+                    // display header offset
+                    Console.WriteLine("Header offset: {0}", audioInfo.HeaderPosition);
+
+                    // display bitrate
+                    Console.WriteLine("Bitrate: {0}", audioInfo.Bitrate);
+
+                    // display frequency
+                    Console.WriteLine("Frequency: {0}", audioInfo.Frequency);
+
+                    // display channel mode
+                    Console.WriteLine("Channel mode: {0}", audioInfo.ChannelMode);
+
+                    // display original bit
+                    Console.WriteLine("Is original: {0}", audioInfo.IsOriginal);
 
                     // display protected bit
                     Console.WriteLine("Is protected: {0}", audioInfo.IsProtected);

@@ -21,7 +21,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceDocFilePath
-            private const string filePath = "Documents/Doc/sample.doc";
+            private const string filePath = "Documents/Doc/sample1.doc";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
 
@@ -1493,6 +1493,38 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            #region working with content type document properties
+            /// <summary>
+            /// Gets content type document properties of Xls file  
+            /// </summary> 
+            public static void GetContentTypeDocumentProperties()
+            {
+                try
+                {
+                    //ExStart:GetContentTypeDocumentPropertiesXlsFormat
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get xls properties
+                    XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
+
+                    // get content properties
+                    XlsContentProperty[] contentProperties = xlsProperties.ContentProperties;
+
+                    foreach (XlsContentProperty property in contentProperties)
+                    {
+                        Console.WriteLine("Property: {0}, value: {1}, type: {2}", property.Name, property.Value, property.PropertyType);
+                    }
+
+                    //ExEnd:GetContentTypeDocumentPropertiesXlsFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
         }
 
         public static class OneNote
@@ -1737,29 +1769,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
         /// </summary>
         public static void RuntimeFormatDetection(string directoryPath)
         {
-            //string directoryPath = @"C:\\download files";
-            string[] files = Directory.GetFiles(directoryPath);
+            try {
+                //string directoryPath = @"C:\\download files";
+                string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
 
-            foreach (string path in files)
-            {
-                Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.Document);
-                // check if file has document format
-                if (metadata == null)
+                foreach (string path in files)
                 {
-                    continue;
+                    Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.Document);
+                    // check if file has document format
+                    if (metadata == null)
+                    {
+                        continue;
+                    }
+
+                    Console.WriteLine("File: {0}\n", Path.GetFileName(path));
+
+                    IEnumerable<KeyValuePair<String, PropertyValue>> values = (IEnumerable<KeyValuePair<String, PropertyValue>>)metadata;
+
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in values)
+                    {
+                        Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value);
+                    }
+
+                    Console.WriteLine("\n**************************************************\n");
                 }
-
-                Console.WriteLine("File: {0}\n", Path.GetFileName(path));
-
-                IEnumerable<KeyValuePair<String, PropertyValue>> values = (IEnumerable<KeyValuePair<String, PropertyValue>>)metadata;
-
-                foreach (KeyValuePair<string, PropertyValue> keyValuePair in values)
-                {
-                    Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value);
-                }
-
-                Console.WriteLine("\n**************************************************\n");
             }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+            
         }
     
     }

@@ -2161,6 +2161,156 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
+        public static class WMF {
+            // initialize file path
+            //ExStart:SourceWmfFilePath
+            private const string wmfFilePath = "Images/Wmf/sample.wmf";
+            //ExEnd:SourceWmfFilePath
+            
+            /// <summary>
+            /// Reads metadata from wmf file
+            /// </summary> 
+            public static void GetMetadataPropertiesInWmf()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInWMF
+
+                    // initialize WmfFormat class
+                    WmfFormat wmfFormat = new WmfFormat(Common.MapSourceFilePath(wmfFilePath));
+
+                    // get width
+                    int width = wmfFormat.Width;
+
+                    // get height
+                    int height = wmfFormat.Height;
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInWMF
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+        public static class WebP
+        {
+            // initialize file path
+            //ExStart:SourceWebPFilePath
+            private const string webPFilePath = "Images/WebP/sample.webp";
+            //ExEnd:SourceWebPFilePath
+            
+            /// <summary>
+            /// Reads metadata from WebP file
+            /// </summary> 
+            public static void GetMetadataPropertiesInWebP()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInWebP
+
+                    // initialize WebPFormat class
+                    WebPFormat webPFormat = new WebPFormat(Common.MapSourceFilePath(webPFilePath));
+
+                    // get width
+                    int width = webPFormat.Width;
+
+                    // get height
+                    int height = webPFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInWebP
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+        }
+
+        public static class EMF
+        {
+            // initialize file path
+            //ExStart:SourceEmfFilePath
+            private const string EmfFilePath = "Images/Emf/sample.emf";
+            //ExEnd:SourceEmfFilePath
+
+            /// <summary>
+            /// Reads metadata from Emf file
+            /// </summary> 
+            public static void GetMetadataPropertiesInEmf()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInEmf
+
+                    // initialize EmfFormat class
+                    EmfFormat emfFormat = new EmfFormat(Common.MapSourceFilePath(EmfFilePath));
+
+                    // get width
+                    int width = emfFormat.Width;
+
+                    // get height
+                    int height = emfFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInEmf
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            }
+
+        /// <summary>
+        /// Retrieve width and height properties for all image formats.
+        /// 
+        /// </summary> 
+        public static void RetrieveImageSize(string directoryPath)
+        {
+            try
+            {
+                //ExStart:RetrieveImageSize
+
+                // get all files inside directory
+                string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
+
+                foreach (string path in files)
+                {
+                    // recognize format
+                    FormatBase format = FormatFactory.RecognizeFormat(path);
+
+                    // try to parse image
+                    ImageFormat imageFormat = format as ImageFormat;
+
+                    // skip non-image file
+                    if (imageFormat == null)
+                    {
+                        continue;
+                    }
+
+                    // get width
+                    int width = imageFormat.Width;
+
+                    // get height
+                    int height = imageFormat.Height;
+
+                    Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);
+
+                    //ExEnd:RetrieveImageSize
+                }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
 
     }
 }
