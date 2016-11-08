@@ -128,7 +128,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         Console.WriteLine("{0} : {1}", property.Name, property.ToString());
                     }
-
                     //ExEnd:ImageSearchAPI
                 }
                 catch (Exception exp)

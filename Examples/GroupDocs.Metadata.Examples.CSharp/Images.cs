@@ -72,7 +72,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:RemoveXmpPropertiesJp2Image
                     Console.WriteLine("File saved in destination folder.");
                 }
@@ -132,7 +131,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateXmpPropertiesJP2Image
                     Console.WriteLine("File saved in destination folder.");
                 }
@@ -182,7 +180,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             private const string filePath = "Images/Jpeg/ExifSample.jpeg";
             private const string barcodeFilePath = "Images/Jpeg/barcode.jpeg";
-
             //ExEnd:SourceJpegFilePath
             #region working with XMP data
             /// <summary>
@@ -475,7 +472,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesJpegImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -957,7 +953,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // and commit changes
                     jpegFormat.Save();
-
                     //EXEnd:UpdateIPTCMetadataOfApplicationRecord
                 }
                 catch (Exception exp)
@@ -985,7 +980,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine("Code Type: {0}", barCodes[i].ToString());
                 }
-
                 //ExEnd:DetectBarcodeinJpeg
             }
 
@@ -1346,7 +1340,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     gifFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesGifImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -1681,7 +1674,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     pngFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesPngImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -2161,16 +2153,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-        public static class WMF {
+        public static class WMF
+        {
             // initialize file path
             //ExStart:SourceWmfFilePath
             private const string wmfFilePath = "Images/Wmf/sample.wmf";
             //ExEnd:SourceWmfFilePath
-            
+
             /// <summary>
             /// Reads metadata from wmf file
             /// </summary> 
-            public static void GetMetadataPropertiesInWmf()
+            public static void GetMetadataProperties()
             {
                 try
                 {
@@ -2200,11 +2193,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceWebPFilePath
             private const string webPFilePath = "Images/WebP/sample.webp";
             //ExEnd:SourceWebPFilePath
-            
+
             /// <summary>
             /// Reads metadata from WebP file
             /// </summary> 
-            public static void GetMetadataPropertiesInWebP()
+            public static void GetMetadataProperties()
             {
                 try
                 {
@@ -2241,7 +2234,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <summary>
             /// Reads metadata from Emf file
             /// </summary> 
-            public static void GetMetadataPropertiesInEmf()
+            public static void GetMetadataProperties()
             {
                 try
                 {
@@ -2265,7 +2258,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-            }
+        }
 
         /// <summary>
         /// Retrieve width and height properties for all image formats.
@@ -2301,7 +2294,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     int height = imageFormat.Height;
 
                     Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);
-
                     //ExEnd:RetrieveImageSize
                 }
             }

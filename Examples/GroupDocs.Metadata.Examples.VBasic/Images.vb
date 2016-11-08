@@ -1,15 +1,17 @@
 ﻿Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
-Imports GroupDocs.Metadata.Formats.Image 
-Imports GroupDocs.Metadata.Xmp 
+Imports GroupDocs.Metadata.Formats.Image
+Imports GroupDocs.Metadata.Formats.Audio
+Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Tools 
+Imports GroupDocs.Metadata.Tools
 Imports System.Drawing
-Imports System.IO 
-Imports GroupDocs.Metadata.Formats.Cad 
+Imports System.IO
+Imports GroupDocs.Metadata.Formats.Cad
 Imports GroupDocs.Metadata.Xmp.Schemes
 Imports System.Drawing.Imaging
+Imports GroupDocs.Metadata.Formats
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Images
@@ -362,9 +364,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
+                    jobs(0) = New Job() With {
+                         .Id = "1",
+                         .Name = "test job"
                     }
 
                     ' update schema
@@ -406,8 +408,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
+                    Dim thumbnail As New Thumbnail() With {
+                         .ImageBase64 = base64String
                     }
 
                     ' initialize array and add thumbnail
@@ -874,12 +876,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     'ExStart:RemovePhotoshopMetadataJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
-                    
-                        ' remove photoshop metadata
-                        jpegFormat.RemovePhotoshopData()
 
-                        ' and commit changes
-                        jpegFormat.Save()
+                    ' remove photoshop metadata
+                    jpegFormat.RemovePhotoshopData()
+
+                    ' and commit changes
+                    jpegFormat.Save()
                     'ExEnd:RemovePhotoshopMetadataJpegImage 
 
                 Catch exp As Exception
@@ -1123,9 +1125,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
+                    jobs(0) = New Job() With {
+                         .Id = "1",
+                         .Name = "test job"
                     }
 
                     ' update schema
@@ -1167,8 +1169,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
+                    Dim thumbnail As New Thumbnail() With {
+                         .ImageBase64 = base64String
                     }
 
                     ' initialize array and add thumbnail
@@ -1415,9 +1417,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' create array of jobs
                     Dim jobs As Job() = New Job(0) {}
-                    jobs(0) = New Job() With { _
-                         .Id = "1", _
-                         .Name = "test job" _
+                    jobs(0) = New Job() With {
+                         .Id = "1",
+                         .Name = "test job"
                     }
 
                     ' update schema
@@ -1459,8 +1461,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     End Using
 
                     ' create image thumbnail
-                    Dim thumbnail As New Thumbnail() With { _
-                         .ImageBase64 = base64String _
+                    Dim thumbnail As New Thumbnail() With {
+                         .ImageBase64 = base64String
                     }
 
                     ' initialize array and add thumbnail
@@ -1883,5 +1885,147 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
         End Class
+
+
+        Public NotInheritable Class WMF
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceWmfFilePath
+            Private Const wmfFilePath As String = "Images/Wmf/sample.wmf"
+            'ExEnd:SourceWmfFilePath
+
+            ''' <summary>
+            ''' Reads metadata from wmf file
+            ''' </summary> 
+            Public Shared Sub GetMetadataProperties()
+                Try
+                    'ExStart:GetMetadatPropertiesInWMF
+
+                    ' initialize WmfFormat class
+                    Dim wmfFormat As New WmfFormat(Common.MapSourceFilePath(wmfFilePath))
+
+                    ' get width
+                    Dim width As Integer = wmfFormat.Width
+
+                    ' get height
+                    Dim height As Integer = wmfFormat.Height
+                    'display height and width in console
+                    'ExEnd:GetMetadatPropertiesInWMF
+                    Console.Write("Width: {0}, Height: {1}", width, height)
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
+
+
+        Public NotInheritable Class WebP
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceWebPFilePath
+            Private Const webPFilePath As String = "Images/WebP/sample.webp"
+            'ExEnd:SourceWebPFilePath
+
+            ''' <summary>
+            ''' Reads metadata from WebP file
+            ''' </summary> 
+            Public Shared Sub GetMetadataProperties()
+                Try
+                    'ExStart:GetMetadatPropertiesInWebP
+
+                    ' initialize WebPFormat class
+                    Dim webPFormat As New WebPFormat(Common.MapSourceFilePath(webPFilePath))
+
+                    ' get width
+                    Dim width As Integer = webPFormat.Width
+
+                    ' get height
+                    Dim height As Integer = webPFormat.Height
+
+                    'display height and width in console
+                    'ExEnd:GetMetadatPropertiesInWebP
+                    Console.Write("Width: {0}, Height: {1}", width, height)
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+        End Class
+
+
+        Public NotInheritable Class EMF
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceEmfFilePath
+            Private Const EmfFilePath As String = "Images/Emf/sample.emf"
+            'ExEnd:SourceEmfFilePath
+
+            ''' <summary>
+            ''' Reads metadata from Emf file
+            ''' </summary> 
+            Public Shared Sub GetMetadataProperties()
+                Try
+                    'ExStart:GetMetadatPropertiesInEmf
+
+                    ' initialize EmfFormat class
+                    Dim emfFormat As New EmfFormat(Common.MapSourceFilePath(EmfFilePath))
+
+                    ' get width
+                    Dim width As Integer = emfFormat.Width
+
+                    ' get height
+                    Dim height As Integer = emfFormat.Height
+
+                    'display height and width in console
+                    'ExEnd:GetMetadatPropertiesInEmf
+                    Console.Write("Width: {0}, Height: {1}", width, height)
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
+
+
+        ''' <summary>
+        ''' Retrieve width and height properties for all image formats.
+        ''' 
+        ''' </summary> 
+        Public Shared Sub RetrieveImageSize(directoryPath As String)
+            Try
+                'ExStart:RetrieveImageSize
+
+                ' get all files inside directory
+                Dim files As String() = Directory.GetFiles(Common.MapSourceFilePath(directoryPath))
+
+                For Each path__1 As String In files
+                    ' recognize format
+                    Dim format As FormatBase = FormatFactory.RecognizeFormat(path__1)
+
+                    ' try to parse image
+                    Dim imageFormat As Formats.Image.ImageFormat = TryCast(format, Formats.Image.ImageFormat)
+
+                    ' skip non-image file
+                    If imageFormat Is Nothing Then
+                        Continue For
+                    End If
+
+                    ' get width
+                    Dim width As Integer = imageFormat.Width
+
+                    ' get height
+                    Dim height As Integer = imageFormat.Height
+
+                    'ExEnd:RetrieveImageSize
+                    Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path__1), width, height)
+                Next
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
+        End Sub
+
     End Class
 End Namespace

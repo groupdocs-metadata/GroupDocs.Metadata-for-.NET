@@ -7,7 +7,7 @@ Imports GroupDocs.Metadata.Formats
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
 Imports GroupDocs.Metadata.Formats.Project
 Imports GroupDocs.Metadata.Exceptions
-Imports GroupDocs.Metadata.Xmp.Schemes 
+Imports GroupDocs.Metadata.Xmp.Schemes
 Imports System.IO
 
 Namespace GroupDocs.Metadata.Examples.VBasic
@@ -19,7 +19,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
             ' initialize file path
             'ExStart:SourceDocFilePath
-            Private Const filePath As String = "Documents/Doc/sample.doc"
+            Private Const filePath As String = "Documents/Doc/sample1.doc"
             'ExEnd:SourceDocFilePath
 #Region "working with built-in document properties"
 
@@ -1265,6 +1265,34 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
 #End Region
+
+#Region "working with content type document properties"
+            ''' <summary>
+            ''' Gets content type document properties of Xls file  
+            ''' </summary> 
+            Public Shared Sub GetContentTypeDocumentProperties()
+                Try
+                    'ExStart:GetContentTypeDocumentPropertiesXlsFormat
+                    ' initialize XlsFormat
+                    Dim xlsFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get xls properties
+                    Dim xlsProperties As XlsMetadata = xlsFormat.DocumentProperties
+
+                    ' get content properties
+                    Dim contentProperties As XlsContentProperty() = xlsProperties.ContentProperties
+
+                    For Each [property] As XlsContentProperty In contentProperties
+                        Console.WriteLine("Property: {0}, value: {1}, type: {2}", [property].Name, [property].Value, [property].PropertyType)
+
+                        'ExEnd:GetContentTypeDocumentPropertiesXlsFormat
+                    Next
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+#End Region
+
         End Class
 
         Public NotInheritable Class OneNote
@@ -1474,28 +1502,34 @@ Namespace GroupDocs.Metadata.Examples.VBasic
         ''' Detects document format at runtime 
         ''' Enhancement in version 1.7
         ''' </summary>
+
         Public Shared Sub RuntimeFormatDetection(directoryPath As String)
-            'ExStart:RuntimeFormatDetection
-            'string directoryPath = @"C:\\download files";
-            Dim files As String() = Directory.GetFiles(directoryPath)
+            Try
+                'string directoryPath = @"C:\\download files";
+                Dim files As String() = Directory.GetFiles(Common.MapSourceFilePath(directoryPath))
 
-            For Each path__1 As String In files
-                Dim metadata As Global.GroupDocs.Metadata.Metadata = MetadataUtility.ExtractSpecificMetadata(path__1, MetadataType.Document)
-                ' check if file has document format
-                If metadata Is Nothing Then
-                    Continue For
-                End If
+                For Each path__1 As String In files
+                    Dim metadata As Global.GroupDocs.Metadata.Metadata = MetadataUtility.ExtractSpecificMetadata(path__1, MetadataType.Document)
+                    ' check if file has document format
+                    If metadata Is Nothing Then
+                        Continue For
+                    End If
 
-                Console.WriteLine("File: {0}" & vbLf, Path.GetFileName(path__1))
+                    Console.WriteLine("File: {0}" & vbLf, Path.GetFileName(path__1))
 
-                Dim values As IEnumerable(Of KeyValuePair(Of [String], PropertyValue)) = DirectCast(metadata, IEnumerable(Of KeyValuePair(Of [String], PropertyValue)))
+                    Dim values As IEnumerable(Of KeyValuePair(Of [String], PropertyValue)) = DirectCast(metadata, IEnumerable(Of KeyValuePair(Of [String], PropertyValue)))
 
-                For Each keyValuePair As KeyValuePair(Of String, PropertyValue) In values
-                    Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value)
+                    For Each keyValuePair As KeyValuePair(Of String, PropertyValue) In values
+                        Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value)
+                    Next
+
+                    Console.WriteLine(vbLf & "**************************************************" & vbLf)
                 Next
-                Console.WriteLine(vbLf & "**************************************************" & vbLf)
-            Next
-            'ExEnd:RuntimeFormatDetection
+            Catch exp As Exception
+                Console.WriteLine("Exception occurred: " + exp.Message)
+            End Try
+
         End Sub
+
     End Class
 End Namespace

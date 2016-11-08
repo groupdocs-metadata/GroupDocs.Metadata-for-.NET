@@ -323,17 +323,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Working with Wmf
             //Get metadata properties of Wmf image
-            //Images.WMF.GetMetadataPropertiesInWmf();
+            //Images.WMF.GetMetadataProperties();
             #endregion
 
             #region Working with WebP
             //Get metadata properties of WebP image
-            //Images.WebP.GetMetadataPropertiesInWebP();
+            //Images.WebP.GetMetadataProperties();
             #endregion
 
             #region Working with Emf
             //Get metadata properties of emf image
-            //Images.EMF.GetMetadataPropertiesInEmf();
+            //Images.EMF.GetMetadataProperties();
             #endregion
 
             #region Retrieve Image Size

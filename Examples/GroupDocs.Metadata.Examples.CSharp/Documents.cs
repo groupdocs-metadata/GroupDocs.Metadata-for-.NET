@@ -77,7 +77,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("Updated Successfully.");
 
@@ -104,7 +103,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:RemoveBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
@@ -596,7 +594,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //save output file...
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateBuiltinDocumentPropertyPdfFormat
                     Console.WriteLine("File saved in destination folder.");
 
@@ -1516,7 +1513,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         Console.WriteLine("Property: {0}, value: {1}, type: {2}", property.Name, property.Value, property.PropertyType);
                     }
-
                     //ExEnd:GetContentTypeDocumentPropertiesXlsFormat
                 }
                 catch (Exception exp)
@@ -1707,7 +1703,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-       
+
         /// <summary>
         /// Detects document protection
         /// </summary> 
@@ -1769,7 +1765,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
         /// </summary>
         public static void RuntimeFormatDetection(string directoryPath)
         {
-            try {
+            try
+            {
                 //string directoryPath = @"C:\\download files";
                 string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
 
@@ -1798,8 +1795,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 Console.WriteLine("Exception occurred: " + exp.Message);
             }
-            
+
         }
-    
+
     }
 }

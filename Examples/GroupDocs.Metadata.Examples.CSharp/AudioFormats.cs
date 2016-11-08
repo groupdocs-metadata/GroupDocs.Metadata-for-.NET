@@ -19,7 +19,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //string dir = @"C:\\download files";
             private const string directoryPath = "Audio/Mp3";
             private const string filePath = "Audio/Mp3/test.mp3";
-            //ExEnd:SourceMp3FilePath + SourceMp3DirectoryPath
+            //
+            
+            
+            //EndEx:SourceMp3FilePath + SourceMp3DirectoryPath
 
 
             /// <summary>
@@ -228,7 +231,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Track number: {0}", id3V1.TrackNumber);
                         }
                     }
-
                     //ExEnd:ReadID3v1Tag
                 }
                 catch (Exception ex)
@@ -280,11 +282,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:ReadMPEGAudioInfo
-                    // initialize Mp3Format class
-                    Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+                    // get MPEG audio info
+                    MpegAudio audioInfo = (MpegAudio)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.MpegAudio);
+
+                    // another approach is to use Mp3Format directly:
+
+                    // init Mp3Format class
+                    // Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath));
 
                     // get MPEG audio info
-                    MpegAudio audioInfo = mp3Format.AudioDetails;
+                    // MpegAudio audioInfo = mp3Format.AudioDetails;
 
                     // display MPEG audio version
                     Console.WriteLine("MPEG audio version: {0}", audioInfo.MpegAudioVersion);
