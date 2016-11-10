@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Xmp;
-using GroupDocs.Metadata.Xmp.Types.Complex;
+
 
 namespace MetadataEditor.UserControls
 {

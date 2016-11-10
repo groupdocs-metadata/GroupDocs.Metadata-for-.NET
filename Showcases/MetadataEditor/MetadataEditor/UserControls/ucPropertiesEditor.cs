@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using GroupDocs.Metadata.MetadataProperties;
 using GroupDocs.Metadata.Tools;
+using GroupDocs.Metadata;
 
 namespace MetadataEditor.UserControls
 {
