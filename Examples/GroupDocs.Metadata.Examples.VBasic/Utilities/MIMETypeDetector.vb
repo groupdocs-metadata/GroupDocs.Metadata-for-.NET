@@ -22,8 +22,9 @@ Namespace GroupDocs.Metadata.Examples.CSharp.Utilities
 					Dim mimeType As String = MetadataUtility.GetMimeType(path__2)
 
 					Console.WriteLine("File: {0}, MIME type: {1}", Path.GetFileName(path__2), mimeType)
-					'ExEnd: MIMETypeDetection
+					
 				Next
+                'ExEnd: MIMETypeDetection
 			Catch exp As Exception
 				Console.WriteLine("Exception occurred: " + exp.Message)
 			End Try
@@ -41,8 +42,8 @@ Namespace GroupDocs.Metadata.Examples.CSharp.Utilities
 
 				' and get MIME type
 				Dim mimeType As String = format.MIMEType
-					'ExEnd: MIMETypeDetectionUsingFormatBase
 				Console.WriteLine("MIME type: {0}", mimeType)
+                'ExEnd: MIMETypeDetectionUsingFormatBase
 			Catch exp As Exception
 				Console.WriteLine("Exception occurred: " + exp.Message)
 			End Try

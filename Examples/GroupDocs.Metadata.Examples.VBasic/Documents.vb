@@ -1285,8 +1285,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     For Each [property] As XlsContentProperty In contentProperties
                         Console.WriteLine("Property: {0}, value: {1}, type: {2}", [property].Name, [property].Value, [property].PropertyType)
 
-                        'ExEnd:GetContentTypeDocumentPropertiesXlsFormat
                     Next
+                     'ExEnd:GetContentTypeDocumentPropertiesXlsFormat
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try

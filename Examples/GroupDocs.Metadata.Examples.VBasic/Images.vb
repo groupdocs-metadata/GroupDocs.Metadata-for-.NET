@@ -1980,8 +1980,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim height As Integer = emfFormat.Height
 
                     'display height and width in console
+                     Console.Write("Width: {0}, Height: {1}", width, height)
                     'ExEnd:GetMetadatPropertiesInEmf
-                    Console.Write("Width: {0}, Height: {1}", width, height)
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try

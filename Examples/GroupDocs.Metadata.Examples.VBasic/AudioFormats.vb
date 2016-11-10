@@ -290,8 +290,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine("Is original: {0}", audioInfo.IsOriginal)
 
                     ' display protected bit
-                    'ExEnd:ReadMPEGAudioInfo
                     Console.WriteLine("Is protected: {0}", audioInfo.IsProtected)
+                    'ExEnd:ReadMPEGAudioInfo
                 Catch ex As Exception
                     Console.WriteLine(ex.Message)
                 End Try

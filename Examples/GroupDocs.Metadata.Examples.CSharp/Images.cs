@@ -2294,8 +2294,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     int height = imageFormat.Height;
 
                     Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);
-                    //ExEnd:RetrieveImageSize
                 }
+                //ExEnd:RetrieveImageSize
             }
             catch (Exception exp)
             {
