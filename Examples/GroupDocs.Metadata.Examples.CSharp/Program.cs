@@ -59,6 +59,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //update metadata and save the original file
             ////Documents.Doc.SaveFileAfterMetadataUpdate();
 
+            //Read all metadata Keys of word document
+            //Documents.Doc.ReadMetadataUsingKeys("Different Formats");
+
             #endregion
 
             #region Working with Ppt Files
@@ -143,6 +146,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get XMP data in Pdf file
             //Documents.Pdf.GetXMPProperties();
 
+            //Read all XMP Keys in Pdf file
+            //Documents.Pdf.GetXMPPropertiesUsingKey("Different Formats");
+
             //Update XMP data in Pdf file
             //Documents.Pdf.UpdateXMPProperties();
 
@@ -169,6 +175,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get metadata of MSVisio file
             //Documents.OneNote.GetMetadata();
 
+            #endregion
+
+            #region Working with Odt files
+            //Read metadata of odt File
+            //Documents.ODT.GetOdtMetadata();
             #endregion
 
             #endregion
@@ -336,6 +347,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Images.EMF.GetMetadataProperties();
             #endregion
 
+            #region Working with Djvu
+            //Get metadata properties of emf image
+            //Images.DJVU.GetMetadataProperties();
+            #endregion
+
+            #region Working with BMP images
+            //Get metadata properties of bmp image
+            //Images.BMP.GetMetadataProperties();
+            //Read Header properties of a bmp image
+            //Images.BMP.GetHeaderProperties();
+            #endregion
+
             #region Retrieve Image Size
             //Retrive the height and width of images of supported formats
             //Images.RetrieveImageSize("Images/SampleImages");
@@ -482,6 +505,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //// get all jpeg files
             //MIMETypeDetector.GetMimeTypeUsingFormatBaseApproach(filePath);
             ////ExEnd:MIMETypeDetectorUsage2
+
+            //ExStart:ReadMetadataUsingKey
+            //Read metadata property by defined key for any supported format
+            //Common.ReadMetadataUsingKey("Different Formats");
+            //ExEnd:ReadMetadataUsingKey
+
+            //ExStart:MetadataEnumerationUsage
+            //Enumerates any type of metadata
+            //Common.EnumerateMetadata("Different Formats");
+            //ExEnd:MetadataEnumerationUsage
+
             #endregion
 
             #region Working with MP3 Files

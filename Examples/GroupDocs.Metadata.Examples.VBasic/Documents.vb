@@ -1,14 +1,20 @@
-﻿Imports System.Collections.Generic
+﻿Imports System
+Imports System.Collections.Generic
+Imports System.IO
 Imports System.Linq
 Imports System.Text
-Imports GroupDocs.Metadata.Formats.Document
-Imports GroupDocs.Metadata.Tools
-Imports GroupDocs.Metadata.Formats
 Imports GroupDocs.Metadata.Examples.VBasic.Utilities
-Imports GroupDocs.Metadata.Formats.Project
 Imports GroupDocs.Metadata.Exceptions
+Imports GroupDocs.Metadata.Formats
+Imports GroupDocs.Metadata.Formats.Document
+Imports GroupDocs.Metadata.Formats.Project
+Imports GroupDocs.Metadata.Tools
+Imports GroupDocs.Metadata.Xmp
 Imports GroupDocs.Metadata.Xmp.Schemes
-Imports System.IO
+Imports Mtdta = GroupDocs.Metadata
+
+
+
 
 Namespace GroupDocs.Metadata.Examples.VBasic
     Public NotInheritable Class Documents
@@ -48,6 +54,40 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Reads all metadata keys of the Word document
+            ''' </summary> 
+            ''' <param name="directoryPath">Path to the files</param>
+            Public Shared Sub ReadMetadataUsingKeys(directoryPath As String)
+                Try
+                    'ExStart:ReadMetadataUsingKeys
+                    'Get all Word documents inside directory
+                    Dim files As String() = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.doc")
+
+                    For Each path__1 As String In files
+                        Console.WriteLine("Document: {0}", Path.GetFileName(path__1))
+
+                        ' open Word document
+                        Using doc As New DocFormat(path__1)
+                            ' get metadata
+                            Dim metadata As Mtdta.Metadata = doc.DocumentProperties
+
+                            ' print all metadata keys presented in DocumentProperties
+                            For Each key As String In metadata.Keys
+                                Console.WriteLine(key)
+                            Next
+                        End Using
+                        'ExEnd:ReadMetadataUsingKeys
+                    Next
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+
+
             ''' <summary>
             ''' Updates document properties of Doc file and creates output file
             ''' </summary> 
@@ -487,6 +527,41 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Retrieves all XMP keys from PDF document  
+            ''' </summary> 
+            Public Shared Sub GetXMPPropertiesUsingKey(directoryPath As String)
+                Try
+                    'ExStart:GetXMPKeysPdfFormat
+                    ' get PDF files only
+                    Dim files As String() = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.pdf")
+
+                    For Each path As String In files
+                        ' try to get XMP metadata
+                        Dim metadata As Mtdta.Metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.XMP)
+
+                        ' skip if file does not contain XMP metadata
+                        If metadata Is Nothing Then
+                            Continue For
+                        End If
+
+                        ' cast to XmpMetadata
+                        Dim xmpMetadata As XmpMetadata = TryCast(metadata, XmpMetadata)
+
+                        ' and display all xmp keys
+                        For Each key As String In xmpMetadata.Keys
+                            Console.WriteLine(key)
+                        Next
+                        'ExEnd:GetXMPKeysPdfFormat
+                    Next
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+
             ''' <summary>
             ''' Updates document properties of Pdf file and creates output file
             ''' </summary> 
@@ -1286,7 +1361,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         Console.WriteLine("Property: {0}, value: {1}, type: {2}", [property].Name, [property].Value, [property].PropertyType)
 
                     Next
-                     'ExEnd:GetContentTypeDocumentPropertiesXlsFormat
+                    'ExEnd:GetContentTypeDocumentPropertiesXlsFormat
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -1456,6 +1531,41 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title)
             End Sub
         End Class
+
+
+        Public NotInheritable Class ODT
+            Private Sub New()
+            End Sub
+            'initialize file path
+            'ExStart:SourceODTProjectFilePath
+            Private Const filePath As String = "Documents/Odt/sample.odt"
+            'ExEnd:SourceODTProjectFilePath
+
+            ''' <summary>
+            ''' Gets properties of Open Document Format file  
+            ''' </summary> 
+            Public Shared Sub GetOdtMetadata()
+                Try
+                    'ExStart:ReadOdtMetadata
+                    ' initialize DocFormat with ODT file's path
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+
+                    ' read all metadata properties
+                    Dim metadata As Mtdta.Metadata = docFormat.DocumentProperties
+
+                    ' and display them
+                    For Each [property] As MetadataProperty In metadata
+                        Console.WriteLine([property])
+                    Next
+                    'ExEnd:ReadOdtMetadata
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+        End Class
+
+
 
         ''' <summary>
         ''' Detects document protection

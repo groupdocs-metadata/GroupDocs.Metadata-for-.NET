@@ -2260,6 +2260,109 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
+
+        public static class DJVU
+        {
+            // initialize file path
+            //ExStart:SourceDjvuFilePath
+            private const string EmfFilePath = "Images/Djvu/sample.djvu";
+            //ExEnd:SourceDjvuFilePath
+
+            /// <summary>
+            /// Reads metadata from Djvu file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInDjvu
+
+                    // initialize DjvuFormat
+                    DjvuFormat wmfFormat = new DjvuFormat(Common.MapSourceFilePath(EmfFilePath));
+
+                    // get width
+                    int width = wmfFormat.Width;
+
+                    // get height
+                    int height = wmfFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInDjvu
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
+        public static class BMP
+        {
+            // initialize file path
+            //ExStart:SourceBmpFilePath
+            private const string EmfFilePath = "Images/Bmp/goldhill.bmp";
+            //ExEnd:SourceBmpFilePath
+
+            /// <summary>
+            /// Reads metadata from Bmp file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInBmp
+
+                    // initialize BmpFormat
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(EmfFilePath));
+
+                    // get width
+                    int width = bmpFormat.Width;
+
+                    // get height
+                    int height = bmpFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInBmp
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads metadata from Bmp file
+            /// </summary> 
+            public static void GetHeaderProperties()
+            {
+                try
+                {
+                    //ExStart:GetHeaderPropertiesInBmp
+                    // initialize BmpFormat
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(EmfFilePath));
+
+                    // get BMP header
+                    BmpHeader header = bmpFormat.HeaderInfo;
+
+                    // display bits per pixel
+                    Console.WriteLine("Bits per pixel: {0}", header.BitsPerPixel);
+
+                    // display header size
+                    Console.WriteLine("Header size: {0}", header.HeaderSize);
+
+                    // display image size
+                    Console.WriteLine("Image size: {0}", header.ImageSize);
+                    //ExEnd:GetHeaderPropertiesInBmp
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
         /// <summary>
         /// Retrieve width and height properties for all image formats.
         /// 

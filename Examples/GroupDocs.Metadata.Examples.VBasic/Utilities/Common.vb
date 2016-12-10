@@ -5,7 +5,8 @@ Imports System.Text
 Imports System.IO
 Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
-Imports GroupDocs.Metadata.Formats 
+Imports GroupDocs.Metadata.Formats
+Imports GroupDocs.Metadata.Exceptions
 
 Namespace Utilities
     Public NotInheritable Class Common
@@ -91,7 +92,101 @@ Namespace Utilities
             End Try
         End Sub
         'ExEnd:FormatRecognizer
-        
+
+
+        'ExStart:ReadMetadataUsingKey
+        ''' <summary>
+        ''' Reads metadata property by defined key for any supported format
+        ''' </summary>
+        ''' <param name="directorPath">Directory path</param>
+        Public Shared Sub ReadMetadataUsingKey(directoryPath As String)
+            Try
+                ' path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath)
+
+                ' get array of files inside directory
+                Dim files As String() = Directory.GetFiles(directoryPath)
+                For Each file As String In files
+                    ' recognize first file
+                    Dim format As FormatBase = FormatFactory.RecognizeFormat(file)
+
+                    ' try get EXIF artist
+                    Dim exifArtist = format(MetadataKey.EXIF.Artist)
+                    Console.WriteLine(exifArtist)
+
+                    ' try get dc:creator XMP value
+                    Dim creator = format(MetadataKey.XMP.DublinCore.Creator)
+                    Console.WriteLine(creator)
+
+                    ' try get xmp:creatorTool
+                    Dim creatorTool = format(MetadataKey.XMP.BaseSchema.CreatorTool)
+                    Console.WriteLine(creatorTool)
+
+                    ' try get IPTC Application Record keywords
+                    Dim iptcKeywords = format(MetadataKey.IPTC.ApplicationRecord.Keywords)
+                    Console.WriteLine(iptcKeywords)
+
+                Next
+            Catch exp As Exception
+                Console.WriteLine(exp.Message)
+            End Try
+        End Sub
+        'ExEnd:ReadMetadataUsingKey
+
+        'ExStart:ReadMetadataUsingKey
+        ''' <summary>
+        ''' Reads metadata property by defined key for any supported format
+        ''' </summary>
+        ''' <param name="directorPath">Directory path</param>
+        Public Shared Sub EnumerateMetadata(directoryPath As String)
+            Try
+                ' path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath)
+
+                ' get all files inside the directory
+                Dim files As String() = Directory.GetFiles(directoryPath)
+
+                For Each file As String In files
+                    Dim format As FormatBase
+                    Try
+                        ' try to recognize file
+                        format = FormatFactory.RecognizeFormat(file)
+                    Catch generatedExceptionName As InvalidFormatException
+                        ' skip unsupported formats
+                        Continue For
+                    Catch generatedExceptionName As DocumentProtectedException
+                        ' skip password protected documents
+                        Continue For
+                    End Try
+
+                    If format Is Nothing Then
+                        ' skip unsupported formats
+                        Continue For
+                    End If
+
+                    ' get all metadata presented in file
+                    Dim metadataArray As Metadata() = format.GetMetadata()
+
+                    ' go through metadata array
+                    For Each metadata As Metadata In metadataArray
+                        ' and display all metadata items
+                        Console.WriteLine("Metadata type: {0}", metadata.MetadataType)
+
+                        ' use foreach statement for Metadata class to evaluate all metadata properties
+                        For Each [property] As MetadataProperty In metadata
+                            Console.WriteLine([property])
+                        Next
+                    Next
+
+                Next
+            Catch exp As Exception
+                Console.WriteLine(exp.Message)
+            End Try
+        End Sub
+        'ExEnd:ReadMetadataUsingKey
+
+
+
     End Class
 End Namespace
 
