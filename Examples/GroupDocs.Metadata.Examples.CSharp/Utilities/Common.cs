@@ -6,6 +6,7 @@ using System.IO;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
 using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Exceptions;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {
@@ -109,5 +110,115 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
         }
         //ExEnd:FormatRecognizer
-     }
+
+
+        //ExStart:ReadMetadataUsingKey
+        /// <summary>
+        /// Reads metadata property by defined key for any supported format
+        /// </summary>
+        /// <param name="directorPath">Directory path</param>
+        public static void ReadMetadataUsingKey(string directoryPath)
+        {
+            try
+            {
+                // path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath);
+
+                // get array of files inside directory
+                string[] files = Directory.GetFiles(directoryPath);
+                foreach (var file in files)
+                {
+                    // recognize first file
+                    FormatBase format = FormatFactory.RecognizeFormat(file);
+
+                    // try get EXIF artist
+                    var exifArtist = format[MetadataKey.EXIF.Artist];
+                    Console.WriteLine(exifArtist);
+
+                    // try get dc:creator XMP value
+                    var creator = format[MetadataKey.XMP.DublinCore.Creator];
+                    Console.WriteLine(creator);
+
+                    // try get xmp:creatorTool
+                    var creatorTool = format[MetadataKey.XMP.BaseSchema.CreatorTool];
+                    Console.WriteLine(creatorTool);
+
+                    // try get IPTC Application Record keywords
+                    var iptcKeywords = format[MetadataKey.IPTC.ApplicationRecord.Keywords];
+                    Console.WriteLine(iptcKeywords);
+                }
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        //ExEnd:ReadMetadataUsingKey
+
+        //ExStart:ReadMetadataUsingKey
+        /// <summary>
+        /// Reads metadata property by defined key for any supported format
+        /// </summary>
+        /// <param name="directorPath">Directory path</param>
+        public static void EnumerateMetadata(string directoryPath)
+        {
+            try
+            {
+                // path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath);
+
+                // get all files inside the directory
+                string[] files = Directory.GetFiles(directoryPath);
+
+                foreach (string file in files)
+                {
+                    FormatBase format;
+                    try
+                    {
+                        // try to recognize file
+                        format = FormatFactory.RecognizeFormat(file);
+                    }
+                    catch (InvalidFormatException)
+                    {
+                        // skip unsupported formats
+                        continue;
+                    }
+                    catch (DocumentProtectedException)
+                    {
+                        // skip password protected documents
+                        continue;
+                    }
+
+                    if (format == null)
+                    {
+                        // skip unsupported formats
+                        continue;
+                    }
+
+                    // get all metadata presented in file
+                    Metadata[] metadataArray = format.GetMetadata();
+
+                    // go through metadata array
+                    foreach (Metadata metadata in metadataArray)
+                    {
+                        // and display all metadata items
+                        Console.WriteLine("Metadata type: {0}", metadata.MetadataType);
+
+                        // use foreach statement for Metadata class to evaluate all metadata properties
+                        foreach (MetadataProperty property in metadata)
+                        {
+                            Console.WriteLine(property);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        //ExEnd:ReadMetadataUsingKey
+    }
 }

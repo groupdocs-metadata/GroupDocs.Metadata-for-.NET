@@ -55,6 +55,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'update metadata and save the original file
             'Documents.Doc.SaveFileAfterMetadataUpdate()
 
+            'Read all metadata Keys of word document
+            'Documents.Doc.ReadMetadataUsingKeys("Different Formats")
+
 #End Region
 
 #Region "Working with Ppt Files"
@@ -136,6 +139,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''Remove custom property of Pdf file
             'Documents.Pdf.RemoveCustomProperties()
 
+            'Read all XMP Keys in Pdf file
+            'Documents.Pdf.GetXMPPropertiesUsingKey("Different Formats")
+
             ''Get XMP data in Pdf file
             'Documents.Pdf.GetXMPProperties()
 
@@ -144,6 +150,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             ''Remove hidden data in Pdf file
             'Documents.Pdf.RemoveHiddenData()
+
 
 #End Region
 
@@ -165,6 +172,11 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''Get metadata of MSVisio file
             'Documents.OneNote.GetMetadata()
 
+#End Region
+
+#Region "Working with Odt files"
+            'Read metadata of odt File
+            'Documents.ODT.GetOdtMetadata()
 #End Region
 
 #End Region
@@ -333,6 +345,20 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Images.EMF.GetMetadataProperties()
 #End Region
 
+
+#Region "Working with Djvu"
+            'Get metadata properties of emf image
+            'Images.DJVU.GetMetadataProperties()
+#End Region
+
+#Region "Working with BMP images"
+            'Get metadata properties of bmp image
+            'Images.BMP.GetMetadataProperties()
+            'Read Header properties of a bmp image
+            'Images.BMP.GetHeaderProperties()
+#End Region
+
+
 #Region "Retrieve Image Size"
             'Retrive the height and width of images of supported formats
             'Images.RetrieveImageSize("Images/SampleImages")
@@ -480,6 +506,16 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' get all jpeg files
             'MIMETypeDetector.GetMimeTypeUsingFormatBaseApproach(filePath)
             ''ExEnd:MIMETypeDetectorUsage2
+
+            'ExStart:ReadMetadataUsingKey
+            'Read metadata property by defined key for any supported format
+            'Common.ReadMetadataUsingKey("Different Formats")
+            'ExEnd:ReadMetadataUsingKey
+
+            'ExStart:MetadataEnumerationUsage
+            'Enumerates any type of metadata
+            'Common.EnumerateMetadata("Different Formats")
+            'ExEnd:MetadataEnumerationUsage
 
 
 #End Region

@@ -1980,13 +1980,109 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim height As Integer = emfFormat.Height
 
                     'display height and width in console
-                     Console.Write("Width: {0}, Height: {1}", width, height)
+                    Console.Write("Width: {0}, Height: {1}", width, height)
                     'ExEnd:GetMetadatPropertiesInEmf
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
         End Class
+
+
+
+        Public NotInheritable Class DJVU
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceDjvuFilePath
+            Private Const EmfFilePath As String = "Images/Djvu/sample.djvu"
+            'ExEnd:SourceDjvuFilePath
+
+            ''' <summary>
+            ''' Reads metadata from Djvu file
+            ''' </summary> 
+            Public Shared Sub GetMetadataProperties()
+                Try
+                    'ExStart:GetMetadatPropertiesInDjvu
+
+                    ' initialize DjvuFormat
+                    Dim wmfFormat As New DjvuFormat(Common.MapSourceFilePath(EmfFilePath))
+
+                    ' get width
+                    Dim width As Integer = wmfFormat.Width
+
+                    ' get height
+                    Dim height As Integer = wmfFormat.Height
+
+                    'display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height)
+                    'ExEnd:GetMetadatPropertiesInDjvu
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
+
+        Public NotInheritable Class BMP
+            Private Sub New()
+            End Sub
+            ' initialize file path
+            'ExStart:SourceBmpFilePath
+            Private Const EmfFilePath As String = "Images/Bmp/goldhill.bmp"
+            'ExEnd:SourceBmpFilePath
+
+            ''' <summary>
+            ''' Reads metadata from Bmp file
+            ''' </summary> 
+            Public Shared Sub GetMetadataProperties()
+                Try
+                    'ExStart:GetMetadatPropertiesInBmp
+
+                    ' initialize BmpFormat
+                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(EmfFilePath))
+
+                    ' get width
+                    Dim width As Integer = bmpFormat.Width
+
+                    ' get height
+                    Dim height As Integer = bmpFormat.Height
+
+                    'display height and width in console
+                    'ExEnd:GetMetadatPropertiesInBmp
+                    Console.Write("Width: {0}, Height: {1}", width, height)
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Reads metadata from Bmp file
+            ''' </summary> 
+            Public Shared Sub GetHeaderProperties()
+                Try
+                    'ExStart:GetHeaderPropertiesInBmp
+                    ' initialize BmpFormat
+                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(EmfFilePath))
+
+                    ' get BMP header
+                    Dim header As BmpHeader = bmpFormat.HeaderInfo
+
+                    ' display bits per pixel
+                    Console.WriteLine("Bits per pixel: {0}", header.BitsPerPixel)
+
+                    ' display header size
+                    Console.WriteLine("Header size: {0}", header.HeaderSize)
+
+                    ' display image size
+                    Console.WriteLine("Image size: {0}", header.ImageSize)
+                    'ExEnd:GetHeaderPropertiesInBmp
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+        End Class
+
+
 
 
         ''' <summary>

@@ -12,6 +12,7 @@ using GroupDocs.Metadata.Examples.CSharp.Utilities;
 using GroupDocs.Metadata.Formats.Project;
 using GroupDocs.Metadata.Exceptions;
 using System.IO;
+using GroupDocs.Metadata.Xmp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -56,6 +57,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Reads all metadata keys of the Word document
+            /// </summary> 
+            /// <param name="directoryPath">Path to the files</param>
+            public static void ReadMetadataUsingKeys(string directoryPath)
+            {
+                try {
+                    //ExStart:ReadMetadataUsingKeys
+                    //Get all Word documents inside directory
+                    string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.doc");
+
+                    foreach (string path in files)
+                    {
+                        Console.WriteLine("Document: {0}", Path.GetFileName(path));
+
+                        // open Word document
+                        using (DocFormat doc = new DocFormat(path))
+                        {
+                            // get metadata
+                            Metadata metadata = doc.DocumentProperties;
+
+                            // print all metadata keys presented in DocumentProperties
+                            foreach (string key in metadata.Keys)
+                            {
+                                Console.WriteLine(key);
+                            }
+                        }
+                    }
+                    //ExEnd:ReadMetadataUsingKeys
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
             /// <summary>
             /// Updates document properties of Doc file and creates output file
             /// </summary> 
@@ -790,6 +827,45 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion);
                     Console.WriteLine("Producer: {0}", pdfPackage.Producer);
                     //ExEnd:GetXMPPropertiesPdfFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Retrieves all XMP keys from PDF document  
+            /// </summary> 
+            public static void GetXMPPropertiesUsingKey(string directoryPath)
+            {
+                try
+                {
+                    //ExStart:GetXMPKeysPdfFormat
+                    // get PDF files only
+                    string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.pdf");
+
+                    foreach (string path in files)
+                    {
+                        // try to get XMP metadata
+                        Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.XMP);
+
+                        // skip if file does not contain XMP metadata
+                        if (metadata == null)
+                        {
+                            continue;
+                        }
+
+                        // cast to XmpMetadata
+                        XmpMetadata xmpMetadata = metadata as XmpMetadata;
+
+                        // and display all xmp keys
+                        foreach (string key in xmpMetadata.Keys)
+                        {
+                            Console.WriteLine(key);
+                        }
+                    }
+                    //ExEnd:GetXMPKeysPdfFormat
                 }
                 catch (Exception exp)
                 {
@@ -1702,6 +1778,47 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title);
             }
         }
+
+
+        public static class ODT
+        {
+            //initialize file path
+            //ExStart:SourceODTProjectFilePath
+            private const string filePath = "Documents/Odt/sample.odt";
+            //ExEnd:SourceODTProjectFilePath
+
+            /// <summary>
+            /// Gets properties of Open Document Format file  
+            /// </summary> 
+            public static void GetOdtMetadata()
+            {
+                try
+                {
+                    //ExStart:ReadOdtMetadata
+                    // initialize DocFormat with ODT file's path
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // read all metadata properties
+                    Metadata metadata = docFormat.DocumentProperties;
+
+                    // and display them
+                    foreach (MetadataProperty property in metadata)
+                    {
+                        Console.WriteLine(property);
+                    }
+                    //ExEnd:ReadOdtMetadata
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                } 
+
+               
+            }
+
+               
+            }
+          
+
 
 
         /// <summary>
