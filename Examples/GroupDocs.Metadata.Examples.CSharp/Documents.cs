@@ -1815,8 +1815,39 @@ namespace GroupDocs.Metadata.Examples.CSharp
                
             }
 
-               
+
+            /// <summary>
+            /// Updates properties of Open Document Format file  
+            /// </summary> 
+            public static void UpdateOdtMetadata()
+            {
+                try
+                {
+                    //ExStart:UpdateOdtMetadata
+                    // initialize DocFormat with ODT file's path
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize DocMetadata
+                    DocMetadata docMetadata = docFormat.DocumentProperties;
+
+                    //update document property...
+                    docMetadata.Author = "Rida ";
+                    docMetadata.Company = "Aspose";
+                    docMetadata.Manager = "Rida Fatima";
+
+                    //save output file...
+                    docFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:UpdateOdtMetadata
+                    Console.WriteLine("Updated Successfully.");                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
             }
+        }
           
 
 

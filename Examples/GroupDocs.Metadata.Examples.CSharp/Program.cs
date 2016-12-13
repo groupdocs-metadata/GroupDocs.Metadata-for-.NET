@@ -180,6 +180,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region Working with Odt files
             //Read metadata of odt File
             //Documents.ODT.GetOdtMetadata();
+            //Update metadata of odt file
+            //Documents.ODT.UpdateOdtMetadata();
             #endregion
 
             #endregion

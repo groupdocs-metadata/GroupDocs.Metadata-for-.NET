@@ -133,7 +133,7 @@ Namespace Utilities
         End Sub
         'ExEnd:ReadMetadataUsingKey
 
-        'ExStart:ReadMetadataUsingKey
+        'ExStart:EnumerateMetadata
         ''' <summary>
         ''' Reads metadata property by defined key for any supported format
         ''' </summary>

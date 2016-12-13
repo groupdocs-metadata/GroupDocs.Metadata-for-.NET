@@ -13,7 +13,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ' Apply product license
             ' Uncomment following function if you have product license.
 
-            Common.ApplyLicense()
+            'Common.ApplyLicense()
 
 #Region "Working with Documents"
 
@@ -177,6 +177,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 #Region "Working with Odt files"
             'Read metadata of odt File
             'Documents.ODT.GetOdtMetadata()
+            'update metadata of ODT file
+            'Documents.ODT.UpdateOdtMetadata()
+
 #End Region
 
 #End Region
@@ -332,7 +335,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 #Region "Working with Wmf"
             'Get metadata properties of Wmf image
-            Images.WMF.GetMetadataProperties()
+            'Images.WMF.GetMetadataProperties()
 #End Region
 
 #Region "Working with WebP"

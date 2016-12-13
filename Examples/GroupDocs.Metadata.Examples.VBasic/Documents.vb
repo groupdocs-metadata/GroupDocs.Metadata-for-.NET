@@ -79,8 +79,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                                 Console.WriteLine(key)
                             Next
                         End Using
-                        'ExEnd:ReadMetadataUsingKeys
                     Next
+                    'ExEnd:ReadMetadataUsingKeys
                 Catch ex As Exception
                     Console.WriteLine(ex.Message)
                 End Try
@@ -554,8 +554,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         For Each key As String In xmpMetadata.Keys
                             Console.WriteLine(key)
                         Next
-                        'ExEnd:GetXMPKeysPdfFormat
                     Next
+                    'ExEnd:GetXMPKeysPdfFormat
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -1563,6 +1563,36 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(ex.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Updates properties of Open Document Format file  
+            ''' </summary> 
+            Public Shared Sub UpdateOdtMetadata()
+                Try
+                    'ExStart:UpdateOdtMetadata
+                    ' initialize DocFormat with ODT file's path
+                    Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                    ' initialize DocMetadata
+                    Dim docMetadata As DocMetadata = docFormat.DocumentProperties
+
+                    'update document property...
+                    docMetadata.Author = "Rida "
+                    docMetadata.Company = "Aspose"
+                    docMetadata.Manager = "Rida Fatima"
+
+                    'save output file...
+                    docFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:UpdateOdtMetadata
+                    Console.WriteLine("Updated Successfully.")
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+
+
+            End Sub
+
         End Class
 
 

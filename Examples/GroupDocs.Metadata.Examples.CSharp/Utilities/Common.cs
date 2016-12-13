@@ -156,7 +156,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
         }
         //ExEnd:ReadMetadataUsingKey
 
-        //ExStart:ReadMetadataUsingKey
+        //ExStart:EnumerateMetadata
         /// <summary>
         /// Reads metadata property by defined key for any supported format
         /// </summary>
@@ -219,6 +219,6 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
                 Console.WriteLine(exp.Message);
             }
         }
-        //ExEnd:ReadMetadataUsingKey
+        //ExEnd:EnumerateMetadata
     }
 }
