@@ -58,6 +58,18 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Read all metadata Keys of word document
             'Documents.Doc.ReadMetadataUsingKeys("Different Formats")
 
+            'Read Document info of a word document
+            'Documents.Doc.ReadDocumentInfo()
+
+            'Display file type of the word document
+            'Documents.Doc.DisplayFileType()
+
+            'Read Digital Signature from word document
+            'Documents.Doc.ReadDigitalSignature()
+
+            'Remove Digital Signature from word document
+            'Documents.Doc.RemoveDigitalSignature()
+
 #End Region
 
 #Region "Working with Ppt Files"
@@ -85,6 +97,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             ''Removes Comments, and Hidden Slides of Ppt File
             'Documents.Ppt.RemoveHiddenData()
+
+            'Reads document properties faster
+            'Documents.Ppt.ImprovedMetadataReading()
 
             'Gets Content type document properties in Xls file
             'Documents.Xls.GetContentTypeDocumentProperties()
@@ -552,6 +567,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             '' Update ID3v1Tag
             'AudioFormats.Mp3.UpdateID3v1Tag()
+
+             'Read ID3 Metadata directtly from MP3
+            'AudioFormats.Mp3.ReadId3MetadataDirectly()
             '#End Region
 
             '#Region "Working with WAV Files"

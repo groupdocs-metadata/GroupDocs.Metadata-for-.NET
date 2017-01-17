@@ -363,6 +363,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
 
+            /// <summary>
+            /// Reads Id3 metadata directly in MP3 format
+            /// </summary>
+            public static void ReadId3MetadataDirectly() {
+                //ExStart:ReadId3MetadataInMp3Directly
+                // init Mp3Format class
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // read album in ID3 v1
+                MetadataProperty album = mp3Format[MetadataKey.Id3v1.Album];
+                Console.WriteLine(album);
+
+                // read title in ID3 v2
+                MetadataProperty title = mp3Format[MetadataKey.Id3v2.Title];
+                Console.WriteLine(title);
+
+                // create custom ID3v2 key
+                // TCOP is used for 'Copyright' property according to the ID3 specification
+                MetadataKey copyrightKey = new MetadataKey(MetadataType.Id3v2, "TCOP");
+
+                // read copyright property
+                MetadataProperty copyright = mp3Format[copyrightKey];
+                Console.WriteLine(copyright);
+                //ExEnd:ReadId3MetadataInMp3Directly
+            }
+
         }
 
         public static class Wav

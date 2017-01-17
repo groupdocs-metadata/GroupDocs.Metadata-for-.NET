@@ -173,7 +173,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 mp3Format.Save()
                 'ExEnd:RemoveID3v2Tag
             End Sub
-            
+
 
             ''' <summary>
             ''' Reads ID3v1 tag in MP3 format
@@ -331,6 +331,34 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(ex.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Reads Id3 metadata directly in MP3 format
+            ''' </summary>
+            Public Shared Sub ReadId3MetadataDirectly()
+                'ExStart:ReadId3MetadataInMp3Directly
+                ' init Mp3Format class
+                Dim mp3Format As New Mp3Format(Common.MapSourceFilePath(filePath))
+
+                ' read album in ID3 v1
+                Dim album As MetadataProperty = mp3Format(MetadataKey.Id3v1.Album)
+                Console.WriteLine(album)
+
+                ' read title in ID3 v2
+                Dim title As MetadataProperty = mp3Format(MetadataKey.Id3v2.Title)
+                Console.WriteLine(title)
+
+                ' create custom ID3v2 key
+                ' TCOP is used for 'Copyright' property according to the ID3 specification
+                Dim copyrightKey As New MetadataKey(MetadataType.Id3v2, "TCOP")
+
+                ' read copyright property
+                Dim copyright As MetadataProperty = mp3Format(copyrightKey)
+                Console.WriteLine(copyright)
+                'ExEnd:ReadId3MetadataInMp3Directly
+            End Sub
+
 
         End Class
 

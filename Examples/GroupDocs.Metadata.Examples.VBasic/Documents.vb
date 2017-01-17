@@ -139,6 +139,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
 #End Region
 
 #Region "working with custom properties"
@@ -491,6 +492,103 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 'ExEnd:DocumentProtectedException
             End Sub
 #End Region
+
+
+
+
+
+
+            '''<summary>
+            '''Reads calculated document info for MS Word format
+            '''</summary>
+            Public Shared Sub ReadDocumentInfo()
+                'ExStart:ReadDocumentInfo
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' get document info
+                Dim documentInfo As DocumentInfo = docFormat.DocumentInfo
+
+                ' display characters count
+                Dim charactersCount As Long = documentInfo.CharactersCount
+                Console.WriteLine("Characters count: {0}", charactersCount)
+
+                ' display pages count
+                Dim pagesCount As Integer = documentInfo.PagesCount
+                Console.WriteLine("Pages count: {0}", pagesCount)
+                'ExEnd:ReadDocumentInfo 
+            End Sub
+
+            '''<summary>
+            '''Displays file type of the Word document
+            '''</summary>
+            Public Shared Sub DisplayFileType()
+                'ExStart:DisplayFileType
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' display file type
+                Select Case docFormat.FileType
+                    Case FileType.Doc
+                        Console.WriteLine("Old binary document")
+                        Exit Select
+
+                    Case FileType.Docx
+                        Console.WriteLine("XML-based document")
+                        Exit Select
+                End Select
+                'ExEnd:DisplayFileType
+            End Sub
+
+            '''<summary>
+            '''Reads Digital signatre in Word Document
+            '''</summary>
+            Public Shared Sub ReadDigitalSignature()
+                'ExStart:ReadDigitalSignature
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' if document contains digital signatures
+                If docFormat.HasDigitalSignatures Then
+                    ' then inspect it
+                    Dim inspectionResult = docFormat.InspectDocument()
+
+                    ' and get digital signatures
+                    Dim signatures As DigitalSignature() = inspectionResult.DigitalSignatures
+
+                    For Each signature As DigitalSignature In signatures
+                        ' get certificate subject
+                        Console.WriteLine("Certificate subject: {0}", signature.CertificateSubject)
+
+                        ' get certificate sign time
+                        Console.WriteLine("Signed time: {0}", signature.SignTime)
+                    Next
+                End If
+                'ExEnd:ReadDigitalSignature
+            End Sub
+
+            '''<summary>
+            '''Removes digital signature from word document
+            '''</summary>
+            Public Shared Sub RemoveDigitalSignature()
+                'ExStart:RemoveDigitalSignature
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' if document contains digital signatures
+                If docFormat.HasDigitalSignatures Then
+                    ' then remove them
+                    docFormat.RemoveHiddenData(New DocInspectionOptions(DocInspectorOptionsEnum.DigitalSignatures))
+
+                    ' and commit changes
+                    docFormat.Save()
+                End If
+                'ExEnd:RemoveDigitalSignature
+            End Sub
+
+
+
+
 
         End Class
 
@@ -850,6 +948,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' </summary> 
             Public Shared Sub UpdateDocumentProperties()
                 Try
+
                     'ExStart:UpdateBuiltinDocumentPropertiesPptFormat
                     ' initialize PptFormat
                     Dim pptFormat As New PptFormat(Common.MapSourceFilePath(filePath))
@@ -862,11 +961,19 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     pptMetadata.Subject = "New subject"
                     pptMetadata.Manager = "Usman"
 
+                    ' set content type
+                    pptMetadata.ContentType = "content type"
+
+                    ' set hyperlink base
+                    pptMetadata.HyperlinkBase = "http://groupdocs.com"
+
+                    ' mark as shared
+                    pptMetadata.SharedDoc = True
+
                     'save output file...
                     pptFormat.Save(Common.MapDestinationFilePath(filePath))
-                    'ExEnd:UpdateBuiltinDocumentPropertiesPptFormat
-
                     Console.WriteLine("File saved in destination folder.")
+                    'ExEnd:UpdateBuiltinDocumentPropertiesPptFormat
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -894,6 +1001,21 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Reads document properties of Ppt file in an improved and fast way
+            ''' </summary> 
+            Public Shared Sub ImprovedMetadataReading()
+                'ExStart:ImprovedMetadataReadingPpt
+                'initialize ppt format
+                Dim ppt As New PptFormat(Common.MapSourceFilePath(filePath))
+                'use faster way to read metadata properties of ppt document
+                Dim properties = ppt.DocumentProperties
+                Console.WriteLine(properties)
+                'ExEnd:ImprovedMetadataReadingPpt
+            End Sub
+
 #End Region
 
 #Region "working with custom properties"

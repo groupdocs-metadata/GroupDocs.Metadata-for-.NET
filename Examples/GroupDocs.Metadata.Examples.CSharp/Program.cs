@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region Working with Documents
 
@@ -62,6 +62,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Read all metadata Keys of word document
             //Documents.Doc.ReadMetadataUsingKeys("Different Formats");
 
+            //Read Document info of a word document
+            //Documents.Doc.ReadDocumentInfo();
+
+            //Display file type of the word document
+            //Documents.Doc.DisplayFileType();
+
+            //Read Digital Signature from word document
+            //Documents.Doc.ReadDigitalSignature();
+
+            //Remove Digital Signature from word document
+            //Documents.Doc.RemoveDigitalSignature();
             #endregion
 
             #region Working with Ppt Files
@@ -90,6 +101,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Removes Comments, and Hidden Slides of Ppt File
             //Documents.Ppt.RemoveHiddenData();
 
+            //Reads document properties faster
+            //Documents.Ppt.ImprovedMetadataReading();
             #endregion
 
             #region Working with Xls Files
@@ -548,6 +561,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             // Update ID3v1Tag
             //AudioFormats.Mp3.UpdateID3v1Tag();
+
+            //Read ID3 Metadata directtly from MP3
+            //AudioFormats.Mp3.ReadId3MetadataDirectly();
             #endregion
 
             #region Working with WAV Files
