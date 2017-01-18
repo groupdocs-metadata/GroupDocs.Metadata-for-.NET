@@ -64,7 +64,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <param name="directoryPath">Path to the files</param>
             public static void ReadMetadataUsingKeys(string directoryPath)
             {
-                try {
+                try
+                {
                     //ExStart:ReadMetadataUsingKeys
                     //Get all Word documents inside directory
                     string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.doc");
@@ -88,7 +89,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     }
                     //ExEnd:ReadMetadataUsingKeys
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.Message);
                 }
             }
@@ -569,6 +571,102 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
             #endregion
 
+            ///<summary>
+            ///Reads calculated document info for MS Word format
+            ///</summary>
+            public static void ReadDocumentInfo()
+            {
+                //ExStart:ReadDocumentInfo
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get document info
+                DocumentInfo documentInfo = docFormat.DocumentInfo;
+
+                // display characters count
+                long charactersCount = documentInfo.CharactersCount;
+                Console.WriteLine("Characters count: {0}", charactersCount);
+
+                // display pages count
+                int pagesCount = documentInfo.PagesCount;
+                Console.WriteLine("Pages count: {0}", pagesCount);
+                //ExEnd:ReadDocumentInfo 
+            }
+
+            ///<summary>
+            ///Displays file type of the Word document
+            ///</summary>
+            public static void DisplayFileType()
+            {
+                //ExStart:DisplayFileType
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // display file type
+                switch (docFormat.FileType)
+                {
+                    case FileType.Doc:
+                        Console.WriteLine("Old binary document");
+                        break;
+
+                    case FileType.Docx:
+                        Console.WriteLine("XML-based document");
+                        break;
+                }
+                //ExEnd:DisplayFileType
+            }
+
+            ///<summary>
+            ///Reads Digital signatre in Word Document
+            ///</summary>
+            public static void ReadDigitalSignature()
+            {
+                //ExStart:ReadDigitalSignature
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // if document contains digital signatures
+                if (docFormat.HasDigitalSignatures)
+                {
+                    // then inspect it
+                    var inspectionResult = docFormat.InspectDocument();
+
+                    // and get digital signatures
+                    DigitalSignature[] signatures = inspectionResult.DigitalSignatures;
+
+                    foreach (DigitalSignature signature in signatures)
+                    {
+                        // get certificate subject
+                        Console.WriteLine("Certificate subject: {0}", signature.CertificateSubject);
+
+                        // get certificate sign time
+                        Console.WriteLine("Signed time: {0}", signature.SignTime);
+                    }
+                }
+                //ExEnd:ReadDigitalSignature
+            }
+
+            ///<summary>
+            ///Removes digital signature from word document
+            ///</summary>
+            public static void RemoveDigitalSignature()
+            {
+                //ExStart:RemoveDigitalSignature
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // if document contains digital signatures
+                if (docFormat.HasDigitalSignatures)
+                {
+                    // then remove them
+                    docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.DigitalSignatures));
+
+                    // and commit changes
+                    docFormat.Save();
+                }
+                //ExEnd:RemoveDigitalSignature
+            }
+
         }
 
         public static class Pdf
@@ -997,6 +1095,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     pptMetadata.Subject = "New subject";
                     pptMetadata.Manager = "Usman";
 
+                    // set content type
+                    pptMetadata.ContentType = "content type";
+
+                    // set hyperlink base
+                    pptMetadata.HyperlinkBase = "http://groupdocs.com";
+
+                    // mark as shared
+                    pptMetadata.SharedDoc = true;
+
                     //save output file...
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:UpdateBuiltinDocumentPropertiesPptFormat
@@ -1034,6 +1141,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
+            }
+
+            /// <summary>
+            /// Reads document properties of Ppt file in an improved and fast way
+            /// </summary> 
+            public static void ImprovedMetadataReading()
+            {
+                //ExStart:ImprovedMetadataReadingPpt
+                //initialize ppt format
+                PptFormat ppt = new PptFormat(Common.MapSourceFilePath(filePath));
+                //use faster way to read metadata properties of ppt document
+                var properties = ppt.DocumentProperties;
+                Console.WriteLine(properties);
+                //ExEnd:ImprovedMetadataReadingPpt
             }
             #endregion
 
@@ -1808,16 +1929,48 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     }
                     //ExEnd:ReadOdtMetadata
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.Message);
-                } 
+                }
 
-               
+
             }
 
-               
+
+            /// <summary>
+            /// Updates properties of Open Document Format file  
+            /// </summary> 
+            public static void UpdateOdtMetadata()
+            {
+                try
+                {
+                    //ExStart:UpdateOdtMetadata
+                    // initialize DocFormat with ODT file's path
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize DocMetadata
+                    DocMetadata docMetadata = docFormat.DocumentProperties;
+
+                    //update document property...
+                    docMetadata.Author = "Rida ";
+                    docMetadata.Company = "Aspose";
+                    docMetadata.Manager = "Rida Fatima";
+
+                    //save output file...
+                    docFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:UpdateOdtMetadata
+                    Console.WriteLine("Updated Successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
             }
-          
+        }
+
 
 
 
@@ -1914,6 +2067,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
         }
+
+
 
     }
 }

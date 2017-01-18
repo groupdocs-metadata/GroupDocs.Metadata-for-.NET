@@ -2265,7 +2265,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceDjvuFilePath
-            private const string EmfFilePath = "Images/Djvu/sample.djvu";
+            private const string DjvuFilePath = "Images/Djvu/sample.djvu";
             //ExEnd:SourceDjvuFilePath
 
             /// <summary>
@@ -2278,13 +2278,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInDjvu
 
                     // initialize DjvuFormat
-                    DjvuFormat wmfFormat = new DjvuFormat(Common.MapSourceFilePath(EmfFilePath));
+                    DjvuFormat djvuFormat = new DjvuFormat(Common.MapSourceFilePath(DjvuFilePath));
 
                     // get width
-                    int width = wmfFormat.Width;
+                    int width = djvuFormat.Width;
 
                     // get height
-                    int height = wmfFormat.Height;
+                    int height = djvuFormat.Height;
 
                     //display height and width in console
                     Console.Write("Width: {0}, Height: {1}", width, height);
@@ -2301,7 +2301,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceBmpFilePath
-            private const string EmfFilePath = "Images/Bmp/goldhill.bmp";
+            private const string BmpFilePath = "Images/Bmp/goldhill.bmp";
             //ExEnd:SourceBmpFilePath
 
             /// <summary>
@@ -2314,7 +2314,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInBmp
 
                     // initialize BmpFormat
-                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(EmfFilePath));
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
 
                     // get width
                     int width = bmpFormat.Width;
@@ -2341,7 +2341,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetHeaderPropertiesInBmp
                     // initialize BmpFormat
-                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(EmfFilePath));
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
 
                     // get BMP header
                     BmpHeader header = bmpFormat.HeaderInfo;

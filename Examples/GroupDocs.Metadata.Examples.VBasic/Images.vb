@@ -1995,7 +1995,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
             ' initialize file path
             'ExStart:SourceDjvuFilePath
-            Private Const EmfFilePath As String = "Images/Djvu/sample.djvu"
+            Private Const DjvuFilePath As String = "Images/Djvu/sample.djvu"
             'ExEnd:SourceDjvuFilePath
 
             ''' <summary>
@@ -2006,13 +2006,13 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     'ExStart:GetMetadatPropertiesInDjvu
 
                     ' initialize DjvuFormat
-                    Dim wmfFormat As New DjvuFormat(Common.MapSourceFilePath(EmfFilePath))
+                    Dim djvuFormat As New DjvuFormat(Common.MapSourceFilePath(DjvuFilePath))
 
                     ' get width
-                    Dim width As Integer = wmfFormat.Width
+                    Dim width As Integer = djvuFormat.Width
 
                     ' get height
-                    Dim height As Integer = wmfFormat.Height
+                    Dim height As Integer = djvuFormat.Height
 
                     'display height and width in console
                     Console.Write("Width: {0}, Height: {1}", width, height)
@@ -2028,7 +2028,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
             ' initialize file path
             'ExStart:SourceBmpFilePath
-            Private Const EmfFilePath As String = "Images/Bmp/goldhill.bmp"
+            Private Const BmpFilePath As String = "Images/Bmp/goldhill.bmp"
             'ExEnd:SourceBmpFilePath
 
             ''' <summary>
@@ -2039,7 +2039,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     'ExStart:GetMetadatPropertiesInBmp
 
                     ' initialize BmpFormat
-                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(EmfFilePath))
+                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(BmpFilePath))
 
                     ' get width
                     Dim width As Integer = bmpFormat.Width
@@ -2048,8 +2048,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Dim height As Integer = bmpFormat.Height
 
                     'display height and width in console
-                    'ExEnd:GetMetadatPropertiesInBmp
                     Console.Write("Width: {0}, Height: {1}", width, height)
+                    'ExEnd:GetMetadatPropertiesInBmp
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -2062,7 +2062,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 Try
                     'ExStart:GetHeaderPropertiesInBmp
                     ' initialize BmpFormat
-                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(EmfFilePath))
+                    Dim bmpFormat As New BmpFormat(Common.MapSourceFilePath(BmpFilePath))
 
                     ' get BMP header
                     Dim header As BmpHeader = bmpFormat.HeaderInfo
