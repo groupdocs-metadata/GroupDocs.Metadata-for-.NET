@@ -2083,6 +2083,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Demonstrates how to read layers in PSD Format
+            /// </summary>
+            public static void ReadLayers()
+            {
+                //ExStart:ReadLayersPSD
+                // initialize PsdFormat
+                PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                // get all layers
+                PsdLayer[] layers = psdFormat.Layers;
+
+                foreach (PsdLayer layer in layers)
+                {
+                    // display layer short info
+                    Console.WriteLine("Name: {0}, channels count: {1}", layer.Name, layer.ChannelsCount);
+                }
+                //ExEnd:ReadLayersPSD
+            }
         }
 
         public static class Cad
@@ -2363,6 +2383,72 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
+        public static class DICOM
+        {
+
+            // initialize file path
+            //ExStart:SourceDicomFilePath
+            private const string DicomFilePath = "Images/Dicom/sample.dicom";
+            //ExEnd:SourceDicomFilePath
+            //initialize file path where the output data will be stored
+            //ExStart:OutputDicomDataFilePath
+            private const string outputFilePath = "Documents/Xls/metadata-dicom.xls";
+            //ExEnd:OutputDicomDataFilePath
+            /// <summary>
+            /// Detects a DICOM format file
+            /// </summary>
+            public static void DetectDicomFormat()
+            {
+                //ExStart:DetectDicomFormat
+                // recognize format
+                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(DicomFilePath));
+
+                // check format type
+                if (format.Type == DocumentType.DICOM)
+                {
+                    // cast it to DICOMFormat
+                    DICOMFormat dicom = format as DICOMFormat;
+                }
+                //ExEnd:DetectDicomFormat
+            }
+
+            /// <summary>
+            /// Gets metadata properties of a Dicom file
+            /// </summary>
+            public static void GetMetadataProperties()
+            {
+                //ExStart:GetMetadataPropertiesDicom
+                // initialize DICOMFormat
+                DICOMFormat dicom = new DICOMFormat(Common.MapSourceFilePath(DicomFilePath));
+
+                // get DICOM metadata
+                DicomMetadata header = dicom.Info;
+
+                // display header offset
+                Console.WriteLine("Header offset: {0}", header.HeaderOffset);
+
+                // display number of frames
+                Console.WriteLine("Number of frames: {0}", header.NumberOfFrames);
+                //ExEnd:GetMetadataPropertiesDicom
+            }
+
+            /// <summary>
+            /// Exports metadata of a DICOM file to csv,xls file
+            /// </summary>
+            public static void ExportMetadata()
+            {
+                //ExStart:ExportMetadataDicom
+                // export to excel
+                byte[] content = ExportFacade.ExportToExcel(Common.MapSourceFilePath(DicomFilePath));
+
+                // write data to the file
+                File.WriteAllBytes(outputFilePath, content);
+                //ExEnd:ExportMetadataDicom
+            }
+
+
+        }
+
         /// <summary>
         /// Retrieve width and height properties for all image formats.
         /// 
@@ -2407,5 +2493,41 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
+        /// <summary>
+        /// Reads ByteOrder (little-endian, big-endian) for image formats
+        /// </summary>
+        /// <param name="directoryPath">path to the images directory</param>
+        public static void ReadByteOrder(string directoryPath)
+        {
+            try
+            {
+                //ExStart:ReadByteOrderOfImage
+                // get all images from the specific folder
+                string[] images = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
+
+                foreach (string path in images)
+                {
+                    // recognize format
+                    FormatBase format = FormatFactory.RecognizeFormat(path);
+                    // detect image
+                    ImageFormat image = format as ImageFormat;
+
+                    // skip non-image file
+                    if (image == null)
+                    {
+                        continue;
+                    }
+                    // and display byte-order value
+                    Console.WriteLine(image.ByteOrder);
+                }
+                //ExEnd:ReadByteOrderOfImage
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }

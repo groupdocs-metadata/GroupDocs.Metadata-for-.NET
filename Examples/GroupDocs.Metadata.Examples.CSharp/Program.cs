@@ -19,6 +19,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
              */
             Common.ApplyLicense();
 
+            #region using Dynabic.Metered Account
+            //Common.UseDynabicMeteredAccount();
+            #endregion
+
             #region Working with Documents
 
             #region Working with Doc Files
@@ -30,7 +34,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             ////Documents.Doc.UpdateDocumentProperties();
 
             //Remove document properties of Doc file
-            ////Documents.Doc.RemoveDocumentProperties();
+            //Documents.Doc.RemoveDocumentProperties();
 
             //Add custom property in Doc file
             ////Documents.Doc.AddCustomProperty();
@@ -133,6 +137,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Gets Content type document properties in Xls file
             //Documents.Xls.GetContentTypeDocumentProperties()
+
+            //Export content type properties of Xls file to Csv/Xls
+            //Documents.Xls.ContentTypePropertiesExport();
+
+            //Add content type properties
+            //Documents.Xls.AddContentTypeProperty();
 
             #endregion
 
@@ -379,6 +389,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Images.RetrieveImageSize("Images/SampleImages");
             #endregion
 
+            #region Working with Dicom images
+            //detect DICOM format 
+            //Images.DICOM.DetectDicomFormat();
+            //Read metadata of a DICOM file
+            Images.DICOM.GetMetadataProperties();
+            //export metadata of a DICOM file to csv/xls file
+            //Images.DICOM.ExportMetadata();
+
+            #endregion
+            #region Read Byte order of images
+            //Reads byte order of images of supported formats
+            //Images.ReadByteOrder("Images/SampleImages");
+            #endregion
+
             #endregion
 
             #region Working with PSD
@@ -394,6 +418,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             // Read IPTC Metadata 
             //Images.Psd.ReadIPTCMetadata();
+
+            // Read Layers
+            //Images.Psd.ReadLayers();
 
             #endregion
 
@@ -575,6 +602,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //AudioFormats.Wav.ReadAudioDetails();
 
 
+            #endregion
+
+            #region Working with Video Formats
+            //Detect AVI format using format factory
+            //VideoFormats.Avi.DetectAviFormat();
+
+            //Read Header information in AVI format
+            //VideoFormats.Avi.ReadAviMainHeader();
+
+            //Export Metadata of AVI Format file
+            //VideoFormats.Avi.ExportMetadata();
             #endregion
             Console.ReadKey();
 

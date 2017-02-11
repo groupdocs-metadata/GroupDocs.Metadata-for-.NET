@@ -1205,6 +1205,13 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'ExStart:SourceXlsFilePath
             Private Const filePath As String = "Documents/Xls/sample.xls"
             'ExEnd:SourceXlsFilePath
+
+            'initialize output file path
+            'ExStart:DestinationXlsFilePath
+            Private Const outputFilePath As String = "Documents/Xls/metadata-xls.xls"
+            Private Const outputFilePathWithHiddenData As String = "Documents/Xls/hidden-data.xls"
+            'ExEnd:DestinationXlsFilePath
+
 #Region "working with builtin document properties"
             ''' <summary>
             ''' Gets builtin document properties of Xls file  
@@ -1488,6 +1495,61 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+#End Region
+
+#Region "working with exporting document properties"
+            ''' <summary>
+            ''' Shows how to export content type properties to csv/excel
+            ''' </summary>
+            Public Shared Sub ContentTypePropertiesExport()
+                Try
+                    'ExStart:ContentTypePropertiesExportXls
+                    ' export to excel
+                    Dim content As Byte() = ExportFacade.ExportToExcel(Common.MapSourceFilePath(filePath))
+
+                    ' write data to the file
+                    File.WriteAllBytes(Common.MapDestinationFilePath(outputFilePath), content)
+                    'ExEnd:ContentTypePropertiesExportXls
+                    Console.WriteLine("file has been exported")
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+
+            End Sub
+
+            ''' <summary>
+            ''' shows how to add content type property
+            ''' </summary>
+            Public Shared Sub AddContentTypeProperty()
+                Try
+                    'ExStart:AddContentTypePropertyXls
+                    ' initialize XlsFormat
+                    Dim xlsFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get all xls properties
+                    Dim xlsProperties As XlsMetadata = xlsFormat.DocumentProperties
+
+                    ' if Excel contains content type properties
+                    If xlsProperties.ContentTypeProperties.Length > 0 Then
+                        ' than remove all content type properties
+                        xlsProperties.ClearContentTypeProperties()
+                    End If
+
+                    ' set hidden field
+                    xlsProperties.AddContentTypeProperty("user hidden id", "asdk12dkvjdjh3")
+
+                    ' and commit changes
+                    xlsFormat.Save(Common.MapDestinationFilePath(outputFilePathWithHiddenData))
+                    'ExEnd:AddContentTypePropertyXls
+                    Console.WriteLine("file has been exported")
+
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+
+            End Sub
+
+
 #End Region
 
         End Class

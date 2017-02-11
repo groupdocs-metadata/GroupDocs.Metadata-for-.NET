@@ -7,6 +7,7 @@ Imports GroupDocs.Metadata.Tools
 Imports GroupDocs.Metadata
 Imports GroupDocs.Metadata.Formats
 Imports GroupDocs.Metadata.Exceptions
+Imports GroupDocs.Metadata.Formats.Document
 
 Namespace Utilities
     Public NotInheritable Class Common
@@ -16,6 +17,8 @@ Namespace Utilities
         Private Const SourceFolderPath As String = "../../../Data/Source/"
         Private Const DestinationFolderPath As String = "../../../Data/Destination/"
         Private Const LicenseFilePath As String = "Groupdocs.Total.lic"
+        Private Const publicKey As String = "Public key for your account"
+        Private Const privateKey As String = "private key for your account"
         'ExEnd:CommonProperties
 
         'ExStart:MapSourceFilePath
@@ -185,6 +188,30 @@ Namespace Utilities
         End Sub
         'ExEnd:ReadMetadataUsingKey
 
+
+        ''' <summary>
+        ''' shows how to use library in licensed mode using Dynabic.Metered account
+        ''' </summary>
+        Public Shared Sub UseDynabicMeteredAccount()
+            'ExStart:UseDynabicMeteredAccount
+            ' initialize Metered API
+            Dim metered As Metered = New Metered()
+
+            ' set-up credentials
+            metered.SetMeteredKey(publicKey, privateKey)
+
+            ' do some work:
+
+            ' Open Word document
+            Dim docFormat As New DocFormat(MapSourceFilePath("Documents/Doc/Metadata_testfile.docx"))
+
+            ' remove hidden metadata
+            docFormat.RemoveHiddenData(New DocInspectionOptions(DocInspectorOptionsEnum.All))
+
+            ' and get consumption quantity
+            Dim consumptionQuantity As Decimal = Metered.GetConsumptionQuantity()
+            'ExEnd:UseDynabicMeteredAccount
+        End Sub
 
 
     End Class

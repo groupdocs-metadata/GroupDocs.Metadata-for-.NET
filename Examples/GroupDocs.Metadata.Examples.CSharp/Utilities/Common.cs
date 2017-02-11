@@ -7,6 +7,7 @@ using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Exceptions;
+using GroupDocs.Metadata.Formats.Document;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {
@@ -15,7 +16,9 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
         //ExStart:CommonProperties
         private const string SourceFolderPath = "../../../Data/Source/";
         private const string DestinationFolderPath = "../../../Data/Destination/";
-        private const string LicenseFilePath = @"D:\Aspose Projects\LICENSE\GroupDocs.Total.lic";
+        private const string LicenseFilePath = @"D:\Aspose Projects\License\GroupDocs.Total.lic";
+        private const string publicKey = "Public key for your account";
+        private const string privateKey = "private key for your account";
         //ExEnd:CommonProperties
 
         //ExStart:MapSourceFilePath
@@ -220,5 +223,30 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
         }
         //ExEnd:EnumerateMetadata
+
+        /// <summary>
+        /// shows how to use library in licensed mode using Dynabic.Metered account
+        /// </summary>
+        public static void UseDynabicMeteredAccount()
+        {
+            //ExStart:UseDynabicMeteredAccount
+            // initialize Metered API
+            GroupDocs.Metadata.Metered metered = new Metered();
+
+            // set-up credentials
+            metered.SetMeteredKey(publicKey, privateKey);
+
+            // do some work:
+
+            // Open Word document
+            DocFormat docFormat = new DocFormat(MapSourceFilePath("Documents/Doc/Metadata_testfile.docx"));
+
+            // remove hidden metadata
+            docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.All));
+
+            // and get consumption quantity
+            decimal consumptionQuantity = GroupDocs.Metadata.Metered.GetConsumptionQuantity();
+            //ExEnd:UseDynabicMeteredAccount
+        }
     }
 }
