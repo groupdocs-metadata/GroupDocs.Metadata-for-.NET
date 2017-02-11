@@ -1823,6 +1823,26 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Demonstrates how to read layers in PSD Format
+            ''' </summary>
+            Public Shared Sub ReadLayers()
+                'ExStart:ReadLayersPSD
+                ' initialize PsdFormat
+                Dim psdFormat As New PsdFormat(Common.MapSourceFilePath(filePath))
+
+                ' get all layers
+                Dim layers As PsdLayer() = psdFormat.Layers
+
+                For Each layer As PsdLayer In layers
+                    ' display layer short info
+                    Console.WriteLine("Name: {0}, channels count: {1}", layer.Name, layer.ChannelsCount)
+                Next
+                'ExEnd:ReadLayersPSD
+            End Sub
+
         End Class
 
         Public NotInheritable Class Cad
@@ -2083,6 +2103,69 @@ Namespace GroupDocs.Metadata.Examples.VBasic
         End Class
 
 
+        Public NotInheritable Class DICOM
+            Private Sub New()
+            End Sub
+
+            ' initialize file path
+            'ExStart:SourceDicomFilePath
+            Private Const DicomFilePath As String = "Images/Dicom/sample.dicom"
+            'ExEnd:SourceDicomFilePath
+            'initialize file path where the output data will be stored
+            'ExStart:OutputDicomDataFilePath
+            Private Const outputFilePath As String = "Documents/Xls/metadata-dicom.xls"
+            'ExEnd:OutputDicomDataFilePath
+            ''' <summary>
+            ''' Detects a DICOM format file
+            ''' </summary>
+            Public Shared Sub DetectDicomFormat()
+                'ExStart:DetectDicomFormat
+                ' recognize format
+                Dim format As FormatBase = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(DicomFilePath))
+
+                ' check format type
+                If format.Type = DocumentType.DICOM Then
+                    ' cast it to DICOMFormat
+                    Dim dicom As DICOMFormat = TryCast(format, DICOMFormat)
+                End If
+                'ExEnd:DetectDicomFormat
+            End Sub
+
+            ''' <summary>
+            ''' Gets metadata properties of a Dicom file
+            ''' </summary>
+            Public Shared Sub GetMetadataProperties()
+                'ExStart:GetMetadataPropertiesDicom
+                ' initialize DICOMFormat
+                Dim dicom As New DICOMFormat(Common.MapSourceFilePath(DicomFilePath))
+
+                ' get DICOM metadata
+                Dim header As DicomMetadata = dicom.Info
+
+                ' display header offset
+                Console.WriteLine("Header offset: {0}", header.HeaderOffset)
+
+                ' display number of frames
+                Console.WriteLine("Number of frames: {0}", header.NumberOfFrames)
+                'ExEnd:GetMetadataPropertiesDicom
+            End Sub
+
+            ''' <summary>
+            ''' Exports metadata of a DICOM file to csv,xls file
+            ''' </summary>
+            Public Shared Sub ExportMetadata()
+                'ExStart:ExportMetadataDicom
+                ' export to excel
+                Dim content As Byte() = ExportFacade.ExportToExcel(Common.MapSourceFilePath(DicomFilePath))
+
+                ' write data to the file
+                File.WriteAllBytes(outputFilePath, content)
+                'ExEnd:ExportMetadataDicom
+            End Sub
+
+
+        End Class
+
 
 
         ''' <summary>
@@ -2122,6 +2205,40 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Try
 
         End Sub
+
+
+
+        ''' <summary>
+        ''' Reads ByteOrder (little-endian, big-endian) for image formats
+        ''' </summary>
+        ''' <param name="directoryPath">path to the images directory</param>
+        Public Shared Sub ReadByteOrder(directoryPath As String)
+            Try
+                'ExStart:ReadByteOrderOfImage
+                ' get all images from the specific folder
+                Dim images As String() = Directory.GetFiles(Common.MapSourceFilePath(directoryPath))
+
+                For Each path As String In images
+                    ' recognize format
+                    Dim format As FormatBase = FormatFactory.RecognizeFormat(path)
+                    ' detect image
+                    Dim image As Formats.Image.ImageFormat = TryCast(format, Formats.Image.ImageFormat)
+
+                    ' skip non-image file
+                    If image Is Nothing Then
+                        Continue For
+                    End If
+                    ' and display byte-order value
+                    Console.WriteLine(image.ByteOrder)
+                    'ExEnd:ReadByteOrderOfImage
+                Next
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+
+
+        End Sub
+
 
     End Class
 End Namespace

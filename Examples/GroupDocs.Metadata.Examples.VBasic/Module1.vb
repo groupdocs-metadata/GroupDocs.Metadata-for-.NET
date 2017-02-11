@@ -399,6 +399,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' Read IPTC Metadata 
             'Images.Psd.ReadIPTCMetadata()
 
+            'Read Layers
+            'Images.Psd.ReadLayers()
+
 #End Region
 
 #Region "Working CAD files"
@@ -568,7 +571,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' Update ID3v1Tag
             'AudioFormats.Mp3.UpdateID3v1Tag()
 
-             'Read ID3 Metadata directtly from MP3
+            'Read ID3 Metadata directtly from MP3
             'AudioFormats.Mp3.ReadId3MetadataDirectly()
             '#End Region
 
@@ -580,6 +583,16 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' Read Audio Details 
             'AudioFormats.Wav.ReadAudioDetails()
 
+#End Region
+#Region "Working with Video Formats"
+            'Detect AVI format using format factory
+            'VideoFormats.Avi.DetectAviFormat();
+
+            'Read Header information in AVI format
+            'VideoFormats.Avi.ReadAviMainHeader();
+
+            'Export Metadata of AVI Format file
+            'VideoFormats.Avi.ExportMetadata();
 #End Region
 
             Console.ReadKey()

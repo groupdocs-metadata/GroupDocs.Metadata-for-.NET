@@ -22,7 +22,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceDocFilePath
-            private const string filePath = "Documents/Doc/sample1.doc";
+            private const string filePath = "Documents/Doc/Metadata_testfile.docx";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
 
@@ -1380,6 +1380,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceXlsFilePath
             private const string filePath = "Documents/Xls/sample.xls";
             //ExEnd:SourceXlsFilePath
+
+            //initialize output file path
+            //ExStart:DestinationXlsFilePath
+            private const string outputFilePath = "Documents/Xls/metadata-xls.xls";
+            private const string outputFilePathWithHiddenData = "Documents/Xls/hidden-data.xls";
+            //ExEnd:DestinationXlsFilePath
             #region working with builtin document properties
             /// <summary>
             /// Gets builtin document properties of Xls file  
@@ -1717,6 +1723,70 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            #endregion
+
+            #region working with exporting document properties
+            /// <summary>
+            /// Shows how to export content type properties to csv/excel
+            /// </summary>
+            public static void ContentTypePropertiesExport()
+            {
+                try
+                {
+                    //ExStart:ContentTypePropertiesExportXls
+                    // export to excel
+                    byte[] content = ExportFacade.ExportToExcel(Common.MapSourceFilePath(filePath));
+
+                    // write data to the file
+                    File.WriteAllBytes(Common.MapDestinationFilePath(outputFilePath), content);
+                    //ExEnd:ContentTypePropertiesExportXls
+                    Console.WriteLine("file has been exported");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+
+            /// <summary>
+            /// shows how to add content type property
+            /// </summary>
+            public static void AddContentTypeProperty()
+            {
+                try
+                {
+                    //ExStart:AddContentTypePropertyXls
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get all xls properties
+                    XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
+
+                    // if Excel contains content type properties
+                    if (xlsProperties.ContentTypeProperties.Length > 0)
+                    {
+                        // than remove all content type properties
+                        xlsProperties.ClearContentTypeProperties();
+                    }
+
+                    // set hidden field
+                    xlsProperties.AddContentTypeProperty("user hidden id", "asdk12dkvjdjh3");
+
+                    // and commit changes
+                    xlsFormat.Save(Common.MapDestinationFilePath(outputFilePathWithHiddenData));
+                    //ExEnd:AddContentTypePropertyXls
+                    Console.WriteLine("file has been exported");
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+
+
             #endregion
         }
 
