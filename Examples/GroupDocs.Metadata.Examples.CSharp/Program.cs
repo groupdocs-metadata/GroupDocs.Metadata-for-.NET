@@ -144,6 +144,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Add content type properties
             //Documents.Xls.AddContentTypeProperty();
 
+            //Reads thumnail in excel file
+            //Documents.Xls.ReadThumbnailXls();
+
             #endregion
 
             #region Working with Pdf Files
@@ -178,6 +181,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Remove hidden data in Pdf file
             //Documents.Pdf.RemoveHiddenData();
 
+            //Loads only existing metadata keys
+            //Documents.Pdf.LoadExistingMetadataKeys();
+
             #endregion
 
             #region Working with OneNote Files
@@ -207,6 +213,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.ODT.UpdateOdtMetadata();
             #endregion
 
+            //Reads thumbnail in documents
+            //Documents.ReadThumbnail("Documents/Doc/sample.docx");
+
+            //Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+            //Documents.LazyLoadDocumentInfoProperty("Documents/Doc/sample2.doc");
             #endregion
 
             #region Working with Images
@@ -271,6 +282,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update Exif Info of Jpeg image using properties
             //Images.Jpeg.UpdateExifInfoUsingProperties();
+
+            //Delete Exif data faster
+            //Images.Jpeg.FastRemoveExifData();
+
+            //Update Exif data faster
+            //Images.Jpeg.FasterUpdateExifData();
 
             //Remove GPS Info of Jpeg image
             //Images.Jpeg.RemoveGPSData();
@@ -393,7 +410,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //detect DICOM format 
             //Images.DICOM.DetectDicomFormat();
             //Read metadata of a DICOM file
-            Images.DICOM.GetMetadataProperties();
+            //Images.DICOM.GetMetadataProperties();
             //export metadata of a DICOM file to csv/xls file
             //Images.DICOM.ExportMetadata();
 

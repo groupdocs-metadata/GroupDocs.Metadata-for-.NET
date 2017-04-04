@@ -651,6 +651,71 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 'ExEnd:ReadAllExifTags
                 'end of if (exifInfo != null)
             End Sub
+
+
+            ''' <summary>
+            ''' Shows how to delete the Exif data in a faster way
+            ''' Feature is suooprted by version 17.3 or greater
+            ''' </summary>
+            Public Shared Sub FastRemoveExifData()
+                Try
+                    'ExStart:FastRemoveExifData
+
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' reset all exif properties
+                    jpegFormat.RemoveExifInfo()
+
+                    ' and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:FastRemoveExifData
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
+            ''' <summary>
+            ''' Shows how to update the Exif data in a faster way
+            ''' Feature is suooprted by version 17.3 or greater
+            ''' </summary>
+            Public Shared Sub FasterUpdateExifData()
+                Try
+                    'ExStart:FasterUpdateExifData
+
+                    ' initialize JpegFormat
+                    Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get EXIF data
+                    Dim exif As JpegExifInfo = DirectCast(jpegFormat.GetExifInfo(), JpegExifInfo)
+
+                    If exif Is Nothing Then
+                        ' initialize EXIF data if null
+                        exif = New JpegExifInfo()
+                    End If
+
+                    ' set artist
+                    exif.Artist = "test artist"
+
+                    ' set the name of the camera's owner
+                    exif.CameraOwnerName = "camera owner's name"
+
+                    ' set description
+                    exif.ImageDescription = "test description"
+
+                    ' update EXIF data
+                    jpegFormat.SetExifInfo(exif)
+
+                    ' and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
+                    'ExEnd:FasterUpdateExifData
+                    Console.WriteLine("File saved in destination folder.")
+                Catch exp As Exception
+                    Console.WriteLine(exp.Message)
+                End Try
+            End Sub
+
 #End Region
 
 #Region "Working with IPTC Metadata"

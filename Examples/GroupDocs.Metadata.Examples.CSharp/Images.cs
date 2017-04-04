@@ -734,6 +734,79 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             }
 
+            /// <summary>
+            /// Shows how to delete the Exif data in a faster way
+            /// Feature is suooprted by version 17.3 or greater
+            /// </summary>
+            public static void FastRemoveExifData()
+            {
+                try
+                {
+                    //ExStart:FastRemoveExifData
+
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // reset all exif properties
+                    jpegFormat.RemoveExifInfo();
+
+                    // and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:FastRemoveExifData
+                    Console.WriteLine("File saved in destination folder.");
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Shows how to update the Exif data in a faster way
+            /// Feature is suooprted by version 17.3 or greater
+            /// </summary>
+            public static void FasterUpdateExifData()
+            {
+                try
+                {
+                    //ExStart:FasterUpdateExifData
+
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get EXIF data
+                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+
+                    if (exif == null)
+                    {
+                        // initialize EXIF data if null
+                        exif = new JpegExifInfo();
+                    }
+
+                    // set artist
+                    exif.Artist = "test artist";
+
+                    // set the name of the camera's owner
+                    exif.CameraOwnerName = "camera owner's name";
+
+                    // set description
+                    exif.ImageDescription = "test description";
+
+                    // update EXIF data
+                    jpegFormat.SetExifInfo(exif);
+
+                    // and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:FasterUpdateExifData
+                    Console.WriteLine("File saved in destination folder.");
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+
             #endregion
 
             #region Working with IPTC Metadata

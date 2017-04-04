@@ -597,7 +597,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
             ' initialize file path
             'ExStart:SourcePdfFilePath
-            Private Const filePath As String = "Documents/Pdf/Annotated.pdf"
+            Private Const filePath As String = "Documents/Pdf/sample.pdf"
             'ExEnd:SourcePdfFilePath
 #Region "working with builtin document properties"
             ''' <summary>
@@ -909,6 +909,32 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                 End Try
             End Sub
 #End Region
+
+
+            ''' <summary>
+            ''' Loads Only Existing Metadata Keys into PdfMetadata Class
+            ''' Feature is supported by version 17,03 or greater 
+            ''' </summary>
+            Public Shared Sub LoadExistingMetadataKeys()
+                Try
+                    'ExStart:LoadExistingMetadataKeys
+                    ' initialize PdfFormat
+                    Dim pdfFormat As New PdfFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get pdf properties
+                    Dim properties As PdfMetadata = pdfFormat.DocumentProperties
+
+                    ' go through Keys property and display related PDF properties
+                    For Each key As String In properties.Keys
+                        Console.WriteLine("[{0}]={1}", key, properties(key))
+                        'ExEnd:LoadExistingMetadataKeys
+                    Next
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+
         End Class
 
         Public NotInheritable Class Ppt
@@ -1552,6 +1578,34 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
 #End Region
 
+            ''' <summary>
+            ''' Reads thumnail in excel file, since while using Excel format document may be empty. In this case need to check if thumbnail is not empty
+            ''' Feature is supported by version 17.3 or greater
+            ''' </summary>
+            Public Shared Sub ReadThumbnailXls()
+                Try
+                    'ExStart:ReadThumbnailXls
+                    ' initialize XlsFormat
+                    Dim docFormat As New XlsFormat(Common.MapSourceFilePath(filePath))
+
+                    ' get thumbnail
+                    Dim thumbnailData As Byte() = docFormat.Thumbnail
+
+                    ' check if first sheet is empty
+                    If thumbnailData.Length = 0 Then
+                        Console.WriteLine("Excel sheet is empty and does not contain data")
+                    Else
+                        ' write thumbnail to PNG image since it has png format
+                        File.WriteAllBytes(Common.MapDestinationFilePath("xlsThumbnail.png"), thumbnailData)
+                        'ExEnd:ReadThumbnailXls
+                    End If
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Sub
+
+
+
         End Class
 
         Public NotInheritable Class OneNote
@@ -1854,6 +1908,53 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Try
 
         End Sub
+
+
+        ''' <summary>
+        ''' Demonstrates how to read thumbnail in documents, here we are using Word document
+        ''' Feature is supported in version 17.03  or greater
+        ''' </summary>
+        ''' <param name="filePath"></param>
+        Public Shared Sub ReadThumbnail(filePath As String)
+            Try
+                'ExStart:ReadThumbnail
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' get thumbnail
+                Dim thumbnailData As Byte() = docFormat.Thumbnail
+
+                ' write thumbnail to PNG image since it has png format
+                'ExEnd:ReadThumbnail
+                File.WriteAllBytes(Common.MapDestinationFilePath("thumbnail.png"), thumbnailData)
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+        ''' Feature is supported by version 17.03 or greater
+        ''' </summary>
+        ''' <param name="filePath"></param>
+        Public Shared Sub LazyLoadDocumentInfoProperty(filePath As String)
+            Try
+                'ExStart:LazyLoadDocumentInfoProperty
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' get document info
+                Dim documentInfo As DocumentInfo = docFormat.DocumentInfo
+
+                ' next call returns previous documentInfo object
+                'ExEnd:LazyLoadDocumentInfoProperty
+                Dim [next] As DocumentInfo = docFormat.DocumentInfo
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+
+        End Sub
+
 
     End Class
 End Namespace

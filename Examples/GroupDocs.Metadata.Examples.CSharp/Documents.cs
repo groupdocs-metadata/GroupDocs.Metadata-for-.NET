@@ -22,7 +22,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceDocFilePath
-            private const string filePath = "Documents/Doc/Metadata_testfile.docx";
+            private const string filePath = "Documents/Doc/sample.docx";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
 
@@ -673,7 +673,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourcePdfFilePath
-            private const string filePath = "Documents/Pdf/Annotated.pdf";
+            private const string filePath = "Documents/Pdf/sample.pdf";
             //ExEnd:SourcePdfFilePath
             #region working with builtin document properties
             /// <summary>
@@ -1037,6 +1037,34 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            /// <summary>
+            /// Loads Only Existing Metadata Keys into PdfMetadata Class
+            /// Feature is supported by version 17,03 or greater 
+            /// </summary>
+            public static void LoadExistingMetadataKeys()
+            {
+                try
+                {
+                    //ExStart:LoadExistingMetadataKeys
+                    // initialize PdfFormat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // get pdf properties
+                    PdfMetadata properties = pdfFormat.DocumentProperties;
+
+                    // go through Keys property and display related PDF properties
+                    foreach (string key in properties.Keys)
+                    {
+                        Console.WriteLine("[{0}]={1}", key, properties[key]);
+                    }
+                    //ExEnd:LoadExistingMetadataKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class Ppt
@@ -1788,6 +1816,39 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
 
             #endregion
+
+            /// <summary>
+            /// Reads thumnail in excel file, since while using Excel format document may be empty. In this case need to check if thumbnail is not empty
+            /// Feature is supported by version 17.3 or greater
+            /// </summary>
+            public static void ReadThumbnailXls()
+            {
+                try
+                {
+                    //ExStart:ReadThumbnailXls
+                    // initialize XlsFormat
+                    XlsFormat docFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get thumbnail
+                    byte[] thumbnailData = docFormat.Thumbnail;
+
+                    // check if first sheet is empty
+                    if (thumbnailData.Length == 0)
+                    {
+                        Console.WriteLine("Excel sheet is empty and does not contain data");
+                    }
+                    else
+                    {
+                        // write thumbnail to PNG image since it has png format
+                        File.WriteAllBytes(Common.MapDestinationFilePath("xlsThumbnail.png"), thumbnailData);
+                    }
+                    //ExEnd:ReadThumbnailXls
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class OneNote
@@ -2138,7 +2199,58 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
+        /// <summary>
+        /// Demonstrates how to read thumbnail in documents, here we are using Word document
+        /// Feature is supported in version 17.03  or greater
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void ReadThumbnail(string filePath)
+        {
+            try
+            {
+                //ExStart:ReadThumbnail
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
+                // get thumbnail
+                byte[] thumbnailData = docFormat.Thumbnail;
+
+                // write thumbnail to PNG image since it has png format
+                File.WriteAllBytes(Common.MapDestinationFilePath("thumbnail.png"), thumbnailData);
+                //ExEnd:ReadThumbnail
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+        /// Feature is supported by version 17.03 or greater
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void LazyLoadDocumentInfoProperty(string filePath)
+        {
+            try
+            {
+                //ExStart:LazyLoadDocumentInfoProperty
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get document info
+                DocumentInfo documentInfo = docFormat.DocumentInfo;
+
+                // next call returns previous documentInfo object
+                DocumentInfo next = docFormat.DocumentInfo;
+                //ExEnd:LazyLoadDocumentInfoProperty
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
 
     }
 }
