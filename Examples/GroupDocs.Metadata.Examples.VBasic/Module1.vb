@@ -132,6 +132,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''Remove HiddenSheets and Comments in Xls file
             'Documents.Xls.RemoveHiddenData()
 
+            'Reads thumnail in excel file
+            'Documents.Xls.ReadThumbnailXls()
+
 #End Region
 
 #Region "Working with Pdf Files"
@@ -166,6 +169,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''Remove hidden data in Pdf file
             'Documents.Pdf.RemoveHiddenData()
 
+            'Loads only existing metadata keys
+            'Documents.Pdf.LoadExistingMetadataKeys()
+
 
 #End Region
 
@@ -196,6 +202,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             'Documents.ODT.UpdateOdtMetadata()
 
 #End Region
+
+            'Reads thumbnail in documents
+            'Documents.ReadThumbnail("Documents/Doc/sample.docx")
+
+            'Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+            'Documents.LazyLoadDocumentInfoProperty("Documents/Doc/sample2.doc")
 
 #End Region
 
@@ -262,6 +274,12 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''Update Exif Info of Jpeg image using properties
             'Images.Jpeg.UpdateExifInfoUsingProperties()
 
+            'Delete Exif data faster
+            'Images.Jpeg.FastRemoveExifData()
+
+            'Update Exif data faster
+            'Images.Jpeg.FasterUpdateExifData()
+
             ''Remove GPS Info of Jpeg image
             'Images.Jpeg.RemoveGPSData()
 
@@ -297,6 +315,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             '' Remove Photoshop Metadata 
             'Images.Jpeg.RemovePhotoshopMetadata()
+
+
 
 #End Region
 
