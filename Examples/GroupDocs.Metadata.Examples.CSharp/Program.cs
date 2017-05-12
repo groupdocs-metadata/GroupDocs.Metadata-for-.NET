@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -77,6 +77,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove Digital Signature from word document
             //Documents.Doc.RemoveDigitalSignature();
+
+            //Read all track changes in word document
+            //Documents.Doc.ReadAllRevisions();
+
+            //Accept all changes in a revision
+            //Documents.Doc.AcceptAllChanges();
+
+            //Reject all changes in a revision
+            //Documents.Doc.RejectAllChanges();
             #endregion
 
             #region Working with Ppt Files
