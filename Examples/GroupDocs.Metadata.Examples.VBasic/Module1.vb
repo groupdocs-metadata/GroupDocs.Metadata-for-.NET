@@ -69,6 +69,15 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove Digital Signature from word document
             'Documents.Doc.RemoveDigitalSignature()
+            
+            'Read all track changes in word document
+            'Documents.Doc.ReadAllRevisions()
+
+            'Accept all changes in a revision
+            'Documents.Doc.AcceptAllChanges()
+
+            'Reject all changes in a revision
+            'Documents.Doc.RejectAllChanges()
 
 #End Region
 

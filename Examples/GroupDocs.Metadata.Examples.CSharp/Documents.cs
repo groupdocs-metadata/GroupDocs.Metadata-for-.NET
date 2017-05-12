@@ -571,6 +571,78 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
             #endregion
 
+            #region Working with Revisions
+            /// <summary>
+            /// Shows how to read all track changes(revisions) in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void ReadAllRevisions()
+            {
+                //ExStart:ReadAllRevisions
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // get revisions count
+                Console.WriteLine("Revisions: {0}", revisionCollection.Count);
+
+                foreach (Revision revision in revisionCollection)
+                {
+                    // display revision type
+                    Console.WriteLine("Revision -  type: {0}, ", revision.RevisionType);
+
+                    // display revision author
+                    Console.Write("author: {0}, ", revision.Author);
+
+                    // display revision date
+                    Console.Write("date: {0}", revision.DateTime);
+                }
+                //ExEnd:ReadAllRevisions
+            }
+
+            /// <summary>
+            /// Shows how to accept all changes in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void AcceptAllChanges() {
+                //ExStart:AcceptAllChanges
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // accept all revisions
+                revisionCollection.AcceptAll();
+
+                // and commit changes
+                docFormat.Save();
+                //ExEnd:AcceptAllChanges
+            }
+
+            /// <summary>
+            /// Shows how to reject all changes in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void RejectAllChanges() {
+                //ExStart:RejectAllChanges
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // reject all revisions
+                revisionCollection.RejectAll();
+
+                // and commit changes
+                docFormat.Save();
+                //ExEnd:RejectAllChanges
+            }
+            #endregion
+
             ///<summary>
             ///Reads calculated document info for MS Word format
             ///</summary>

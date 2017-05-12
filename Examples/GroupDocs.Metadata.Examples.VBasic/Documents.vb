@@ -494,7 +494,75 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 #End Region
 
 
+#Region "Working with Revisions"
+            ''' <summary>
+            ''' Shows how to read all track changes(revisions) in Word document.
+            ''' Feature is supported by version 17.05 or greater
+            ''' </summary>
+            Public Shared Sub ReadAllRevisions()
+                'ExStart:ReadAllRevisions
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
 
+                ' get revisions
+                Dim revisionCollection As RevisionCollection = docFormat.Revisions
+
+                ' get revisions count
+                Console.WriteLine("Revisions: {0}", revisionCollection.Count)
+
+                For Each revision As Revision In revisionCollection
+                    ' display revision type
+                    Console.WriteLine("Revision -  type: {0}, ", revision.RevisionType)
+
+                    ' display revision author
+                    Console.Write("author: {0}, ", revision.Author)
+
+                    ' display revision date
+                    Console.Write("date: {0}", revision.DateTime)
+                Next
+                'ExEnd:ReadAllRevisions
+            End Sub
+
+            ''' <summary>
+            ''' Shows how to accept all changes in Word document.
+            ''' Feature is supported by version 17.05 or greater
+            ''' </summary>
+            Public Shared Sub AcceptAllChanges()
+                'ExStart:AcceptAllChanges
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' get revisions
+                Dim revisionCollection As RevisionCollection = docFormat.Revisions
+
+                ' accept all revisions
+                revisionCollection.AcceptAll()
+
+                ' and commit changes
+                docFormat.Save()
+                'ExEnd:AcceptAllChanges
+            End Sub
+
+            ''' <summary>
+            ''' Shows how to reject all changes in Word document.
+            ''' Feature is supported by version 17.05 or greater
+            ''' </summary>
+            Public Shared Sub RejectAllChanges()
+                'ExStart:RejectAllChanges
+                ' initialize DocFormat
+                Dim docFormat As New DocFormat(Common.MapSourceFilePath(filePath))
+
+                ' get revisions
+                Dim revisionCollection As RevisionCollection = docFormat.Revisions
+
+                ' reject all revisions
+                revisionCollection.RejectAll()
+
+                ' and commit changes
+                docFormat.Save()
+                'ExEnd:RejectAllChanges
+            End Sub
+#End Region
 
 
 
