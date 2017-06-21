@@ -7,6 +7,7 @@ using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Video;
 using GroupDocs.Metadata.Tools;
 using System.IO;
+using GroupDocs.Metadata.Xmp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -18,6 +19,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceAviFilePath + SourcAviDirectoryPath
             private const string directoryPath = "Video/Avi";
             private const string filePath = "Video/Avi/sample.avi";
+            
             //ExEnd:SourceAviFilePath + SourcAviDirectoryPath
 
             //ExStart:OutputDataFilePathAvi
@@ -96,6 +98,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(ex.Message);
                 }
 
+            }
+
+            /// <summary>
+            /// Shows how to read, update and remove XMP metadata in AVI format
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            public static void DealWithXmpMetaData() {
+                //ExStart:DealWithXmpMetaData
+                // initialize AviFormat
+                AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath));
+
+                // get XMP
+                var xmpMetadata = aviFormat.GetXmpData();
+
+                // create XMP if absent
+                if (xmpMetadata == null)
+                {
+                    xmpMetadata = new XmpPacketWrapper();
+                }
+
+                // setup properties
+                xmpMetadata.Schemes.DublinCore.Format = "avi";
+                xmpMetadata.Schemes.XmpBasic.CreateDate = DateTime.UtcNow;
+                xmpMetadata.Schemes.XmpBasic.CreatorTool = "GroupDocs.Metadata";
+
+                // update xmp
+                aviFormat.SetXmpData(xmpMetadata);
+
+                // and commit changes
+                aviFormat.Save();
+                //ExEnd:DealWithXmpMetaData
             }
         }
     }

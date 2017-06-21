@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -334,6 +334,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Remove Photoshop Metadata 
             //Images.Jpeg.RemovePhotoshopMetadata();
 
+            //Read Sony maker notes
+            //Images.Jpeg.ReadSonyMakerNotes();
+
+            //Read Nikon maker notes
+            //Images.Jpeg.ReadNikonMakerNotes();
+
+            //Update additional IFD tags 
+            //Images.Jpeg.UpdateIfdTags();
             #endregion
 
             #region Working with Png
@@ -639,6 +647,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Export Metadata of AVI Format file
             //VideoFormats.Avi.ExportMetadata();
+
+            //Read,write or update xmp metadata in AVI format
+            //VideoFormats.Avi.DealWithXmpMetaData();
             #endregion
             Console.ReadKey();
 
