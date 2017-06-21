@@ -179,6 +179,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceJpegFilePath
 
             private const string filePath = "Images/Jpeg/ExifSample.jpeg";
+            private const string sonyMakerFilePath = "Images/Jpeg/sony.jpg";
+            private const string nikonMakerFilePath = "Images/Jpeg/nikon.jpg";
             private const string barcodeFilePath = "Images/Jpeg/barcode.jpeg";
             //ExEnd:SourceJpegFilePath
             #region working with XMP data
@@ -951,19 +953,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
                     // initialize IptcCollection
-                    IptcCollection collection = new IptcCollection();
-
-                    // add string property
-                    collection.Add(new IptcProperty(2, "category", 15, "formats"));
+                    IptcCollection iptc = jpegFormat.GetIptc();
+                    if (iptc == null)
+                    {
+                        iptc = new IptcCollection();
+                    }
 
                     // add integer property
-                    collection.Add(new IptcProperty(2, "urgency", 10, 5));
-
+                    iptc.Add(new IptcProperty(2, "urgency", 10, 5));
                     // update iptc metadata
-                    jpegFormat.UpdateIptc(collection);
-
+                    jpegFormat.UpdateIptc(iptc);
                     // and commit changes
                     jpegFormat.Save();
                     //ExEnd:UpdateIPTCPhotoMetadataFromXMP
@@ -1114,7 +1114,113 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Allows reading Sony maker notes in a Jpeg image
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            public static void ReadSonyMakerNotes()
+            {
+                //ExStart:ReadSonyMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to SonyMakerNotes
+                    SonyMakerNotes sonyMakerNotes = makernotes as SonyMakerNotes;
+                    if (sonyMakerNotes != null)
+                    {
+                        // get color mode
+                        int? colorMode = sonyMakerNotes.ColorMode;
+
+                        // get JPEG quality
+                        int? jpegQuality = sonyMakerNotes.JPEGQuality;
+                        Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality);
+                    }
+                    
+                }
+                //ExEnd:ReadSonyMakerNotes
+            }
+
+            /// <summary>
+            /// Allows reading Nikon maker notes in a Jpeg image
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            public static void ReadNikonMakerNotes()
+            {
+                //ExStart:ReadNikonMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(nikonMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to NikonMakerNotes
+                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
+
+                    if (nikonMakerNotes != null)
+                    {
+                        // get quality string
+                        string quality = nikonMakerNotes.Quality;
+
+                        // get version
+                        byte[] version = nikonMakerNotes.MakerNoteVersion;
+                        Console.WriteLine("Maker note version: {0},Jpeg quality: {1}", nikonMakerNotes.MakerNoteVersion, nikonMakerNotes.Quality);
+                    }
+                }
+                //ExEnd:ReadNikonMakerNotes
+            }
+
+
+            /// <summary>
+            /// Shows how to parse additional IFD tags like SByte, SShort, SRational and SLong.
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            public static void UpdateIfdTags() {
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
+
+                JpegExifInfo exif = jpegFormat.GetExifInfo() as JpegExifInfo;
+
+                if (exif == null)
+                {
+                    // nothing to process
+                    return;
+                }
+
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (exif.Make == "NIKON")
+                {
+                    // try cast to NikonMakerNotes
+                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
+
+                    // get tags
+                    var tags = nikonMakerNotes.Tags;
+
+                    foreach (TiffTag tag in tags)
+                    {
+                        if (tag.TagType == TiffTagType.SLong)
+                        {
+                            // cast to SLong type
+                            TiffSLongTag tiffSLong = tag as TiffSLongTag;
+
+                            // and display value
+                            Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value);
+                        }
+                    }
+                }
+            }
         }
+
 
         public static class Gif
         {

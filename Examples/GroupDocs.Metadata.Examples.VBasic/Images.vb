@@ -163,6 +163,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             Private Const filePath As String = "Images/Jpeg/ExifSample.jpeg"
             Private Const barcodeFilePath As String = "Images/Jpeg/barcode.jpeg"
+            Private Const sonyMakerFilePath As String = "Images/Jpeg/sony.jpeg"
+            Private Const nikonMakerFilePath As String = "Images/Jpeg/nikon.jpeg"
 
             'ExEnd:SourceJpegFilePath
 #Region "working with XMP data"
@@ -838,20 +840,18 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
-
                     ' initialize IptcCollection
-                    Dim collection As New IptcCollection()
-
-                    ' add string property
-                    collection.Add(New IptcProperty(2, "category", 15, "formats"))
+                    Dim iptc As IptcCollection = jpegFormat.GetIptc()
+                    If iptc Is Nothing Then
+                        iptc = New IptcCollection()
+                    End If
 
                     ' add integer property
-                    collection.Add(New IptcProperty(2, "urgency", 10, 5))
-
+                    iptc.Add(New IptcProperty(2, "urgency", 10, 5))
                     ' update iptc metadata
-                    jpegFormat.UpdateIptc(collection)
-
+                    jpegFormat.UpdateIptc(iptc)
                     ' and commit changes
+                    jpegFormat.Save()
                     'ExEnd:UpdateIPTCPhotoMetadataFromXMP
                     jpegFormat.Save()
                 Catch exp As Exception
@@ -983,6 +983,103 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
+            ''' <summary>
+            ''' Allows reading Sony maker notes in a Jpeg image
+            ''' Feature is supported in version 17.06 or greater
+            ''' </summary>
+            Public Shared Sub ReadSonyMakerNotes()
+                'ExStart:ReadSonyMakerNotes
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath))
+
+                ' get makernotes
+                Dim makernotes = jpegFormat.GetMakernotes()
+
+                If makernotes IsNot Nothing Then
+                    ' try cast to SonyMakerNotes
+                    Dim sonyMakerNotes As SonyMakerNotes = TryCast(makernotes, SonyMakerNotes)
+                    If sonyMakerNotes IsNot Nothing Then
+                        ' get color mode
+                        Dim colorMode As Integer = sonyMakerNotes.ColorMode
+
+                        ' get JPEG quality
+                        Dim jpegQuality As Integer = sonyMakerNotes.JPEGQuality
+                        Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality)
+
+                    End If
+                End If
+                'ExEnd:ReadSonyMakerNotes
+            End Sub
+
+            ''' <summary>
+            ''' Allows reading Nikon maker notes in a Jpeg image
+            ''' Feature is supported in version 17.06 or greater
+            ''' </summary>
+            Public Shared Sub ReadNikonMakerNotes()
+                'ExStart:ReadNikonMakerNotes
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(nikonMakerFilePath))
+
+                ' get makernotes
+                Dim makernotes = jpegFormat.GetMakernotes()
+
+                If makernotes IsNot Nothing Then
+                    ' try cast to NikonMakerNotes
+                    Dim nikonMakerNotes As NikonMakerNotes = TryCast(makernotes, NikonMakerNotes)
+
+                    If nikonMakerNotes IsNot Nothing Then
+                        ' get quality string
+                        Dim quality As String = nikonMakerNotes.Quality
+
+                        ' get version
+                        Dim version As Byte() = nikonMakerNotes.MakerNoteVersion
+                        Console.WriteLine("Maker note version: {0},Jpeg quality: {1}", nikonMakerNotes.MakerNoteVersion, nikonMakerNotes.Quality)
+                    End If
+                End If
+                'ExEnd:ReadNikonMakerNotes
+            End Sub
+
+
+            ''' <summary>
+            ''' Shows how to parse additional IFD tags like SByte, SShort, SRational and SLong.
+            ''' Feature is supported in version 17.06 or greater
+            ''' </summary>
+            Public Shared Sub UpdateIfdTags()
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath))
+
+                Dim exif As JpegExifInfo = TryCast(jpegFormat.GetExifInfo(), JpegExifInfo)
+
+                If exif Is Nothing Then
+                    ' nothing to process
+                    Return
+                End If
+
+
+                ' get makernotes
+                Dim makernotes = jpegFormat.GetMakernotes()
+
+                If exif.Make = "NIKON" Then
+                    ' try cast to NikonMakerNotes
+                    Dim nikonMakerNotes As NikonMakerNotes = TryCast(makernotes, NikonMakerNotes)
+
+                    ' get tags
+                    Dim tags = nikonMakerNotes.Tags
+
+                    For Each tag As TiffTag In tags
+                        If tag.TagType = TiffTagType.SLong Then
+                            ' cast to SLong type
+                            Dim tiffSLong As TiffSLongTag = TryCast(tag, TiffSLongTag)
+
+                            ' and display value
+                            Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value)
+                        End If
+                    Next
+                End If
+            End Sub
+
         End Class
 
         Public NotInheritable Class Gif

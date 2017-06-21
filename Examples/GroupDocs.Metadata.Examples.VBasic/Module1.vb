@@ -325,7 +325,15 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' Remove Photoshop Metadata 
             'Images.Jpeg.RemovePhotoshopMetadata()
 
+            
+            'Read Sony maker notes
+            'Images.Jpeg.ReadSonyMakerNotes()
 
+            'Read Nikon maker notes
+            'Images.Jpeg.ReadNikonMakerNotes()
+
+            'Update additional IFD tags 
+            'Images.Jpeg.UpdateIfdTags()
 
 #End Region
 
@@ -622,6 +630,9 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Export Metadata of AVI Format file
             'VideoFormats.Avi.ExportMetadata();
+
+            'Deal with XMP metadata of AVI format
+            'VideoFormats.Avi.DealWithXmpMetaData()
 #End Region
 
             Console.ReadKey()
