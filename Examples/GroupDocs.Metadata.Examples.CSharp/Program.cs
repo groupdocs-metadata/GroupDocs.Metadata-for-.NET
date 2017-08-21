@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -339,6 +339,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read Nikon maker notes
             //Images.Jpeg.ReadNikonMakerNotes();
+
+            //Read Canon maker notes
+            //Images.Jpeg.ReadCanonMakerNotes();
+
+            //Read Panasonic maker notes
+            //Images.Jpeg.ReadPanasonicMakerNotes();
 
             //Update additional IFD tags 
             //Images.Jpeg.UpdateIfdTags();

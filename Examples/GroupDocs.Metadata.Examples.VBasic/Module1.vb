@@ -69,7 +69,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
 
             'Remove Digital Signature from word document
             'Documents.Doc.RemoveDigitalSignature()
-            
+
             'Read all track changes in word document
             'Documents.Doc.ReadAllRevisions()
 
@@ -325,12 +325,18 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             '' Remove Photoshop Metadata 
             'Images.Jpeg.RemovePhotoshopMetadata()
 
-            
+
             'Read Sony maker notes
             'Images.Jpeg.ReadSonyMakerNotes()
 
             'Read Nikon maker notes
             'Images.Jpeg.ReadNikonMakerNotes()
+
+            'Read Canon maker notes
+            'Images.Jpeg.ReadCanonMakerNotes()
+
+            'Read Panasonic maker notes
+            'Images.Jpeg.ReadPanasonicMakerNotes()
 
             'Update additional IFD tags 
             'Images.Jpeg.UpdateIfdTags()
