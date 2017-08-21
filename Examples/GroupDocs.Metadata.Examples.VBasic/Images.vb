@@ -165,6 +165,8 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             Private Const barcodeFilePath As String = "Images/Jpeg/barcode.jpeg"
             Private Const sonyMakerFilePath As String = "Images/Jpeg/sony.jpeg"
             Private Const nikonMakerFilePath As String = "Images/Jpeg/nikon.jpeg"
+            Private Const canonMakerFilePath As String = "Images/Jpeg/canon.jpg"
+            Private Const panasonicMakerFilePath As String = "Images/Jpeg/panasonic.jpg"
 
             'ExEnd:SourceJpegFilePath
 #Region "working with XMP data"
@@ -559,28 +561,37 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' <summary>
             ''' Removes GPS Data of Jpeg file and creates output file
             ''' </summary> 
+
             Public Shared Sub RemoveGPSData()
                 Try
                     'ExStart:RemoveGPSDataJpegImage
                     ' initialize JpegFormat
                     Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(filePath))
 
-                    ' get location
-                    Dim location As GpsLocation = jpegFormat.GetGpsLocation()
-                    If location IsNot Nothing Then
-                        ' remove GPS location
-                        jpegFormat.RemoveGpsLocation()
+                    ' check if JPEG contains XMP metadata
+                    If jpegFormat.HasXmp Then
+                        ' get location
+                        Dim location As GpsLocation = jpegFormat.GetGpsLocation()
+                        If location IsNot Nothing Then
+                            ' remove GPS location
+                            jpegFormat.RemoveGpsLocation()
+                        End If
+
+                        ' update Dublin Core format in XMP
+                        jpegFormat.XmpValues.Schemes.DublinCore.Format = "image/jpeg"
+
+                        ' and commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath))
                     End If
 
-                    ' commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath))
                     'ExEnd:RemoveGPSDataJpegImage
-
                     Console.WriteLine("File saved in destination folder.")
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
             End Sub
+
+
             ''' <summary>
             ''' Removes Exif info of Jpeg file and creates output file
             ''' </summary> 
@@ -852,8 +863,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                     jpegFormat.UpdateIptc(iptc)
                     ' and commit changes
                     jpegFormat.Save()
-                    'ExEnd:UpdateIPTCPhotoMetadataFromXMP
-                    jpegFormat.Save()
+                    'ExEnd:UpdateIPTCMetadataOfJPEG
                 Catch exp As Exception
                     Console.WriteLine(exp.Message)
                 End Try
@@ -1016,6 +1026,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             ''' <summary>
             ''' Allows reading Nikon maker notes in a Jpeg image
             ''' Feature is supported in version 17.06 or greater
+            ''' From version 17.08 onwards, the API also allows reading EXIF maker-notes from Nikon D models
             ''' </summary>
             Public Shared Sub ReadNikonMakerNotes()
                 'ExStart:ReadNikonMakerNotes
@@ -1042,11 +1053,81 @@ Namespace GroupDocs.Metadata.Examples.VBasic
             End Sub
 
 
+
+            ''' <summary>
+            ''' Allows reading Canon maker notes in a Jpeg image
+            ''' Feature is supported in version 17.8.0 or greater
+            ''' </summary>
+            Public Shared Sub ReadCanonMakerNotes()
+                'ExStart:ReadCanonMakerNotes
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(canonMakerFilePath))
+
+                ' get makernotes
+                Dim makernotes = jpegFormat.GetMakernotes()
+
+                If makernotes IsNot Nothing Then
+                    ' try cast to CanonMakerNotes
+                    Dim canonMakerNotes As CanonMakerNotes = TryCast(makernotes, CanonMakerNotes)
+                    If canonMakerNotes IsNot Nothing Then
+                        ' get cammera settings
+                        Dim cameraSettings As CanonCameraSettings = canonMakerNotes.CameraSettings
+                        If cameraSettings IsNot Nothing Then
+                            ' get lens type
+                            Dim lensType As Integer = cameraSettings.LensType
+
+                            ' get quality
+                            Dim quality As Integer = cameraSettings.Quality
+
+                            ' get all values
+                            Dim allValues As Integer() = cameraSettings.Values
+                        End If
+
+                        ' get firmware version
+                        Dim firmwareVersion As String = canonMakerNotes.CanonFirmwareVersion
+                    End If
+                End If
+                'ExEnd:ReadCanonMakerNotes
+            End Sub
+
+
+            ''' <summary>
+            ''' Allows reading Panasonic maker notes in a Jpeg image
+            ''' Feature is supported in version 17.8.0 or greater
+            ''' </summary>
+            Public Shared Sub ReadPanasonicMakerNotes()
+                'ExStart:ReadPanasonicMakerNotes
+                ' initialize JpegFormat
+                Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(panasonicMakerFilePath))
+
+                ' get makernotes
+                Dim makernotes = jpegFormat.GetMakernotes()
+
+                If makernotes IsNot Nothing Then
+                    ' try cast to PanasonicMakerNotes
+                    Dim panasonicMakerNotes As PanasonicMakerNotes = TryCast(makernotes, PanasonicMakerNotes)
+                    If panasonicMakerNotes IsNot Nothing Then
+                        ' get firmware version
+                        Dim firmwareVersion As String = panasonicMakerNotes.FirmwareVersion
+
+                        ' get image quality
+                        Dim imageQuality As Integer = panasonicMakerNotes.ImageQuality
+
+                        ' get lens type
+                        Dim lensType As String = panasonicMakerNotes.LensType
+                    End If
+                End If
+                'ExEnd:ReadPanasonicMakerNotes
+            End Sub
+
+
+
             ''' <summary>
             ''' Shows how to parse additional IFD tags like SByte, SShort, SRational and SLong.
             ''' Feature is supported in version 17.06 or greater
             ''' </summary>
             Public Shared Sub UpdateIfdTags()
+                'ExStart:UpdateIfdTags
                 ' initialize JpegFormat
                 Dim jpegFormat As New JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath))
 
@@ -1078,6 +1159,7 @@ Namespace GroupDocs.Metadata.Examples.VBasic
                         End If
                     Next
                 End If
+                'ExEnd:UpdateIfdTags
             End Sub
 
         End Class

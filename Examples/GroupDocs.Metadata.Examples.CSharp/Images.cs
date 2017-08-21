@@ -181,6 +181,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             private const string filePath = "Images/Jpeg/ExifSample.jpeg";
             private const string sonyMakerFilePath = "Images/Jpeg/sony.jpg";
             private const string nikonMakerFilePath = "Images/Jpeg/nikon.jpg";
+            private const string canonMakerFilePath = "Images/Jpeg/canon.jpg";
+            private const string panasonicMakerFilePath = "Images/Jpeg/panasonic.jpg";
             private const string barcodeFilePath = "Images/Jpeg/barcode.jpeg";
             //ExEnd:SourceJpegFilePath
             #region working with XMP data
@@ -637,18 +639,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
 
-                    // get location
-                    GpsLocation location = jpegFormat.GetGpsLocation();
-                    if (location != null)
+                    // check if JPEG contains XMP metadata
+                    if (jpegFormat.HasXmp)
                     {
-                        // remove GPS location
-                        jpegFormat.RemoveGpsLocation();
+                        // get location
+                        GpsLocation location = jpegFormat.GetGpsLocation();
+                        if (location != null)
+                        {
+                            // remove GPS location
+                            jpegFormat.RemoveGpsLocation();
+                        }
+
+                        // update Dublin Core format in XMP
+                        jpegFormat.XmpValues.Schemes.DublinCore.Format = "image/jpeg";
+
+                        // and commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     }
 
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveGPSDataJpegImage
-
                     Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
@@ -950,7 +959,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:UpdateIPTCMetadataOfJPEG
-
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
                     // initialize IptcCollection
@@ -966,7 +974,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     jpegFormat.UpdateIptc(iptc);
                     // and commit changes
                     jpegFormat.Save();
-                    //ExEnd:UpdateIPTCPhotoMetadataFromXMP
+                    //ExEnd:UpdateIPTCMetadataOfJPEG
                 }
                 catch (Exception exp)
                 {
@@ -1118,6 +1126,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <summary>
             /// Allows reading Sony maker notes in a Jpeg image
             /// Feature is supported in version 17.06 or greater
+            /// From version 17.8.0 onwards, the API also allows reading EXIF maker-notes from Sony xperia, cybershot models.
             /// </summary>
             public static void ReadSonyMakerNotes()
             {
@@ -1141,7 +1150,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         int? jpegQuality = sonyMakerNotes.JPEGQuality;
                         Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality);
                     }
-                    
+
                 }
                 //ExEnd:ReadSonyMakerNotes
             }
@@ -1149,6 +1158,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <summary>
             /// Allows reading Nikon maker notes in a Jpeg image
             /// Feature is supported in version 17.06 or greater
+            /// From version 17.08 onwards, the API also allows reading EXIF maker-notes from Nikon D models
             /// </summary>
             public static void ReadNikonMakerNotes()
             {
@@ -1177,12 +1187,86 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:ReadNikonMakerNotes
             }
 
+            /// <summary>
+            /// Allows reading Canon maker notes in a Jpeg image
+            /// Feature is supported in version 17.8.0 or greater
+            /// </summary>
+            public static void ReadCanonMakerNotes()
+            {
+                //ExStart:ReadCanonMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(canonMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to CanonMakerNotes
+                    CanonMakerNotes canonMakerNotes = makernotes as CanonMakerNotes;
+                    if (canonMakerNotes != null)
+                    {
+                        // get cammera settings
+                        CanonCameraSettings cameraSettings = canonMakerNotes.CameraSettings;
+                        if (cameraSettings != null)
+                        {
+                            // get lens type
+                            int lensType = cameraSettings.LensType;
+
+                            // get quality
+                            int quality = cameraSettings.Quality;
+
+                            // get all values
+                            int[] allValues = cameraSettings.Values;
+                        }
+
+                        // get firmware version
+                        string firmwareVersion = canonMakerNotes.CanonFirmwareVersion;
+                    }
+                }
+                //ExEnd:ReadCanonMakerNotes
+            }
+
+
+            /// <summary>
+            /// Allows reading Panasonic maker notes in a Jpeg image
+            /// Feature is supported in version 17.8.0 or greater
+            /// </summary>
+            public static void ReadPanasonicMakerNotes()
+            {
+                //ExStart:ReadPanasonicMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(panasonicMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to PanasonicMakerNotes
+                    PanasonicMakerNotes panasonicMakerNotes = makernotes as PanasonicMakerNotes;
+                    if (panasonicMakerNotes != null)
+                    {
+                        // get firmware version
+                        string firmwareVersion = panasonicMakerNotes.FirmwareVersion;
+
+                        // get image quality
+                        int? imageQuality = panasonicMakerNotes.ImageQuality;
+
+                        // get lens type
+                        string lensType = panasonicMakerNotes.LensType;
+                    }
+                }
+                //ExEnd:ReadPanasonicMakerNotes
+            }
 
             /// <summary>
             /// Shows how to parse additional IFD tags like SByte, SShort, SRational and SLong.
             /// Feature is supported in version 17.06 or greater
             /// </summary>
-            public static void UpdateIfdTags() {
+            public static void UpdateIfdTags()
+            {
+                //ExStart:UpdateIfdTags
                 // initialize JpegFormat
                 JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
 
@@ -1197,7 +1281,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                 // get makernotes
                 var makernotes = jpegFormat.GetMakernotes();
-
                 if (exif.Make == "NIKON")
                 {
                     // try cast to NikonMakerNotes
@@ -1218,7 +1301,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         }
                     }
                 }
+                //ExEnd:UpdateIfdTags
             }
+
+
         }
 
 
