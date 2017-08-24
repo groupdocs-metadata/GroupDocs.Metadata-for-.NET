@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -657,7 +657,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Read,write or update xmp metadata in AVI format
             //VideoFormats.Avi.DealWithXmpMetaData();
             #endregion
+
+            Images.Test();
             Console.ReadKey();
+
+
 
         }
     }
