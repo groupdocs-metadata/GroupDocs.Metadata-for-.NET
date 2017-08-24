@@ -2795,17 +2795,5 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
-
-        public static void Test()
-        {
-            string spath = @"C:\Users\User\Downloads\Source\Image\source.jpg";
-            JpegFormat jpegFormat = new JpegFormat(spath);
-
-            JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
-            exif.Artist = string.Empty;
-
-            string fpath = @"C:\Users\User\Desktop\Change.jpg";
-            jpegFormat.Save(fpath);
-        }
     }
 }
