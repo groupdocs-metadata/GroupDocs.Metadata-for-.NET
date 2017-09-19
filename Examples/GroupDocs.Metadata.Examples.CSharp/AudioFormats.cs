@@ -20,8 +20,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             private const string directoryPath = "Audio/Mp3";
             private const string filePath = "Audio/Mp3/test.mp3";
             //
-            
-            
+
+
             //EndEx:SourceMp3FilePath + SourceMp3DirectoryPath
 
 
@@ -366,7 +366,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <summary>
             /// Reads Id3 metadata directly in MP3 format
             /// </summary>
-            public static void ReadId3MetadataDirectly() {
+            public static void ReadId3MetadataDirectly()
+            {
                 //ExStart:ReadId3MetadataInMp3Directly
                 // init Mp3Format class
                 Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
@@ -387,6 +388,39 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 MetadataProperty copyright = mp3Format[copyrightKey];
                 Console.WriteLine(copyright);
                 //ExEnd:ReadId3MetadataInMp3Directly
+            }
+
+
+            /// <summary>
+            /// Shows how to read APEV2 tags in MP3 format
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void ReadApev2Tag()
+            {
+                //ExStart:ReadApev2TagMp3
+                // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // get APEv2 tag
+                Apev2Metadata apev2 = mp3Format.APEv2;
+
+                //NOTE: please remember you may use different approaches to getting metadata                
+
+                // second approach
+                apev2 = (Apev2Metadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.APEv2);
+
+                // check if APEv2 tag is presented
+                if (apev2 != null)
+                {
+                    // Display tag properties
+                    Console.WriteLine("Album: {0}", apev2.Album);
+                    Console.WriteLine("Artist: {0}", apev2.Artist);
+                    Console.WriteLine("Comment: {0}", apev2.Comment);
+                    Console.WriteLine("Genre: {0}", apev2.Genre);
+                    Console.WriteLine("Title: {0}", apev2.Title);
+                    Console.WriteLine("Track: {0}", apev2.Track);
+                }
+                //ExEnd:ReadApev2TagMp3
             }
 
         }

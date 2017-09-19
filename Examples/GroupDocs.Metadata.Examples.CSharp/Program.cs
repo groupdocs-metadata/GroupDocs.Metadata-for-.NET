@@ -222,6 +222,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.ODT.UpdateOdtMetadata();
             #endregion
 
+            #region Working with ODS files
+            //Documents.ODS.ReadOdsMetadata();
+            #endregion
             //Reads thumbnail in documents
             //Documents.ReadThumbnail("Documents/Doc/sample.docx");
 
@@ -348,6 +351,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update additional IFD tags 
             //Images.Jpeg.UpdateIfdTags();
+
+            //Add or update Tiff tags in exif in jpeg file
+            //Images.Jpeg.AddUpdateTiffTagsInExif();
+
+            //Reads SRational TIFF tag in JPEG and TIFF image formats
+            //Images.Jpeg.ReadSRationalTifftag();
             #endregion
 
             #region Working with Png
@@ -441,6 +450,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region Read Byte order of images
             //Reads byte order of images of supported formats
             //Images.ReadByteOrder("Images/SampleImages");
+
+
             #endregion
 
             #endregion
@@ -631,6 +642,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read ID3 Metadata directtly from MP3
             //AudioFormats.Mp3.ReadId3MetadataDirectly();
+
+            //Read APEV2 tag in MP3 files
+            //AudioFormats.Mp3.ReadApev2Tag();
             #endregion
 
             #region Working with WAV Files
