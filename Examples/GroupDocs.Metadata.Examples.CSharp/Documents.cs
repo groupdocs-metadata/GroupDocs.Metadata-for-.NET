@@ -1840,7 +1840,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // write data to the file
                     File.WriteAllBytes(Common.MapDestinationFilePath(outputFilePath), content);
                     //ExEnd:ContentTypePropertiesExportXls
-                    Console.WriteLine("file has been exported");
+                    Console.WriteLine("file has been exported");                    
                 }
                 catch (Exception ex)
                 {
@@ -2174,6 +2174,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
+        public class ODS {
+            //initialize file path
+            //ExStart:SourceOdsProjectFilePath
+            private const string filePath = "Documents/Ods/sample.ods";
+            //ExEnd:SourceOdsProjectFilePath
+
+            /// <summary>
+            /// Reads metadata in ODS format
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void ReadOdsMetadata() {
+                //ExStart:ReadOdsMetadata
+                // initialize XlsFormat
+                XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                // get document properties
+                XlsMetadata properties = xlsFormat.DocumentProperties;
+
+                // get author
+                string author = properties.Author;
+
+                // get company
+                string company = properties.Company;
+
+                // get created date of the document
+                DateTime createdDate = properties.CreatedTime;
+                //ExEnd:ReadOdsMetadata
+            }
+        }
 
 
 

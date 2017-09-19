@@ -817,6 +817,44 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
 
+            /// <summary>
+            /// Adds or updates custom TIFF tags to EXIF segment in JPEG or TIFF formats
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void AddUpdateTiffTagsInExif()
+            {
+                try
+                {
+                    //ExStart:AddUpdateTiffTagsInExif
+                    // init JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get existing EXIF or create new one
+                    ExifInfo exif = jpegFormat.GetExifInfo() ?? new ExifInfo();
+
+                    // define list of tags
+                    List<TiffTag> tags = new List<TiffTag>();
+
+                    // add specific tag
+                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+
+                    // and update tags
+                    exif.Tags = tags.ToArray();
+
+                    // update exif
+                    jpegFormat.UpdateExifInfo(exif);
+
+                    // and commit changes
+                    jpegFormat.Save();
+                    //ExEnd:AddUpdateTiffTagsInExif
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+
+
+            }
 
             #endregion
 
@@ -1304,6 +1342,49 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:UpdateIfdTags
             }
 
+            /// <summary>
+            /// Reads SRational TIFF tag in JPEG/TIFF image formats.
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            /// <param name="directoryPath">path to the images directory</param>
+            public static void ReadSRationalTifftag()
+            {
+                try
+                {
+                    //ExStart:ReadSRationalTifftagJpeg
+                    // init JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get exif info
+                    ExifInfo exifInfo = jpegFormat.GetExifInfo();
+
+
+                    if (exifInfo != null)
+                    {
+
+                        // all tags are available in licensed mode only
+                        TiffTag[] allTags = exifInfo.Tags;
+
+                        foreach (TiffTag tag in allTags)
+                        {
+                            switch (tag.TagType)
+                            {
+
+                                case TiffTagType.SRational:
+                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                    break;
+                            }
+                        }
+                    }
+                    //ExEnd:ReadSRationalTifftagJpeg
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
 
         }
 
@@ -2097,6 +2178,45 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
             /// <summary>
+            /// Adds or updates custom TIFF tags to EXIF segment in JPEG or TIFF formats
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void AddUpdateTiffTagsInExif()
+            {
+                try
+                {
+                    //ExStart:AddUpdateTiffTagsInExifTiff
+                    // init JpegFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // get existing EXIF or create new one
+                    ExifInfo exif = tiffFormat.GetExifInfo() ?? new ExifInfo();
+
+                    // define list of tags
+                    List<TiffTag> tags = new List<TiffTag>();
+
+                    // add specific tag
+                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+
+                    // and update tags
+                    exif.Tags = tags.ToArray();
+
+                    // update exif
+                    tiffFormat.UpdateExifInfo(exif);
+
+                    // and commit changes
+                    tiffFormat.Save();
+                    //ExEnd:AddUpdateTiffTagsInExifTiff
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+
+
+            }
+
+            /// <summary>
             ///Gets XMP properties from Tiff file
             /// </summary> 
             public static void GetXMPProperties()
@@ -2208,6 +2328,50 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
+            }
+
+            /// <summary>
+            /// Reads SRational TIFF tag in JPEG/TIFF image formats.
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            /// <param name="directoryPath">path to the images directory</param>
+            public static void ReadSRationalTifftag()
+            {
+                try
+                {
+                    //ExStart:ReadSRationalTifftagTiff
+                    // init TiffFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // get exif info
+                    ExifInfo exifInfo = tiffFormat.GetExifInfo();
+
+
+                    if (exifInfo != null)
+                    {
+
+                        // all tags are available in licensed mode only
+                        TiffTag[] allTags = exifInfo.Tags;
+
+                        foreach (TiffTag tag in allTags)
+                        {
+                            switch (tag.TagType)
+                            {
+
+                                case TiffTagType.SRational:
+                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                    break;
+                            }
+                        }
+                    }
+                    //ExEnd:ReadSRationalTifftagTiff
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
             }
         }
 
