@@ -12,6 +12,7 @@ using GroupDocs.Metadata.Examples.CSharp.Utilities;
 using GroupDocs.Metadata.Formats.Project;
 using GroupDocs.Metadata.Exceptions;
 using System.IO;
+using GroupDocs.Metadata.Xmp;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -21,7 +22,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceDocFilePath
-            private const string filePath = "Documents/Doc/sample.doc";
+            private const string filePath = "Documents/Doc/sample.docx";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
 
@@ -56,6 +57,44 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Reads all metadata keys of the Word document
+            /// </summary> 
+            /// <param name="directoryPath">Path to the files</param>
+            public static void ReadMetadataUsingKeys(string directoryPath)
+            {
+                try
+                {
+                    //ExStart:ReadMetadataUsingKeys
+                    //Get all Word documents inside directory
+                    string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.doc");
+
+                    foreach (string path in files)
+                    {
+                        Console.WriteLine("Document: {0}", Path.GetFileName(path));
+
+                        // open Word document
+                        using (DocFormat doc = new DocFormat(path))
+                        {
+                            // get metadata
+                            Metadata metadata = doc.DocumentProperties;
+
+                            // print all metadata keys presented in DocumentProperties
+                            foreach (string key in metadata.Keys)
+                            {
+                                Console.WriteLine(key);
+                            }
+                        }
+                    }
+                    //ExEnd:ReadMetadataUsingKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
             /// <summary>
             /// Updates document properties of Doc file and creates output file
             /// </summary> 
@@ -77,7 +116,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("Updated Successfully.");
 
@@ -104,7 +142,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // save output file...
                     docFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:RemoveBuiltinDocumentPropertiesDocFormat
                     Console.WriteLine("File saved in destination folder.");
 
@@ -534,13 +571,181 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
             #endregion
 
+            #region Working with Revisions
+            /// <summary>
+            /// Shows how to read all track changes(revisions) in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void ReadAllRevisions()
+            {
+                //ExStart:ReadAllRevisions
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // get revisions count
+                Console.WriteLine("Revisions: {0}", revisionCollection.Count);
+
+                foreach (Revision revision in revisionCollection)
+                {
+                    // display revision type
+                    Console.WriteLine("Revision -  type: {0}, ", revision.RevisionType);
+
+                    // display revision author
+                    Console.Write("author: {0}, ", revision.Author);
+
+                    // display revision date
+                    Console.Write("date: {0}", revision.DateTime);
+                }
+                //ExEnd:ReadAllRevisions
+            }
+
+            /// <summary>
+            /// Shows how to accept all changes in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void AcceptAllChanges() {
+                //ExStart:AcceptAllChanges
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // accept all revisions
+                revisionCollection.AcceptAll();
+
+                // and commit changes
+                docFormat.Save();
+                //ExEnd:AcceptAllChanges
+            }
+
+            /// <summary>
+            /// Shows how to reject all changes in Word document.
+            /// Feature is supported by version 17.05 or greater
+            /// </summary>
+            public static void RejectAllChanges() {
+                //ExStart:RejectAllChanges
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get revisions
+                RevisionCollection revisionCollection = docFormat.Revisions;
+
+                // reject all revisions
+                revisionCollection.RejectAll();
+
+                // and commit changes
+                docFormat.Save();
+                //ExEnd:RejectAllChanges
+            }
+            #endregion
+
+            ///<summary>
+            ///Reads calculated document info for MS Word format
+            ///</summary>
+            public static void ReadDocumentInfo()
+            {
+                //ExStart:ReadDocumentInfo
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get document info
+                DocumentInfo documentInfo = docFormat.DocumentInfo;
+
+                // display characters count
+                long charactersCount = documentInfo.CharactersCount;
+                Console.WriteLine("Characters count: {0}", charactersCount);
+
+                // display pages count
+                int pagesCount = documentInfo.PagesCount;
+                Console.WriteLine("Pages count: {0}", pagesCount);
+                //ExEnd:ReadDocumentInfo 
+            }
+
+            ///<summary>
+            ///Displays file type of the Word document
+            ///</summary>
+            public static void DisplayFileType()
+            {
+                //ExStart:DisplayFileType
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // display file type
+                switch (docFormat.FileType)
+                {
+                    case FileType.Doc:
+                        Console.WriteLine("Old binary document");
+                        break;
+
+                    case FileType.Docx:
+                        Console.WriteLine("XML-based document");
+                        break;
+                }
+                //ExEnd:DisplayFileType
+            }
+
+            ///<summary>
+            ///Reads Digital signatre in Word Document
+            ///</summary>
+            public static void ReadDigitalSignature()
+            {
+                //ExStart:ReadDigitalSignature
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // if document contains digital signatures
+                if (docFormat.HasDigitalSignatures)
+                {
+                    // then inspect it
+                    var inspectionResult = docFormat.InspectDocument();
+
+                    // and get digital signatures
+                    DigitalSignature[] signatures = inspectionResult.DigitalSignatures;
+
+                    foreach (DigitalSignature signature in signatures)
+                    {
+                        // get certificate subject
+                        Console.WriteLine("Certificate subject: {0}", signature.CertificateSubject);
+
+                        // get certificate sign time
+                        Console.WriteLine("Signed time: {0}", signature.SignTime);
+                    }
+                }
+                //ExEnd:ReadDigitalSignature
+            }
+
+            ///<summary>
+            ///Removes digital signature from word document
+            ///</summary>
+            public static void RemoveDigitalSignature()
+            {
+                //ExStart:RemoveDigitalSignature
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // if document contains digital signatures
+                if (docFormat.HasDigitalSignatures)
+                {
+                    // then remove them
+                    docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.DigitalSignatures));
+
+                    // and commit changes
+                    docFormat.Save();
+                }
+                //ExEnd:RemoveDigitalSignature
+            }
+
         }
 
         public static class Pdf
         {
             // initialize file path
             //ExStart:SourcePdfFilePath
-            private const string filePath = "Documents/Pdf/Annotated.pdf";
+            private const string filePath = "Documents/Pdf/sample.pdf";
             //ExEnd:SourcePdfFilePath
             #region working with builtin document properties
             /// <summary>
@@ -596,7 +801,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //save output file...
                     pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateBuiltinDocumentPropertyPdfFormat
                     Console.WriteLine("File saved in destination folder.");
 
@@ -801,6 +1005,45 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
             /// <summary>
+            /// Retrieves all XMP keys from PDF document  
+            /// </summary> 
+            public static void GetXMPPropertiesUsingKey(string directoryPath)
+            {
+                try
+                {
+                    //ExStart:GetXMPKeysPdfFormat
+                    // get PDF files only
+                    string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath), "*.pdf");
+
+                    foreach (string path in files)
+                    {
+                        // try to get XMP metadata
+                        Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.XMP);
+
+                        // skip if file does not contain XMP metadata
+                        if (metadata == null)
+                        {
+                            continue;
+                        }
+
+                        // cast to XmpMetadata
+                        XmpMetadata xmpMetadata = metadata as XmpMetadata;
+
+                        // and display all xmp keys
+                        foreach (string key in xmpMetadata.Keys)
+                        {
+                            Console.WriteLine(key);
+                        }
+                    }
+                    //ExEnd:GetXMPKeysPdfFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
             /// Updates XMP Data of Pdf file  
             /// </summary> 
             public static void UpdateXMPProperties()
@@ -866,6 +1109,34 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            /// <summary>
+            /// Loads Only Existing Metadata Keys into PdfMetadata Class
+            /// Feature is supported by version 17,03 or greater 
+            /// </summary>
+            public static void LoadExistingMetadataKeys()
+            {
+                try
+                {
+                    //ExStart:LoadExistingMetadataKeys
+                    // initialize PdfFormat
+                    PdfFormat pdfFormat = new PdfFormat(Common.MapSourceFilePath(filePath));
+
+                    // get pdf properties
+                    PdfMetadata properties = pdfFormat.DocumentProperties;
+
+                    // go through Keys property and display related PDF properties
+                    foreach (string key in properties.Keys)
+                    {
+                        Console.WriteLine("[{0}]={1}", key, properties[key]);
+                    }
+                    //ExEnd:LoadExistingMetadataKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class Ppt
@@ -924,6 +1195,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     pptMetadata.Subject = "New subject";
                     pptMetadata.Manager = "Usman";
 
+                    // set content type
+                    pptMetadata.ContentType = "content type";
+
+                    // set hyperlink base
+                    pptMetadata.HyperlinkBase = "http://groupdocs.com";
+
+                    // mark as shared
+                    pptMetadata.SharedDoc = true;
+
                     //save output file...
                     pptFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:UpdateBuiltinDocumentPropertiesPptFormat
@@ -961,6 +1241,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
+            }
+
+            /// <summary>
+            /// Reads document properties of Ppt file in an improved and fast way
+            /// </summary> 
+            public static void ImprovedMetadataReading()
+            {
+                //ExStart:ImprovedMetadataReadingPpt
+                //initialize ppt format
+                PptFormat ppt = new PptFormat(Common.MapSourceFilePath(filePath));
+                //use faster way to read metadata properties of ppt document
+                var properties = ppt.DocumentProperties;
+                Console.WriteLine(properties);
+                //ExEnd:ImprovedMetadataReadingPpt
             }
             #endregion
 
@@ -1186,6 +1480,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceXlsFilePath
             private const string filePath = "Documents/Xls/sample.xls";
             //ExEnd:SourceXlsFilePath
+
+            //initialize output file path
+            //ExStart:DestinationXlsFilePath
+            private const string outputFilePath = "Documents/Xls/metadata-xls.xls";
+            private const string outputFilePathWithHiddenData = "Documents/Xls/hidden-data.xls";
+            //ExEnd:DestinationXlsFilePath
             #region working with builtin document properties
             /// <summary>
             /// Gets builtin document properties of Xls file  
@@ -1493,6 +1793,134 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             #endregion
+
+            #region working with content type document properties
+            /// <summary>
+            /// Gets content type document properties of Xls file  
+            /// </summary> 
+            public static void GetContentTypeDocumentProperties()
+            {
+                try
+                {
+                    //ExStart:GetContentTypeDocumentPropertiesXlsFormat
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get xls properties
+                    XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
+
+                    // get content properties
+                    XlsContentProperty[] contentProperties = xlsProperties.ContentProperties;
+
+                    foreach (XlsContentProperty property in contentProperties)
+                    {
+                        Console.WriteLine("Property: {0}, value: {1}, type: {2}", property.Name, property.Value, property.PropertyType);
+                    }
+                    //ExEnd:GetContentTypeDocumentPropertiesXlsFormat
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            #endregion
+
+            #region working with exporting document properties
+            /// <summary>
+            /// Shows how to export content type properties to csv/excel
+            /// </summary>
+            public static void ContentTypePropertiesExport()
+            {
+                try
+                {
+                    //ExStart:ContentTypePropertiesExportXls
+                    // export to excel
+                    byte[] content = ExportFacade.ExportToExcel(Common.MapSourceFilePath(filePath));
+
+                    // write data to the file
+                    File.WriteAllBytes(Common.MapDestinationFilePath(outputFilePath), content);
+                    //ExEnd:ContentTypePropertiesExportXls
+                    Console.WriteLine("file has been exported");                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+
+            /// <summary>
+            /// shows how to add content type property
+            /// </summary>
+            public static void AddContentTypeProperty()
+            {
+                try
+                {
+                    //ExStart:AddContentTypePropertyXls
+                    // initialize XlsFormat
+                    XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get all xls properties
+                    XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
+
+                    // if Excel contains content type properties
+                    if (xlsProperties.ContentTypeProperties.Length > 0)
+                    {
+                        // than remove all content type properties
+                        xlsProperties.ClearContentTypeProperties();
+                    }
+
+                    // set hidden field
+                    xlsProperties.AddContentTypeProperty("user hidden id", "asdk12dkvjdjh3");
+
+                    // and commit changes
+                    xlsFormat.Save(Common.MapDestinationFilePath(outputFilePathWithHiddenData));
+                    //ExEnd:AddContentTypePropertyXls
+                    Console.WriteLine("file has been exported");
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+
+
+            #endregion
+
+            /// <summary>
+            /// Reads thumnail in excel file, since while using Excel format document may be empty. In this case need to check if thumbnail is not empty
+            /// Feature is supported by version 17.3 or greater
+            /// </summary>
+            public static void ReadThumbnailXls()
+            {
+                try
+                {
+                    //ExStart:ReadThumbnailXls
+                    // initialize XlsFormat
+                    XlsFormat docFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                    // get thumbnail
+                    byte[] thumbnailData = docFormat.Thumbnail;
+
+                    // check if first sheet is empty
+                    if (thumbnailData.Length == 0)
+                    {
+                        Console.WriteLine("Excel sheet is empty and does not contain data");
+                    }
+                    else
+                    {
+                        // write thumbnail to PNG image since it has png format
+                        File.WriteAllBytes(Common.MapDestinationFilePath("xlsThumbnail.png"), thumbnailData);
+                    }
+                    //ExEnd:ReadThumbnailXls
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class OneNote
@@ -1675,7 +2103,109 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-       
+
+        public static class ODT
+        {
+            //initialize file path
+            //ExStart:SourceODTProjectFilePath
+            private const string filePath = "Documents/Odt/sample.odt";
+            //ExEnd:SourceODTProjectFilePath
+
+            /// <summary>
+            /// Gets properties of Open Document Format file  
+            /// </summary> 
+            public static void GetOdtMetadata()
+            {
+                try
+                {
+                    //ExStart:ReadOdtMetadata
+                    // initialize DocFormat with ODT file's path
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // read all metadata properties
+                    Metadata metadata = docFormat.DocumentProperties;
+
+                    // and display them
+                    foreach (MetadataProperty property in metadata)
+                    {
+                        Console.WriteLine(property);
+                    }
+                    //ExEnd:ReadOdtMetadata
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+            }
+
+
+            /// <summary>
+            /// Updates properties of Open Document Format file  
+            /// </summary> 
+            public static void UpdateOdtMetadata()
+            {
+                try
+                {
+                    //ExStart:UpdateOdtMetadata
+                    // initialize DocFormat with ODT file's path
+                    DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                    // initialize DocMetadata
+                    DocMetadata docMetadata = docFormat.DocumentProperties;
+
+                    //update document property...
+                    docMetadata.Author = "Rida ";
+                    docMetadata.Company = "Aspose";
+                    docMetadata.Manager = "Rida Fatima";
+
+                    //save output file...
+                    docFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:UpdateOdtMetadata
+                    Console.WriteLine("Updated Successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+            }
+        }
+
+        public class ODS {
+            //initialize file path
+            //ExStart:SourceOdsProjectFilePath
+            private const string filePath = "Documents/Ods/sample.ods";
+            //ExEnd:SourceOdsProjectFilePath
+
+            /// <summary>
+            /// Reads metadata in ODS format
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void ReadOdsMetadata() {
+                //ExStart:ReadOdsMetadata
+                // initialize XlsFormat
+                XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath));
+
+                // get document properties
+                XlsMetadata properties = xlsFormat.DocumentProperties;
+
+                // get author
+                string author = properties.Author;
+
+                // get company
+                string company = properties.Company;
+
+                // get created date of the document
+                DateTime createdDate = properties.CreatedTime;
+                //ExEnd:ReadOdsMetadata
+            }
+        }
+
+
+
         /// <summary>
         /// Detects document protection
         /// </summary> 
@@ -1737,30 +2267,91 @@ namespace GroupDocs.Metadata.Examples.CSharp
         /// </summary>
         public static void RuntimeFormatDetection(string directoryPath)
         {
-            //string directoryPath = @"C:\\download files";
-            string[] files = Directory.GetFiles(directoryPath);
-
-            foreach (string path in files)
+            try
             {
-                Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.Document);
-                // check if file has document format
-                if (metadata == null)
+                //string directoryPath = @"C:\\download files";
+                string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
+
+                foreach (string path in files)
                 {
-                    continue;
+                    Metadata metadata = MetadataUtility.ExtractSpecificMetadata(path, MetadataType.Document);
+                    // check if file has document format
+                    if (metadata == null)
+                    {
+                        continue;
+                    }
+
+                    Console.WriteLine("File: {0}\n", Path.GetFileName(path));
+
+                    IEnumerable<KeyValuePair<String, PropertyValue>> values = (IEnumerable<KeyValuePair<String, PropertyValue>>)metadata;
+
+                    foreach (KeyValuePair<string, PropertyValue> keyValuePair in values)
+                    {
+                        Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value);
+                    }
+
+                    Console.WriteLine("\n**************************************************\n");
                 }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
 
-                Console.WriteLine("File: {0}\n", Path.GetFileName(path));
+        }
 
-                IEnumerable<KeyValuePair<String, PropertyValue>> values = (IEnumerable<KeyValuePair<String, PropertyValue>>)metadata;
+        /// <summary>
+        /// Demonstrates how to read thumbnail in documents, here we are using Word document
+        /// Feature is supported in version 17.03  or greater
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void ReadThumbnail(string filePath)
+        {
+            try
+            {
+                //ExStart:ReadThumbnail
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
 
-                foreach (KeyValuePair<string, PropertyValue> keyValuePair in values)
-                {
-                    Console.WriteLine("Metadata: {0}, value: {1}", keyValuePair.Key, keyValuePair.Value);
-                }
+                // get thumbnail
+                byte[] thumbnailData = docFormat.Thumbnail;
 
-                Console.WriteLine("\n**************************************************\n");
+                // write thumbnail to PNG image since it has png format
+                File.WriteAllBytes(Common.MapDestinationFilePath("thumbnail.png"), thumbnailData);
+                //ExEnd:ReadThumbnail
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
-    
+
+        /// <summary>
+        /// Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+        /// Feature is supported by version 17.03 or greater
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void LazyLoadDocumentInfoProperty(string filePath)
+        {
+            try
+            {
+                //ExStart:LazyLoadDocumentInfoProperty
+                // initialize DocFormat
+                DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath));
+
+                // get document info
+                DocumentInfo documentInfo = docFormat.DocumentInfo;
+
+                // next call returns previous documentInfo object
+                DocumentInfo next = docFormat.DocumentInfo;
+                //ExEnd:LazyLoadDocumentInfoProperty
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
     }
 }

@@ -19,7 +19,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //string dir = @"C:\\download files";
             private const string directoryPath = "Audio/Mp3";
             private const string filePath = "Audio/Mp3/test.mp3";
-            //ExEnd:SourceMp3FilePath + SourceMp3DirectoryPath
+            //
+
+
+            //EndEx:SourceMp3FilePath + SourceMp3DirectoryPath
 
 
             /// <summary>
@@ -94,16 +97,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
 
                     // get ID3 v2 tag
-                    Id3v2Tag id3v2 = mp3Format.Id3v2;
+                    Id3v2Tag id3v2 = mp3Format.Id3v2 ?? new Id3v2Tag();
                     if (id3v2 != null)
                     {
                         // write ID3v2 version
                         Console.WriteLine("Version: {0}", id3v2.Version);
 
                         // write known frames' values
+                        Console.WriteLine("Title: {0}", id3v2.Title);
+                        Console.WriteLine("Artist: {0}", id3v2.Artist);
                         Console.WriteLine("Album: {0}", id3v2.Album);
                         Console.WriteLine("Comment: {0}", id3v2.Comment);
                         Console.WriteLine("Composers: {0}", id3v2.Composers);
+                        Console.WriteLine("Band: {0}", id3v2.Band);
+                        Console.WriteLine("Track Number: {0}", id3v2.TrackNumber);
+                        Console.WriteLine("Year: {0}", id3v2.Year);
 
                         // in trial mode only first 5 frames are available
                         TagFrame[] idFrames = id3v2.Frames;
@@ -119,6 +127,68 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+            /// <summary>
+            /// Updates ID3v2 tag in MP3 format
+            /// </summary> 
+            /// 
+            public static void UpdateID3v2Tag()
+            {
+                try
+                {
+                    //ExStart:UpdateID3v2Tag
+                    // initialize Mp3Format class
+                    Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+
+                    // get id3v2 tag
+                    Id3v2Tag id3Tag = mp3Format.Id3v2 ?? new Id3v2Tag();
+
+                    // set artist
+                    id3Tag.Artist = "A-ha";
+
+                    // set title
+                    id3Tag.Title = "Take on me";
+
+                    // set band
+                    id3Tag.Band = "A-ha";
+
+                    // set comment
+                    id3Tag.Comment = "GroupDocs.Metadata creator";
+
+                    // set track number
+                    id3Tag.TrackNumber = "5";
+
+                    // set year
+                    id3Tag.Year = "1986";
+
+                    // update ID3v2 tag
+                    mp3Format.UpdateId3v2(id3Tag);
+
+                    // and commit changes
+                    mp3Format.Save();
+                    //ExEnd:UpdateID3v2Tag
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Removes ID3v2 tag in MP3 format
+            /// </summary> 
+            public static void RemoveID3v2Tag()
+            {
+                //ExStart:RemoveID3v2Tag
+                // init Mp3Format class
+                Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+
+                // remove ID3v2 tag
+                mp3Format.RemoveId3v2();
+
+                // and commit changes
+                mp3Format.Save();
+                //ExEnd:RemoveID3v2Tag
             }
 
             /// <summary>
@@ -161,7 +231,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Track number: {0}", id3V1.TrackNumber);
                         }
                     }
-
                     //ExEnd:ReadID3v1Tag
                 }
                 catch (Exception ex)
@@ -213,17 +282,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:ReadMPEGAudioInfo
-                    // initialize Mp3Format class
-                    Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath)));
+                    // get MPEG audio info
+                    MpegAudio audioInfo = (MpegAudio)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.MpegAudio);
+
+                    // another approach is to use Mp3Format directly:
+
+                    // init Mp3Format class
+                    // Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath));
 
                     // get MPEG audio info
-                    MpegAudio audioInfo = mp3Format.AudioDetails;
+                    // MpegAudio audioInfo = mp3Format.AudioDetails;
 
                     // display MPEG audio version
                     Console.WriteLine("MPEG audio version: {0}", audioInfo.MpegAudioVersion);
 
                     // display layer version
                     Console.WriteLine("Layer version: {0}", audioInfo.LayerVersion);
+
+                    // display header offset
+                    Console.WriteLine("Header offset: {0}", audioInfo.HeaderPosition);
+
+                    // display bitrate
+                    Console.WriteLine("Bitrate: {0}", audioInfo.Bitrate);
+
+                    // display frequency
+                    Console.WriteLine("Frequency: {0}", audioInfo.Frequency);
+
+                    // display channel mode
+                    Console.WriteLine("Channel mode: {0}", audioInfo.ChannelMode);
+
+                    // display original bit
+                    Console.WriteLine("Is original: {0}", audioInfo.IsOriginal);
 
                     // display protected bit
                     Console.WriteLine("Is protected: {0}", audioInfo.IsProtected);
@@ -272,6 +361,66 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+
+            /// <summary>
+            /// Reads Id3 metadata directly in MP3 format
+            /// </summary>
+            public static void ReadId3MetadataDirectly()
+            {
+                //ExStart:ReadId3MetadataInMp3Directly
+                // init Mp3Format class
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // read album in ID3 v1
+                MetadataProperty album = mp3Format[MetadataKey.Id3v1.Album];
+                Console.WriteLine(album);
+
+                // read title in ID3 v2
+                MetadataProperty title = mp3Format[MetadataKey.Id3v2.Title];
+                Console.WriteLine(title);
+
+                // create custom ID3v2 key
+                // TCOP is used for 'Copyright' property according to the ID3 specification
+                MetadataKey copyrightKey = new MetadataKey(MetadataType.Id3v2, "TCOP");
+
+                // read copyright property
+                MetadataProperty copyright = mp3Format[copyrightKey];
+                Console.WriteLine(copyright);
+                //ExEnd:ReadId3MetadataInMp3Directly
+            }
+
+
+            /// <summary>
+            /// Shows how to read APEV2 tags in MP3 format
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void ReadApev2Tag()
+            {
+                //ExStart:ReadApev2TagMp3
+                // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // get APEv2 tag
+                Apev2Metadata apev2 = mp3Format.APEv2;
+
+                //NOTE: please remember you may use different approaches to getting metadata                
+
+                // second approach
+                apev2 = (Apev2Metadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.APEv2);
+
+                // check if APEv2 tag is presented
+                if (apev2 != null)
+                {
+                    // Display tag properties
+                    Console.WriteLine("Album: {0}", apev2.Album);
+                    Console.WriteLine("Artist: {0}", apev2.Artist);
+                    Console.WriteLine("Comment: {0}", apev2.Comment);
+                    Console.WriteLine("Genre: {0}", apev2.Genre);
+                    Console.WriteLine("Title: {0}", apev2.Title);
+                    Console.WriteLine("Track: {0}", apev2.Track);
+                }
+                //ExEnd:ReadApev2TagMp3
             }
 
         }
