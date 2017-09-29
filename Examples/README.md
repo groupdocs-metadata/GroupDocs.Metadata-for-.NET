@@ -1,4 +1,4 @@
-##GroupDocs.Metadata for .NET Examples
+## GroupDocs.Metadata for .NET Examples
 
 This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and the sample documents and images in Data folder.
 
@@ -8,7 +8,7 @@ This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for
   </a>
 </p>
 
-##How to Run the Examples?
+## How to Run the Examples?
 
 The package contains two projects, one for C# examples and other for Visual Basic examples. Follow the given steps to proceed with project build:
 

@@ -1,4 +1,4 @@
-##GroupDocs.Metadata for .NET Editor
+## GroupDocs.Metadata for .NET Editor
 
 GroupDocs.Metadata for .NET Editor provides easy ways to manage metadata in various formats. It enables user to read, write, update and remove the metadata of documents (word, spreadsheet, presentation, pdf) and images (jpeg, png, gif).
 

@@ -1,4 +1,4 @@
-##Outlook Metadata Cleaner Plugin
+## Outlook Metadata Cleaner Plugin
 
 This package contains [Outlook Metadata Cleaner Plugin](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Plugins/Outlook Metadata Cleaner) that cleans the metadata of the selected files and attaches them with email. To read more about the plugin, please visit [this](http://groupdocs.com/docs/display/metadatanet/Getting+Starting+with+Outlook+Metadata+Cleaner).
 

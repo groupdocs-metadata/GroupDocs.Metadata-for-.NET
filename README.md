@@ -1,4 +1,4 @@
-##GroupDocs.Metadata for .NET
+## GroupDocs.Metadata for .NET
 
 This package contains [Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples) for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and [Outlook Metadata Cleaner plugin](https://github.com/usmanazizgroupdocs/GroupDocs_Metadata_NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) that will help you understand API's working and write your own applications and plugins.
 
