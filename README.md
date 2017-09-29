@@ -22,5 +22,5 @@ Directory | Description
 + **Product Home:** [GroupDocs.Metadata for .NET](https://www.groupdocs.com/products/metadata/net)
 + **Download:** [Download GroupDocs.Metadata for .NET](https://downloads.groupdocs.com/metadata/net)
 + **Documentation:** [GroupDocs.Metadata for .NET Documentation](https://docs.groupdocs.com/display/metadatanet/Introducing+GroupDocs.Metadata+for+.NET)
-+ **Forum:** [GroupDocs.Metadata for .NET Forum](http://groupdocs.com/Community/forums/groupdocs.metadata-product-family/48/showforum.aspx)
++ **Forum:** [GroupDocs.Metadata for .NET Forum](https://forum.groupdocs.com/c/metadata)
 + **Blog:** [GroupDocs.Metadata for .NET Blog](https://blog.groupdocs.com/category/groupdocs-metadata-product-family/)
