@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Standards.Exif;
+using GroupDocs.Metadata.Formats.Image;
 using System.IO;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp

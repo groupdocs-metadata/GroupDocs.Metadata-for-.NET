@@ -6,7 +6,6 @@ using GroupDocs.Metadata.Formats;
 using System.IO;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Formats.Image;
-using GroupDocs.Metadata.Standards.Exif.Jpeg;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {

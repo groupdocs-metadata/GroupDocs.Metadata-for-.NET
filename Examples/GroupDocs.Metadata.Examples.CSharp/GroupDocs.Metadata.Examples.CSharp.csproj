@@ -13,6 +13,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -34,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Metadata, Version=1.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\groupdocs-metadata-dotnet.1.6.0\lib\net\GroupDocs.Metadata.dll</HintPath>
+    <Reference Include="GroupDocs.Metadata, Version=17.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\groupdocs-metadata-dotnet.17.9.0\lib\net\GroupDocs.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs.cs" />
+    <Compile Include="AudioFormats.cs" />
     <Compile Include="Emails.cs" />
     <Compile Include="Utilities\AuthorReplaceHandler.cs" />
     <Compile Include="Utilities\Common.cs" />
@@ -57,20 +60,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DocCleaner.cs" />
+    <Compile Include="Utilities\DocumentTypeDetector.cs" />
     <Compile Include="Utilities\ExportTypes.cs" />
     <Compile Include="Utilities\JpegPhotoParser.cs" />
+    <Compile Include="Utilities\MIMETypeDetector.cs" />
+    <Compile Include="Utilities\MyExtension.cs" />
     <Compile Include="Utilities\PhotoCleaner.cs" />
+    <Compile Include="VideoFormats.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\GroupDocs.Metadata.dll" />
-    <Content Include="bin\Debug\GroupDocs.Metadata.Examples.CSharp.vshost.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\GroupDocs.Metadata.Examples.CSharp.vshost.exe.manifest" />
-    <None Include="bin\Debug\Groupdocs.Metadata.lic" />
-    <None Include="bin\Debug\GroupDocs.Total.lic" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,4 @@
-##GroupDocs.Metadata for .NET
+## GroupDocs.Metadata for .NET
 
 This package contains [Examples](https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/tree/master/Examples) for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and [Outlook Metadata Cleaner plugin](https://github.com/usmanazizgroupdocs/GroupDocs_Metadata_NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) that will help you understand API's working and write your own applications and plugins.
 
@@ -19,8 +19,8 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library)
-+ **Download:** [Download GroupDocs.Metadata for .NET](http://groupdocs.com/Community/files/8/.net-libraries/groupdocs_metadata_for_.net/default.aspx)
-+ **Documentation:** [GroupDocs.Metadata for .NET Documentation](http://groupdocs.com/docs/display/metadatanet/Introducing+GroupDocs.Metadata+for+.NET)
-+ **Forum:** [GroupDocs.Metadata for .NET Forum](http://groupdocs.com/Community/forums/groupdocs.metadata-product-family/48/showforum.aspx)
-+ **Blog:** [GroupDocs.Metadata for .NET Blog](http://groupdocs.com/blog/category/groupdocs-metadata-product-family)
++ **Product Home:** [GroupDocs.Metadata for .NET](https://www.groupdocs.com/products/metadata/net)
++ **Download:** [Download GroupDocs.Metadata for .NET](https://downloads.groupdocs.com/metadata/net)
++ **Documentation:** [GroupDocs.Metadata for .NET Documentation](https://docs.groupdocs.com/display/metadatanet/Introducing+GroupDocs.Metadata+for+.NET)
++ **Forum:** [GroupDocs.Metadata for .NET Forum](https://forum.groupdocs.com/c/metadata)
++ **Blog:** [GroupDocs.Metadata for .NET Blog](https://blog.groupdocs.com/category/groupdocs-metadata-product-family/)

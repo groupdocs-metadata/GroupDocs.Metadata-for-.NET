@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Formats.Email;
-using GroupDocs.Metadata.Standards.Email;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 
 namespace GroupDocs.Metadata.Examples.CSharp

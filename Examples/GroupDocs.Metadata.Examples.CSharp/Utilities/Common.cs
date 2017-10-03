@@ -5,8 +5,9 @@ using System.Text;
 using System.IO;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata;
-using GroupDocs.Metadata.MetadataProperties;
 using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Exceptions;
+using GroupDocs.Metadata.Formats.Document;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {
@@ -15,7 +16,9 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
         //ExStart:CommonProperties
         private const string SourceFolderPath = "../../../Data/Source/";
         private const string DestinationFolderPath = "../../../Data/Destination/";
-        private const string LicenseFilePath = @"D:\ASPOSE\LICENSE\GroupDocs.Total.lic";
+        private const string LicenseFilePath = @"D:\Aspose Projects\License\GroupDocs.Total.lic";
+        private const string publicKey = "Public key for your account";
+        private const string privateKey = "private key for your account";
         //ExEnd:CommonProperties
 
         //ExStart:MapSourceFilePath
@@ -110,5 +113,140 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
         }
         //ExEnd:FormatRecognizer
-     }
+
+
+        //ExStart:ReadMetadataUsingKey
+        /// <summary>
+        /// Reads metadata property by defined key for any supported format
+        /// </summary>
+        /// <param name="directorPath">Directory path</param>
+        public static void ReadMetadataUsingKey(string directoryPath)
+        {
+            try
+            {
+                // path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath);
+
+                // get array of files inside directory
+                string[] files = Directory.GetFiles(directoryPath);
+                foreach (var file in files)
+                {
+                    // recognize first file
+                    FormatBase format = FormatFactory.RecognizeFormat(file);
+
+                    // try get EXIF artist
+                    var exifArtist = format[MetadataKey.EXIF.Artist];
+                    Console.WriteLine(exifArtist);
+
+                    // try get dc:creator XMP value
+                    var creator = format[MetadataKey.XMP.DublinCore.Creator];
+                    Console.WriteLine(creator);
+
+                    // try get xmp:creatorTool
+                    var creatorTool = format[MetadataKey.XMP.BaseSchema.CreatorTool];
+                    Console.WriteLine(creatorTool);
+
+                    // try get IPTC Application Record keywords
+                    var iptcKeywords = format[MetadataKey.IPTC.ApplicationRecord.Keywords];
+                    Console.WriteLine(iptcKeywords);
+                }
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        //ExEnd:ReadMetadataUsingKey
+
+        //ExStart:EnumerateMetadata
+        /// <summary>
+        /// Reads metadata property by defined key for any supported format
+        /// </summary>
+        /// <param name="directorPath">Directory path</param>
+        public static void EnumerateMetadata(string directoryPath)
+        {
+            try
+            {
+                // path to the files directory
+                directoryPath = MapSourceFilePath(directoryPath);
+
+                // get all files inside the directory
+                string[] files = Directory.GetFiles(directoryPath);
+
+                foreach (string file in files)
+                {
+                    FormatBase format;
+                    try
+                    {
+                        // try to recognize file
+                        format = FormatFactory.RecognizeFormat(file);
+                    }
+                    catch (InvalidFormatException)
+                    {
+                        // skip unsupported formats
+                        continue;
+                    }
+                    catch (DocumentProtectedException)
+                    {
+                        // skip password protected documents
+                        continue;
+                    }
+
+                    if (format == null)
+                    {
+                        // skip unsupported formats
+                        continue;
+                    }
+
+                    // get all metadata presented in file
+                    Metadata[] metadataArray = format.GetMetadata();
+
+                    // go through metadata array
+                    foreach (Metadata metadata in metadataArray)
+                    {
+                        // and display all metadata items
+                        Console.WriteLine("Metadata type: {0}", metadata.MetadataType);
+
+                        // use foreach statement for Metadata class to evaluate all metadata properties
+                        foreach (MetadataProperty property in metadata)
+                        {
+                            Console.WriteLine(property);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        //ExEnd:EnumerateMetadata
+
+        /// <summary>
+        /// shows how to use library in licensed mode using Dynabic.Metered account
+        /// </summary>
+        public static void UseDynabicMeteredAccount()
+        {
+            //ExStart:UseDynabicMeteredAccount
+            // initialize Metered API
+            GroupDocs.Metadata.Metered metered = new Metered();
+
+            // set-up credentials
+            metered.SetMeteredKey(publicKey, privateKey);
+
+            // do some work:
+
+            // Open Word document
+            DocFormat docFormat = new DocFormat(MapSourceFilePath("Documents/Doc/Metadata_testfile.docx"));
+
+            // remove hidden metadata
+            docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.All));
+
+            // and get consumption quantity
+            decimal consumptionQuantity = GroupDocs.Metadata.Metered.GetConsumptionQuantity();
+            //ExEnd:UseDynabicMeteredAccount
+        }
+    }
 }

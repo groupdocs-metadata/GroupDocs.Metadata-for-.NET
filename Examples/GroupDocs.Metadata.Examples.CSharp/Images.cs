@@ -3,31 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GroupDocs.Metadata.Formats.Image;
-using GroupDocs.Metadata.Xmp.Schemas.DublinCore;
+using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Xmp;
-using GroupDocs.Metadata.Standards.Exif;
-using GroupDocs.Metadata.Standards.Exif.Jpeg;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Standards.Xmp;
-using GroupDocs.Metadata.Formats.AdobeApplication;
-using GroupDocs.Metadata.Standards.Psd;
-using GroupDocs.Metadata.Xmp.Types.Complex.Font;
-using GroupDocs.Metadata.Xmp.Types.Complex.Dimensions;
-using GroupDocs.Metadata.Xmp.Schemas.CameraRaw;
-using GroupDocs.Metadata.Xmp.Types.Complex.Colorant;
-using GroupDocs.Metadata.Xmp.Schemas.BasicJob;
-using GroupDocs.Metadata.Xmp.Types.Complex.BasicJob;
 using System.Drawing;
 using System.IO;
-using GroupDocs.Metadata.Xmp.Types.Complex.Thumbnail;
-using GroupDocs.Metadata.Tools.Search;
 using GroupDocs.Metadata.Formats.Cad;
-using GroupDocs.Metadata.Standards.Cad;
-using GroupDocs.Metadata.Tools.Comparison;
-using GroupDocs.Metadata.Standards.Iptc;
-using GroupDocs.Metadata.Xmp.Schemas.Iptc;
-using GroupDocs.Metadata.Standards.Tiff;
+using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Formats.Audio;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -88,7 +72,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:RemoveXmpPropertiesJp2Image
                     Console.WriteLine("File saved in destination folder.");
                 }
@@ -148,7 +131,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jp2Format.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateXmpPropertiesJP2Image
                     Console.WriteLine("File saved in destination folder.");
                 }
@@ -197,8 +179,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceJpegFilePath
 
             private const string filePath = "Images/Jpeg/ExifSample.jpeg";
+            private const string sonyMakerFilePath = "Images/Jpeg/sony.jpg";
+            private const string nikonMakerFilePath = "Images/Jpeg/nikon.jpg";
+            private const string canonMakerFilePath = "Images/Jpeg/canon.jpg";
+            private const string panasonicMakerFilePath = "Images/Jpeg/panasonic.jpg";
             private const string barcodeFilePath = "Images/Jpeg/barcode.jpeg";
-
             //ExEnd:SourceJpegFilePath
             #region working with XMP data
             /// <summary>
@@ -491,7 +476,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesJpegImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -655,18 +639,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
 
-                    // get location
-                    GpsLocation location = jpegFormat.GetGpsLocation();
-                    if (location != null)
+                    // check if JPEG contains XMP metadata
+                    if (jpegFormat.HasXmp)
                     {
-                        // remove GPS location
-                        jpegFormat.RemoveGpsLocation();
+                        // get location
+                        GpsLocation location = jpegFormat.GetGpsLocation();
+                        if (location != null)
+                        {
+                            // remove GPS location
+                            jpegFormat.RemoveGpsLocation();
+                        }
+
+                        // update Dublin Core format in XMP
+                        jpegFormat.XmpValues.Schemes.DublinCore.Format = "image/jpeg";
+
+                        // and commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     }
 
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                     //ExEnd:RemoveGPSDataJpegImage
-
                     Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
@@ -698,6 +689,173 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Read Specific Exif tag
+            /// </summary>
+            /// 
+            public static void ReadExifTag()
+            {
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                // get EXIF data
+                ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                if (exifInfo != null)
+                {
+                    // get specific tag using indexer
+                    TiffAsciiTag artist = (TiffAsciiTag)exifInfo[TiffTagIdEnum.Artist];
+                    if (artist != null)
+                    {
+                        Console.WriteLine("Artist: {0}", artist.Value);
+                    }
+                }
+
+            }
+
+            /// <summary>
+            /// Read All Exif tags
+            /// </summary>
+            /// 
+            public static void ReadAllExifTags()
+            {
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                // get EXIF data
+                ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                if (exifInfo != null)
+                {
+                    TiffTag[] allTags = exifInfo.Tags;
+
+                    foreach (TiffTag tag in allTags)
+                    {
+                        switch (tag.TagType)
+                        {
+                            case TiffTagType.Ascii:
+                                TiffAsciiTag asciiTag = tag as TiffAsciiTag;
+                                Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value);
+                                break;
+
+                            case TiffTagType.Rational:
+                                TiffRationalTag rationalTag = tag as TiffRationalTag;
+                                Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value);
+                                break;
+                        }//end of switch
+                    }//end of foreach
+                }//end of if (exifInfo != null)
+
+            }
+
+            /// <summary>
+            /// Shows how to delete the Exif data in a faster way
+            /// Feature is suooprted by version 17.3 or greater
+            /// </summary>
+            public static void FastRemoveExifData()
+            {
+                try
+                {
+                    //ExStart:FastRemoveExifData
+
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // reset all exif properties
+                    jpegFormat.RemoveExifInfo();
+
+                    // and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:FastRemoveExifData
+                    Console.WriteLine("File saved in destination folder.");
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Shows how to update the Exif data in a faster way
+            /// Feature is suooprted by version 17.3 or greater
+            /// </summary>
+            public static void FasterUpdateExifData()
+            {
+                try
+                {
+                    //ExStart:FasterUpdateExifData
+
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get EXIF data
+                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+
+                    if (exif == null)
+                    {
+                        // initialize EXIF data if null
+                        exif = new JpegExifInfo();
+                    }
+
+                    // set artist
+                    exif.Artist = "test artist";
+
+                    // set the name of the camera's owner
+                    exif.CameraOwnerName = "camera owner's name";
+
+                    // set description
+                    exif.ImageDescription = "test description";
+
+                    // update EXIF data
+                    jpegFormat.SetExifInfo(exif);
+
+                    // and commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                    //ExEnd:FasterUpdateExifData
+                    Console.WriteLine("File saved in destination folder.");
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Adds or updates custom TIFF tags to EXIF segment in JPEG or TIFF formats
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void AddUpdateTiffTagsInExif()
+            {
+                try
+                {
+                    //ExStart:AddUpdateTiffTagsInExif
+                    // init JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get existing EXIF or create new one
+                    ExifInfo exif = jpegFormat.GetExifInfo() ?? new ExifInfo();
+
+                    // define list of tags
+                    List<TiffTag> tags = new List<TiffTag>();
+
+                    // add specific tag
+                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+
+                    // and update tags
+                    exif.Tags = tags.ToArray();
+
+                    // update exif
+                    jpegFormat.UpdateExifInfo(exif);
+
+                    // and commit changes
+                    jpegFormat.Save();
+                    //ExEnd:AddUpdateTiffTagsInExif
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+
+
+            }
+
             #endregion
 
             #region Working with IPTC Metadata
@@ -839,25 +997,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:UpdateIPTCMetadataOfJPEG
-
                     // initialize JpegFormat
                     JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
                     // initialize IptcCollection
-                    IptcCollection collection = new IptcCollection();
-
-                    // add string property
-                    collection.Add(new IptcProperty(2, "category", 15, "formats"));
+                    IptcCollection iptc = jpegFormat.GetIptc();
+                    if (iptc == null)
+                    {
+                        iptc = new IptcCollection();
+                    }
 
                     // add integer property
-                    collection.Add(new IptcProperty(2, "urgency", 10, 5));
-
+                    iptc.Add(new IptcProperty(2, "urgency", 10, 5));
                     // update iptc metadata
-                    jpegFormat.UpdateIptc(collection);
-
+                    jpegFormat.UpdateIptc(iptc);
                     // and commit changes
                     jpegFormat.Save();
-                    //ExEnd:UpdateIPTCPhotoMetadataFromXMP
+                    //ExEnd:UpdateIPTCMetadataOfJPEG
                 }
                 catch (Exception exp)
                 {
@@ -917,7 +1072,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // and commit changes
                     jpegFormat.Save();
-
                     //EXEnd:UpdateIPTCMetadataOfApplicationRecord
                 }
                 catch (Exception exp)
@@ -945,10 +1099,295 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine("Code Type: {0}", barCodes[i].ToString());
                 }
-
                 //ExEnd:DetectBarcodeinJpeg
             }
+
+            /// <summary>
+            /// Removes Photoshop Metadata in Jpeg format
+            /// </summary> 
+            public static void RemovePhotoshopMetadata()
+            {
+                try
+                {
+                    //ExStart:RemovePhotoshopMetadataJpegImage
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // remove photoshop metadata
+                    jpegFormat.RemovePhotoshopData();
+
+                    // and commit changes
+                    jpegFormat.Save();
+                    //ExEnd:RemovePhotoshopMetadataJpegImage 
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads Image Resource Blocks (native PSD metadata) in Jpeg format
+            /// </summary> 
+            public static void ReadImageResourceBlocks()
+            {
+                try
+                {
+                    //ExStart:ReadImageResourceBlocksInJpeg
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if JPEG contain photoshop metadata
+                    if (jpegFormat.HasImageResourceBlocks)
+                    {
+
+                        // get native photoshop metadata
+                        ImageResourceMetadata imageResource = jpegFormat.GetImageResourceBlocks();
+
+                        // display all blocks
+                        foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                        {
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
+
+                            // create your own logic to parse image resource block
+                            byte[] data = imageResourceBlock.Data;
+                        }
+                    }
+                    //ExEnd:ReadImageResourceBlocksInJpeg
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Allows reading Sony maker notes in a Jpeg image
+            /// Feature is supported in version 17.06 or greater
+            /// From version 17.8.0 onwards, the API also allows reading EXIF maker-notes from Sony xperia, cybershot models.
+            /// </summary>
+            public static void ReadSonyMakerNotes()
+            {
+                //ExStart:ReadSonyMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to SonyMakerNotes
+                    SonyMakerNotes sonyMakerNotes = makernotes as SonyMakerNotes;
+                    if (sonyMakerNotes != null)
+                    {
+                        // get color mode
+                        int? colorMode = sonyMakerNotes.ColorMode;
+
+                        // get JPEG quality
+                        int? jpegQuality = sonyMakerNotes.JPEGQuality;
+                        Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality);
+                    }
+
+                }
+                //ExEnd:ReadSonyMakerNotes
+            }
+
+            /// <summary>
+            /// Allows reading Nikon maker notes in a Jpeg image
+            /// Feature is supported in version 17.06 or greater
+            /// From version 17.08 onwards, the API also allows reading EXIF maker-notes from Nikon D models
+            /// </summary>
+            public static void ReadNikonMakerNotes()
+            {
+                //ExStart:ReadNikonMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(nikonMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to NikonMakerNotes
+                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
+
+                    if (nikonMakerNotes != null)
+                    {
+                        // get quality string
+                        string quality = nikonMakerNotes.Quality;
+
+                        // get version
+                        byte[] version = nikonMakerNotes.MakerNoteVersion;
+                        Console.WriteLine("Maker note version: {0},Jpeg quality: {1}", nikonMakerNotes.MakerNoteVersion, nikonMakerNotes.Quality);
+                    }
+                }
+                //ExEnd:ReadNikonMakerNotes
+            }
+
+            /// <summary>
+            /// Allows reading Canon maker notes in a Jpeg image
+            /// Feature is supported in version 17.8.0 or greater
+            /// </summary>
+            public static void ReadCanonMakerNotes()
+            {
+                //ExStart:ReadCanonMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(canonMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to CanonMakerNotes
+                    CanonMakerNotes canonMakerNotes = makernotes as CanonMakerNotes;
+                    if (canonMakerNotes != null)
+                    {
+                        // get cammera settings
+                        CanonCameraSettings cameraSettings = canonMakerNotes.CameraSettings;
+                        if (cameraSettings != null)
+                        {
+                            // get lens type
+                            int lensType = cameraSettings.LensType;
+
+                            // get quality
+                            int quality = cameraSettings.Quality;
+
+                            // get all values
+                            int[] allValues = cameraSettings.Values;
+                        }
+
+                        // get firmware version
+                        string firmwareVersion = canonMakerNotes.CanonFirmwareVersion;
+                    }
+                }
+                //ExEnd:ReadCanonMakerNotes
+            }
+
+
+            /// <summary>
+            /// Allows reading Panasonic maker notes in a Jpeg image
+            /// Feature is supported in version 17.8.0 or greater
+            /// </summary>
+            public static void ReadPanasonicMakerNotes()
+            {
+                //ExStart:ReadPanasonicMakerNotes
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(panasonicMakerFilePath));
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+
+                if (makernotes != null)
+                {
+                    // try cast to PanasonicMakerNotes
+                    PanasonicMakerNotes panasonicMakerNotes = makernotes as PanasonicMakerNotes;
+                    if (panasonicMakerNotes != null)
+                    {
+                        // get firmware version
+                        string firmwareVersion = panasonicMakerNotes.FirmwareVersion;
+
+                        // get image quality
+                        int? imageQuality = panasonicMakerNotes.ImageQuality;
+
+                        // get lens type
+                        string lensType = panasonicMakerNotes.LensType;
+                    }
+                }
+                //ExEnd:ReadPanasonicMakerNotes
+            }
+
+            /// <summary>
+            /// Shows how to parse additional IFD tags like SByte, SShort, SRational and SLong.
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            public static void UpdateIfdTags()
+            {
+                //ExStart:UpdateIfdTags
+                // initialize JpegFormat
+                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
+
+                JpegExifInfo exif = jpegFormat.GetExifInfo() as JpegExifInfo;
+
+                if (exif == null)
+                {
+                    // nothing to process
+                    return;
+                }
+
+
+                // get makernotes
+                var makernotes = jpegFormat.GetMakernotes();
+                if (exif.Make == "NIKON")
+                {
+                    // try cast to NikonMakerNotes
+                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
+
+                    // get tags
+                    var tags = nikonMakerNotes.Tags;
+
+                    foreach (TiffTag tag in tags)
+                    {
+                        if (tag.TagType == TiffTagType.SLong)
+                        {
+                            // cast to SLong type
+                            TiffSLongTag tiffSLong = tag as TiffSLongTag;
+
+                            // and display value
+                            Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value);
+                        }
+                    }
+                }
+                //ExEnd:UpdateIfdTags
+            }
+
+            /// <summary>
+            /// Reads SRational TIFF tag in JPEG/TIFF image formats.
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            /// <param name="directoryPath">path to the images directory</param>
+            public static void ReadSRationalTifftag()
+            {
+                try
+                {
+                    //ExStart:ReadSRationalTifftagJpeg
+                    // init JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get exif info
+                    ExifInfo exifInfo = jpegFormat.GetExifInfo();
+
+
+                    if (exifInfo != null)
+                    {
+
+                        // all tags are available in licensed mode only
+                        TiffTag[] allTags = exifInfo.Tags;
+
+                        foreach (TiffTag tag in allTags)
+                        {
+                            switch (tag.TagType)
+                            {
+
+                                case TiffTagType.SRational:
+                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                    break;
+                            }
+                        }
+                    }
+                    //ExEnd:ReadSRationalTifftagJpeg
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+
         }
+
 
         public static class Gif
         {
@@ -1247,7 +1686,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     gifFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesGifImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -1582,7 +2020,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // commit changes
                     pngFormat.Save(Common.MapDestinationFilePath(filePath));
-
                     //ExEnd:UpdateThumbnailXmpPropertiesPngImage
 
                     Console.WriteLine("File saved in destination folder.");
@@ -1741,6 +2178,45 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
             /// <summary>
+            /// Adds or updates custom TIFF tags to EXIF segment in JPEG or TIFF formats
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            public static void AddUpdateTiffTagsInExif()
+            {
+                try
+                {
+                    //ExStart:AddUpdateTiffTagsInExifTiff
+                    // init JpegFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // get existing EXIF or create new one
+                    ExifInfo exif = tiffFormat.GetExifInfo() ?? new ExifInfo();
+
+                    // define list of tags
+                    List<TiffTag> tags = new List<TiffTag>();
+
+                    // add specific tag
+                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+
+                    // and update tags
+                    exif.Tags = tags.ToArray();
+
+                    // update exif
+                    tiffFormat.UpdateExifInfo(exif);
+
+                    // and commit changes
+                    tiffFormat.Save();
+                    //ExEnd:AddUpdateTiffTagsInExifTiff
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+
+
+            }
+
+            /// <summary>
             ///Gets XMP properties from Tiff file
             /// </summary> 
             public static void GetXMPProperties()
@@ -1753,7 +2229,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // get xmp
                     XmpPacketWrapper xmpPacket = tiff.GetXmpData();
-                    
+
                     if (xmpPacket != null)
                     {
                         // show XMP data
@@ -1823,6 +2299,80 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:ReadTiffFileDirectoryTags
             }
 
+            /// <summary>
+            /// Gets IPTC metadata from Tiff file
+            /// </summary> 
+            public static void ReadIPTCMetadata()
+            {
+                try
+                {
+                    //ExStart:GetIPTCMetadataInTiff
+                    // initialize TiffFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if TIFF contains IPTC metadata
+                    if (tiffFormat.HasIptc)
+                    {
+                        // get iptc collection
+                        IptcCollection iptc = tiffFormat.GetIptc();
+
+                        // and display it
+                        foreach (IptcProperty iptcProperty in iptc)
+                        {
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                        }
+                    }
+                    //ExEnd:GetIPTCMetadataInTiff
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads SRational TIFF tag in JPEG/TIFF image formats.
+            /// Feature is supported in version 17.9.0 or greater of the API
+            /// </summary>
+            /// <param name="directoryPath">path to the images directory</param>
+            public static void ReadSRationalTifftag()
+            {
+                try
+                {
+                    //ExStart:ReadSRationalTifftagTiff
+                    // init TiffFormat
+                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+
+                    // get exif info
+                    ExifInfo exifInfo = tiffFormat.GetExifInfo();
+
+
+                    if (exifInfo != null)
+                    {
+
+                        // all tags are available in licensed mode only
+                        TiffTag[] allTags = exifInfo.Tags;
+
+                        foreach (TiffTag tag in allTags)
+                        {
+                            switch (tag.TagType)
+                            {
+
+                                case TiffTagType.SRational:
+                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                    break;
+                            }
+                        }
+                    }
+                    //ExEnd:ReadSRationalTifftagTiff
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
         }
 
         public static class Psd
@@ -1885,7 +2435,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     var photoshopMetadata = psdFormat.XmpValues.Schemes.Photoshop;
 
                     // get color mode
-                    ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
+                    //ColorMode colorMode = (ColorMode)photoshopMetadata.ColorMode;
+                    PhotoshopColorMode colorMode = (PhotoshopColorMode)photoshopMetadata.ColorMode;
 
                     // get IIC profile
                     var iicProfile = photoshopMetadata.ICCProfile;
@@ -1895,6 +2446,91 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(exp.Message);
                 }
+            }
+
+            /// <summary>
+            /// Gets IPTC metadata from PSD file
+            /// </summary> 
+            public static void ReadIPTCMetadata()
+            {
+                try
+                {
+                    //ExStart:GetIPTCMetadataInPSD
+                    // initialize PsdFormat
+                    PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if PSD contains IPTC metadata
+                    if (psdFormat.HasIptc)
+                    {
+                        // get iptc collection
+                        IptcCollection iptc = psdFormat.GetIptc();
+
+                        // and display it
+                        foreach (IptcProperty iptcProperty in iptc)
+                        {
+                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                        }
+                    }
+                    //ExEnd:GetIPTCMetadataInPSD
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads Image Resource Blocks (native PSD metadata) in PSD format
+            /// </summary> 
+            public static void ReadImageResourceBlocks()
+            {
+                try
+                {
+                    //ExStart:ReadImageResourceBlocksInPSD
+                    // initialize PsdFormat
+                    PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                    // check if contain Image Resource Blocks
+                    if (psdFormat.HasImageResourceBlocks)
+                    {
+                        // get native photoshop metadata
+                        ImageResourceMetadata imageResource = psdFormat.GetImageResourceBlocks();
+
+                        // display all blocks
+                        foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                        {
+                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
+
+                            // create your own logic to parse image resource block
+                            byte[] data = imageResourceBlock.Data;
+                        }
+                    }
+                    //ExEnd:ReadImageResourceBlocksInPSD
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Demonstrates how to read layers in PSD Format
+            /// </summary>
+            public static void ReadLayers()
+            {
+                //ExStart:ReadLayersPSD
+                // initialize PsdFormat
+                PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
+
+                // get all layers
+                PsdLayer[] layers = psdFormat.Layers;
+
+                foreach (PsdLayer layer in layers)
+                {
+                    // display layer short info
+                    Console.WriteLine("Name: {0}, channels count: {1}", layer.Name, layer.ChannelsCount);
+                }
+                //ExEnd:ReadLayersPSD
             }
         }
 
@@ -1965,5 +2601,363 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
+
+        public static class WMF
+        {
+            // initialize file path
+            //ExStart:SourceWmfFilePath
+            private const string wmfFilePath = "Images/Wmf/sample.wmf";
+            //ExEnd:SourceWmfFilePath
+
+            /// <summary>
+            /// Reads metadata from wmf file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInWMF
+
+                    // initialize WmfFormat class
+                    WmfFormat wmfFormat = new WmfFormat(Common.MapSourceFilePath(wmfFilePath));
+
+                    // get width
+                    int width = wmfFormat.Width;
+
+                    // get height
+                    int height = wmfFormat.Height;
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInWMF
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+        public static class WebP
+        {
+            // initialize file path
+            //ExStart:SourceWebPFilePath
+            private const string webPFilePath = "Images/WebP/sample.webp";
+            //ExEnd:SourceWebPFilePath
+
+            /// <summary>
+            /// Reads metadata from WebP file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInWebP
+
+                    // initialize WebPFormat class
+                    WebPFormat webPFormat = new WebPFormat(Common.MapSourceFilePath(webPFilePath));
+
+                    // get width
+                    int width = webPFormat.Width;
+
+                    // get height
+                    int height = webPFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInWebP
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+        }
+
+        public static class EMF
+        {
+            // initialize file path
+            //ExStart:SourceEmfFilePath
+            private const string EmfFilePath = "Images/Emf/sample.emf";
+            //ExEnd:SourceEmfFilePath
+
+            /// <summary>
+            /// Reads metadata from Emf file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInEmf
+
+                    // initialize EmfFormat class
+                    EmfFormat emfFormat = new EmfFormat(Common.MapSourceFilePath(EmfFilePath));
+
+                    // get width
+                    int width = emfFormat.Width;
+
+                    // get height
+                    int height = emfFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInEmf
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
+
+        public static class DJVU
+        {
+            // initialize file path
+            //ExStart:SourceDjvuFilePath
+            private const string DjvuFilePath = "Images/Djvu/sample.djvu";
+            //ExEnd:SourceDjvuFilePath
+
+            /// <summary>
+            /// Reads metadata from Djvu file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInDjvu
+
+                    // initialize DjvuFormat
+                    DjvuFormat djvuFormat = new DjvuFormat(Common.MapSourceFilePath(DjvuFilePath));
+
+                    // get width
+                    int width = djvuFormat.Width;
+
+                    // get height
+                    int height = djvuFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInDjvu
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
+        public static class BMP
+        {
+            // initialize file path
+            //ExStart:SourceBmpFilePath
+            private const string BmpFilePath = "Images/Bmp/goldhill.bmp";
+            //ExEnd:SourceBmpFilePath
+
+            /// <summary>
+            /// Reads metadata from Bmp file
+            /// </summary> 
+            public static void GetMetadataProperties()
+            {
+                try
+                {
+                    //ExStart:GetMetadatPropertiesInBmp
+
+                    // initialize BmpFormat
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
+
+                    // get width
+                    int width = bmpFormat.Width;
+
+                    // get height
+                    int height = bmpFormat.Height;
+
+                    //display height and width in console
+                    Console.Write("Width: {0}, Height: {1}", width, height);
+                    //ExEnd:GetMetadatPropertiesInBmp
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Reads metadata from Bmp file
+            /// </summary> 
+            public static void GetHeaderProperties()
+            {
+                try
+                {
+                    //ExStart:GetHeaderPropertiesInBmp
+                    // initialize BmpFormat
+                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
+
+                    // get BMP header
+                    BmpHeader header = bmpFormat.HeaderInfo;
+
+                    // display bits per pixel
+                    Console.WriteLine("Bits per pixel: {0}", header.BitsPerPixel);
+
+                    // display header size
+                    Console.WriteLine("Header size: {0}", header.HeaderSize);
+
+                    // display image size
+                    Console.WriteLine("Image size: {0}", header.ImageSize);
+                    //ExEnd:GetHeaderPropertiesInBmp
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+
+        public static class DICOM
+        {
+
+            // initialize file path
+            //ExStart:SourceDicomFilePath
+            private const string DicomFilePath = "Images/Dicom/sample.dicom";
+            //ExEnd:SourceDicomFilePath
+            //initialize file path where the output data will be stored
+            //ExStart:OutputDicomDataFilePath
+            private const string outputFilePath = "Documents/Xls/metadata-dicom.xls";
+            //ExEnd:OutputDicomDataFilePath
+            /// <summary>
+            /// Detects a DICOM format file
+            /// </summary>
+            public static void DetectDicomFormat()
+            {
+                //ExStart:DetectDicomFormat
+                // recognize format
+                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(DicomFilePath));
+
+                // check format type
+                if (format.Type == DocumentType.DICOM)
+                {
+                    // cast it to DICOMFormat
+                    DICOMFormat dicom = format as DICOMFormat;
+                }
+                //ExEnd:DetectDicomFormat
+            }
+
+            /// <summary>
+            /// Gets metadata properties of a Dicom file
+            /// </summary>
+            public static void GetMetadataProperties()
+            {
+                //ExStart:GetMetadataPropertiesDicom
+                // initialize DICOMFormat
+                DICOMFormat dicom = new DICOMFormat(Common.MapSourceFilePath(DicomFilePath));
+
+                // get DICOM metadata
+                DicomMetadata header = dicom.Info;
+
+                // display header offset
+                Console.WriteLine("Header offset: {0}", header.HeaderOffset);
+
+                // display number of frames
+                Console.WriteLine("Number of frames: {0}", header.NumberOfFrames);
+                //ExEnd:GetMetadataPropertiesDicom
+            }
+
+            /// <summary>
+            /// Exports metadata of a DICOM file to csv,xls file
+            /// </summary>
+            public static void ExportMetadata()
+            {
+                //ExStart:ExportMetadataDicom
+                // export to excel
+                byte[] content = ExportFacade.ExportToExcel(Common.MapSourceFilePath(DicomFilePath));
+
+                // write data to the file
+                File.WriteAllBytes(outputFilePath, content);
+                //ExEnd:ExportMetadataDicom
+            }
+
+
+        }
+
+        /// <summary>
+        /// Retrieve width and height properties for all image formats.
+        /// 
+        /// </summary> 
+        public static void RetrieveImageSize(string directoryPath)
+        {
+            try
+            {
+                //ExStart:RetrieveImageSize
+
+                // get all files inside directory
+                string[] files = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
+
+                foreach (string path in files)
+                {
+                    // recognize format
+                    FormatBase format = FormatFactory.RecognizeFormat(path);
+
+                    // try to parse image
+                    ImageFormat imageFormat = format as ImageFormat;
+
+                    // skip non-image file
+                    if (imageFormat == null)
+                    {
+                        continue;
+                    }
+
+                    // get width
+                    int width = imageFormat.Width;
+
+                    // get height
+                    int height = imageFormat.Height;
+
+                    Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);
+                }
+                //ExEnd:RetrieveImageSize
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Exception occurred: " + exp.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Reads ByteOrder (little-endian, big-endian) for image formats
+        /// </summary>
+        /// <param name="directoryPath">path to the images directory</param>
+        public static void ReadByteOrder(string directoryPath)
+        {
+            try
+            {
+                //ExStart:ReadByteOrderOfImage
+                // get all images from the specific folder
+                string[] images = Directory.GetFiles(Common.MapSourceFilePath(directoryPath));
+
+                foreach (string path in images)
+                {
+                    // recognize format
+                    FormatBase format = FormatFactory.RecognizeFormat(path);
+                    // detect image
+                    ImageFormat image = format as ImageFormat;
+
+                    // skip non-image file
+                    if (image == null)
+                    {
+                        continue;
+                    }
+                    // and display byte-order value
+                    Console.WriteLine(image.ByteOrder);
+                }
+                //ExEnd:ReadByteOrderOfImage
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
+
     }
 }

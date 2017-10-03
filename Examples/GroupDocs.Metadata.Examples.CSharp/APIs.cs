@@ -1,10 +1,8 @@
 ﻿using GroupDocs.Metadata.Examples.CSharp.Utilities;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.MetadataProperties;
-using GroupDocs.Metadata.Standards.Exif;
-using GroupDocs.Metadata.Tools.Comparison;
-using GroupDocs.Metadata.Tools.Export;
-using GroupDocs.Metadata.Tools.Search;
+using GroupDocs.Metadata;
+using GroupDocs.Metadata.Formats.Image;
+using GroupDocs.Metadata.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -130,7 +128,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         Console.WriteLine("{0} : {1}", property.Name, property.ToString());
                     }
-
                     //ExEnd:ImageSearchAPI
                 }
                 catch (Exception exp)

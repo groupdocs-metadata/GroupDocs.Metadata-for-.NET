@@ -4,12 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using GroupDocs.Metadata.Formats;
-using GroupDocs.Metadata.Interfaces;
-using GroupDocs.Metadata.MetadataProperties;
 using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Tools.Export;
 using GroupDocs.Metadata.Xmp;
 using MetadataEditor.UserControls;
+using GroupDocs.Metadata;
 
 namespace MetadataEditor
 {
@@ -21,7 +19,9 @@ namespace MetadataEditor
         static frmMain()
         {
             GroupDocs.Metadata.License license = new GroupDocs.Metadata.License();
-            license.SetLicense(@"D:\GroupDocs.Total.lic");
+           
+            //license.SetLicense(@"D:\GroupDocs.Total.lic");
+            license.SetLicense(@"D:\Aspose Projects\LICENSE\GroupDocs.Total.lic");
         }
 
         public frmMain()
