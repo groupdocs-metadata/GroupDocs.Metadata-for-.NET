@@ -670,8 +670,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read,write or update xmp metadata in AVI format
             //VideoFormats.Avi.DealWithXmpMetaData();
+
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
+
             #endregion
 
+            #region Working with Archives
+            
+            #region Working with Zip format 
+            //Get Zip format metadata
+            //Archives.Zip.GetZipMatadata();
+            #endregion
+
+            #endregion
             Console.ReadKey();
 
 
