@@ -130,6 +130,46 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 aviFormat.Save();
                 //ExEnd:DealWithXmpMetaData
             }
+      
+        }
+        public static class Mov
+        {
+            // initialize file path and directory path
+            //ExStart:SourceAviFilePath + SourcAviDirectoryPath
+            private const string directoryPath = "Video/Mov";
+            private const string filePath = "Video/Mov/sample.mov";
+            /// <summary>
+            /// This example demonstrates how to get CANON maker-notes
+            /// </summary>
+            public static void GetMovFormatMetadata()
+            {
+                //ExStart:GetMovFormatMetadata
+                // initialize mov format
+                MovFormat movFormat = new MovFormat(Common.MapSourceFilePath(filePath));
+
+                // display mime type
+                Console.WriteLine("MIME type: {0}", movFormat.MIMEType);
+
+                foreach(var info in movFormat.QuickTimeInfo.Atoms)
+                {
+                    // get name
+                    Console.WriteLine("Name: {0}", info.Name);
+
+                    // get offset
+                    Console.WriteLine("Offset: {0}", info.Offset);
+
+                    // get data
+                    Console.WriteLine("Data: {0}", info.Data);
+
+                    // get size
+                    Console.WriteLine("Size: {0}", info.Size);
+
+                    // get type
+                    Console.WriteLine("Type: {0}", info.Type);
+
+                }
+                //ExEnd:GetMovFormatMetadata
+            }
         }
     }
 }
