@@ -139,6 +139,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
             private const string directoryPath = "Video/Mov";
             private const string filePath = "Video/Mov/sample.mov";
             /// <summary>
+            /// Detects Mov video format via Format Factory
+            /// </summary>
+            public static void DetectMovFormat()
+            {
+                //ExStart:DetectMovFormat
+                // recognize format
+                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
+
+                // check format type
+                if (format.Type == DocumentType.Mov)
+                {
+                    // cast it to MovFormat
+                    MovFormat movFormat = format as MovFormat;
+
+                    // and get it MIME type;
+                    string mimeType = movFormat.MIMEType;
+                    Console.WriteLine(mimeType);
+                }
+                //ExEnd:DetectMovFormat
+            }
+            /// <summary>
             /// This example demonstrates how to get CANON maker-notes
             /// </summary>
             public static void GetMovFormatMetadata()

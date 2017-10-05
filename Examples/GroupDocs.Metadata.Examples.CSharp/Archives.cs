@@ -1,7 +1,10 @@
 ﻿using GroupDocs.Metadata.Examples.Utilities.CSharp;
+using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Archive;
+using GroupDocs.Metadata.Tools;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -15,6 +18,23 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceDocFilePath
             private const string filePath = "Archives/Zip/sample.zip";
             //ExEnd:SourceDocFilePath
+
+            /// <summary>
+            /// Detects Zip format via Format Factory
+            /// </summary>
+            public static void DetectZipFormat()
+            {
+                //ExStart:DetectZipFormat
+                // recognize format
+                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
+
+                // check format type
+                if (format.Type == DocumentType.Zip)
+                {
+                    Console.WriteLine("File: {0} has correct format", Path.GetFileName(Common.MapSourceFilePath(filePath)));
+                }
+                //ExEnd:DetectZipFormat
+            }
 
             /// <summary>
             /// Gets info of Zip file 

@@ -1,6 +1,6 @@
 ## GroupDocs.Metadata for .NET Examples
 
-This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and the sample documents and images in Data folder.
+This package contains C# Examples Project for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and the sample documents and images in Data folder.
 
 <p align="center">
   <a title="Download complete GroupDocs.Metadata for .NET source code" href="https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/archive/master.zip">
@@ -10,7 +10,7 @@ This package contains C# and VB.NET Example Projects for [GroupDocs.Metadata for
 
 ## How to Run the Examples?
 
-The package contains two projects, one for C# examples and other for Visual Basic examples. Follow the given steps to proceed with project build:
+The package contains C# examples. Follow the given steps to proceed with project build:
 
 * Extract the downloaded project and open the solution file in Visual Studio
 * Right click on solution and press "Enable NuGet package Restore"
