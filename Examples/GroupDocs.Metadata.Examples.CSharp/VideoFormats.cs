@@ -130,7 +130,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 aviFormat.Save();
                 //ExEnd:DealWithXmpMetaData
             }
-      
+
+            public static void CleanMetadata()
+            {
+                //ExStart:CleanMetadata
+                // initialize AviFormat
+                AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath));
+
+                // removes all metadata
+                aviFormat.CleanMetadata();
+
+                // commit changes
+                aviFormat.Save();
+                //ExEnd:DealWithXmpMetaData
+            }
         }
         public static class Mov
         {
