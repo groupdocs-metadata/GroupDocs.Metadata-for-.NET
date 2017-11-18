@@ -1,6 +1,6 @@
 ## GroupDocs.Metadata for .NET Examples
 
-This package contains C# Examples Project for [GroupDocs.Metadata for .NET](http://groupdocs.com/dot-net/document-metadata-library) and the sample documents and images in Data folder.
+This package contains C# Examples Project for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) and the sample documents and images in Data folder.
 
 <p align="center">
   <a title="Download complete GroupDocs.Metadata for .NET source code" href="https://github.com/groupdocsmetadata/GroupDocs_Metadata_NET/archive/master.zip">
