@@ -1810,7 +1810,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
 
                     // get content properties
-                    XlsContentProperty[] contentProperties = xlsProperties.ContentProperties;
+                    XlsContentProperty[] contentProperties = xlsProperties.ContentTypeProperties;
 
                     foreach (XlsContentProperty property in contentProperties)
                     {

@@ -46,10 +46,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:GetZipMatadata
-                    // initialize DocFormat
-                    ZipFormat movFormat = new ZipFormat(Common.MapSourceFilePath(filePath));
+                    // initialize  
+                    ZipFormat zipFormat = new ZipFormat(Common.MapSourceFilePath(filePath));
                     // get info
-                    ZipMetadata info = movFormat.ZipInfo;
+                    ZipMetadata info = zipFormat.ZipInfo;
 
                     // get total entries
                     Console.WriteLine("Total Entries : {0}, ", info.TotalEntries);
@@ -81,8 +81,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             }
 
+            /// <summary>
+            /// Removes comment in Zip file 
+            /// </summary> 
+            /// 
+            public static void RemoveComment()
+            {
+
+                try
+                {
+                    //ExStart:RemoveCommentZIPFile_17.12
+                    // initialize 
+                    ZipFormat zipFormat = new ZipFormat(Common.MapSourceFilePath(filePath));
+
+                    // remove user comment
+                    zipFormat.RemoveFileComment();
+
+                    // and commit changes
+                    zipFormat.Save();
+                    //ExEnd:RemoveCommentZIPFile_17.12
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+
+            }
+
+
         }
-      
+
 
     }
 }
