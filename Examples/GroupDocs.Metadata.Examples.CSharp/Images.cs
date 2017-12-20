@@ -856,6 +856,41 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             }
 
+            /// <summary>
+            /// Reads thumbnail of JPEG format from EXIF segment
+            /// </summary> 
+            /// 
+            public static void ReadThumbnailFromEXIFSegment()
+            {
+
+                try
+                {
+                    //ExStart:ReadThumbnailFromEXIFSegment_17.12
+                    // initialize jpeg
+                    JpegFormat jpeg = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get exif data
+                    var exifData = jpeg.GetExifInfo();
+                    if (exifData != null)
+                    {
+                        // get thumbnail
+                        byte[] thumbnail = exifData.Thumbnail;
+
+                        // if exist then store to the file
+                        if (thumbnail.Length > 0)
+                        {
+                            File.WriteAllBytes("C:\\1.jpeg", thumbnail);
+                        }
+                    }
+                    //ExEnd:ReadThumbnailFromEXIFSegment_17.12
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+
+            }
+
             #endregion
 
             #region Working with IPTC Metadata
