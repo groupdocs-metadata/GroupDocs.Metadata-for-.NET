@@ -637,6 +637,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read Layrics3 Tag
             //AudioFormats.Mp3.ReadLayrics3Tag();
 
+            // Remove Lyrics3 Tag
+            //AudioFormats.Mp3.RemoveLayrics3Tag();
+
+            // Clean metadata 
+            //AudioFormats.Mp3.CleanMetadata();
+
+            // Remove APEv2 Tag
+            //AudioFormats.Mp3.RemoveAPEV2Tag();
+
+
             // Update ID3v1Tag
             //AudioFormats.Mp3.UpdateID3v1Tag();
 
@@ -645,6 +655,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read APEV2 tag in MP3 files
             //AudioFormats.Mp3.ReadApev2Tag();
+
+
             #endregion
 
             #region Working with WAV Files
@@ -670,8 +682,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read,write or update xmp metadata in AVI format
             //VideoFormats.Avi.DealWithXmpMetaData();
+
+            //Clean metadata in AVI format
+            //VideoFormats.Avi.CleanMetadata();
+
+            //Detect Mov file format using format factory
+            //VideoFormats.Mov.DetectMovFormat();
+
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
+
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
+
             #endregion
 
+            #region Working with Archives
+
+            #region Working with Zip format 
+            //Detect Zip file format using format factory
+            //Archives.Zip.DetectZipFormat();
+
+            //Get Zip format metadata
+            //Archives.Zip.GetZipMatadata();
+            #endregion
+
+            #endregion
             Console.ReadKey();
 
 

@@ -16,7 +16,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
         //ExStart:CommonProperties
         private const string SourceFolderPath = "../../../Data/Source/";
         private const string DestinationFolderPath = "../../../Data/Destination/";
-        private const string LicenseFilePath = @"D:\Aspose Projects\License\GroupDocs.Total.lic";
+        private const string LicenseFilePath = @"D:\GroupDocs.Total.lic";
         private const string publicKey = "Public key for your account";
         private const string privateKey = "private key for your account";
         //ExEnd:CommonProperties

@@ -423,6 +423,50 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:ReadApev2TagMp3
             }
 
+            public static void RemoveLayrics3Tag()
+            {
+                //ExStart:RemoveLayrics3Tag
+                // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // remove Lyrics3 tag
+                mp3Format.RemoveLyrics3v2();
+
+                // and commit changes
+                mp3Format.Save();
+                //ExEnd:RemoveLayrics3Tag
+
+            }
+
+            public static void CleanMetadata()
+            {
+                //ExStart:CleanMetadata
+                // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // removes id3/lyrics/ape tags
+                mp3Format.CleanMetadata();
+
+                // and commit changes
+                mp3Format.Save();
+                //ExEnd:CleanMetadata
+
+            }
+
+            public static void RemoveAPEV2Tag()
+            {
+                //ExStart:RemoveAPEV2Tag
+                // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
+                Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                // remove APE v2.0 tag
+                mp3Format.RemoveAPEv2();
+
+                // and commit changes
+                mp3Format.Save();
+                //ExEnd:RemoveAPEV2Tag
+
+            }
         }
 
         public static class Wav
