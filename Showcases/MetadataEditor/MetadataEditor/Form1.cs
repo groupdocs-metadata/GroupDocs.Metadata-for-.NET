@@ -18,10 +18,17 @@ namespace MetadataEditor
 
         static frmMain()
         {
-            GroupDocs.Metadata.License license = new GroupDocs.Metadata.License();
-           
-            //license.SetLicense(@"D:\GroupDocs.Total.lic");
-            license.SetLicense(@"D:\Aspose Projects\LICENSE\GroupDocs.Total.lic");
+            try
+            {
+                GroupDocs.Metadata.License license = new GroupDocs.Metadata.License();
+
+                //license.SetLicense(@"D:\GroupDocs.Total.lic");
+                license.SetLicense(@"D:\license\GroupDocs.Total.lic");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Please provide valid Aspose license file.");
+            }
         }
 
         public frmMain()
@@ -118,7 +125,7 @@ namespace MetadataEditor
 
         private void ResizeControl(Control control)
         {
-            control.Anchor = AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top;
+            control.Dock = DockStyle.Fill;// AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
