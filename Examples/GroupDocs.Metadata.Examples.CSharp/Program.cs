@@ -221,6 +221,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update metadata of odt file
             //Documents.ODT.UpdateOdtMetadata();
             #endregion
+            #region Working with EPUB
+            //Detects EPUB file format
+            //Documents.EPUB.DetectEPUBFormat();
+            //Read EPUB file format metadata
+            //Documents.EPUB.ReadEPUBFormatMetadata();
+            //Read Dublin Core Metadata
+            Documents.EPUB.ReadDublinCoreMetadata();
+            #endregion
 
             #region Working with ODS files
             //Documents.ODS.ReadOdsMetadata();
@@ -447,6 +455,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Images.DICOM.ExportMetadata();
 
             #endregion
+
             #region Read Byte order of images
             //Reads byte order of images of supported formats
             //Images.ReadByteOrder("Images/SampleImages");
@@ -708,6 +717,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #endregion
+
+
             Console.ReadKey();
 
 

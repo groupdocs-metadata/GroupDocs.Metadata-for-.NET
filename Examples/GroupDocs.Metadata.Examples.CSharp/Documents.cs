@@ -13,6 +13,7 @@ using GroupDocs.Metadata.Formats.Project;
 using GroupDocs.Metadata.Exceptions;
 using System.IO;
 using GroupDocs.Metadata.Xmp;
+using GroupDocs.Metadata.Formats.Ebook;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -740,6 +741,73 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
         }
+
+        public static class EPUB
+        {
+            // initialize file path
+            //ExStart:SourceEPUBFilePath
+            private const string filePath = "Documents/Epub/sample.epub";
+            //ExEnd:SourceEPUBFilePath
+
+            public static void DetectEPUBFormat()
+            {
+                //ExStart:DetectEPUBFormat
+                //using FormatFactory
+                EpubFormat epubFormat = (EpubFormat)FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
+                // or
+                // just try to open
+                //EpubFormat epubFormat = new EpubFormat(file);
+                if (epubFormat.Type.ToString().ToLower() == "epub")
+                {
+                    Console.WriteLine("File has valid EPUB Format");
+                }
+                //ExEnd:DetectEPUBFormat
+
+            }
+
+            public static void ReadEPUBFormatMetadata()
+            {
+                //ExStart:ReadEPUBFormatMetadata
+           
+                // open EPUB file
+                EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath));
+
+                // read EPUB metadata
+                EpubMetadata metadata = epub.GetEpubMetadata();
+
+                // get keys
+                string[] keys = metadata.Keys;
+
+                foreach (string key in keys)
+                {
+                    // get next metadata property
+                    MetadataProperty property = metadata[key];
+
+                    // and print it
+                    Console.WriteLine(property);
+                }
+                //ExEnd:ReadEPUBFormatMetadata
+            }
+
+            public static void ReadDublinCoreMetadata()
+            {
+                // open EPUB file
+                EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath));
+
+                // read dublin-core metadata
+                DublinCoreMetadata dublinCore = epub.GetDublinCore();
+
+                // get creator
+                string creator = dublinCore.Creator;
+
+                // get publisher
+                string publisher = dublinCore.Publisher;
+
+                // get contributor
+                string contributor = dublinCore.Contributor;
+            }
+        }
+    
 
         public static class Pdf
         {
