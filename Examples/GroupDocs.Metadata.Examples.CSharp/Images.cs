@@ -312,6 +312,46 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             /// <summary>
+            /// The method loads and save EXIF metadata with better speed
+            /// </summary> 
+            public static void EXIFMetadataWithBetterSpeed()
+            {
+                try
+                {
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get EXIF data
+                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+
+                    // set artist
+                    exif.Artist = "test artist";
+
+                    // set the name of the camera's owner
+                    exif.CameraOwnerName = "camera owner's name";
+
+                    // set description
+                    exif.ImageDescription = "test description";
+
+                    // set software
+                    exif.Software = "software...";
+
+                    // commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+
+                    // and free resources
+                    jpegFormat.Dispose();
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+                
+            }
+
+            /// <summary>
             /// Updates PagedText XMP data of Jpeg file and creates output file
             /// </summary> 
             public static void UpdatePagedTextXMPProperties()

@@ -221,13 +221,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update metadata of odt file
             //Documents.ODT.UpdateOdtMetadata();
             #endregion
+
             #region Working with EPUB
             //Detects EPUB file format
             //Documents.EPUB.DetectEPUBFormat();
             //Read EPUB file format metadata
             //Documents.EPUB.ReadEPUBFormatMetadata();
             //Read Dublin Core Metadata
-            Documents.EPUB.ReadDublinCoreMetadata();
+            //Documents.EPUB.ReadDublinCoreMetadata();
+            //Read Image covr from EPUB Format 
+            //Documents.EPUB.ReadImageCover();
+            //Read version of EPUB Package
+            //Documents.EPUB.ReadEPUBPackageVersion();
+
             #endregion
 
             #region Working with ODS files
@@ -365,6 +371,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Reads SRational TIFF tag in JPEG and TIFF image formats
             //Images.Jpeg.ReadSRationalTifftag();
+
+            //The method loads and save EXIF metadata with better speed
+            //Images.Jpeg.EXIFMetadataWithBetterSpeed();
             #endregion
 
             #region Working with Png
@@ -664,6 +673,24 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read APEV2 tag in MP3 files
             //AudioFormats.Mp3.ReadApev2Tag();
+
+            //Validate ID3 input metadata before saviing
+            //AudioFormats.Mp3.ValidateID3Metadata();
+
+            //Read additional properties from ID3v2 tag
+            //AudioFormats.Mp3.ReadAdditionalID3v2Properties();
+
+            //Update ID3v2 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
+
+            //Update ID3v1 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
+
+            //Ability to read Image cover from ID3 audio tag
+            //AudioFormats.Mp3.ReadImageCoverID3();
+
+            //Update or Remove image cover from ID3 audio tag
+            //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
 
 
             #endregion
