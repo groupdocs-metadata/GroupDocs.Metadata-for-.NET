@@ -14,6 +14,7 @@ using GroupDocs.Metadata.Exceptions;
 using System.IO;
 using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Formats.Ebook;
+using GroupDocs.Metadata.Formats.Image;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -805,6 +806,73 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                 // get contributor
                 string contributor = dublinCore.Contributor;
+            }
+            /// <summary>
+            /// Read Image cover from EPUB format
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadImageCover()
+            {
+                try
+                {
+                    // open EPUB file
+                    using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // read image cover as array of bytes
+                        byte[] imageCoverData = epub.GetImageCoverBytes();
+
+                        // check if cover is exist
+                        if (imageCoverData != null)
+                        {
+                            // create stream
+                            using (MemoryStream stream = new MemoryStream(imageCoverData))
+                            {
+                                // get image type
+                                ImageFormat image = ImageFormat.FromStream(stream);
+
+                                // display MIME type
+                                Console.WriteLine("Image type: {0}", image.MIMEType);
+
+                                // display dimensions
+                                Console.WriteLine("width: {0}, height: {1}", image.Width, image.Height);
+
+                                // and store it to the file system
+                                image.Save(string.Format(Common.MapSourceFilePath(filePath), image.Type));
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+                
+            }
+            /// <summary>
+            /// Read Epub package version
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadEPUBPackageVersion()
+            {
+                try
+                {
+                    // open EPUB file
+                    using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // read EPUB metadata
+                        EpubMetadata metadata = epub.GetEpubMetadata();
+
+                        // and get version
+                        Console.WriteLine("Version = {0}", metadata.Version);
+                    }
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
             }
         }
     
