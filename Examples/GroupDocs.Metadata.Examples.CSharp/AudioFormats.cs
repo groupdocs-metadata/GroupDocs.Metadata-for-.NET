@@ -476,7 +476,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    // init Mp3Format class
+                    //init Mp3Format class
                     using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
                     {
                         // set album but with invalid length
@@ -487,7 +487,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             // and commit changes
                             mp3Format.Save();
                         }
-                        catch (GroupDocs.Metadata.Exceptions.GroupDocsException e)
+                        catch (Shared.Exceptions.GroupDocsException e)
                         {
                             //e.Message is "Property 'album': Length could not be grater then 30"
                             Console.WriteLine(e);
@@ -548,7 +548,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
                 catch (Exception exp)
                 {
-
                     Console.WriteLine(exp.Message);
                 }
             }
@@ -662,6 +661,34 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
                 catch (Exception exp)
                 {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
                     Console.WriteLine(exp.Message);
                 }
             }

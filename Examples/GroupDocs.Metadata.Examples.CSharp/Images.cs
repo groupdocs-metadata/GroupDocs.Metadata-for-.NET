@@ -1796,7 +1796,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// In some cases, it is necessary to remove some specific values from XMP metadata package associated with GIF or PNG images.
+            /// In previous versions of GroupDocs.Metadata this might cause unexpected increasing of the file size.
+            /// Starting from version 18.4 please use the following code snippet to avoid the issue.
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void RemoveMetadata()
+            {
+                try
+                {
+                    using (GifFormat format = new GifFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        XmpEditableCollection xmpEditableCollection = format.XmpValues;
+                        XmpSchemes schemes = xmpEditableCollection.Schemes;
 
+                        schemes.DublinCore.Source = null;
+                        schemes.DublinCore.Subject = null;
+
+                        schemes.Pdf.Keywords = null;
+                        schemes.Pdf.Producer = null;
+
+                        schemes.Photoshop.City = null;
+                        schemes.Photoshop.Country = null;
+
+                        schemes.XmpBasic.BaseUrl = null;
+                        schemes.XmpBasic.Nickname = null;
+
+                        format.Save(Common.MapDestinationFilePath(filePath));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class Png
