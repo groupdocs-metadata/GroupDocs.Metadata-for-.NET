@@ -98,6 +98,61 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
 
             /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read DublinCore Metadata using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadata()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
             /// Updates document properties of Doc file and creates output file
             /// </summary> 
             public static void UpdateDocumentProperties()
@@ -874,6 +929,59 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// Read Dublin Core Medata using MetadataUtility
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadataUtility()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata!=null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+                            
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
         }
     
 
@@ -1267,6 +1375,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine("[{0}]={1}", key, properties[key]);
                     }
                     //ExEnd:LoadExistingMetadataKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Read DublinCore Metadata using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadata()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
                 }
                 catch (Exception ex)
                 {
@@ -2055,6 +2189,34 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
                 }
             }
         }
