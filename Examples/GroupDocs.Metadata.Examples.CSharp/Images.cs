@@ -312,6 +312,46 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
             /// <summary>
+            /// The method loads and save EXIF metadata with better speed
+            /// </summary> 
+            public static void EXIFMetadataWithBetterSpeed()
+            {
+                try
+                {
+                    // initialize JpegFormat
+                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+
+                    // get EXIF data
+                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+
+                    // set artist
+                    exif.Artist = "test artist";
+
+                    // set the name of the camera's owner
+                    exif.CameraOwnerName = "camera owner's name";
+
+                    // set description
+                    exif.ImageDescription = "test description";
+
+                    // set software
+                    exif.Software = "software...";
+
+                    // commit changes
+                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+
+                    // and free resources
+                    jpegFormat.Dispose();
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+                
+            }
+
+            /// <summary>
             /// Updates PagedText XMP data of Jpeg file and creates output file
             /// </summary> 
             public static void UpdatePagedTextXMPProperties()
@@ -1756,7 +1796,42 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// In some cases, it is necessary to remove some specific values from XMP metadata package associated with GIF or PNG images.
+            /// In previous versions of GroupDocs.Metadata this might cause unexpected increasing of the file size.
+            /// Starting from version 18.4 please use the following code snippet to avoid the issue.
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void RemoveMetadata()
+            {
+                try
+                {
+                    using (GifFormat format = new GifFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        XmpEditableCollection xmpEditableCollection = format.XmpValues;
+                        XmpSchemes schemes = xmpEditableCollection.Schemes;
 
+                        schemes.DublinCore.Source = null;
+                        schemes.DublinCore.Subject = null;
+
+                        schemes.Pdf.Keywords = null;
+                        schemes.Pdf.Producer = null;
+
+                        schemes.Photoshop.City = null;
+                        schemes.Photoshop.Country = null;
+
+                        schemes.XmpBasic.BaseUrl = null;
+                        schemes.XmpBasic.Nickname = null;
+
+                        format.Save(Common.MapDestinationFilePath(filePath));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         public static class Png

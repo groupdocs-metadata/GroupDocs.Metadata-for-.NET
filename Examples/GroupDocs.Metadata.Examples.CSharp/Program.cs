@@ -31,7 +31,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.Doc.GetDocumentProperties();
 
             //Update document properties of Doc file
-            ////Documents.Doc.UpdateDocumentProperties();
+            //Documents.Doc.UpdateDocumentProperties();
 
             //Remove document properties of Doc file
             //Documents.Doc.RemoveDocumentProperties();
@@ -86,6 +86,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Reject all changes in a revision
             //Documents.Doc.RejectAllChanges();
+
+            //Read DublinCore Metadata
+            //Documents.Doc.ReadDublinCoreMetadata();
+
+            //Read ImageCover using Metadata Utility
+            //Documents.Doc.ReadImageCoverMetadataUtility();
             #endregion
 
             #region Working with Ppt Files
@@ -156,6 +162,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Reads thumnail in excel file
             //Documents.Xls.ReadThumbnailXls();
 
+            //Read ImageCover using MetadataUtility
+            //Documents.Xls.ReadImageCoverMetadataUtility();
+
             #endregion
 
             #region Working with Pdf Files
@@ -193,6 +202,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Loads only existing metadata keys
             //Documents.Pdf.LoadExistingMetadataKeys();
 
+            //Read DublinCore Metadata
+            //Documents.Pdf.ReadDublinCoreMetadata();
+
             #endregion
 
             #region Working with OneNote Files
@@ -220,6 +232,24 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.ODT.GetOdtMetadata();
             //Update metadata of odt file
             //Documents.ODT.UpdateOdtMetadata();
+            #endregion
+
+            #region Working with EPUB
+            //Detects EPUB file format
+            //Documents.EPUB.DetectEPUBFormat();
+            //Read EPUB file format metadata
+            //Documents.EPUB.ReadEPUBFormatMetadata();
+            //Read Dublin Core Metadata
+            //Documents.EPUB.ReadDublinCoreMetadata();
+            //Read Image cover from EPUB Format 
+            //Documents.EPUB.ReadImageCover();
+            //Read Image Cover using Metadata Utility
+            //Documents.EPUB.ReadImageCoverMetadataUtility();
+            //Read version of EPUB Package
+            //Documents.EPUB.ReadEPUBPackageVersion();
+            //Read DublinCore Metadata using unified approach
+            //Documents.EPUB.ReadDublinCoreMetadataUtility();
+
             #endregion
 
             #region Working with ODS files
@@ -260,6 +290,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove XMP properties of Gif image
             //Images.Gif.RemoveXMPProperties();
+
+            //Remove Medatadata of Gif image 
+            //Images.Gif.RemoveMetadata();
 
             #endregion
 
@@ -357,6 +390,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Reads SRational TIFF tag in JPEG and TIFF image formats
             //Images.Jpeg.ReadSRationalTifftag();
+
+            //The method loads and save EXIF metadata with better speed
+            //Images.Jpeg.EXIFMetadataWithBetterSpeed();
             #endregion
 
             #region Working with Png
@@ -447,6 +483,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Images.DICOM.ExportMetadata();
 
             #endregion
+
             #region Read Byte order of images
             //Reads byte order of images of supported formats
             //Images.ReadByteOrder("Images/SampleImages");
@@ -656,6 +693,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Read APEV2 tag in MP3 files
             //AudioFormats.Mp3.ReadApev2Tag();
 
+            //Validate ID3 input metadata before saviing
+            //AudioFormats.Mp3.ValidateID3Metadata();
+
+            //Read additional properties from ID3v2 tag
+            //AudioFormats.Mp3.ReadAdditionalID3v2Properties();
+
+            //Update ID3v2 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
+
+            //Update ID3v1 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
+
+            //Ability to read Image cover from ID3 audio tag
+            //AudioFormats.Mp3.ReadImageCoverID3();
+
+            //Read Image Cover using Metadata Utility
+            //AudioFormats.Mp3.ReadImageCoverMetadataUtility();
+
+            //Update or Remove image cover from ID3 audio tag
+            //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
+
 
             #endregion
 
@@ -708,6 +766,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #endregion
+
+            #region Working with Torrent Files
+            #region Working with Bit Torrent
+            //Read Bit Torrent File Metadata
+            //Torrent.BitTorrent.GetTorrentMetadata();
+            //Update Bit Torrent File Metadata 
+            //Torrent.BitTorrent.UpdateTorrentMedata();
+            #endregion
+            #endregion
+
             Console.ReadKey();
 
 

@@ -13,6 +13,8 @@ using GroupDocs.Metadata.Formats.Project;
 using GroupDocs.Metadata.Exceptions;
 using System.IO;
 using GroupDocs.Metadata.Xmp;
+using GroupDocs.Metadata.Formats.Ebook;
+using GroupDocs.Metadata.Formats.Image;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -88,6 +90,61 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         }
                     }
                     //ExEnd:ReadMetadataUsingKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read DublinCore Metadata using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadata()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
                 }
                 catch (Exception ex)
                 {
@@ -741,6 +798,193 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         }
 
+        public static class EPUB
+        {
+            // initialize file path
+            //ExStart:SourceEPUBFilePath
+            private const string filePath = "Documents/Epub/sample.epub";
+            //ExEnd:SourceEPUBFilePath
+
+            public static void DetectEPUBFormat()
+            {
+                //ExStart:DetectEPUBFormat
+                //using FormatFactory
+                EpubFormat epubFormat = (EpubFormat)FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
+                // or
+                // just try to open
+                //EpubFormat epubFormat = new EpubFormat(file);
+                if (epubFormat.Type.ToString().ToLower() == "epub")
+                {
+                    Console.WriteLine("File has valid EPUB Format");
+                }
+                //ExEnd:DetectEPUBFormat
+
+            }
+
+            public static void ReadEPUBFormatMetadata()
+            {
+                //ExStart:ReadEPUBFormatMetadata
+           
+                // open EPUB file
+                EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath));
+
+                // read EPUB metadata
+                EpubMetadata metadata = epub.GetEpubMetadata();
+
+                // get keys
+                string[] keys = metadata.Keys;
+
+                foreach (string key in keys)
+                {
+                    // get next metadata property
+                    MetadataProperty property = metadata[key];
+
+                    // and print it
+                    Console.WriteLine(property);
+                }
+                //ExEnd:ReadEPUBFormatMetadata
+            }
+
+            public static void ReadDublinCoreMetadata()
+            {
+                // open EPUB file
+                EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath));
+
+                // read dublin-core metadata
+                DublinCoreMetadata dublinCore = epub.GetDublinCore();
+
+                // get creator
+                string creator = dublinCore.Creator;
+
+                // get publisher
+                string publisher = dublinCore.Publisher;
+
+                // get contributor
+                string contributor = dublinCore.Contributor;
+            }
+            /// <summary>
+            /// Read Image cover from EPUB format
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadImageCover()
+            {
+                try
+                {
+                    // open EPUB file
+                    using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // read image cover as array of bytes
+                        byte[] imageCoverData = epub.GetImageCoverBytes();
+
+                        // check if cover is exist
+                        if (imageCoverData != null)
+                        {
+                            // create stream
+                            using (MemoryStream stream = new MemoryStream(imageCoverData))
+                            {
+                                // get image type
+                                ImageFormat image = ImageFormat.FromStream(stream);
+
+                                // display MIME type
+                                Console.WriteLine("Image type: {0}", image.MIMEType);
+
+                                // display dimensions
+                                Console.WriteLine("width: {0}, height: {1}", image.Width, image.Height);
+
+                                // and store it to the file system
+                                image.Save(string.Format(Common.MapSourceFilePath(filePath), image.Type));
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+                
+            }
+            /// <summary>
+            /// Read Epub package version
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadEPUBPackageVersion()
+            {
+                try
+                {
+                    // open EPUB file
+                    using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // read EPUB metadata
+                        EpubMetadata metadata = epub.GetEpubMetadata();
+
+                        // and get version
+                        Console.WriteLine("Version = {0}", metadata.Version);
+                    }
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Read Dublin Core Medata using MetadataUtility
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadataUtility()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata!=null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+                            
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+        }
+    
+
         public static class Pdf
         {
             // initialize file path
@@ -1131,6 +1375,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine("[{0}]={1}", key, properties[key]);
                     }
                     //ExEnd:LoadExistingMetadataKeys
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Read DublinCore Metadata using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadDublinCoreMetadata()
+            {
+                try
+                {
+                    // read dublin-core metadata
+                    DublinCoreMetadata dublinCore = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.DublinCore);
+
+                    // get creator
+                    Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                    // get publisher
+                    Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                    // get contributor
+                    Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+
                 }
                 catch (Exception ex)
                 {
@@ -1919,6 +2189,34 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
                 }
             }
         }

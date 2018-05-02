@@ -18,7 +18,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ExStart:SourceMp3FilePath + SourceMp3DirectoryPath
             //string dir = @"C:\\download files";
             private const string directoryPath = "Audio/Mp3";
-            private const string filePath = "Audio/Mp3/test.mp3";
+            private const string filePath = "Audio/Mp3/sample.mp3";
             //
 
 
@@ -466,6 +466,295 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 mp3Format.Save();
                 //ExEnd:RemoveAPEV2Tag
 
+            }
+
+            /// <summary>
+            /// Validate ID3 input metadata before saving
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ValidateID3Metadata()
+            {
+                try
+                {
+                    //init Mp3Format class
+                    using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // set album but with invalid length
+                        mp3Format.Id3v1Properties.Album = "this is very looooooooong album name but must be less 30 characters";
+
+                        try
+                        {
+                            // and commit changes
+                            mp3Format.Save();
+                        }
+                        catch (Shared.Exceptions.GroupDocsException e)
+                        {
+                            //e.Message is "Property 'album': Length could not be grater then 30"
+                            Console.WriteLine(e);
+                        }
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Read additional properties from ID3v2 tag
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadAdditionalID3v2Properties()
+            {
+                try
+                {
+                    // init Mp3Format class
+                    Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath));
+
+                    // get ID3 v2 tag
+                    Id3v2Tag id3v2 = mp3Format.Id3v2;
+
+                    if (id3v2 != null)
+                    {
+                        // read sub-title
+                        Console.WriteLine("Subtitle: {0}", id3v2.Subtitle);
+
+                        // read musical key
+                        Console.WriteLine("Musical key: {0}", id3v2.MusicalKey);
+
+                        // read length in milliseconds
+                        Console.WriteLine("Length in milliseconds: {0}", id3v2.LengthInMilliseconds);
+
+                        // read original album
+                        Console.WriteLine("Original album: {0}", id3v2.OriginalAlbum);
+
+                        // read size in bytes. Please note that is present TSIZ tag and may be overrided by invalid value
+                        Console.WriteLine("Original album: {0}", id3v2.SizeInBytes);
+
+                        // read TSRC value
+                        Console.WriteLine("Original album: {0}", id3v2.ISRC);
+
+                        // read TSSE value
+                        Console.WriteLine("Original album: {0}", id3v2.SoftwareHardware);
+
+                        // read PCNT value
+                        Console.WriteLine("Original album: {0}", id3v2.PlayCounter);
+                    }
+
+                    // and close input stream
+                    mp3Format.Dispose();
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Update ID3v2 tag using properties 
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void UpdateID3v2TagUsingProperties()
+            {
+                try
+                {
+                    // init Mp3Format class
+                    using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get id3v2 tag. It creates new tag if metadata not exist so user does not need to check it by null.
+                        Id3v2Tag id3Tag = mp3Format.Id3v2Properties;
+
+                        // set artist
+                        id3Tag.Artist = "A-ha";
+
+                        // set title
+                        id3Tag.Title = "Take on me";
+
+                        // set band
+                        id3Tag.Band = "A-ha";
+
+                        // set comment
+                        id3Tag.Comment = "GroupDocs.Metadata creator";
+
+                        // set track number
+                        id3Tag.TrackNumber = "5";
+
+                        // set year
+                        id3Tag.Year = "1986";
+
+                        // and commit changes
+                        mp3Format.Save();
+                    }
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Update ID3v1 tag using properties 
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void UpdateID3v1TagUsingProperties()
+            {
+                try
+                {
+                    // init Mp3Format class
+                    using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get id3v1 tag
+                        Id3v1Tag id3Tag = mp3Format.Id3v1Properties;
+
+                        // set artist
+                        id3Tag.Artist = "A-ha";
+
+                        // set comment
+                        id3Tag.Comment = "By GroupDocs.Metadata";
+
+                        // set title
+                        id3Tag.Title = "Take on me";
+
+                        // set year
+                        id3Tag.Year = "1986";
+
+                        // and commit changes
+                        mp3Format.Save();
+                    }
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Update or Remove Image Cover tag from ID3 audio tag 
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void UpdateOrRemoveImageCoverID3()
+            {
+                try
+                {
+                    // init Mp3Format class
+                    using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get id3v2
+                        var metadata = mp3Format.GetId3v2Tag();
+
+                        if (metadata == null)
+                        {
+                            return;
+                        }
+
+                        // remove image cover
+                        metadata.RemoveImageCover();
+
+                        // update metadata
+                        mp3Format.UpdateId3v2(metadata);
+
+                        // and store to other file
+                        mp3Format.Save(Common.MapDestinationFilePath(filePath));
+                    }
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read ImageCover using Metadata Utility 
+            /// Feature is supported in version 18.4 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverMetadataUtility()
+            {
+                try
+                {
+                    //Read DublinCore Metadata
+                    ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
+
+                    if (thumbnailMetadata != null)
+                    {
+                        // get Mime Type 
+                        Console.WriteLine(thumbnailMetadata.MimeType);
+                        // get Length 
+                        Console.WriteLine(thumbnailMetadata.ImageData.Length);
+
+                    }
+
+                }
+                catch (Exception exp)
+                {
+
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Read Image Cover from ID3 audio tag
+            /// Feature is supported in version 18.2 or greater of the API
+            /// </summary>
+            public static void ReadImageCoverID3()
+            {
+                try
+                {
+                    // init Mp3Format class
+                    using (Mp3Format mp3Format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get id3v2
+                        var metadata = mp3Format.GetId3v2Tag();
+
+                        // check if ID3v2 is exist
+                        if (metadata == null)
+                        {
+                            return;
+                        }
+
+                        // read APIC frames
+                        var frames = metadata["APIC"];
+
+                        if (frames != null && frames.Length == 1)
+                        {
+                            // get AttachedPictureFrame
+                            AttachedPictureFrame picture = (AttachedPictureFrame)frames[0];
+
+                            // use 'jpeg' as default extension
+                            string extension = ".jpeg";
+                            string mimeType = picture.MIMEType;
+
+                            // try resolve extension from MIME
+                            if (mimeType != null)
+                            {
+                                if (mimeType.Contains("jpg"))
+                                {
+                                    extension = ".jpeg";
+                                }
+                                else if (mimeType.Contains("bmp"))
+                                {
+                                    extension = ".bmp";
+                                }
+                                else if (mimeType.Contains("png"))
+                                {
+                                    extension = ".png";
+                                }
+                            }
+
+                            // prepare file name
+                            string file = string.Format(Common.MapDestinationFilePath(filePath), extension);
+
+                            // and store it to the file system
+                            System.IO.File.WriteAllBytes(file, picture.PictureData);
+                        }
+                    }
+
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
             }
         }
 
