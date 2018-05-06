@@ -25,17 +25,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetOutlookEmailMessageMetadata
                     // initialize outlookFormat
-                    OutlookMessage msgFormat = new OutlookMessage(Common.MapSourceFilePath(filePath));
+                    using (OutlookMessage msgFormat = new OutlookMessage(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get metadata
+                        OutlookMessageMetadata metadata = msgFormat.GetMsgInfo();
 
-                    // get metadata
-                    OutlookMessageMetadata metadata = msgFormat.GetMsgInfo();
-
-                    // display metadata
-                    Console.WriteLine("Body: " + metadata.Body);
-                    Console.WriteLine("DeliveryTime: " + metadata.DeliveryTime);
-                    Console.WriteLine("Recipients: " + metadata.Recipients[0]);
-                    Console.WriteLine("Subject: " + metadata.Subject);
-                    Console.WriteLine("Attachments: " + metadata.Attachments[0]);
+                        // display metadata
+                        Console.WriteLine("Body: " + metadata.Body);
+                        Console.WriteLine("DeliveryTime: " + metadata.DeliveryTime);
+                        Console.WriteLine("Recipients: " + metadata.Recipients[0]);
+                        Console.WriteLine("Subject: " + metadata.Subject);
+                        Console.WriteLine("Attachments: " + metadata.Attachments[0]); 
+                    }
                     //ExEnd:GetOutlookEmailMessageMetadata
                 }
                 catch (Exception exp)
@@ -53,13 +54,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveOutlookEmailAttachments
                     // initialize outlookFormat 
-                    OutlookMessage outlookFormat = new OutlookMessage(Common.MapSourceFilePath(filePath));
+                    using (OutlookMessage outlookFormat = new OutlookMessage(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove attachments
+                        outlookFormat.RemoveAttachments();
 
-                    // remove attachments
-                    outlookFormat.RemoveAttachments();
-
-                    // commit changes
-                    outlookFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        outlookFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:RemoveOutlookEmailAttachments
                 }
                 catch (Exception exp)
@@ -77,13 +79,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveOutlookEmailMetadata
                     // initialize outlookFormat 
-                    OutlookMessage outlookFormat = new OutlookMessage(Common.MapSourceFilePath(filePath));
+                    using (OutlookMessage outlookFormat = new OutlookMessage(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove metadata
+                        outlookFormat.CleanMetadata();
 
-                    // remove metadata
-                    outlookFormat.CleanMetadata();
-
-                    // commit changes
-                    outlookFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        outlookFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:RemoveOutlookEmailMetadata
                 }
                 catch (Exception exp)
@@ -109,15 +112,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetEmailMessageMetadata
                     // initialize EmlFormat 
-                    EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath));
-                    // get metadata
-                    EmlMetadata metadata = emlFormat.GetEmlInfo();
+                    using (EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get metadata
+                        EmlMetadata metadata = emlFormat.GetEmlInfo();
 
-                    // display metadata
-                    Console.WriteLine("CC: " + metadata.CC);
-                    Console.WriteLine("Mail Address From: " + metadata.MailAddressFrom);
-                    Console.WriteLine("Subject: " + metadata.Subject);
-                    Console.WriteLine("Attachments: " + metadata.Attachments[0]);
+                        // display metadata
+                        Console.WriteLine("CC: " + metadata.CC);
+                        Console.WriteLine("Mail Address From: " + metadata.MailAddressFrom);
+                        Console.WriteLine("Subject: " + metadata.Subject);
+                        Console.WriteLine("Attachments: " + metadata.Attachments[0]); 
+                    }
                     //ExEnd:GetEmailMessageMetadata
                 }
                 catch (Exception exp)
@@ -134,13 +139,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveEmailAttachments
                     // initialize emlFormat 
-                    EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath));
+                    using (EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // remove attachments
-                    emlFormat.RemoveAttachments();
+                        // remove attachments
+                        emlFormat.RemoveAttachments();
 
-                    // commit changes
-                    emlFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        emlFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:RemoveEmailAttachments
                 }
                 catch (Exception exp)
@@ -157,13 +164,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveEmailMetadata
                     // initialize emlFormat 
-                    EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath));
+                    using (EmlFormat emlFormat = new EmlFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove metadata
+                        emlFormat.CleanMetadata();
 
-                    // remove metadata
-                    emlFormat.CleanMetadata();
-
-                    // commit changes
-                    emlFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        emlFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:RemoveEmailMetadata
                 }
                 catch (Exception exp)

@@ -61,44 +61,45 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             foreach (string path in files)
             {
                 // recognize format
-                FormatBase format = FormatFactory.RecognizeFormat(path);
-                
-                // initialize DocFormat
-                DocFormat docFormat = format as DocFormat;
-                if (docFormat != null)
+                using (FormatBase format = FormatFactory.RecognizeFormat(path))
                 {
-                    // get document properties
-                    DocMetadata properties = docFormat.DocumentProperties;
-
-                    // check if author is the same
-                    if (string.Equals(properties.Author, authorName, StringComparison.OrdinalIgnoreCase))
+                    // initialize DocFormat
+                    DocFormat docFormat = format as DocFormat;
+                    if (docFormat != null)
                     {
-                        // remove comments
-                        docFormat.ClearComments();
+                        // get document properties
+                        DocMetadata properties = docFormat.DocumentProperties;
 
-                        List<string> customKeys = new List<string>();
-
-                        // find all custom keys
-                        foreach (KeyValuePair<string, PropertyValue> keyValuePair in properties)
+                        // check if author is the same
+                        if (string.Equals(properties.Author, authorName, StringComparison.OrdinalIgnoreCase))
                         {
-                            if (!properties.IsBuiltIn(keyValuePair.Key))
+                            // remove comments
+                            docFormat.ClearComments();
+
+                            List<string> customKeys = new List<string>();
+
+                            // find all custom keys
+                            foreach (KeyValuePair<string, PropertyValue> keyValuePair in properties)
                             {
-                                customKeys.Add(keyValuePair.Key);
+                                if (!properties.IsBuiltIn(keyValuePair.Key))
+                                {
+                                    customKeys.Add(keyValuePair.Key);
+                                }
                             }
-                        }
 
-                        // and remove all of them
-                        foreach (string key in customKeys)
-                        {
-                            properties.Remove(key);
+                            // and remove all of them
+                            foreach (string key in customKeys)
+                            {
+                                properties.Remove(key);
+                            }
+                            //====== yet to change things =========================
+                            // and commit changes
+                            string fileName = Path.GetFileName(path);
+                            string outputFilePath = Common.MapDestinationFilePath(this.DocumentsPath + "/" + fileName);
+                            docFormat.Save(outputFilePath);
+                            //=====================================================
                         }
-                        //====== yet to change things =========================
-                        // and commit changes
-                        string fileName = Path.GetFileName(path);
-                        string outputFilePath = Common.MapDestinationFilePath(this.DocumentsPath + "/" + fileName);
-                        docFormat.Save(outputFilePath);
-                        //=====================================================
-                    }
+                    } 
                 }
             }
 
