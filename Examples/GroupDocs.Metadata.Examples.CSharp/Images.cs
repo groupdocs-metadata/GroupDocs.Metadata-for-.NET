@@ -34,20 +34,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetXmpPropertiesJP2Image
                     // initialize JP2Format
-                    Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath));
-
-                    // get XMP data
-                    XmpProperties xmpProperties = jp2Format.GetXmpProperties();
-
-                    // show XMP data
-                    foreach (string key in xmpProperties.Keys)
+                    using (Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath)))
                     {
-                        try
+                        // get XMP data
+                        XmpProperties xmpProperties = jp2Format.GetXmpProperties();
+
+                        // show XMP data
+                        foreach (string key in xmpProperties.Keys)
                         {
-                            XmpNodeView xmpNodeView = xmpProperties[key];
-                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
-                        }
-                        catch { }
+                            try
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
+                            catch { }
+                        } 
                     }
                     //ExEnd:GetXmpPropertiesJP2Image
                 }
@@ -65,15 +66,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveXmpPropertiesJp2Image
                     // initialize JP2Format
-                    Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath));
+                    using (Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // remove XMP package
-                    jp2Format.RemoveXmpData();
+                        // remove XMP package
+                        jp2Format.RemoveXmpData();
 
-                    // commit changes
-                    jp2Format.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:RemoveXmpPropertiesJp2Image
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        jp2Format.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:RemoveXmpPropertiesJp2Image
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -89,50 +92,52 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXmpPropertiesJpegImage
                     // initialize JP2Format
-                    Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath));
-
-                    // get xmp wrapper
-                    XmpPacketWrapper xmpPacket = jp2Format.GetXmpData();
-
-                    // create xmp wrapper if not exists
-                    if (xmpPacket == null)
+                    using (Jp2Format jp2Format = new Jp2Format(Common.MapSourceFilePath(filePath)))
                     {
-                        xmpPacket = new XmpPacketWrapper();
+
+                        // get xmp wrapper
+                        XmpPacketWrapper xmpPacket = jp2Format.GetXmpData();
+
+                        // create xmp wrapper if not exists
+                        if (xmpPacket == null)
+                        {
+                            xmpPacket = new XmpPacketWrapper();
+                        }
+
+                        // check if DublinCore schema exists
+                        if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+                        {
+                            // if not - add DublinCore schema
+                            xmpPacket.AddPackage(new DublinCorePackage());
+                        }
+
+                        // get DublinCore package
+                        DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+                        string authorName = "New author";
+                        string description = "New description";
+                        string subject = "New subject";
+                        string publisher = "New publisher";
+                        string title = "New title";
+
+                        // set author
+                        dublinCorePackage.SetAuthor(authorName);
+                        // set description
+                        dublinCorePackage.SetDescription(description);
+                        // set subject
+                        dublinCorePackage.SetSubject(subject);
+                        // set publisher
+                        dublinCorePackage.SetPublisher(publisher);
+                        // set title
+                        dublinCorePackage.SetTitle(title);
+                        // update XMP package
+                        jp2Format.SetXmpData(xmpPacket);
+
+                        // commit changes
+                        jp2Format.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXmpPropertiesJP2Image
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // check if DublinCore schema exists
-                    if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
-                    {
-                        // if not - add DublinCore schema
-                        xmpPacket.AddPackage(new DublinCorePackage());
-                    }
-
-                    // get DublinCore package
-                    DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
-
-                    string authorName = "New author";
-                    string description = "New description";
-                    string subject = "New subject";
-                    string publisher = "New publisher";
-                    string title = "New title";
-
-                    // set author
-                    dublinCorePackage.SetAuthor(authorName);
-                    // set description
-                    dublinCorePackage.SetDescription(description);
-                    // set subject
-                    dublinCorePackage.SetSubject(subject);
-                    // set publisher
-                    dublinCorePackage.SetPublisher(publisher);
-                    // set title
-                    dublinCorePackage.SetTitle(title);
-                    // update XMP package
-                    jp2Format.SetXmpData(xmpPacket);
-
-                    // commit changes
-                    jp2Format.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXmpPropertiesJP2Image
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -148,20 +153,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:ReadMetadataJP2
                     // initialize Jpeg2000 format
-                    Jp2Format jp2Format = new Jp2Format((Common.MapSourceFilePath(filePath)));
-
-                    // get height
-                    int width = jp2Format.Width;
-
-                    // get height
-                    int height = jp2Format.Height;
-
-                    // get comments
-                    string[] comments = jp2Format.Comments;
-
-                    foreach (var comm in comments)
+                    using (Jp2Format jp2Format = new Jp2Format((Common.MapSourceFilePath(filePath))))
                     {
-                        Console.WriteLine("Comments: {0}", comm);
+
+                        // get height
+                        int width = jp2Format.Width;
+
+                        // get height
+                        int height = jp2Format.Height;
+
+                        // get comments
+                        string[] comments = jp2Format.Comments;
+
+                        foreach (var comm in comments)
+                        {
+                            Console.WriteLine("Comments: {0}", comm);
+                        } 
                     }
                     //ExEnd:ReadMetadataJP2
                 }
@@ -195,20 +202,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get XMP data
-                    XmpProperties xmpProperties = jpegFormat.GetXmpProperties();
-
-                    // show XMP data
-                    foreach (string key in xmpProperties.Keys)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        try
+
+                        // get XMP data
+                        XmpProperties xmpProperties = jpegFormat.GetXmpProperties();
+
+                        // show XMP data
+                        foreach (string key in xmpProperties.Keys)
                         {
-                            XmpNodeView xmpNodeView = xmpProperties[key];
-                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
-                        }
-                        catch { }
+                            try
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
+                            catch { }
+                        } 
                     }
                     //ExEnd:GetXmpPropertiesJpegImage
                 }
@@ -226,50 +235,52 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp wrapper
-                    XmpPacketWrapper xmpPacket = jpegFormat.GetXmpData();
-
-                    // create xmp wrapper if not exists
-                    if (xmpPacket == null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        xmpPacket = new XmpPacketWrapper();
+
+                        // get xmp wrapper
+                        XmpPacketWrapper xmpPacket = jpegFormat.GetXmpData();
+
+                        // create xmp wrapper if not exists
+                        if (xmpPacket == null)
+                        {
+                            xmpPacket = new XmpPacketWrapper();
+                        }
+
+                        // check if DublinCore schema exists
+                        if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+                        {
+                            // if not - add DublinCore schema
+                            xmpPacket.AddPackage(new DublinCorePackage());
+                        }
+
+                        // get DublinCore package
+                        DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+                        string authorName = "New author";
+                        string description = "New description";
+                        string subject = "New subject";
+                        string publisher = "New publisher";
+                        string title = "New title";
+
+                        // set author
+                        dublinCorePackage.SetAuthor(authorName);
+                        // set description
+                        dublinCorePackage.SetDescription(description);
+                        // set subject
+                        dublinCorePackage.SetSubject(subject);
+                        // set publisher
+                        dublinCorePackage.SetPublisher(publisher);
+                        // set title
+                        dublinCorePackage.SetTitle(title);
+                        // update XMP package
+                        jpegFormat.SetXmpData(xmpPacket);
+
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXmpPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // check if DublinCore schema exists
-                    if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
-                    {
-                        // if not - add DublinCore schema
-                        xmpPacket.AddPackage(new DublinCorePackage());
-                    }
-
-                    // get DublinCore package
-                    DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
-
-                    string authorName = "New author";
-                    string description = "New description";
-                    string subject = "New subject";
-                    string publisher = "New publisher";
-                    string title = "New title";
-
-                    // set author
-                    dublinCorePackage.SetAuthor(authorName);
-                    // set description
-                    dublinCorePackage.SetDescription(description);
-                    // set subject
-                    dublinCorePackage.SetSubject(subject);
-                    // set publisher
-                    dublinCorePackage.SetPublisher(publisher);
-                    // set title
-                    dublinCorePackage.SetTitle(title);
-                    // update XMP package
-                    jpegFormat.SetXmpData(xmpPacket);
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXmpPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -285,26 +296,28 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXmpValuesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        
+                        const string dcFormat = "test format";
+                        string[] dcContributors = { "test contributor" };
+                        const string dcCoverage = "test coverage";
+                        const string phCity = "NY";
+                        const string phCountry = "USA";
+                        const string xmpCreator = "GroupDocs.Metadata";
 
-                    const string dcFormat = "test format";
-                    string[] dcContributors = { "test contributor" };
-                    const string dcCoverage = "test coverage";
-                    const string phCity = "NY";
-                    const string phCountry = "USA";
-                    const string xmpCreator = "GroupDocs.Metadata";
+                        jpegFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
+                        jpegFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
+                        jpegFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
+                        jpegFormat.XmpValues.Schemes.Photoshop.City = phCity;
+                        jpegFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
+                        jpegFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
 
-                    jpegFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
-                    jpegFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
-                    jpegFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
-                    jpegFormat.XmpValues.Schemes.Photoshop.City = phCity;
-                    jpegFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
-                    jpegFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXmpValuesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXmpValuesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -319,28 +332,30 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get EXIF data
-                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+                        // get EXIF data
+                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
 
-                    // set artist
-                    exif.Artist = "test artist";
+                        // set artist
+                        exif.Artist = "test artist";
 
-                    // set the name of the camera's owner
-                    exif.CameraOwnerName = "camera owner's name";
+                        // set the name of the camera's owner
+                        exif.CameraOwnerName = "camera owner's name";
 
-                    // set description
-                    exif.ImageDescription = "test description";
+                        // set description
+                        exif.ImageDescription = "test description";
 
-                    // set software
-                    exif.Software = "software...";
+                        // set software
+                        exif.Software = "software...";
 
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
 
-                    // and free resources
-                    jpegFormat.Dispose();
+                        // and free resources
+                        jpegFormat.Dispose(); 
+                    }
 
                 }
                 catch (Exception exp)
@@ -360,25 +375,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdatePagedTextXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to PagedText schema
-                    var package = jpegFormat.XmpValues.Schemes.PagedText;
+                        // get access to PagedText schema
+                        var package = jpegFormat.XmpValues.Schemes.PagedText;
 
 
-                    // update MaxPageSize
-                    package.MaxPageSize = new Dimensions(600, 800);
+                        // update MaxPageSize
+                        package.MaxPageSize = new Dimensions(600, 800);
 
-                    // update number of pages
-                    package.NumberOfPages = 10;
+                        // update number of pages
+                        package.NumberOfPages = 10;
 
-                    // update plate names
-                    package.PlateNames = new string[] { "1", "2", "3" };
+                        // update plate names
+                        package.PlateNames = new string[] { "1", "2", "3" };
 
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdatePagedTextXmpPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdatePagedTextXmpPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -394,23 +411,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateCameraRawXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat JpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat JpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to CameraRaw schema
-                    var package = JpegFormat.XmpValues.Schemes.CameraRaw;
+                        // get access to CameraRaw schema
+                        var package = JpegFormat.XmpValues.Schemes.CameraRaw;
 
-                    // update properties
-                    package.AutoBrightness = true;
-                    package.AutoContrast = true;
-                    package.CropUnits = CropUnits.Pixels;
+                        // update properties
+                        package.AutoBrightness = true;
+                        package.AutoContrast = true;
+                        package.CropUnits = CropUnits.Pixels;
 
-                    // update white balance
-                    package.SetWhiteBalance(WhiteBalance.Auto);
+                        // update white balance
+                        package.SetWhiteBalance(WhiteBalance.Auto);
 
-                    // commit changes
-                    JpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateCameraRawXmpPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        JpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateCameraRawXmpPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -426,51 +445,53 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateBasicJobTicketXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp data
-                    var xmp = jpegFormat.GetXmpData();
-
-                    BasicJobTicketPackage package = null;
-
-                    // looking for the BasicJob schema if xmp data is presented
-                    if (xmp != null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+
+                        // get xmp data
+                        var xmp = jpegFormat.GetXmpData();
+
+                        BasicJobTicketPackage package = null;
+
+                        // looking for the BasicJob schema if xmp data is presented
+                        if (xmp != null)
+                        {
+                            package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+                        }
+                        else
+                        {
+                            xmp = new XmpPacketWrapper();
+                        }
+
+                        if (package == null)
+                        {
+                            // create package if not exist
+                            package = new BasicJobTicketPackage();
+
+                            // and add it to xmp data
+                            xmp.AddPackage(package);
+                        }
+
+                        // create array of jobs
+                        Job[] jobs = new Job[1];
+                        jobs[0] = new Job()
+                        {
+                            Id = "1",
+                            Name = "test job"
+                        };
+
+                        // update schema
+                        package.SetJobs(jobs);
+
+                        // update xmp data
+                        jpegFormat.SetXmpData(xmp);
+
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateBasicJobTicketXmpPropertiesJpegImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-                    else
-                    {
-                        xmp = new XmpPacketWrapper();
-                    }
-
-                    if (package == null)
-                    {
-                        // create package if not exist
-                        package = new BasicJobTicketPackage();
-
-                        // and add it to xmp data
-                        xmp.AddPackage(package);
-                    }
-
-                    // create array of jobs
-                    Job[] jobs = new Job[1];
-                    jobs[0] = new Job()
-                    {
-                        Id = "1",
-                        Name = "test job"
-                    };
-
-                    // update schema
-                    package.SetJobs(jobs);
-
-                    // update xmp data
-                    jpegFormat.SetXmpData(xmp);
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateBasicJobTicketXmpPropertiesJpegImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -488,37 +509,39 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     string path = Common.MapSourceFilePath(filePath);
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get image base64 string
-                    string base64String;
-                    using (Image image = Image.FromFile(path))
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        using (MemoryStream m = new MemoryStream())
+
+                        // get image base64 string
+                        string base64String;
+                        using (Image image = Image.FromFile(path))
                         {
-                            image.Save(m, image.RawFormat);
-                            byte[] imageBytes = m.ToArray();
+                            using (MemoryStream m = new MemoryStream())
+                            {
+                                image.Save(m, image.RawFormat);
+                                byte[] imageBytes = m.ToArray();
 
-                            // Convert byte[] to Base64 String
-                            base64String = Convert.ToBase64String(imageBytes);
+                                // Convert byte[] to Base64 String
+                                base64String = Convert.ToBase64String(imageBytes);
+                            }
                         }
+
+                        // create image thumbnail
+                        Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
+
+                        // initialize array and add thumbnail
+                        Thumbnail[] thumbnails = new Thumbnail[1];
+                        thumbnails[0] = thumbnail;
+
+                        // update thumbnails property in XMP Basic schema
+                        jpegFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
+
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateThumbnailXmpPropertiesJpegImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // create image thumbnail
-                    Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
-
-                    // initialize array and add thumbnail
-                    Thumbnail[] thumbnails = new Thumbnail[1];
-                    thumbnails[0] = thumbnail;
-
-                    // update thumbnails property in XMP Basic schema
-                    jpegFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateThumbnailXmpPropertiesJpegImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -534,14 +557,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveXmpPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // remove XMP package
-                    jpegFormat.RemoveXmpData();
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:RemoveXmpPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // remove XMP package
+                        jpegFormat.RemoveXmpData();
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:RemoveXmpPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -560,29 +585,31 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetExifPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get EXIF data
-                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
-
-                    if (exif != null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get artist 
-                        Console.WriteLine("Artist: {0}", exif.Artist);
-                        // get description 
-                        Console.WriteLine("Description: {0}", exif.ImageDescription);
-                        // get user's comment 
-                        Console.WriteLine("User Comment: {0}", exif.UserComment);
-                        // get user's Model 
-                        Console.WriteLine("Model: {0}", exif.Model);
-                        // get user's Make 
-                        Console.WriteLine("Make: {0}", exif.Make);
-                        // get user's CameraOwnerName 
-                        Console.WriteLine("CameraOwnerName: {0}", exif.CameraOwnerName);
-                        // get longitude
-                        Console.WriteLine("Longitude: {0}", exif.GPSData.Longitude[0].ToString());
-                        // get latitude
-                        Console.WriteLine("Latitude: {0}", exif.GPSData.Latitude[0].ToString());
+
+                        // get EXIF data
+                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+
+                        if (exif != null)
+                        {
+                            // get artist 
+                            Console.WriteLine("Artist: {0}", exif.Artist);
+                            // get description 
+                            Console.WriteLine("Description: {0}", exif.ImageDescription);
+                            // get user's comment 
+                            Console.WriteLine("User Comment: {0}", exif.UserComment);
+                            // get user's Model 
+                            Console.WriteLine("Model: {0}", exif.Model);
+                            // get user's Make 
+                            Console.WriteLine("Make: {0}", exif.Make);
+                            // get user's CameraOwnerName 
+                            Console.WriteLine("CameraOwnerName: {0}", exif.CameraOwnerName);
+                            // get longitude
+                            Console.WriteLine("Longitude: {0}", exif.GPSData.Longitude[0].ToString());
+                            // get latitude
+                            Console.WriteLine("Latitude: {0}", exif.GPSData.Latitude[0].ToString());
+                        } 
                     }
                     //ExEnd:GetExifPropertiesJpegImage
                 }
@@ -600,34 +627,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateExifPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get EXIF data
-                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
-                    if (exif == null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // initialize EXIF data if null
-                        exif = new JpegExifInfo();
+
+                        // get EXIF data
+                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+                        if (exif == null)
+                        {
+                            // initialize EXIF data if null
+                            exif = new JpegExifInfo();
+                        }
+
+                        // set artist
+                        exif.Artist = "Usman";
+                        // set make
+                        exif.Make = "ABC";
+                        // set model
+                        exif.Model = "S120";
+                        // set the name of the camera's owner
+                        exif.CameraOwnerName = "Owner";
+                        // set description
+                        exif.ImageDescription = "sample description";
+
+                        // update EXIF data
+                        jpegFormat.SetExifInfo(exif);
+
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateExifPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // set artist
-                    exif.Artist = "Usman";
-                    // set make
-                    exif.Make = "ABC";
-                    // set model
-                    exif.Model = "S120";
-                    // set the name of the camera's owner
-                    exif.CameraOwnerName = "Owner";
-                    // set description
-                    exif.ImageDescription = "sample description";
-
-                    // update EXIF data
-                    jpegFormat.SetExifInfo(exif);
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateExifPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -643,25 +672,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateExifValuesUsingPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get EXIF data
-                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+                        // get EXIF data
+                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
 
-                    // set artist
-                    exif.Artist = "new test artist";
+                        // set artist
+                        exif.Artist = "new test artist";
 
-                    // set the name of the camera's owner
-                    exif.CameraOwnerName = "new camera owner's name";
+                        // set the name of the camera's owner
+                        exif.CameraOwnerName = "new camera owner's name";
 
-                    // set description
-                    exif.ImageDescription = "update test description";
+                        // set description
+                        exif.ImageDescription = "update test description";
 
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateExifValuesUsingPropertiesJpegImage
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateExifValuesUsingPropertiesJpegImage
 
-                    Console.WriteLine("File saved in destination folder.");
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -677,28 +708,30 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveGPSDataJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // check if JPEG contains XMP metadata
-                    if (jpegFormat.HasXmp)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get location
-                        GpsLocation location = jpegFormat.GetGpsLocation();
-                        if (location != null)
+
+                        // check if JPEG contains XMP metadata
+                        if (jpegFormat.HasXmp)
                         {
-                            // remove GPS location
-                            jpegFormat.RemoveGpsLocation();
+                            // get location
+                            GpsLocation location = jpegFormat.GetGpsLocation();
+                            if (location != null)
+                            {
+                                // remove GPS location
+                                jpegFormat.RemoveGpsLocation();
+                            }
+
+                            // update Dublin Core format in XMP
+                            jpegFormat.XmpValues.Schemes.DublinCore.Format = "image/jpeg";
+
+                            // and commit changes
+                            jpegFormat.Save(Common.MapDestinationFilePath(filePath));
                         }
 
-                        // update Dublin Core format in XMP
-                        jpegFormat.XmpValues.Schemes.DublinCore.Format = "image/jpeg";
-
-                        // and commit changes
-                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:RemoveGPSDataJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    //ExEnd:RemoveGPSDataJpegImage
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -714,15 +747,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveExifPropertiesJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove Exif info
+                        jpegFormat.RemoveExifInfo();
 
-                    // remove Exif info
-                    jpegFormat.RemoveExifInfo();
-
-                    // commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:RemoveExifPropertiesJpegImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:RemoveExifPropertiesJpegImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -736,18 +770,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// 
             public static void ReadExifTag()
             {
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                // get EXIF data
-                ExifInfo exifInfo = jpegFormat.GetExifInfo();
-                if (exifInfo != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    // get specific tag using indexer
-                    TiffAsciiTag artist = (TiffAsciiTag)exifInfo[TiffTagIdEnum.Artist];
-                    if (artist != null)
+
+                    // get EXIF data
+                    ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                    if (exifInfo != null)
                     {
-                        Console.WriteLine("Artist: {0}", artist.Value);
-                    }
+                        // get specific tag using indexer
+                        TiffAsciiTag artist = (TiffAsciiTag)exifInfo[TiffTagIdEnum.Artist];
+                        if (artist != null)
+                        {
+                            Console.WriteLine("Artist: {0}", artist.Value);
+                        }
+                    } 
                 }
 
             }
@@ -758,30 +794,31 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// 
             public static void ReadAllExifTags()
             {
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                // get EXIF data
-                ExifInfo exifInfo = jpegFormat.GetExifInfo();
-                if (exifInfo != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    TiffTag[] allTags = exifInfo.Tags;
-
-                    foreach (TiffTag tag in allTags)
+                    // get EXIF data
+                    ExifInfo exifInfo = jpegFormat.GetExifInfo();
+                    if (exifInfo != null)
                     {
-                        switch (tag.TagType)
-                        {
-                            case TiffTagType.Ascii:
-                                TiffAsciiTag asciiTag = tag as TiffAsciiTag;
-                                Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value);
-                                break;
+                        TiffTag[] allTags = exifInfo.Tags;
 
-                            case TiffTagType.Rational:
-                                TiffRationalTag rationalTag = tag as TiffRationalTag;
-                                Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value);
-                                break;
-                        }//end of switch
-                    }//end of foreach
-                }//end of if (exifInfo != null)
+                        foreach (TiffTag tag in allTags)
+                        {
+                            switch (tag.TagType)
+                            {
+                                case TiffTagType.Ascii:
+                                    TiffAsciiTag asciiTag = tag as TiffAsciiTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value);
+                                    break;
+
+                                case TiffTagType.Rational:
+                                    TiffRationalTag rationalTag = tag as TiffRationalTag;
+                                    Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value);
+                                    break;
+                            }//end of switch
+                        }//end of foreach
+                    }//end of if (exifInfo != null) 
+                }
 
             }
 
@@ -796,15 +833,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:FastRemoveExifData
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        
+                        // reset all exif properties
+                        jpegFormat.RemoveExifInfo();
 
-                    // reset all exif properties
-                    jpegFormat.RemoveExifInfo();
-
-                    // and commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:FastRemoveExifData
-                    Console.WriteLine("File saved in destination folder.");
+                        // and commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:FastRemoveExifData
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -823,33 +862,35 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:FasterUpdateExifData
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get EXIF data
-                    JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
-
-                    if (exif == null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // initialize EXIF data if null
-                        exif = new JpegExifInfo();
+
+                        // get EXIF data
+                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+
+                        if (exif == null)
+                        {
+                            // initialize EXIF data if null
+                            exif = new JpegExifInfo();
+                        }
+
+                        // set artist
+                        exif.Artist = "test artist";
+
+                        // set the name of the camera's owner
+                        exif.CameraOwnerName = "camera owner's name";
+
+                        // set description
+                        exif.ImageDescription = "test description";
+
+                        // update EXIF data
+                        jpegFormat.SetExifInfo(exif);
+
+                        // and commit changes
+                        jpegFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:FasterUpdateExifData
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // set artist
-                    exif.Artist = "test artist";
-
-                    // set the name of the camera's owner
-                    exif.CameraOwnerName = "camera owner's name";
-
-                    // set description
-                    exif.ImageDescription = "test description";
-
-                    // update EXIF data
-                    jpegFormat.SetExifInfo(exif);
-
-                    // and commit changes
-                    jpegFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:FasterUpdateExifData
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -867,25 +908,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:AddUpdateTiffTagsInExif
                     // init JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get existing EXIF or create new one
-                    ExifInfo exif = jpegFormat.GetExifInfo() ?? new ExifInfo();
+                        // get existing EXIF or create new one
+                        ExifInfo exif = jpegFormat.GetExifInfo() ?? new ExifInfo();
 
-                    // define list of tags
-                    List<TiffTag> tags = new List<TiffTag>();
+                        // define list of tags
+                        List<TiffTag> tags = new List<TiffTag>();
 
-                    // add specific tag
-                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+                        // add specific tag
+                        tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
 
-                    // and update tags
-                    exif.Tags = tags.ToArray();
+                        // and update tags
+                        exif.Tags = tags.ToArray();
 
-                    // update exif
-                    jpegFormat.UpdateExifInfo(exif);
+                        // update exif
+                        jpegFormat.UpdateExifInfo(exif);
 
-                    // and commit changes
-                    jpegFormat.Save();
+                        // and commit changes
+                        jpegFormat.Save(); 
+                    }
                     //ExEnd:AddUpdateTiffTagsInExif
                 }
                 catch (Exception ex)
@@ -907,20 +950,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:ReadThumbnailFromEXIFSegment_17.12
                     // initialize jpeg
-                    JpegFormat jpeg = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get exif data
-                    var exifData = jpeg.GetExifInfo();
-                    if (exifData != null)
+                    using (JpegFormat jpeg = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get thumbnail
-                        byte[] thumbnail = exifData.Thumbnail;
-
-                        // if exist then store to the file
-                        if (thumbnail.Length > 0)
+                        // get exif data
+                        var exifData = jpeg.GetExifInfo();
+                        if (exifData != null)
                         {
-                            File.WriteAllBytes("C:\\1.jpeg", thumbnail);
-                        }
+                            // get thumbnail
+                            byte[] thumbnail = exifData.Thumbnail;
+
+                            // if exist then store to the file
+                            if (thumbnail.Length > 0)
+                            {
+                                File.WriteAllBytes("C:\\1.jpeg", thumbnail);
+                            }
+                        } 
                     }
                     //ExEnd:ReadThumbnailFromEXIFSegment_17.12
                 }
@@ -943,41 +987,43 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetIPTCMetadata
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // if file contains iptc metadata
-                    if (jpegFormat.HasIptc)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get iptc collection
-                        IptcCollection iptcCollection = jpegFormat.GetIptc();
-
-                        // go through array and write property name and formatted value
-                        foreach (IptcProperty iptcProperty in iptcCollection)
+                        
+                        // if file contains iptc metadata
+                        if (jpegFormat.HasIptc)
                         {
-                            Console.WriteLine(string.Format("{0}: {1}", iptcProperty.Name, iptcProperty.GetFormattedValue()));
-                        }
+                            // get iptc collection
+                            IptcCollection iptcCollection = jpegFormat.GetIptc();
 
-                        // initialize IptcDataSetCollection to read well-known properties
-                        IptcDataSetCollection dsCollection = new IptcDataSetCollection(iptcCollection);
+                            // go through array and write property name and formatted value
+                            foreach (IptcProperty iptcProperty in iptcCollection)
+                            {
+                                Console.WriteLine(string.Format("{0}: {1}", iptcProperty.Name, iptcProperty.GetFormattedValue()));
+                            }
 
-                        // try to read Application Record dataset
-                        if (dsCollection.ApplicationRecord != null)
-                        {
-                            // get category
-                            string category = dsCollection.ApplicationRecord.Category;
+                            // initialize IptcDataSetCollection to read well-known properties
+                            IptcDataSetCollection dsCollection = new IptcDataSetCollection(iptcCollection);
 
-                            // get headline
-                            string headline = dsCollection.ApplicationRecord.Headline;
-                        }
+                            // try to read Application Record dataset
+                            if (dsCollection.ApplicationRecord != null)
+                            {
+                                // get category
+                                string category = dsCollection.ApplicationRecord.Category;
 
-                        if (dsCollection.EnvelopeRecord != null)
-                        {
-                            // get model version
-                            int? modelVersion = dsCollection.EnvelopeRecord.ModelVersion;
+                                // get headline
+                                string headline = dsCollection.ApplicationRecord.Headline;
+                            }
 
-                            // get dataSent property
-                            DateTime? dataSent = dsCollection.EnvelopeRecord.DataSent;
-                        }
+                            if (dsCollection.EnvelopeRecord != null)
+                            {
+                                // get model version
+                                int? modelVersion = dsCollection.EnvelopeRecord.ModelVersion;
+
+                                // get dataSent property
+                                DateTime? dataSent = dsCollection.EnvelopeRecord.DataSent;
+                            }
+                        } 
                     }
                     //ExEnd:GetIPTCMetadata
                 }
@@ -1073,20 +1119,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateIPTCMetadataOfJPEG
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-                    // initialize IptcCollection
-                    IptcCollection iptc = jpegFormat.GetIptc();
-                    if (iptc == null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        iptc = new IptcCollection();
-                    }
+                        // initialize IptcCollection
+                        IptcCollection iptc = jpegFormat.GetIptc();
+                        if (iptc == null)
+                        {
+                            iptc = new IptcCollection();
+                        }
 
-                    // add integer property
-                    iptc.Add(new IptcProperty(2, "urgency", 10, 5));
-                    // update iptc metadata
-                    jpegFormat.UpdateIptc(iptc);
-                    // and commit changes
-                    jpegFormat.Save();
+                        // add integer property
+                        iptc.Add(new IptcProperty(2, "urgency", 10, 5));
+                        // update iptc metadata
+                        jpegFormat.UpdateIptc(iptc);
+                        // and commit changes
+                        jpegFormat.Save(); 
+                    }
                     //ExEnd:UpdateIPTCMetadataOfJPEG
                 }
                 catch (Exception exp)
@@ -1104,13 +1152,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:RemoveIPTCMetadataOfJPEG
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // remove iptc
-                    jpegFormat.RemoveIptc();
+                        // remove iptc
+                        jpegFormat.RemoveIptc();
 
-                    // and commit changes
-                    jpegFormat.Save();
+                        // and commit changes
+                        jpegFormat.Save(); 
+                    }
                     //ExEnd:RemoveIPTCMetadataOfJPEG
                 }
                 catch (Exception exp)
@@ -1128,25 +1178,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:UpdateIPTCMetadataOfApplicationRecord
 
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                       
+                        // initialize dataset
+                        IptcApplicationRecord applicationRecord = new IptcApplicationRecord();
 
-                    // initialize dataset
-                    IptcApplicationRecord applicationRecord = new IptcApplicationRecord();
+                        // update category
+                        applicationRecord.Category = "category";
 
-                    // update category
-                    applicationRecord.Category = "category";
+                        // update copyright notice
+                        applicationRecord.CopyrightNotice = "Aspose";
 
-                    // update copyright notice
-                    applicationRecord.CopyrightNotice = "Aspose";
+                        // update release date
+                        applicationRecord.ReleaseDate = DateTime.Now;
 
-                    // update release date
-                    applicationRecord.ReleaseDate = DateTime.Now;
+                        // update iptc metadata
+                        jpegFormat.UpdateIptc(applicationRecord);
 
-                    // update iptc metadata
-                    jpegFormat.UpdateIptc(applicationRecord);
-
-                    // and commit changes
-                    jpegFormat.Save();
+                        // and commit changes
+                        jpegFormat.Save(); 
+                    }
                     //EXEnd:UpdateIPTCMetadataOfApplicationRecord
                 }
                 catch (Exception exp)
@@ -1163,16 +1215,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:DetectBarcodeinJpeg
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(barcodeFilePath));
-
-                // get barcodes:  UPCA, UPCE, EAN13
-                string[] barCodes = jpegFormat.GetBarCodeTypes();
-
-                Console.WriteLine("Barcode Detected:\n");
-
-                for (int i = 0; i < barCodes.Length; i++)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(barcodeFilePath)))
                 {
-                    Console.WriteLine("Code Type: {0}", barCodes[i].ToString());
+                    // get barcodes:  UPCA, UPCE, EAN13
+                    string[] barCodes = jpegFormat.GetBarCodeTypes();
+
+                    Console.WriteLine("Barcode Detected:\n");
+
+                    for (int i = 0; i < barCodes.Length; i++)
+                    {
+                        Console.WriteLine("Code Type: {0}", barCodes[i].ToString());
+                    } 
                 }
                 //ExEnd:DetectBarcodeinJpeg
             }
@@ -1186,13 +1239,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemovePhotoshopMetadataJpegImage
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove photoshop metadata
+                        jpegFormat.RemovePhotoshopData();
 
-                    // remove photoshop metadata
-                    jpegFormat.RemovePhotoshopData();
-
-                    // and commit changes
-                    jpegFormat.Save();
+                        // and commit changes
+                        jpegFormat.Save(); 
+                    }
                     //ExEnd:RemovePhotoshopMetadataJpegImage 
                 }
                 catch (Exception exp)
@@ -1210,23 +1264,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:ReadImageResourceBlocksInJpeg
                     // initialize JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // check if JPEG contain photoshop metadata
-                    if (jpegFormat.HasImageResourceBlocks)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
-
-                        // get native photoshop metadata
-                        ImageResourceMetadata imageResource = jpegFormat.GetImageResourceBlocks();
-
-                        // display all blocks
-                        foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                        
+                        // check if JPEG contain photoshop metadata
+                        if (jpegFormat.HasImageResourceBlocks)
                         {
-                            Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
 
-                            // create your own logic to parse image resource block
-                            byte[] data = imageResourceBlock.Data;
-                        }
+                            // get native photoshop metadata
+                            ImageResourceMetadata imageResource = jpegFormat.GetImageResourceBlocks();
+
+                            // display all blocks
+                            foreach (ImageResourceBlock imageResourceBlock in imageResource.Blocks)
+                            {
+                                Console.WriteLine("Id: {0}, size: {1}", imageResourceBlock.DefinedId, imageResourceBlock.DataSize);
+
+                                // create your own logic to parse image resource block
+                                byte[] data = imageResourceBlock.Data;
+                            }
+                        } 
                     }
                     //ExEnd:ReadImageResourceBlocksInJpeg
                 }
@@ -1245,25 +1301,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadSonyMakerNotes
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
-
-                // get makernotes
-                var makernotes = jpegFormat.GetMakernotes();
-
-                if (makernotes != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath)))
                 {
-                    // try cast to SonyMakerNotes
-                    SonyMakerNotes sonyMakerNotes = makernotes as SonyMakerNotes;
-                    if (sonyMakerNotes != null)
+                    
+                    // get makernotes
+                    var makernotes = jpegFormat.GetMakernotes();
+
+                    if (makernotes != null)
                     {
-                        // get color mode
-                        int? colorMode = sonyMakerNotes.ColorMode;
+                        // try cast to SonyMakerNotes
+                        SonyMakerNotes sonyMakerNotes = makernotes as SonyMakerNotes;
+                        if (sonyMakerNotes != null)
+                        {
+                            // get color mode
+                            int? colorMode = sonyMakerNotes.ColorMode;
 
-                        // get JPEG quality
-                        int? jpegQuality = sonyMakerNotes.JPEGQuality;
-                        Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality);
-                    }
+                            // get JPEG quality
+                            int? jpegQuality = sonyMakerNotes.JPEGQuality;
+                            Console.WriteLine("color mode: {0},Jpeg quality: {1}", sonyMakerNotes.ColorMode, sonyMakerNotes.JPEGQuality);
+                        }
 
+                    } 
                 }
                 //ExEnd:ReadSonyMakerNotes
             }
@@ -1277,25 +1335,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadNikonMakerNotes
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(nikonMakerFilePath));
-
-                // get makernotes
-                var makernotes = jpegFormat.GetMakernotes();
-
-                if (makernotes != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(nikonMakerFilePath)))
                 {
-                    // try cast to NikonMakerNotes
-                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
 
-                    if (nikonMakerNotes != null)
+                    // get makernotes
+                    var makernotes = jpegFormat.GetMakernotes();
+
+                    if (makernotes != null)
                     {
-                        // get quality string
-                        string quality = nikonMakerNotes.Quality;
+                        // try cast to NikonMakerNotes
+                        NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
 
-                        // get version
-                        byte[] version = nikonMakerNotes.MakerNoteVersion;
-                        Console.WriteLine("Maker note version: {0},Jpeg quality: {1}", nikonMakerNotes.MakerNoteVersion, nikonMakerNotes.Quality);
-                    }
+                        if (nikonMakerNotes != null)
+                        {
+                            // get quality string
+                            string quality = nikonMakerNotes.Quality;
+
+                            // get version
+                            byte[] version = nikonMakerNotes.MakerNoteVersion;
+                            Console.WriteLine("Maker note version: {0},Jpeg quality: {1}", nikonMakerNotes.MakerNoteVersion, nikonMakerNotes.Quality);
+                        }
+                    } 
                 }
                 //ExEnd:ReadNikonMakerNotes
             }
@@ -1308,34 +1368,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadCanonMakerNotes
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(canonMakerFilePath));
-
-                // get makernotes
-                var makernotes = jpegFormat.GetMakernotes();
-
-                if (makernotes != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(canonMakerFilePath)))
                 {
-                    // try cast to CanonMakerNotes
-                    CanonMakerNotes canonMakerNotes = makernotes as CanonMakerNotes;
-                    if (canonMakerNotes != null)
+
+                    // get makernotes
+                    var makernotes = jpegFormat.GetMakernotes();
+
+                    if (makernotes != null)
                     {
-                        // get cammera settings
-                        CanonCameraSettings cameraSettings = canonMakerNotes.CameraSettings;
-                        if (cameraSettings != null)
+                        // try cast to CanonMakerNotes
+                        CanonMakerNotes canonMakerNotes = makernotes as CanonMakerNotes;
+                        if (canonMakerNotes != null)
                         {
-                            // get lens type
-                            int lensType = cameraSettings.LensType;
+                            // get cammera settings
+                            CanonCameraSettings cameraSettings = canonMakerNotes.CameraSettings;
+                            if (cameraSettings != null)
+                            {
+                                // get lens type
+                                int lensType = cameraSettings.LensType;
 
-                            // get quality
-                            int quality = cameraSettings.Quality;
+                                // get quality
+                                int quality = cameraSettings.Quality;
 
-                            // get all values
-                            int[] allValues = cameraSettings.Values;
+                                // get all values
+                                int[] allValues = cameraSettings.Values;
+                            }
+
+                            // get firmware version
+                            string firmwareVersion = canonMakerNotes.CanonFirmwareVersion;
                         }
-
-                        // get firmware version
-                        string firmwareVersion = canonMakerNotes.CanonFirmwareVersion;
-                    }
+                    } 
                 }
                 //ExEnd:ReadCanonMakerNotes
             }
@@ -1349,26 +1411,28 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadPanasonicMakerNotes
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(panasonicMakerFilePath));
-
-                // get makernotes
-                var makernotes = jpegFormat.GetMakernotes();
-
-                if (makernotes != null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(panasonicMakerFilePath)))
                 {
-                    // try cast to PanasonicMakerNotes
-                    PanasonicMakerNotes panasonicMakerNotes = makernotes as PanasonicMakerNotes;
-                    if (panasonicMakerNotes != null)
+
+                    // get makernotes
+                    var makernotes = jpegFormat.GetMakernotes();
+
+                    if (makernotes != null)
                     {
-                        // get firmware version
-                        string firmwareVersion = panasonicMakerNotes.FirmwareVersion;
+                        // try cast to PanasonicMakerNotes
+                        PanasonicMakerNotes panasonicMakerNotes = makernotes as PanasonicMakerNotes;
+                        if (panasonicMakerNotes != null)
+                        {
+                            // get firmware version
+                            string firmwareVersion = panasonicMakerNotes.FirmwareVersion;
 
-                        // get image quality
-                        int? imageQuality = panasonicMakerNotes.ImageQuality;
+                            // get image quality
+                            int? imageQuality = panasonicMakerNotes.ImageQuality;
 
-                        // get lens type
-                        string lensType = panasonicMakerNotes.LensType;
-                    }
+                            // get lens type
+                            string lensType = panasonicMakerNotes.LensType;
+                        }
+                    } 
                 }
                 //ExEnd:ReadPanasonicMakerNotes
             }
@@ -1381,38 +1445,40 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:UpdateIfdTags
                 // initialize JpegFormat
-                JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath));
-
-                JpegExifInfo exif = jpegFormat.GetExifInfo() as JpegExifInfo;
-
-                if (exif == null)
+                using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath)))
                 {
-                    // nothing to process
-                    return;
-                }
 
+                    JpegExifInfo exif = jpegFormat.GetExifInfo() as JpegExifInfo;
 
-                // get makernotes
-                var makernotes = jpegFormat.GetMakernotes();
-                if (exif.Make == "NIKON")
-                {
-                    // try cast to NikonMakerNotes
-                    NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
-
-                    // get tags
-                    var tags = nikonMakerNotes.Tags;
-
-                    foreach (TiffTag tag in tags)
+                    if (exif == null)
                     {
-                        if (tag.TagType == TiffTagType.SLong)
-                        {
-                            // cast to SLong type
-                            TiffSLongTag tiffSLong = tag as TiffSLongTag;
-
-                            // and display value
-                            Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value);
-                        }
+                        // nothing to process
+                        return;
                     }
+
+
+                    // get makernotes
+                    var makernotes = jpegFormat.GetMakernotes();
+                    if (exif.Make == "NIKON")
+                    {
+                        // try cast to NikonMakerNotes
+                        NikonMakerNotes nikonMakerNotes = makernotes as NikonMakerNotes;
+
+                        // get tags
+                        var tags = nikonMakerNotes.Tags;
+
+                        foreach (TiffTag tag in tags)
+                        {
+                            if (tag.TagType == TiffTagType.SLong)
+                            {
+                                // cast to SLong type
+                                TiffSLongTag tiffSLong = tag as TiffSLongTag;
+
+                                // and display value
+                                Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value);
+                            }
+                        }
+                    } 
                 }
                 //ExEnd:UpdateIfdTags
             }
@@ -1428,29 +1494,31 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:ReadSRationalTifftagJpeg
                     // init JpegFormat
-                    JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath));
-
-                    // get exif info
-                    ExifInfo exifInfo = jpegFormat.GetExifInfo();
-
-
-                    if (exifInfo != null)
+                    using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
 
-                        // all tags are available in licensed mode only
-                        TiffTag[] allTags = exifInfo.Tags;
+                        // get exif info
+                        ExifInfo exifInfo = jpegFormat.GetExifInfo();
 
-                        foreach (TiffTag tag in allTags)
+
+                        if (exifInfo != null)
                         {
-                            switch (tag.TagType)
-                            {
 
-                                case TiffTagType.SRational:
-                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
-                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
-                                    break;
+                            // all tags are available in licensed mode only
+                            TiffTag[] allTags = exifInfo.Tags;
+
+                            foreach (TiffTag tag in allTags)
+                            {
+                                switch (tag.TagType)
+                                {
+
+                                    case TiffTagType.SRational:
+                                        TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                        break;
+                                }
                             }
-                        }
+                        } 
                     }
                     //ExEnd:ReadSRationalTifftagJpeg
                 }
@@ -1480,18 +1548,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetXMPPropertiesGifImage
 
                     // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-                    if (gifFormat.IsSupportedXmp)
+                    using (GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get XMP data
-                        XmpProperties xmpProperties = gifFormat.GetXmpProperties();
-
-                        // show XMP data
-                        foreach (string key in xmpProperties.Keys)
+                        if (gifFormat.IsSupportedXmp)
                         {
-                            XmpNodeView xmpNodeView = xmpProperties[key];
-                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
-                        }
+                            // get XMP data
+                            XmpProperties xmpProperties = gifFormat.GetXmpProperties();
+
+                            // show XMP data
+                            foreach (string key in xmpProperties.Keys)
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
+                        } 
                     }
                     //ExEnd:GetXMPPropertiesGifImage
                 }
@@ -1509,52 +1579,54 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXMPPropertiesGifImage
                     // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-                    if (gifFormat.IsSupportedXmp)
+                    using (GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get xmp wrapper
-                        XmpPacketWrapper xmpPacket = gifFormat.GetXmpData();
-
-                        // create xmp wrapper if not exists
-                        if (xmpPacket == null)
+                        if (gifFormat.IsSupportedXmp)
                         {
-                            xmpPacket = new XmpPacketWrapper();
+                            // get xmp wrapper
+                            XmpPacketWrapper xmpPacket = gifFormat.GetXmpData();
+
+                            // create xmp wrapper if not exists
+                            if (xmpPacket == null)
+                            {
+                                xmpPacket = new XmpPacketWrapper();
+                            }
+
+                            // check if DublinCore schema exists
+                            if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+                            {
+                                // if not - add DublinCore schema
+                                xmpPacket.AddPackage(new DublinCorePackage());
+                            }
+
+                            // get DublinCore package
+                            DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+                            string authorName = "New author";
+                            string description = "New description";
+                            string subject = "New subject";
+                            string publisher = "New publisher";
+                            string title = "New title";
+
+                            // set author
+                            dublinCorePackage.SetAuthor(authorName);
+                            // set description
+                            dublinCorePackage.SetDescription(description);
+                            // set subject
+                            dublinCorePackage.SetSubject(subject);
+                            // set publisher
+                            dublinCorePackage.SetPublisher(publisher);
+                            // set title
+                            dublinCorePackage.SetTitle(title);
+                            // update XMP package
+                            gifFormat.SetXmpData(xmpPacket);
+
+                            // commit changes
+                            gifFormat.Save(Common.MapDestinationFilePath(filePath));
                         }
-
-                        // check if DublinCore schema exists
-                        if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
-                        {
-                            // if not - add DublinCore schema
-                            xmpPacket.AddPackage(new DublinCorePackage());
-                        }
-
-                        // get DublinCore package
-                        DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
-
-                        string authorName = "New author";
-                        string description = "New description";
-                        string subject = "New subject";
-                        string publisher = "New publisher";
-                        string title = "New title";
-
-                        // set author
-                        dublinCorePackage.SetAuthor(authorName);
-                        // set description
-                        dublinCorePackage.SetDescription(description);
-                        // set subject
-                        dublinCorePackage.SetSubject(subject);
-                        // set publisher
-                        dublinCorePackage.SetPublisher(publisher);
-                        // set title
-                        dublinCorePackage.SetTitle(title);
-                        // update XMP package
-                        gifFormat.SetXmpData(xmpPacket);
-
-                        // commit changes
-                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXMPPropertiesGifImage
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-                    //ExEnd:UpdateXMPPropertiesGifImage
-                    Console.WriteLine("File saved in destination folder.");
 
                 }
                 catch (Exception exp)
@@ -1571,26 +1643,28 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXmpValuesGifImage
                     // initialize GifFormat
-                    GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                    using (GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    const string dcFormat = "test format";
-                    string[] dcContributors = { "test contributor" };
-                    const string dcCoverage = "test coverage";
-                    const string phCity = "NY";
-                    const string phCountry = "USA";
-                    const string xmpCreator = "GroupDocs.Metadata";
+                        const string dcFormat = "test format";
+                        string[] dcContributors = { "test contributor" };
+                        const string dcCoverage = "test coverage";
+                        const string phCity = "NY";
+                        const string phCountry = "USA";
+                        const string xmpCreator = "GroupDocs.Metadata";
 
-                    GifFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
-                    GifFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
-                    GifFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
-                    GifFormat.XmpValues.Schemes.Photoshop.City = phCity;
-                    GifFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
-                    GifFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
+                        GifFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
+                        GifFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
+                        GifFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
+                        GifFormat.XmpValues.Schemes.Photoshop.City = phCity;
+                        GifFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
+                        GifFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
 
-                    // commit changes
-                    GifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXmpValuesGifImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        GifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXmpValuesGifImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -1606,24 +1680,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdatePagedTextXmpPropertiesGifImage
                     // initialize GifFormat
-                    GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                    using (GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to PagedText schema
-                    var package = GifFormat.XmpValues.Schemes.PagedText;
+                        // get access to PagedText schema
+                        var package = GifFormat.XmpValues.Schemes.PagedText;
 
-                    // update MaxPageSize
-                    package.MaxPageSize = new Dimensions(600, 800);
+                        // update MaxPageSize
+                        package.MaxPageSize = new Dimensions(600, 800);
 
-                    // update number of pages
-                    package.NumberOfPages = 10;
+                        // update number of pages
+                        package.NumberOfPages = 10;
 
-                    // update plate names
-                    package.PlateNames = new string[] { "1", "2", "3" };
+                        // update plate names
+                        package.PlateNames = new string[] { "1", "2", "3" };
 
-                    // commit changes
-                    GifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdatePagedTextXmpPropertiesGifImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        GifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdatePagedTextXmpPropertiesGifImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -1639,23 +1715,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateCameraRawXmpPropertiesGifImage
                     // initialize GifFormat
-                    GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
+                    using (GifFormat GifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to CameraRaw schema
-                    var package = GifFormat.XmpValues.Schemes.CameraRaw;
+                        // get access to CameraRaw schema
+                        var package = GifFormat.XmpValues.Schemes.CameraRaw;
 
-                    // update properties
-                    package.AutoBrightness = true;
-                    package.AutoContrast = true;
-                    package.CropUnits = CropUnits.Pixels;
+                        // update properties
+                        package.AutoBrightness = true;
+                        package.AutoContrast = true;
+                        package.CropUnits = CropUnits.Pixels;
 
-                    // update white balance
-                    package.SetWhiteBalance(WhiteBalance.Auto);
+                        // update white balance
+                        package.SetWhiteBalance(WhiteBalance.Auto);
 
-                    // commit changes
-                    GifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateCameraRawXmpPropertiesGifImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        GifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateCameraRawXmpPropertiesGifImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -1671,51 +1749,52 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateBasicJobTicketXmpPropertiesGifImage
                     // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp data
-                    var xmp = gifFormat.GetXmpData();
-
-                    BasicJobTicketPackage package = null;
-
-                    // looking for the BasicJob schema if xmp data is presented
-                    if (xmp != null)
+                    using (GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+                        // get xmp data
+                        var xmp = gifFormat.GetXmpData();
+
+                        BasicJobTicketPackage package = null;
+
+                        // looking for the BasicJob schema if xmp data is presented
+                        if (xmp != null)
+                        {
+                            package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+                        }
+                        else
+                        {
+                            xmp = new XmpPacketWrapper();
+                        }
+
+                        if (package == null)
+                        {
+                            // create package if not exist
+                            package = new BasicJobTicketPackage();
+
+                            // and add it to xmp data
+                            xmp.AddPackage(package);
+                        }
+
+                        // create array of jobs
+                        Job[] jobs = new Job[1];
+                        jobs[0] = new Job()
+                        {
+                            Id = "1",
+                            Name = "test job"
+                        };
+
+                        // update schema
+                        package.SetJobs(jobs);
+
+                        // update xmp data
+                        gifFormat.SetXmpData(xmp);
+
+                        // commit changes
+                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateBasicJobTicketXmpPropertiesGifImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-                    else
-                    {
-                        xmp = new XmpPacketWrapper();
-                    }
-
-                    if (package == null)
-                    {
-                        // create package if not exist
-                        package = new BasicJobTicketPackage();
-
-                        // and add it to xmp data
-                        xmp.AddPackage(package);
-                    }
-
-                    // create array of jobs
-                    Job[] jobs = new Job[1];
-                    jobs[0] = new Job()
-                    {
-                        Id = "1",
-                        Name = "test job"
-                    };
-
-                    // update schema
-                    package.SetJobs(jobs);
-
-                    // update xmp data
-                    gifFormat.SetXmpData(xmp);
-
-                    // commit changes
-                    gifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateBasicJobTicketXmpPropertiesGifImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -1733,37 +1812,38 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     string path = Common.MapSourceFilePath(filePath);
                     // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-
-                    // get image base64 string
-                    string base64String;
-                    using (Image image = Image.FromFile(path))
+                    using (GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        using (MemoryStream m = new MemoryStream())
+                        // get image base64 string
+                        string base64String;
+                        using (Image image = Image.FromFile(path))
                         {
-                            image.Save(m, image.RawFormat);
-                            byte[] imageBytes = m.ToArray();
+                            using (MemoryStream m = new MemoryStream())
+                            {
+                                image.Save(m, image.RawFormat);
+                                byte[] imageBytes = m.ToArray();
 
-                            // Convert byte[] to Base64 String
-                            base64String = Convert.ToBase64String(imageBytes);
+                                // Convert byte[] to Base64 String
+                                base64String = Convert.ToBase64String(imageBytes);
+                            }
                         }
+
+                        // create image thumbnail
+                        Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
+
+                        // initialize array and add thumbnail
+                        Thumbnail[] thumbnails = new Thumbnail[1];
+                        thumbnails[0] = thumbnail;
+
+                        // update thumbnails property in XMP Basic schema
+                        gifFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
+
+                        // commit changes
+                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateThumbnailXmpPropertiesGifImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // create image thumbnail
-                    Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
-
-                    // initialize array and add thumbnail
-                    Thumbnail[] thumbnails = new Thumbnail[1];
-                    thumbnails[0] = thumbnail;
-
-                    // update thumbnails property in XMP Basic schema
-                    gifFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
-
-                    // commit changes
-                    gifFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateThumbnailXmpPropertiesGifImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -1779,17 +1859,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveXMPPropertiesGifImage 
                     // initialize GifFormat
-                    GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath));
-                    if (gifFormat.IsSupportedXmp)
+                    using (GifFormat gifFormat = new GifFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // remove XMP package
-                        gifFormat.RemoveXmpData();
+                        if (gifFormat.IsSupportedXmp)
+                        {
+                            // remove XMP package
+                            gifFormat.RemoveXmpData();
 
-                        // commit changes
-                        gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                            // commit changes
+                            gifFormat.Save(Common.MapDestinationFilePath(filePath));
+                        }
+                        //ExEnd:RemoveXMPPropertiesGifImage 
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-                    //ExEnd:RemoveXMPPropertiesGifImage 
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -1849,22 +1931,24 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetXMPPropertiesPngImage 
                     // initialize PngFormat
-                    PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
+                    using (PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get XMP data
-                    XmpProperties xmpProperties = pngFormat.GetXmpProperties();
-                    if (xmpProperties != null)
-                    {
-                        // show XMP data
-                        foreach (string key in xmpProperties.Keys)
+                        // get XMP data
+                        XmpProperties xmpProperties = pngFormat.GetXmpProperties();
+                        if (xmpProperties != null)
                         {
-                            XmpNodeView xmpNodeView = xmpProperties[key];
-                            Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            // show XMP data
+                            foreach (string key in xmpProperties.Keys)
+                            {
+                                XmpNodeView xmpNodeView = xmpProperties[key];
+                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                            }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("No XMP data found.");
+                        else
+                        {
+                            Console.WriteLine("No XMP data found.");
+                        } 
                     }
                     //ExEnd:GetXMPPropertiesPngImage 
                 }
@@ -1882,49 +1966,51 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXMPPropertiesPngImage 
                     // initialize PngFormat
-                    PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp wrapper
-                    XmpPacketWrapper xmpPacket = pngFormat.GetXmpData();
-
-                    // create xmp wrapper if not exists
-                    if (xmpPacket == null)
+                    using (PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        xmpPacket = new XmpPacketWrapper();
+
+                        // get xmp wrapper
+                        XmpPacketWrapper xmpPacket = pngFormat.GetXmpData();
+
+                        // create xmp wrapper if not exists
+                        if (xmpPacket == null)
+                        {
+                            xmpPacket = new XmpPacketWrapper();
+                        }
+
+                        // check if DublinCore schema exists
+                        if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+                        {
+                            // if not - add DublinCore schema
+                            xmpPacket.AddPackage(new DublinCorePackage());
+                        }
+
+                        // get DublinCore package
+                        DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+                        string authorName = "New author";
+                        string description = "New description";
+                        string subject = "New subject";
+                        string publisher = "New publisher";
+                        string title = "New title";
+                        // set author
+                        dublinCorePackage.SetAuthor(authorName);
+                        // set description
+                        dublinCorePackage.SetDescription(description);
+                        // set subject
+                        dublinCorePackage.SetSubject(subject);
+                        // set publisher
+                        dublinCorePackage.SetPublisher(publisher);
+                        // set title
+                        dublinCorePackage.SetTitle(title);
+                        // update XMP package
+                        pngFormat.SetXmpData(xmpPacket);
+
+                        // commit changes
+                        pngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXMPPropertiesPngImage 
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // check if DublinCore schema exists
-                    if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
-                    {
-                        // if not - add DublinCore schema
-                        xmpPacket.AddPackage(new DublinCorePackage());
-                    }
-
-                    // get DublinCore package
-                    DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
-
-                    string authorName = "New author";
-                    string description = "New description";
-                    string subject = "New subject";
-                    string publisher = "New publisher";
-                    string title = "New title";
-                    // set author
-                    dublinCorePackage.SetAuthor(authorName);
-                    // set description
-                    dublinCorePackage.SetDescription(description);
-                    // set subject
-                    dublinCorePackage.SetSubject(subject);
-                    // set publisher
-                    dublinCorePackage.SetPublisher(publisher);
-                    // set title
-                    dublinCorePackage.SetTitle(title);
-                    // update XMP package
-                    pngFormat.SetXmpData(xmpPacket);
-
-                    // commit changes
-                    pngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXMPPropertiesPngImage 
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -1940,26 +2026,28 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateXmpValuesPngImage
                     // initialize PngFormat
-                    PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
+                    using (PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    const string dcFormat = "test format";
-                    string[] dcContributors = { "test contributor" };
-                    const string dcCoverage = "test coverage";
-                    const string phCity = "NY";
-                    const string phCountry = "USA";
-                    const string xmpCreator = "GroupDocs.Metadata";
+                        const string dcFormat = "test format";
+                        string[] dcContributors = { "test contributor" };
+                        const string dcCoverage = "test coverage";
+                        const string phCity = "NY";
+                        const string phCountry = "USA";
+                        const string xmpCreator = "GroupDocs.Metadata";
 
-                    PngFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
-                    PngFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
-                    PngFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
-                    PngFormat.XmpValues.Schemes.Photoshop.City = phCity;
-                    PngFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
-                    PngFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
+                        PngFormat.XmpValues.Schemes.DublinCore.Format = dcFormat;
+                        PngFormat.XmpValues.Schemes.DublinCore.Contributors = dcContributors;
+                        PngFormat.XmpValues.Schemes.DublinCore.Coverage = dcCoverage;
+                        PngFormat.XmpValues.Schemes.Photoshop.City = phCity;
+                        PngFormat.XmpValues.Schemes.Photoshop.Country = phCountry;
+                        PngFormat.XmpValues.Schemes.XmpBasic.CreatorTool = xmpCreator;
 
-                    // commit changes
-                    PngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateXmpValuesPngImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        PngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateXmpValuesPngImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -1975,24 +2063,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdatePagedTextXmpPropertiesPngImage
                     // initialize PngFormat
-                    PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
+                    using (PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to PagedText schema
-                    var package = PngFormat.XmpValues.Schemes.PagedText;
+                        // get access to PagedText schema
+                        var package = PngFormat.XmpValues.Schemes.PagedText;
 
-                    // update MaxPageSize
-                    package.MaxPageSize = new Dimensions(600, 800);
+                        // update MaxPageSize
+                        package.MaxPageSize = new Dimensions(600, 800);
 
-                    // update number of pages
-                    package.NumberOfPages = 10;
+                        // update number of pages
+                        package.NumberOfPages = 10;
 
-                    // update plate names
-                    package.PlateNames = new string[] { "1", "2", "3" };
+                        // update plate names
+                        package.PlateNames = new string[] { "1", "2", "3" };
 
-                    // commit changes
-                    PngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdatePagedTextXmpPropertiesPngImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        PngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdatePagedTextXmpPropertiesPngImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -2007,24 +2097,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     //ExStart:UpdateCameraRawXmpPropertiesPngImage
-                    // initialize PngFormat
-                    PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
+                    // initialize PngFormat               
+                    using (PngFormat PngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get access to CameraRaw schema
-                    var package = PngFormat.XmpValues.Schemes.CameraRaw;
+                        // get access to CameraRaw schema
+                        var package = PngFormat.XmpValues.Schemes.CameraRaw;
 
-                    // update properties
-                    package.AutoBrightness = true;
-                    package.AutoContrast = true;
-                    package.CropUnits = CropUnits.Pixels;
+                        // update properties
+                        package.AutoBrightness = true;
+                        package.AutoContrast = true;
+                        package.CropUnits = CropUnits.Pixels;
 
-                    // update white balance
-                    package.SetWhiteBalance(WhiteBalance.Auto);
+                        // update white balance
+                        package.SetWhiteBalance(WhiteBalance.Auto);
 
-                    // commit changes
-                    PngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateCameraRawXmpPropertiesPngImage
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        PngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateCameraRawXmpPropertiesPngImage
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -2040,51 +2132,53 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateBasicJobTicketXmpPropertiesPngImage
                     // initialize PngFormat
-                    PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp data
-                    var xmp = pngFormat.GetXmpData();
-
-                    BasicJobTicketPackage package = null;
-
-                    // looking for the BasicJob schema if xmp data is presented
-                    if (xmp != null)
+                    using (PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+                       
+                        // get xmp data
+                        var xmp = pngFormat.GetXmpData();
+
+                        BasicJobTicketPackage package = null;
+
+                        // looking for the BasicJob schema if xmp data is presented
+                        if (xmp != null)
+                        {
+                            package = xmp.GetPackage(Namespaces.BasicJob) as BasicJobTicketPackage;
+                        }
+                        else
+                        {
+                            xmp = new XmpPacketWrapper();
+                        }
+
+                        if (package == null)
+                        {
+                            // create package if not exist
+                            package = new BasicJobTicketPackage();
+
+                            // and add it to xmp data
+                            xmp.AddPackage(package);
+                        }
+
+                        // create array of jobs
+                        Job[] jobs = new Job[1];
+                        jobs[0] = new Job()
+                        {
+                            Id = "1",
+                            Name = "test job"
+                        };
+
+                        // update schema
+                        package.SetJobs(jobs);
+
+                        // update xmp data
+                        pngFormat.SetXmpData(xmp);
+
+                        // commit changes
+                        pngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateBasicJobTicketXmpPropertiesPngImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-                    else
-                    {
-                        xmp = new XmpPacketWrapper();
-                    }
-
-                    if (package == null)
-                    {
-                        // create package if not exist
-                        package = new BasicJobTicketPackage();
-
-                        // and add it to xmp data
-                        xmp.AddPackage(package);
-                    }
-
-                    // create array of jobs
-                    Job[] jobs = new Job[1];
-                    jobs[0] = new Job()
-                    {
-                        Id = "1",
-                        Name = "test job"
-                    };
-
-                    // update schema
-                    package.SetJobs(jobs);
-
-                    // update xmp data
-                    pngFormat.SetXmpData(xmp);
-
-                    // commit changes
-                    pngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateBasicJobTicketXmpPropertiesPngImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -2102,37 +2196,38 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     string path = Common.MapSourceFilePath(filePath);
                     // initialize PngFormat
-                    PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
-
-                    // get image base64 string
-                    string base64String;
-                    using (Image image = Image.FromFile(path))
+                    using (PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        using (MemoryStream m = new MemoryStream())
+                        // get image base64 string
+                        string base64String;
+                        using (Image image = Image.FromFile(path))
                         {
-                            image.Save(m, image.RawFormat);
-                            byte[] imageBytes = m.ToArray();
+                            using (MemoryStream m = new MemoryStream())
+                            {
+                                image.Save(m, image.RawFormat);
+                                byte[] imageBytes = m.ToArray();
 
-                            // Convert byte[] to Base64 String
-                            base64String = Convert.ToBase64String(imageBytes);
+                                // Convert byte[] to Base64 String
+                                base64String = Convert.ToBase64String(imageBytes);
+                            }
                         }
+
+                        // create image thumbnail
+                        Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
+
+                        // initialize array and add thumbnail
+                        Thumbnail[] thumbnails = new Thumbnail[1];
+                        thumbnails[0] = thumbnail;
+
+                        // update thumbnails property in XMP Basic schema
+                        pngFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
+
+                        // commit changes
+                        pngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateThumbnailXmpPropertiesPngImage
+
+                        Console.WriteLine("File saved in destination folder."); 
                     }
-
-                    // create image thumbnail
-                    Thumbnail thumbnail = new Thumbnail { ImageBase64 = base64String };
-
-                    // initialize array and add thumbnail
-                    Thumbnail[] thumbnails = new Thumbnail[1];
-                    thumbnails[0] = thumbnail;
-
-                    // update thumbnails property in XMP Basic schema
-                    pngFormat.XmpValues.Schemes.XmpBasic.Thumbnails = thumbnails;
-
-                    // commit changes
-                    pngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateThumbnailXmpPropertiesPngImage
-
-                    Console.WriteLine("File saved in destination folder.");
                 }
                 catch (Exception exp)
                 {
@@ -2148,15 +2243,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveXMPPropertiesPngImage 
                     // initialize PngFormat
-                    PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath));
+                    using (PngFormat pngFormat = new PngFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // remove XMP package
+                        pngFormat.RemoveXmpData();
 
-                    // remove XMP package
-                    pngFormat.RemoveXmpData();
-
-                    // commit changes
-                    pngFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:RemoveXMPPropertiesPngImage 
-                    Console.WriteLine("File saved in destination folder.");
+                        // commit changes
+                        pngFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:RemoveXMPPropertiesPngImage 
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -2181,23 +2277,24 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetExifPropertiesTiffImage
                     // initialize TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
-
-                    // get EXIF data
-                    ExifInfo exif = tiffFormat.GetExifInfo();
-
-                    if (exif != null)
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get BodySerialNumber 
-                        Console.WriteLine("Body Serial Number: {0}", exif.BodySerialNumber);
-                        // get CameraOwnerName 
-                        Console.WriteLine("Camera Owner Name: {0}", exif.CameraOwnerName);
-                        // get CFAPattern 
-                        Console.WriteLine("CFA Pattern: {0}", exif.CFAPattern);
-                        // get GPSData 
-                        Console.WriteLine("GPS Data: {0}", exif.GPSData);
-                        // get UserComment 
-                        Console.WriteLine("User Comment: {0}", exif.UserComment);
+                        // get EXIF data
+                        ExifInfo exif = tiffFormat.GetExifInfo();
+
+                        if (exif != null)
+                        {
+                            // get BodySerialNumber 
+                            Console.WriteLine("Body Serial Number: {0}", exif.BodySerialNumber);
+                            // get CameraOwnerName 
+                            Console.WriteLine("Camera Owner Name: {0}", exif.CameraOwnerName);
+                            // get CFAPattern 
+                            Console.WriteLine("CFA Pattern: {0}", exif.CFAPattern);
+                            // get GPSData 
+                            Console.WriteLine("GPS Data: {0}", exif.GPSData);
+                            // get UserComment 
+                            Console.WriteLine("User Comment: {0}", exif.UserComment);
+                        } 
                     }
                     //ExEnd:GetExifPropertiesTiffImage
                 }
@@ -2215,20 +2312,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateExifPropertiesTiffImage
                     // initialize TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get EXIF data
-                    ExifInfo exif = tiffFormat.GetExifInfo();
+                        // get EXIF data
+                        ExifInfo exif = tiffFormat.GetExifInfo();
 
-                    exif.UserComment = "New User Comment";
-                    exif.BodySerialNumber = "New Body Serial Number";
-                    exif.CameraOwnerName = "New Camera Owner Name";
+                        exif.UserComment = "New User Comment";
+                        exif.BodySerialNumber = "New Body Serial Number";
+                        exif.CameraOwnerName = "New Camera Owner Name";
 
-                    // update EXIF info
-                    tiffFormat.UpdateExifInfo(exif);
+                        // update EXIF info
+                        tiffFormat.UpdateExifInfo(exif);
 
-                    // commit changes and save output file
-                    tiffFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes and save output file
+                        tiffFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:UpdateExifPropertiesTiffImage
                 }
                 catch (Exception exp)
@@ -2245,18 +2344,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:UpdateExifValuesUsingPropertiesTiffImage
                     // initialize TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    tiffFormat.ExifValues.CameraOwnerName = "camera owner's name";
+                        tiffFormat.ExifValues.CameraOwnerName = "camera owner's name";
 
-                    // set user comment
-                    tiffFormat.ExifValues.UserComment = "user's comment";
+                        // set user comment
+                        tiffFormat.ExifValues.UserComment = "user's comment";
 
-                    // commit changes
-                    tiffFormat.Save(Common.MapDestinationFilePath(filePath));
-                    //ExEnd:UpdateExifValuesUsingPropertiesTiffImage
+                        // commit changes
+                        tiffFormat.Save(Common.MapDestinationFilePath(filePath));
+                        //ExEnd:UpdateExifValuesUsingPropertiesTiffImage
 
-                    Console.WriteLine("File saved in destination folder.");
+                        Console.WriteLine("File saved in destination folder."); 
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -2272,13 +2373,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:RemoveExifPropertiesTiffImage
                     // initialize TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        tiffFormat.GetXmpProperties();
+                        //remove Xmp Properties
+                        tiffFormat.GetExifInfo();
 
-                    // remove Exif info
-                    tiffFormat.RemoveExifInfo();
-
-                    // commit changes and save output file
-                    tiffFormat.Save(Common.MapDestinationFilePath(filePath));
+                        // commit changes and save output file
+                        tiffFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                    }
                     //ExEnd:RemoveExifPropertiesTiffImage
                 }
                 catch (Exception exp)
@@ -2297,25 +2400,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:AddUpdateTiffTagsInExifTiff
                     // init JpegFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
+                    {
 
-                    // get existing EXIF or create new one
-                    ExifInfo exif = tiffFormat.GetExifInfo() ?? new ExifInfo();
+                        // get existing EXIF or create new one
+                        ExifInfo exif = tiffFormat.GetExifInfo() ?? new ExifInfo();
 
-                    // define list of tags
-                    List<TiffTag> tags = new List<TiffTag>();
+                        // define list of tags
+                        List<TiffTag> tags = new List<TiffTag>();
 
-                    // add specific tag
-                    tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
+                        // add specific tag
+                        tags.Add(new TiffAsciiTag(TiffTagIdEnum.Artist, "Rida"));
 
-                    // and update tags
-                    exif.Tags = tags.ToArray();
+                        // and update tags
+                        exif.Tags = tags.ToArray();
 
-                    // update exif
-                    tiffFormat.UpdateExifInfo(exif);
+                        // update exif
+                        tiffFormat.UpdateExifInfo(exif);
 
-                    // and commit changes
-                    tiffFormat.Save();
+                        // and commit changes
+                        tiffFormat.Save(); 
+                    }
                     //ExEnd:AddUpdateTiffTagsInExifTiff
                 }
                 catch (Exception ex)
@@ -2335,30 +2440,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetXMPPropertiesTiffImage 
                     // initialize TiffFormat
-                    TiffFormat tiff = new TiffFormat(Common.MapSourceFilePath(filePath));
-
-                    // get xmp
-                    XmpPacketWrapper xmpPacket = tiff.GetXmpData();
-
-                    if (xmpPacket != null)
+                    using (TiffFormat tiff = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // show XMP data
-                        XmpProperties xmpProperties = tiff.GetXmpProperties();
+                       
+                        // get xmp
+                        XmpPacketWrapper xmpPacket = tiff.GetXmpData();
 
-                        // show XMP data
-                        foreach (string key in xmpProperties.Keys)
+                        if (xmpPacket != null)
                         {
-                            try
+                            // show XMP data
+                            XmpProperties xmpProperties = tiff.GetXmpProperties();
+
+                            // show XMP data
+                            foreach (string key in xmpProperties.Keys)
                             {
-                                XmpNodeView xmpNodeView = xmpProperties[key];
-                                Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                                try
+                                {
+                                    XmpNodeView xmpNodeView = xmpProperties[key];
+                                    Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+                                }
+                                catch { }
                             }
-                            catch { }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("No XMP data found.");
+                        else
+                        {
+                            Console.WriteLine("No XMP data found.");
+                        } 
                     }
                     //ExEnd:GetXMPPropertiesTiffImage 
                 }
@@ -2375,36 +2482,38 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadTiffFileDirectoryTags 
                 // initialize TiffFormat
-                TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
-
-                // get IFD
-                TiffIfd[] directories = tiffFormat.ImageFileDirectories;
-
-                if (directories.Length > 0)
+                using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    // get tags of the first IFD
-                    TiffTag[] tags = tiffFormat.GetTags(directories[0]);
 
-                    // write tags to the console
-                    foreach (TiffTag tiffTag in tags)
+                    // get IFD
+                    TiffIfd[] directories = tiffFormat.ImageFileDirectories;
+
+                    if (directories.Length > 0)
                     {
-                        Console.WriteLine("tag: {0}", tiffTag.DefinedTag);
-                        switch (tiffTag.TagType)
+                        // get tags of the first IFD
+                        TiffTag[] tags = tiffFormat.GetTags(directories[0]);
+
+                        // write tags to the console
+                        foreach (TiffTag tiffTag in tags)
                         {
-                            case TiffTagType.Ascii:
-                                TiffAsciiTag asciiTag = tiffTag as TiffAsciiTag;
-                                Console.WriteLine("Value: {0}", asciiTag.Value);
-                                break;
+                            Console.WriteLine("tag: {0}", tiffTag.DefinedTag);
+                            switch (tiffTag.TagType)
+                            {
+                                case TiffTagType.Ascii:
+                                    TiffAsciiTag asciiTag = tiffTag as TiffAsciiTag;
+                                    Console.WriteLine("Value: {0}", asciiTag.Value);
+                                    break;
 
-                            case TiffTagType.Short:
-                                TiffShortTag shortTag = tiffTag as TiffShortTag;
-                                Console.WriteLine("Value: {0}", shortTag.Value);
-                                break;
+                                case TiffTagType.Short:
+                                    TiffShortTag shortTag = tiffTag as TiffShortTag;
+                                    Console.WriteLine("Value: {0}", shortTag.Value);
+                                    break;
 
-                            default:
-                                break;
+                                default:
+                                    break;
+                            }
                         }
-                    }
+                    } 
                 }
                 //ExEnd:ReadTiffFileDirectoryTags
             }
@@ -2418,19 +2527,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetIPTCMetadataInTiff
                     // initialize TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
-
-                    // check if TIFF contains IPTC metadata
-                    if (tiffFormat.HasIptc)
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // get iptc collection
-                        IptcCollection iptc = tiffFormat.GetIptc();
-
-                        // and display it
-                        foreach (IptcProperty iptcProperty in iptc)
+                        // check if TIFF contains IPTC metadata
+                        if (tiffFormat.HasIptc)
                         {
-                            Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
-                        }
+                            // get iptc collection
+                            IptcCollection iptc = tiffFormat.GetIptc();
+
+                            // and display it
+                            foreach (IptcProperty iptcProperty in iptc)
+                            {
+                                Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                            }
+                        } 
                     }
                     //ExEnd:GetIPTCMetadataInTiff
                 }
@@ -2451,29 +2561,31 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:ReadSRationalTifftagTiff
                     // init TiffFormat
-                    TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath));
-
-                    // get exif info
-                    ExifInfo exifInfo = tiffFormat.GetExifInfo();
-
-
-                    if (exifInfo != null)
+                    using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
+                        
+                        // get exif info
+                        ExifInfo exifInfo = tiffFormat.GetExifInfo();
 
-                        // all tags are available in licensed mode only
-                        TiffTag[] allTags = exifInfo.Tags;
 
-                        foreach (TiffTag tag in allTags)
+                        if (exifInfo != null)
                         {
-                            switch (tag.TagType)
-                            {
 
-                                case TiffTagType.SRational:
-                                    TiffSRationalTag srationalTag = tag as TiffSRationalTag;
-                                    Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
-                                    break;
+                            // all tags are available in licensed mode only
+                            TiffTag[] allTags = exifInfo.Tags;
+
+                            foreach (TiffTag tag in allTags)
+                            {
+                                switch (tag.TagType)
+                                {
+
+                                    case TiffTagType.SRational:
+                                        TiffSRationalTag srationalTag = tag as TiffSRationalTag;
+                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                        break;
+                                }
                             }
-                        }
+                        } 
                     }
                     //ExEnd:ReadSRationalTifftagTiff
                 }
@@ -2661,19 +2773,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetMetadatPropertiesInDWG 
                     // initialize DwgFormat class
-                    DwgFormat dwgFormat = new DwgFormat(Common.MapSourceFilePath(dwgFilePath));
+                    using (DwgFormat dwgFormat = new DwgFormat(Common.MapSourceFilePath(dwgFilePath)))
+                    {
+                        // get metadata
+                        CadMetadata metadata = dwgFormat.GetDwgMetadata();
 
-                    // get metadata
-                    CadMetadata metadata = dwgFormat.GetDwgMetadata();
+                        // get width
+                        int width = metadata.Width;
 
-                    // get width
-                    int width = metadata.Width;
+                        // get height
+                        int height = metadata.Height;
 
-                    // get height
-                    int height = metadata.Height;
-
-                    // get header attribute
-                    string[] attributes = metadata.HeaderAttributes;
+                        // get header attribute
+                        string[] attributes = metadata.HeaderAttributes; 
+                    }
                     //ExEnd:GetMetadatPropertiesInDWG
                 }
                 catch (Exception exp)
@@ -2690,19 +2803,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetMetadatPropertiesInDXF 
                     // initialize DwgFormat class
-                    DxfFormat dxfFormat = new DxfFormat(Common.MapSourceFilePath(dxfFilePath));
+                    using (DxfFormat dxfFormat = new DxfFormat(Common.MapSourceFilePath(dxfFilePath)))
+                    {
+                       
+                        // get metadata
+                        CadMetadata metadata = dxfFormat.GetDfxMetadata();
 
-                    // get metadata
-                    CadMetadata metadata = dxfFormat.GetDfxMetadata();
+                        // get width
+                        int width = metadata.Width;
 
-                    // get width
-                    int width = metadata.Width;
+                        // get height
+                        int height = metadata.Height;
 
-                    // get height
-                    int height = metadata.Height;
-
-                    // get header attribute
-                    string[] attributes = metadata.HeaderAttributes;
+                        // get header attribute
+                        string[] attributes = metadata.HeaderAttributes; 
+                    }
                     //ExEnd:GetMetadatPropertiesInDXF
                 }
                 catch (Exception exp)
@@ -2729,15 +2844,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInWMF
 
                     // initialize WmfFormat class
-                    WmfFormat wmfFormat = new WmfFormat(Common.MapSourceFilePath(wmfFilePath));
+                    using (WmfFormat wmfFormat = new WmfFormat(Common.MapSourceFilePath(wmfFilePath)))
+                    {
+                        
+                        // get width
+                        int width = wmfFormat.Width;
 
-                    // get width
-                    int width = wmfFormat.Width;
-
-                    // get height
-                    int height = wmfFormat.Height;
-                    //display height and width in console
-                    Console.Write("Width: {0}, Height: {1}", width, height);
+                        // get height
+                        int height = wmfFormat.Height;
+                        //display height and width in console
+                        Console.Write("Width: {0}, Height: {1}", width, height); 
+                    }
                     //ExEnd:GetMetadatPropertiesInWMF
                 }
                 catch (Exception exp)
@@ -2763,16 +2880,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInWebP
 
                     // initialize WebPFormat class
-                    WebPFormat webPFormat = new WebPFormat(Common.MapSourceFilePath(webPFilePath));
+                    using (WebPFormat webPFormat = new WebPFormat(Common.MapSourceFilePath(webPFilePath)))
+                    {
+                       
+                        // get width
+                        int width = webPFormat.Width;
 
-                    // get width
-                    int width = webPFormat.Width;
+                        // get height
+                        int height = webPFormat.Height;
 
-                    // get height
-                    int height = webPFormat.Height;
-
-                    //display height and width in console
-                    Console.Write("Width: {0}, Height: {1}", width, height);
+                        //display height and width in console
+                        Console.Write("Width: {0}, Height: {1}", width, height); 
+                    }
                     //ExEnd:GetMetadatPropertiesInWebP
                 }
                 catch (Exception exp)
@@ -2800,16 +2919,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInEmf
 
                     // initialize EmfFormat class
-                    EmfFormat emfFormat = new EmfFormat(Common.MapSourceFilePath(EmfFilePath));
+                    using (EmfFormat emfFormat = new EmfFormat(Common.MapSourceFilePath(EmfFilePath)))
+                    {
+                        // get width
+                        int width = emfFormat.Width;
 
-                    // get width
-                    int width = emfFormat.Width;
+                        // get height
+                        int height = emfFormat.Height;
 
-                    // get height
-                    int height = emfFormat.Height;
-
-                    //display height and width in console
-                    Console.Write("Width: {0}, Height: {1}", width, height);
+                        //display height and width in console
+                        Console.Write("Width: {0}, Height: {1}", width, height); 
+                    }
                     //ExEnd:GetMetadatPropertiesInEmf
                 }
                 catch (Exception exp)
@@ -2837,16 +2957,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInDjvu
 
                     // initialize DjvuFormat
-                    DjvuFormat djvuFormat = new DjvuFormat(Common.MapSourceFilePath(DjvuFilePath));
+                    using (DjvuFormat djvuFormat = new DjvuFormat(Common.MapSourceFilePath(DjvuFilePath)))
+                    {
 
-                    // get width
-                    int width = djvuFormat.Width;
+                        // get width
+                        int width = djvuFormat.Width;
 
-                    // get height
-                    int height = djvuFormat.Height;
+                        // get height
+                        int height = djvuFormat.Height;
 
-                    //display height and width in console
-                    Console.Write("Width: {0}, Height: {1}", width, height);
+                        //display height and width in console
+                        Console.Write("Width: {0}, Height: {1}", width, height); 
+                    }
                     //ExEnd:GetMetadatPropertiesInDjvu
                 }
                 catch (Exception exp)
@@ -2873,16 +2995,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:GetMetadatPropertiesInBmp
 
                     // initialize BmpFormat
-                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
+                    using (BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath)))
+                    {
 
-                    // get width
-                    int width = bmpFormat.Width;
+                        // get width
+                        int width = bmpFormat.Width;
 
-                    // get height
-                    int height = bmpFormat.Height;
+                        // get height
+                        int height = bmpFormat.Height;
 
-                    //display height and width in console
-                    Console.Write("Width: {0}, Height: {1}", width, height);
+                        //display height and width in console
+                        Console.Write("Width: {0}, Height: {1}", width, height); 
+                    }
                     //ExEnd:GetMetadatPropertiesInBmp
                 }
                 catch (Exception exp)
@@ -2900,19 +3024,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     //ExStart:GetHeaderPropertiesInBmp
                     // initialize BmpFormat
-                    BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath));
+                    using (BmpFormat bmpFormat = new BmpFormat(Common.MapSourceFilePath(BmpFilePath)))
+                    {
+                        // get BMP header
+                        BmpHeader header = bmpFormat.HeaderInfo;
 
-                    // get BMP header
-                    BmpHeader header = bmpFormat.HeaderInfo;
+                        // display bits per pixel
+                        Console.WriteLine("Bits per pixel: {0}", header.BitsPerPixel);
 
-                    // display bits per pixel
-                    Console.WriteLine("Bits per pixel: {0}", header.BitsPerPixel);
+                        // display header size
+                        Console.WriteLine("Header size: {0}", header.HeaderSize);
 
-                    // display header size
-                    Console.WriteLine("Header size: {0}", header.HeaderSize);
-
-                    // display image size
-                    Console.WriteLine("Image size: {0}", header.ImageSize);
+                        // display image size
+                        Console.WriteLine("Image size: {0}", header.ImageSize); 
+                    }
                     //ExEnd:GetHeaderPropertiesInBmp
                 }
                 catch (Exception exp)
@@ -2940,13 +3065,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:DetectDicomFormat
                 // recognize format
-                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(DicomFilePath));
-
-                // check format type
-                if (format.Type == DocumentType.DICOM)
+                using (FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(DicomFilePath)))
                 {
-                    // cast it to DICOMFormat
-                    DICOMFormat dicom = format as DICOMFormat;
+                    // check format type
+                    if (format.Type == DocumentType.DICOM)
+                    {
+                        // cast it to DICOMFormat
+                        DICOMFormat dicom = format as DICOMFormat;
+                    } 
                 }
                 //ExEnd:DetectDicomFormat
             }
@@ -2958,16 +3084,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:GetMetadataPropertiesDicom
                 // initialize DICOMFormat
-                DICOMFormat dicom = new DICOMFormat(Common.MapSourceFilePath(DicomFilePath));
+                using (DICOMFormat dicom = new DICOMFormat(Common.MapSourceFilePath(DicomFilePath)))
+                {
 
-                // get DICOM metadata
-                DicomMetadata header = dicom.Info;
+                    // get DICOM metadata
+                    DicomMetadata header = dicom.Info;
 
-                // display header offset
-                Console.WriteLine("Header offset: {0}", header.HeaderOffset);
+                    // display header offset
+                    Console.WriteLine("Header offset: {0}", header.HeaderOffset);
 
-                // display number of frames
-                Console.WriteLine("Number of frames: {0}", header.NumberOfFrames);
+                    // display number of frames
+                    Console.WriteLine("Number of frames: {0}", header.NumberOfFrames); 
+                }
                 //ExEnd:GetMetadataPropertiesDicom
             }
 
@@ -3004,24 +3132,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 foreach (string path in files)
                 {
                     // recognize format
-                    FormatBase format = FormatFactory.RecognizeFormat(path);
-
-                    // try to parse image
-                    ImageFormat imageFormat = format as ImageFormat;
-
-                    // skip non-image file
-                    if (imageFormat == null)
+                    using (FormatBase format = FormatFactory.RecognizeFormat(path))
                     {
-                        continue;
+
+                        // try to parse image
+                        using (ImageFormat imageFormat = format as ImageFormat)
+                        {
+                            // skip non-image file
+                            if (imageFormat == null)
+                            {
+                                continue;
+                            }
+
+                            // get width
+                            int width = imageFormat.Width;
+
+                            // get height
+                            int height = imageFormat.Height;
+
+                            Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);  
+                        }
                     }
-
-                    // get width
-                    int width = imageFormat.Width;
-
-                    // get height
-                    int height = imageFormat.Height;
-
-                    Console.WriteLine("File: {0}, width {1}, height: {2}", Path.GetFileName(path), width, height);
                 }
                 //ExEnd:RetrieveImageSize
             }
@@ -3047,17 +3178,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 foreach (string path in images)
                 {
                     // recognize format
-                    FormatBase format = FormatFactory.RecognizeFormat(path);
-                    // detect image
-                    ImageFormat image = format as ImageFormat;
-
-                    // skip non-image file
-                    if (image == null)
+                    using (FormatBase format = FormatFactory.RecognizeFormat(path))
                     {
-                        continue;
+                        // detect image
+                        using (ImageFormat image = format as ImageFormat)
+                        {
+                            // skip non-image file
+                            if (image == null)
+                            {
+                                continue;
+                            }
+                            // and display byte-order value
+                            Console.WriteLine(image.ByteOrder);  
+                        }
                     }
-                    // and display byte-order value
-                    Console.WriteLine(image.ByteOrder);
                 }
                 //ExEnd:ReadByteOrderOfImage
             }

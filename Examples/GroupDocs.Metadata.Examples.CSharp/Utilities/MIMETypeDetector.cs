@@ -46,12 +46,13 @@ namespace GroupDocs.Metadata.Examples.CSharp.Utilities
             try
             {
                 //ExStart: MIMETypeDetectionUsingFormatBase
-                 // recognize format
-                 FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
-
-                // and get MIME type
-                string mimeType = format.MIMEType;
-                Console.WriteLine("MIME type: {0}", mimeType);
+                // recognize format
+                using (FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    // and get MIME type
+                    string mimeType = format.MIMEType;
+                    Console.WriteLine("MIME type: {0}", mimeType); 
+                }
                 //ExEnd: MIMETypeDetectionUsingFormatBase
             }
             catch (Exception exp)

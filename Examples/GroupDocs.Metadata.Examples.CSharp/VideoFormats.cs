@@ -32,17 +32,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:DetectAviFormat
                 // recognize format
-                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
-
-                // check format type
-                if (format.Type == DocumentType.AVI)
+                using (FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    // cast it to AviFormat
-                    AviFormat aviFormat = format as AviFormat;
+                    // check format type
+                    if (format.Type == DocumentType.AVI)
+                    {
+                        // cast it to AviFormat
+                        AviFormat aviFormat = format as AviFormat;
 
-                    // and get it MIME type
-                    string mimeType = aviFormat.MIMEType;
-                    Console.WriteLine(mimeType);
+                        // and get it MIME type
+                        string mimeType = aviFormat.MIMEType;
+                        Console.WriteLine(mimeType);
+                    } 
                 }
                 //ExEnd:DetectAviFormat
             }
@@ -55,25 +56,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:ReadAviMainHeader
                 // initialize AviFormat
-                AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath));
+                using (AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    // get AVI header
+                    AviHeader header = aviFormat.Header;
 
-                // get AVI header
-                AviHeader header = aviFormat.Header;
+                    // display video width
+                    Console.WriteLine("Video width: {0}", header.Width);
 
-                // display video width
-                Console.WriteLine("Video width: {0}", header.Width);
+                    // display video height
+                    Console.WriteLine("Video height: {0}", header.Height);
 
-                // display video height
-                Console.WriteLine("Video height: {0}", header.Height);
+                    // display total frames
+                    Console.WriteLine("Total frames: {0}", header.TotalFrames);
 
-                // display total frames
-                Console.WriteLine("Total frames: {0}", header.TotalFrames);
+                    // display number of streams in file
+                    Console.WriteLine("Number of streams: {0}", header.Streams);
 
-                // display number of streams in file
-                Console.WriteLine("Number of streams: {0}", header.Streams);
-
-                // display suggested buffer size for reading the file
-                Console.WriteLine("Suggested buffer size: {0}", header.SuggestedBufferSize);
+                    // display suggested buffer size for reading the file
+                    Console.WriteLine("Suggested buffer size: {0}", header.SuggestedBufferSize); 
+                }
                 //ExEnd:ReadAviMainHeader
             }
 
@@ -107,27 +109,29 @@ namespace GroupDocs.Metadata.Examples.CSharp
             public static void DealWithXmpMetaData() {
                 //ExStart:DealWithXmpMetaData
                 // initialize AviFormat
-                AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath));
-
-                // get XMP
-                var xmpMetadata = aviFormat.GetXmpData();
-
-                // create XMP if absent
-                if (xmpMetadata == null)
+                using (AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    xmpMetadata = new XmpPacketWrapper();
+                    
+                    // get XMP
+                    var xmpMetadata = aviFormat.GetXmpData();
+
+                    // create XMP if absent
+                    if (xmpMetadata == null)
+                    {
+                        xmpMetadata = new XmpPacketWrapper();
+                    }
+
+                    // setup properties
+                    xmpMetadata.Schemes.DublinCore.Format = "avi";
+                    xmpMetadata.Schemes.XmpBasic.CreateDate = DateTime.UtcNow;
+                    xmpMetadata.Schemes.XmpBasic.CreatorTool = "GroupDocs.Metadata";
+
+                    // update xmp
+                    aviFormat.SetXmpData(xmpMetadata);
+
+                    // and commit changes
+                    aviFormat.Save(); 
                 }
-
-                // setup properties
-                xmpMetadata.Schemes.DublinCore.Format = "avi";
-                xmpMetadata.Schemes.XmpBasic.CreateDate = DateTime.UtcNow;
-                xmpMetadata.Schemes.XmpBasic.CreatorTool = "GroupDocs.Metadata";
-
-                // update xmp
-                aviFormat.SetXmpData(xmpMetadata);
-
-                // and commit changes
-                aviFormat.Save();
                 //ExEnd:DealWithXmpMetaData
             }
 
@@ -135,13 +139,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:CleanMetadata
                 // initialize AviFormat
-                AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath));
+                using (AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath)))
+                {
+                   
+                    // removes all metadata
+                    aviFormat.CleanMetadata();
 
-                // removes all metadata
-                aviFormat.CleanMetadata();
-
-                // commit changes
-                aviFormat.Save();
+                    // commit changes
+                    aviFormat.Save(); 
+                }
                 //ExEnd:DealWithXmpMetaData
             }
         }
@@ -158,17 +164,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:DetectMovFormat
                 // recognize format
-                FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath));
-
-                // check format type
-                if (format.Type == DocumentType.Mov)
+                using (FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    // cast it to MovFormat
-                    MovFormat movFormat = format as MovFormat;
+                    // check format type
+                    if (format.Type == DocumentType.Mov)
+                    {
+                        // cast it to MovFormat
+                        MovFormat movFormat = format as MovFormat;
 
-                    // and get it MIME type;
-                    string mimeType = movFormat.MIMEType;
-                    Console.WriteLine(mimeType);
+                        // and get it MIME type;
+                        string mimeType = movFormat.MIMEType;
+                        Console.WriteLine(mimeType);
+                    } 
                 }
                 //ExEnd:DetectMovFormat
             }
@@ -179,28 +186,29 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 //ExStart:GetMovFormatMetadata
                 // initialize mov format
-                MovFormat movFormat = new MovFormat(Common.MapSourceFilePath(filePath));
-
-                // display mime type
-                Console.WriteLine("MIME type: {0}", movFormat.MIMEType);
-
-                foreach(var info in movFormat.QuickTimeInfo.Atoms)
+                using (MovFormat movFormat = new MovFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    // get name
-                    Console.WriteLine("Name: {0}", info.Name);
+                    // display mime type
+                    Console.WriteLine("MIME type: {0}", movFormat.MIMEType);
 
-                    // get offset
-                    Console.WriteLine("Offset: {0}", info.Offset);
+                    foreach (var info in movFormat.QuickTimeInfo.Atoms)
+                    {
+                        // get name
+                        Console.WriteLine("Name: {0}", info.Name);
 
-                    // get data
-                    Console.WriteLine("Data: {0}", info.Data);
+                        // get offset
+                        Console.WriteLine("Offset: {0}", info.Offset);
 
-                    // get size
-                    Console.WriteLine("Size: {0}", info.Size);
+                        // get data
+                        Console.WriteLine("Data: {0}", info.Data);
 
-                    // get type
-                    Console.WriteLine("Type: {0}", info.Type);
+                        // get size
+                        Console.WriteLine("Size: {0}", info.Size);
 
+                        // get type
+                        Console.WriteLine("Type: {0}", info.Type);
+
+                    } 
                 }
                 //ExEnd:GetMovFormatMetadata
             }

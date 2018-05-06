@@ -239,13 +239,15 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             // do some work:
 
             // Open Word document
-            DocFormat docFormat = new DocFormat(MapSourceFilePath("Documents/Doc/Metadata_testfile.docx"));
+            using (DocFormat docFormat = new DocFormat(MapSourceFilePath("Documents/Doc/Metadata_testfile.docx")))
+            {
 
-            // remove hidden metadata
-            docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.All));
+                // remove hidden metadata
+                docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.All));
 
-            // and get consumption quantity
-            decimal consumptionQuantity = GroupDocs.Metadata.Metered.GetConsumptionQuantity();
+                // and get consumption quantity
+                decimal consumptionQuantity = GroupDocs.Metadata.Metered.GetConsumptionQuantity(); 
+            }
             //ExEnd:UseDynabicMeteredAccount
         }
     }
