@@ -15,6 +15,7 @@ using System.IO;
 using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Formats.Ebook;
 using GroupDocs.Metadata.Formats.Image;
+using System.Text.RegularExpressions;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -97,6 +98,45 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+            /// <summary>
+            /// Update Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void ReplaceMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex("^author|company$", RegexOptions.IgnoreCase);
+                    string replaceValue = "Aspose";
+                    SearchFacade.ReplaceInDocument(Common.MapSourceFilePath(filePath), pattern, replaceValue, Common.MapDestinationFilePath(filePath));
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Find Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void FindMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex("author|company", RegexOptions.IgnoreCase);
+                    MetadataPropertyCollection properties = SearchFacade.ScanDocument(Common.MapDestinationFilePath(filePath), pattern);
+                    for (int i = 0; i < properties.Count; i++)
+                    {
+                        Console.WriteLine(properties[i]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }           
             }
 
             /// <summary>
@@ -1028,6 +1068,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
 
                     Console.WriteLine(exp.Message);
+                }
+            }
+
+            public static void GetMetadataUsingStream()
+            {
+                try
+                {
+                    using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        using (EpubFormat format = new EpubFormat(stream))
+                        {
+                            // read dublin-core metadata
+                            DublinCoreMetadata dublinCore = format.GetDublinCore();
+                            // Working with the epub book metadata
+
+                            // get creator
+                            Console.WriteLine("Creator = {0}", dublinCore.Creator);
+
+                            // get publisher
+                            Console.WriteLine("Publisher = {0}", dublinCore.Publisher);
+
+                            // get contributor
+                            Console.WriteLine("Contributor = {0}", dublinCore.Contributor);
+                        }
+                        // The stream is still open here
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

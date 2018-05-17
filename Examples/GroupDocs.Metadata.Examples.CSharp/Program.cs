@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -92,6 +92,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read ImageCover using Metadata Utility
             //Documents.Doc.ReadImageCoverMetadataUtility();
+
+            //Find Metadata Using Regex
+            //Documents.Doc.FindMetadataUsingRegex();
+
+            //Replace Metadata Using Regex
+            //Documents.Doc.ReplaceMetadataUsingRegex();
             #endregion
 
             #region Working with Ppt Files
@@ -249,6 +255,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.EPUB.ReadEPUBPackageVersion();
             //Read DublinCore Metadata using unified approach
             //Documents.EPUB.ReadDublinCoreMetadataUtility();
+            //Get Torrent Metadata Using Stream
+            //Documents.EPUB.GetMetadataUsingStream();
 
             #endregion
 
@@ -293,6 +301,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Remove Medatadata of Gif image 
             //Images.Gif.RemoveMetadata();
+
+            //Find XMP Metadata Using Regex
+            //Images.Gif.FindXmpMetadataUsingRegex();
+
+            //Update XMP Metadata Using Regex
+            //Images.Gif.ReplaceXmpMetadataUsingRegex();
 
             #endregion
 
@@ -393,6 +407,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //The method loads and save EXIF metadata with better speed
             //Images.Jpeg.EXIFMetadataWithBetterSpeed();
+
+            //Find EXIF Metadata using regex
+            //Images.Jpeg.FindEXIFMetadataUsingRegex();
+
+            //Replace EXIF Metadata using regex
+            //Images.Jpeg.ReplaceEXIFMetadataUsingRegex();
+
             #endregion
 
             #region Working with Png
@@ -763,6 +784,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Get Zip format metadata
             //Archives.Zip.GetZipMatadata();
+
+            // Get ZIP format metadata using stream
+            //Archives.Zip.GetZipMatadataUsingStream();
+
+            //Remove ZIP format 
+            //Archives.Zip.RemoveComment();
+
+            //Update ZIP format Comment 
+            //Archives.Zip.UpdateComment();
+
             #endregion
 
             #endregion
@@ -773,9 +804,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Torrent.BitTorrent.GetTorrentMetadata();
             //Update Bit Torrent File Metadata 
             //Torrent.BitTorrent.UpdateTorrentMedata();
+            //Read Bit Torrent File Metadata Using Stream
+            Torrent.BitTorrent.GetTorrentMetadataUsingStream();
             #endregion
             #endregion
 
+            #region Working with DublinCore Metadata
+            //Get DublinCore of supported file formats using MetadataUtility class
+            //DublinCore.GetDublinCoreMetadata();
+
+            //Get DublinCore Metadata of supported file formats using IDublinCore Interface
+            //DublinCore.GetDublinCoreMetadataUsingIDublinCore();
+
+            
+
+            #endregion
             Console.ReadKey();
 
 

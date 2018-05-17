@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using GroupDocs.Metadata.Formats.Image;
 using GroupDocs.Metadata.Xmp.Schemes;
 using GroupDocs.Metadata.Xmp;
@@ -11,7 +9,7 @@ using System.Drawing;
 using System.IO;
 using GroupDocs.Metadata.Formats.Cad;
 using GroupDocs.Metadata.Formats;
-using GroupDocs.Metadata.Formats.Audio;
+using System.Text.RegularExpressions;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -364,6 +362,48 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
                 
+            }
+            /// <summary>
+            /// Find Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void ReplaceEXIFMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex("James", RegexOptions.IgnoreCase);
+                    string replaceValue = "John";
+                    SearchFacade.ReplaceInExif(Common.MapSourceFilePath(filePath), pattern, replaceValue, Common.MapDestinationFilePath(filePath));
+
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Find Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void FindEXIFMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex(".*");
+                    ExifProperty[] properties = SearchFacade.ScanExif(Common.MapSourceFilePath(filePath), pattern);
+                    for (int i = 0; i < properties.Length; i++)
+                    {
+                        Console.WriteLine(properties[i]);
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
             /// <summary>
@@ -1907,6 +1947,47 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                         format.Save(Common.MapDestinationFilePath(filePath));
                     }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            /// <summary>
+            /// Find XMP Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void FindXmpMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex("^.*description$", RegexOptions.IgnoreCase);
+                    XmpNodeView[] properties = SearchFacade.ScanXmp(Common.MapSourceFilePath(filePath), pattern);
+                    for (int i = 0; i < properties.Length; i++)
+                    {
+                        Console.WriteLine(properties[i]);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Find XMP Metadata Using Regex 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void ReplaceXmpMetadataUsingRegex()
+            {
+                try
+                {
+                    Regex pattern = new Regex("^.*description$", RegexOptions.IgnoreCase);
+                    string replaceValue = "Test file";
+                    SearchFacade.ReplaceInXmp(Common.MapSourceFilePath(filePath), pattern, replaceValue, Common.MapDestinationFilePath(filePath));
 
                 }
                 catch (Exception ex)
