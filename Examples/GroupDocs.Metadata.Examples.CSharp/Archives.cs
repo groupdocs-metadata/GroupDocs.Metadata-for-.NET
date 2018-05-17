@@ -112,8 +112,73 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
 
             }
+            /// <summary>
+            /// Get Zip Metadata using stream
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void GetZipMatadataUsingStream()
+            {
+                try
+                {
+                    using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        using (ZipFormat format = new ZipFormat(stream))
+                        {
+                            // get info
+                            ZipMetadata info = format.ZipInfo;
 
+                            // get total entries
+                            Console.WriteLine("Total Entries : {0}, ", info.TotalEntries);
 
+                            //get comments 
+                            Console.WriteLine("Comments : {0}, ", info.Comment);
+                            foreach (var fileInfo in info.Files)
+                            {
+                                // get file name 
+                                Console.WriteLine("File Name : {0}, ", fileInfo.Name);
+
+                                // get compressed size
+                                Console.WriteLine("CompressedSize : {0}, ", fileInfo.CompressedSize);
+
+                                // get uncompressed size
+                                Console.WriteLine("UncompressedSize : {0}, ", fileInfo.UncompressedSize);
+
+                                // get compression method
+                                Console.WriteLine("CompressionMethod : {0}, ", fileInfo.CompressionMethod);
+
+                            }
+                        }
+                        // The stream is still open here
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            /// <summary>
+            /// Update Zip Comment 
+            /// Feature is supported in version 18.5 or greater of the API
+            /// </summary>
+            public static void UpdateComment()
+            {
+                try
+                {
+                    using (ZipFormat format = new ZipFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        format.ZipInfo.Comment = "test comment";
+                        
+                        //Or you can update it using ZipFileComment Property
+                        //format.ZipFileComment = "test comment";
+                    
+                        format.Save(Common.MapDestinationFilePath(filePath));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
 
