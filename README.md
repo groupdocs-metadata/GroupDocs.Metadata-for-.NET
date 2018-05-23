@@ -20,10 +20,10 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.groupdocs.com](https://www.groupdocs.com/)
-+ **Product Home:** [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) 
++ **Product Home:** [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net)
++ **Installation:** [GroupDocs.Metadata for .NET NuGet Package](https://www.nuget.org/packages/GroupDocs.Metadata/)
 + **API Reference:** [GroupDocs.Metadata for .NET API Reference](https://apireference.groupdocs.com/net/metadata)
 + **Documentation:** [GroupDocs.Metadata for .NET Documentation](https://docs.groupdocs.com/display/metadatanet/Home)
-+ **Installation:** [GroupDocs.Metadata for .NET NuGet Package](https://www.nuget.org/packages/GroupDocs.Metadata/)
 + **Free Support:** [GroupDocs.Metadata for .NET Free Support Forum](https://forum.groupdocs.com/c/metadata)
 + **Paid Support:** [GroupDocs.Metadata for .NET Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
 + **Blog:** [GroupDocs.Metadata for .NET Blog](https://blog.groupdocs.com/category/groupdocs-metadata-product-family/)
