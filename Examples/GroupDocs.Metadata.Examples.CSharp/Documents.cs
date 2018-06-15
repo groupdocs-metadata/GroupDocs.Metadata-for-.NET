@@ -2511,6 +2511,49 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// Update MS Project Metadata
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void UpdateMetadata()
+            {
+                using (MppFormat format = new MppFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    format.ProjectInfo.Author = "John Smith";
+                    format.ProjectInfo.Subject = "Test project";
+                    format.ProjectInfo.Category = "Software Development";
+
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+            /// <summary>
+            /// Clean MS Project Metadata
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void CleanMetadata()
+            {
+                using(MppFormat format = new MppFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    format.CleanMetadata();
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+
+            public static void UpdateMetadataUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                {
+                    using (MppFormat format = new MppFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        format.ProjectInfo.Author = "John Smith";
+                        format.ProjectInfo.Subject = "Test project";
+                        format.ProjectInfo.Category = "Software Development";
+
+                        format.Save(stream);
+                    }
+                    // The stream is still open here
+                }
+            }
         }
 
         public static class MSVisio
