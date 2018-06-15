@@ -263,6 +263,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region Working with ODS files
             //Documents.ODS.ReadOdsMetadata();
             #endregion
+
+            #region Working with MS Project files
+            //Get MS Project Metadata 
+            //Documents.MSProject.GetMetadata();
+            //Update MS Project Metadata
+            //Documents.MSProject.UpdateMetadata();
+            //Clean MS Project Metadata
+            //Documents.MSProject.CleanMetadata();     
+            //Documents.MSProject.UpdateMetadataUsingStream();
+            #endregion
+
             //Reads thumbnail in documents
             //Documents.ReadThumbnail("Documents/Doc/sample.docx");
 
@@ -460,6 +471,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             // Read IPTC Metadata 
             //Images.Tiff.ReadIPTCMetadata();
+
+            //Remove XMP Metadata
+            //Images.Tiff.RemoveXMPMetadata();
 
             #endregion
 
@@ -746,6 +760,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read Audio Details 
             //AudioFormats.Wav.ReadAudioDetails();
 
+            // Update XMP Metadata  
+            //AudioFormats.Wav.UpdateXmpMetadata();
+
+            //Remove XMP Metadata
+            //AudioFormats.Wav.RemoveXmpMetadata();
+
+            //Update XMP Metadata using stream
+            //AudioFormats.Wav.UpdateXmpMetadataUsingStream();
+
+
 
             #endregion
 
@@ -764,6 +788,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Clean metadata in AVI format
             //VideoFormats.Avi.CleanMetadata();
+
+            //Clean metadata in AVI using Stream
+            //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
 
             //Detect Mov file format using format factory
             //VideoFormats.Mov.DetectMovFormat();
@@ -805,7 +832,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update Bit Torrent File Metadata 
             //Torrent.BitTorrent.UpdateTorrentMedata();
             //Read Bit Torrent File Metadata Using Stream
-            Torrent.BitTorrent.GetTorrentMetadataUsingStream();
+            //Torrent.BitTorrent.GetTorrentMetadataUsingStream();
             #endregion
             #endregion
 

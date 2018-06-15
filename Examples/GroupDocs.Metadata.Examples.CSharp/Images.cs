@@ -2676,6 +2676,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
 
             }
+
+            public static void RemoveXMPMetadata()
+            {
+                // initialize TiffFormat
+                using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    //remove Xmp Properties
+                    tiffFormat.RemoveXmpData();
+
+                    // commit changes and save output file
+                    tiffFormat.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
         }
 
         public static class Psd

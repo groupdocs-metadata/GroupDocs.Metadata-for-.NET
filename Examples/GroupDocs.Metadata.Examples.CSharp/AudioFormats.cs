@@ -787,7 +787,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path and directory path
             //ExStart:SourceWavFilePath + SourceWavDirectoryPath 
             private const string directoryPath = "Audio/Wav";
-            private const string filePath = "Audio/Wav/test.wav";
+            private const string filePath = "Audio/Wav/sample.wav";
             //ExEnd:SourceWavFilePath + SourceWavDirectoryPath
 
             /// <summary>
@@ -848,7 +848,64 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(ex.Message);
                 }
             }
+            /// <summary>
+            /// Update XMP Metadata
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void UpdateXmpMetadata()
+            {
+                using (WavFormat format = new WavFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    Console.WriteLine(format.XmpValues.Schemes.XmpBasic.CreateDate);
+                    Console.WriteLine(format.XmpValues.Schemes.XmpBasic.Label);
+                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subject);
+                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Format);
 
+                    format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
+                    format.XmpValues.Schemes.XmpBasic.Label = "Test";
+                    format.XmpValues.Schemes.DublinCore.Subject = "WAV XMP Test";
+                    format.XmpValues.Schemes.DublinCore.Format = "WAV Audio";
+
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+            /// <summary>
+            /// Remove XMP Metadata
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void RemoveXmpMetadata()
+            {
+                using (WavFormat format = new WavFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    format.RemoveXmpData();
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+            /// <summary>
+            /// Update XMP Metadata usin Stream
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void UpdateXmpMetadataUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using (WavFormat format = new WavFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        Console.WriteLine(format.XmpValues.Schemes.XmpBasic.CreateDate);
+                        Console.WriteLine(format.XmpValues.Schemes.XmpBasic.Label);
+                        Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subject);
+                        Console.WriteLine(format.XmpValues.Schemes.DublinCore.Format);
+
+                        format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
+                        format.XmpValues.Schemes.XmpBasic.Label = "Test";
+                        format.XmpValues.Schemes.DublinCore.Subject = "WAV XMP Test";
+                        format.XmpValues.Schemes.DublinCore.Format = "WAV Audio";
+
+                        format.Save(stream);
+                    }
+                    // The stream is still open here
+                }
+            }
         }
     }
 }

@@ -150,6 +150,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
                 //ExEnd:DealWithXmpMetaData
             }
+            /// <summary>
+            /// Clean AVI Format Metadata
+            /// Feature is supported in version 18.6 or greater of the API
+            /// </summary>
+            public static void ReadAviMainHeaderUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using (AviFormat format = new AviFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get AVI header
+                        AviHeader header = format.Header;
+
+                        // display video width
+                        Console.WriteLine("Video width: {0}", header.Width);
+
+                        // display video height
+                        Console.WriteLine("Video height: {0}", header.Height);
+
+                        // display total frames
+                        Console.WriteLine("Total frames: {0}", header.TotalFrames);
+
+                        // display number of streams in file
+                        Console.WriteLine("Number of streams: {0}", header.Streams);
+
+                        // display suggested buffer size for reading the file
+                        Console.WriteLine("Suggested buffer size: {0}", header.SuggestedBufferSize);
+                    }
+                    // The stream is still open here
+                }
+            }
         }
         public static class Mov
         {
