@@ -2848,6 +2848,83 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
                 //ExEnd:ReadLayersPSD
             }
+            /// <summary>
+            /// Updates IPTC metadata from PSD file
+            /// This feature is support by version 18.7 or higher 
+            /// </summary> 
+            public static void UpdateIPTCMetadata()
+            {
+                using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    IptcCollection iptc = format.GetIptc();
+                    if (iptc == null)
+                    {
+                        iptc = new IptcCollection();
+                    }
+                    iptc.Add(new IptcProperty(2, "urgency", 10, 5));
+                    format.UpdateIptc(iptc);
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+
+            }
+            /// <summary>
+            /// removes IPTC metadata from PSD file
+            /// This feature is support by version 18.7 or higher 
+            /// </summary>
+            public static void RemoveIPTCMetadata()
+            {
+                using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    format.RemoveIptc();
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+            /// <summary>
+            /// Get IPTC Metadata Properties using stream
+            /// </summary>
+            public static void ReadIPTCMetadatasUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                {
+                    using (PsdFormat format = new PsdFormat(stream))
+                    {
+                        // check if PSD contains IPTC metadata
+                        if (format.HasIptc)
+                        {
+                            // get iptc collection
+                            IptcCollection iptc = format.GetIptc();
+
+                            // and display it
+                            foreach (IptcProperty iptcProperty in iptc)
+                            {
+                                Console.Write("Tag id: {0}, name: {1}", iptcProperty.TagId, iptcProperty.Name);
+                            }
+                        }
+                    }
+                    // The stream is still open here
+                }
+            }
+            /// <summary>
+            /// Update IPTC Metadata Properties using stream
+            /// </summary>
+            public static void UpdateIPTCMetadataUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        IptcCollection iptc = format.GetIptc();
+                        if (iptc == null)
+                        {
+                            iptc = new IptcCollection();
+                        }
+                        iptc.Add(new IptcProperty(2, "urgency", 10, 5));
+                        format.UpdateIptc(iptc);
+                        format.Save(stream);
+                    }
+                    // The stream is still open here
+                }
+            }
         }
 
         public static class Cad

@@ -688,6 +688,84 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            // <summary>
+            /// Update ID3v2 Tag Using Stream
+            /// </summary>
+            public static void UpdateID3v2TagUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using (Mp3Format format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                    {
+                        // get id3v2 tag
+                        Id3v2Tag id3Tag = format.Id3v2Properties ?? new Id3v2Tag();
+
+                        // set artist
+                        id3Tag.Artist = "A-ha";
+
+                        // set title
+                        id3Tag.Title = "Take on me";
+
+                        // set band
+                        id3Tag.Band = "A-ha";
+
+                        // set comment
+                        id3Tag.Comment = "GroupDocs.Metadata creator";
+
+                        // set track number
+                        id3Tag.TrackNumber = "5";
+
+                        // set year
+                        id3Tag.Year = "1986";
+
+                        // update ID3v2 tag
+                        format.UpdateId3v2(id3Tag);
+
+                        format.Save(stream);
+                    }
+                    // The stream is still open here
+                }
+            }
+
+            /// <summary>
+            /// Read ID3v2 Tag Using Stream
+            /// </summary>
+            public static void ReadID3v2TagUsingStream()
+            {
+                using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                {
+                    using (Mp3Format format = new Mp3Format(stream))
+                    {
+                        // get ID3 v2 tag
+                        Id3v2Tag id3v2 = format.Id3v2Properties ?? new Id3v2Tag();
+                        if (id3v2 != null)
+                        {
+                            // write ID3v2 version
+                            Console.WriteLine("Version: {0}", id3v2.Version);
+
+                            // write known frames' values
+                            Console.WriteLine("Title: {0}", id3v2.Title);
+                            Console.WriteLine("Artist: {0}", id3v2.Artist);
+                            Console.WriteLine("Album: {0}", id3v2.Album);
+                            Console.WriteLine("Comment: {0}", id3v2.Comment);
+                            Console.WriteLine("Composers: {0}", id3v2.Composers);
+                            Console.WriteLine("Band: {0}", id3v2.Band);
+                            Console.WriteLine("Track Number: {0}", id3v2.TrackNumber);
+                            Console.WriteLine("Year: {0}", id3v2.Year);
+
+                            // in trial mode only first 5 frames are available
+                            TagFrame[] idFrames = id3v2.Frames;
+
+                            foreach (TagFrame tagFrame in idFrames)
+                            {
+                                Console.WriteLine("Frame: {0}, value: {1}", tagFrame.Name, tagFrame.GetFormattedValue());
+                            }
+                        }
+                    }
+                    // The stream is still open here
+                }
+
+            }
 
             /// <summary>
             /// Read ImageCover using Metadata Utility 

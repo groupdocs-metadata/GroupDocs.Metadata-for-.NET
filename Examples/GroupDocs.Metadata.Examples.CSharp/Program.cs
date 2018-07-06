@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -542,6 +542,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read IPTC Metadata 
             //Images.Psd.ReadIPTCMetadata();
 
+            // Update IPTC Metadata 
+            //Images.Psd.UpdateIPTCMetadata();
+
+            // Remove IPTC Metadata 
+            //Images.Psd.RemoveIPTCMetadata();
+
+            // Read IPTC Metadata PSD file using stream
+            //Images.Psd.ReadIPTCMetadatasUsingStream();
+
+            // Update IPTC Metadata using steam
+            //Images.Psd.UpdateIPTCMetadataUsingStream();
+
             // Read Layers
             //Images.Psd.ReadLayers();
 
@@ -749,6 +761,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update or Remove image cover from ID3 audio tag
             //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
 
+            //Read ID3v2 tag in MP3 format using stream
+            //AudioFormats.Mp3.ReadID3v2TagUsingStream();
+
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2TagUsingStream();
+
 
             #endregion
 
@@ -843,7 +861,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get DublinCore Metadata of supported file formats using IDublinCore Interface
             //DublinCore.GetDublinCoreMetadataUsingIDublinCore();
 
-            
+
 
             #endregion
             Console.ReadKey();
