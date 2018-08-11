@@ -285,10 +285,86 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-            /// <summary>
-            /// Updates XMP values of Jpeg file and creates output file
-            /// </summary> 
-            public static void UpdateXMPValues()
+
+			public static void UpdateXMPPropertiesUsingStream()
+			{
+				using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+				{
+					using (JpegFormat format = new JpegFormat(Common.MapSourceFilePath(filePath)))
+					{
+						// get xmp wrapper
+						XmpPacketWrapper xmpPacket = format.GetXmpData();
+
+						// create xmp wrapper if not exists
+						if (xmpPacket == null)
+						{
+							xmpPacket = new XmpPacketWrapper();
+						}
+
+						// check if DublinCore schema exists
+						if (!xmpPacket.ContainsPackage(Namespaces.DublinCore))
+						{
+							// if not - add DublinCore schema
+							xmpPacket.AddPackage(new DublinCorePackage());
+						}
+
+						// get DublinCore package
+						DublinCorePackage dublinCorePackage = (DublinCorePackage)xmpPacket.GetPackage(Namespaces.DublinCore);
+
+						string authorName = "New author";
+						string description = "New description";
+						string subject = "New subject";
+						string publisher = "New publisher";
+						string title = "New title";
+
+						// set author
+						dublinCorePackage.SetAuthor(authorName);
+						// set description
+						dublinCorePackage.SetDescription(description);
+						// set subject
+						dublinCorePackage.SetSubject(subject);
+						// set publisher
+						dublinCorePackage.SetPublisher(publisher);
+						// set title
+						dublinCorePackage.SetTitle(title);
+						// update XMP package
+						format.SetXmpData(xmpPacket);
+						// commit changes
+						format.Save(stream);
+						Console.WriteLine("File saved in destination folder.");
+					}
+					// The stream is still open here
+				}
+			}
+
+			public static void GetXMPPropertiesUsingStream()
+			{
+				using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+				{
+					using (JpegFormat format = new JpegFormat(stream))
+					{	
+						// get XMP data
+						XmpProperties xmpProperties = format.GetXmpProperties();
+
+						// show XMP data
+						foreach (string key in xmpProperties.Keys)
+						{
+							try
+							{
+								XmpNodeView xmpNodeView = xmpProperties[key];
+								Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+							}
+							catch { }
+						}
+					}
+					// The stream is still open here
+				}
+			}
+
+			/// <summary>
+			/// Updates XMP values of Jpeg file and creates output file
+			/// </summary> 
+			public static void UpdateXMPValues()
             {
                 try
                 {
@@ -322,10 +398,33 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-            /// <summary>
-            /// The method loads and save EXIF metadata with better speed
-            /// </summary> 
-            public static void EXIFMetadataWithBetterSpeed()
+			/// <summary>
+			/// Get Tigg Tags Using Exif Properties 
+			/// This feature is supported by version 18.8 or greater.
+			/// </summary> 
+			public static void GetTiffTagsUsingExifProperties()
+			{
+				using (JpegFormat format = new JpegFormat(Common.MapSourceFilePath(filePath)))
+				{
+					ExifInfo exif = format.GetExifInfo();
+
+					if (exif != null)
+					{
+						foreach (TiffTag tag in exif.Tags)
+						{
+							if (tag.DefinedTag == TiffTagIdEnum.XResolution || tag.DefinedTag == TiffTagIdEnum.YResolution)
+							{
+								Console.WriteLine("{0} = {1}", tag.DefinedTag, ((TiffRationalTag)tag).TagValue[0].Value);
+							}
+						}
+					}
+				}
+			}
+
+			/// <summary>
+			/// The method loads and save EXIF metadata with better speed
+			/// </summary> 
+			public static void EXIFMetadataWithBetterSpeed()
             {
                 try
                 {
@@ -2689,7 +2788,83 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     tiffFormat.Save(Common.MapDestinationFilePath(filePath));
                 }
             }
-        }
+			/// <summary>
+			/// Extract specific Tiff tags 
+			/// This feature is supported by version 18.8 or greater. 
+			/// </summary> 
+			public static void ExtractSpecificTiffTags()
+			{
+				using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+				{
+					TiffTag[] tags = format.GetTags(format.ImageFileDirectories[0]);
+
+					foreach (TiffTag tag in tags)
+					{
+						if (tag.DefinedTag == TiffTagIdEnum.XResolution || tag.DefinedTag == TiffTagIdEnum.YResolution)
+						{
+							Console.WriteLine("{0} = {1}", tag.DefinedTag, ((TiffRationalTag)tag).TagValue[0].Value);
+						}
+					}
+				}
+			}
+			//Get XMP properties of Tiff image using Stream
+			public static void GetXMPPropertiesUsingStream()
+			{
+				using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+				{
+					using (TiffFormat format = new TiffFormat(stream))
+					{
+						// get xmp
+						XmpPacketWrapper xmpPacket = format.GetXmpData();
+
+						if (xmpPacket != null)
+						{
+							// show XMP data
+							XmpProperties xmpProperties = format.GetXmpProperties();
+
+							// show XMP data
+							foreach (string key in xmpProperties.Keys)
+							{
+								try
+								{
+									XmpNodeView xmpNodeView = xmpProperties[key];
+									Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+								}
+								catch { }
+							}
+						}
+						else
+						{
+							Console.WriteLine("No XMP data found.");
+						}
+					}
+					// The stream is still open here
+				}
+			}
+			//Update Exif Info of Tiff Image using Stream
+			public static void UpdateExifInfoUsingStream()
+			{
+				using (Stream stream = File.Open(Common.MapDestinationFilePath(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+				{
+					using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+					{
+						// get EXIF data
+						ExifInfo exif = format.GetExifInfo();
+
+						exif.UserComment = "New User Comment";
+						exif.BodySerialNumber = "New Body Serial Number";
+						exif.CameraOwnerName = "New Camera Owner Name";
+
+						// update EXIF info
+						format.UpdateExifInfo(exif);
+
+						// commit changes and save output file
+						format.Save(stream);
+					}
+					// The stream is still open here
+				}
+			}
+		}
 
         public static class Psd
         {
@@ -2925,7 +3100,27 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // The stream is still open here
                 }
             }
-        }
+			/// <summary>
+			/// Read EXIF Metadata
+			/// This feature is supported by version 18.8 or higher.
+			/// </summary>
+			public static void ReadEXIFMetadata()
+			{
+				using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
+				{
+					ExifInfo exif = format.GetExifInfo();
+					if (exif != null)
+					{
+						foreach (TiffTag tag in exif.Tags)
+						{
+							Console.WriteLine(tag.DefinedTag);
+							Console.WriteLine(tag.TagType);
+							Console.WriteLine(tag.GetFormattedValue());
+						}
+					}
+				}
+			}
+		}
 
         public static class Cad
         {
