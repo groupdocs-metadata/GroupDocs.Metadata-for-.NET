@@ -571,7 +571,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // inspect document
-                        //InspectionResult inspectionResult = docFormat.InspectDocument();
                         DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                         // display comments
@@ -626,9 +625,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
                     {
 
-                        // inspect document
-                        //InspectionResult inspectionResult = docFormat.InspectDocument();
-                        DocInspectionResult inspectionResult = docFormat.InspectDocument();
+						// inspect document
+						DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                         // if merge fields are presented
                         if (inspectionResult.Fields.Length > 0)
@@ -836,8 +834,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // if document contains digital signatures
                     if (docFormat.HasDigitalSignatures)
                     {
-                        // then inspect it
-                        var inspectionResult = docFormat.InspectDocument();
+						// then inspect it
+						DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                         // and get digital signatures
                         DigitalSignature[] signatures = inspectionResult.DigitalSignatures;
@@ -950,7 +948,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
             /// <summary>
             /// Read Image cover from EPUB format
-            /// Feature is supported in version 18.2 or greater of the API
+            /// Feature is supported in version 18.9 or greater of the API
             /// </summary>
             public static void ReadImageCover()
             {
@@ -959,31 +957,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // open EPUB file
                     using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        // read image cover as array of bytes
-                        byte[] imageCoverData = epub.GetImageCoverBytes();
-
-                        // check if cover is exist
-                        if (imageCoverData != null)
-                        {
-                            // create stream
-                            using (MemoryStream stream = new MemoryStream(imageCoverData))
-                            {
-                                // get image type
-                                using (ImageFormat image = ImageFormat.FromStream(stream))
-                                {
-
-                                    // display MIME type
-                                    Console.WriteLine("Image type: {0}", image.MIMEType);
-
-                                    // display dimensions
-                                    Console.WriteLine("width: {0}, height: {1}", image.Width, image.Height);
-
-                                    // and store it to the file system
-                                    image.Save(string.Format(Common.MapSourceFilePath(filePath), image.Type)); 
-                                }
-                            }
-                        }
-                    }
+						ThumbnailMetadata thumbnail = epub.ReadThumbnail();
+						if (thumbnail != null)
+						{
+							Console.WriteLine(thumbnail.ImageData.Length);
+							Console.WriteLine(thumbnail.MimeType);
+						}
+					}
 
                 }
                 catch (Exception exp)
@@ -2231,23 +2211,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    //ExStart:GetContentTypeDocumentPropertiesXlsFormat
                     // initialize XlsFormat
                     using (XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath)))
                     {
-
-                        // get xls properties
-                        XlsMetadata xlsProperties = xlsFormat.DocumentProperties;
-
-                        // get content properties
-                        XlsContentProperty[] contentProperties = xlsProperties.ContentTypeProperties;
-
-                        foreach (XlsContentProperty property in contentProperties)
-                        {
-                            Console.WriteLine("Property: {0}, value: {1}, type: {2}", property.Name, property.Value, property.PropertyType);
-                        } 
-                    }
-                    //ExEnd:GetContentTypeDocumentPropertiesXlsFormat
+						foreach (XlsContentProperty property in xlsFormat.DocumentProperties.ContentTypeProperties)
+						{
+							Console.WriteLine(property.GetFormattedValue());
+						}
+					}
                 }
                 catch (Exception exp)
                 {

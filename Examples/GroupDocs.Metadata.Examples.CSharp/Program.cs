@@ -157,7 +157,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 			//Documents.Xls.RemoveHiddenData();
 
 			//Gets Content type document properties in Xls file
-			//Documents.Xls.GetContentTypeDocumentProperties()
+			//Documents.Xls.GetContentTypeDocumentProperties();
 
 			//Export content type properties of Xls file to Csv/Xls
 			//Documents.Xls.ContentTypePropertiesExport();
@@ -304,8 +304,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
 			//Get XMP properties of Gif image
 			//Images.Gif.GetXMPProperties();
 
+			//Get XMP properties of Gif image using Stream
+			//Images.Gif.GetXMPPropertiesUsingStream();
+
 			//Update XMP properties of Gif image
 			//Images.Gif.UpdateXMPProperties();
+
+			//Update XMP properties of Gif image using Stream
+			//Images.Gif.UpdateXMPPropertiesUsingStream();
 
 			//Remove XMP properties of Gif image
 			//Images.Gif.RemoveXMPProperties();
@@ -492,6 +498,18 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
 			//Extract Values of Certain Tiff Tags 
 			//Images.Tiff.ExtractSpecificTiffTags();
+
+			//Update Exif Info of Tiff image using shortcut properties
+			//Images.Tiff.UpdateExifMetadataUsingShortcutProperties();
+
+			//Update Exif Info of Tiff image by replacing tag collection 
+			//Images.Tiff.UpdateExifMetadatByReplacingTagCollection();
+
+			//Update Exif IFD Tags of Tiff image using shortcut properties
+			//Images.Tiff.UpdateExifIFDTagsUsingShortcutProperties();
+
+			//Update Exif IFD Tags of Tiff image by replacing tag collection 
+			//Images.Tiff.UpdateExifIFDTagsByReplacingTagCollection();
 
 			#endregion
 

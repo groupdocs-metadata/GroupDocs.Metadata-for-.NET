@@ -1709,10 +1709,36 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-            /// <summary>
-            /// Updates XMP data of Gif file and creates output file
-            /// </summary> 
-            public static void UpdateXMPProperties()
+			/// <summary>
+			/// Gets XMP properties of Gif file using Stream
+			/// </summary> 
+			public static void GetXMPPropertiesUsingStream()
+			{
+				using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+				{
+					using (GifFormat format = new GifFormat(stream))
+					{
+						// Working with metadata
+						if (format.IsSupportedXmp)
+						{
+							// get XMP data
+							XmpProperties xmpProperties = format.GetXmpProperties();
+
+							// show XMP data
+							foreach (string key in xmpProperties.Keys)
+							{
+								XmpNodeView xmpNodeView = xmpProperties[key];
+								Console.WriteLine("[{0}] = {1}", xmpNodeView.Name, xmpNodeView.Value);
+							}
+						}
+					}
+					// The stream is still open here
+				}
+			}
+			/// <summary>
+			/// Updates XMP data of Gif file and creates output file
+			/// </summary> 
+			public static void UpdateXMPProperties()
             {
                 try
                 {
@@ -2094,7 +2120,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(ex.Message);
                 }
             }
-        }
+
+			
+		}
 
         public static class Png
         {
@@ -2494,19 +2522,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize TiffFormat
                     using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
-
-                        // get EXIF data
-                        ExifInfo exif = tiffFormat.GetExifInfo();
-
-                        exif.UserComment = "New User Comment";
-                        exif.BodySerialNumber = "New Body Serial Number";
-                        exif.CameraOwnerName = "New Camera Owner Name";
-
-                        // update EXIF info
-                        tiffFormat.UpdateExifInfo(exif);
-
-                        // commit changes and save output file
-                        tiffFormat.Save(Common.MapDestinationFilePath(filePath)); 
+						tiffFormat.ExifValues.ExifIfdData.UserComment = "test comment";
+						tiffFormat.ExifValues.ExifIfdData.BodySerialNumber = "1010101010";
+						// commit changes and save output file
+						tiffFormat.Save(Common.MapDestinationFilePath(filePath)); 
                     }
                     //ExEnd:UpdateExifPropertiesTiffImage
                 }
@@ -2850,18 +2869,73 @@ namespace GroupDocs.Metadata.Examples.CSharp
 					{
 						// get EXIF data
 						ExifInfo exif = format.GetExifInfo();
-
-						exif.UserComment = "New User Comment";
-						exif.BodySerialNumber = "New Body Serial Number";
-						exif.CameraOwnerName = "New Camera Owner Name";
-
-						// update EXIF info
-						format.UpdateExifInfo(exif);
-
-						// commit changes and save output file
+						format.ExifValues.ExifIfdData.UserComment = "test comment";
+						format.ExifValues.ExifIfdData.BodySerialNumber = "1010101010";
 						format.Save(stream);
 					}
 					// The stream is still open here
+				}
+			}
+			/// <summary>
+			/// Update Exif Metadata Using Shortcut Properties
+			/// This method is supported by version 18.9 or greater
+			/// </summary>
+			public static void UpdateExifMetadataUsingShortcutProperties()
+			{
+				using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+				{
+					format.ExifValues.Artist = "GroupDocs";
+					format.ExifValues.Software = "GroupDocs.Metadata";
+
+					format.Save(Common.MapDestinationFilePath(filePath));
+				}
+			}
+			/// <summary>
+			/// Update Exif Metadata By Replacing Tag Collection 
+			/// This method is supported by version 18.9 or greater
+			/// </summary>
+			public static void UpdateExifMetadatByReplacingTagCollection()
+			{
+				using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+				{
+					TiffTag[] tags = new TiffTag[]
+					{
+						new TiffAsciiTag(TiffTagIdEnum.Artist, "GroupDocs"),
+						new TiffAsciiTag(TiffTagIdEnum.Copyright, "GroupDocs.Metadata"),
+					};
+					format.ExifValues.Tags = tags;
+
+					format.Save(Common.MapDestinationFilePath(filePath));
+				}
+			}
+			/// <summary>
+			/// Update Exif IFD Tags of Tiff image using shortcut properties
+			/// This method is supported by version 18.9 or greater
+			/// </summary>
+			public static void UpdateExifIFDTagsUsingShortcutProperties()
+			{
+				using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+				{
+					format.ExifValues.ExifIfdData.UserComment = "test comment";
+					format.ExifValues.ExifIfdData.BodySerialNumber = "1010101010";
+					format.Save(Common.MapDestinationFilePath(filePath));
+				}
+			}
+			/// <summary>
+			/// //Update Exif IFD Tags of Tiff image by replacing tag collection 
+			/// This method is supported by version 18.9 or greater
+			/// </summary>
+			public static void UpdateExifIFDTagsByReplacingTagCollection()
+			{
+				using (TiffFormat format = new TiffFormat(Common.MapSourceFilePath(filePath)))
+				{
+					TiffTag[] tags = new TiffTag[]
+					{
+						new TiffAsciiTag((TiffTagIdEnum)42032, "test camera owner"), // CameraOwnerName
+						new TiffAsciiTag((TiffTagIdEnum)42033, "test body serial number"), // BodySerialNumber
+					};
+					format.ExifValues.ExifIfdData.Tags = tags;
+					format.Save(Common.MapDestinationFilePath(filePath));
 				}
 			}
 		}
