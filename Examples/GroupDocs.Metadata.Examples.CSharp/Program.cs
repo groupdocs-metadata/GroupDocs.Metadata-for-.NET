@@ -14,878 +14,905 @@ namespace GroupDocs.Metadata.Examples.CSharp
     {
         static void Main(string[] args)
         {
-			/* Apply product license
+            /* Apply product license
              * Uncomment following function if you have product license.
              */
-			//Common.ApplyLicense();
+            Common.ApplyLicense();
 
-			#region using Dynabic.Metered Account
-			//Common.UseDynabicMeteredAccount();
-			#endregion
+            #region using Dynabic.Metered Account
+            //Common.UseDynabicMeteredAccount();
+            #endregion
 
-			#region Working with Documents
+            #region Working with Documents
 
-			#region Working with Doc Files
+            #region Working with Doc Files
 
-			//Get document properties of Doc file
-			//Documents.Doc.GetDocumentProperties();
+            //Get document properties of Doc file
+            //Documents.Doc.GetDocumentProperties();
 
-			//Update document properties of Doc file
-			//Documents.Doc.UpdateDocumentProperties();
+            //Update document properties of Doc file
+            //Documents.Doc.UpdateDocumentProperties();
 
-			//Remove document properties of Doc file
-			//Documents.Doc.RemoveDocumentProperties();
+            //Remove document properties of Doc file
+            //Documents.Doc.RemoveDocumentProperties();
 
-			//Add custom property in Doc file
-			////Documents.Doc.AddCustomProperty();
+            //Add custom property in Doc file
+            ////Documents.Doc.AddCustomProperty();
 
-			//Get custom properties in Doc file
-			////Documents.Doc.GetCustomProperties();
+            //Get custom properties in Doc file
+            ////Documents.Doc.GetCustomProperties();
 
-			//Get hidden fields, merge fields and comments in Doc file
-			////Documents.Doc.GetHiddenData();
+            //Get hidden fields, merge fields and comments in Doc file
+            ////Documents.Doc.GetHiddenData();
 
-			//Remove merge fields in Doc file
-			////Documents.Doc.RemoveMergeFields();
+            //Remove merge fields in Doc file
+            ////Documents.Doc.RemoveMergeFields();
 
-			//Remove custom property of Doc file
-			////Documents.Doc.RemoveCustomProperties();
+            //Remove custom property of Doc file
+            ////Documents.Doc.RemoveCustomProperties();
 
-			//Clear custom property of Doc file
-			////Documents.Doc.ClearCustomProperties();
+            //Clear custom property of Doc file
+            ////Documents.Doc.ClearCustomProperties();
 
-			//Remove document comments
-			////Documents.Doc.RemoveComments();
+            //Remove document comments
+            ////Documents.Doc.RemoveComments();
 
-			//Update document comments
-			////Documents.Doc.UpdateComments();
+            //Update document comments
+            ////Documents.Doc.UpdateComments();
 
-			//update metadata and save the original file
-			////Documents.Doc.SaveFileAfterMetadataUpdate();
+            //update metadata and save the original file
+            ////Documents.Doc.SaveFileAfterMetadataUpdate();
 
-			//Read all metadata Keys of word document
-			//Documents.Doc.ReadMetadataUsingKeys("Different Formats");
+            //Read all metadata Keys of word document
+            //Documents.Doc.ReadMetadataUsingKeys("Different Formats");
 
-			//Read Document info of a word document
-			//Documents.Doc.ReadDocumentInfo();
+            //Read Document info of a word document
+            //Documents.Doc.ReadDocumentInfo();
 
-			//Display file type of the word document
-			//Documents.Doc.DisplayFileType();
+            //Display file type of the word document
+            //Documents.Doc.DisplayFileType();
 
-			//Read Digital Signature from word document
-			//Documents.Doc.ReadDigitalSignature();
+            //Read Digital Signature from word document
+            //Documents.Doc.ReadDigitalSignature();
 
-			//Remove Digital Signature from word document
-			//Documents.Doc.RemoveDigitalSignature();
+            //Remove Digital Signature from word document
+            //Documents.Doc.RemoveDigitalSignature();
 
-			//Read all track changes in word document
-			//Documents.Doc.ReadAllRevisions();
+            //Read all track changes in word document
+            //Documents.Doc.ReadAllRevisions();
 
-			//Accept all changes in a revision
-			//Documents.Doc.AcceptAllChanges();
+            //Accept all changes in a revision
+            //Documents.Doc.AcceptAllChanges();
 
-			//Reject all changes in a revision
-			//Documents.Doc.RejectAllChanges();
+            //Reject all changes in a revision
+            //Documents.Doc.RejectAllChanges();
 
-			//Read DublinCore Metadata
-			//Documents.Doc.ReadDublinCoreMetadata();
+            //Read DublinCore Metadata
+            //Documents.Doc.ReadDublinCoreMetadata();
 
-			//Read ImageCover using Metadata Utility
-			//Documents.Doc.ReadImageCoverMetadataUtility();
+            //Read ImageCover using Metadata Utility
+            //Documents.Doc.ReadImageCoverMetadataUtility();
 
-			//Find Metadata Using Regex
-			//Documents.Doc.FindMetadataUsingRegex();
+            //Find Metadata Using Regex
+            //Documents.Doc.FindMetadataUsingRegex();
 
-			//Replace Metadata Using Regex
-			//Documents.Doc.ReplaceMetadataUsingRegex();
-			#endregion
+            //Replace Metadata Using Regex
+            //Documents.Doc.ReplaceMetadataUsingRegex();
+            #endregion
 
-			#region Working with Ppt Files
+            #region Working with Ppt Files
 
-			//Get document properties of Ppt file
-			//Documents.Ppt.GetDocumentProperties();
+            //Get document properties of Ppt file
+            //Documents.Ppt.GetDocumentProperties();
 
-			//Update document properties of Ppt file
-			//Documents.Ppt.UpdateDocumentProperties();
+            //Update document properties of Ppt file
+            //Documents.Ppt.UpdateDocumentProperties();
 
-			//Remove document properties of Ppt file
-			//Documents.Ppt.RemoveDocumentProperties();
+            //Remove document properties of Ppt file
+            //Documents.Ppt.RemoveDocumentProperties();
 
-			//Add custom property in Ppt file
-			//Documents.Ppt.AddCustomProperty();
+            //Add custom property in Ppt file
+            //Documents.Ppt.AddCustomProperty();
 
-			//Get custom properties in Ppt file
-			//Documents.Ppt.GetCustomProperties();
+            //Get custom properties in Ppt file
+            //Documents.Ppt.GetCustomProperties();
 
-			//Remove custom property of Ppt file
-			//Documents.Ppt.RemoveCustomProperties();
+            //Remove custom property of Ppt file
+            //Documents.Ppt.RemoveCustomProperties();
 
-			//Gets Comments, and Hidden Slides of Ppt file
-			//Documents.Ppt.GetHiddenData();
+            //Gets Comments, and Hidden Slides of Ppt file
+            //Documents.Ppt.GetHiddenData();
 
-			//Removes Comments, and Hidden Slides of Ppt File
-			//Documents.Ppt.RemoveHiddenData();
+            //Removes Comments, and Hidden Slides of Ppt File
+            //Documents.Ppt.RemoveHiddenData();
 
-			//Reads document properties faster
-			//Documents.Ppt.ImprovedMetadataReading();
-			#endregion
+            //Reads document properties faster
+            //Documents.Ppt.ImprovedMetadataReading();
+            #endregion
 
-			#region Working with Xls Files
+            #region Working with Xls Files
 
-			//Get document properties of Xls file
-			//Documents.Xls.GetDocumentProperties();
+            //Get document properties of Xls file
+            //Documents.Xls.GetDocumentProperties();
 
-			//Update document properties of Xls file
-			//Documents.Xls.UpdateDocumentProperties();
+            //Update document properties of Xls file
+            //Documents.Xls.UpdateDocumentProperties();
 
-			//Remove document properties of Xls file
-			//Documents.Xls.RemoveDocumentProperties();
+            //Remove document properties of Xls file
+            //Documents.Xls.RemoveDocumentProperties();
 
-			//Add custom property in Xls file
-			//Documents.Xls.AddCustomProperty();
+            //Add custom property in Xls file
+            //Documents.Xls.AddCustomProperty();
 
-			//Get custom properties in Xls file
-			//Documents.Xls.GetCustomProperties();
+            //Get custom properties in Xls file
+            //Documents.Xls.GetCustomProperties();
 
-			//Remove custom property of Xls file
-			//Documents.Xls.RemoveCustomProperties();
+            //Remove custom property of Xls file
+            //Documents.Xls.RemoveCustomProperties();
 
-			//Get Comments and Hidden Sheets in Xls file
-			//Documents.Xls.GetHiddenData();
+            //Get Comments and Hidden Sheets in Xls file
+            //Documents.Xls.GetHiddenData();
 
-			//Remove HiddenSheets and Comments in Xls file
-			//Documents.Xls.RemoveHiddenData();
+            //Remove HiddenSheets and Comments in Xls file
+            //Documents.Xls.RemoveHiddenData();
 
-			//Gets Content type document properties in Xls file
-			//Documents.Xls.GetContentTypeDocumentProperties()
+            //Gets Content type document properties in Xls file
+            //Documents.Xls.GetContentTypeDocumentProperties();
 
-			//Export content type properties of Xls file to Csv/Xls
-			//Documents.Xls.ContentTypePropertiesExport();
+            //Export content type properties of Xls file to Csv/Xls
+            //Documents.Xls.ContentTypePropertiesExport();
 
-			//Add content type properties
-			//Documents.Xls.AddContentTypeProperty();
+            //Add content type properties
+            //Documents.Xls.AddContentTypeProperty();
 
-			//Reads thumnail in excel file
-			//Documents.Xls.ReadThumbnailXls();
+            //Reads thumnail in excel file
+            //Documents.Xls.ReadThumbnailXls();
 
-			//Read ImageCover using MetadataUtility
-			//Documents.Xls.ReadImageCoverMetadataUtility();
+            //Read ImageCover using MetadataUtility
+            //Documents.Xls.ReadImageCoverMetadataUtility();
 
-			#endregion
+            #endregion
 
-			#region Working with Pdf Files
+            #region Working with Pdf Files
 
-			//Get document properties of Pdf file
-			//Documents.Pdf.GetDocumentProperties();
+            //Get document properties of Pdf file
+            //Documents.Pdf.GetDocumentProperties();
 
-			//Update document properties of Pdf file
-			//Documents.Pdf.UpdateDocumentProperties();
+            //Update document properties of Pdf file
+            //Documents.Pdf.UpdateDocumentProperties();
 
-			//Remove document properties of Pdf file
-			//Documents.Pdf.RemoveDocumentProperties();
+            //Remove document properties of Pdf file
+            //Documents.Pdf.RemoveDocumentProperties();
 
-			//Add custom property in Pdf file
-			//Documents.Pdf.AddCustomProperty();
+            //Add custom property in Pdf file
+            //Documents.Pdf.AddCustomProperty();
 
-			//Get custom properties in Pdf file
-			//Documents.Pdf.GetCustomProperties();
+            //Get custom properties in Pdf file
+            //Documents.Pdf.GetCustomProperties();
 
-			//Remove custom property of Pdf file
-			//Documents.Pdf.RemoveCustomProperties();
+            //Remove custom property of Pdf file
+            //Documents.Pdf.RemoveCustomProperties();
 
-			//Get XMP data in Pdf file
-			//Documents.Pdf.GetXMPProperties();
+            //Get XMP data in Pdf file
+            //Documents.Pdf.GetXMPProperties();
 
-			//Read all XMP Keys in Pdf file
-			//Documents.Pdf.GetXMPPropertiesUsingKey("Different Formats");
+            //Read all XMP Keys in Pdf file
+            //Documents.Pdf.GetXMPPropertiesUsingKey("Different Formats");
 
-			//Update XMP data in Pdf file
-			//Documents.Pdf.UpdateXMPProperties();
+            //Update XMP data in Pdf file
+            //Documents.Pdf.UpdateXMPProperties();
 
-			//Remove hidden data in Pdf file
-			//Documents.Pdf.RemoveHiddenData();
+            //Remove hidden data in Pdf file
+            //Documents.Pdf.RemoveHiddenData();
 
-			//Loads only existing metadata keys
-			//Documents.Pdf.LoadExistingMetadataKeys();
+            //Loads only existing metadata keys
+            //Documents.Pdf.LoadExistingMetadataKeys();
 
-			//Read DublinCore Metadata
-			//Documents.Pdf.ReadDublinCoreMetadata();
+            //Read DublinCore Metadata
+            //Documents.Pdf.ReadDublinCoreMetadata();
 
-			#endregion
+            #endregion
 
-			#region Working with OneNote Files
+            #region Working with OneNote Files
 
-			//Get metadata of OneNote file
-			//Documents.OneNote.GetMetadata();
+            //Get metadata of OneNote file
+            //Documents.OneNote.GetMetadata();
 
-			//Get Pages Info of OneNote file 
-			//Documents.OneNote.GetPagesInfo();
+            //Get Pages Info of OneNote file 
+            //Documents.OneNote.GetPagesInfo();
 
-			#endregion
+            #endregion
 
-			#region Working with MSVisio Files
+            #region Working with MSVisio Files
 
-			//Set metadata of MSVisio File
-			//Documents.MSVisio.SetProperties();
+            //Set metadata of MSVisio File
+            //Documents.MSVisio.SetProperties();
 
-			//Get metadata of MSVisio file
-			//Documents.OneNote.GetMetadata();
+            //Get metadata of MSVisio file
+            //Documents.OneNote.GetMetadata();
 
-			#endregion
+            #endregion
 
-			#region Working with Odt files
-			//Read metadata of odt File
-			//Documents.ODT.GetOdtMetadata();
-			//Update metadata of odt file
-			//Documents.ODT.UpdateOdtMetadata();
-			#endregion
+            #region Working with Odt files
+            //Read metadata of odt File
+            //Documents.ODT.GetOdtMetadata();
+            //Update metadata of odt file
+            //Documents.ODT.UpdateOdtMetadata();
+            #endregion
 
-			#region Working with EPUB
-			//Detects EPUB file format
-			//Documents.EPUB.DetectEPUBFormat();
-			//Read EPUB file format metadata
-			//Documents.EPUB.ReadEPUBFormatMetadata();
-			//Read Dublin Core Metadata
-			//Documents.EPUB.ReadDublinCoreMetadata();
-			//Read Image cover from EPUB Format 
-			//Documents.EPUB.ReadImageCover();
-			//Read Image Cover using Metadata Utility
-			//Documents.EPUB.ReadImageCoverMetadataUtility();
-			//Read version of EPUB Package
-			//Documents.EPUB.ReadEPUBPackageVersion();
-			//Read DublinCore Metadata using unified approach
-			//Documents.EPUB.ReadDublinCoreMetadataUtility();
-			//Get Torrent Metadata Using Stream
-			//Documents.EPUB.GetMetadataUsingStream();
+            #region Working with EPUB
+            //Detects EPUB file format
+            //Documents.EPUB.DetectEPUBFormat();
+            //Read EPUB file format metadata
+            //Documents.EPUB.ReadEPUBFormatMetadata();
+            //Read Dublin Core Metadata
+            //Documents.EPUB.ReadDublinCoreMetadata();
+            //Read Image cover from EPUB Format 
+            //Documents.EPUB.ReadImageCover();
+            //Read Image Cover using Metadata Utility
+            //Documents.EPUB.ReadImageCoverMetadataUtility();
+            //Read version of EPUB Package
+            //Documents.EPUB.ReadEPUBPackageVersion();
+            //Read DublinCore Metadata using unified approach
+            //Documents.EPUB.ReadDublinCoreMetadataUtility();
+            //Get Torrent Metadata Using Stream
+            //Documents.EPUB.GetMetadataUsingStream();
 
-			#endregion
+            #endregion
 
-			#region Working with ODS files
-			//Documents.ODS.ReadOdsMetadata();
-			#endregion
+            #region Working with ODS files
+            //Documents.ODS.ReadOdsMetadata();
+            #endregion
 
-			#region Working with MS Project files
-			//Get MS Project Metadata 
-			//Documents.MSProject.GetMetadata();
-			//Update MS Project Metadata
-			//Documents.MSProject.UpdateMetadata();
-			//Clean MS Project Metadata
-			//Documents.MSProject.CleanMetadata();     
-			//Documents.MSProject.UpdateMetadataUsingStream();
-			#endregion
+            #region Working with MS Project files
+            //Get MS Project Metadata 
+            //Documents.MSProject.GetMetadata();
+            //Update MS Project Metadata
+            //Documents.MSProject.UpdateMetadata();
+            //Clean MS Project Metadata
+            //Documents.MSProject.CleanMetadata();     
+            //Documents.MSProject.UpdateMetadataUsingStream();
+            #endregion
 
-			//Reads thumbnail in documents
-			//Documents.ReadThumbnail("Documents/Doc/sample.docx");
+            //Reads thumbnail in documents
+            //Documents.ReadThumbnail("Documents/Doc/sample.docx");
 
-			//Loads DocumentInfo property in DocumentFormat using lazy loading pattern
-			//Documents.LazyLoadDocumentInfoProperty("Documents/Doc/sample2.doc");
-			#endregion
+            //Loads DocumentInfo property in DocumentFormat using lazy loading pattern
+            //Documents.LazyLoadDocumentInfoProperty("Documents/Doc/sample2.doc");
+            #endregion
 
-			#region Working with Images
+            #region Working with Images
 
-			#region Working with Jpeg2000
+            #region Working with Jpeg2000
 
-			//Get XMP properties of Jpeg2000 image
-			//Images.JP2.GetXMPProperties();
+            //Get XMP properties of Jpeg2000 image
+            //Images.JP2.GetXMPProperties();
 
-			//Update XMP properties of Jpeg2000 image
-			//Images.JP2.UpdateXMPProperties();
+            //Update XMP properties of Jpeg2000 image
+            //Images.JP2.UpdateXMPProperties();
 
-			//Read Metadata of JP2 Format
-			//Images.JP2.ReadMetadataJP2();
+            //Read Metadata of JP2 Format
+            //Images.JP2.ReadMetadataJP2();
 
-			//Remove XMP properties of Jpeg2000 image
-			//Images.JP2.RemoveXMPData();
+            //Remove XMP properties of Jpeg2000 image
+            //Images.JP2.RemoveXMPData();
 
-			#endregion
+            #endregion
 
-			#region Working with Gif
+            #region Working with Gif
 
-			//Get XMP properties of Gif image
-			//Images.Gif.GetXMPProperties();
+            //Get XMP properties of Gif image
+            //Images.Gif.GetXMPProperties();
 
-			//Update XMP properties of Gif image
-			//Images.Gif.UpdateXMPProperties();
+            //Get XMP properties of Gif image using Stream
+            //Images.Gif.GetXMPPropertiesUsingStream();
 
-			//Remove XMP properties of Gif image
-			//Images.Gif.RemoveXMPProperties();
+            //Update XMP properties of Gif image
+            //Images.Gif.UpdateXMPProperties();
 
-			//Remove Medatadata of Gif image 
-			//Images.Gif.RemoveMetadata();
+            //Update XMP properties of Gif image using Stream
+            //Images.Gif.UpdateXMPPropertiesUsingStream();
 
-			//Find XMP Metadata Using Regex
-			//Images.Gif.FindXmpMetadataUsingRegex();
+            //Remove XMP properties of Gif image
+            //Images.Gif.RemoveXMPProperties();
 
-			//Update XMP Metadata Using Regex
-			//Images.Gif.ReplaceXmpMetadataUsingRegex();
+            //Remove Medatadata of Gif image 
+            //Images.Gif.RemoveMetadata();
 
-			#endregion
+            //Find XMP Metadata Using Regex
+            //Images.Gif.FindXmpMetadataUsingRegex();
 
-			#region Working with Jpeg
+            //Update XMP Metadata Using Regex
+            //Images.Gif.ReplaceXmpMetadataUsingRegex();
 
-			//Get XMP properties of Jpeg image
-			//Images.Jpeg.GetXMPProperties();
+            #endregion
 
-			//Get XMP Properties using Stream
-			//mages.Jpeg.GetXMPPropertiesUsingStream();
+            #region Working with Jpeg
 
-			//Update XMP properties of Jpeg image
-			//Images.Jpeg.UpdateXMPProperties();
+            //Get XMP properties of Jpeg image
+            //Images.Jpeg.GetXMPProperties();
 
-			//Update XMP properties of using Stream
-			//Images.Jpeg.UpdateXMPPropertiesUsingStream();
+            //Get XMP Properties using Stream
+            //mages.Jpeg.GetXMPPropertiesUsingStream();
 
-			//Update Camera Raw XMP values of Jpeg image
-			//Images.Jpeg.UpdateCameraRawXMPProperties();
+            //Update XMP properties of Jpeg image
+            //Images.Jpeg.UpdateXMPProperties();
 
-			//Update Pagged Text XMP values of Jpeg image
-			//Images.Jpeg.UpdatePagedTextXMPProperties();
+            //Update XMP properties of using Stream
+            //Images.Jpeg.UpdateXMPPropertiesUsingStream();
 
-			//Update Basic Job XMP properties of Jpeg image
-			//Images.Jpeg.UpdateBasicJobXMPProperties();
+            //Update Camera Raw XMP values of Jpeg image
+            //Images.Jpeg.UpdateCameraRawXMPProperties();
 
-			//Update thumbnail in XMP data of Jpeg image
-			//Images.Jpeg.UpdateThumbnailInXMPData();
+            //Update Pagged Text XMP values of Jpeg image
+            //Images.Jpeg.UpdatePagedTextXMPProperties();
 
-			//Remove XMP properties of Jpeg image
-			//Images.Jpeg.RemoveXMPData();
+            //Update Basic Job XMP properties of Jpeg image
+            //Images.Jpeg.UpdateBasicJobXMPProperties();
 
-			//Get Exif Info of Jpeg image
-			//Images.Jpeg.GetExifInfo();
+            //Update thumbnail in XMP data of Jpeg image
+            //Images.Jpeg.UpdateThumbnailInXMPData();
 
-			//Update Exif Info of Jpeg image
-			//Images.Jpeg.UpdateExifInfo();
+            //Remove XMP properties of Jpeg image
+            //Images.Jpeg.RemoveXMPData();
 
-			//Update Exif Info of Jpeg image using properties
-			//Images.Jpeg.UpdateExifInfoUsingProperties();
+            //Get Exif Info of Jpeg image
+            //Images.Jpeg.GetExifInfo();
 
-			//Delete Exif data faster
-			//Images.Jpeg.FastRemoveExifData();
+            //Update Exif Info of Jpeg image
+            //Images.Jpeg.UpdateExifInfo();
 
-			//Update Exif data faster
-			//Images.Jpeg.FasterUpdateExifData();
+            //Update Exif Info of Jpeg image using properties
+            //Images.Jpeg.UpdateExifInfoUsingProperties();
 
-			//Remove GPS Info of Jpeg image
-			//Images.Jpeg.RemoveGPSData();
+            //Delete Exif data faster
+            //Images.Jpeg.FastRemoveExifData();
 
-			//Remove Exif Info of Jpeg image
-			//Images.Jpeg.RemoveExifInfo();
+            //Update Exif data faster
+            //Images.Jpeg.FasterUpdateExifData();
 
-			//Read IPTC properties in Jpeg image
-			//Images.Jpeg.GetIPTCMetadata();
+            //Remove GPS Info of Jpeg image
+            //Images.Jpeg.RemoveGPSData();
 
-			//Read IPTC XMP metadata in Jpeg image
-			//Images.Jpeg.GetIPTCPhotoMetadataFromXMP();
+            //Remove Exif Info of Jpeg image
+            //Images.Jpeg.RemoveExifInfo();
 
-			//Update IPTC XMP metadata in Jpeg image
-			//Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP();
+            //Read IPTC properties in Jpeg image
+            //Images.Jpeg.GetIPTCMetadata();
 
-			//Update IPTC metadata in Jpeg image
-			//Images.Jpeg.UpdateIPTCMetadataOfJPEG();
+            //Read IPTC XMP metadata in Jpeg image
+            //Images.Jpeg.GetIPTCPhotoMetadataFromXMP();
 
-			//Remove IPTC metadata in Jpeg image
-			//Images.Jpeg.RemoveIPTCMetadataOfJPEG();
+            //Update IPTC XMP metadata in Jpeg image
+            //Images.Jpeg.UpdateIPTCPhotoMetadataFromXMP();
 
-			//Detects Bar-Codes in teh Jpeg Image
-			//Images.Jpeg.DetectBarcodeinJpeg();
+            //Update IPTC metadata in Jpeg image
+            //Images.Jpeg.UpdateIPTCMetadataOfJPEG();
 
-			// Read Specific Exif tag
-			//Images.Jpeg.ReadExifTag();
+            //Remove IPTC metadata in Jpeg image
+            //Images.Jpeg.RemoveIPTCMetadataOfJPEG();
 
-			// Read All Exif tags
-			//Images.Jpeg.ReadAllExifTags();
+            //Detects Bar-Codes in teh Jpeg Image
+            //Images.Jpeg.DetectBarcodeinJpeg();
 
-			// Read Image Resource Blocks
-			//Images.Jpeg.ReadImageResourceBlocks();
+            // Read Specific Exif tag
+            //Images.Jpeg.ReadExifTag();
 
-			// Remove Photoshop Metadata 
-			//Images.Jpeg.RemovePhotoshopMetadata();
+            // Read All Exif tags
+            //Images.Jpeg.ReadAllExifTags();
 
-			//Read Sony maker notes
-			//Images.Jpeg.ReadSonyMakerNotes();
+            // Read Image Resource Blocks
+            //Images.Jpeg.ReadImageResourceBlocks();
 
-			//Read Nikon maker notes
-			//Images.Jpeg.ReadNikonMakerNotes();
+            // Remove Photoshop Metadata 
+            //Images.Jpeg.RemovePhotoshopMetadata();
 
-			//Read Canon maker notes
-			//Images.Jpeg.ReadCanonMakerNotes();
+            //Read Sony maker notes
+            //Images.Jpeg.ReadSonyMakerNotes();
 
-			//Read Panasonic maker notes
-			//Images.Jpeg.ReadPanasonicMakerNotes();
+            //Read Nikon maker notes
+            //Images.Jpeg.ReadNikonMakerNotes();
 
-			//Update additional IFD tags 
-			//Images.Jpeg.UpdateIfdTags();
+            //Read Canon maker notes
+            //Images.Jpeg.ReadCanonMakerNotes();
 
-			//Add or update Tiff tags in exif in jpeg file
-			//Images.Jpeg.AddUpdateTiffTagsInExif();
+            //Read Panasonic maker notes
+            //Images.Jpeg.ReadPanasonicMakerNotes();
 
-			//Reads SRational TIFF tag in JPEG and TIFF image formats
-			//Images.Jpeg.ReadSRationalTifftag();
+            //Update additional IFD tags 
+            //Images.Jpeg.UpdateIfdTags();
 
-			//The method loads and save EXIF metadata with better speed
-			//Images.Jpeg.EXIFMetadataWithBetterSpeed();
+            //Add or update Tiff tags in exif in jpeg file
+            //Images.Jpeg.AddUpdateTiffTagsInExif();
 
-			//Find EXIF Metadata using regex
-			//Images.Jpeg.FindEXIFMetadataUsingRegex();
+            //Reads SRational TIFF tag in JPEG and TIFF image formats
+            //Images.Jpeg.ReadSRationalTifftag();
 
-			//Replace EXIF Metadata using regex
-			//Images.Jpeg.ReplaceEXIFMetadataUsingRegex();
+            //The method loads and save EXIF metadata with better speed
+            //Images.Jpeg.EXIFMetadataWithBetterSpeed();
 
-			//Get Tiff Tag using Exif Properties 
-			//Images.Jpeg.GetTiffTagsUsingExifProperties();
+            //Find EXIF Metadata using regex
+            //Images.Jpeg.FindEXIFMetadataUsingRegex();
 
-			#endregion
+            //Replace EXIF Metadata using regex
+            //Images.Jpeg.ReplaceEXIFMetadataUsingRegex();
 
-			#region Working with Png
+            //Get Tiff Tag using Exif Properties 
+            //Images.Jpeg.GetTiffTagsUsingExifProperties();
 
-			//Get XMP properties of Png image
-			//Images.Png.GetXMPProperties();
+            #endregion
 
-			//Update XMP properties of Png image
-			//Images.Png.UpdateXMPData();
+            #region Working with Png
 
-			//Update XMP values of Png image
-			//Images.Png.UpdateXMPValues();
+            //Get XMP properties of Png image
+            //Images.Png.GetXMPProperties();
 
-			//Update Camera Raw XMP values of Png image
-			//Images.Png.UpdateCameraRawXMPProperties();
+            //Update XMP properties of Png image
+            //Images.Png.UpdateXMPData();
 
-			//Update Pagged Text XMP values of Png image
-			//Images.Png.UpdatePagedTextXMPProperties();
+            //Update XMP values of Png image
+            //Images.Png.UpdateXMPValues();
 
-			//Remove XMP properties of Png image
-			//Images.Png.RemoveXMPData();
+            //Update Camera Raw XMP values of Png image
+            //Images.Png.UpdateCameraRawXMPProperties();
 
-			#endregion
+            //Update Pagged Text XMP values of Png image
+            //Images.Png.UpdatePagedTextXMPProperties();
 
-			#region Working with Tiff
+            //Remove XMP properties of Png image
+            //Images.Png.RemoveXMPData();
 
-			//Get XMP properties of Tiff image
-			//Images.Tiff.GetXMPProperties();
+            #endregion
 
-			//Get XMP properties of Tiff image using Stream
-			//Images.Tiff.GetXMPPropertiesUsingStream();
+            #region Working with Tiff
 
-			//Read File Directory Tags of Tiff Image
-			//Images.Tiff.ReadTiffFileDirectoryTags();
+            //Get XMP properties of Tiff image
+            //Images.Tiff.GetXMPProperties();
 
-			//Read Exif Info of Tiff image
-			//Images.Tiff.GetExifInfo();
+            //Get XMP properties of Tiff image using Stream
+            //Images.Tiff.GetXMPPropertiesUsingStream();
 
-			//Update Exif Info of Tiff image
-			//Images.Tiff.UpdateExifInfo();
+            //Read File Directory Tags of Tiff Image
+            //Images.Tiff.ReadTiffFileDirectoryTags();
 
-			//Update Exif Info of Tiff Image using Stream
-			//Images.Tiff.UpdateExifInfoUsingStream();
+            //Read Exif Info of Tiff image
+            //Images.Tiff.GetExifInfo();
 
-			//Update Exif Info of Tiff image
-			//Images.Tiff.UpdateExifInfoUsingProperties();
+            //Update Exif Info of Tiff image
+            //Images.Tiff.UpdateExifInfo();
 
-			//Remove Exif Info of Tiff image
-			//Images.Tiff.RemoveExifInfo();
+            //Update Exif Info of Tiff Image using Stream
+            //Images.Tiff.UpdateExifInfoUsingStream();
 
-			// Read IPTC Metadata 
-			//Images.Tiff.ReadIPTCMetadata();
+            //Update Exif Info of Tiff image
+            //Images.Tiff.UpdateExifInfoUsingProperties();
 
-			//Remove XMP Metadata
-			//Images.Tiff.RemoveXMPMetadata();
+            //Remove Exif Info of Tiff image
+            //Images.Tiff.RemoveExifInfo();
 
-			//Extract Values of Certain Tiff Tags 
-			//Images.Tiff.ExtractSpecificTiffTags();
+            // Read IPTC Metadata 
+            //Images.Tiff.ReadIPTCMetadata();
 
-			#endregion
+            //Remove XMP Metadata
+            //Images.Tiff.RemoveXMPMetadata();
 
-			#region Working with Wmf
-			//Get metadata properties of Wmf image
-			//Images.WMF.GetMetadataProperties();
-			#endregion
+            //Extract Values of Certain Tiff Tags 
+            //Images.Tiff.ExtractSpecificTiffTags();
 
-			#region Working with WebP
-			//Get metadata properties of WebP image
-			//Images.WebP.GetMetadataProperties();
-			#endregion
+            //Update Exif Info of Tiff image using shortcut properties
+            //Images.Tiff.UpdateExifMetadataUsingShortcutProperties();
 
-			#region Working with Emf
-			//Get metadata properties of emf image
-			//Images.EMF.GetMetadataProperties();
-			#endregion
+            //Update Exif Info of Tiff image by replacing tag collection 
+            //Images.Tiff.UpdateExifMetadatByReplacingTagCollection();
 
-			#region Working with Djvu
-			//Get metadata properties of emf image
-			//Images.DJVU.GetMetadataProperties();
-			#endregion
+            //Update Exif IFD Tags of Tiff image using shortcut properties
+            //Images.Tiff.UpdateExifIFDTagsUsingShortcutProperties();
 
-			#region Working with BMP images
-			//Get metadata properties of bmp image
-			//Images.BMP.GetMetadataProperties();
-			//Read Header properties of a bmp image
-			//Images.BMP.GetHeaderProperties();
-			#endregion
+            //Update Exif IFD Tags of Tiff image by replacing tag collection 
+            //Images.Tiff.UpdateExifIFDTagsByReplacingTagCollection();
 
-			#region Retrieve Image Size
-			//Retrive the height and width of images of supported formats
-			//Images.RetrieveImageSize("Images/SampleImages");
-			#endregion
+            #endregion
 
-			#region Working with Dicom images
-			//detect DICOM format 
-			//Images.DICOM.DetectDicomFormat();
-			//Read metadata of a DICOM file
-			//Images.DICOM.GetMetadataProperties();
-			//export metadata of a DICOM file to csv/xls file
-			//Images.DICOM.ExportMetadata();
+            #region Working with Wmf
+            //Get metadata properties of Wmf image
+            //Images.WMF.GetMetadataProperties();
+            #endregion
 
-			#endregion
+            #region Working with WebP
+            //Get metadata properties of WebP image
+            //Images.WebP.GetMetadataProperties();
+            #endregion
 
-			#region Read Byte order of images
-			//Reads byte order of images of supported formats
-			//Images.ReadByteOrder("Images/SampleImages");
+            #region Working with Emf
+            //Get metadata properties of emf image
+            //Images.EMF.GetMetadataProperties();
+            #endregion
 
+            #region Working with Djvu
+            //Get metadata properties of emf image
+            //Images.DJVU.GetMetadataProperties();
+            #endregion
 
-			#endregion
+            #region Working with BMP images
+            //Get metadata properties of bmp image
+            //Images.BMP.GetMetadataProperties();
+            //Read Header properties of a bmp image
+            //Images.BMP.GetHeaderProperties();
+            #endregion
 
-			#endregion
+            #region Retrieve Image Size
+            //Retrive the height and width of images of supported formats
+            //Images.RetrieveImageSize("Images/SampleImages");
+            #endregion
 
-			#region Working with PSD
+            #region Working with Dicom images
+            //detect DICOM format 
+            //Images.DICOM.DetectDicomFormat();
+            //Read metadata of a DICOM file
+            //Images.DICOM.GetMetadataProperties();
+            //export metadata of a DICOM file to csv/xls file
+            //Images.DICOM.ExportMetadata();
 
-			// Read metadata of PSD file
-			//Images.Psd.GetPsdInfo();
+            #endregion
 
-			// Read XMP metadata of PSD file
-			//Images.Psd.GetXMPProperties();
+            #region Read Byte order of images
+            //Reads byte order of images of supported formats
+            //Images.ReadByteOrder("Images/SampleImages");
 
-			// Read Image Resource Block
-			//Images.Psd.ReadImageResourceBlocks();
 
-			// Read IPTC Metadata 
-			//Images.Psd.ReadIPTCMetadata();
+            #endregion
 
-			// Update IPTC Metadata 
-			//Images.Psd.UpdateIPTCMetadata();
+            #endregion
 
-			// Remove IPTC Metadata 
-			//Images.Psd.RemoveIPTCMetadata();
+            #region Working with PSD
 
-			// Read IPTC Metadata PSD file using stream
-			//Images.Psd.ReadIPTCMetadatasUsingStream();
+            // Read metadata of PSD file
+            //Images.Psd.GetPsdInfo();
 
-			// Update IPTC Metadata using steam
-			//Images.Psd.UpdateIPTCMetadataUsingStream();
+            // Read XMP metadata of PSD file
+            //Images.Psd.GetXMPProperties();
 
-			// Read Layers
-			//Images.Psd.ReadLayers();
+            // Read Image Resource Block
+            //Images.Psd.ReadImageResourceBlocks();
 
-			// Read EXIF Metadata
-			//Images.Psd.ReadEXIFMetadata();
+            // Read IPTC Metadata 
+            //Images.Psd.ReadIPTCMetadata();
 
-			#endregion
+            // Update IPTC Metadata 
+            //Images.Psd.UpdateIPTCMetadata();
 
-			#region Working CAD files
+            // Remove IPTC Metadata 
+            //Images.Psd.RemoveIPTCMetadata();
 
-			//Read basic metadata properties in DWG file
-			//Images.Cad.GetMetadatPropertiesInDWG();
+            // Read IPTC Metadata PSD file using stream
+            //Images.Psd.ReadIPTCMetadatasUsingStream();
 
-			//Read basic metadata properties in DXF file
-			//Images.Cad.GetMetadatPropertiesInDXF();
-			#endregion
+            // Update IPTC Metadata using steam
+            //Images.Psd.UpdateIPTCMetadataUsingStream();
 
-			#region Working emails
-			#region Working with Outlook Email
-			//Get Outlook email metadata
-			//Emails.OutLook.GetOutlookEmailMetadata();
+            // Read Layers
+            //Images.Psd.ReadLayers();
 
-			//Remove Outlook email attachment
-			//Emails.OutLook.RemoveOutlookEmailAttachments();
+            // Read EXIF Metadata
+            //Images.Psd.ReadEXIFMetadata();
 
-			//Remove Outlook email metadata
-			//Emails.OutLook.RemoveOutlookEmailMetadata();
-			#endregion
+            #endregion
 
-			#region Working with Email message
-			//Get email metadata
-			//Emails.Eml.GetEmailMetadata();
+            #region Working CAD files
 
-			//Remove email attachment
-			//Emails.Eml.RemoveEmailAttachments();
+            //Read basic metadata properties in DWG file
+            //Images.Cad.GetMetadatPropertiesInDWG();
 
-			//Remove email metadata
-			//Emails.Eml.RemoveEmailMetadata();
-			#endregion
-			#endregion
+            //Read basic metadata properties in DXF file
+            //Images.Cad.GetMetadatPropertiesInDXF();
+            #endregion
 
-			#region Working with APIs
+            #region Working emails
+            #region Working with Outlook Email
+            //Get Outlook email metadata
+            //Emails.OutLook.GetOutlookEmailMetadata();
 
-			//Compare document metadata
-			//APIs.Document.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
+            //Remove Outlook email attachment
+            //Emails.OutLook.RemoveOutlookEmailAttachments();
 
-			//Search document metadata in document
-			//APIs.Document.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
+            //Remove Outlook email metadata
+            //Emails.OutLook.RemoveOutlookEmailMetadata();
+            #endregion
 
-			//Search document metadata in image
-			//APIs.Image.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
+            #region Working with Email message
+            //Get email metadata
+            //Emails.Eml.GetEmailMetadata();
 
-			//Replace metadata properties in documents
-			//APIs.Document.ReplaceMetadataProperties("Documents/Doc/sample.doc");
+            //Remove email attachment
+            //Emails.Eml.RemoveEmailAttachments();
 
-			//Replace author name using custom Replace Handler in documents
-			//APIs.Document.ReplaceAuthorName("Documents/Doc/sample.doc");
+            //Remove email metadata
+            //Emails.Eml.RemoveEmailMetadata();
+            #endregion
+            #endregion
 
-			//Detect protection in documents
-			//Documents.DetectProtection("Documents/Doc/sample.doc");
+            #region Working with APIs
 
-			//Detect document format at runtime in a folder
-			//Documents.RuntimeFormatDetection("Documents/Doc");
+            //Compare document metadata
+            //APIs.Document.CompareDocument("Documents/Pdf/sample2.pdf", "Documents/Pdf/sample.pdf", ComparerSearchType.Difference);
 
+            //Search document metadata in document
+            //APIs.Document.SearchMetadata("Documents/Xls/sample.xls", "Author", SearchCondition.Contains);
 
-			//Compare Exif metadata in images
-			//APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
+            //Search document metadata in image
+            //APIs.Image.SearchMetadata("Images/Tiff/sample.tif", "Owner", SearchCondition.Contains);
 
-			//Export metadata
-			//APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel);
+            //Replace metadata properties in documents
+            //APIs.Document.ReplaceMetadataProperties("Documents/Doc/sample.doc");
 
-			#endregion
+            //Replace author name using custom Replace Handler in documents
+            //APIs.Document.ReplaceAuthorName("Documents/Doc/sample.doc");
 
-			#region Working with Utilities
-			//ExStart:DocCleanerUsage
-			//DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
-			//DocCleaner docCleaner = new DocCleaner("Documents/Doc");
-			//docCleaner.RemoveMetadataByAuthor("Usman Aziz");
-			//ExEnd:DocCleanerUsage
+            //Detect protection in documents
+            //Documents.DetectProtection("Documents/Doc/sample.doc");
 
-			//ExStart:PhotoCleanerUsage
-			//PhotoCleaner: Cleans GPS data from photos in a directory
-			//PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
-			//photoCleaner.RemoveExifLocation();
-			//ExEnd:PhotoCleanerUsage
+            //Detect document format at runtime in a folder
+            //Documents.RuntimeFormatDetection("Documents/Doc");
 
-			//ExStart:JpegPhotoParserUsage
-			//JpegPhotoParser: Finds photos taken on a specific camera in a directory
-			//JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
-			//jpegPhotoParser.FilterByCameraManufacturer("Sony");
-			//ExEnd:JpegPhotoParserUsage
 
-			//ExStart:FormatRecognizerUsage
-			//FormatRecognizer: Recognizes the format of all files in a directory 
-			//Common.GetFileFormats("Documents/Doc");
-			//ExEnd:FormatRecognizerUsage
+            //Compare Exif metadata in images
+            //APIs.Image.CompareExifMetadata("Images/Jpeg/sample.jpg", "Images/Jpeg/sample2.jpg", ComparerSearchType.Difference);
 
+            //Export metadata
+            //APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel);
 
-			//DocumentTypeDetector : Gets files of a specific document type
-			//ExStart:DocumentTypeDetectorUsage
-			// path to the input directory
-			//const string dir = @"C:\download files";
-			// get all jpeg files
-			//string[] files = DocumentTypeDetector.GetFiles(dir, DocumentType.Jpeg);
-			//ExEnd:DocumentTypeDetectorUsage
+            #endregion
 
-			//DocumentTypeDetector : Gets files of a specific document type
-			//ExStart:DocumentTypeDetectorUsage2
-			// path to the input directory
-			//const string dir1 = @"C:\download files";
-			// initialize DirectoryInfo
-			//DirectoryInfo directoryInfo = new DirectoryInfo(dir1);
-			// get files using extension method
-			//FileInfo[] files2 = directoryInfo.GetFiles(DocumentType.Jpeg);
-			//ExEnd:DocumentTypeDetectorUsage2
+            #region Working with Utilities
+            //ExStart:DocCleanerUsage
+            //DocCleaner: Cleans metadata from all Doc files, created by an author, in a directory
+            //DocCleaner docCleaner = new DocCleaner("Documents/Doc");
+            //docCleaner.RemoveMetadataByAuthor("Usman Aziz");
+            //ExEnd:DocCleanerUsage
 
-			////MIMETypeDetector : Retrieves MIME type of the specific file or file stream.
-			////ExStart:MIMETypeDetectorUsage
-			//// path to the input directory
-			//   const string dir = "Documents/Doc";
-			//// get all jpeg files
-			//   MIMETypeDetector.GetMimeType(dir);
-			////ExEnd:MIMETypeDetectorUsage
+            //ExStart:PhotoCleanerUsage
+            //PhotoCleaner: Cleans GPS data from photos in a directory
+            //PhotoCleaner photoCleaner = new PhotoCleaner("Images/Jpeg");
+            //photoCleaner.RemoveExifLocation();
+            //ExEnd:PhotoCleanerUsage
 
-			////MIMETypeDetector : Using MIMEType property in FormatBase class or it's children.
-			////ExStart:MIMETypeDetectorUsage2
-			//// path to a file
-			//   const string filePath = "Documents/Doc/sample.doc";
-			//// get all jpeg files
-			//MIMETypeDetector.GetMimeTypeUsingFormatBaseApproach(filePath);
-			////ExEnd:MIMETypeDetectorUsage2
+            //ExStart:JpegPhotoParserUsage
+            //JpegPhotoParser: Finds photos taken on a specific camera in a directory
+            //JpegPhotoParser jpegPhotoParser = new JpegPhotoParser("Images/Jpeg");
+            //jpegPhotoParser.FilterByCameraManufacturer("Sony");
+            //ExEnd:JpegPhotoParserUsage
 
-			//ExStart:ReadMetadataUsingKey
-			//Read metadata property by defined key for any supported format
-			//Common.ReadMetadataUsingKey("Different Formats");
-			//ExEnd:ReadMetadataUsingKey
+            //ExStart:FormatRecognizerUsage
+            //FormatRecognizer: Recognizes the format of all files in a directory 
+            //Common.GetFileFormats("Documents/Doc");
+            //ExEnd:FormatRecognizerUsage
 
-			//ExStart:MetadataEnumerationUsage
-			//Enumerates any type of metadata
-			//Common.EnumerateMetadata("Different Formats");
-			//ExEnd:MetadataEnumerationUsage
 
-			#endregion
+            //DocumentTypeDetector : Gets files of a specific document type
+            //ExStart:DocumentTypeDetectorUsage
+            // path to the input directory
+            //const string dir = @"C:\download files";
+            // get all jpeg files
+            //string[] files = DocumentTypeDetector.GetFiles(dir, DocumentType.Jpeg);
+            //ExEnd:DocumentTypeDetectorUsage
 
-			#region Working with MP3 Files
+            //DocumentTypeDetector : Gets files of a specific document type
+            //ExStart:DocumentTypeDetectorUsage2
+            // path to the input directory
+            //const string dir1 = @"C:\download files";
+            // initialize DirectoryInfo
+            //DirectoryInfo directoryInfo = new DirectoryInfo(dir1);
+            // get files using extension method
+            //FileInfo[] files2 = directoryInfo.GetFiles(DocumentType.Jpeg);
+            //ExEnd:DocumentTypeDetectorUsage2
 
-			//Export metadata of Mp3 format to Excel.
-			//AudioFormats.Mp3.ExportMetadataToExcel();
+            ////MIMETypeDetector : Retrieves MIME type of the specific file or file stream.
+            ////ExStart:MIMETypeDetectorUsage
+            //// path to the input directory
+            //   const string dir = "Documents/Doc";
+            //// get all jpeg files
+            //   MIMETypeDetector.GetMimeType(dir);
+            ////ExEnd:MIMETypeDetectorUsage
 
-			// Detect MP3 audio format
-			//AudioFormats.Mp3.DetectMp3Format();
+            ////MIMETypeDetector : Using MIMEType property in FormatBase class or it's children.
+            ////ExStart:MIMETypeDetectorUsage2
+            //// path to a file
+            //   const string filePath = "Documents/Doc/sample.doc";
+            //// get all jpeg files
+            //MIMETypeDetector.GetMimeTypeUsingFormatBaseApproach(filePath);
+            ////ExEnd:MIMETypeDetectorUsage2
 
-			//Read ID3v2 tag in MP3 format
-			//AudioFormats.Mp3.ReadID3v2Tag();
+            //ExStart:ReadMetadataUsingKey
+            //Read metadata property by defined key for any supported format
+            //Common.ReadMetadataUsingKey("Different Formats");
+            //ExEnd:ReadMetadataUsingKey
 
-			// Update ID3v2Tag
-			//AudioFormats.Mp3.UpdateID3v2Tag();
+            //ExStart:MetadataEnumerationUsage
+            //Enumerates any type of metadata
+            //Common.EnumerateMetadata("Different Formats");
+            //ExEnd:MetadataEnumerationUsage
 
-			// Remove ID3v2Tag
-			//AudioFormats.Mp3.RemoveID3v2Tag();
+            #endregion
 
-			//Read ID3v1 tag in MP3 format
-			//AudioFormats.Mp3.ReadID3v1Tag();
+            #region Working with MP3 Files
 
-			//Read MPEG audio information
-			//AudioFormats.Mp3.ReadMPEGAudioInfo();
+            //Export metadata of Mp3 format to Excel.
+            //AudioFormats.Mp3.ExportMetadataToExcel();
 
-			// Read Layrics3 Tag
-			//AudioFormats.Mp3.ReadLayrics3Tag();
+            // Detect MP3 audio format
+            //AudioFormats.Mp3.DetectMp3Format();
 
-			// Remove Lyrics3 Tag
-			//AudioFormats.Mp3.RemoveLayrics3Tag();
+            //Read ID3v2 tag in MP3 format
+            //AudioFormats.Mp3.ReadID3v2Tag();
 
-			// Clean metadata 
-			//AudioFormats.Mp3.CleanMetadata();
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2Tag();
 
-			// Remove APEv2 Tag
-			//AudioFormats.Mp3.RemoveAPEV2Tag();
+            // Remove ID3v2Tag
+            //AudioFormats.Mp3.RemoveID3v2Tag();
 
+            //Read ID3v1 tag in MP3 format
+            //AudioFormats.Mp3.ReadID3v1Tag();
 
-			// Update ID3v1Tag
-			//AudioFormats.Mp3.UpdateID3v1Tag();
+            //Read MPEG audio information
+            //AudioFormats.Mp3.ReadMPEGAudioInfo();
 
-			//Read ID3 Metadata directtly from MP3
-			//AudioFormats.Mp3.ReadId3MetadataDirectly();
+            // Read Layrics3 Tag
+            //AudioFormats.Mp3.ReadLyrics3Tag();
 
-			//Read APEV2 tag in MP3 files
-			//AudioFormats.Mp3.ReadApev2Tag();
+            // Update Lyrics3 Tag
+            AudioFormats.Mp3.UpdateLyrics3Tag();
 
-			//Validate ID3 input metadata before saviing
-			//AudioFormats.Mp3.ValidateID3Metadata();
+            // Update Lyrics3 Tag by replacing whole field collection
+            AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
 
-			//Read additional properties from ID3v2 tag
-			//AudioFormats.Mp3.ReadAdditionalID3v2Properties();
+            // Update Lyrics3 Tag by replacing whole tag
+            AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
 
-			//Update ID3v2 tag using properties 
-			//AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
+            // Remove Lyrics3 Tag
+            //AudioFormats.Mp3.RemoveLyrics3Tag();
 
-			//Update ID3v1 tag using properties 
-			//AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
+            // Clean metadata 
+            //AudioFormats.Mp3.CleanMetadata();
 
-			//Ability to read Image cover from ID3 audio tag
-			//AudioFormats.Mp3.ReadImageCoverID3();
+            // Remove APEv2 Tag
+            //AudioFormats.Mp3.RemoveAPEV2Tag();
 
-			//Read Image Cover using Metadata Utility
-			//AudioFormats.Mp3.ReadImageCoverMetadataUtility();
 
-			//Update or Remove image cover from ID3 audio tag
-			//AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
+            // Update ID3v1Tag
+            //AudioFormats.Mp3.UpdateID3v1Tag();
 
-			//Read ID3v2 tag in MP3 format using stream
-			//AudioFormats.Mp3.ReadID3v2TagUsingStream();
+            //Read ID3 Metadata directtly from MP3
+            //AudioFormats.Mp3.ReadId3MetadataDirectly();
 
-			// Update ID3v2Tag
-			//AudioFormats.Mp3.UpdateID3v2TagUsingStream();
+            //Read APEV2 tag in MP3 files
+            //AudioFormats.Mp3.ReadApev2Tag();
 
+            //Validate ID3 input metadata before saviing
+            //AudioFormats.Mp3.ValidateID3Metadata();
 
-			#endregion
+            //Read additional properties from ID3v2 tag
+            //AudioFormats.Mp3.ReadAdditionalID3v2Properties();
 
-			#region Working with WAV Files
+            //Update ID3v2 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
 
-			// Detect WAV format
-			//AudioFormats.Wav.DetectWavFormat();
+            //Update ID3v1 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
 
-			// Read Audio Details 
-			//AudioFormats.Wav.ReadAudioDetails();
+            //Ability to read Image cover from ID3 audio tag
+            //AudioFormats.Mp3.ReadImageCoverID3();
 
-			// Update XMP Metadata  
-			//AudioFormats.Wav.UpdateXmpMetadata();
+            //Read Image Cover using Metadata Utility
+            //AudioFormats.Mp3.ReadImageCoverMetadataUtility();
 
-			//Remove XMP Metadata
-			//AudioFormats.Wav.RemoveXmpMetadata();
+            //Update or Remove image cover from ID3 audio tag
+            //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
 
-			//Update XMP Metadata using stream
-			//AudioFormats.Wav.UpdateXmpMetadataUsingStream();
+            //Read ID3v2 tag in MP3 format using stream
+            //AudioFormats.Mp3.ReadID3v2TagUsingStream();
 
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2TagUsingStream();
 
 
-			#endregion
+            #endregion
 
-			#region Working with Video Formats
-			//Detect AVI format using format factory
-			//VideoFormats.Avi.DetectAviFormat();
+            #region Working with WAV Files
 
-			//Read Header information in AVI format
-			//VideoFormats.Avi.ReadAviMainHeader();
+            // Detect WAV format
+            //AudioFormats.Wav.DetectWavFormat();
 
-			//Export Metadata of AVI Format file
-			//VideoFormats.Avi.ExportMetadata();
+            // Read Audio Details 
+            //AudioFormats.Wav.ReadAudioDetails();
 
-			//Read,write or update xmp metadata in AVI format
-			//VideoFormats.Avi.DealWithXmpMetaData();
+            // Update XMP Metadata  
+            //AudioFormats.Wav.UpdateXmpMetadata();
 
-			//Clean metadata in AVI format
-			//VideoFormats.Avi.CleanMetadata();
+            //Remove XMP Metadata
+            //AudioFormats.Wav.RemoveXmpMetadata();
 
-			//Clean metadata in AVI using Stream
-			//VideoFormats.Avi.ReadAviMainHeaderUsingStream();
+            //Update XMP Metadata using stream
+            //AudioFormats.Wav.UpdateXmpMetadataUsingStream();
 
-			//Detect Mov file format using format factory
-			//VideoFormats.Mov.DetectMovFormat();
 
-			//Get Mov format metadata
-			//VideoFormats.Mov.GetMovFormatMetadata();
 
-			//Get Mov format metadata
-			//VideoFormats.Mov.GetMovFormatMetadata();
+            #endregion
 
-			#endregion
+            #region Working with Video Formats
+            //Detect AVI format using format factory
+            //VideoFormats.Avi.DetectAviFormat();
 
-			#region Working with Archives
+            //Read Header information in AVI format
+            //VideoFormats.Avi.ReadAviMainHeader();
 
-			#region Working with Zip format 
-			//Detect Zip file format using format factory
-			//Archives.Zip.DetectZipFormat();
+            //Export Metadata of AVI Format file
+            //VideoFormats.Avi.ExportMetadata();
 
-			//Get Zip format metadata
-			//Archives.Zip.GetZipMatadata();
+            //Read,write or update xmp metadata in AVI format
+            //VideoFormats.Avi.DealWithXmpMetaData();
 
-			// Get ZIP format metadata using stream
-			//Archives.Zip.GetZipMatadataUsingStream();
+            //Clean metadata in AVI format
+            //VideoFormats.Avi.CleanMetadata();
 
-			//Remove ZIP format 
-			//Archives.Zip.RemoveComment();
+            //Clean metadata in AVI using Stream
+            //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
 
-			//Update ZIP format Comment 
-			//Archives.Zip.UpdateComment();
+            //Detect Mov file format using format factory
+            //VideoFormats.Mov.DetectMovFormat();
 
-			#endregion
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
 
-			#endregion
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
 
-			#region Working with Torrent Files
-			#region Working with Bit Torrent
-			//Read Bit Torrent File Metadata
-			//Torrent.BitTorrent.GetTorrentMetadata();
-			//Update Bit Torrent File Metadata 
-			//Torrent.BitTorrent.UpdateTorrentMedata();
-			//Read Bit Torrent File Metadata Using Stream
-			//Torrent.BitTorrent.GetTorrentMetadataUsingStream();
-			#endregion
-			#endregion
+            #endregion
 
-			#region Working with DublinCore Metadata
-			//Get DublinCore of supported file formats using MetadataUtility class
-			//DublinCore.GetDublinCoreMetadata();
+            #region Working with Archives
 
-			//Get DublinCore Metadata of supported file formats using IDublinCore Interface
-			//DublinCore.GetDublinCoreMetadataUsingIDublinCore();
+            #region Working with Zip format 
+            //Detect Zip file format using format factory
+            //Archives.Zip.DetectZipFormat();
 
+            //Get Zip format metadata
+            //Archives.Zip.GetZipMatadata();
 
+            // Get ZIP format metadata using stream
+            //Archives.Zip.GetZipMatadataUsingStream();
 
-			#endregion
-			Console.ReadKey();
+            //Remove ZIP format 
+            //Archives.Zip.RemoveComment();
+
+            //Update ZIP format Comment 
+            //Archives.Zip.UpdateComment();
+
+            #endregion
+
+            #endregion
+
+            #region Working with Torrent Files
+            #region Working with Bit Torrent
+            //Read Bit Torrent File Metadata
+            //Torrent.BitTorrent.GetTorrentMetadata();
+            //Update Bit Torrent File Metadata 
+            //Torrent.BitTorrent.UpdateTorrentMedata();
+            //Read Bit Torrent File Metadata Using Stream
+            //Torrent.BitTorrent.GetTorrentMetadataUsingStream();
+            #endregion
+            #endregion
+
+            #region Working with DublinCore Metadata
+            //Get DublinCore of supported file formats using MetadataUtility class
+            //DublinCore.GetDublinCoreMetadata();
+
+            //Get DublinCore Metadata of supported file formats using IDublinCore Interface
+            //DublinCore.GetDublinCoreMetadataUsingIDublinCore();
+
+
+
+            #endregion
+            Console.ReadKey();
 
 
 
