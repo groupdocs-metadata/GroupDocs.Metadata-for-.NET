@@ -3,10 +3,7 @@ using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Audio;
 using GroupDocs.Metadata.Tools;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -81,7 +78,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         if (format.Type == DocumentType.Mp3)
                         {
                             Console.WriteLine("File {0} has MP3 format", Path.GetFileName(path));
-                        } 
+                        }
                     }
                 }
             }
@@ -123,7 +120,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 Console.WriteLine("Frame: {0}, value: {1}", tagFrame.Name, tagFrame.GetFormattedValue());
                             }
-                        } 
+                        }
                     }
                     //ExEnd:ReadID3v2Tag
                 }
@@ -170,7 +167,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         mp3Format.UpdateId3v2(id3Tag);
 
                         // and commit changes
-                        mp3Format.Save(); 
+                        mp3Format.Save();
                     }
                     //ExEnd:UpdateID3v2Tag
                 }
@@ -194,7 +191,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     mp3Format.RemoveId3v2();
 
                     // and commit changes
-                    mp3Format.Save(); 
+                    mp3Format.Save();
                 }
                 //ExEnd:RemoveID3v2Tag
             }
@@ -238,7 +235,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 // Track number is presented only in ID3 v1.1
                                 Console.WriteLine("Track number: {0}", id3V1.TrackNumber);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:ReadID3v1Tag
                 }
@@ -274,7 +271,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         mp3Format.UpdateId3v1(id3Tag);
 
                         // and commit changes
-                        mp3Format.Save(); 
+                        mp3Format.Save();
                     }
                     //ExEnd:UpdateID3v1Tag
                 }
@@ -338,7 +335,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// <summary>
             /// Reads Lyrics3 tag in Mp3 format
             /// </summary>
-            public static void ReadLayrics3Tag()
+            public static void ReadLyrics3Tag()
             {
                 try
                 {
@@ -366,7 +363,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 Console.WriteLine("Name: {0}, value: {1}", lyrics3Field.Name, lyrics3Field.Value);
 
                             }
-                        } 
+                        }
                     }
                     //ExEnd:ReadLayrics3TagInMp3
                 }
@@ -400,7 +397,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // read copyright property
                     MetadataProperty copyright = mp3Format[copyrightKey];
-                    Console.WriteLine(copyright); 
+                    Console.WriteLine(copyright);
                 }
                 //ExEnd:ReadId3MetadataInMp3Directly
             }
@@ -435,12 +432,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine("Genre: {0}", apev2.Genre);
                         Console.WriteLine("Title: {0}", apev2.Title);
                         Console.WriteLine("Track: {0}", apev2.Track);
-                    } 
+                    }
                 }
                 //ExEnd:ReadApev2TagMp3
             }
 
-            public static void RemoveLayrics3Tag()
+            public static void RemoveLyrics3Tag()
             {
                 //ExStart:RemoveLayrics3Tag
                 // initialize Mp3Format. If file is not Mp3 then appropriate exception will throw.
@@ -451,7 +448,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     mp3Format.RemoveLyrics3v2();
 
                     // and commit changes
-                    mp3Format.Save(); 
+                    mp3Format.Save();
                 }
                 //ExEnd:RemoveLayrics3Tag
 
@@ -467,7 +464,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     mp3Format.CleanMetadata();
 
                     // and commit changes
-                    mp3Format.Save(); 
+                    mp3Format.Save();
                 }
                 //ExEnd:CleanMetadata
 
@@ -484,7 +481,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     mp3Format.RemoveAPEv2();
 
                     // and commit changes
-                    mp3Format.Save(); 
+                    mp3Format.Save();
                 }
                 //ExEnd:RemoveAPEV2Tag
 
@@ -566,7 +563,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         }
 
                         // and close input stream
-                        mp3Format.Dispose(); 
+                        mp3Format.Dispose();
                     }
 
                 }
@@ -724,6 +721,64 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         format.Save(stream);
                     }
                     // The stream is still open here
+                }
+            }
+            /// <summary>
+            /// Update Lyrics3 Tag by replacing whole tag
+            /// This method is supportd by version 18.10 or greater. 
+            /// </summary>
+            public static void UpdateLyrics3TagByReplacingWholeTag()
+            {
+                using (Mp3Format format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                {
+                    Lyrics3Tag tag = new Lyrics3Tag();
+                    tag.Fields = new Lyrics3Field[]
+                    {
+                        new Lyrics3Field("EAL", "test album"),
+                        new Lyrics3Field("EAR", "test artist"),
+                        new Lyrics3Field("INF", "test info"),
+                        new Lyrics3Field("LYR", "[00:01] test lyrics"),
+                    };
+                    format.UpdateLyrics3v2(tag);
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+
+            /// <summary>
+            /// Update Lyrics3 Tag by replacing whole field collection
+            /// This method is supportd by version 18.10 or greater. 
+            /// </summary>
+            public static void UpdateLyrics3TagByReplacingWholefieldCollection()
+            {
+                using (Mp3Format format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                {
+                    Lyrics3Field[] fields = new Lyrics3Field[]
+                    {
+                        new Lyrics3Field("EAL", "test album"),
+                        new Lyrics3Field("EAR", "test artist"),
+                        new Lyrics3Field("INF", "test info"),
+                        new Lyrics3Field("LYR", "[00:01] test lyrics"),
+                    };
+                    format.Lyrics3v2Properties.Fields = fields;
+
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+
+            /// <summary>
+            /// Update Lyrics3 Tag
+            /// This method is supportd by version 18.10 or greater. 
+            /// </summary>
+            public static void UpdateLyrics3Tag()
+            {
+                using (Mp3Format format = new Mp3Format(Common.MapSourceFilePath(filePath)))
+                {
+                    format.Lyrics3v2Properties.Album = "test album";
+                    format.Lyrics3v2Properties.Artist = "test artist";
+                    format.Lyrics3v2Properties.AdditionalInfo = "test info";
+                    format.Lyrics3v2Properties.Lyrics = "[00:01] test lyrics";
+
+                    format.Save(Common.MapDestinationFilePath(filePath));
                 }
             }
 
@@ -917,7 +972,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine("Number of channels: {0}", audioInfo.NumberOfChannels);
 
                         // display sample rate
-                        Console.WriteLine("Sample rate: {0}", audioInfo.SampleRate); 
+                        Console.WriteLine("Sample rate: {0}", audioInfo.SampleRate);
                     }
                     //ExEnd:ReadAudioDetailsInWav
                 }
