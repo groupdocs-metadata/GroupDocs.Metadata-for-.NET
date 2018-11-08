@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GroupDocs.Metadata.Formats.Document;
-using GroupDocs.Metadata;
-using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Xmp.Schemes;
-using GroupDocs.Metadata.Formats;
-using GroupDocs.Metadata.Examples.CSharp.Utilities;
-using GroupDocs.Metadata.Formats.Project;
+﻿using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Exceptions;
-using System.IO;
-using GroupDocs.Metadata.Xmp;
+using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Formats.Document;
 using GroupDocs.Metadata.Formats.Ebook;
-using GroupDocs.Metadata.Formats.Image;
+using GroupDocs.Metadata.Formats.Project;
+using GroupDocs.Metadata.Tools;
+using GroupDocs.Metadata.Xmp;
+using GroupDocs.Metadata.Xmp.Schemes;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -53,7 +48,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 Console.WriteLine("{0} : {1}", property.Key, property.Value);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetBuiltinDocumentPropertiesDocFormat
                 }
@@ -136,7 +131,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }           
+                }
             }
 
             /// <summary>
@@ -217,7 +212,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         //save output file...
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:UpdateBuiltinDocumentPropertiesDocFormat
-                        Console.WriteLine("Updated Successfully."); 
+                        Console.WriteLine("Updated Successfully.");
                     }
 
                 }
@@ -244,7 +239,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save output file...
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveBuiltinDocumentPropertiesDocFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -286,7 +281,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:AddCustomPropertyDocFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -307,7 +302,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize DocFormat
                     using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
                     {
-                  
+
                         // initialize metadata
                         DocMetadata docMetadata = docFormat.DocumentProperties;
 
@@ -326,7 +321,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 }
                                 catch { }
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetCustomPropertiesDocFormat
                 }
@@ -376,7 +371,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveCustomPropertyDocFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -406,7 +401,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:ClearCustomPropertyDocFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -442,7 +437,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Created on Date: ", comment.CreatedDate);
                             Console.WriteLine("Initials: ", comment.Initials);
                             Console.WriteLine("\n");
-                        } 
+                        }
                     }
                 }
                 catch (Exception exp)
@@ -468,7 +463,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
 
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -512,7 +507,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
 
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
                     //ExEnd:UpdateDocumentComment
 
@@ -536,7 +531,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize DocFormat
                     using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
                     {
-                     
+
 
                         // Get words count...
                         int wordsCount = docFormat.GetWordsCount();
@@ -545,7 +540,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         int pageCounts = docFormat.GetPagesCount();
 
                         Console.WriteLine("Words: {0}", wordsCount);
-                        Console.WriteLine("Pages: {0}", pageCounts); 
+                        Console.WriteLine("Pages: {0}", pageCounts);
                     }
 
 
@@ -603,7 +598,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 Console.WriteLine(word);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetHiddenDataInDocument
 
@@ -625,8 +620,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
                     {
 
-						// inspect document
-						DocInspectionResult inspectionResult = docFormat.InspectDocument();
+                        // inspect document
+                        DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                         // if merge fields are presented
                         if (inspectionResult.Fields.Length > 0)
@@ -639,7 +634,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         }
                         //ExEnd:RemoveHiddenDataInDocument
 
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
                 }
                 catch (Exception exp)
@@ -665,7 +660,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     docFormat.DocumentProperties.Company = "Aspose";
 
                     // and commit changes
-                    docFormat.Save(); 
+                    docFormat.Save();
                 }
                 //ExEnd:SaveFileAfterMetadataUpdate
             }
@@ -683,7 +678,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // and try to get document properties
-                        var documentProperties = docFormat.DocumentProperties; 
+                        var documentProperties = docFormat.DocumentProperties;
                     }
                 }
                 catch (DocumentProtectedException ex)
@@ -722,7 +717,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                         // display revision date
                         Console.Write("date: {0}", revision.DateTime);
-                    } 
+                    }
                 }
                 //ExEnd:ReadAllRevisions
             }
@@ -731,7 +726,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// Shows how to accept all changes in Word document.
             /// Feature is supported by version 17.05 or greater
             /// </summary>
-            public static void AcceptAllChanges() {
+            public static void AcceptAllChanges()
+            {
                 //ExStart:AcceptAllChanges
                 // initialize DocFormat
                 using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
@@ -744,7 +740,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     revisionCollection.AcceptAll();
 
                     // and commit changes
-                    docFormat.Save(); 
+                    docFormat.Save();
                 }
                 //ExEnd:AcceptAllChanges
             }
@@ -753,7 +749,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// Shows how to reject all changes in Word document.
             /// Feature is supported by version 17.05 or greater
             /// </summary>
-            public static void RejectAllChanges() {
+            public static void RejectAllChanges()
+            {
                 //ExStart:RejectAllChanges
                 // initialize DocFormat
                 using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
@@ -766,7 +763,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     revisionCollection.RejectAll();
 
                     // and commit changes
-                    docFormat.Save(); 
+                    docFormat.Save();
                 }
                 //ExEnd:RejectAllChanges
             }
@@ -791,7 +788,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     // display pages count
                     int pagesCount = documentInfo.PagesCount;
-                    Console.WriteLine("Pages count: {0}", pagesCount); 
+                    Console.WriteLine("Pages count: {0}", pagesCount);
                 }
                 //ExEnd:ReadDocumentInfo 
             }
@@ -816,7 +813,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         case FileType.Docx:
                             Console.WriteLine("XML-based document");
                             break;
-                    } 
+                    }
                 }
                 //ExEnd:DisplayFileType
             }
@@ -834,8 +831,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // if document contains digital signatures
                     if (docFormat.HasDigitalSignatures)
                     {
-						// then inspect it
-						DocInspectionResult inspectionResult = docFormat.InspectDocument();
+                        // then inspect it
+                        DocInspectionResult inspectionResult = docFormat.InspectDocument();
 
                         // and get digital signatures
                         DigitalSignature[] signatures = inspectionResult.DigitalSignatures;
@@ -848,7 +845,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             // get certificate sign time
                             Console.WriteLine("Signed time: {0}", signature.SignTime);
                         }
-                    } 
+                    }
                 }
                 //ExEnd:ReadDigitalSignature
             }
@@ -871,7 +868,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                         // and commit changes
                         docFormat.Save();
-                    } 
+                    }
                 }
                 //ExEnd:RemoveDigitalSignature
             }
@@ -922,7 +919,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                         // and print it
                         Console.WriteLine(property);
-                    } 
+                    }
                 }
                 //ExEnd:ReadEPUBFormatMetadata
             }
@@ -943,7 +940,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     string publisher = dublinCore.Publisher;
 
                     // get contributor
-                    string contributor = dublinCore.Contributor; 
+                    string contributor = dublinCore.Contributor;
                 }
             }
             /// <summary>
@@ -957,13 +954,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // open EPUB file
                     using (EpubFormat epub = new EpubFormat(Common.MapSourceFilePath(filePath)))
                     {
-						ThumbnailMetadata thumbnail = epub.ReadThumbnail();
-						if (thumbnail != null)
-						{
-							Console.WriteLine(thumbnail.ImageData.Length);
-							Console.WriteLine(thumbnail.MimeType);
-						}
-					}
+                        ThumbnailMetadata thumbnail = epub.ReadThumbnail();
+                        if (thumbnail != null)
+                        {
+                            Console.WriteLine(thumbnail.ImageData.Length);
+                            Console.WriteLine(thumbnail.MimeType);
+                        }
+                    }
 
                 }
                 catch (Exception exp)
@@ -971,7 +968,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     Console.WriteLine(exp.Message);
                 }
-                
+
             }
             /// <summary>
             /// Read Epub package version
@@ -1034,7 +1031,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //Read DublinCore Metadata
                     ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(Common.MapSourceFilePath(filePath), MetadataType.Thumbnail);
 
-                    if (thumbnailMetadata!=null)
+                    if (thumbnailMetadata != null)
                     {
                         // get Mime Type 
                         Console.WriteLine(thumbnailMetadata.MimeType);
@@ -1042,7 +1039,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         Console.WriteLine(thumbnailMetadata.ImageData.Length);
 
                     }
-                            
+
                 }
                 catch (Exception exp)
                 {
@@ -1082,7 +1079,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
-    
+
 
         public static class Pdf
         {
@@ -1115,7 +1112,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 Console.WriteLine("{0} : {1}", property.Key, property.Value);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetBuiltinDocumentPropertyPdfFormat
                 }
@@ -1148,7 +1145,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         //save output file...
                         pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:UpdateBuiltinDocumentPropertyPdfFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -1176,7 +1173,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveBuiltinDocumentPropertyPdfFormat
 
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -1218,7 +1215,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:AddCustomDocumentPropertyPdfFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -1253,7 +1250,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 PropertyValue propertyValue = pdfMetadata[keyValuePair.Key];
                                 Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetCustomDocumentPropertiesPdfFormat
                 }
@@ -1293,7 +1290,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveCustomDocumentPropertiesPdfFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -1324,7 +1321,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         PdfFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:ClearCustomPropertyPdfFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -1353,7 +1350,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                         Console.WriteLine("Keywords: {0}", pdfPackage.Keywords);
                         Console.WriteLine("PdfVersion: {0}", pdfPackage.PdfVersion);
-                        Console.WriteLine("Producer: {0}", pdfPackage.Producer); 
+                        Console.WriteLine("Producer: {0}", pdfPackage.Producer);
                     }
                     //ExEnd:GetXMPPropertiesPdfFormat
                 }
@@ -1427,7 +1424,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         //pdfPackage.Producer="";
 
                         //save output file...
-                        pdfFormat.Save(Common.MapDestinationFilePath(filePath)); 
+                        pdfFormat.Save(Common.MapDestinationFilePath(filePath));
                     }
                     //ExEnd:UpdateXMPPropertiesPdfFormat
                 }
@@ -1462,7 +1459,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                             //save output file...
                             pdfFormat.Save(Common.MapDestinationFilePath(filePath));
-                        } 
+                        }
                     }
                     //ExEnd:RemoveHiddenDataPdfFormat
                 }
@@ -1493,7 +1490,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         foreach (string key in properties.Keys)
                         {
                             Console.WriteLine("[{0}]={1}", key, properties[key]);
-                        } 
+                        }
                     }
                     //ExEnd:LoadExistingMetadataKeys
                 }
@@ -1869,7 +1866,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         {
             // initialize file path
             //ExStart:SourceXlsFilePath
-            private const string filePath = "Documents/Xls/sample.xls";
+            private const string filePath = "Documents/Xls/sample.xlsx";
             //ExEnd:SourceXlsFilePath
 
             //initialize output file path
@@ -1903,7 +1900,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 Console.WriteLine("{0} : {1}", property.Key, property.Value);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetBuiltinDocumentPropertiesXlsFormat
                 }
@@ -1919,22 +1916,29 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 try
                 {
-                    //ExStart:UpdateBuiltinDocumentPropertiesXlsFormat
                     // initialize XlsFormat
-                    using (XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath)))
+                    using (XlsFormat format = new XlsFormat(Common.MapSourceFilePath(filePath)))
                     {
-
-                        // initialize XlsMetadata
-                        XlsMetadata xlsMetadata = xlsFormat.DocumentProperties;
-
                         //update document property...
-                        xlsMetadata.Author = "New author";
-                        xlsMetadata.Subject = "New subject";
+                        format.DocumentProperties.Author = "New author";
+                        format.DocumentProperties.Subject = "New subject";
+
+                        //Follownig metadata properties are supported by version 18.11 or higher
+                        format.DocumentProperties.Language = "test language";
+                        format.DocumentProperties.ContentStatus = "test content status";
+                        format.DocumentProperties.ContentType = "test content type";
+                        format.DocumentProperties.CreatedTime = DateTime.Now;
+                        format.DocumentProperties.TotalEditingTime = 100;
+                        format.DocumentProperties.LastSavedTime = DateTime.Now;
+                        format.DocumentProperties.LastPrintedDate = DateTime.Now;
+                        format.DocumentProperties.LastSavedBy = "test last saved by";
+                        format.DocumentProperties.Revision = "test revision";
+                        format.DocumentProperties.Version = "12.1111";
 
                         //save output file...
-                        xlsFormat.Save(Common.MapDestinationFilePath(filePath));
-                        //ExEnd:UpdateBuiltinDocumentPropertiesXlsFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        format.Save(Common.MapDestinationFilePath(filePath));
+
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -1962,7 +1966,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         //save output file...
                         xlsFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveBuiltinDocumentPropertiesXlsFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -2003,7 +2007,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         xlsFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:AddCustomDocumentPropertiesXlsFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
 
@@ -2038,7 +2042,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 PropertyValue propertyValue = xlsMetadata[keyValuePair.Key];
                                 Console.WriteLine("Key: {0}, Type:{1}, Value: {2}", keyValuePair.Key, propertyValue.Type, propertyValue);
                             }
-                        } 
+                        }
                     }
                     //ExEnd:GetCustomDocumentPropertiesXlsFormat
                 }
@@ -2078,7 +2082,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         xlsFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:RemoveCustomDocumentPropertiesXlsFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -2109,7 +2113,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // save file in destination folder
                         xlsFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:ClearCustomPropertyXlsFormat
-                        Console.WriteLine("File saved in destination folder."); 
+                        Console.WriteLine("File saved in destination folder.");
                     }
 
                 }
@@ -2152,7 +2156,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         else
                         {
                             Console.WriteLine("No comment found!");
-                        } 
+                        }
                     }
                     //ExEnd:GetHiddenDataInXls
                 }
@@ -2192,7 +2196,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Changes save successfully!");
                         }
                         else
-                            Console.WriteLine("No sheets found."); 
+                        {
+                            Console.WriteLine("No sheets found.");
+                        }
                     }
                     //ExEnd:RemoveHiddenDataInXls
                 }
@@ -2214,11 +2220,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // initialize XlsFormat
                     using (XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath)))
                     {
-						foreach (XlsContentProperty property in xlsFormat.DocumentProperties.ContentTypeProperties)
-						{
-							Console.WriteLine(property.GetFormattedValue());
-						}
-					}
+                        foreach (XlsContentProperty property in xlsFormat.DocumentProperties.ContentTypeProperties)
+                        {
+                            Console.WriteLine(property.GetFormattedValue());
+                        }
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -2242,7 +2248,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     // write data to the file
                     File.WriteAllBytes(Common.MapDestinationFilePath(outputFilePath), content);
                     //ExEnd:ContentTypePropertiesExportXls
-                    Console.WriteLine("file has been exported");                    
+                    Console.WriteLine("file has been exported");
                 }
                 catch (Exception ex)
                 {
@@ -2279,7 +2285,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // and commit changes
                         xlsFormat.Save(Common.MapDestinationFilePath(outputFilePathWithHiddenData));
                         //ExEnd:AddContentTypePropertyXls
-                        Console.WriteLine("file has been exported"); 
+                        Console.WriteLine("file has been exported");
                     }
                 }
 
@@ -2318,7 +2324,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         {
                             // write thumbnail to PNG image since it has png format
                             File.WriteAllBytes(Common.MapDestinationFilePath("xlsThumbnail.png"), thumbnailData);
-                        } 
+                        }
                     }
                     //ExEnd:ReadThumbnailXls
                 }
@@ -2391,7 +2397,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Length: {0}", oneNoteMetadata.Length);
                             // get Rank 
                             Console.WriteLine("Rank: {0}", oneNoteMetadata.Rank);
-                        } 
+                        }
                     }
                     //ExEnd:GetMetadataOneNoteFormat
                 }
@@ -2429,7 +2435,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Title: {0}", info.Title);
 
                             Console.WriteLine("\n\n");
-                        } 
+                        }
                     }
                     //ExEnd:GetPagesOneNoteFormat
                 }
@@ -2473,7 +2479,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Company: {0}", properties.Company);
                             // get Keywords 
                             Console.WriteLine("Keywords: {0}", properties.Keywords);
-                        } 
+                        }
                     }
                     //ExEnd:GetMetadataMppFormat
                 }
@@ -2503,7 +2509,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// </summary>
             public static void CleanMetadata()
             {
-                using(MppFormat format = new MppFormat(Common.MapSourceFilePath(filePath)))
+                using (MppFormat format = new MppFormat(Common.MapSourceFilePath(filePath)))
                 {
                     format.CleanMetadata();
                     format.Save(Common.MapDestinationFilePath(filePath));
@@ -2554,7 +2560,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             Console.WriteLine("Author: {0}", properties.Author);
                             // get Company 
                             Console.WriteLine("Company: {0}", properties.Title);
-                        } 
+                        }
                     }
                     //ExEnd:GetMetadataMppFormat
                 }
@@ -2584,7 +2590,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     visioFormat.Save();
 
                     Console.WriteLine("Creator: {0}: ", visioFormat.DocumentProperties.Creator);
-                    Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title); 
+                    Console.WriteLine("Title: {0}: ", visioFormat.DocumentProperties.Title);
                 }
             }
         }
@@ -2615,7 +2621,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         foreach (MetadataProperty property in metadata)
                         {
                             Console.WriteLine(property);
-                        } 
+                        }
                     }
                     //ExEnd:ReadOdtMetadata
                 }
@@ -2651,7 +2657,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         //save output file...
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
                         //ExEnd:UpdateOdtMetadata
-                        Console.WriteLine("Updated Successfully."); 
+                        Console.WriteLine("Updated Successfully.");
                     }
                 }
                 catch (Exception ex)
@@ -2663,7 +2669,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             }
         }
 
-        public class ODS {
+        public class ODS
+        {
             //initialize file path
             //ExStart:SourceOdsProjectFilePath
             private const string filePath = "Documents/Ods/sample.ods";
@@ -2673,7 +2680,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// Reads metadata in ODS format
             /// Feature is supported in version 17.9.0 or greater of the API
             /// </summary>
-            public static void ReadOdsMetadata() {
+            public static void ReadOdsMetadata()
+            {
                 //ExStart:ReadOdsMetadata
                 // initialize XlsFormat
                 using (XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath)))
@@ -2689,7 +2697,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     string company = properties.Company;
 
                     // get created date of the document
-                    DateTime createdDate = properties.CreatedTime; 
+                    DateTime createdDate = properties.CreatedTime;
                 }
                 //ExEnd:ReadOdsMetadata
             }
@@ -2714,7 +2722,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         using (DocFormat docFormat = new DocFormat(Common.MapSourceFilePath(filePath)))
                         {
                             // determines whether document is protected by password
-                            Console.WriteLine(docFormat.IsProtected ? "Document is protected" : "Document is protected"); 
+                            Console.WriteLine(docFormat.IsProtected ? "Document is protected" : "Document is protected");
                         }
                     }
                     else if (format.Type.ToString().ToLower() == "pdf")
@@ -2724,7 +2732,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         {
 
                             // determines whether document is protected by password
-                            Console.WriteLine(pdfFormat.IsProtected ? "Document is protected" : "Document is protected"); 
+                            Console.WriteLine(pdfFormat.IsProtected ? "Document is protected" : "Document is protected");
                         }
                     }
                     else if (format.Type.ToString().ToLower() == "xls")
@@ -2733,7 +2741,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         using (XlsFormat xlsFormat = new XlsFormat(Common.MapSourceFilePath(filePath)))
                         {
                             // determines whether document is protected by password
-                            Console.WriteLine(xlsFormat.IsProtected ? "Document is protected" : "Document is protected"); 
+                            Console.WriteLine(xlsFormat.IsProtected ? "Document is protected" : "Document is protected");
                         }
                     }
                     else if (format.Type.ToString().ToLower() == "ppt")
@@ -2742,13 +2750,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         using (PptFormat pptFormat = new PptFormat(Common.MapSourceFilePath(filePath)))
                         {
                             // determines whether document is protected by password
-                            Console.WriteLine(pptFormat.IsProtected ? "Document is protected" : "Document is protected"); 
+                            Console.WriteLine(pptFormat.IsProtected ? "Document is protected" : "Document is protected");
                         }
                     }
                     else
                     {
                         Console.WriteLine("Invalid Format.");
-                    } 
+                    }
                 }
                 //ExEnd:DetectProtection
             }
@@ -2816,7 +2824,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     byte[] thumbnailData = docFormat.Thumbnail;
 
                     // write thumbnail to PNG image since it has png format
-                    File.WriteAllBytes(Common.MapDestinationFilePath("thumbnail.png"), thumbnailData); 
+                    File.WriteAllBytes(Common.MapDestinationFilePath("thumbnail.png"), thumbnailData);
                 }
                 //ExEnd:ReadThumbnail
             }
@@ -2844,7 +2852,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     DocumentInfo documentInfo = docFormat.DocumentInfo;
 
                     // next call returns previous documentInfo object
-                    DocumentInfo next = docFormat.DocumentInfo; 
+                    DocumentInfo next = docFormat.DocumentInfo;
                 }
                 //ExEnd:LazyLoadDocumentInfoProperty
             }

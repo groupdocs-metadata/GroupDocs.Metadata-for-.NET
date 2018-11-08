@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GroupDocs.Metadata;
-using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Examples.CSharp.Utilities;
-using System.IO;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -17,7 +9,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -758,16 +750,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //AudioFormats.Mp3.ReadMPEGAudioInfo();
 
             // Read Layrics3 Tag
-            //AudioFormats.Mp3.ReadLyrics3Tag();
+            // AudioFormats.Mp3.ReadLyrics3Tag();
 
             // Update Lyrics3 Tag
-            AudioFormats.Mp3.UpdateLyrics3Tag();
+            // AudioFormats.Mp3.UpdateLyrics3Tag();
 
             // Update Lyrics3 Tag by replacing whole field collection
-            AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
 
             // Update Lyrics3 Tag by replacing whole tag
-            AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
 
             // Remove Lyrics3 Tag
             //AudioFormats.Mp3.RemoveLyrics3Tag();
@@ -840,6 +832,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #region Working with Video Formats
+          
+            #region Working with AVI file format 
             //Detect AVI format using format factory
             //VideoFormats.Avi.DetectAviFormat();
 
@@ -857,6 +851,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Clean metadata in AVI using Stream
             //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
+            #endregion
+
+            #region Working with MOV file format 
 
             //Detect Mov file format using format factory
             //VideoFormats.Mov.DetectMovFormat();
@@ -866,6 +863,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Get Mov format metadata
             //VideoFormats.Mov.GetMovFormatMetadata();
+            #endregion
+
+            #region Working with FLV format
+            //Detect FLV file format 
+            //VideoFormats.Flv.DetectFlvFormat();
+
+            //Get XMP Metadata
+            //VideoFormats.Flv.GetXMPMetadata();
+
+            //Update XMP Metadata 
+            //VideoFormats.Flv.UpdateXMPMetadata();
+
+            //Remove XMP Metadata 
+            //VideoFormats.Flv.RemoveXMPMetadata();
+
+            //Read FLV header metadata
+            //VideoFormats.Flv.ReadFlvHeaderMetadata();
+
+            #endregion
 
             #endregion
 
@@ -912,6 +928,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
 
             #endregion
+
             Console.ReadKey();
 
 
