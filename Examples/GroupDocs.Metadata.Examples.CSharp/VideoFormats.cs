@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Video;
@@ -182,7 +179,86 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
-        public static class Mov
+        public static class Flv
+        {
+            // Initialize file path 
+            private const string filePath = "Video/Flv/sample.flv";
+            /// <summary>
+            /// Check FLV file format 
+            /// This method is supported by version 18.11 or higher 
+            /// </summary>
+            public static void DetectFlvFormat()
+            {
+                using (FileFormatChecker checker = new FileFormatChecker(Common.MapSourceFilePath(filePath)))
+                {
+                    if (checker.GetDocumentType() == DocumentType.Flv)
+                    {
+                        // The file is an FLV video
+                        Console.WriteLine("This is a valid FLV file...");
+                    }
+                }
+            }
+            /// <summary>
+            /// Gets XMP Metadata of FLV file format 
+            /// This method is supported by version 18.11 or higher 
+            /// </summary>
+            public static void GetXMPMetadata()
+            {
+
+                using (FlvFormat format = new FlvFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    Console.WriteLine(format.XmpValues.Schemes.XmpBasic.CreateDate);
+                    Console.WriteLine(format.XmpValues.Schemes.XmpBasic.Label);
+                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Source);
+                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Format);
+
+                }
+            }
+
+            public static void UpdateXMPMetadata()
+            {
+
+                using (FlvFormat format = new FlvFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    
+                    format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
+                    format.XmpValues.Schemes.XmpBasic.Label = "Test";
+                    format.XmpValues.Schemes.DublinCore.Source = "http://groupdocs.com";
+                    format.XmpValues.Schemes.DublinCore.Format = "FLV Video";
+
+                    format.Save(Common.MapDestinationFilePath(filePath));
+
+                    Console.WriteLine("File saved to destination folder...");
+                }
+            }
+            /// <summary>
+            /// Removes XMP Metadata of FLV file format 
+            /// This method is supported by version 18.11 or higher 
+            /// </summary>
+            public static void RemoveXMPMetadata()
+            {
+                using (FlvFormat format = new FlvFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    format.RemoveXmpData();
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+            }
+            /// <summary>
+            /// Reads FLV header metadata 
+            /// This method is supported by version 18.11 or greater 
+            /// </summary>
+            public static void ReadFlvHeaderMetadata()
+            {
+                using (FlvFormat format = new FlvFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    Console.WriteLine(format.Header.Version);
+                    Console.WriteLine(format.Header.HasVideoTags);
+                    Console.WriteLine(format.Header.HasAudioTags);
+                    Console.WriteLine(Convert.ToString(format.Header.TypeFlags, 2).PadLeft(8, '0'));
+                }
+            }
+        }
+            public static class Mov
         {
             // initialize file path and directory path
             //ExStart:SourceAviFilePath + SourcAviDirectoryPath
