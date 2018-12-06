@@ -1,6 +1,6 @@
 ## GroupDocs.Metadata for .NET
 
-This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples) for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) and [Outlook Metadata Cleaner plugin](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) that will help you understand API's working and write your own applications and plugins.
+This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples), [Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases)and [Outlook Metadata Cleaner plugin](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) that will help you understand API's working and write your own applications and plugins.
 
 GroupDocs.Metadata for .NET provides easy ways to manage metadata in various formats. It enables user to read, write, update and remove the metadata of documents (word, spreadsheet, presentation, PDF) and images (JPEG, PNG, GIF). Its also provides the fucntionality to compare metadata in document files.
 
