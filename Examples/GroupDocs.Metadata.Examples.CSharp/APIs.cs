@@ -9,6 +9,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -121,15 +122,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     //ExStart:ImageSearchAPI
                     filePath = Common.MapSourceFilePath(filePath);
 
-                    // looking the software
-                    ExifProperty[] properties = SearchFacade.ScanExif(filePath, propertyName, searchCondition);
+					TiffTag[] resolutionTags = SearchFacade.ScanExifTags(filePath, new Regex("^(XResolution|YResolution)$"));
 
-                    foreach (ExifProperty property in properties)
-                    {
-                        Console.WriteLine("{0} : {1}", property.Name, property.ToString());
-                    }
-                    //ExEnd:ImageSearchAPI
-                }
+					foreach (TiffTag resolutionTag in resolutionTags)
+					{
+						Console.WriteLine("{0} - {1}", resolutionTag.DefinedTag, ((TiffRationalTag)resolutionTag).TagValue[0].Value);
+					}
+					//ExEnd:ImageSearchAPI
+				}
                 catch (Exception exp)
                 {
                     Console.WriteLine("Exception occurred: " + exp.Message);
@@ -148,14 +148,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     firstFile = Common.MapSourceFilePath(firstFile);
                     secondFile = Common.MapSourceFilePath(secondFile);
 
-                    ExifProperty[] differences = ComparisonFacade.CompareExif(firstFile, secondFile, type);
+					TiffTag[] intersection = ComparisonFacade.CompareExifTags(firstFile, secondFile, ComparerSearchType.Intersection);
 
-                    foreach (ExifProperty property in differences)
-                    {
-                        Console.WriteLine("{0} : {1}", property.Name, property.ToString());
-                    }
-                    //ExEnd:ExifComparisonAPI
-                }
+					foreach (TiffTag tag in intersection)
+					{
+						Console.WriteLine(tag.DefinedTag);
+						Console.WriteLine(tag.TagType);
+						Console.WriteLine(tag.GetFormattedValue());
+					}
+					//ExEnd:ExifComparisonAPI
+				}
                 catch (Exception exp)
                 {
                     Console.WriteLine("Exception occurred: " + exp.Message);

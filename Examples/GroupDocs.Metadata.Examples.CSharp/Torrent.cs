@@ -1,6 +1,7 @@
 ﻿using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Formats.Torrent;
 using System;
+using System.IO;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -68,6 +69,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 catch (Exception ex)
                 {
 
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            public static void GetTorrentMetadataUsingStream()
+            {
+                try
+                {
+                    using (Stream stream = File.Open(Common.MapSourceFilePath(filePath), FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        using (TorrentFormat format = new TorrentFormat(stream))
+                        {
+                            TorrentMetadata info = format.TorrentInfo;
+                            Console.WriteLine(info.Announce);
+                            Console.WriteLine(info.CreatedBy);
+                            Console.WriteLine(info.CreationDate);
+                            Console.WriteLine(info.Comment);
+                            Console.WriteLine(info.PieceLength);
+                            Console.WriteLine(info.Pieces.Length);
+
+                            foreach (TorrentFileInfo file in info.SharedFiles)
+                            {
+                                Console.WriteLine(file.Name);
+                                Console.WriteLine(file.Length);
+                            }
+                        }
+                        // The stream is still open here
+                    }
+                }
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.Message);
                 }
             }

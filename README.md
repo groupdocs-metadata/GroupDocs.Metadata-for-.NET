@@ -19,9 +19,11 @@ Directory | Description
 
 ## Resources
 
-+ **Website:** [www.groupdocs.com](http://www.groupdocs.com)
++ **Website:** [www.groupdocs.com](https://www.groupdocs.com/)
 + **Product Home:** [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net)
-+ **Download:** [Download GroupDocs.Metadata for .NET](https://downloads.groupdocs.com/metadata/net)
-+ **Documentation:** [GroupDocs.Metadata for .NET Documentation](https://docs.groupdocs.com/display/metadatanet/Introducing+GroupDocs.Metadata+for+.NET)
-+ **Forum:** [GroupDocs.Metadata for .NET Forum](https://forum.groupdocs.com/c/metadata)
++ **Installation:** [GroupDocs.Metadata for .NET NuGet Package](https://www.nuget.org/packages/GroupDocs.Metadata/)
++ **API Reference:** [GroupDocs.Metadata for .NET API Reference](https://apireference.groupdocs.com/net/metadata)
++ **Documentation:** [GroupDocs.Metadata for .NET Documentation](https://docs.groupdocs.com/display/metadatanet/Home)
++ **Free Support:** [GroupDocs.Metadata for .NET Free Support Forum](https://forum.groupdocs.com/c/metadata)
++ **Paid Support:** [GroupDocs.Metadata for .NET Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
 + **Blog:** [GroupDocs.Metadata for .NET Blog](https://blog.groupdocs.com/category/groupdocs-metadata-product-family/)

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GroupDocs.Metadata;
-using GroupDocs.Metadata.Examples.Utilities.CSharp;
-using GroupDocs.Metadata.Tools;
-using GroupDocs.Metadata.Examples.CSharp.Utilities;
-using System.IO;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -92,6 +84,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Read ImageCover using Metadata Utility
             //Documents.Doc.ReadImageCoverMetadataUtility();
+
+            //Find Metadata Using Regex
+            //Documents.Doc.FindMetadataUsingRegex();
+
+            //Replace Metadata Using Regex
+            //Documents.Doc.ReplaceMetadataUsingRegex();
             #endregion
 
             #region Working with Ppt Files
@@ -151,7 +149,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.Xls.RemoveHiddenData();
 
             //Gets Content type document properties in Xls file
-            //Documents.Xls.GetContentTypeDocumentProperties()
+            //Documents.Xls.GetContentTypeDocumentProperties();
 
             //Export content type properties of Xls file to Csv/Xls
             //Documents.Xls.ContentTypePropertiesExport();
@@ -249,12 +247,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.EPUB.ReadEPUBPackageVersion();
             //Read DublinCore Metadata using unified approach
             //Documents.EPUB.ReadDublinCoreMetadataUtility();
+            //Get Torrent Metadata Using Stream
+            //Documents.EPUB.GetMetadataUsingStream();
 
             #endregion
 
             #region Working with ODS files
             //Documents.ODS.ReadOdsMetadata();
             #endregion
+
+            #region Working with MS Project files
+            //Get MS Project Metadata 
+            //Documents.MSProject.GetMetadata();
+            //Update MS Project Metadata
+            //Documents.MSProject.UpdateMetadata();
+            //Clean MS Project Metadata
+            //Documents.MSProject.CleanMetadata();     
+            //Documents.MSProject.UpdateMetadataUsingStream();
+            #endregion
+
             //Reads thumbnail in documents
             //Documents.ReadThumbnail("Documents/Doc/sample.docx");
 
@@ -285,14 +296,26 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get XMP properties of Gif image
             //Images.Gif.GetXMPProperties();
 
+            //Get XMP properties of Gif image using Stream
+            //Images.Gif.GetXMPPropertiesUsingStream();
+
             //Update XMP properties of Gif image
             //Images.Gif.UpdateXMPProperties();
+
+            //Update XMP properties of Gif image using Stream
+            //Images.Gif.UpdateXMPPropertiesUsingStream();
 
             //Remove XMP properties of Gif image
             //Images.Gif.RemoveXMPProperties();
 
             //Remove Medatadata of Gif image 
             //Images.Gif.RemoveMetadata();
+
+            //Find XMP Metadata Using Regex
+            //Images.Gif.FindXmpMetadataUsingRegex();
+
+            //Update XMP Metadata Using Regex
+            //Images.Gif.ReplaceXmpMetadataUsingRegex();
 
             #endregion
 
@@ -301,8 +324,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get XMP properties of Jpeg image
             //Images.Jpeg.GetXMPProperties();
 
+            //Get XMP Properties using Stream
+            //mages.Jpeg.GetXMPPropertiesUsingStream();
+
             //Update XMP properties of Jpeg image
             //Images.Jpeg.UpdateXMPProperties();
+
+            //Update XMP properties of using Stream
+            //Images.Jpeg.UpdateXMPPropertiesUsingStream();
 
             //Update Camera Raw XMP values of Jpeg image
             //Images.Jpeg.UpdateCameraRawXMPProperties();
@@ -393,6 +422,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //The method loads and save EXIF metadata with better speed
             //Images.Jpeg.EXIFMetadataWithBetterSpeed();
+
+            //Find EXIF Metadata using regex
+            //Images.Jpeg.FindEXIFMetadataUsingRegex();
+
+            //Replace EXIF Metadata using regex
+            //Images.Jpeg.ReplaceEXIFMetadataUsingRegex();
+
+            //Get Tiff Tag using Exif Properties 
+            //Images.Jpeg.GetTiffTagsUsingExifProperties();
+
             #endregion
 
             #region Working with Png
@@ -422,6 +461,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get XMP properties of Tiff image
             //Images.Tiff.GetXMPProperties();
 
+            //Get XMP properties of Tiff image using Stream
+            //Images.Tiff.GetXMPPropertiesUsingStream();
+
             //Read File Directory Tags of Tiff Image
             //Images.Tiff.ReadTiffFileDirectoryTags();
 
@@ -431,6 +473,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update Exif Info of Tiff image
             //Images.Tiff.UpdateExifInfo();
 
+            //Update Exif Info of Tiff Image using Stream
+            //Images.Tiff.UpdateExifInfoUsingStream();
+
             //Update Exif Info of Tiff image
             //Images.Tiff.UpdateExifInfoUsingProperties();
 
@@ -439,6 +484,24 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             // Read IPTC Metadata 
             //Images.Tiff.ReadIPTCMetadata();
+
+            //Remove XMP Metadata
+            //Images.Tiff.RemoveXMPMetadata();
+
+            //Extract Values of Certain Tiff Tags 
+            //Images.Tiff.ExtractSpecificTiffTags();
+
+            //Update Exif Info of Tiff image using shortcut properties
+            //Images.Tiff.UpdateExifMetadataUsingShortcutProperties();
+
+            //Update Exif Info of Tiff image by replacing tag collection 
+            //Images.Tiff.UpdateExifMetadatByReplacingTagCollection();
+
+            //Update Exif IFD Tags of Tiff image using shortcut properties
+            //Images.Tiff.UpdateExifIFDTagsUsingShortcutProperties();
+
+            //Update Exif IFD Tags of Tiff image by replacing tag collection 
+            //Images.Tiff.UpdateExifIFDTagsByReplacingTagCollection();
 
             #endregion
 
@@ -507,8 +570,23 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read IPTC Metadata 
             //Images.Psd.ReadIPTCMetadata();
 
+            // Update IPTC Metadata 
+            //Images.Psd.UpdateIPTCMetadata();
+
+            // Remove IPTC Metadata 
+            //Images.Psd.RemoveIPTCMetadata();
+
+            // Read IPTC Metadata PSD file using stream
+            //Images.Psd.ReadIPTCMetadatasUsingStream();
+
+            // Update IPTC Metadata using steam
+            //Images.Psd.UpdateIPTCMetadataUsingStream();
+
             // Read Layers
             //Images.Psd.ReadLayers();
+
+            // Read EXIF Metadata
+            //Images.Psd.ReadEXIFMetadata();
 
             #endregion
 
@@ -672,10 +750,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //AudioFormats.Mp3.ReadMPEGAudioInfo();
 
             // Read Layrics3 Tag
-            //AudioFormats.Mp3.ReadLayrics3Tag();
+            // AudioFormats.Mp3.ReadLyrics3Tag();
+
+            // Update Lyrics3 Tag
+            // AudioFormats.Mp3.UpdateLyrics3Tag();
+
+            // Update Lyrics3 Tag by replacing whole field collection
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
+
+            // Update Lyrics3 Tag by replacing whole tag
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
 
             // Remove Lyrics3 Tag
-            //AudioFormats.Mp3.RemoveLayrics3Tag();
+            //AudioFormats.Mp3.RemoveLyrics3Tag();
 
             // Clean metadata 
             //AudioFormats.Mp3.CleanMetadata();
@@ -714,6 +801,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update or Remove image cover from ID3 audio tag
             //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
 
+            //Read ID3v2 tag in MP3 format using stream
+            //AudioFormats.Mp3.ReadID3v2TagUsingStream();
+
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2TagUsingStream();
+
 
             #endregion
 
@@ -725,10 +818,22 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // Read Audio Details 
             //AudioFormats.Wav.ReadAudioDetails();
 
+            // Update XMP Metadata  
+            //AudioFormats.Wav.UpdateXmpMetadata();
+
+            //Remove XMP Metadata
+            //AudioFormats.Wav.RemoveXmpMetadata();
+
+            //Update XMP Metadata using stream
+            //AudioFormats.Wav.UpdateXmpMetadataUsingStream();
+
+
 
             #endregion
 
             #region Working with Video Formats
+          
+            #region Working with AVI file format 
             //Detect AVI format using format factory
             //VideoFormats.Avi.DetectAviFormat();
 
@@ -744,6 +849,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Clean metadata in AVI format
             //VideoFormats.Avi.CleanMetadata();
 
+            //Clean metadata in AVI using Stream
+            //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
+            #endregion
+
+            #region Working with MOV file format 
+
             //Detect Mov file format using format factory
             //VideoFormats.Mov.DetectMovFormat();
 
@@ -752,6 +863,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Get Mov format metadata
             //VideoFormats.Mov.GetMovFormatMetadata();
+            #endregion
+
+            #region Working with FLV format
+            //Detect FLV file format 
+            //VideoFormats.Flv.DetectFlvFormat();
+
+            //Get XMP Metadata
+            //VideoFormats.Flv.GetXMPMetadata();
+
+            //Update XMP Metadata 
+            //VideoFormats.Flv.UpdateXMPMetadata();
+
+            //Remove XMP Metadata 
+            //VideoFormats.Flv.RemoveXMPMetadata();
+
+            //Read FLV header metadata
+            //VideoFormats.Flv.ReadFlvHeaderMetadata();
+
+            #endregion
 
             #endregion
 
@@ -763,6 +893,16 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Get Zip format metadata
             //Archives.Zip.GetZipMatadata();
+
+            // Get ZIP format metadata using stream
+            //Archives.Zip.GetZipMatadataUsingStream();
+
+            //Remove ZIP format 
+            //Archives.Zip.RemoveComment();
+
+            //Update ZIP format Comment 
+            //Archives.Zip.UpdateComment();
+
             #endregion
 
             #endregion
@@ -773,7 +913,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Torrent.BitTorrent.GetTorrentMetadata();
             //Update Bit Torrent File Metadata 
             //Torrent.BitTorrent.UpdateTorrentMedata();
+            //Read Bit Torrent File Metadata Using Stream
+            //Torrent.BitTorrent.GetTorrentMetadataUsingStream();
             #endregion
+            #endregion
+
+            #region Working with DublinCore Metadata
+            //Get DublinCore of supported file formats using MetadataUtility class
+            //DublinCore.GetDublinCoreMetadata();
+
+            //Get DublinCore Metadata of supported file formats using IDublinCore Interface
+            //DublinCore.GetDublinCoreMetadataUsingIDublinCore();
+
+
+
             #endregion
 
             Console.ReadKey();
