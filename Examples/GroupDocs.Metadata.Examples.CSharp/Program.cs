@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupDocs.Metadata.Examples.Utilities.CSharp;
+using System;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -832,7 +833,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #endregion
 
             #region Working with Video Formats
-          
+
             #region Working with AVI file format 
             //Detect AVI format using format factory
             //VideoFormats.Avi.DetectAviFormat();
@@ -926,6 +927,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //DublinCore.GetDublinCoreMetadataUsingIDublinCore();
 
 
+
+            #endregion
+
+            #region Working with Password Protected Document 
+            //Load a password-protected PDF document
+            //Documents.Pdf.PasswordProtectedPDFDocument();
+
+            //Load a password-protected Word document
+            //Documents.Doc.LoadPasswordProtectedWordDocument();
+
+            //Load a password-protected Excel document
+            //Documents.Xls.LoadPasswordProtectedExcelDocument();
+
+            //Load a password-protected Presentation document
+            //Documents.Ppt.LoadPasswordProtectedPresentationDocument();
 
             #endregion
 

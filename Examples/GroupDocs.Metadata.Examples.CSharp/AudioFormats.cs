@@ -97,7 +97,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath))))
                     {
                         // get ID3 v2 tag
-                        Id3v2Tag id3v2 = mp3Format.Id3v2 ?? new Id3v2Tag();
+                        Id3v2Tag id3v2 = mp3Format.GetId3v2Tag();
                         if (id3v2 != null)
                         {
                             // write ID3v2 version
@@ -143,7 +143,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get id3v2 tag
-                        Id3v2Tag id3Tag = mp3Format.Id3v2 ?? new Id3v2Tag();
+                        Id3v2Tag id3Tag = mp3Format.GetId3v2Tag();
 
                         // set artist
                         id3Tag.Artist = "A-ha";
@@ -209,7 +209,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (Mp3Format mp3Format = new Mp3Format((Common.MapSourceFilePath(filePath))))
                     {
                         // get ID3v1 tag
-                        Id3v1Tag id3V1 = mp3Format.Id3v1;
+                        Id3v1Tag id3V1 = mp3Format.GetId3v1Tag();
 
                         //NOTE: please remember you may use different approaches to getting metadata                
 
@@ -533,7 +533,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get ID3 v2 tag
-                        Id3v2Tag id3v2 = mp3Format.Id3v2;
+                        Id3v2Tag id3v2 = mp3Format.GetId3v2Tag();
 
                         if (id3v2 != null)
                         {
