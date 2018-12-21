@@ -21,6 +21,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             //ExStart:SourceDocFilePath
             private const string filePath = "Documents/Doc/sample.docx";
+            //Password protected file path
+            private const string protectedFilePath = "Documents/Doc/protected-sample.docx";
             //ExEnd:SourceDocFilePath
             #region working with built-in document properties
 
@@ -208,6 +210,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         docMetadata.Author = "Usman";
                         docMetadata.Company = "Aspose";
                         docMetadata.Manager = "Usman Aziz";
+
+                        //Following metadata properties are supported by version 18.12 or higher
+                        docFormat.DocumentProperties["Words"] = new PropertyValue(1);
+                        docFormat.DocumentProperties["Version"] = new PropertyValue(851968);
+
 
                         //save output file...
                         docFormat.Save(Common.MapDestinationFilePath(filePath));
@@ -849,6 +856,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
                 //ExEnd:ReadDigitalSignature
             }
+            /// <summary>
+            /// Loads Password Protect DOC document and cleans metadata
+            /// </summary>
+            public static void LoadPasswordProtectedWordDocument()
+            {
+                LoadOptions loadOptions = new LoadOptions("password");
+                using (DocFormat format = new DocFormat(Common.MapSourceFilePath(protectedFilePath), loadOptions))
+                {
+                    // Working with the password-protected document
+                    format.CleanMetadata();
+                    format.Save(Common.MapDestinationFilePath(protectedFilePath));
+                }
+            }
 
             ///<summary>
             ///Removes digital signature from word document
@@ -1086,6 +1106,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             //ExStart:SourcePdfFilePath
             private const string filePath = "Documents/Pdf/sample.pdf";
+            //Password protected file path
+            private const string protectedFilePath = "Documents/Pdf/protected-sample.pdf";
             //ExEnd:SourcePdfFilePath
             #region working with builtin document properties
             /// <summary>
@@ -1525,6 +1547,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(ex.Message);
                 }
             }
+            /// <summary>
+            /// Loads Password Protected PDF documents and cleans metadata
+            /// </summary>
+            public static void PasswordProtectedPDFDocument()
+            {
+                LoadOptions loadOptions = new LoadOptions("password");
+                using (PdfFormat format = new PdfFormat(Common.MapSourceFilePath(protectedFilePath), loadOptions))
+                {
+                    // Working with the password-protected document
+                    format.CleanMetadata();
+                    format.Save(Common.MapDestinationFilePath(protectedFilePath));
+                }
+            }
         }
 
         public static class Ppt
@@ -1532,6 +1567,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             //ExStart:SourcePptFilePath
             private const string filePath = "Documents/Ppt/sample.pptx";
+            //Password protected file path
+            private const string protectedFilePath = "Documents/Ppt/protected-sample.pptx";
             //ExEnd:SourcePptFilePath
             #region working with builtin document properties
             /// <summary>
@@ -1858,6 +1895,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+            /// <summary>
+            /// Loads Password Protected Presentation document and cleans metadata
+            /// </summary>
+            public static void LoadPasswordProtectedPresentationDocument()
+            {
+                LoadOptions loadOptions = new LoadOptions("password");
+                using (PptFormat format = new PptFormat(Common.MapSourceFilePath(protectedFilePath), loadOptions))
+                {
+                    // Working with the password-protected document
+                    format.CleanMetadata();
+                    format.Save(Common.MapDestinationFilePath(protectedFilePath));
+                }
+            }
 
             #endregion
         }
@@ -1867,6 +1917,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             // initialize file path
             //ExStart:SourceXlsFilePath
             private const string filePath = "Documents/Xls/sample.xlsx";
+            //Password protected file path
+            private const string protectedFilePath = "Documents/Xls/protected-sample.xls";
             //ExEnd:SourceXlsFilePath
 
             //initialize output file path
@@ -2361,6 +2413,20 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
+
+            /// <summary>
+            /// Loads Password Protected Excel document and cleans metadata
+            /// </summary>
+            public static void LoadPasswordProtectedExcelDocument()
+            {
+                LoadOptions loadOptions = new LoadOptions("password");
+                using (XlsFormat format = new XlsFormat(Common.MapSourceFilePath(protectedFilePath), loadOptions))
+                {
+                    // Working with the password-protected document
+                    format.CleanMetadata();
+                    format.Save(Common.MapDestinationFilePath(protectedFilePath));
+                }
+            }
         }
 
         public static class OneNote
@@ -2469,17 +2535,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get document properties
-                        MppMetadata properties = mppFormat.GetProperties();
-
-                        if (mppFormat != null)
-                        {
-                            // get Author 
-                            Console.WriteLine("Author: {0}", properties.Author);
-                            // get Company 
-                            Console.WriteLine("Company: {0}", properties.Company);
-                            // get Keywords 
-                            Console.WriteLine("Keywords: {0}", properties.Keywords);
-                        }
+                        Console.WriteLine(mppFormat.ProjectInfo.Author);
+                        Console.WriteLine(mppFormat.ProjectInfo.LastAuthor);
+                        Console.WriteLine(mppFormat.ProjectInfo.Company);
                     }
                     //ExEnd:GetMetadataMppFormat
                 }
@@ -2552,15 +2610,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (MppFormat mppFormat = new MppFormat(Common.MapSourceFilePath(filePath)))
                     {
                         // get document properties
-                        MppMetadata properties = mppFormat.GetProperties();
-
-                        if (mppFormat != null)
-                        {
-                            // get Author 
-                            Console.WriteLine("Author: {0}", properties.Author);
-                            // get Company 
-                            Console.WriteLine("Company: {0}", properties.Title);
-                        }
+                        Console.WriteLine(mppFormat.ProjectInfo.Author);
+                        Console.WriteLine(mppFormat.ProjectInfo.LastAuthor);
+                        Console.WriteLine(mppFormat.ProjectInfo.Company);
                     }
                     //ExEnd:GetMetadataMppFormat
                 }
