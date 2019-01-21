@@ -491,7 +491,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 try
                 {
                     Regex pattern = new Regex(".*");
-                    ExifProperty[] properties = SearchFacade.ScanExif(Common.MapSourceFilePath(filePath), pattern);
+                    TiffTag[] properties = SearchFacade.ScanExifTags(Common.MapSourceFilePath(filePath), pattern);
                     for (int i = 0; i < properties.Length; i++)
                     {
                         Console.WriteLine(properties[i]);
@@ -920,7 +920,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         TiffAsciiTag artist = (TiffAsciiTag)exifInfo[TiffTagIdEnum.Artist];
                         if (artist != null)
                         {
-                            Console.WriteLine("Artist: {0}", artist.Value);
+                            Console.WriteLine("Artist: {0}", artist.TagValue[0]);
                         }
                     } 
                 }
@@ -947,12 +947,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 case TiffTagType.Ascii:
                                     TiffAsciiTag asciiTag = tag as TiffAsciiTag;
-                                    Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.Value);
+                                    Console.WriteLine("Tag: {0}, value: {1}", asciiTag.DefinedTag, asciiTag.TagValue[0]);
                                     break;
 
                                 case TiffTagType.Rational:
                                     TiffRationalTag rationalTag = tag as TiffRationalTag;
-                                    Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.Value);
+                                    Console.WriteLine("Tag: {0}, value: {1}", rationalTag.DefinedTag, rationalTag.TagValue[0]);
                                     break;
                             }//end of switch
                         }//end of foreach
@@ -1614,7 +1614,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 TiffSLongTag tiffSLong = tag as TiffSLongTag;
 
                                 // and display value
-                                Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.Value);
+                                Console.WriteLine("Tag: {0}, value: {1}", tiffSLong.TagId, tiffSLong.TagValue[0]);
                             }
                         }
                     } 
@@ -1653,7 +1653,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                                     case TiffTagType.SRational:
                                         TiffSRationalTag srationalTag = tag as TiffSRationalTag;
-                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.TagValue[0]);
                                         break;
                                 }
                             }
@@ -2059,7 +2059,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         XmpSchemes schemes = xmpEditableCollection.Schemes;
 
                         schemes.DublinCore.Source = null;
-                        schemes.DublinCore.Subject = null;
+                        schemes.DublinCore.Subjects = null;
 
                         schemes.Pdf.Keywords = null;
                         schemes.Pdf.Producer = null;
@@ -2700,12 +2700,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             {
                                 case TiffTagType.Ascii:
                                     TiffAsciiTag asciiTag = tiffTag as TiffAsciiTag;
-                                    Console.WriteLine("Value: {0}", asciiTag.Value);
+                                    Console.WriteLine("Value: {0}", asciiTag.TagValue[0]);
                                     break;
 
                                 case TiffTagType.Short:
                                     TiffShortTag shortTag = tiffTag as TiffShortTag;
-                                    Console.WriteLine("Value: {0}", shortTag.Value);
+                                    Console.WriteLine("Value: {0}", shortTag.TagValue[0]);
                                     break;
 
                                 default:
@@ -2780,7 +2780,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                                     case TiffTagType.SRational:
                                         TiffSRationalTag srationalTag = tag as TiffSRationalTag;
-                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.Value);
+                                        Console.WriteLine("Tag: {0}, value: {1}", srationalTag.DefinedTag, srationalTag.TagValue[0]);
                                         break;
                                 }
                             }

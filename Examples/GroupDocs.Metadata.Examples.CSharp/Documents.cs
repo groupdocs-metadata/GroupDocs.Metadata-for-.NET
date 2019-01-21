@@ -2431,10 +2431,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         public static class OneNote
         {
-            // initialize file path
-            //ExStart:SourceOneNoteFilePath
+            //Source file path
             private const string filePath = "Documents/OneNote/sample.one";
-            //ExEnd:SourceOneNoteFilePath
+            //Protected Source file path
+            private const string protectedFilePath = "Documents/OneNote/protected_sample.one";
 
             /// <summary>
             /// Gets metadata of OneNote file  
@@ -2446,9 +2446,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     //ExStart:GetMetadataOneNoteFormat
                     // initialize OneNoteFormat
-                    using (OneNoteFormat oneNoteFormat = new OneNoteFormat(Common.MapSourceFilePath(filePath)))
+                    using (OneNoteFormat oneNoteFormat = new OneNoteFormat(Common.MapSourceFilePath(protectedFilePath)))
                     {
-
                         // get metadata
                         var oneNoteMetadata = oneNoteFormat.GetMetadata();
                         if (oneNoteFormat != null)
@@ -2510,10 +2509,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(exp.Message);
                 }
             }
-
-
+            /// <summary>
+            /// This method loads password protected OneNote document
+            /// This method is supported by version 19.1 or greater 
+            /// </summary>
+            public static void LoadPasswordProtectedOneNoteDocument()
+            {
+                if (MetadataUtility.IsProtected(Common.MapSourceFilePath(protectedFilePath)))
+                {
+                    // Setting up password
+                    LoadOptions loadOptions = new LoadOptions("test");
+                    using (OneNoteFormat format = new OneNoteFormat(Common.MapSourceFilePath(protectedFilePath), loadOptions))
+                    {
+                        // Working with the password-protected document
+                        var oneNoteMetadata = format.GetMetadata();
+                        if (format != null)
+                        {
+                            Console.WriteLine("IsFixedSize: {0}", oneNoteMetadata.IsFixedSize);
+                            Console.WriteLine("IsReadOnly: {0}", oneNoteMetadata.IsReadOnly);
+                            Console.WriteLine("IsSynchronized: {0}", oneNoteMetadata.IsSynchronized);
+                            Console.WriteLine("Length: {0}", oneNoteMetadata.Length);
+                            Console.WriteLine("Rank: {0}", oneNoteMetadata.Rank);
+                        }
+                    }
+                }
+            }
         }
-
 
         public static class MSProject
         {

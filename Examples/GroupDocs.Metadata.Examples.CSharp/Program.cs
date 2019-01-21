@@ -557,6 +557,185 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
+            #region Working with Audios
+
+            #region Working with MP3 Files
+
+            //Export metadata of Mp3 format to Excel.
+            //AudioFormats.Mp3.ExportMetadataToExcel();
+
+            // Detect MP3 audio format
+            //AudioFormats.Mp3.DetectMp3Format();
+
+            //Read ID3v2 tag in MP3 format
+            //AudioFormats.Mp3.ReadID3v2Tag();
+
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2Tag();
+
+            // Remove ID3v2Tag
+            //AudioFormats.Mp3.RemoveID3v2Tag();
+
+            //Read ID3v1 tag in MP3 format
+            //AudioFormats.Mp3.ReadID3v1Tag();
+
+            //Read MPEG audio information
+            //AudioFormats.Mp3.ReadMPEGAudioInfo();
+
+            // Read Layrics3 Tag
+            // AudioFormats.Mp3.ReadLyrics3Tag();
+
+            // Update Lyrics3 Tag
+            // AudioFormats.Mp3.UpdateLyrics3Tag();
+
+            // Update Lyrics3 Tag by replacing whole field collection
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
+
+            // Update Lyrics3 Tag by replacing whole tag
+            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
+
+            // Remove Lyrics3 Tag
+            //AudioFormats.Mp3.RemoveLyrics3Tag();
+
+            // Clean metadata 
+            //AudioFormats.Mp3.CleanMetadata();
+
+            // Remove APEv2 Tag
+            //AudioFormats.Mp3.RemoveAPEV2Tag();
+
+
+            // Update ID3v1Tag
+            //AudioFormats.Mp3.UpdateID3v1Tag();
+
+            //Read ID3 Metadata directtly from MP3
+            //AudioFormats.Mp3.ReadId3MetadataDirectly();
+
+            //Read APEV2 tag in MP3 files
+            //AudioFormats.Mp3.ReadApev2Tag();
+
+            //Validate ID3 input metadata before saviing
+            //AudioFormats.Mp3.ValidateID3Metadata();
+
+            //Read additional properties from ID3v2 tag
+            //AudioFormats.Mp3.ReadAdditionalID3v2Properties();
+
+            //Update ID3v2 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
+
+            //Update ID3v1 tag using properties 
+            //AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
+
+            //Ability to read Image cover from ID3 audio tag
+            //AudioFormats.Mp3.ReadImageCoverID3();
+
+            //Read Image Cover using Metadata Utility
+            //AudioFormats.Mp3.ReadImageCoverMetadataUtility();
+
+            //Update or Remove image cover from ID3 audio tag
+            //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
+
+            //Read ID3v2 tag in MP3 format using stream
+            //AudioFormats.Mp3.ReadID3v2TagUsingStream();
+
+            // Update ID3v2Tag
+            //AudioFormats.Mp3.UpdateID3v2TagUsingStream();
+
+
+            #endregion
+
+            #region Working with WAV Files
+
+            // Detect WAV format
+            //AudioFormats.Wav.DetectWavFormat();
+
+            // Read Audio Details 
+            //AudioFormats.Wav.ReadAudioDetails();
+
+            // Update XMP Metadata  
+            //AudioFormats.Wav.UpdateXmpMetadata();
+
+            //Remove XMP Metadata
+            //AudioFormats.Wav.RemoveXmpMetadata();
+
+            //Update XMP Metadata using stream
+            //AudioFormats.Wav.UpdateXmpMetadataUsingStream();
+
+
+
+            #endregion
+
+            #endregion
+
+            #region Working with Videos
+
+            #region Working with AVI file format 
+            //Detect AVI format using format factory
+            //VideoFormats.Avi.DetectAviFormat();
+
+            //Read Header information in AVI format
+            //VideoFormats.Avi.ReadAviMainHeader();
+
+            //Export Metadata of AVI Format file
+            //VideoFormats.Avi.ExportMetadata();
+
+            //Read,write or update xmp metadata in AVI format
+            //VideoFormats.Avi.DealWithXmpMetaData();
+
+            //Clean metadata in AVI format
+            //VideoFormats.Avi.CleanMetadata();
+
+            //Clean metadata in AVI using Stream
+            //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
+            #endregion
+
+            #region Working with MOV file format 
+
+            //Detect Mov file format using format factory
+            //VideoFormats.Mov.DetectMovFormat();
+
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
+
+            //Get Mov format metadata
+            //VideoFormats.Mov.GetMovFormatMetadata();
+            #endregion
+
+            #region Working with FLV file format
+            //Detect FLV file format 
+            //VideoFormats.Flv.DetectFlvFormat();
+
+            //Get XMP Metadata
+            //VideoFormats.Flv.GetXMPMetadata();
+
+            //Update XMP Metadata 
+            //VideoFormats.Flv.UpdateXMPMetadata();
+
+            //Remove XMP Metadata 
+            //VideoFormats.Flv.RemoveXMPMetadata();
+
+            //Read FLV header metadata
+            //VideoFormats.Flv.ReadFlvHeaderMetadata();
+
+            #endregion
+
+            #region Working with MKV file format
+
+            //Get Matroska Metadata 
+            //VideoFormats.Mkv.GetMetadata();
+
+            //Get Matroska Segment Info Metadata 
+            //VideoFormats.Mkv.MatroskaSegmentInfoMetadata();
+
+            //Get Matroska Tag Metadata 
+            //VideoFormats.Mkv.MatroskaTagMetadata();
+
+            //Get Matroska Track Metadata 
+            //VideoFormats.Mkv.MatroskaTrackMetadata();
+
+            #endregion
+
+            #endregion
+
             #region Working with PSD
 
             // Read metadata of PSD file
@@ -600,7 +779,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Images.Cad.GetMetadatPropertiesInDXF();
             #endregion
 
-            #region Working emails
+            #region Working with Emails
             #region Working with Outlook Email
             //Get Outlook email metadata
             //Emails.OutLook.GetOutlookEmailMetadata();
@@ -727,165 +906,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
-            #region Working with MP3 Files
-
-            //Export metadata of Mp3 format to Excel.
-            //AudioFormats.Mp3.ExportMetadataToExcel();
-
-            // Detect MP3 audio format
-            //AudioFormats.Mp3.DetectMp3Format();
-
-            //Read ID3v2 tag in MP3 format
-            //AudioFormats.Mp3.ReadID3v2Tag();
-
-            // Update ID3v2Tag
-            //AudioFormats.Mp3.UpdateID3v2Tag();
-
-            // Remove ID3v2Tag
-            //AudioFormats.Mp3.RemoveID3v2Tag();
-
-            //Read ID3v1 tag in MP3 format
-            //AudioFormats.Mp3.ReadID3v1Tag();
-
-            //Read MPEG audio information
-            //AudioFormats.Mp3.ReadMPEGAudioInfo();
-
-            // Read Layrics3 Tag
-            // AudioFormats.Mp3.ReadLyrics3Tag();
-
-            // Update Lyrics3 Tag
-            // AudioFormats.Mp3.UpdateLyrics3Tag();
-
-            // Update Lyrics3 Tag by replacing whole field collection
-            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholefieldCollection();
-
-            // Update Lyrics3 Tag by replacing whole tag
-            // AudioFormats.Mp3.UpdateLyrics3TagByReplacingWholeTag();
-
-            // Remove Lyrics3 Tag
-            //AudioFormats.Mp3.RemoveLyrics3Tag();
-
-            // Clean metadata 
-            //AudioFormats.Mp3.CleanMetadata();
-
-            // Remove APEv2 Tag
-            //AudioFormats.Mp3.RemoveAPEV2Tag();
-
-
-            // Update ID3v1Tag
-            //AudioFormats.Mp3.UpdateID3v1Tag();
-
-            //Read ID3 Metadata directtly from MP3
-            //AudioFormats.Mp3.ReadId3MetadataDirectly();
-
-            //Read APEV2 tag in MP3 files
-            //AudioFormats.Mp3.ReadApev2Tag();
-
-            //Validate ID3 input metadata before saviing
-            //AudioFormats.Mp3.ValidateID3Metadata();
-
-            //Read additional properties from ID3v2 tag
-            //AudioFormats.Mp3.ReadAdditionalID3v2Properties();
-
-            //Update ID3v2 tag using properties 
-            //AudioFormats.Mp3.UpdateID3v2TagUsingProperties();
-
-            //Update ID3v1 tag using properties 
-            //AudioFormats.Mp3.UpdateID3v1TagUsingProperties();
-
-            //Ability to read Image cover from ID3 audio tag
-            //AudioFormats.Mp3.ReadImageCoverID3();
-
-            //Read Image Cover using Metadata Utility
-            //AudioFormats.Mp3.ReadImageCoverMetadataUtility();
-
-            //Update or Remove image cover from ID3 audio tag
-            //AudioFormats.Mp3.UpdateOrRemoveImageCoverID3();
-
-            //Read ID3v2 tag in MP3 format using stream
-            //AudioFormats.Mp3.ReadID3v2TagUsingStream();
-
-            // Update ID3v2Tag
-            //AudioFormats.Mp3.UpdateID3v2TagUsingStream();
-
-
-            #endregion
-
-            #region Working with WAV Files
-
-            // Detect WAV format
-            //AudioFormats.Wav.DetectWavFormat();
-
-            // Read Audio Details 
-            //AudioFormats.Wav.ReadAudioDetails();
-
-            // Update XMP Metadata  
-            //AudioFormats.Wav.UpdateXmpMetadata();
-
-            //Remove XMP Metadata
-            //AudioFormats.Wav.RemoveXmpMetadata();
-
-            //Update XMP Metadata using stream
-            //AudioFormats.Wav.UpdateXmpMetadataUsingStream();
-
-
-
-            #endregion
-
-            #region Working with Video Formats
-
-            #region Working with AVI file format 
-            //Detect AVI format using format factory
-            //VideoFormats.Avi.DetectAviFormat();
-
-            //Read Header information in AVI format
-            //VideoFormats.Avi.ReadAviMainHeader();
-
-            //Export Metadata of AVI Format file
-            //VideoFormats.Avi.ExportMetadata();
-
-            //Read,write or update xmp metadata in AVI format
-            //VideoFormats.Avi.DealWithXmpMetaData();
-
-            //Clean metadata in AVI format
-            //VideoFormats.Avi.CleanMetadata();
-
-            //Clean metadata in AVI using Stream
-            //VideoFormats.Avi.ReadAviMainHeaderUsingStream();
-            #endregion
-
-            #region Working with MOV file format 
-
-            //Detect Mov file format using format factory
-            //VideoFormats.Mov.DetectMovFormat();
-
-            //Get Mov format metadata
-            //VideoFormats.Mov.GetMovFormatMetadata();
-
-            //Get Mov format metadata
-            //VideoFormats.Mov.GetMovFormatMetadata();
-            #endregion
-
-            #region Working with FLV format
-            //Detect FLV file format 
-            //VideoFormats.Flv.DetectFlvFormat();
-
-            //Get XMP Metadata
-            //VideoFormats.Flv.GetXMPMetadata();
-
-            //Update XMP Metadata 
-            //VideoFormats.Flv.UpdateXMPMetadata();
-
-            //Remove XMP Metadata 
-            //VideoFormats.Flv.RemoveXMPMetadata();
-
-            //Read FLV header metadata
-            //VideoFormats.Flv.ReadFlvHeaderMetadata();
-
-            #endregion
-
-            #endregion
-
             #region Working with Archives
 
             #region Working with Zip format 
@@ -943,12 +963,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Load a password-protected Presentation document
             //Documents.Ppt.LoadPasswordProtectedPresentationDocument();
 
+            //Load a password-protected OneNote document
+            Documents.OneNote.LoadPasswordProtectedOneNoteDocument();
             #endregion
 
             Console.ReadKey();
-
-
-
         }
     }
 }
