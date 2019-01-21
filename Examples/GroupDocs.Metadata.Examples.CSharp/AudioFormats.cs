@@ -991,12 +991,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     Console.WriteLine(format.XmpValues.Schemes.XmpBasic.CreateDate);
                     Console.WriteLine(format.XmpValues.Schemes.XmpBasic.Label);
-                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subject);
+                    Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subjects);
                     Console.WriteLine(format.XmpValues.Schemes.DublinCore.Format);
 
                     format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
                     format.XmpValues.Schemes.XmpBasic.Label = "Test";
-                    format.XmpValues.Schemes.DublinCore.Subject = "WAV XMP Test";
+                    format.XmpValues.Schemes.DublinCore.Subjects = new string[] { "WAV XMP Test" };
                     format.XmpValues.Schemes.DublinCore.Format = "WAV Audio";
 
                     format.Save(Common.MapDestinationFilePath(filePath));
@@ -1026,12 +1026,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         Console.WriteLine(format.XmpValues.Schemes.XmpBasic.CreateDate);
                         Console.WriteLine(format.XmpValues.Schemes.XmpBasic.Label);
-                        Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subject);
+                        Console.WriteLine(format.XmpValues.Schemes.DublinCore.Subjects);
                         Console.WriteLine(format.XmpValues.Schemes.DublinCore.Format);
 
                         format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
                         format.XmpValues.Schemes.XmpBasic.Label = "Test";
-                        format.XmpValues.Schemes.DublinCore.Subject = "WAV XMP Test";
+                        format.XmpValues.Schemes.DublinCore.Subjects = new string[] { "WAV XMP Test" };
                         format.XmpValues.Schemes.DublinCore.Format = "WAV Audio";
 
                         format.Save(stream);

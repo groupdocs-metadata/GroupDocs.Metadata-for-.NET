@@ -12,16 +12,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
     {
         public static class Avi
         {
-            // initialize file path and directory path
-            //ExStart:SourceAviFilePath + SourcAviDirectoryPath
-            private const string directoryPath = "Video/Avi";
+            //Source file path
             private const string filePath = "Video/Avi/sample.avi";
-            
-            //ExEnd:SourceAviFilePath + SourcAviDirectoryPath
-
-            //ExStart:OutputDataFilePathAvi
+            //Output data file path
             private const string OutputDataFilePathAvi = "Documents/Xls/metadata-avi.xls";
-
             /// <summary>
             /// Detects AVI video format via Format Factory
             /// </summary>
@@ -40,14 +34,14 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // and get it MIME type
                         string mimeType = aviFormat.MIMEType;
                         Console.WriteLine(mimeType);
-                    } 
+                    }
                 }
                 //ExEnd:DetectAviFormat
             }
 
 
             /// <summary>
-            /// demonstrates how to read AVIMAINHEADER of AVI format
+            /// Demonstrates how to read AVIMAINHEADER of AVI format
             /// </summary>
             public static void ReadAviMainHeader()
             {
@@ -71,7 +65,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine("Number of streams: {0}", header.Streams);
 
                     // display suggested buffer size for reading the file
-                    Console.WriteLine("Suggested buffer size: {0}", header.SuggestedBufferSize); 
+                    Console.WriteLine("Suggested buffer size: {0}", header.SuggestedBufferSize);
                 }
                 //ExEnd:ReadAviMainHeader
             }
@@ -103,12 +97,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /// Shows how to read, update and remove XMP metadata in AVI format
             /// Feature is supported in version 17.06 or greater
             /// </summary>
-            public static void DealWithXmpMetaData() {
+            public static void DealWithXmpMetaData()
+            {
                 //ExStart:DealWithXmpMetaData
                 // initialize AviFormat
                 using (AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    
+
                     // get XMP
                     var xmpMetadata = aviFormat.GetXmpData();
 
@@ -127,7 +122,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     aviFormat.SetXmpData(xmpMetadata);
 
                     // and commit changes
-                    aviFormat.Save(); 
+                    aviFormat.Save();
                 }
                 //ExEnd:DealWithXmpMetaData
             }
@@ -138,12 +133,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 // initialize AviFormat
                 using (AviFormat aviFormat = new AviFormat(Common.MapSourceFilePath(filePath)))
                 {
-                   
+
                     // removes all metadata
                     aviFormat.CleanMetadata();
 
                     // commit changes
-                    aviFormat.Save(); 
+                    aviFormat.Save();
                 }
                 //ExEnd:DealWithXmpMetaData
             }
@@ -181,7 +176,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         }
         public static class Flv
         {
-            // Initialize file path 
+            // Source file path 
             private const string filePath = "Video/Flv/sample.flv";
             /// <summary>
             /// Check FLV file format 
@@ -220,7 +215,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                 using (FlvFormat format = new FlvFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    
+
                     format.XmpValues.Schemes.XmpBasic.CreateDate = DateTime.Now;
                     format.XmpValues.Schemes.XmpBasic.Label = "Test";
                     format.XmpValues.Schemes.DublinCore.Source = "http://groupdocs.com";
@@ -258,11 +253,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
-            public static class Mov
+        public static class Mov
         {
-            // initialize file path and directory path
-            //ExStart:SourceAviFilePath + SourcAviDirectoryPath
-            private const string directoryPath = "Video/Mov";
+            //Source file path 
             private const string filePath = "Video/Mov/sample.mov";
             /// <summary>
             /// Detects Mov video format via Format Factory
@@ -282,7 +275,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // and get it MIME type;
                         string mimeType = movFormat.MIMEType;
                         Console.WriteLine(mimeType);
-                    } 
+                    }
                 }
                 //ExEnd:DetectMovFormat
             }
@@ -315,9 +308,119 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // get type
                         Console.WriteLine("Type: {0}", info.Type);
 
-                    } 
+                    }
                 }
                 //ExEnd:GetMovFormatMetadata
+            }
+        }
+        public static class Mkv
+        {
+            //Source file path
+            private const string filePath = "Video/Mkv/sample.mkv";
+            /// <summary>
+            /// This method gets MKV file format metadata 
+            /// This method is supported by version 19.1 or greater 
+            /// </summary>
+            public static void GetMetadata()
+            {
+                using (MatroskaFormat format = new MatroskaFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    Console.WriteLine("DocType: {0}", format.EbmlHeader.DocType);
+                    Console.WriteLine("DocTypeReadVersion: {0}", format.EbmlHeader.DocTypeReadVersion);
+                    Console.WriteLine("DocTypeVersion: {0}", format.EbmlHeader.DocTypeVersion);
+                    Console.WriteLine("ReadVersion: {0}", format.EbmlHeader.ReadVersion);
+                    Console.WriteLine("Version: {0}", format.EbmlHeader.Version);
+                }
+            }
+            /// <summary>
+            /// This method gets Matroska Segment Info Metadata
+            /// This method is supported by version 19.1 or greater 
+            /// </summary>
+            public static void MatroskaSegmentInfoMetadata()
+            {
+                using (MatroskaFormat format = new MatroskaFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    foreach (MatroskaSegmentInfoMetadata segment in format.Segments)
+                    {
+                        Console.WriteLine("DateUtc: {0}", segment.DateUtc);
+                        Console.WriteLine("Duration: {0}", segment.Duration);
+                        Console.WriteLine("MuxingApp: {0}", segment.MuxingApp);
+                        Console.WriteLine("SegmentFilename: {0}", segment.SegmentFilename);
+                        Console.WriteLine("SegmentUid: {0}", segment.SegmentUid);
+                        Console.WriteLine("TimecodeScale: {0}", segment.TimecodeScale);
+                        Console.WriteLine("Title: {0}", segment.Title);
+                        Console.WriteLine("WritingApp: {0}", segment.WritingApp);
+                    }
+                }
+
+            }
+            /// <summary>
+            /// This method gets Matroska Tag Metadata
+            /// This method is supported by version 19.1 or greater 
+            /// </summary>
+            public static void MatroskaTagMetadata()
+            {
+                using (MatroskaFormat format = new MatroskaFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    foreach (MatroskaTagMetadata tag in format.Tags)
+                    {
+                        Console.WriteLine("TargetType: {0}", tag.TargetType);
+                        Console.WriteLine("TargetTypeValue: {0}", tag.TargetTypeValue);
+                        Console.WriteLine("TagTrackUid: {0}", tag.TagTrackUid);
+                        foreach (MetadataProperty simpleTag in tag.SimpleTags)
+                        {
+                            Console.WriteLine("GetFormattedValue: {0}", simpleTag.GetFormattedValue());
+                        }
+                    }
+                }
+            }
+            /// <summary>
+            /// This method gets Matroska Track Metadata
+            /// This method is supported by version 19.1 or greater 
+            /// </summary>
+            public static void MatroskaTrackMetadata()
+            {
+                using (MatroskaFormat format = new MatroskaFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    foreach (MatroskaTrackMetadata track in format.Tracks)
+                    {
+                        Console.WriteLine("CodecId: {0}", track.CodecId);
+                        Console.WriteLine("CodecName: {0}", track.CodecName);
+                        Console.WriteLine("DefaultDuration: {0}", track.DefaultDuration);
+                        Console.WriteLine("FlagEnabled: {0}", track.FlagEnabled);
+                        Console.WriteLine("Language: {0}", track.Language);
+                        Console.WriteLine("LanguageIetf: {0}", track.LanguageIetf);
+                        Console.WriteLine("Name: {0}", track.Name);
+                        Console.WriteLine("TrackNumber: {0}", track.TrackNumber);
+                        Console.WriteLine("TrackType: {0}", track.TrackType);
+                        Console.WriteLine("TrackUid: {0}", track.TrackUid);
+                        MatroskaAudioTrackMetadata audioTrack = track as MatroskaAudioTrackMetadata;
+                        if (audioTrack != null)
+                        {
+                            Console.WriteLine("SamplingFrequency: {0}", audioTrack.SamplingFrequency);
+                            Console.WriteLine("OutputSamplingFrequency: {0}", audioTrack.OutputSamplingFrequency);
+                            Console.WriteLine("Channels: {0}", audioTrack.Channels);
+                            Console.WriteLine("BitDepth: {0}", audioTrack.BitDepth);
+                        }
+                        MatroskaVideoTrackMetadata videoTrack = track as MatroskaVideoTrackMetadata;
+                        if (videoTrack != null)
+                        {
+                            Console.WriteLine("FlagInterlaced: {0}", videoTrack.FlagInterlaced);
+                            Console.WriteLine("FieldOrder: {0}", videoTrack.FieldOrder);
+                            Console.WriteLine("StereoMode: {0}", videoTrack.StereoMode);
+                            Console.WriteLine("AlphaMode: {0}", videoTrack.AlphaMode);
+                            Console.WriteLine("PixelWidth: {0}", videoTrack.PixelWidth);
+                            Console.WriteLine("PixelHeight: {0}", videoTrack.PixelHeight);
+                            Console.WriteLine("PixelCropBottom: {0}", videoTrack.PixelCropBottom);
+                            Console.WriteLine("PixelCropTop: {0}", videoTrack.PixelCropTop);
+                            Console.WriteLine("PixelCropLeft: {0}", videoTrack.PixelCropLeft);
+                            Console.WriteLine("PixelCropRight: {0}", videoTrack.PixelCropRight);
+                            Console.WriteLine("DisplayWidth: {0}", videoTrack.DisplayWidth);
+                            Console.WriteLine("DisplayHeight: {0}", videoTrack.DisplayHeight);
+                            Console.WriteLine("DisplayUnit: {0}", videoTrack.DisplayUnit);
+                        }
+                    }
+                }
             }
         }
     }
