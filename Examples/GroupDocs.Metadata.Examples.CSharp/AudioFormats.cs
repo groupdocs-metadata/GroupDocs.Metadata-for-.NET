@@ -345,7 +345,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get Lyrics3 v2.00 tag
-                        Lyrics3Tag lyrics3Tag = mp3Format.Lyrics3v2;
+                        Lyrics3Tag lyrics3Tag = mp3Format.GetLyrics3Tag();
 
                         // check if Lyrics3 is presented. It could be absent.
                         if (lyrics3Tag != null)

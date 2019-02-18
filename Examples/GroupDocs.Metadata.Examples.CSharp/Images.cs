@@ -433,13 +433,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get EXIF data
-                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+                        ExifInfo exif = (ExifInfo)jpegFormat.ExifValues;
 
                         // set artist
                         exif.Artist = "test artist";
 
                         // set the name of the camera's owner
-                        exif.CameraOwnerName = "camera owner's name";
+                        jpegFormat.ExifValues.ExifIfdData.CameraOwnerName = "camera owner's name";
 
                         // set description
                         exif.ImageDescription = "test description";
@@ -728,7 +728,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get EXIF data
-                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+                        ExifInfo exif = (ExifInfo)jpegFormat.GetExifInfo();
 
                         if (exif != null)
                         {
@@ -737,13 +737,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                             // get description 
                             Console.WriteLine("Description: {0}", exif.ImageDescription);
                             // get user's comment 
-                            Console.WriteLine("User Comment: {0}", exif.UserComment);
+                            Console.WriteLine("User Comment: {0}", exif.ExifIfdData.UserComment);
                             // get user's Model 
                             Console.WriteLine("Model: {0}", exif.Model);
                             // get user's Make 
                             Console.WriteLine("Make: {0}", exif.Make);
                             // get user's CameraOwnerName 
-                            Console.WriteLine("CameraOwnerName: {0}", exif.CameraOwnerName);
+                            Console.WriteLine("CameraOwnerName: {0}", exif.ExifIfdData.CameraOwnerName);
                             // get longitude
                             Console.WriteLine("Longitude: {0}", exif.GPSData.Longitude[0].ToString());
                             // get latitude
@@ -770,11 +770,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get EXIF data
-                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+                        ExifInfo exif = (ExifInfo)jpegFormat.GetExifInfo();
                         if (exif == null)
                         {
                             // initialize EXIF data if null
-                            exif = new JpegExifInfo();
+                            exif = new ExifInfo();
                         }
 
                         // set artist
@@ -784,7 +784,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // set model
                         exif.Model = "S120";
                         // set the name of the camera's owner
-                        exif.CameraOwnerName = "Owner";
+                        exif.ExifIfdData.CameraOwnerName = "Owner";
                         // set description
                         exif.ImageDescription = "sample description";
 
@@ -815,13 +815,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get EXIF data
-                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.ExifValues;
+                        ExifInfo exif = (ExifInfo)jpegFormat.ExifValues;
 
                         // set artist
                         exif.Artist = "new test artist";
 
                         // set the name of the camera's owner
-                        exif.CameraOwnerName = "new camera owner's name";
+                        exif.ExifIfdData.CameraOwnerName = "new camera owner's name";
 
                         // set description
                         exif.ImageDescription = "update test description";
@@ -1005,19 +1005,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
 
                         // get EXIF data
-                        JpegExifInfo exif = (JpegExifInfo)jpegFormat.GetExifInfo();
+                        ExifInfo exif = (ExifInfo)jpegFormat.GetExifInfo();
 
                         if (exif == null)
                         {
                             // initialize EXIF data if null
-                            exif = new JpegExifInfo();
+                            exif = new ExifInfo();
                         }
 
                         // set artist
                         exif.Artist = "test artist";
 
                         // set the name of the camera's owner
-                        exif.CameraOwnerName = "camera owner's name";
+                        exif.ExifIfdData.CameraOwnerName = "camera owner's name";
 
                         // set description
                         exif.ImageDescription = "test description";
@@ -1587,7 +1587,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(sonyMakerFilePath)))
                 {
 
-                    JpegExifInfo exif = jpegFormat.GetExifInfo() as JpegExifInfo;
+                    ExifInfo exif = jpegFormat.GetExifInfo() as ExifInfo;
 
                     if (exif == null)
                     {
@@ -2493,15 +2493,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         if (exif != null)
                         {
                             // get BodySerialNumber 
-                            Console.WriteLine("Body Serial Number: {0}", exif.BodySerialNumber);
+                            Console.WriteLine("Body Serial Number: {0}", exif.ExifIfdData.BodySerialNumber);
                             // get CameraOwnerName 
-                            Console.WriteLine("Camera Owner Name: {0}", exif.CameraOwnerName);
+                            Console.WriteLine("Camera Owner Name: {0}", exif.ExifIfdData.CameraOwnerName);
                             // get CFAPattern 
-                            Console.WriteLine("CFA Pattern: {0}", exif.CFAPattern);
+                            Console.WriteLine("CFA Pattern: {0}", exif.ExifIfdData.CFAPattern);
                             // get GPSData 
                             Console.WriteLine("GPS Data: {0}", exif.GPSData);
                             // get UserComment 
-                            Console.WriteLine("User Comment: {0}", exif.UserComment);
+                            Console.WriteLine("User Comment: {0}", exif.ExifIfdData.UserComment);
                         } 
                     }
                     //ExEnd:GetExifPropertiesTiffImage
@@ -2546,10 +2546,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
 
-                        tiffFormat.ExifValues.CameraOwnerName = "camera owner's name";
+                        tiffFormat.ExifValues.ExifIfdData.CameraOwnerName = "camera owner's name";
 
                         // set user comment
-                        tiffFormat.ExifValues.UserComment = "user's comment";
+                        tiffFormat.ExifValues.ExifIfdData.UserComment = "user's comment";
 
                         // commit changes
                         tiffFormat.Save(Common.MapDestinationFilePath(filePath));

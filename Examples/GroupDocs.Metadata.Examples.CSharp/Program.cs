@@ -270,6 +270,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Reads thumbnail in documents
             //Documents.ReadThumbnail("Documents/Doc/sample.docx");
 
+            //Preview Documents as images
+            //Documents.RenderImagePreviews("Documents/Doc/sample.docx");
+
             //Loads DocumentInfo property in DocumentFormat using lazy loading pattern
             //Documents.LazyLoadDocumentInfoProperty("Documents/Doc/sample2.doc");
             #endregion
@@ -733,6 +736,21 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //VideoFormats.Mkv.MatroskaTrackMetadata();
 
             #endregion
+            #region Working with ASF file format
+
+            //Get ASF Native Metadata 
+            //VideoFormats.Asf.GetMetadata();
+
+            //Get ASF XMP Metadata 
+            //VideoFormats.Asf.GetXMPMetadata();
+
+            //Write ASF XMP Metadata 
+            //VideoFormats.Asf.SetXMPMetadata();
+
+            //Write ASF XMP Metadata 
+            //VideoFormats.Asf.RemoveXMPMetadata();
+
+            #endregion
 
             #endregion
 
@@ -832,6 +850,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Export metadata
             //APIs.ExportMetadata("Documents/Pdf/sample2.pdf", ExportTypes.ToExcel);
+
+            //Display metadata tree
+            //APIs.DemonstrateMetadataTree();
 
             #endregion
 

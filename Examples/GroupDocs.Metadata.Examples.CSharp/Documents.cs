@@ -4,6 +4,7 @@ using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Formats.Document;
 using GroupDocs.Metadata.Formats.Ebook;
 using GroupDocs.Metadata.Formats.Project;
+using GroupDocs.Metadata.Preview;
 using GroupDocs.Metadata.Tools;
 using GroupDocs.Metadata.Xmp;
 using GroupDocs.Metadata.Xmp.Schemes;
@@ -2928,6 +2929,37 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     DocumentInfo next = docFormat.DocumentInfo;
                 }
                 //ExEnd:LazyLoadDocumentInfoProperty
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// Render image previews for supported document types
+        /// Feature is supported by version 19.2 or greater
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void RenderImagePreviews(string filePath)
+        {
+            try
+            {
+                //ExStart:RenderImagePreviews
+                // initialize Preview Handler
+                using (PreviewHandler handler = PreviewFactory.Load(Common.MapSourceFilePath(filePath)))
+                {
+                    for (int i = 0; i < handler.Pages.Length; i++)
+                    {
+                        //Get preview images
+                        PreviewImageData[] pagePreviews = handler.GetPageImage(i);
+                        for (int j = 0; j < pagePreviews.Length; j++)
+                        {
+                            File.WriteAllBytes(Common.MapDestinationFilePath(string.Format(@"\Documents\Previews\{0}-{1}.png",i, j)), pagePreviews[j].Contents);
+                        }
+                    }
+                }
+                //ExEnd:RenderImagePreviews
             }
             catch (Exception ex)
             {

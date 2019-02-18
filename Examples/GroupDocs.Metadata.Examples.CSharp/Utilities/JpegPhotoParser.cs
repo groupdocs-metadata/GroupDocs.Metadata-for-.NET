@@ -71,7 +71,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
                     JpegFormat jpeg = (JpegFormat)format;
 
                     // get exif data
-                    JpegExifInfo exif = (JpegExifInfo)jpeg.GetExifInfo();
+                    ExifInfo exif = (ExifInfo)jpeg.GetExifInfo();
 
                     if (exif != null)
                     {

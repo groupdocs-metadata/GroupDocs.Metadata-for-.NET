@@ -423,6 +423,147 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 }
             }
         }
+        public static class Asf
+        {
+            //Source file path
+            private const string filePath = "Video/ASF/sample.asf";
+            /// <summary>
+            /// This method gets ASF video native metadata
+            /// This method is supported by version 19.2 or greater 
+            /// </summary>
+            public static void GetMetadata()
+            {
+                //ExStart:GetASFNativeMetadata
+                using (AsfFormat format = new AsfFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    // get AsfMetadata
+                    var metadata = format.AsfInfo;
+
+                    //Display properties
+                    Console.WriteLine("Creation date: {0}",metadata.CreationDate);
+                    Console.WriteLine("File id: {0}", metadata.FileId);
+                    Console.WriteLine("Flags: {0}", metadata.Flags);
+
+                    // Display Asf Codec Information
+                    foreach (AsfCodecInfo codecInfo in metadata.CodecInformation)
+                    {
+                        Console.WriteLine("Codec type: {0}", codecInfo.CodecType);
+                        Console.WriteLine("Description: {0}", codecInfo.Description);
+                        Console.WriteLine("Codec information: {0}", codecInfo.Information);
+                        Console.WriteLine(codecInfo.Name);
+                    }
+                    // Display metadata descriptors
+                    foreach (AsfBaseDescriptor descriptor in metadata.MetadataDescriptors)
+                    {
+
+                        Console.WriteLine("Name: {0}", descriptor.Name);
+                        Console.WriteLine("Formatted value: {0}", descriptor.GetFormattedValue());
+                        AsfMetadataDescriptor metadataDescriptor = descriptor as AsfMetadataDescriptor;
+                        if (metadataDescriptor != null)
+                        {
+                            Console.WriteLine("Language: {0}", metadataDescriptor.Language);
+                            Console.WriteLine("Stream number: {0}", metadataDescriptor.StreamNumber);
+                            Console.WriteLine("Original name: {0}", metadataDescriptor.OriginalName);
+                        }
+                    }
+                    //Dispay the base stream related metadata 
+                    foreach (AsfBaseStreamProperty property in metadata.StreamProperties)
+                    {
+                        Console.WriteLine("Alternate bitrate: {0}", property.AlternateBitrate);
+                        Console.WriteLine("Average bitrate: {0}", property.AverageBitrate);
+                        Console.WriteLine("Average time per frame: {0}", property.AverageTimePerFrame);
+                        Console.WriteLine("Bitrate: {0}", property.Bitrate);
+                        Console.WriteLine("Stream end time: {0}", property.EndTime);
+                        Console.WriteLine("Stream flags: {0}", property.Flags);
+                        Console.WriteLine("Stream language: {0}", property.Language);
+                        Console.WriteLine("Stream start time: {0}", property.StartTime);
+                        Console.WriteLine("Stream number: {0}", property.StreamNumber);
+                        Console.WriteLine("Stream type: {0}", property.StreamType);
+                        
+                        //Display the audio stream related metadata
+                        AsfAudioStreamProperty audioStreamProperty = property as AsfAudioStreamProperty;
+                        if (audioStreamProperty != null)
+                        {
+                            Console.WriteLine("Audio bits per sample: {0}", audioStreamProperty.BitsPerSample);
+                            Console.WriteLine("Audio channels: {0}", audioStreamProperty.Channels);
+                            Console.WriteLine("Audio format tag: {0}", audioStreamProperty.FormatTag);
+                            Console.WriteLine("Audio samples per second: {0}", audioStreamProperty.SamplesPerSecond);
+                        }
+                        //Display the vedio stream related metadata
+                        AsfVideoStreamProperty videoStreamProperty = property as AsfVideoStreamProperty;
+                        if (videoStreamProperty != null)
+                        {
+                            Console.WriteLine("Video bits per pixels: {0}", videoStreamProperty.BitsPerPixels);
+                            Console.WriteLine("Compression: {0}", videoStreamProperty.Compression);
+                            Console.WriteLine("Image height: {0}", videoStreamProperty.ImageHeight);
+                            Console.WriteLine("Image width: {0}", videoStreamProperty.ImageWidth);
+                        }
+                    }
+                }
+                //ExEnd:GetASFNativeMetadata
+            }
+            /// <summary>
+            /// This method gets ASF video XMP metadata
+            /// This method is supported by version 19.2 or greater
+            /// </summary>
+            public static void GetXMPMetadata()
+            {
+                //ExStart: GetASFXMPMetadata
+                using (AsfFormat asfFormat = new AsfFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    //Get XMP Basic metadata
+                    var xmpMetadata = asfFormat.XmpValues.Schemes.XmpBasic;
+
+                    // Display some properties from the XMP Basic metadata
+                    Console.WriteLine("Creation date: {0}", xmpMetadata.CreateDate);
+                    Console.WriteLine("Label: {0}", xmpMetadata.Label);
+                    Console.WriteLine("Rating: {0}", xmpMetadata.Rating);
+                }
+
+                //ExEnd:GetASFXMPMetadata
+            }
+            /// <summary>
+            /// This method write ASF video XMP metadata
+            /// This method is supported by version 19.2 or greater
+            /// </summary>
+            public static void SetXMPMetadata()
+            {
+                //ExStart: WriteASFXMPMetadata
+                using (AsfFormat asfFormat = new AsfFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    //Get XMP Basic metadata
+                    var xmpMetadata = asfFormat.XmpValues.Schemes.XmpBasic;
+
+                    // set some properties to write xmp data
+                    xmpMetadata.CreateDate = DateTime.Now;
+                    xmpMetadata.Rating = 4;
+                    xmpMetadata.Nickname = "ASF Video";
+
+                    // Update the ASF file
+                    asfFormat.Save(Common.MapDestinationFilePath(filePath));
+                }
+
+                //ExEnd:WriteASFXMPMetadata
+            }
+            /// <summary>
+            /// This method remove ASF video XMP metadata
+            /// This method is supported by version 19.2 or greater
+            /// </summary>
+            public static void RemoveXMPMetadata()
+            {
+                //ExStart: RemoveASFXMPMetadata
+                using (AsfFormat format = new AsfFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    // Remove all XMP data from ASF file
+                    format.RemoveXmpData();
+                    
+                    // Update the ASF file
+                    format.Save(Common.MapDestinationFilePath(filePath));
+                }
+
+                //ExEnd:RemoveASFXMPMetadata
+            }
+        }
     }
 }
 

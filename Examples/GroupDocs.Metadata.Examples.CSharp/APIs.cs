@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using GroupDocs.Metadata.Formats;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -231,6 +232,62 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 Console.WriteLine("Exception occurred: " + exp.Message);
             }
 
+        }
+        /// <summary>
+        /// Demonstrate the use of Refactor base metadata classes to add support for hierarchical metadata structures
+        /// Feature is supported by version 19.2 or greater
+        /// </summary>
+        public static void DemonstrateMetadataTree()
+        {
+            //Source file path
+            string filePath = "Video/ASF/sample.asf";
+
+            using (FormatBase format = FormatFactory.RecognizeFormat(Common.MapSourceFilePath(filePath)))
+            {
+
+                DisplayMetadataTree(format.GetMetadata(), 0);
+            }
+
+        }
+        private static void DisplayMetadataTree(Metadata metadata, int indent)
+        {
+            if (metadata != null)
+            {
+                var stringMetadataType = metadata.MetadataType.ToString();
+
+                Console.WriteLine(stringMetadataType.PadLeft(stringMetadataType.Length + indent));
+
+                foreach (MetadataProperty property in metadata)
+                {
+                    string stringPropertyRepresentation = string.Format("Name: {0}, Value: {1}", property.Name, property.GetFormattedValue());
+
+                    Console.WriteLine(stringPropertyRepresentation.PadLeft(stringPropertyRepresentation.Length + indent + 1));
+
+                    if (property.Value != null)
+                    {
+                        switch (property.Value.Type)
+                        {
+                            case MetadataPropertyType.Metadata:
+                                DisplayMetadataTree(property.Value.ToMetadata(), indent + 2);
+                                break;
+                            case MetadataPropertyType.MetadataArray:
+                                DisplayMetadataTree(property.Value.ToMetadataArray(), indent + 2);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+        private static void DisplayMetadataTree(Metadata[] metadataArray, int indent)
+        {
+
+            if (metadataArray != null)
+            {
+                foreach (Metadata metadata in metadataArray)
+                {
+                    DisplayMetadataTree(metadata, indent);
+                }
+            }
         }
     }
 }
