@@ -8,6 +8,7 @@ using GroupDocs.Metadata;
 using GroupDocs.Metadata.Formats;
 using GroupDocs.Metadata.Exceptions;
 using GroupDocs.Metadata.Formats.Document;
+using GroupDocs.Metadata.Formats.Cryptography;
 
 namespace GroupDocs.Metadata.Examples.Utilities.CSharp
 {
@@ -250,5 +251,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
             //ExEnd:UseDynabicMeteredAccount
         }
+      
+
     }
 }

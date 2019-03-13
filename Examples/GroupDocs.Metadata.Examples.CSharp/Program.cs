@@ -10,7 +10,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             /* Apply product license
              * Uncomment following function if you have product license.
              */
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region using Dynabic.Metered Account
             //Common.UseDynabicMeteredAccount();
@@ -944,6 +944,19 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //Update ZIP format Comment 
             //Archives.Zip.UpdateComment();
+
+            #endregion
+
+            #region Working with Fonts
+            //Read the OpenType font metadata
+            //Fonts.OpenType.ReadOpenTypeMetadata();
+
+            //Read the digital signature metadata
+            //Fonts.OpenType.ReadDigitalSignatureMetadata();
+
+            // Read and display OpenType Metadata in a unified way
+            //Fonts.OpenType.DisplayMetadataTree();
+
 
             #endregion
 
