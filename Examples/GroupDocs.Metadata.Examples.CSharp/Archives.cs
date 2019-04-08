@@ -179,6 +179,33 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     Console.WriteLine(ex.Message);
                 }
             }
+            /// <summary>
+            /// Read all entries of a ZIP archive using a specific encoding
+            /// This method is supported by version 19.4 or greater
+            /// </summary>
+            public static void ReadAllZipEntries()
+            {
+                try
+                {
+                    //ExStart:ReadAllZipEntries_19.4
+
+                    // Use a specific encoding for filenames
+                    Encoding encoding = Encoding.GetEncoding(866);
+                    using (ZipFormat format = new ZipFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        foreach (ZipFileInfo file in format.ZipInfo.Files)
+                        {
+                            // Use the RawName property to get the sequence of bytes representing the filename
+                            Console.WriteLine(encoding.GetString(file.RawName));
+                        }
+                    }
+                    //ExEnd:ReadAllZipEntries_19.4
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
 

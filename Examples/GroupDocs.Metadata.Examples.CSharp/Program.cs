@@ -735,6 +735,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Get Matroska Track Metadata 
             //VideoFormats.Mkv.MatroskaTrackMetadata();
 
+            //Reads all subtitles stored in an MKV video
+            //VideoFormats.Mkv.ReadAllMatroskaSubtitles();
             #endregion
             #region Working with ASF file format
 
@@ -945,6 +947,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Update ZIP format Comment 
             //Archives.Zip.UpdateComment();
 
+            //Read all entries of a ZIP archive using a specific encoding
+            //Archives.Zip.ReadAllZipEntries();
+
             #endregion
 
             #region Working with Fonts
@@ -998,9 +1003,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.Ppt.LoadPasswordProtectedPresentationDocument();
 
             //Load a password-protected OneNote document
-            Documents.OneNote.LoadPasswordProtectedOneNoteDocument();
+            //Documents.OneNote.LoadPasswordProtectedOneNoteDocument();
             #endregion
 
+            Console.WriteLine("Done...");
             Console.ReadKey();
         }
     }

@@ -355,6 +355,28 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             }
             /// <summary>
+            /// This method reads all subtitles stored in an MKV video
+            /// This method is supported by version 19.4 or greater 
+            /// </summary>
+            public static void ReadAllMatroskaSubtitles()
+            {
+                //ExStart:ReadAllMatroskaSubtitles_19.4
+                using (MatroskaFormat format = new MatroskaFormat(Common.MapSourceFilePath(filePath)))
+                {
+                    foreach (MatroskaSubtitleTrackMetadata subtitleTrack in format.SubtitleTracks)
+                    {
+                        Console.WriteLine(subtitleTrack.LanguageIetf ?? subtitleTrack.Language);
+                        foreach (MatroskaSubtitle subtitle in subtitleTrack.Subtitles)
+                        {
+                            Console.WriteLine("Timecode={0}, Duration={1}", subtitle.Timecode, subtitle.Duration);
+                            Console.WriteLine(subtitle.Text);
+                        }
+                    }
+                }
+                //ExEnd:ReadAllMatroskaSubtitles_19.4
+
+            }
+            /// <summary>
             /// This method gets Matroska Tag Metadata
             /// This method is supported by version 19.1 or greater 
             /// </summary>
@@ -422,6 +444,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     }
                 }
             }
+
+
         }
         public static class Asf
         {
