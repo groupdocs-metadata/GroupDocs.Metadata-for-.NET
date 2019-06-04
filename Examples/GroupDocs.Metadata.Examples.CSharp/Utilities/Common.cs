@@ -60,6 +60,21 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             }
         }
         //ExEnd:MapDestinationFilePath
+        /// <summary>
+        /// Method to print the Array Values  
+        /// </summary> 
+        public static void PrintArray(string[] values)
+        {
+            if (values != null)
+            {
+                foreach (string value in values)
+                {
+                    Console.WriteLine(value);
+                }
+            }
+        }
+
+
 
         //ExStart:ApplyLicense
         /// <summary>
@@ -247,11 +262,17 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
                 docFormat.RemoveHiddenData(new DocInspectionOptions(DocInspectorOptionsEnum.All));
 
                 // and get consumption quantity
-                decimal consumptionQuantity = GroupDocs.Metadata.Metered.GetConsumptionQuantity(); 
+                decimal consumptionQuantitiy = GroupDocs.Metadata.Metered.GetConsumptionQuantity();
+
+                // get consumption credit (Supported since version 19.5)
+                decimal consumptionCredit = GroupDocs.Metadata.Metered.GetConsumptionCredit(); 
+
+
             }
             //ExEnd:UseDynabicMeteredAccount
         }
-      
+        
+
 
     }
 }

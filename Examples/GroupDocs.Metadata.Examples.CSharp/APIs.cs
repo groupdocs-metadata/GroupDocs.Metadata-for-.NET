@@ -57,7 +57,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
                     foreach (MetadataProperty property in properties)
                     {
-                        Console.WriteLine("{0} : {1}", property.Name, property.Value);
+                        Console.WriteLine("{0} : {1}", property.Name, property.GetFormattedValue());
                     }
                     //ExEnd:DocumentSearchAPI
                 }

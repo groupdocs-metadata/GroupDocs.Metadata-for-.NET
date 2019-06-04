@@ -1,6 +1,7 @@
 ﻿using GroupDocs.Metadata.Examples.Utilities.CSharp;
 using GroupDocs.Metadata.Exceptions;
 using GroupDocs.Metadata.Formats;
+using GroupDocs.Metadata.Formats.BusinessCard;
 using GroupDocs.Metadata.Formats.Document;
 using GroupDocs.Metadata.Formats.Ebook;
 using GroupDocs.Metadata.Formats.Project;
@@ -212,9 +213,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         docMetadata.Company = "Aspose";
                         docMetadata.Manager = "Usman Aziz";
 
-                        //Following metadata properties are supported by version 18.12 or higher
-                        docFormat.DocumentProperties["Words"] = new PropertyValue(1);
-                        docFormat.DocumentProperties["Version"] = new PropertyValue(851968);
+                        //Set Metadata values by Key
+                        docMetadata.SetValueByKey("Words", new PropertyValue(1));
+                        docMetadata.SetValueByKey("Version",new PropertyValue(851968));
 
 
                         //save output file...
@@ -2776,6 +2777,114 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 //ExEnd:ReadOdsMetadata
             }
         }
+
+        public static class VCard
+        {
+            // initialize file path
+            //ExStart:SourceMSProjectFilePath
+            private const string filePath = "Documents/VCards/sample.vcf";
+            //ExEnd:SourceMSProjectFilePath
+
+            /// <summary>
+            /// Read vCard properties using simplified APIs
+            /// </summary> 
+            public static void GetSimpleMetadata()
+            {
+                try
+                {
+                    //ExStart:GetMetadataVCardFormat_19.5
+                    // initialize VCardFormat
+                    using (VCardFormat format = new VCardFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        foreach (VCardMetadata vCard in format.VCardInfo)
+                        {
+                            
+                            Console.WriteLine(vCard.IdentificationRecordset.Name);
+                            Common.PrintArray(vCard.IdentificationRecordset.FormattedNames);
+                            Common.PrintArray(vCard.CommunicationRecordset.Emails);
+                            Common.PrintArray(vCard.CommunicationRecordset.Telephones);
+                        }
+                    }
+                    //ExEnd:GetMetadataVCardFormat_19.5
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+            /// <summary>
+            /// Read vCard properties along with descriptive parameters
+            /// </summary> 
+            public static void GetMetadataWithDescriptiveParams()
+            {
+                try
+                {
+                    //ExStart:GetMetadataWithDescriptiveParams_19.5
+                    // initialize VCardFormat
+                    using (VCardFormat format = new VCardFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        foreach (VCardMetadata vCard in format.VCardInfo)
+                        {
+                            if (vCard.IdentificationRecordset.PhotoUriRecords != null)
+                            {
+                                // Iterate all photos represented by URIs
+                                foreach (VCardTextRecordMetadata photoUriRecord in vCard.IdentificationRecordset.PhotoUriRecords)
+                                {
+                                    // Print the property value
+                                    Console.WriteLine(photoUriRecord.Value);
+
+                                    // Print some additional parameters of the property
+                                    Console.WriteLine(photoUriRecord.ContentType);
+                                    Console.WriteLine(photoUriRecord.MediaTypeParameter);
+                                    if (photoUriRecord.TypeParameters != null)
+                                    {
+                                        foreach (string parameter in photoUriRecord.TypeParameters)
+                                        {
+                                            Console.WriteLine(parameter);
+                                        }
+                                    }
+                                    Console.WriteLine(photoUriRecord.PrefParameter);
+                                }
+                            }
+                        }
+                    }
+                    //ExEnd:GetMetadataWithDescriptiveParams_19.5
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+            /// <summary>
+            /// Filter vCard properties
+            /// </summary> 
+            public static void GetSimpleMetadataUsingFilter()
+            {
+                try
+                {
+                    //ExStart:GetSimpleMetadataUsingFilter_19.5
+                    // initialize VCardFormat
+                    using (VCardFormat format = new VCardFormat(Common.MapSourceFilePath(filePath)))
+                    {
+                        foreach (VCardMetadata vCard in format.VCardInfo)
+                        {
+                            // Print most preferred work phone numbers and work emails
+                            VCardMetadata filtered = vCard.FilterWorkTags().FilterPreferred();
+                            Common.PrintArray(filtered.CommunicationRecordset.Telephones);
+                            Common.PrintArray(filtered.CommunicationRecordset.Emails);
+                        }
+                    }
+                    //ExEnd:GetSimpleMetadataUsingFilter_19.5
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+            }
+
+        }
+
 
 
 

@@ -62,7 +62,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         foreach (var fileInfo in info.Files)
                         {
                             // get file name 
-                            Console.WriteLine("File Name : {0}, ", fileInfo.Name);
+                            Console.WriteLine("File Name : {0}, ",  fileInfo.RawName.ToString());
 
                             // get compressed size
                             Console.WriteLine("CompressedSize : {0}, ", fileInfo.CompressedSize);

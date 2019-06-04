@@ -57,12 +57,12 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
             foreach (string path in files)
             {
                 // get EXIF data if exists
-                ExifMetadata exifMetadata = (ExifMetadata)MetadataUtility.ExtractSpecificMetadata(path, MetadataType.EXIF);
+                ExifInfo exifInfo = (ExifInfo)MetadataUtility.ExtractSpecificMetadata(path, MetadataType.EXIF);
 
-                if (exifMetadata != null)
+
+                if (exifInfo != null)
                 {
-                    ExifInfo exifInfo = exifMetadata.Data;
-
+                   
                     if (exifInfo.GPSData != null)
                     {
                         // set altitude, latitude and longitude to null values
@@ -74,7 +74,7 @@ namespace GroupDocs.Metadata.Examples.Utilities.CSharp
                     }
 
                     // and update file
-                    MetadataUtility.UpdateMetadata(path, exifMetadata);
+                    MetadataUtility.UpdateMetadata(path, exifInfo);
                 }
             }
             Console.WriteLine("Press any key to exit.");

@@ -299,8 +299,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         // get offset
                         Console.WriteLine("Offset: {0}", info.Offset);
 
-                        // get data
-                        Console.WriteLine("Data: {0}", info.Data);
+                        // get dataOffSet
+                        Console.WriteLine("Data: {0}", info.DataOffset);
 
                         // get size
                         Console.WriteLine("Size: {0}", info.Size);

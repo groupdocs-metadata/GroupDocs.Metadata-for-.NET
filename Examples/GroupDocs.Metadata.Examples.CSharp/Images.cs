@@ -1130,10 +1130,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     {
                         
                         // if file contains iptc metadata
-                        if (jpegFormat.HasIptc)
+                        if (jpegFormat.IptcValues.Items.Length>0)
                         {
                             // get iptc collection
-                            IptcCollection iptcCollection = jpegFormat.GetIptc();
+                            IptcDataSetCollection iptcCollection = jpegFormat.IptcValues;
 
                             // go through array and write property name and formatted value
                             foreach (IptcProperty iptcProperty in iptcCollection)
@@ -1141,26 +1141,25 @@ namespace GroupDocs.Metadata.Examples.CSharp
                                 Console.WriteLine(string.Format("{0}: {1}", iptcProperty.Name, iptcProperty.GetFormattedValue()));
                             }
 
-                            // initialize IptcDataSetCollection to read well-known properties
-                            IptcDataSetCollection dsCollection = new IptcDataSetCollection(iptcCollection);
+                            
 
                             // try to read Application Record dataset
-                            if (dsCollection.ApplicationRecord != null)
+                            if (iptcCollection.ApplicationRecord != null)
                             {
                                 // get category
-                                string category = dsCollection.ApplicationRecord.Category;
+                                string category = iptcCollection.ApplicationRecord.Category;
 
                                 // get headline
-                                string headline = dsCollection.ApplicationRecord.Headline;
+                                string headline = iptcCollection.ApplicationRecord.Headline;
                             }
 
-                            if (dsCollection.EnvelopeRecord != null)
+                            if (iptcCollection.EnvelopeRecord != null)
                             {
                                 // get model version
-                                int? modelVersion = dsCollection.EnvelopeRecord.ModelVersion;
+                                int? modelVersion = iptcCollection.EnvelopeRecord.ModelVersion;
 
                                 // get dataSent property
-                                DateTime? dataSent = dsCollection.EnvelopeRecord.DataSent;
+                                DateTime? dataSent = iptcCollection.EnvelopeRecord.DataSent;
                             }
                         } 
                     }
@@ -1261,16 +1260,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
                         // initialize IptcCollection
-                        IptcCollection iptc = jpegFormat.GetIptc();
+                        IptcDataSetCollection iptc = jpegFormat.IptcValues;
                         if (iptc == null)
                         {
-                            iptc = new IptcCollection();
+                            iptc = new IptcDataSetCollection();
                         }
 
                         // add integer property
-                        iptc.Add(new IptcProperty(2, "urgency", 10, 5));
+                        
+                        iptc.AddOrUpdate(new IptcProperty(2,10,5));
                         // update iptc metadata
-                        jpegFormat.UpdateIptc(iptc);
+                        jpegFormat.IptcValues=iptc;
                         // and commit changes
                         jpegFormat.Save(); 
                     }
@@ -1294,8 +1294,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (JpegFormat jpegFormat = new JpegFormat(Common.MapSourceFilePath(filePath)))
                     {
 
-                        // remove iptc
-                        jpegFormat.RemoveIptc();
+                        // remove all iptc 
+                        foreach(IptcDataSet ds in jpegFormat.IptcValues.Items )
+                        jpegFormat.IptcValues.Remove(ds.DataSetNumber);
 
                         // and commit changes
                         jpegFormat.Save(); 
@@ -1333,7 +1334,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
                         applicationRecord.ReleaseDate = DateTime.Now;
 
                         // update iptc metadata
-                        jpegFormat.UpdateIptc(applicationRecord);
+                        jpegFormat.IptcValues.AddOrUpdate(applicationRecord);
 
                         // and commit changes
                         jpegFormat.Save(); 
@@ -2729,10 +2730,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (TiffFormat tiffFormat = new TiffFormat(Common.MapSourceFilePath(filePath)))
                     {
                         // check if TIFF contains IPTC metadata
-                        if (tiffFormat.HasIptc)
+                        if (tiffFormat.IptcValues.Items.Length>0)
                         {
                             // get iptc collection
-                            IptcCollection iptc = tiffFormat.GetIptc();
+                            IptcDataSetCollection iptc = tiffFormat.IptcValues;
 
                             // and display it
                             foreach (IptcProperty iptcProperty in iptc)
@@ -3025,10 +3026,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     PsdFormat psdFormat = new PsdFormat(Common.MapSourceFilePath(filePath));
 
                     // check if PSD contains IPTC metadata
-                    if (psdFormat.HasIptc)
+                    if (psdFormat.IptcValues.Items.Length > 0)
                     {
                         // get iptc collection
-                        IptcCollection iptc = psdFormat.GetIptc();
+                        IptcDataSetCollection iptc = psdFormat.IptcValues;
 
                         // and display it
                         foreach (IptcProperty iptcProperty in iptc)
@@ -3105,13 +3106,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    IptcCollection iptc = format.GetIptc();
+                    IptcDataSetCollection iptc = format.IptcValues;
                     if (iptc == null)
                     {
-                        iptc = new IptcCollection();
+                        iptc = new IptcDataSetCollection();
                     }
-                    iptc.Add(new IptcProperty(2, "urgency", 10, 5));
-                    format.UpdateIptc(iptc);
+                    iptc.AddOrUpdate(new IptcProperty(2, 10, "Urgency"));
+                    format.IptcValues=iptc;
                     format.Save(Common.MapDestinationFilePath(filePath));
                 }
 
@@ -3124,7 +3125,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             {
                 using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
                 {
-                    format.RemoveIptc();
+                    foreach(IptcDataSet ds in format.IptcValues.Items)
+                    format.IptcValues.Remove(ds.DataSetNumber);
                     format.Save(Common.MapDestinationFilePath(filePath));
                 }
             }
@@ -3138,10 +3140,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
                     using (PsdFormat format = new PsdFormat(stream))
                     {
                         // check if PSD contains IPTC metadata
-                        if (format.HasIptc)
+                        if (format.IptcValues.Items.Length > 0)
                         {
                             // get iptc collection
-                            IptcCollection iptc = format.GetIptc();
+                            IptcDataSetCollection iptc = format.IptcValues;
 
                             // and display it
                             foreach (IptcProperty iptcProperty in iptc)
@@ -3162,13 +3164,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
                 {
                     using (PsdFormat format = new PsdFormat(Common.MapSourceFilePath(filePath)))
                     {
-                        IptcCollection iptc = format.GetIptc();
+                        IptcDataSetCollection iptc = format.IptcValues;
                         if (iptc == null)
                         {
-                            iptc = new IptcCollection();
+                            iptc = new IptcDataSetCollection();
                         }
-                        iptc.Add(new IptcProperty(2, "urgency", 10, 5));
-                        format.UpdateIptc(iptc);
+                        iptc.AddOrUpdate(new IptcProperty(2, 10,"urgency"));
+                        format.IptcValues=iptc;
                         format.Save(stream);
                     }
                     // The stream is still open here

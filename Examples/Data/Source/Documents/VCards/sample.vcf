@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//BBros.us llc//bvCard.com//EN
+N:Doe;Jane;;Mr;
+FN:Mr Jane Doe
+EMAIL:no-reply@aspose.com
+ORG:GroupDocs
+TEL:123-123-1234
+TEL;type=FAX:123-123-1234
+URL;type=pref:http://www.groupdocs.com
+END:VCARD

@@ -233,6 +233,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Documents.ODT.UpdateOdtMetadata();
             #endregion
 
+            #region Working with VCards
+            //Read vCard properties using simplified APIs
+            //Documents.VCard.GetSimpleMetadata();
+
+            //Read vCard properties along with descriptive parameters
+            //Documents.VCard.GetMetadataWithDescriptiveParams();
+
+            //Filter vCard properties
+            //Documents.VCard.GetSimpleMetadataUsingFilter();
+            #endregion
+
             #region Working with EPUB
             //Detects EPUB file format
             //Documents.EPUB.DetectEPUBFormat();
@@ -1005,6 +1016,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //Load a password-protected OneNote document
             //Documents.OneNote.LoadPasswordProtectedOneNoteDocument();
             #endregion
+
+
 
             Console.WriteLine("Done...");
             Console.ReadKey();
