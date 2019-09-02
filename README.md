@@ -11,6 +11,12 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
   </a>
 </p>
 
+Directory | Description
+--------- | -----------
+[Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples and sample files that will help you learn how to use product features.
+[Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) | 1. Contains Outlook Metadata Cleaner Add-in that cleans metadata of the selected files and attaches them with email. <br>2. Contains Visual Studio Add-in to explore GroupDocs.Metadata for .NET examples.
+[Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) | Contains the open-source front-end applications.
+
 ## How to Run the Examples
 
 + You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
@@ -24,12 +30,6 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
 + Uncomment the examples you want to run from within the project.
 
 Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/metadatanet/How+to+Run+Examples).
-
-Directory | Description
---------- | -----------
-[Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples and sample files that will help you learn how to use product features.
-[Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) | 1. Contains Outlook Metadata Cleaner Add-in that cleans metadata of the selected files and attaches them with email. <br>2. Contains Visual Studio Add-in to explore GroupDocs.Metadata for .NET examples.
-[Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) | Contains the open-source front-end applications.
 
 ## Resources
 
