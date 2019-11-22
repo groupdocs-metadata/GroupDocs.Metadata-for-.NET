@@ -7,7 +7,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Document;
 
     /// <summary>
-    ///  This code sample demonstrates how to remove the inspection properties in a PDF document.
+    /// This code sample demonstrates how to remove the inspection properties in a PDF document.
     /// </summary>
     public static class PdfUpdateInspectionProperties
     {

@@ -6,6 +6,9 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
 {
     using Formats.Document;
 
+    /// <summary>
+    /// This code sample demonstrates how to clean inspection properties in a presentation.
+    /// </summary>
     public static class PresentationUpdateInspectionProperties
     {
         public static void Run()

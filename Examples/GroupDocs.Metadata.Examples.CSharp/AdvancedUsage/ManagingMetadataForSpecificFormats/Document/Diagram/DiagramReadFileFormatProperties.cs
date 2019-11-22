@@ -8,7 +8,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Document;
 
     /// <summary>
-    ///This code sample shows how to detect the exact type of a loaded diagram and extract some additional file format information.
+    /// This code sample shows how to detect the exact type of a loaded diagram and extract some additional file format information.
     /// </summary>
     public static class DiagramReadFileFormatProperties
     {
