@@ -1,8 +1,8 @@
 ## GroupDocs.Metadata for .NET
 
-This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples), for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) that will help you understand API's working and write your own applications and plugins.
+This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples), for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) that will help you to understand how the API works and write your own applications and plugins.
 
-GroupDocs.Metadata for .NET provides easy ways to manage metadata in various formats. It enables user to read, write, update and remove the metadata of documents (word, spreadsheet, presentation, PDF) and images (JPEG, PNG, GIF). Its also provides the fucntionality to compare metadata in document files.
+GroupDocs.Metadata for .NET provides easy ways to manage metadata in various formats. It enables the user to read, write, update and remove metadata of documents (word, spreadsheet, presentation, PDF), images (JPEG, PNG, GIF), videos (FLV, MKV, ASF, MOV, AVI) and many other formats.
 
 <p align="center">
 
@@ -25,8 +25,8 @@ Directory | Description
 + The project is created in Visual Studio 2017.
 + Open the solution file in Visual Studio and build the project.
 + On the first run, the dependencies will automatically be downloaded via NuGet.
-+ Data folder at the root folder of Examples contains some sample input templates used in code examples. It is mandatory that you download the Data folder along with the examples project.
-+ Open Program.cs file, all the examples are called from here.
++ The Resources folder at the root folder of Examples contains some sample input templates used in the code examples. It is mandatory that you download the Resources folder along with the example project.
++ Open the RunExamples.cs file, all the examples are called from here.
 + Uncomment the examples you want to run from within the project.
 
 Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/metadatanet/How+to+Run+Examples).
