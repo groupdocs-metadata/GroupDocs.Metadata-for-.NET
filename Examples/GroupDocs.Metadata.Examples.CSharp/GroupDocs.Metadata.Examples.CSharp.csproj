@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{137FE6FB-B597-44FB-A1B9-B58D00B55FA9}</ProjectGuid>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GroupDocs.Metadata.Examples.CSharp</RootNamespace>
     <AssemblyName>GroupDocs.Metadata.Examples.CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,8 +23,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,52 +33,155 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Metadata, Version=19.5.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Metadata.19.5.1\lib\net\GroupDocs.Metadata.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="GroupDocs.Metadata, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Resources\GroupDocs.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIs.cs" />
-    <Compile Include="Archives.cs" />
-    <Compile Include="AudioFormats.cs" />
-    <Compile Include="DublinCore.cs" />
-    <Compile Include="Emails.cs" />
-    <Compile Include="Fonts.cs" />
-    <Compile Include="Torrent.cs" />
-    <Compile Include="Utilities\AuthorReplaceHandler.cs" />
-    <Compile Include="Utilities\Common.cs" />
-    <Compile Include="Documents.cs" />
-    <Compile Include="Images.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="AdvancedUsage\AddingMetadata.cs" />
+    <Compile Include="AdvancedUsage\ExtractingMetadata.cs" />
+    <Compile Include="AdvancedUsage\LoadingFiles\LoadFromLocalDisk.cs" />
+    <Compile Include="AdvancedUsage\LoadingFiles\LoadFromStream.cs" />
+    <Compile Include="AdvancedUsage\LoadingFiles\LoadingFileOfSpecificFormat.cs" />
+    <Compile Include="AdvancedUsage\LoadingFiles\LoadPasswordProtectedDocument.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadApeTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadID3V1Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadID3V2Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadLyricsTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadMpegAudioMetadata.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3RemoveApeTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3RemoveID3V1Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3RemoveID3V2Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3RemoveLyricsTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateID3V1Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateID3V2Tag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateLyricsTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\Wav\WavReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardFilterCardProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardReadCardProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardReadCardPropertiesWithParameters.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Cad\CadReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadDocumentStatistics.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Note\NoteReadInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadDocumentStatistics.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfUpdateInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationReadCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationReadDocumentStatistics.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationReadInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationUpdateInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetUpdateInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadDocumentStatistics.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadDublinCoreProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingReadInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingUpdateDocumentStatistics.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingUpdateInspectionProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubReadDublinCoreProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Email\EmailRemoveAttachments.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Email\EmlReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Email\MsgReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Font\OpenTypeReadDigitalSignatureProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Font\OpenTypeReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Bmp\BmpReadHeaderProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Dicom\DicomReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Gif\GifReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\ImageReadFileFormatProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg2000\Jpeg2000ReadComments.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegDetectBarcodes.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegReadImageResourceBlocks.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegRemoveImageResourceBlocks.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadBasicExifProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadImageResourceBlocks.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\ZipReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\ZipRemoveArchiveComment.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\ZipUpdateArchiveComment.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Tiff\TiffReadBasicIptcProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Peer2Peer\TorrentReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Peer2Peer\TorrentUpdateNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Asf\AsfReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Avi\AviReadHeaderProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Flv\FlvReadHeaderProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Matroska\MatroskaReadNativeMetadataProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Matroska\MatroskaReadSubtitles.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Mov\MovReadQuickTimeAtoms.cs" />
+    <Compile Include="AdvancedUsage\RemovingMetadata.cs" />
+    <Compile Include="AdvancedUsage\SavingFiles\SaveFileToOriginalSource.cs" />
+    <Compile Include="AdvancedUsage\SavingFiles\SaveFileToSpecifiedLocation.cs" />
+    <Compile Include="AdvancedUsage\SavingFiles\SaveFileToSpecifiedStream.cs" />
+    <Compile Include="AdvancedUsage\SettingMetadata.cs" />
+    <Compile Include="AdvancedUsage\TraverseWholeMetadataTree.cs" />
+    <Compile Include="AdvancedUsage\UpdatingMetadata.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\ReadExifTags.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\ReadBasicExifProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\ReadSpecificExifTag.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\RemoveExifMetadata.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\SetCustomExifTag.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\UpdateExifProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\ReadBasicIptcProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\ReadIptcDataSets.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\RemoveIptcMetadata.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\SetCustomIptcDataSet.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\UpdateIptcProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Xmp\AddCustomXmpPackage.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Xmp\ReadXmpProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Xmp\RemoveXmpMetadata.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Xmp\UpdateXmpProperties.cs" />
+    <Compile Include="BasicUsage\CleanMetadata.cs" />
+    <Compile Include="BasicUsage\FindMetadataProperties.cs" />
+    <Compile Include="BasicUsage\GenerateFilePreview.cs" />
+    <Compile Include="BasicUsage\GetDocumentInfo.cs" />
+    <Compile Include="BasicUsage\RemoveMetadataProperties.cs" />
+    <Compile Include="BasicUsage\SetMetadataProperties.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Migration\ComparingMetadataProperties\GetDifferenceOfDocumentProperties.cs" />
+    <Compile Include="Migration\ComparingMetadataProperties\GetIntersectionOfExifProperties.cs" />
+    <Compile Include="Migration\ExportingMetadataProperties\ExportPropertiesToCsv.cs" />
+    <Compile Include="Migration\ExtractingSpecificMetadataPackages\ExtractPackageUsingCommonApi.cs" />
+    <Compile Include="Migration\UsingCustomReplaceHandler\UpdatePropertyValue.cs" />
+    <Compile Include="Migration\WorkingWithRegularExpressions\FindPropertiesByRegex.cs" />
+    <Compile Include="Migration\WorkingWithRegularExpressions\UpdatePropertiesByRegex.cs" />
+    <Compile Include="QuickStart\SetLicenseFromFile.cs" />
+    <Compile Include="QuickStart\SetLicenseFromStream.cs" />
+    <Compile Include="QuickStart\SetMeteredLicense.cs" />
+    <Compile Include="RunExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\DocCleaner.cs" />
-    <Compile Include="Utilities\DocumentTypeDetector.cs" />
-    <Compile Include="Utilities\ExportTypes.cs" />
-    <Compile Include="Utilities\JpegPhotoParser.cs" />
-    <Compile Include="Utilities\MIMETypeDetector.cs" />
-    <Compile Include="Utilities\MyExtension.cs" />
-    <Compile Include="Utilities\PhotoCleaner.cs" />
-    <Compile Include="VideoFormats.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

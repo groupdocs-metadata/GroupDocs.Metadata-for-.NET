@@ -1,6 +1,6 @@
 ## GroupDocs.Metadata for .NET
 
-This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples), [Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) and [Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/) for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) that will help you understand API's working and write your own applications and plugins.
+This package contains [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples), for [GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) that will help you understand API's working and write your own applications and plugins.
 
 GroupDocs.Metadata for .NET provides easy ways to manage metadata in various formats. It enables user to read, write, update and remove the metadata of documents (word, spreadsheet, presentation, PDF) and images (JPEG, PNG, GIF). Its also provides the fucntionality to compare metadata in document files.
 
@@ -14,7 +14,7 @@ GroupDocs.Metadata for .NET provides easy ways to manage metadata in various for
 Directory | Description
 --------- | -----------
 [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples and sample files that will help you learn how to use product features.
-[Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins/Outlook%20Metadata%20Cleaner) | 1. Contains Outlook Metadata Cleaner Add-in that cleans metadata of the selected files and attaches them with email. <br>2. Contains Visual Studio Add-in to explore GroupDocs.Metadata for .NET examples.
+[Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins) | Contains the plugins related to GroupDocs.Metadata for Visual Studio.
 [Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) | Contains the open-source front-end applications.
 
 ## How to Run the Examples
@@ -22,7 +22,7 @@ Directory | Description
 + You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
 + Extract the contents of the ZIP file to any folder on your computer. All the examples are located in the Examples folder.
 + In the extracted files and folders, you can see solution file for C# Project..
-+ The project is created in Visual Studio 2010.
++ The project is created in Visual Studio 2017.
 + Open the solution file in Visual Studio and build the project.
 + On the first run, the dependencies will automatically be downloaded via NuGet.
 + Data folder at the root folder of Examples contains some sample input templates used in code examples. It is mandatory that you download the Data folder along with the examples project.
