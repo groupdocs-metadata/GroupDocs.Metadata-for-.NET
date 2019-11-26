@@ -8,7 +8,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Image;
 
     /// <summary>
-    /// This code sample demonstrates how to extract common image properties such as width and height, MIME type, byte order, etc
+    /// This code sample demonstrates how to extract common image properties such as width and height, MIME type, byte order, etc.
     /// </summary>
     public static class ImageReadFileFormatProperties
     {

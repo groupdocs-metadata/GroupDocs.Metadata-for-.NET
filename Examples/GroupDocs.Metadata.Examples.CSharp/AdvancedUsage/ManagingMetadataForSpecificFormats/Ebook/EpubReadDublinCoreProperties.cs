@@ -8,7 +8,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Ebook;
 
     /// <summary>
-    /// This example shows how to extract Dublin Core metadata from a EPUB file.
+    /// This example shows how to extract Dublin Core metadata from an EPUB file.
     /// </summary>
     public static class EpubReadDublinCoreProperties
     {
