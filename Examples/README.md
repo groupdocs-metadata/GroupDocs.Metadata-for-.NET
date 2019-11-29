@@ -16,4 +16,4 @@ The package contains C# examples. Follow the given steps to proceed with project
 * Right click on solution and press "Enable NuGet package Restore"
 * Build the project
 
-For more details, see [How to Run Examples](https://docs.groupdocs.com/display/metadatanet/How+to+Run+Examples).
+For more details, see [How to Run Examples](https://docs.groupdocs.com/display/metadatanet/How+to+Run).

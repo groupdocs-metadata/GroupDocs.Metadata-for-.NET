@@ -29,7 +29,7 @@ Directory | Description
 + Open the RunExamples.cs file, all the examples are called from here.
 + Uncomment the examples you want to run from within the project.
 
-Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/metadatanet/How+to+Run+Examples).
+Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/metadatanet/How+to+Run).
 
 ## Resources
 
