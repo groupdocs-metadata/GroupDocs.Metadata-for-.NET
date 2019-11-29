@@ -34,8 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GroupDocs.Metadata, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Resources\GroupDocs.Metadata.dll</HintPath>
+      <HintPath>packages\GroupDocs.Metadata.19.11.0\lib\net\GroupDocs.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -181,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

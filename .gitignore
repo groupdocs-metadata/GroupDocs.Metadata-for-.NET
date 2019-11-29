@@ -4,3 +4,4 @@ Examples/Resources/GroupDocs.Metadata.NET.lic
 *.user
 *.suo
 Examples/GroupDocs.Metadata.Examples.CSharp/.vs/
+Examples/GroupDocs.Metadata.Examples.CSharp/packages/
