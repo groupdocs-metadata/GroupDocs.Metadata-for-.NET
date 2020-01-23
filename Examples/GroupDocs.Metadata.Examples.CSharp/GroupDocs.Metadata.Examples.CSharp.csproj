@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Metadata, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>packages\GroupDocs.Metadata.19.11.0\lib\net\GroupDocs.Metadata.dll</HintPath>
+    <Reference Include="GroupDocs.Metadata, Version=20.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>packages\GroupDocs.Metadata.20.1.0\lib\net20\GroupDocs.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="AdvancedUsage\AddingMetadata.cs" />
     <Compile Include="AdvancedUsage\ExtractingMetadata.cs" />
+    <Compile Include="AdvancedUsage\ExtractingPropertyValues\ExtractUsingAcceptor.cs" />
+    <Compile Include="AdvancedUsage\ExtractingPropertyValues\ExtractUsingType.cs" />
+    <Compile Include="AdvancedUsage\GettingKnownPropertyDescriptors.cs" />
     <Compile Include="AdvancedUsage\LoadingFiles\LoadFromLocalDisk.cs" />
     <Compile Include="AdvancedUsage\LoadingFiles\LoadFromStream.cs" />
     <Compile Include="AdvancedUsage\LoadingFiles\LoadingFileOfSpecificFormat.cs" />

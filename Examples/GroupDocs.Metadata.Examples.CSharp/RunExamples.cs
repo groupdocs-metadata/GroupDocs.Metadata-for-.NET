@@ -8,6 +8,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using QuickStart;
     using System;
     using AdvancedUsage;
+    using AdvancedUsage.ExtractingPropertyValues;
     using AdvancedUsage.LoadingFiles;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Wav;
@@ -77,6 +78,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Advanced Usage
 
+            #region Extracting Property Values
+
+            //ExtractUsingType.Run();
+            //ExtractUsingAcceptor.Run();
+
+            #endregion
+
             #region Loading Files
 
             //LoadFromLocalDisk.Run();
@@ -100,6 +108,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //AddingMetadata.Run();
             //SettingMetadata.Run();
             //TraverseWholeMetadataTree.Run();
+            //GettingKnownPropertyDescriptors.Run();
 
             #region Managing metadata for specific formats
 
