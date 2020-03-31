@@ -8,6 +8,9 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Image;
     using Standards.Exif.MakerNote;
 
+    /// <summary>
+    /// This code sample shows how to extract Sony MakerNote properties.
+    /// </summary>
     public class MakerNoteReadSonyProperties
     {
         public static void Run()

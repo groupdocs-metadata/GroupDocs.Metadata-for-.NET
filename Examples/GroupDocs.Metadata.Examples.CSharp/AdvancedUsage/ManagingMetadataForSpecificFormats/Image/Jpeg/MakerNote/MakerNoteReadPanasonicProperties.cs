@@ -8,6 +8,9 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Standards.Exif.MakerNote;
     using System;
 
+    /// <summary>
+    /// This code sample shows how to extract Panasonic MakerNote properties.
+    /// </summary>
     public class MakerNoteReadPanasonicProperties
     {
         public static void Run()
