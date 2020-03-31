@@ -66,6 +66,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string MP3WithID3V2 = Path.Combine(InputPath, "id3v2.mp3");
         public static readonly string MP3WithLyrics = Path.Combine(InputPath, "lyrics.mp3");
         public static readonly string MP3WithApe = Path.Combine(InputPath, "ape.mp3");
+        public static readonly string CanonJpeg = Path.Combine(InputPath, "canon_raw.jpg");
+        public static readonly string NikonJpeg = Path.Combine(InputPath, "nikon_raw.jpg");
+        public static readonly string PanasonicJpeg = Path.Combine(InputPath, "panasonic_raw.jpg");
+        public static readonly string SonyJpeg = Path.Combine(InputPath, "sony_raw.jpg");
 
 
         public static readonly string OutputDocx = Path.Combine(OutputPath, "output.docx");

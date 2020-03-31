@@ -124,6 +124,11 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegDetectBarcodes.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegReadImageResourceBlocks.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\JpegRemoveImageResourceBlocks.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadAllTags.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadCanonProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadNikonProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadPanasonicProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadSonyProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadBasicExifProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadImageResourceBlocks.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadNativeMetadataProperties.cs" />

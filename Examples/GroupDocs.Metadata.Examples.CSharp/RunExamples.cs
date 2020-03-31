@@ -32,6 +32,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Ebook;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Email;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Font;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Tiff;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Peer2Peer;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Video.Asf;
@@ -206,6 +207,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //JpegReadImageResourceBlocks.Run();
             //JpegDetectBarcodes.Run();
             //JpegRemoveImageResourceBlocks.Run();
+
+            //MakerNoteReadAllTags.Run();
+            //MakerNoteReadCanonProperties.Run();
+            //MakerNoteReadNikonProperties.Run();
+            //MakerNoteReadPanasonicProperties.Run();
+            //MakerNoteReadSonyProperties.Run();
 
             //Jpeg2000ReadComments.Run();
 
