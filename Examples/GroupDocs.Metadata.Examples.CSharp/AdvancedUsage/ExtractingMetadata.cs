@@ -7,6 +7,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
     using System;
     using System.IO;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using Common;
     using Tagging;
 
@@ -36,13 +37,25 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
 
                         // Fetch all properties having a specific type and value
                         var year = DateTime.Today.Year;
-                        properties = metadata.FindProperties(p =>p.Value.Type == MetadataPropertyType.DateTime && 
+                        properties = metadata.FindProperties(p => p.Value.Type == MetadataPropertyType.DateTime &&
                                                                  p.Value.ToStruct(DateTime.MinValue).Year == year);
                         Console.WriteLine("All datetime properties with the year value equal to the current year");
                         foreach (var property in properties)
                         {
                             Console.WriteLine("{0} = {1}", property.Name, property.Value);
                         }
+
+                        // Fetch all properties whose names match the specified regex
+                        const string pattern = "^author|company|(.+date.*)$";
+                        Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                        properties = metadata.FindProperties(p => regex.IsMatch(p.Name));
+
+                        Console.WriteLine("All properties whose names match the following regex: {0}", pattern);
+                        foreach (var property in properties)
+                        {
+                            Console.WriteLine("{0} = {1}", property.Name, property.Value);
+                        }
+
                     }
                 }
             }
