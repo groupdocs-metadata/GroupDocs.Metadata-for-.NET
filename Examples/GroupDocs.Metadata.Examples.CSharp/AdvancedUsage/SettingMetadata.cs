@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
@@ -32,7 +32,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
                         // Set the copyright notice
                         var affected = metadata.SetProperties(
                             p => p.Tags.Contains(Tags.Legal.Copyright), 
-                            new PropertyValue("Copyright (C) 2011-2019 GroupDocs. All Rights Reserved."));
+                            new PropertyValue("Copyright (C) 2011-2020 GroupDocs. All Rights Reserved."));
 
                         Console.WriteLine("Affected properties: {0}", affected);
 
