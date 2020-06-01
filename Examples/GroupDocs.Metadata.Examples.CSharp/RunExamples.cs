@@ -110,6 +110,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //SettingMetadata.Run();
             //TraverseWholeMetadataTree.Run();
             //GettingKnownPropertyDescriptors.Run();
+            //ExportingMetadataProperties.Run();
 
             #region Managing metadata for specific formats
 

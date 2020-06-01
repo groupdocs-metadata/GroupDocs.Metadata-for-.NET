@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvancedUsage\AddingMetadata.cs" />
+    <Compile Include="AdvancedUsage\ExportingMetadataProperties.cs" />
     <Compile Include="AdvancedUsage\ExtractingMetadata.cs" />
     <Compile Include="AdvancedUsage\ExtractingPropertyValues\ExtractUsingAcceptor.cs" />
     <Compile Include="AdvancedUsage\ExtractingPropertyValues\ExtractUsingType.cs" />
