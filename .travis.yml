@@ -2,11 +2,12 @@ git:
   submodules: false
 
 env:
-  - PRODUCT=metadata
-  - PLATFORM=net
-  - ROOT_DIR=Docs/docs-common
-  - SRC_DIR=Docs/docs-common/public
-  - DEST_DIR=/var/www/docs.groupdocs.com/html
+  global:
+    - PRODUCT=metadata
+    - PLATFORM=net
+    - ROOT_DIR=Docs/docs-common
+    - SRC_DIR=Docs/docs-common/public
+    - DEST_DIR=/var/www/docs.groupdocs.com/html
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
