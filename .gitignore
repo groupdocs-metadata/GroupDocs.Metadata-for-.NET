@@ -5,3 +5,4 @@ Examples/Resources/GroupDocs.Metadata.NET.lic
 *.suo
 Examples/GroupDocs.Metadata.Examples.CSharp/.vs/
 Examples/GroupDocs.Metadata.Examples.CSharp/packages/
+deploy_key
