@@ -78,7 +78,7 @@ The *MatroskaVideoTrackMetadata *class has been added to the *GroupDocs.Metad
 
 Read MKV video metadata.
 
-**C#**
+
 
 ```csharp
 using (MatroskaFormat format = new MatroskaFormat(@"D:\input.mkv"))
@@ -166,7 +166,7 @@ The *OneNoteFormat**(Stream, LoadOptions)* constructor has been added to the 
 
 Load a password-protected *OneNote* document.
 
-**C#**
+
 
 ```csharp
 LoadOptions loadOptions = new LoadOptions("password");
@@ -178,7 +178,7 @@ using (OneNoteFormat format = new OneNoteFormat(@"D:\protected\input.one", loadO
 
 Check if a document is password-protected.
 
-**C#**
+
 
 ```csharp
 if (MetadataUtility.IsProtected(@"D:\protected\input.one"))
@@ -201,7 +201,7 @@ None.
 
 Please note that the *VisioFormat *class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (VisioFormat format = new VisioFormat(@"d:\input.vsdx"))
@@ -212,7 +212,7 @@ using (VisioFormat format = new VisioFormat(@"d:\input.vsdx"))
 
 If you are loading a Visio document from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.vsdx", FileMode.Open, FileAccess.ReadWrite))
@@ -227,7 +227,7 @@ using (Stream stream = File.Open(@"d:\input.vsdx", FileMode.Open, FileAccess.Rea
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.vsdx", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -256,7 +256,7 @@ None.
 
 Please note that the *OneNoteFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (OneNoteFormat format = new OneNoteFormat(@"d:\input.one"))
@@ -267,7 +267,7 @@ using (OneNoteFormat format = new OneNoteFormat(@"d:\input.one"))
 
 If you are loading a OneNote document from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.one", FileMode.Open, FileAccess.ReadWrite))
@@ -282,7 +282,7 @@ using (Stream stream = File.Open(@"d:\input.one", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.one", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -311,7 +311,7 @@ None.
 
 Please note that the *DwgFormat* and *DxfFormat* classes implement the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with the instance.
 
-**C#**
+
 
 ```csharp
 using (DxfFormat format = new DxfFormat(@"d:\input.dxf"))
@@ -322,7 +322,7 @@ using (DxfFormat format = new DxfFormat(@"d:\input.dxf"))
 
 If you are loading a CAD drawing from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.dwg", FileMode.Open, FileAccess.ReadWrite))
@@ -337,7 +337,7 @@ using (Stream stream = File.Open(@"d:\input.dwg", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.dxf", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -366,7 +366,7 @@ None.
 
 Please note that the *EmlFormat* and *OutlookMessage* classes implement the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with the instance.
 
-**C#**
+
 
 ```csharp
 using (EmlFormat format = new EmlFormat(@"d:\input.eml"))
@@ -377,7 +377,7 @@ using (EmlFormat format = new EmlFormat(@"d:\input.eml"))
 
 If you are loading an email message from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.msg", FileMode.Open, FileAccess.ReadWrite))
@@ -392,7 +392,7 @@ using (Stream stream = File.Open(@"d:\input.msg", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.eml", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -425,7 +425,7 @@ The *DataSize* property has been added to the *QuickTimeAtom* class
 
 Please note that the *MovFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (MovFormat format = new MovFormat(@"d:\input.mov"))
@@ -436,7 +436,7 @@ using (MovFormat format = new MovFormat(@"d:\input.mov"))
 
 If you are loading a MOV video from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.mov", FileMode.Open, FileAccess.ReadWrite))
@@ -451,7 +451,7 @@ using (Stream stream = File.Open(@"d:\input.mov", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.mov", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -530,7 +530,7 @@ The *ScanExif(Stream,Regex)* method has been removed from the *SearchFacade 
 
 Compare EXIF properties of two different documents.
 
-**C#**
+
 
 ```csharp
 TiffTag[] result = ComparisonFacade.CompareExifTags(@"D:\input1.jpg", @"D:\input2.jpg", ComparerSearchType.Intersection);
@@ -538,7 +538,7 @@ TiffTag[] result = ComparisonFacade.CompareExifTags(@"D:\input1.jpg", @"D:\input
 
 Search for EXIF tags using the *SearchFacade* class.
 
-**C#**
+
 
 ```csharp
 TiffTag[] result = SearchFacade.ScanExifTags(@"D:\input.jpg", "james");
@@ -546,7 +546,7 @@ TiffTag[] result = SearchFacade.ScanExifTags(@"D:\input.jpg", "james");
 
 Work with EXIF tags using alternative properties and constructors.
 
-**C#**
+
 
 ```csharp
 TiffLongTag width = new TiffLongTag(TiffTagIdEnum.ImageWidth, new uint[] { 123 });
@@ -576,7 +576,7 @@ The *SetSubject(String\[\])* method has been removed from the *DublinCorePack
 
 Please use the *Subjects* property instead.
 
-**C#**
+
 
 ```csharp
 using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
@@ -589,7 +589,7 @@ using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
 }
 ```
 
-**C#**
+
 
 ```csharp
 using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))

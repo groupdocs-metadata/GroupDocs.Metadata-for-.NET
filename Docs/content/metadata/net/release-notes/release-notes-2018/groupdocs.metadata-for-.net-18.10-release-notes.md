@@ -55,7 +55,7 @@ The *UpdateLyrics3v2(Lyrics3Tag)* method has been added to the *Mp3Format* c
 
 Update Lyrics3v2 metadata using the shortcut properties.
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
@@ -71,7 +71,7 @@ using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
 
 Update Lyrics3v2 metadata by replacing the whole field collection.
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
@@ -91,7 +91,7 @@ using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
 
 Update Lyrics3v2 metadata by replacing the whole tag.
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
@@ -129,7 +129,7 @@ The *CompareXls *method has been removed form the *MetadataUtility *class
 
 Please use the *ComparisonFacade.CompareDocuments* (*ComparisonFacade.compareDocuments *in Java) method instead.
 
-**C#**
+
 
 ```csharp
 MetadataPropertyCollection diff = ComparisonFacade.CompareDocuments(@"D:\input1.pptx", @"D:\input2.pptx", ComparerSearchType.Difference);
@@ -153,7 +153,7 @@ None.
 
 Please note that the *PngFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (PngFormat format = new PngFormat(@"d:\input.png"))
@@ -164,7 +164,7 @@ using (PngFormat format = new PngFormat(@"d:\input.png"))
 
 If you are loading a PNG file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.png", FileMode.Open, FileAccess.ReadWrite))
@@ -179,7 +179,7 @@ using (Stream stream = File.Open(@"d:\input.png", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.png", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -208,7 +208,7 @@ None.
 
 Please note that the *Jp2Format* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (Jp2Format format = new Jp2Format(@"d:\input.jp2"))
@@ -219,7 +219,7 @@ using (Jp2Format format = new Jp2Format(@"d:\input.jp2"))
 
 If you are loading a JPEG2000 file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.jp2", FileMode.Open, FileAccess.ReadWrite))
@@ -234,7 +234,7 @@ using (Stream stream = File.Open(@"d:\input.jp2", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.jp2", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -263,7 +263,7 @@ None.
 
 Please note that all classes representing the mentioned formats implement the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (BmpFormat format = new BmpFormat(@"d:\input.bmp"))
@@ -274,7 +274,7 @@ using (BmpFormat format = new BmpFormat(@"d:\input.bmp"))
 
 If you are loading an image file of the appropriate format from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.djvu", FileMode.Open, FileAccess.ReadWrite))
@@ -289,7 +289,7 @@ using (Stream stream = File.Open(@"d:\input.djvu", FileMode.Open, FileAccess.Rea
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.webp", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -318,7 +318,7 @@ None.
 
 Clean metadata of a strict open XML presentation.
 
-**C#**
+
 
 ```csharp
 using (PptFormat pptFormat = new PptFormat(@"D:\SOXmlPresentation.pptx"))
@@ -330,7 +330,7 @@ using (PptFormat pptFormat = new PptFormat(@"D:\SOXmlPresentation.pptx"))
 
 Update metadata of a strict open XML presentation.
 
-**C#**
+
 
 ```csharp
 using (PptFormat pptFormat = new PptFormat(@"D:\SOXmlPresentation.pptx"))

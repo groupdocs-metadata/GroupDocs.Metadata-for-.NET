@@ -56,7 +56,7 @@ None
 
 Next example just demonstrates how to use EXIF API, all necessary improvements are hidden under the hood.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -101,7 +101,7 @@ None
 
 Next example demonstrates an unsuccessful attempt to save ID3 metadata with invalid 'album' and throws GroupDocsException with the message: 'Length could not be greater than 30'.
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\Kalimba.mp3";
@@ -159,7 +159,7 @@ Added new property **PlayCounter** into class **GroupDocs.Metadata.Formats.Au
 
 Next example is shown how to read additional ID3v2 properties
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\podcast_001.mp3";
@@ -215,7 +215,7 @@ Added **Id3v2Properties** property into class **GroupDocs.Metadata.Formats.Au
 
 This example demonstrates how to update ID3v2 metadata using properties
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\podcast_001.mp3";
@@ -263,7 +263,7 @@ Added **Id3v1Properties** property into class **GroupDocs.Metadata.Formats.Au
 
 This example demonstrates how to update ID3v1 metadata using properties
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\podcast_001.mp3";
@@ -305,7 +305,7 @@ Added **GetImageCoverBytes** method into class **GroupDocs.Metadata.Formats.E
 
 This example demonstrates how to read image cover data from EpubFormat
 
-**C#**
+
 
 ```csharp
 // path to the EPUB file
@@ -353,7 +353,7 @@ Added **Version** property to class **GroupDocs.Metadata.Formats.Ebook.EpubMe
 
 This example demonstrates how to read version of EPUB format
 
-**C#**
+
 
 ```csharp
 // path to the EPUB file
@@ -384,7 +384,7 @@ Added new property **ImageCover** into class **GroupDocs.Metadata.Formats.Aud
 
 This example demonstrates how to read image cover bytes from ID3(v2) tag in Mp3Format
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\podcast_001.mp3";
@@ -453,7 +453,7 @@ Added **RemoveImageCover** method into **GroupDocs.Metadata.Formats.Audio.Id3
 
 This example demonstrates how to remove image data from ID3(v2) tag in Mp3Format
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\podcast_001.mp3";

@@ -36,7 +36,7 @@ None
 
 This example demonstrates how to remove metadata without affecting Bit Depth.
 
-**C#**
+
 
 ```csharp
 // open TIFF            

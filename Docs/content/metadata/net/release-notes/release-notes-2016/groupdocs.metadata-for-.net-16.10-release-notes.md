@@ -46,7 +46,7 @@ There are 8 features and 1 enhancement in this regular monthly release. The most
 
 Detect WAV Fromat
 
-**C#**
+
 
 ```csharp
  // path to the input directory
@@ -103,7 +103,7 @@ Console.WriteLine("Sample rate: {0}", audioInfo.SampleRate);
 
 #### Read IPTC Metadata in TIFF Format
 
-**C#**
+
 
 ```csharp
  // path to the tiff file
@@ -130,7 +130,7 @@ if (tiffFormat.HasIptc)
 
 #### Read IPTC Metadata in PSD Format
 
-**C#**
+
 
 ```csharp
 // path to the tiff file
@@ -157,7 +157,7 @@ if (psdFormat.HasIptc)
 
 #### Read Lyrics3 Tag in Mp3 Format
 
-**C#**
+
 
 ```csharp
 // path to the input directory
@@ -198,7 +198,7 @@ foreach (string file in files)
 
 #### Update ID3v1 Tag in Mp3 Format
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\a-ha - Take On Me.mp3";
@@ -226,7 +226,7 @@ mp3Format.Save();
 
 #### Read Image Resource Blocks (native PSD metadata) in Photoshop Format
 
-**C#**
+
 
 ```csharp
 // path to the Photoshop file
@@ -256,7 +256,7 @@ if (psdFormat.HasImageResourceBlocks)
 
 #### Remove Photoshop Metadata in Jpeg Format
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -280,7 +280,7 @@ if (jpegFormat.HasImageResourceBlocks)
 
 #### Read Image Resource Blocks (native PSD metadata) in Jpeg Format
 
-**C#**
+
 
 ```csharp
 // path to the jpg file

@@ -67,7 +67,7 @@ The *PdfFormat**(Stream, LoadOptions)* constructor has been added to the *Pdf
 
 Load a password-protected PDF document.
 
-**C#**
+
 
 ```csharp
 LoadOptions loadOptions = new LoadOptions("password");
@@ -81,7 +81,7 @@ using (PdfFormat format = new PdfFormat(@"D:\protected\input.pdf", loadOptions))
 
 Load a password-protected Excel document.
 
-**C#**
+
 
 ```csharp
 LoadOptions loadOptions = new LoadOptions("password");
@@ -95,7 +95,7 @@ using (XlsFormat format = new XlsFormat(@"D:\protected\input.xlsx", loadOptions)
 
 Load a password-protected PowerPoint document.
 
-**C#**
+
 
 ```csharp
 LoadOptions loadOptions = new LoadOptions("password");
@@ -109,7 +109,7 @@ using (PptFormat format = new PptFormat(@"D:\protected\input.pptx", loadOptions)
 
 Load a password-protected Word document.
 
-**C#**
+
 
 ```csharp
 LoadOptions loadOptions = new LoadOptions("password");
@@ -123,7 +123,7 @@ using (DocFormat format = new DocFormat(@"D:\protected\input.doc", loadOptions))
 
 Check if a document is password-protected.
 
-**C#**
+
 
 ```csharp
 if (MetadataUtility.IsProtected(@"D:\protected\input.doc"))
@@ -146,7 +146,7 @@ None.
 
 Please note that the *DocFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (DocFormat format = new DocFormat(@"d:\input.docx"))
@@ -157,7 +157,7 @@ using (DocFormat format = new DocFormat(@"d:\input.docx"))
 
 If you are loading a Word document from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.doc", FileMode.Open, FileAccess.ReadWrite))
@@ -172,7 +172,7 @@ using (Stream stream = File.Open(@"d:\input.doc", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.docx", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -201,7 +201,7 @@ None.
 
 Please note that the *PptFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (PptFormat format = new PptFormat(@"d:\input.ppt"))
@@ -212,7 +212,7 @@ using (PptFormat format = new PptFormat(@"d:\input.ppt"))
 
 If you are loading a Word document from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.pptx", FileMode.Open, FileAccess.ReadWrite))
@@ -227,7 +227,7 @@ using (Stream stream = File.Open(@"d:\input.pptx", FileMode.Open, FileAccess.Rea
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.ppt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -256,7 +256,7 @@ None.
 
 Update the Words and Version metadata keys in doc/docx documents.
 
-**C#**
+
 
 ```csharp
 using (DocFormat docFormat = new DocFormat(@"D:\input.doc"))
@@ -284,7 +284,7 @@ The *Id3v2* property has been removed from the *Mp3Format*class.
 
 Please use the *GetId3v1Tag* and *GetId3v2Tag* methods instead.
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))
@@ -313,7 +313,7 @@ The *GetProperties *method has been removed from the *MppFormat* class.
 
 Please use the *MppFormat.ProjectInfo* property instead.
 
-**C#**
+
 
 ```csharp
 using (MppFormat format = new MppFormat(@"D:\input.mpp"))

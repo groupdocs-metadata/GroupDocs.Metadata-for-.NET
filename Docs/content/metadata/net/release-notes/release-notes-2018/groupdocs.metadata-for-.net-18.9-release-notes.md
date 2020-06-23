@@ -51,7 +51,7 @@ The *GetImageCoverBytes* method has been removed from the *EpubFormat *class
 
 Get the image cover data and MIME type
 
-**C#**
+
 
 ```csharp
 using (EpubFormat epubFormat = new EpubFormat(@"D:\input.epub"))
@@ -79,7 +79,7 @@ The *InspectionResult* class has been removed from the *GroupDocs.Metadata.Fo
 
 Inspect a document.
 
-**C#**
+
 
 ```csharp
 using (DocFormat format = new DocFormat(@"D:\input.docx"))
@@ -104,7 +104,7 @@ The *ContentProperties* property has been removed from the *XlsMetadata*class
 
 Get the content type properties.
 
-**C#**
+
 
 ```csharp
 using (XlsFormat format = new XlsFormat(@"D:\input.xlsx"))
@@ -172,7 +172,7 @@ The *ExifInfo.UserComment* property has been marked as obsolete
 
 Update common EXIF/TIFF metadata tags by using the shortcut properties.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -186,7 +186,7 @@ using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
 
 Update common EXIF/TIFF metadata tags by replacing the whole tag collection.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -206,7 +206,7 @@ using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
 
 Update EXIF IFD tags by using the shortcut properties.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -219,7 +219,7 @@ using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
 
 Update EXIF IFD tags by replacing the whole tag collection.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -248,7 +248,7 @@ None.
 
 Please note that the *GifFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (GifFormat format = new GifFormat(@"d:\input.gif"))
@@ -259,7 +259,7 @@ using (GifFormat format = new GifFormat(@"d:\input.gif"))
 
 If you are loading a gif file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.gif", FileMode.Open, FileAccess.ReadWrite))
@@ -274,7 +274,7 @@ using (Stream stream = File.Open(@"d:\input.gif", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.gif", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -301,7 +301,7 @@ None.
 
 ##### Usecases
 
-**C#**
+
 
 ```csharp
 using (TiffFormat tiffFormat = new TiffFormat(@"D:\input.tif"))
@@ -338,7 +338,7 @@ None.
 
 ##### Usecases
 
-**C#**
+
 
 ```csharp
 using (TiffFormat tiffFormat = new TiffFormat(@"D:\input.tif"))
@@ -364,7 +364,7 @@ The *DublinCorePackage.SetSubject(string\[\])* method has been marked as obsol
 
 Set a single subject.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -376,7 +376,7 @@ using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
 
 Set multiple subjects.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))

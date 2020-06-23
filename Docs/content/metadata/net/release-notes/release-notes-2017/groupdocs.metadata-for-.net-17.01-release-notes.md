@@ -42,7 +42,7 @@ There are 4 features and 3 enhancements in this regular monthly release. The mos
 
 This example demonstrates how to update several properties in PPTX format
 
-**C#**
+
 
 ```csharp
 // path to the ppt file
@@ -72,7 +72,7 @@ pptFormat.Save();
 
 This enhancement allows to read metadata faster
 
-**C#**
+
 
 ```csharp
 PptFormat ppt = new PptFormat(path);
@@ -92,7 +92,7 @@ This enhancement allows to read ID3 metadata in MP3 format directly using indexe
 
 This example demonstrates how to read Id3 metadata directly in MP3 format
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\Kalimba.mp3";
@@ -129,7 +129,7 @@ Feature is not supported in trial mode.
 
 This example demonstrates how to read calculated document info for MS Word format
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -161,7 +161,7 @@ Feature is supported for Word, Excel, PowerPoint and MS Visio formats.
 Added \*FileType\* enumeration into namespace \*GroupDocs.Metadata\*  
 This example demonstrates how to display file type of the Word document
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -198,7 +198,7 @@ Implement ability to detect digital signature in document formats such as Word, 
 
 This example demonstrates how to read digital signature in MS Word document
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -241,7 +241,7 @@ This feature allows to remove digital signature(s) in document formats such as W
 
 This example demonstrates how to remove all digital signatures in MS Word document
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file

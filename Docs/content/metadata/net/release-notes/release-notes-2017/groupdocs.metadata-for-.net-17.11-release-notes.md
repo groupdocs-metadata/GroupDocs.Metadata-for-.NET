@@ -46,7 +46,7 @@ Added **RemoveLyrics3v2** method into class **GroupDocs.Metadata.Formats.Audi
 
 This example demonstrates how to remove Lyrics3 2.0 tag in Mp3 format.
 
-**C#**
+
 
 ```csharp
 // init Mp3Format class
@@ -74,7 +74,7 @@ None
 
 This example demonstrates how to remove all metadata in MP3 format.
 
-**C#**
+
 
 ```csharp
 // path to the MP3 file
@@ -100,7 +100,7 @@ Added method **RemoveAPEv2** into **GroupDocs.Metadata.Formats.Audio.Mp3Forma
 
 This example demonstrates how to remove APEv2 tag in MP3 format.
 
-**C#**
+
 
 ```csharp
 // init Mp3Format class
@@ -123,7 +123,7 @@ None
 
 This example demonstrates how to remove all metadata in AVI format.
 
-**C#**
+
 
 ```csharp
 // initialize AviFormat

@@ -8,8 +8,6 @@ keywords:
 productName: GroupDocs.Metadata for .NET
 hideChildren: False
 ---
-# Updating existing metadata properties
-
 The example below demonstrates how to update existing metadata properties using a combination of criteria. Please note that the [UpdateProperties](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata/metadata/methods/updateproperties) method checks the type of all properties before applying any changes. If a property satisfies the predicate but has a type different from the passed value it won't be updated. The explicit type check in the example is performed since we use the existing value to filter metadata properties.
 
 1.  [Open]({{< ref "metadata/net/developer-guide/advanced-usage/loading-files/_index.md" >}}) a file to be updated
@@ -48,18 +46,11 @@ foreach (string file in Directory.GetFiles(Constants.InputPath))
 ```
 
 ## More resources
-
 ### GitHub examples
-
 You may easily run the code above and see the feature in action in our GitHub examples:
-
-*   [GroupDocs.Metadata for .NET examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET)
-    
-*   [GroupDocs.Metadata for Java examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-Java)
-    
+*   [GroupDocs.Metadata for .NET examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET)    
+*   [GroupDocs.Metadata for Java examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-Java)    
 
 ### Free online document metadata management App
-
 Along with full featured .NET library we provide simple, but powerful free Apps.
-
 You are welcome to view and edit metadata of PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, emails, images and more with our free online [Free Online Document Metadata Viewing and Editing App](https://products.groupdocs.app/metadata).

@@ -42,7 +42,7 @@ Added **RemoveFileComment** method to class **GroupDocs.Metadata.Formats.Arch
 
 This example demonstrates how to remove user comment in ZIP format.
 
-**C#**
+
 
 ```csharp
 string path = "..";
@@ -71,7 +71,7 @@ Added **Thumbnail** property to class **GroupDocs.Metadata.Formats.Image.Exif
 
 This example demonstrates how to read thumbnail of JPEG format from EXIF segment and store it to a file.
 
-**C#**
+
 
 ```csharp
 // init jpeg

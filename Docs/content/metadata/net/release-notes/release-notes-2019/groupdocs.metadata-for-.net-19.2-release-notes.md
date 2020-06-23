@@ -74,7 +74,7 @@ The *Asf* item has been added to the *DocumentType* enum
 
 Use case to read ASF video native metadata
 
-**C#**
+
 
 ```csharp
 using (AsfFormat format = new AsfFormat(@"D:\input.asf"))
@@ -141,7 +141,7 @@ using (AsfFormat format = new AsfFormat(@"D:\input.asf"))
 
 Use case to read and write XMP metadata
 
-**C#**
+
 
 ```csharp
 using (AsfFormat format = new AsfFormat(@"D:\input.asf"))
@@ -160,7 +160,7 @@ using (AsfFormat format = new AsfFormat(@"D:\input.asf"))
 
 Use case to remove XMP metadata
 
-**C#**
+
 
 ```csharp
 using (AsfFormat format = new AsfFormat(@"D:\input.asf"))
@@ -214,7 +214,7 @@ The *WordsPreviewHandler *class has been added to the *GroupDocs.Metadata.Pre
 
 Use case to create preview images for all document pages
 
-**C#**
+
 
 ```csharp
 using (PreviewHandler handler = PreviewFactory.Load(@"D:\input.docx"))
@@ -370,7 +370,7 @@ The *IptcProperty**Type* enum has been marked as obsolete
 
 Use case to display the whole metadata tree of a file
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)
@@ -442,7 +442,7 @@ The *JpegExifInfo* class has been removed form the *GroupDocs.Metadata.Format
 
 Please use the appropriate properties of the *ExifIfdInfo *class instead
 
-**C#**
+
 
 ```csharp
 using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
@@ -458,7 +458,7 @@ using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
 
 The *JpegExifInfo* class is no longer needed since you can use an instance of *ExifInfo* instead
 
-**C#**
+
 
 ```csharp
 ExifInfo exif = new ExifInfo();
@@ -486,7 +486,7 @@ The *Lyrics3v2* property has been removed from the *Mp3Format* class
 
 Please use the *GetLyrics3Tag* method instead
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"D:\input.mp3"))

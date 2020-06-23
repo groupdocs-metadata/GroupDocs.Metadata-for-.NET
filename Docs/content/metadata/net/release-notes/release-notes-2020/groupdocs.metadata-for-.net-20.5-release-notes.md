@@ -10,8 +10,7 @@ hideChildren: False
 ---
 {{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 20.5{{< /alert >}}
 
-#   
-Major Features
+## Major Features
 
 {{< alert style="danger" >}}In version 20.5 the legacy API has been removed (all types from the GroupDocs.Metadata.Legacy namespace were removed).{{< /alert >}}
 
@@ -71,7 +70,7 @@ The [WebPRootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs
 
 Read EXIF metadata properties in a WEBP image
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\exif.webp"))
@@ -114,7 +113,7 @@ The [MovRootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.
 
 Read XMP metadata properties in a MOV video
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\xmp.mov"))

@@ -47,7 +47,7 @@ The *RemoveIptc* method has been added to the *PsdFormat* class
 
 Update IPTC metadata.
 
-**C#**
+
 
 ```csharp
 using (PsdFormat format = new PsdFormat(@"D:\input.psd"))
@@ -65,7 +65,7 @@ using (PsdFormat format = new PsdFormat(@"D:\input.psd"))
 
 Remove IPTC metadata.
 
-**C#**
+
 
 ```csharp
 using (PsdFormat format = new PsdFormat(@"D:\input.psd"))
@@ -89,7 +89,7 @@ None.
 
 Please note that the *PsdFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (PsdFormat format = new PsdFormat(@"d:\input.psd"))
@@ -100,7 +100,7 @@ using (PsdFormat format = new PsdFormat(@"d:\input.psd"))
 
 If you are loading a PSD file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.psd", FileMode.Open, FileAccess.ReadWrite))
@@ -115,7 +115,7 @@ using (Stream stream = File.Open(@"d:\input.psd", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.psd", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -144,7 +144,7 @@ None.
 
 Please note that the *Mp3Format* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (Mp3Format format = new Mp3Format(@"d:\input.mp3"))
@@ -155,7 +155,7 @@ using (Mp3Format format = new Mp3Format(@"d:\input.mp3"))
 
 If you are loading an mp3 file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.mp3", FileMode.Open, FileAccess.ReadWrite))
@@ -170,7 +170,7 @@ using (Stream stream = File.Open(@"d:\input.mp3", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.mp3", FileMode.OpenOrCreate, FileAccess.ReadWrite))

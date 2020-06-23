@@ -61,7 +61,7 @@ The *GroupDocs.Metadata.Formats.Video.MatroskaTrackType.Unefined* enum item h
 
 Read all subtitles stored in an MKV video
 
-**C#**
+
 
 ```csharp
 using (MatroskaFormat format = new MatroskaFormat(@"D:\input.mkv"))
@@ -90,7 +90,7 @@ The *RawName* property has been added to the *GroupDocs.Metadata.Formats.Arch
 
 Read all entries of a ZIP archive using a specific encoding
 
-**C#**
+
 
 ```csharp
 // Use a specific encoding for filenames

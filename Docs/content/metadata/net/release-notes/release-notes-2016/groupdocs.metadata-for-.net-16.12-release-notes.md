@@ -42,7 +42,7 @@ There are 5 features and 2 enhancements in this regular monthly release. The mos
 
 This example demonstrates how to read all metadata keys of the Word document
 
-**C#**
+
 
 ```csharp
 // path to the directory
@@ -73,7 +73,7 @@ foreach (string path in files)
 
 This example demonstrates how to retrieve all XMP keys from PDF document
 
-**C#**
+
 
 ```csharp
 // path to the directory with pdf
@@ -109,7 +109,7 @@ foreach (string path in files)
 
 This example demonstrates how to display all metadata properties of any metadata using foreach statement
 
-**C#**
+
 
 ```csharp
 // path to the directory
@@ -168,7 +168,7 @@ This feature allows to read/update metadata of Open Document Format (ODT).
 
 This example demonstrates how to read metadata properties of the specific .odt file
 
-**C#**
+
 
 ```csharp
 // path to the ODT file
@@ -194,7 +194,7 @@ This feature allows to detect and read dimensions of DjVu image format.
 
 This sample demonstrates how to get dimensions of Djvu image
 
-**C#**
+
 
 ```csharp
 const string file = @"C:\\download files\image.djvu";
@@ -218,7 +218,7 @@ This feature allows to detect and read dimensions of BMP image format.
 
 This sample demonstrates how to get dimensions of BMP image
 
-**C#**
+
 
 ```csharp
 const string file = @"C:\\download files\image.bmp";
@@ -242,7 +242,7 @@ This feature allows to read header of BMP image format.
 
 This sample demonstrates how to read header of BMP image
 
-**C#**
+
 
 ```csharp
 // path to the BMP image
@@ -271,7 +271,7 @@ In some cases need to retrieve metadata property by specific key like 'author', 
 
 This example demonstrates how read known metadata properties of specific format directly
 
-**C#**
+
 
 ```csharp
 string dir = @"c:\download files\";

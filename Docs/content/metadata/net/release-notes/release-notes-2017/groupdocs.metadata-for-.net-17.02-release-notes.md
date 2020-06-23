@@ -52,7 +52,7 @@ Enhancement allows to export content type properties to csv/excel
 
 This example demonstrates how to export content type properties to excel. All content type properties will be displayed under "Document properties" sheet
 
-**C#**
+
 
 ```csharp
 // path to the target file
@@ -81,7 +81,7 @@ Added **ContentTypeProperties** property into class **XlsMetadata** of namespace
 
 This example demonstrates how to add content type property
 
-**C#**
+
 
 ```csharp
 // path to the XLS file
@@ -118,7 +118,7 @@ Added **AviHeader** class into namespace **GroupDocs.Metadata.Formats.Video**
 
 This example demonstrates how to read AVIMAINHEADER of AVI format
 
-**C#**
+
 
 ```csharp
 // path to the AVI
@@ -155,7 +155,7 @@ Added **PsdLayer** class into namespace **GroupDocs.Metadata.Formats.Image**
 
 This example demonstrates how to read layers in Photoshop
 
-**C#**
+
 
 ```csharp
 // path to the Photoshop file
@@ -183,7 +183,7 @@ Added **Metered** class into namespace **GroupDocs.Metadata**
 
 This example demonstrates how to use library in licensed mode using Dynabic.Metered account
 
-**C#**
+
 
 ```csharp
 const string publicKey = "[Your Dynabic.Metered public key]";
@@ -216,7 +216,7 @@ Added class **DICOMFormat** into namespace **GroupDocs.Metadata.Formats.Image.Im
 
 This example is shown how to detect DICOM format
 
-**C#**
+
 
 ```csharp
 // path to the file
@@ -243,7 +243,7 @@ Added class **DicomMetadata** into namespace **GroupDocs.Metadata.Formats.Image.
 
 This example is shown how to detect DICOM format
 
-**C#**
+
 
 ```csharp
 // path to the DICOM
@@ -268,7 +268,7 @@ Console.WriteLine("Number of frames: {0}", header.NumberOfFrames);
 This feature allows to export DICOM metadata to csv/excel  
 This example demonstrates how to export DICOM metadata to excel.
 
-**C#**
+
 
 ```csharp
 // path to the target file
@@ -294,7 +294,7 @@ Added **ByteOrder** property into class **ImageFormat** of namespace **GroupDocs
 
 This example demonstrates how to read ByteOrder value in image format.
 
-**C#**
+
 
 ```csharp
 // get all images from the specific folder
@@ -319,7 +319,7 @@ Extended enum **DocumentType**: added **DocumentType.AVI** value
 
 This example is shown how to detect AVI format via FormatFactory
 
-**C#**
+
 
 ```csharp
 // path to the file
@@ -348,7 +348,7 @@ Added **AviHeader** class into namespace **GroupDocs.Metadata.Formats.Video**
 
 This example demonstrates how to export AVI metadata to Excel document
 
-**C#**
+
 
 ```csharp
 // path to the file

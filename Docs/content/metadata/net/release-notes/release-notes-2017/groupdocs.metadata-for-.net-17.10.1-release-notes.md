@@ -44,7 +44,7 @@ None
 
 This example demonstrates how to remove metadata.
 
-**C#**
+
 
 ```csharp
 try
@@ -71,7 +71,7 @@ None
 
 This example demonstrates how to remove personal metadata from TIF file.
 
-**C#**
+
 
 ```csharp
 // open TIFF
@@ -94,7 +94,7 @@ None
 
 This example demonstrates how to remove metadata with affecting Bit Depth.
 
-**C#**
+
 
 ```csharp
 TiffFormat format = new TiffFormat(sourcePath);
@@ -117,7 +117,7 @@ None
 
 This example demonstrates how to get XmpSchmes without damaging file.
 
-**C#**
+
 
 ```csharp
 TiffFormat format = new TiffFormat(file);

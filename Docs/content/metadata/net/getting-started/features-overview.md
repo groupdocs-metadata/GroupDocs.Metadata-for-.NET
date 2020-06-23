@@ -8,8 +8,6 @@ keywords:
 productName: GroupDocs.Metadata for .NET
 hideChildren: False
 ---
-## Features Overview
-
 *   Reading, updating and removing metadata in a variety of formats
 *   Searching, updating and removing particular metadata properties that satisfy a specified predicate
 *   Using tags to easily manipulate most common metadata properties in a unified manner

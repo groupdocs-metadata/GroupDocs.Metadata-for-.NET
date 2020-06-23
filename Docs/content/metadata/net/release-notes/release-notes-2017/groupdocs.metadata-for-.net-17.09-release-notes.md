@@ -44,7 +44,7 @@ None
 
 Usecase.
 
-**C#**
+
 
 ```csharp
 string spath = @"C:\Users\User\Desktop\source.jpg";
@@ -67,7 +67,7 @@ None
 
 Usecase.
 
-**C#**
+
 
 ```csharp
  
@@ -95,7 +95,7 @@ Added **Apev2Metadata** class into **GroupDocs.Metadata.Formats.Audio** name
 
 This example demonstrates how to read APEv2 tag in MP3 format.
 
-**C#**
+
 
 ```csharp
 // path to the input directory
@@ -142,7 +142,7 @@ None.
 
 This example demonstrates how to read document properties in ODS format.
 
-**C#**
+
 
 ```csharp
 // path to the ODS file
@@ -175,7 +175,7 @@ Added **SRational** class into namespace **GroupDocs.Metadata.Formats.Image**
 
 Usecase.
 
-**C#**
+
 
 ```csharp
 // init JpegFormat
@@ -215,7 +215,7 @@ None.
 
 This example demonstrates how to specify 'artist' using TiffAsciiTag tag.
 
-**C#**
+
 
 ```csharp
 // path to the image

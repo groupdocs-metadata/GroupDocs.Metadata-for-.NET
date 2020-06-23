@@ -50,7 +50,7 @@ There are 7 features and 4 enhancements in this regular monthly release. The mos
 
 Ability to read MPEG audio details like bitrate, channel mode, frequency and other flags according to the MPEG specification.
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\Kalimba.mp3";
@@ -96,7 +96,7 @@ Console.WriteLine("Is protected: {0}", audioInfo.IsProtected);
 
 This enhancement allows to read/write common ID3v2 tags like artist, album, title etc.
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\a-ha - Take On Me.mp3";
@@ -137,7 +137,7 @@ mp3Format.Save();
 
 This feature allows to detect and read dimensions of WMF image format.
 
-**C#**
+
 
 ```csharp
 const string file = @"C:\\download files\image.wmf";
@@ -157,7 +157,7 @@ int height = wmfFormat.Height;
 
 This feature allows to detect and read dimensions of WebP image format.
 
-**C#**
+
 
 ```csharp
 const string file = @"C:\\download files\sky.webp";
@@ -177,7 +177,7 @@ int height = webpFormat.Height;
 
 This feature allows to remove ID3 v2.\* tag in Mp3 format.
 
-**C#**
+
 
 ```csharp
 const string filePath = @"C:\download files\a-ha - Take On Me.mp3";
@@ -197,7 +197,7 @@ mp3Format.Save();
 
 This feature allows to retrieve MIME type of the specific file or file stream.
 
-**C#**
+
 
 ```csharp
 // path to the input directory
@@ -235,7 +235,7 @@ string mimeType = format.MIMEType;
 
 This feature allows to detect and read dimensions of EMF image format.
 
-**C#**
+
 
 ```csharp
 const string file = @"C:\\download files\image.emf";
@@ -255,7 +255,7 @@ int height = emfFormat.Height;
 
 This feature allows to read content properties in Xls format.
 
-**C#**
+
 
 ```csharp
 // path to the XLS file
@@ -282,7 +282,7 @@ foreach (XlsContentProperty property in contentProperties)
 
 This feature allows to retrieve width and height properties for all image formats.
 
-**C#**
+
 
 ```csharp
 // path to the input directory

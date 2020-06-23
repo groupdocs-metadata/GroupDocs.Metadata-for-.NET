@@ -8,7 +8,7 @@ keywords:
 productName: GroupDocs.Metadata for .NET
 hideChildren: False
 ---
-# Why To Migrate?
+## Why To Migrate?
 
 Here are the key reasons to use the new API provided by GroupDocs.Metadata for .NET starting from version 19.11:
 
@@ -17,7 +17,7 @@ Here are the key reasons to use the new API provided by GroupDocs.Metadata for .
 *   The product architecture was redesigned from scratch in order to simplify most common operations with metadata properties.
 *   Getting document information and preview generation procedures were simplified.
 
-# How To Migrate?
+## How To Migrate?
 
 Here is a brief comparison of how to manage metadata using the old and new API.
 

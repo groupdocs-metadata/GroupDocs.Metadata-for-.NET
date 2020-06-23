@@ -10,8 +10,7 @@ hideChildren: False
 ---
 {{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 20.6{{< /alert >}}
 
-# Major Features
-
+## Major Features
   
 There are the following features, enhancements and fixes in this release:
 
@@ -45,7 +44,7 @@ The setter has bee added to the [TiffRootPackage.IptcPackage](https://apireferen
 
 Add or update IPTC metadata in a TIFF image
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\input.tif"))
@@ -99,7 +98,7 @@ The [ExportManager](https://apireference.groupdocs.com/metadata/net/groupdocs.m
 
 Export the whole metadata tree to an Excel workbook
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\input.doc"))

@@ -40,7 +40,7 @@ Added **RevisionCollection** class into namespace **GroupDocs.Metadata.Formats.D
 
 Given below example demonstrates how to read track changes (revisions) in Word document
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -81,7 +81,7 @@ Added **RevisionCollection** class into namespace **GroupDocs.Metadata.Formats.D
 
 This example demonstrates how to accept all changes in Word document.
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -103,7 +103,7 @@ docFormat.Save();
 
 This example demonstrates how to reject all changes in Word document.
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file

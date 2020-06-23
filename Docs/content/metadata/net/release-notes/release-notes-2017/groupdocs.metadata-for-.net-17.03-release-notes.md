@@ -40,7 +40,7 @@ This enhancement loads DocumentInfo property in DocumentFormat using lazy loadin
 
 Given below is an example related to this enhancement
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -63,7 +63,7 @@ PDF format may contain regular keys like 'Author', 'Title', 'Creator' etc. But f
 
 Given below is an example related to this enhancement
 
-**C#**
+
 
 ```csharp
 // path to the PDF file
@@ -89,7 +89,7 @@ Faster deleting of EXIF metadata
 
 Given below is an example related to this enhancement
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -111,7 +111,7 @@ Faster updating of EXIF metadata
 
 Given below is an example related to this enhancement
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -154,7 +154,7 @@ Added **Thumbnail** property into class **GroupDocs.Metadata.Formats.Document.Do
 
 This example demonstrates how to read thumbnail in Word document:
 
-**C#**
+
 
 ```csharp
 // path to the MS Word file
@@ -173,7 +173,7 @@ File.WriteAllBytes("C:\\changes.png", thumbnailData);
 
 In case of using Excel format document may be empty. In this case need to check if thumbnail is not empty
 
-**C#**
+
 
 ```csharp
 // path to the MS Excel file

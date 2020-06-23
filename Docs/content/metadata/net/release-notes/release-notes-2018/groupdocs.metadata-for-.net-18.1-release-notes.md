@@ -45,7 +45,7 @@ Added **EpubMetadata** class into namespace **GroupDocs.Metadata.Formats.Eboo
 
 This example demonstrates how to read metadata of EPUB e-book format
 
-**C#**
+
 
 ```csharp
 // path to the EPUB file
@@ -84,7 +84,7 @@ Added **EpubFormat** class into namespace **GroupDocs.Metadata.Formats.Ebook*
 
 This example demonstrates how to detect EPUB e-book format
 
-**C#**
+
 
 ```csharp
 // just try to open
@@ -109,7 +109,7 @@ Added **DublinCoreMetadata** class into namespace **GroupDocs.Metadata**
 
 This example demonstrates how to read DublinCore metadata of EPUB e-book format
 
-**C#**
+
 
 ```csharp
 // path to the EPUB file

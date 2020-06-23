@@ -10,8 +10,7 @@ hideChildren: False
 ---
 {{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 20.4{{< /alert >}}
 
-#   
-Major Features
+## Major Features
 
 There are the following features, enhancements and fixes in this release:
 
@@ -45,7 +44,7 @@ The [PngRootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.m
 
 Read EXIF metadata properties in a PNG  image
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\exif.png"))
@@ -88,7 +87,7 @@ The [MP3RootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.
 
 Read XMP metadata properties in an MP3 audio
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\xmp.mp3"))
@@ -154,7 +153,7 @@ The following classes have been added to the [GroupDocs.Metadata.Standards.Exif
 
 Read all MakerNote properties in the form of TIFF/EXIF tags
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.CanonJpeg))
@@ -173,7 +172,7 @@ using (Metadata metadata = new Metadata(Constants.CanonJpeg))
 
 Read Canon MakerNote properties
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.CanonJpeg))
@@ -204,7 +203,7 @@ using (Metadata metadata = new Metadata(Constants.CanonJpeg))
 
 Read Nikon MakerNote properties
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.NikonJpeg))
@@ -227,7 +226,7 @@ using (Metadata metadata = new Metadata(Constants.NikonJpeg))
 
 Read Panasonic MakerNote properties
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PanasonicJpeg))
@@ -250,7 +249,7 @@ using (Metadata metadata = new Metadata(Constants.PanasonicJpeg))
 
 Read Sony MakerNote properties
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.SonyJpeg))

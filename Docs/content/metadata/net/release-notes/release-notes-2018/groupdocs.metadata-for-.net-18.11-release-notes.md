@@ -46,7 +46,7 @@ None.
 
 Please note that the *PdfFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (PdfFormat format = new PdfFormat(@"d:\input.pdf"))
@@ -57,7 +57,7 @@ using (PdfFormat format = new PdfFormat(@"d:\input.pdf"))
 
 If you are loading a PDF file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.pdf", FileMode.Open, FileAccess.ReadWrite))
@@ -72,7 +72,7 @@ using (Stream stream = File.Open(@"d:\input.pdf", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.pdf", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -101,7 +101,7 @@ None.
 
 Please note that the *XlsFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (XlsFormat format = new XlsFormat(@"d:\input.xlsx"))
@@ -112,7 +112,7 @@ using (XlsFormat format = new XlsFormat(@"d:\input.xlsx"))
 
 If you are loading an Excel document from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.xls", FileMode.Open, FileAccess.ReadWrite))
@@ -127,7 +127,7 @@ using (Stream stream = File.Open(@"d:\input.xls", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.xlsx", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -176,7 +176,7 @@ The setter has been added to the *XlsMetadata.Version* property
 
 Get and set Excel metadata properties
 
-**C#**
+
 
 ```csharp
 using (XlsFormat format = new XlsFormat(@"D:\input.xlsx"))
@@ -229,7 +229,7 @@ The *Flv* item has been added to the *MetadataType* enum
 
 Check whether a file is an FLV video.
 
-**C#**
+
 
 ```csharp
 using (FileFormatChecker checker = new FileFormatChecker(@"D:\input.unknown"))
@@ -243,7 +243,7 @@ using (FileFormatChecker checker = new FileFormatChecker(@"D:\input.unknown"))
 
 Read and write XMP metadata.
 
-**C#**
+
 
 ```csharp
 using (FlvFormat format = new FlvFormat(@"D:\input.flv"))
@@ -264,7 +264,7 @@ using (FlvFormat format = new FlvFormat(@"D:\input.flv"))
 
 Remove XMP metadata.
 
-**C#**
+
 
 ```csharp
 using (FlvFormat format = new FlvFormat(@"D:\input.flv"))
@@ -276,7 +276,7 @@ using (FlvFormat format = new FlvFormat(@"D:\input.flv"))
 
 Read FLV header metadata.
 
-**C#**
+
 
 ```csharp
 using (FlvFormat format = new FlvFormat(@"D:\input.flv"))

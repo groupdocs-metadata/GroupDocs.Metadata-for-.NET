@@ -10,7 +10,7 @@ hideChildren: False
 ---
 {{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 20.3{{< /alert >}}
 
-# Major Features
+## Major Features
 
 There are the following features, enhancements and fixes in this release:
 
@@ -42,7 +42,7 @@ The [PsdRootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.
 
 Update EXIF metadata properties in a PSD file
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\input.psd"))
@@ -85,7 +85,7 @@ The [WebPRootPackage](https://apireference.groupdocs.com/net/metadata/groupdocs
 
 Extract XMP metadata properties from a WEBP image
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\input.webp"))

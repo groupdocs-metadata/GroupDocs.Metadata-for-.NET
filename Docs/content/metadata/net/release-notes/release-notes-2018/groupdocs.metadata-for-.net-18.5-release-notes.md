@@ -61,7 +61,7 @@ This enhancement allows a user to search and replace metadata by using regular e
 
 Find metadata in a document.
 
-**C#**
+
 
 ```csharp
 string testFile = @"D:\test.docx";
@@ -75,7 +75,7 @@ for (int i = 0; i < properties.Count; i++)
 
 Replace metadata in a document.
 
-**C#**
+
 
 ```csharp
 string inputFile = @"D:\input.xlsx";
@@ -87,7 +87,7 @@ SearchFacade.ReplaceInDocument(inputFile, pattern, replaceValue, outputFile);
 
 Find XMP metadata.
 
-**C#**
+
 
 ```csharp
 string testFile = @"D:\xmp.gif";
@@ -101,7 +101,7 @@ for (int i = 0; i < properties.Length; i++)
 
 Replace XMP metadata.
 
-**C#**
+
 
 ```csharp
 string inputFile = @"D:\input.gif";
@@ -113,7 +113,7 @@ SearchFacade.ReplaceInXmp(inputFile, pattern, replaceValue, outputFile);
 
 Find EXIF metadata.
 
-**C#**
+
 
 ```csharp
 string testFile = @"D:\exif.jpg";
@@ -127,7 +127,7 @@ for (int i = 0; i < properties.Length; i++)
 
 Replace EXIF metadata.
 
-**C#**
+
 
 ```csharp
 string inputFile = @"D:\input.jpg";
@@ -164,7 +164,7 @@ This enhancement allows a user to obtain Dublin Core metadata using the unified 
 
 Get Dublin Core metadata using *MetadataUtility* class.
 
-**C#**
+
 
 ```csharp
 string[] files = Directory.GetFiles(@"D:\test");
@@ -189,7 +189,7 @@ foreach (string file in files)
 
 Get Dublin Core metadata using *IDublinCore* interface.
 
-**C#**
+
 
 ```csharp
 string[] files = Directory.GetFiles(@"D:\test");
@@ -233,7 +233,7 @@ None.
 
 Please note that *ZipFormat* class implements *IDisposable* interface and it's necessary to call *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (ZipFormat format = new ZipFormat(@"d:\input.zip"))
@@ -244,7 +244,7 @@ using (ZipFormat format = new ZipFormat(@"d:\input.zip"))
 
 If you are loading a zip file from a stream, it's up to you to close the stream when the archive is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.zip", FileMode.Open, FileAccess.ReadWrite))
@@ -259,7 +259,7 @@ using (Stream stream = File.Open(@"d:\input.zip", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.zip", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -289,7 +289,7 @@ A setter has been added to *ZipFormat.ZipFileComment* property
 
 Change the comment of a zip archive.
 
-**C#**
+
 
 ```csharp
 using (ZipFormat format = new ZipFormat(@"d:\input.zip"))
@@ -301,7 +301,7 @@ using (ZipFormat format = new ZipFormat(@"d:\input.zip"))
 
 Or alternatively, you can use *ZipFormat.ZipFileComment* property.
 
-**C#**
+
 
 ```csharp
 using (ZipFormat format = new ZipFormat(@"d:\input.zip"))
@@ -325,7 +325,7 @@ None.
 
 Please note that *EpubFormat* class implements *IDisposable* interface and it's necessary to call *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (EpubFormat format = new EpubFormat(@"d:\input.epub"))
@@ -336,7 +336,7 @@ using (EpubFormat format = new EpubFormat(@"d:\input.epub"))
 
 If you are loading an epub file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.epub", FileMode.Open, FileAccess.ReadWrite))
@@ -351,7 +351,7 @@ using (Stream stream = File.Open(@"d:\input.epub", FileMode.Open, FileAccess.Rea
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.epub", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -380,7 +380,7 @@ None.
 
 Please note that *TorrentFormat* class implements *IDisposable* interface and it's necessary to call *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (TorrentFormat format = new TorrentFormat(@"d:\input.torrent"))
@@ -391,7 +391,7 @@ using (TorrentFormat format = new TorrentFormat(@"d:\input.torrent"))
 
 If you are loading an epub file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.torrent", FileMode.Open, FileAccess.ReadWrite))
@@ -406,7 +406,7 @@ using (Stream stream = File.Open(@"d:\input.torrent", FileMode.Open, FileAccess.
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.torrent", FileMode.OpenOrCreate, FileAccess.ReadWrite))

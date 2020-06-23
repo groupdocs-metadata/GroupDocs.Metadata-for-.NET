@@ -44,7 +44,7 @@ Implement ability to detect MOV video format
 
 Added **MovFormat** class into namespace **GroupDocs.Metadata.Formats.Video**
 
-**C#**
+
 
 ```csharp
 MovFormat movFormat = new MovFormat(file);
@@ -64,7 +64,7 @@ Added **ZipFormat** class into namespace **GroupDocs.Metadata.Formats.Archive
 
 This example demonstrates how to read metadata of ZIP format
 
-**C#**
+
 
 ```csharp
  

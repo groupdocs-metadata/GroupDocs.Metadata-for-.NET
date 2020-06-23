@@ -103,7 +103,7 @@ The *OpenType* item has been added to the *DocumentType *enum
 
 Use case to read **OpenType** font metadata
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)
@@ -237,7 +237,7 @@ private static void PrintAttributes(CmsAttribute[] attributes)
 
 Use case to read the whole metadata tree in the unified way.
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)
@@ -301,7 +301,7 @@ The following formats now support hierarchical metadata arrangement:
 
 Use case to read the whole metadata tree in the unified way (regardless of the format).
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)

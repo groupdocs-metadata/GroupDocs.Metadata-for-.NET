@@ -45,7 +45,7 @@ None
 
 This example demonstrates how to get NIKON makernotes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -83,7 +83,7 @@ None
 
 This example demonstrates how to get SONY makernotes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -123,7 +123,7 @@ Added **CanonCameraSettings** class into namespace **GroupDocs.Metadata.Formats.
 
 This example demonstrates how to get CANON maker-notes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -172,7 +172,7 @@ Added **PanasonicMakerNotes** class into namespace **GroupDocs.Metadata.Formats.
 
 This example demonstrates how to get Panasonic makernotes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -213,7 +213,7 @@ None
 
 This example demonstrates how to remove EXIF geo-location.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file

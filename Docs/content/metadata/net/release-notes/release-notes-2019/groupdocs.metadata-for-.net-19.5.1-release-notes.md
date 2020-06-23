@@ -38,7 +38,7 @@ None
 
 Load a Microsoft Excel 5.0/95 workbook
 
-**C#**
+
 
 ```csharp
 using (XlsFormat format = new XlsFormat(@"D:\input95.xls"))

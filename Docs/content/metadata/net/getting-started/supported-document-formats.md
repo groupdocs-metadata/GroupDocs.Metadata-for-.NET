@@ -8,8 +8,6 @@ keywords:
 productName: GroupDocs.Metadata for .NET
 hideChildren: False
 ---
-# Supported File Formats
-
 The following table contains a full list of file formats that are currently supported by GroupDocs.Metadata for .NET.
 
 | Format | Description | Load | Save | Remarks |

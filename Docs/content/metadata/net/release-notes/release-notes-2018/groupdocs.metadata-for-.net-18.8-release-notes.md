@@ -92,7 +92,7 @@ This enhancement affects the classes representing different types of TIFF tags a
 
 Extract values of certain TIFF tags.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
@@ -111,7 +111,7 @@ using (TiffFormat format = new TiffFormat(@"D:\input.tif"))
 
 Since the EXIF metadata standard is based on the TIFF format specification, the classes representing TIFF tags can be used to obtain particular EXIF properties as well.
 
-**C#**
+
 
 ```csharp
 using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
@@ -133,7 +133,7 @@ using (JpegFormat format = new JpegFormat(@"D:\input.jpg"))
 
 The *ExifProperty* class had been duplicating the functionality of TIFF tags and having almost the same purpose, so it was marked as obsolete. Please use the new utility methods returning instances of the *TiffTag* descendants instead.
 
-**C#**
+
 
 ```csharp
 TiffTag[] resolutionTags = SearchFacade.ScanExifTags(@"D:\input.jpg", new Regex("^(XResolution|YResolution)$"));
@@ -144,7 +144,7 @@ foreach (TiffTag resolutionTag in resolutionTags)
 }
 ```
 
-**C#**
+
 
 ```csharp
 TiffTag[] intersection = ComparisonFacade.CompareExifTags(@"D:\input1.jpg", @"D:\input2.jpg", ComparerSearchType.Intersection);
@@ -171,7 +171,7 @@ None.
 
 Please note that the *JpegFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (JpegFormat format = new JpegFormat(@"d:\input.jpg"))
@@ -182,7 +182,7 @@ using (JpegFormat format = new JpegFormat(@"d:\input.jpg"))
 
 If you are loading a jpeg file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.jpg", FileMode.Open, FileAccess.ReadWrite))
@@ -197,7 +197,7 @@ using (Stream stream = File.Open(@"d:\input.jpg", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.jpg", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -226,7 +226,7 @@ None.
 
 Please note that the *TiffFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (TiffFormat format = new TiffFormat(@"d:\input.tiff"))
@@ -237,7 +237,7 @@ using (TiffFormat format = new TiffFormat(@"d:\input.tiff"))
 
 If you are loading a tiff file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.tiff", FileMode.Open, FileAccess.ReadWrite))
@@ -252,7 +252,7 @@ using (Stream stream = File.Open(@"d:\input.tiff", FileMode.Open, FileAccess.Rea
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.tiff", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -281,7 +281,7 @@ This new feature allows a user to obtain EXIF metadata contained in PSD files.
 
 Read EXIF metadata of a PSD file
 
-**C#**
+
 
 ```csharp
 using (PsdFormat format = new PsdFormat(@"D:\input.psd"))

@@ -51,7 +51,7 @@ Implement ability to read and write metadata of torrent files.
 
 Read metadata of a torrent file.
 
-**C#**
+
 
 ```csharp
 using (TorrentFormat torrentFormat = new TorrentFormat(@"D:\input.torrent"))
@@ -74,7 +74,7 @@ using (TorrentFormat torrentFormat = new TorrentFormat(@"D:\input.torrent"))
 
 Set some properties of torrent file metadata.
 
-**C#**
+
 
 ```csharp
 using (TorrentFormat torrentFormat = new TorrentFormat(@"D:\input.torrent"))
@@ -103,7 +103,7 @@ None.
 
 Read DublinCore metadata using MetadataUtility class.
 
-**C#**
+
 
 ```csharp
 DublinCoreMetadata dublinCoreMetadata = (DublinCoreMetadata)MetadataUtility.ExtractSpecificMetadata(@"D:\input.docx", MetadataType.DublinCore);
@@ -124,7 +124,7 @@ Implement ability to read thumbnail (image cover) from EPUB, MP3, Word and Excel
 
 Read Thumbnail metadata using MetadataUtility class.
 
-**C#**
+
 
 ```csharp
 ThumbnailMetadata thumbnailMetadata = (ThumbnailMetadata)MetadataUtility.ExtractSpecificMetadata(@"D:\input.docx", MetadataType.Thumbnail);
@@ -147,7 +147,7 @@ None.
 
 In some cases, it is necessary to remove some specific values from XMP metadata package associated with GIF or PNG images. In previous versions of GroupDocs.Metadata this might cause unexpected increasing of the file size. Starting from version 18.4 please use the following code snippet to avoid the issue.
 
-**C#**
+
 
 ```csharp
 using (GifFormat format = new GifFormat(@"D:\input.gif"))

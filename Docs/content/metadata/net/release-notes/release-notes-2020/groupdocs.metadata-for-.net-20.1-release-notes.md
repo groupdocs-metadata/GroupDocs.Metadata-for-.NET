@@ -10,7 +10,7 @@ hideChildren: False
 ---
 {{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 20.1{{< /alert >}}
 
-# Major Features
+## Major Features
 
 There are the following features, enhancements and fixes in this release:
 
@@ -64,7 +64,7 @@ The *KnowPropertyDescriptors* property has been added to the *MetadataPackage
 
 Obtain known property descriptors from a metadata package
 
-**C#**
+
 
 ```csharp
 using (Metadata metadata = new Metadata(@"D:\input.doc"))
@@ -144,7 +144,7 @@ The *AcceptValue(ValueAcceptor)* method has been added to the *PropertyValue*
 
 Print values of all properties extracted from a file
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)

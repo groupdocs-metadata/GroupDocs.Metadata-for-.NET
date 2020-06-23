@@ -49,7 +49,7 @@ The *WavFormat* class now implements the *IXmp* interface.
 
 Read and write XMP metadata.
 
-**C#**
+
 
 ```csharp
 using (WavFormat format = new WavFormat(@"D:\input.wav"))
@@ -70,7 +70,7 @@ using (WavFormat format = new WavFormat(@"D:\input.wav"))
 
 Remove XMP metadata.
 
-**C#**
+
 
 ```csharp
 using (WavFormat format = new WavFormat(@"D:\input.wav"))
@@ -95,7 +95,7 @@ A new *ProjectInfo* property has been added to the *MppFormat* class.
 
 Use public properties (methods in Java) of *MppMetadata* to update metadata values.
 
-**C#**
+
 
 ```csharp
 using (MppFormat format = new MppFormat(@"D:\input.mpp"))
@@ -110,7 +110,7 @@ using (MppFormat format = new MppFormat(@"D:\input.mpp"))
 
 Clean metadata.
 
-**C#**
+
 
 ```csharp
 using (MppFormat format = new MppFormat(@"D:\input.mpp"))
@@ -134,7 +134,7 @@ None.
 
 Please note that the *MppFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (MppFormat format = new MppFormat(@"d:\input.mpp"))
@@ -145,7 +145,7 @@ using (MppFormat format = new MppFormat(@"d:\input.mpp"))
 
 If you are loading an MPP file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.mpp", FileMode.Open, FileAccess.ReadWrite))
@@ -160,7 +160,7 @@ using (Stream stream = File.Open(@"d:\input.mpp", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.mpp", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -189,7 +189,7 @@ None.
 
 Please note that the *WavFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (WavFormat format = new WavFormat(@"d:\input.wav"))
@@ -200,7 +200,7 @@ using (WavFormat format = new WavFormat(@"d:\input.wav"))
 
 If you are loading a WAV file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.wav", FileMode.Open, FileAccess.ReadWrite))
@@ -215,7 +215,7 @@ using (Stream stream = File.Open(@"d:\input.wav", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.wav", FileMode.Open, FileAccess.ReadWrite))
@@ -245,7 +245,7 @@ None.
 
 Please note that the *AviFormat* class implements the *IDisposable* interface and it's necessary to call the *Dispose()* method when you're done working with its instance.
 
-**C#**
+
 
 ```csharp
 using (AviFormat format = new AviFormat(@"d:\input.avi"))
@@ -256,7 +256,7 @@ using (AviFormat format = new AviFormat(@"d:\input.avi"))
 
 If you are loading an AVI file from a stream, it's up to you to close the stream when the file is not needed anymore.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\input.avi", FileMode.Open, FileAccess.ReadWrite))
@@ -271,7 +271,7 @@ using (Stream stream = File.Open(@"d:\input.avi", FileMode.Open, FileAccess.Read
 
 The same rule works if you are saving the output file into a stream.
 
-**C#**
+
 
 ```csharp
 using (Stream stream = File.Open(@"d:\output.avi", FileMode.OpenOrCreate, FileAccess.ReadWrite))
@@ -300,7 +300,7 @@ None.
 
 Remove XMP metadata.
 
-**C#**
+
 
 ```csharp
 // initialize TiffFormat

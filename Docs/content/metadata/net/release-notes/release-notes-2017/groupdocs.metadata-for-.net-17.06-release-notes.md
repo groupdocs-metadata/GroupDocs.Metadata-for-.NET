@@ -44,7 +44,7 @@ Implement **IXmp interface** in class **GroupDocs.Metadata.Formats.Video.AviForm
 
 Given below example demonstrates how to update XMP in AVI format
 
-**C#**
+
 
 ```csharp
 // path to the AVI
@@ -85,7 +85,7 @@ Added **SonyMakerNotes** class into namespace **GroupDocs.Metadata.Formats.Image
 
 This example demonstrates how to get SONY makernotes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -123,7 +123,7 @@ Added **NikonMakerNotes** class into namespace **GroupDocs.Metadata.Formats.Imag
 
 This example demonstrates how to get NIKON maker notes.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -164,7 +164,7 @@ Added **TiffSByteTag** class into namespace **GroupDocs.Metadata.Formats.Image**
 
 This example demonstrates how to read SLong tags from makernotes data in JPEG format.
 
-**C#**
+
 
 ```csharp
 // path to the jpg file
@@ -218,7 +218,7 @@ None
 
 This example demonstrates how to update IPTC tags
 
-**C#**
+
 
 ```csharp
 JpegFormat jpegFormat = new JpegFormat(copy);

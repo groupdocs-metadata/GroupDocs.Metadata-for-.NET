@@ -372,7 +372,7 @@ The *VCard* item has been added to the *MetadataType* enum
 
 Read vCard properties using simplified APIs
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)
@@ -408,7 +408,7 @@ private static void PrintArray(string[] values)
 
 Read vCard properties along with descriptive parameters
 
-**C#**
+
 
 ```csharp
 using (VCardFormat format = new VCardFormat(@"D:\input.vcf"))
@@ -442,7 +442,7 @@ using (VCardFormat format = new VCardFormat(@"D:\input.vcf"))
 
 Filter vCard properties
 
-**C#**
+
 
 ```csharp
 static void Main(string[] args)
@@ -492,7 +492,7 @@ The *Ppsm* item has been added to the *FileType* enum
 
 Read or write pps, ppsx and ppsm files using the *PptFormat* class
 
-**C#**
+
 
 ```csharp
 using (PptFormat format = new PptFormat(@"D:\input.pps"))
@@ -519,7 +519,7 @@ The *GetConsumptionCredit* method has been added to the *Metered* class
 
 Check the amount of spent credits
 
-**C#**
+
 
 ```csharp
 // Apply your metered license
