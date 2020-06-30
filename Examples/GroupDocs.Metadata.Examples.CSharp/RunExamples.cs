@@ -189,7 +189,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region ProjectManagement
 
             //ProjectManagementReadBuiltInProperties.Run();
+            //ProjectManagementReadCustomProperties.Run();
             //ProjectManagementUpdateBuiltInProperties.Run();
+            //ProjectManagementUpdateCustomProperties.Run();
 
             #endregion
 

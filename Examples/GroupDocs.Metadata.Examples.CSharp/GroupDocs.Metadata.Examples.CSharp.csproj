@@ -92,7 +92,9 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationUpdateCustomProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Presentation\PresentationUpdateInspectionProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementReadBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementReadCustomProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementUpdateBuiltInProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\ProjectManagement\ProjectManagementUpdateCustomProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadBuiltInProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadCustomProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Spreadsheet\SpreadsheetReadFileFormatProperties.cs" />
