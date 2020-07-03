@@ -18,7 +18,7 @@ The following sample of code will help you to detect the exact type of a loaded 
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/presentationrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<wbr>Document.Presentation.PresentationReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPptx))
