@@ -16,7 +16,7 @@ The following sample of code will help you to detect the PDF version a loaded d
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/pdfrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -36,7 +36,7 @@ To access built-in metadata of a PDF document, please use the [DocumentProperti
 
 The following code snippet extracts built-in metadata properties and displays them on the screen.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfReadBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfReadBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -57,7 +57,7 @@ using (Metadata metadata = new Metadata(Constants.InputPdf))
 
 If you need to extract custom metadata properties of a PDF document please follow the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfReadCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfReadCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -82,7 +82,7 @@ The inspection feature that is introduced in this section doesn't work with meta
 2.  Extract the root metadata package
 3.  Use the [InspectionPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/pdfrootpackage/properties/inspectionpackage) property to inspect the document
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfReadInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfReadInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.SignedPdf))
@@ -145,7 +145,7 @@ using (Metadata metadata = new Metadata(Constants.SignedPdf))
 
 Most office applications are able to display simple text statistics for loaded documents. It can be an estimated word count, page count, character count, etc. The GroupDocs.Metadata API provides similar functionality for some document formats. The following code sample demonstrates how to obtain the text statistics for a PDF document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfReadDocumentStatistics**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfReadDocumentStatistics**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -162,7 +162,7 @@ using (Metadata metadata = new Metadata(Constants.InputPdf))
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a PDF document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfUpdateBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfUpdateBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -184,7 +184,7 @@ using (Metadata metadata = new Metadata(Constants.InputPdf))
 
 The GroupDocs.Metadata API also allows adding and updating custom metadata properties in a PDF document. Please check the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfUpdateCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfUpdateCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPdf))
@@ -201,7 +201,7 @@ using (Metadata metadata = new Metadata(Constants.InputPdf))
 
 When you inspect a document GroupDocs.Metadata for .NET forms a metadata package containing the extracted information. The package class also provides some basic methods that allow removing the extracted properties. The following code sample demonstrates how to remove the inspection properties from a PDF document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Pdf.PdfUpdateInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Pdf.<WBR>PdfUpdateInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.SignedPdf))

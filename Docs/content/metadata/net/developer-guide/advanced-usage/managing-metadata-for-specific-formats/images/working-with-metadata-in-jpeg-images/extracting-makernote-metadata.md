@@ -25,7 +25,7 @@ Utilizing the GroupDocs.Metadata API the user is able to read all metadata prope
 2.  Extract the MakerNote package using the [MakerNotePackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/jpegrootpackage/properties/makernotepackage) property
 3.  Iterate through the EXIF tags 
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote.MakerNoteReadAllTags**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.MakerNote.MakerNoteReadAllTags**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.CanonJpeg))
@@ -51,7 +51,7 @@ To help you with interpreting extracted tags we implemented classes representing
 
 ### Read Canon MakerNote Properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote.MakerNoteReadCanonProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.MakerNote.MakerNoteReadCanonProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.CanonJpeg))
@@ -82,7 +82,7 @@ using (Metadata metadata = new Metadata(Constants.CanonJpeg))
 
 ### Read Nikon MakerNote Properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote.MakerNoteReadNikonProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.MakerNote.MakerNoteReadNikonProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.NikonJpeg))
@@ -105,7 +105,7 @@ using (Metadata metadata = new Metadata(Constants.NikonJpeg))
 
 ### Read Panasonic MakerNote Properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote.MakerNote.MakerNoteReadPanasonicProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.MakerNote.MakerNote.MakerNoteReadPanasonicProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PanasonicJpeg))
@@ -128,7 +128,7 @@ using (Metadata metadata = new Metadata(Constants.PanasonicJpeg))
 
 ### Read Sony MakerNote Properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote.MakerNote.MakerNote.MakerNoteReadSonyProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.MakerNote.MakerNote.MakerNote.MakerNoteReadSonyProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.SonyJpeg))

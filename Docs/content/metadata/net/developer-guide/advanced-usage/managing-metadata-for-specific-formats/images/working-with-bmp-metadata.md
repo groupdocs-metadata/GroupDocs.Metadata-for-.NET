@@ -19,7 +19,7 @@ The following are the steps to read the header of a BMP file.
 3.  Extract  the native metadata package using [BmpRootPackage.BmpHeader](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/bmprootpackage/properties/bmpheader)
 4.  Read the BMP header properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Bmp.BmpReadHeaderProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Bmp.BmpReadHeaderProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputBmp))

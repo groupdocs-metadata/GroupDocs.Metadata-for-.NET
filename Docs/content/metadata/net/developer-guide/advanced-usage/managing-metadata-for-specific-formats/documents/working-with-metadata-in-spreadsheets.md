@@ -18,7 +18,7 @@ The following sample of code will help you to detect the exact type of a loaded 
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/spreadsheetrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXlsx))
@@ -38,7 +38,7 @@ To access built-in metadata of a spreadsheet, please use the [DocumentPropertie
 
 The following code snippet extracts built-in metadata properties and displays them on the screen.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetReadBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetReadBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXlsx))
@@ -61,7 +61,7 @@ using (Metadata metadata = new Metadata(Constants.InputXlsx))
 
 If you need to extract custom metadata properties of a spreadsheet please follow the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetReadCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetReadCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXls))
@@ -92,7 +92,7 @@ The inspection feature that is introduced in this section doesn't work with meta
 2.  Extract the root metadata package
 3.  Use the [InspectionPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/spreadsheetrootpackage/properties/inspectionpackage) property to inspect the document
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetReadInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetReadInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXls))
@@ -137,7 +137,7 @@ using (Metadata metadata = new Metadata(Constants.InputXls))
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a spreadsheet.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetUpdateBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetUpdateBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXlsx))
@@ -160,7 +160,7 @@ using (Metadata metadata = new Metadata(Constants.InputXlsx))
 
 The GroupDocs.Metadata API also allows adding and updating custom metadata properties (including content type properties) in a spreadsheet. Please check the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetUpdateCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetUpdateCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXls))
@@ -181,7 +181,7 @@ using (Metadata metadata = new Metadata(Constants.InputXls))
 
 When you inspect a spreadsheet GroupDocs.Metadata for .NET forms a metadata package containing the extracted information. The package class also provides some basic methods that allow removing the extracted properties. The following code sample demonstrates how to remove the inspection properties in a spreadsheet.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet.SpreadsheetUpdateInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Spreadsheet.<WBR>SpreadsheetUpdateInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputXlsx))

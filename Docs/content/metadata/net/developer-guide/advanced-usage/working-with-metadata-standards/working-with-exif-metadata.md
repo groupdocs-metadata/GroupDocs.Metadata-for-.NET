@@ -23,7 +23,7 @@ To access EXIF metadata in a file of any supported format, GroupDocs.Metadata pr
 
 The following code snippet gets EXIF properties of a TIFF image and displays them on the screen. 
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.ReadBasicExifProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.ReadBasicExifProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.TiffWithExif))
@@ -65,7 +65,7 @@ In some cases, it's necessary to read all EXIF properties from a file, including
 2.  Extract the EXIF metadata package using the [IExif.ExifPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.exif/iexif/properties/exifpackage) property
 3.  Iterate through all EXIF tags on different levels
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.ReadExifTags**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.ReadExifTags**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithExif))
@@ -101,7 +101,7 @@ The GroupDocs.Metadata API also supports reading specific EXIF tags using an ind
 2.  Extract the EXIF metadata package using the [IExif.ExifPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.exif/iexif/properties/exifpackage) property
 3.  Get a specific tag using the [ExifPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.exif/exifpackage) class [indexer](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.exif/exifdictionarybasepackage/properties/item)
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.ReadSpecificExifTag**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.ReadSpecificExifTag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.TiffWithExif))
@@ -127,7 +127,7 @@ The GroupDocs.Metadata API facilitates the user to update EXIF metadata in a con
 3.  Assign values to desired EXIF properties
 4.  [Save]({{< ref "metadata/net/developer-guide/advanced-usage/saving-files/_index.md" >}}) the changes
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.UpdateExifProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.UpdateExifProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputJpeg))
@@ -168,7 +168,7 @@ The GroupDocs.Metadata API allows adding or updating custom tags in an EXIF pack
 4.  Add any number of custom tags to the package
 5.  [Save]({{< ref "metadata/net/developer-guide/advanced-usage/saving-files/_index.md" >}}) the changes
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.SetCustomExifTag**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.SetCustomExifTag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.TiffWithExif))
@@ -213,7 +213,7 @@ Here is a full list of tags that can be added to an EXIF package:
 
 To remove the EXIF package from a file just assign null to the [IExif.ExifPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.exif/iexif/properties/exifpackage) property. The code sample below shows how to remove EXIF metadata from a file.
 
-**AdvancedUsage.WorkingWithMetadataStandards.Exif.RemoveExifMetadata**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Exif.RemoveExifMetadata**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithExif))

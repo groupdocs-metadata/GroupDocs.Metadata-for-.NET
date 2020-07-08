@@ -19,7 +19,7 @@ The following are the steps to read the native DICOM metadata.
 3.  Extract  the native metadata package using [DicomRootPackage.DicomPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/dicomrootpackage/properties/dicompackage)
 4.  Read the DICOM metadata properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dicom.DicomReadNativeMetadataProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Dicom.DicomReadNativeMetadataProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDicom))

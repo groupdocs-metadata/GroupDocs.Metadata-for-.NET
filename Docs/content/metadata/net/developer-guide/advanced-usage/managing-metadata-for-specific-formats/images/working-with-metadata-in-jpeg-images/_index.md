@@ -19,7 +19,7 @@ The code sample below demonstrates how to extract image resource blocks (buildin
 3.  Extract the [ImageResourcePackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/imageresourcepackage) instance and obtain a list of [ImageResourceBlock](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/imageresourceblock) objects
 4.  Iterate trough the collection of resource blocks
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.JpegReadImageResourceBlocks**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.JpegReadImageResourceBlocks**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithIrb))
@@ -43,7 +43,7 @@ using (Metadata metadata = new Metadata(Constants.JpegWithIrb))
 
 GroupDocs.Metadata for .NET also supports removing Photoshop metadata blocks from a JPEG image. Please see the code sample below that demonstrates how to remove the whole Photoshop metadata package from a JPEG image.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.JpegRemoveImageResourceBlocks**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.JpegRemoveImageResourceBlocks**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithIrb))
@@ -60,7 +60,7 @@ using (Metadata metadata = new Metadata(Constants.JpegWithIrb))
 
 This feature allows you to detect barcodes of different types in a JPEG image. The following code snippet detects all barcodes in a JPEG and return their types.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.JpegDetectBarcodes**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Jpeg.JpegDetectBarcodes**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithBarcodes))

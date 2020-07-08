@@ -25,7 +25,7 @@ The following are the steps to read native EPUB metadata.
 3.  Extract  the native metadata package using [EpubRootPackage.EpubPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.ebook/epubrootpackage/properties/epubpackage)
 4.  Read the EPUB metadata properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Ebook.EpubReadNativeMetadataProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Ebook.EpubReadNativeMetadataProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputEpub))
@@ -42,7 +42,7 @@ using (Metadata metadata = new Metadata(Constants.InputEpub))
 
 Dublin Core metadata is a set of certain metadata properties that are intended to describe various digital resources. Please find more information on the Dublin Core standard at [https://en.wikipedia.org/wiki/Dublin\_Core](https://en.wikipedia.org/wiki/Dublin_Core). The code sample below shows how to extract Dublin Core metadata from a EPUB e-book using the GroupDocs.Metadata API.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Ebook.EpubReadDublinCoreProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Ebook.EpubReadDublinCoreProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputEpub))

@@ -18,7 +18,7 @@ The following sample of code will help you to detect the exact type of a loaded 
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/diagramrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVdx))
@@ -38,7 +38,7 @@ To access built-in metadata of a diagram, please use the [DocumentProperties](h
 
 The following code snippet extracts built-in metadata properties and displays them on the screen.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramReadBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramReadBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVsdx))
@@ -60,7 +60,7 @@ using (Metadata metadata = new Metadata(Constants.InputVsdx))
 
 If you need to extract custom metadata properties of a diagram please follow the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramReadCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramReadCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVsdx))
@@ -81,7 +81,7 @@ As you can see the code sample uses the GroupDocs.Metadata search engine to retr
 
 Most office applications are able to display simple text statistics for loaded documents. It can be an estimated word count, page count, character count, etc. The GroupDocs.Metadata API provides similar functionality for some document formats. The following code sample demonstrates how to obtain the text statistics for a diagram (only the page count statistic is available at the moment).
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramReadDocumentStatistics**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramReadDocumentStatistics**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVdx))
@@ -96,7 +96,7 @@ using (Metadata metadata = new Metadata(Constants.InputVdx))
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a diagram document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramUpdateBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramUpdateBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVdx))
@@ -119,7 +119,7 @@ using (Metadata metadata = new Metadata(Constants.InputVdx))
 
 The GroupDocs.Metadata API also allows adding and updating custom metadata properties in a diagram document. Please check the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram.DiagramUpdateCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Diagram.<WBR>DiagramUpdateCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVsdx))

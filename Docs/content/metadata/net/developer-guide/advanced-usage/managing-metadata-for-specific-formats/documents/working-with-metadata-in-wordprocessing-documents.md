@@ -18,7 +18,7 @@ The following sample of code will help you to detect the exact type of a loaded 
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/wordprocessingrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDoc))
@@ -38,7 +38,7 @@ To access built-in metadata of a WordProcessing document, please use the [Docum
 
 The following code snippet extracts built-in metadata properties and displays them on the screen.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDocx))
@@ -59,7 +59,7 @@ using (Metadata metadata = new Metadata(Constants.InputDocx))
 
 If you need to extract custom metadata properties of a WordProcessing document please follow the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDoc))
@@ -84,7 +84,7 @@ The inspection feature that is introduced in this section doesn't work with meta
 2.  Extract the root metadata package
 3.  Use the [InspectionPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/wordprocessingrootpackage/properties/inspectionpackage) property to inspect the document
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDocx))
@@ -145,7 +145,7 @@ using (Metadata metadata = new Metadata(Constants.InputDocx))
 
 Most office applications are able to display simple text statistics for loaded documents. It can be an estimated word count, page count, character count, etc. The GroupDocs.Metadata API provides similar functionality for some document formats. The following code sample demonstrates how to obtain the text statistics for a WordProcessing document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadDocumentStatistics**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadDocumentStatistics**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDocx))
@@ -162,7 +162,7 @@ using (Metadata metadata = new Metadata(Constants.InputDocx))
 
 Dublin Core metadata is a set of certain metadata properties that are intended to describe various digital resources. Please find more information on the Dublin Core standard at [https://en.wikipedia.org/wiki/Dublin\_Core](https://en.wikipedia.org/wiki/Dublin_Core). The code sample below shows how to extract Dublin Core metadata from a WordProcessing document using the GroupDocs.Metadata API.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingReadDublinCoreProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingReadDublinCoreProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDocx))
@@ -189,7 +189,7 @@ Please see the the [DublinCorePackage](https://apireference.groupdocs.com/net/me
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a WordProcessing document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingUpdateBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingUpdateBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDoc))
@@ -212,7 +212,7 @@ using (Metadata metadata = new Metadata(Constants.InputDoc))
 
 The GroupDocs.Metadata API also allows adding and updating custom metadata properties in a WordProcessing document. Please check the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingUpdateCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingUpdateCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDocx))
@@ -230,7 +230,7 @@ using (Metadata metadata = new Metadata(Constants.InputDocx))
 
 When you inspect a document GroupDocs.Metadata for .NET forms a metadata package containing the extracted information. The package class also provides some basic methods that allow updating (or removing) the extracted properties. The following code sample demonstrates how to remove/update the inspection properties in a WordProcessing document.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingUpdateInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingUpdateInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDoc))
@@ -250,7 +250,7 @@ using (Metadata metadata = new Metadata(Constants.InputDoc))
 
 The document statistics described in [this section]({{< ref "metadata/net/developer-guide/advanced-usage/managing-metadata-for-specific-formats/documents/working-with-metadata-in-wordprocessing-documents.md" >}}) are not only calculated for WordProcessing documents, they can also be saved in the native metadata package with regular metadata properties. The following code sample demonstrates how to achieve this.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.WordProcessing.WordProcessingUpdateDocumentStatistics**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.WordProcessing.<WBR>WordProcessingUpdateDocumentStatistics**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputDoc))

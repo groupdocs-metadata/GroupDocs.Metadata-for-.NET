@@ -24,7 +24,7 @@ To access IPTC metadata in a file of any supported format, GroupDocs.Metadata pr
 
 The following code snippet gets IPTC properties of a JPEG image and displays them on the screen. 
 
-**AdvancedUsage.WorkingWithMetadataStandards.Iptc.ReadBasicIptcProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.ReadBasicIptcProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithIptc))
@@ -66,7 +66,7 @@ In some cases, it's necessary to read all IPTC datasets (metadata properties) fr
 2.  Extract the IPTC metadata package using the [IIptc.IptcPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.iptc/iiptc/properties/iptcpackage) property
 3.  Iterate through all IPTC datasets
 
-**AdvancedUsage.WorkingWithMetadataStandards.Iptc.ReadIptcDataSets**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.ReadIptcDataSets**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
@@ -94,7 +94,7 @@ The GroupDocs.Metadata API facilitates the user to update IPTC metadata in a con
 3.  Assign values to desired IPTC properties
 4.  [Save]({{< ref "metadata/net/developer-guide/advanced-usage/saving-files/_index.md" >}}) the changes
 
-**AdvancedUsage.WorkingWithMetadataStandards.Iptc.UpdateIptcProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.UpdateIptcProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputJpeg))
@@ -143,7 +143,7 @@ The GroupDocs.Metadata API allows adding or updating custom datasets in an IPTC 
 4.  Add any number of custom datasets to the package (Please see the [IptcDataSet](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.iptc/iptcdataset) class for more information)
 5.  [Save]({{< ref "metadata/net/developer-guide/advanced-usage/saving-files/_index.md" >}}) the changes
 
-**AdvancedUsage.WorkingWithMetadataStandards.Iptc.SetCustomIptcDataSet**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.SetCustomIptcDataSet**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
@@ -172,7 +172,7 @@ using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
 
 To remove the IPTC package from a file just assign null to the [IIptc.IptcPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.iptc/iiptc/properties/iptcpackage) property. The code sample below shows how to remove IPTC metadata from a file.
 
-**AdvancedUsage.WorkingWithMetadataStandards.Iptc.RemoveIptcMetadata**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.RemoveIptcMetadata**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithIptc))

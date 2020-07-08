@@ -23,7 +23,7 @@ To access XMP metadata in a file of any supported format, GroupDocs.Metadata pro
 
 The following code snippet gets XMP properties of a PNG image and displays them on the screen. 
 
-**AdvancedUsage.WorkingWithMetadataStandards.Xmp.ReadXmpProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Xmp.ReadXmpProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PngWithXmp))
@@ -95,7 +95,7 @@ The GroupDocs.Metadata API facilitates the user to update XMP metadata in a conv
 3.  Assign values to desired XMP properties
 4.  [Save]({{< ref "metadata/net/developer-guide/advanced-usage/saving-files/_index.md" >}}) the changes
 
-**AdvancedUsage.WorkingWithMetadataStandards.Xmp.UpdateXmpProperties**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Xmp.UpdateXmpProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.GifWithXmp))
@@ -151,7 +151,7 @@ using (Metadata metadata = new Metadata(Constants.GifWithXmp))
 
 The GroupDocs.Metadata API provides access to a number of commonly used XMP schemes. But it also allows you to create fully custom XMP packages containing user-defined properties. The example below demonstrates how to create and add a custom XMP package to a file.
 
-**AdvancedUsage.WorkingWithMetadataStandards.Xmp.AddCustomXmpPackage**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Xmp.AddCustomXmpPackage**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputJpeg))
@@ -178,7 +178,7 @@ using (Metadata metadata = new Metadata(Constants.InputJpeg))
 
 To remove the XMP package from a file just assign null to the [IXmp.XmpPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.standards.xmp/ixmp/properties/xmppackage) property. The code sample below shows how to remove XMP metadata from a file.
 
-**AdvancedUsage.WorkingWithMetadataStandards.Xmp.AddCustomXmpPackage**
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Xmp.AddCustomXmpPackage**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.JpegWithXmp))

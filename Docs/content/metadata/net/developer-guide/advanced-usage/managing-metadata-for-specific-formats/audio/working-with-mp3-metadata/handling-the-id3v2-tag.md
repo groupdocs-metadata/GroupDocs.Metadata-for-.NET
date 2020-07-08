@@ -25,7 +25,7 @@ The following steps show how to read the ID3v2 tag in an MP3 file.
 3.  Get the ID3v2 tag by using the [Mp3RootPackage.ID3V2](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.audio/mp3rootpackage/properties/id3v2)property
 4.  If the ID3v2 tag is not null then check for all of its properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3ReadID3V2Tag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3ReadID3V2Tag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithID3V2))
@@ -74,7 +74,7 @@ The following are the steps to update the ID3v2 tag in an MP3 file.
 
 The following code snippet shows how to update the ID3v2 tag in an MP3 file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3UpdateID3V2Tag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3UpdateID3V2Tag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithID3V2))
@@ -102,7 +102,7 @@ using (Metadata metadata = new Metadata(Constants.MP3WithID3V2))
 
 To remove the ID3v2 tag from an MP3 audio just assign null to the [Mp3RootPackage.ID3V2](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.audio/mp3rootpackage/properties/id3v2) property. The code sample below shows how to remove the ID3v2 tag from an MP3 file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3RemoveID3V2Tag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3RemoveID3V2Tag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithID3V2))

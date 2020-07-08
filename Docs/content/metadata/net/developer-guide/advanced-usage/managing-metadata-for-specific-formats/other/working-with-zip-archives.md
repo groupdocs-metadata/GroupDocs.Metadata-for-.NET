@@ -20,7 +20,7 @@ The API allows detecting ZIP archives and reading format metadata. The following
 
 The following code snippet shows how to get metadata from a ZIP archive.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Archive.ZipReadNativeMetadataProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Archive.ZipReadNativeMetadataProperties**
 
 ```csharp
 Encoding encoding = Encoding.GetEncoding(866);
@@ -57,7 +57,7 @@ GroupDocs.Metadata for .NET allows you to update the user comment in a ZIP archi
 
 The following code snippet demonstrates the usage of this feature.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Archive.ZipUpdateArchiveComment**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Archive.ZipUpdateArchiveComment**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputZip))
@@ -73,7 +73,7 @@ using (Metadata metadata = new Metadata(Constants.InputZip))
 
 GroupDocs.Metadata for .NET allows you to remove the user comment associated with a ZIP archive. The following code snippet demonstrates the usage of this feature.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Archive.ZipRemoveArchiveComment**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Archive.ZipRemoveArchiveComment**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputZip))

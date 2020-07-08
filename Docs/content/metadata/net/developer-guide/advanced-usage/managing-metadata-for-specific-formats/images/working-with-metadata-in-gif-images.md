@@ -16,7 +16,7 @@ The following sample of code will help you to detect the version of a loaded GI
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/gifrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Gif.GifReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.Gif.GifReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputGif))

@@ -25,7 +25,7 @@ The GroupDocs.Metadata API allows reading the Lyrics3 tag in an MP3 file.
 
 The following code snippet reads the Lyrics tag from an MP3 file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3ReadLyricsTag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3ReadLyricsTag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithLyrics))
@@ -63,7 +63,7 @@ The following are the steps to update the Lyrics tag in an MP3 file.
 
 The following code snippet shows how to update the Lyrics tag in an MP3 file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3UpdateLyricsTag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3UpdateLyricsTag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithLyrics))
@@ -91,7 +91,7 @@ using (Metadata metadata = new Metadata(Constants.MP3WithLyrics))
 
 To remove the Lyrics tag from an MP3 audio just assign null to the [MP3RootPackage.Lyrics3V2](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.audio/mp3rootpackage/properties/lyrics3v2) property. The code sample below shows how to remove the Lyrics tag from an MP3 file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3RemoveLyricsTag**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3RemoveLyricsTag**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithLyrics))

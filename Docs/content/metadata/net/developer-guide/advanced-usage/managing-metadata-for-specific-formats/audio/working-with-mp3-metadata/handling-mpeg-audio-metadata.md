@@ -23,7 +23,7 @@ The following steps demonstrate how to read MPEG audio metadata from an MP3 fil
 2.  Get the root metadata package
 3.  Use the [MP3RootPackage.MpegAudioPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.audio/mp3rootpackage/properties/mpegaudiopackage)property to read the metadata values
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3.MP3ReadMpegAudioMetadata**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.MP3.MP3ReadMpegAudioMetadata**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.MP3WithID3V2))

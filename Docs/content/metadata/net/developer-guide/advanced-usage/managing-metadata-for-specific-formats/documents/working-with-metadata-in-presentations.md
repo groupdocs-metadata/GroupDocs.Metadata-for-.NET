@@ -18,7 +18,7 @@ The following sample of code will help you to detect the exact type of a loaded 
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/presentationrootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.<wbr>Document.Presentation.PresentationReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPptx))
@@ -38,7 +38,7 @@ To access built-in metadata of a presentation, please use the [DocumentProperti
 
 The following code snippet extracts built-in metadata properties and displays them on the screen.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationReadBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationReadBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPpt))
@@ -61,7 +61,7 @@ using (Metadata metadata = new Metadata(Constants.InputPpt))
 
 If you need to extract custom metadata properties of a presentation please follow the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationReadCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationReadCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPptx))
@@ -86,7 +86,7 @@ The inspection feature that is introduced in this section doesn't work with meta
 2.  Extract the root metadata package
 3.  Use the [InspectionPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/presentationrootpackage/properties/inspectionpackage) property to inspect the document
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationReadInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationReadInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPpt))
@@ -120,7 +120,7 @@ using (Metadata metadata = new Metadata(Constants.InputPpt))
 
 Most office applications are able to display simple text statistics for loaded documents. It can be an estimated word count, page count, character count, etc. The GroupDocs.Metadata API provides similar functionality for some document formats. The following code sample demonstrates how to obtain the text statistics for a presentation.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationReadDocumentStatistics**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationReadDocumentStatistics**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPpt))
@@ -137,7 +137,7 @@ using (Metadata metadata = new Metadata(Constants.InputPpt))
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a presentation.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationUpdateBuiltInProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationUpdateBuiltInProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPptx))
@@ -160,7 +160,7 @@ using (Metadata metadata = new Metadata(Constants.InputPptx))
 
 The GroupDocs.Metadata API also allows adding and updating custom metadata properties in a presentation. Please check the code sample below.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationUpdateCustomProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationUpdateCustomProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPpt))
@@ -178,7 +178,7 @@ using (Metadata metadata = new Metadata(Constants.InputPpt))
 
 When you inspect a document GroupDocs.Metadata for .NET forms a metadata package containing the extracted information. The package class also provides some basic methods that allow updating (or removing) the extracted properties. The following code sample demonstrates how to remove the inspection properties from a presentation.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Presentation.PresentationUpdateInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Presentation.<WBR>PresentationUpdateInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPpt))

@@ -18,7 +18,7 @@ The inspection feature that is introduced in this section doesn't work with meta
 2.  Extract the root metadata package
 3.  Use the [InspectionPackage](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.document/noterootpackage/properties/inspectionpackage) property to inspect the document
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Note.NoteReadInspectionProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Note.<WBR>NoteReadInspectionProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputOne))

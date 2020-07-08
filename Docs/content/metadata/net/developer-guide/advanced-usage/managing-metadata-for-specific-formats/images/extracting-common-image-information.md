@@ -14,7 +14,7 @@ For all supported image formats the GroupDocs.Metadata API allows extracting com
 2.  Extract the root metadata package
 3.  Use the [FileType](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.image/imagerootpackage/properties/filetype) property to obtain file format information
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Image.ImageReadFileFormatProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Image.ImageReadFileFormatProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputPng))

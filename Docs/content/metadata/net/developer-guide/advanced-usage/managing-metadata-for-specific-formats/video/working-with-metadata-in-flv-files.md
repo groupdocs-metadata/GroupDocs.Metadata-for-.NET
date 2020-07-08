@@ -19,7 +19,7 @@ The following are the steps to read the header of an FLV file.
 3.  Extract  the native metadata package using [FlvRootPackage.Header](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.formats.video/flvrootpackage/properties/header)
 4.  Read the FLV header properties
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.Video.Flv.FlvReadHeaderProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Video.Flv.FlvReadHeaderProperties**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputFlv))

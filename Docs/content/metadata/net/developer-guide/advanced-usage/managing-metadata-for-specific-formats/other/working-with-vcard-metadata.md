@@ -25,7 +25,7 @@ To access Metadata in a vCard, GroupDocs.Metadata API provides the [VCardRootPac
 
 The following code snippet gets metadata of a vCard file.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.BusinessCard.VCardReadCardProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>BusinessCard.VCardReadCardProperties**
 
 ```csharp
 public static void Run()
@@ -70,7 +70,7 @@ The GroupDocs.Metadata API also provides a way to get Metadata from vCards with 
 
 The following code snippet shows how to extract vCard fields along with descriptive parameters.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.BusinessCard.VCardReadCardPropertiesWithParameters**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>BusinessCard.VCardReadCardPropertiesWithParameters**
 
 ```csharp
 using (Metadata metadata = new Metadata(Constants.InputVcf))
@@ -109,7 +109,7 @@ using (Metadata metadata = new Metadata(Constants.InputVcf))
 
 The GroupDocs.Metadata API provides the ability to filter vCard properties in order to make finding desired information easier. The code sample below demonstrates hot to use the filtering feature.
 
-**AdvancedUsage.ManagingMetadataForSpecificFormats.BusinessCard.VCardFilterCardProperties**
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>BusinessCard.VCardFilterCardProperties**
 
 ```csharp
 public static void Run()
