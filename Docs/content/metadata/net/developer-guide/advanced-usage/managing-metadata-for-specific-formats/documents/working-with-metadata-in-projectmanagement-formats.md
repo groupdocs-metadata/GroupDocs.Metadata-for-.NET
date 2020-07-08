@@ -35,6 +35,23 @@ using (Metadata metadata = new Metadata(Constants.InputMpp))
 }
 ```
 
+## Reading custom metadata properties
+
+If you need to extract custom metadata properties of a ProjectManagement document please follow the code sample below.
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.ProjectManagement.<WBR>ProjectManagementReadCustomProperties**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputMpp))
+{
+    var root = metadata.GetRootPackage<ProjectManagementRootPackage>();
+    var customProperties = root.DocumentProperties.FindProperties(p => !p.Tags.Contains(Tags.Document.BuiltIn));
+    foreach (var property in customProperties)
+    {
+        Console.WriteLine("{0} = {1}", property.Name, property.Value);
+    }
+}
+```
+
 ## Updating built-in metadata properties
 
 Updating any built-in document properties is as simple as getting them. The following code sample demonstrates how to update built-in metadata properties in a ProjectManagement document.
@@ -55,6 +72,27 @@ using (Metadata metadata = new Metadata(Constants.InputMpp))
 	// ... 
 
 	metadata.Save(Constants.OutputMpp);
+}
+```
+
+## Adding or updating custom metadata properties
+
+The GroupDocs.Metadata API also allows adding and updating custom metadata properties in a ProjectManagement document. Please check the code sample below.
+
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.ProjectManagement.<WBR>ProjectManagementUpdateCustomProperties**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputMpp))
+{
+    var root = metadata.GetRootPackage<ProjectManagementRootPackage>();
+ 
+    root.DocumentProperties.Set("customProperty1", "some value");
+    root.DocumentProperties.Set("customProperty2", 7);
+    root.DocumentProperties.Set("customProperty3", true);
+ 
+    // ...
+ 
+    metadata.Save(Constants.OutputMpp);
 }
 ```
 

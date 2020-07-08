@@ -1,7 +1,7 @@
 ---
-id: working-with-metadata-in-tiff-images
-url: metadata/net/working-with-metadata-in-tiff-images
-title: Working with metadata in TIFF images
+id: working-with-metadata-in-heic-heif-images
+url: metadata/net/working-with-metadata-in-heic-heif-images
+title: Working with metadata in HEIF/HEIC images
 weight: 9
 description: ""
 keywords: 
@@ -10,15 +10,11 @@ hideChildren: False
 ---
 ## Working with XMP metadata
 
-GroupDocs.Metadata for .NET allows managing XMP metadata in TIFF images. For more details please refer to the following guide: [Working with XMP metadata]({{< ref "metadata/net/developer-guide/advanced-usage/working-with-metadata-standards/working-with-xmp-metadata.md" >}}).
+GroupDocs.Metadata for .NET allows managing XMP metadata in HEIF/HEIC images. For more details please refer to the following guide: [Working with XMP metadata]({{< ref "metadata/net/developer-guide/advanced-usage/working-with-metadata-standards/working-with-xmp-metadata.md" >}}).
 
 ## Working with EXIF metadata
 
-The GroupDocs.Metadata API supports handling EXIF metadata in TIFF images. Please find appropriate code samples in the [Working with EXIF metadata]({{< ref "metadata/net/developer-guide/advanced-usage/working-with-metadata-standards/working-with-exif-metadata.md" >}}) section.
-
-## Working with IPTC metadata
-
-GroupDocs.Metadata for .NET is also able to work with IPTC metadata in TIFF images. Please find more information in the [Working with IPTC IIM metadata]({{< ref "metadata/net/developer-guide/advanced-usage/working-with-metadata-standards/working-with-iptc-iim-metadata.md" >}}) section.
+The GroupDocs.Metadata API supports handling EXIF metadata in HEIF/HEIC images. Please find appropriate code samples in the [Working with EXIF metadata]({{< ref "metadata/net/developer-guide/advanced-usage/working-with-metadata-standards/working-with-exif-metadata.md" >}}) section.
 
 ## More resources
 ### GitHub examples

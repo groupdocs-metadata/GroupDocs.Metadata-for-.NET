@@ -70,3 +70,5 @@ The following table contains a full list of file formats that are currently supp
 | ASF | Advanced Systems FormatVideo | ![(tick)](metadata/net/images/check.png) | ![(tick)](metadata/net/images/check.png) |   |
 | [VCF](https://wiki.fileformat.com/email/vcf/) | Electronic Business Card (vCard) | ![(tick)](metadata/net/images/check.png) | ![(tick)](metadata/net/images/check.png) |   |
 | [VCR](https://wiki.fileformat.com/email/vcf/) | Electronic Business Card (vCard) | ![(tick)](metadata/net/images/check.png) | ![(tick)](metadata/net/images/check.png) |   |
+| HEIF/HEIC | High Efficiency Image File Format | ![(tick)](metadata/net/images/check.png) | ![(tick)](metadata/net/images/check.png) |   |
+
