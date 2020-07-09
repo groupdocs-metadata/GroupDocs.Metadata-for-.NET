@@ -1,6 +1,6 @@
 # Metadata Viewer & Editing API
 
-GroupDocs.Metadata for .NET provides easy ways to manage metadata of various document formats. It enables the user to read, write, update and remove metadata of Word, Excel,  PowerPoint & PDF documents as well as images, videos, audios, emails, fonts, diagrams and many other popular file formats.
+[GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) provides easy ways to manage metadata of various document formats. It enables the user to read, write, update and remove metadata of Word, Excel,  PowerPoint & PDF documents as well as images, videos, audios, emails, fonts, diagrams and many other popular file formats.
 
 <p align="center">
 
