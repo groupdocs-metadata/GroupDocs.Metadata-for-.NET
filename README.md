@@ -27,9 +27,9 @@ Directory | Description
 - Manipulate native metadata properties in various formats.
 - Extract technical information from images, audio and video files.
 - Calculate common document statistics (word count, character count, etc.).
-- Detect the format and MIME type of a file by its internal structure.
+- Auto-detect the format and MIME type of a file by its internal structure.
 - Work with various audio tags (ID3, Lyrics, APE).
-- Traverse metadata tree.
+- [Traverse a whole metadata tree](https://docs.groupdocs.com/metadata/net/traverse-a-whole-metadata-tree/).
 - Work with the APEv2, ID3v1, ID3v2, Lyrics & other tags of MP3 metadata.
 
 ## Read & Write Metadata
@@ -52,7 +52,7 @@ Directory | Description
 **AutoCAD:** DWG, DXF\
 **Portable:** PDF\
 **eBook:** EPUB, DJVU, DJV\
-**Other:** TORRENT\
+**Other:** TORRENT
 
 ## Develop & Deploy GroupDocs.Metadata Anywhere
 
@@ -62,7 +62,7 @@ Directory | Description
 **Development Environments:** Microsoft Visual Studio, Xamarin.Android, Xamarin.IOS, Xamarin.Mac, MonoDevelop 2.4 and later\
 **Supported Frameworks:** .NET Framework 2.0 or higher, .NET Standard 2.0, .NET Core 2.1 & 2.0, Mono Framework 1.2 or higher
 
-## Getting Started with GroupDocs.Metadata for .NET
+## Get Started with GroupDocs.Metadata for .NET
 
 Are you ready to give GroupDocs.Metadata for .NET a try? Simply execute `Install-Package GroupDocs.Metadata` from Package Manager Console in Visual Studio to fetch & reference GroupDocs.Metadata assembly in your project. If you already have GroupDocs.Metadata for .NET and want to upgrade it, please execute `Update-Package GroupDocs.Metadata` to get the latest version.
 
