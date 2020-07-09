@@ -18,7 +18,7 @@ Directory | Description
 
 ## Document Metadata Processing Features
 
-- Read, update and remove metadata from [60+ file formats] (https://docs.groupdocs.com/metadata/net/supported-document-formats/).
+- Read, update and remove metadata from [60+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
 - Search, update and remove particular metadata properties as per specified creteria.
 - Use tags to easily manipulate most common metadata properties in a unified manner.
 - Load password-protected documents.
