@@ -19,7 +19,7 @@ Directory | Description
 ## Document Metadata Processing Features
 
 - Read, update and remove metadata from [60+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
-- Search, update and remove particular metadata properties as per specified creteria.
+- Search, update and remove particular metadata properties as per specified criteria.
 - Use tags to easily manipulate most common metadata properties in a unified manner.
 - Load password-protected documents.
 - Extract information about hidden document pages, digital signatures, user comments, revisions, etc.
@@ -27,7 +27,7 @@ Directory | Description
 - Manipulate native metadata properties in various formats.
 - Extract technical information from images, audio and video files.
 - Calculate common document statistics (word count, character count, etc.).
-- Auto-detect the format and MIME type of a file by its internal structure.
+- Auto-detect the format and MIME type of file by its internal structure.
 - Work with various audio tags (ID3, Lyrics, APE).
 - [Traverse a whole metadata tree](https://docs.groupdocs.com/metadata/net/traverse-a-whole-metadata-tree/).
 - Work with the APEv2, ID3v1, ID3v2, Lyrics & other tags of MP3 metadata.
