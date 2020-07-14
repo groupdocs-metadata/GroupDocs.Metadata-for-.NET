@@ -10,7 +10,7 @@ hideChildren: False
 ---
 ## Overview
 
-GroupDocs.Metadata for .NET does not require any external software or third party tool to be installed. Just follow one of the way as described in [Development Environment, Installation and Configuration.](https://docs.groupdocs.com/display/metadatanet/Development+Environment%2C+Installation+and+Configuration)
+GroupDocs.Metadata for .NET does not require any external software or third party tool to be installed. Just follow one of the way as described in [Development Environment, Installation and Configuration.]({{< ref "metadata/net/getting-started/installation.md" >}})
 
 ## Supported Operating Systems
 
