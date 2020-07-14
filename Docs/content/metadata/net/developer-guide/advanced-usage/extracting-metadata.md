@@ -20,7 +20,7 @@ In this article we would like to demonstrate some advanced usage of tags, catego
 
 The following steps and C# code sample below show **how to extract metadata properties from your files in .NET solution**:
 
-1.  [Load]({{< ref "metadata/net/developer-guide/advanced-usage/extracting-metadata.md" >}}) a file to be searched for metadata properties
+1.  [Load]({{< ref "metadata/net/developer-guide/advanced-usage/loading-files/_index.md" >}}) a file to be searched for metadata properties
 2.  Make up a predicate to examine all extracted metadata properties
 3.  Pass the predicate to the [FindProperties](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata/metadata/methods/findproperties) method
 4.  Iterate through the found properties

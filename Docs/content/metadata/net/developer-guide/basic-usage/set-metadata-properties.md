@@ -40,10 +40,10 @@ As a result, we update all existing metadata properties containing the date the 
 
 For more information on supported features of the GroupDocs.Metadata search engine please refer to the following articles:
 
-*   [Set metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/set-metadata-properties.md" >}})
-*   [Set metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/set-metadata-properties.md" >}})
-*   [Set metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/set-metadata-properties.md" >}})
-*   [Set metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/set-metadata-properties.md" >}})
+*   [Extracting metadata]({{< ref "metadata/net/developer-guide/advanced-usage/extracting-metadata.md" >}})
+*   [Removing metadata]({{< ref "metadata/net/developer-guide/advanced-usage/removing-metadata.md" >}})
+*   [Updating metadata]({{< ref "metadata/net/developer-guide/advanced-usage/updating-metadata.md" >}})
+*   [Adding metadata]({{< ref "metadata/net/developer-guide/advanced-usage/adding-metadata.md" >}})
 
 ## More resources
 ### Advanced usage topics

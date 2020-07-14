@@ -43,10 +43,11 @@ As a result of execution of the code snippet above, we remove all mentions of th
 
 For more information on supported features of the GroupDocs.Metadata search engine please refer to the following articles:
 
-*   [Remove metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/remove-metadata-properties.md" >}})
-*   [Remove metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/remove-metadata-properties.md" >}})
-*   [Remove metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/remove-metadata-properties.md" >}})
-*   [Remove metadata properties]({{< ref "metadata/net/developer-guide/basic-usage/remove-metadata-properties.md" >}})
+*   [Extracting metadata]({{< ref "metadata/net/developer-guide/advanced-usage/extracting-metadata.md" >}})
+*   [Removing metadata]({{< ref "metadata/net/developer-guide/advanced-usage/removing-metadata.md" >}})
+*   [Updating metadata]({{< ref "metadata/net/developer-guide/advanced-usage/updating-metadata.md" >}})
+*   [Adding metadata]({{< ref "metadata/net/developer-guide/advanced-usage/adding-metadata.md" >}})
+
 
 ## More resources
 ### Advanced usage topics

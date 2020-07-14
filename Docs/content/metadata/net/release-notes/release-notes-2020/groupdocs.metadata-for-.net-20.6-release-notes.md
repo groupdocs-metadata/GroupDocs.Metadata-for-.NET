@@ -2,7 +2,7 @@
 id: groupdocs-metadata-for-net-20-6-release-notes
 url: metadata/net/groupdocs-metadata-for-net-20-6-release-notes
 title: GroupDocs.Metadata for .NET 20.6 Release Notes
-weight: 1
+weight: 16
 description: ""
 keywords: 
 productName: GroupDocs.Metadata for .NET
