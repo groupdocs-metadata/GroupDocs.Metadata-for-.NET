@@ -8,7 +8,9 @@ keywords:
 productName: GroupDocs.Metadata for .NET
 hideChildren: False
 ---
-{{< alert style="info" >}}This page contains release notes for GroupDocs.Metadata for .NET 17.06.0{{< /alert >}}
+{{< alert style="info" >}}
+This page contains release notes for [GroupDocs.Metadata for .NET 17.06.0](https://downloads.groupdocs.com/metadata/net/new-releases/groupdocs.metadata-for-.net-17.6.0/)
+{{< /alert >}}
 
 ## Major Features
 

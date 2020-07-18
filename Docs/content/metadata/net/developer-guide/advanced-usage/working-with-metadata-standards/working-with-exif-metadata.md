@@ -12,7 +12,9 @@ hideChildren: False
 
 According to the [specification](https://www.exif.org/Exif2-2.PDF), EXIF (Exchangeable image file format) is a standard that specifies the formats to be used for images, sound and tags in digital still cameras and in other systems handling the image and sound files recorded by digital still cameras. Despite the confusing definition and name of the format, EXIF is just a metadata standard. In fact, it simply defines a way to store metadata properties in a variety of well-known image and audio formats. The EXIF tag structure is borrowed from TIFF files. The [specification](https://www.exif.org/Exif2-2.PDF) declares a set of tags intended to store technical details such as the geolocation of the place where a picture was taken, the name of the camera owner, camera settings, etc. 
 
-{{< alert style="info" >}}Please refer to the following article to get more information on the standard.{{< /alert >}}
+{{< alert style="info" >}}
+Please refer to the [following article](https://en.wikipedia.org/wiki/Exif) to get more information on the standard.
+{{< /alert >}}
 
 ## Reading basic EXIF properties
 

@@ -36,7 +36,9 @@ using (Metadata metadata = new Metadata(Constants.InputDoc))
 }
 ```
 
-{{< alert style="info" >}}Not all possible properties are presented in the KnowPropertyDescriptors collection. The library provides information on the most frequently used properties only. If there is no descriptor for some property it is still accessible through the GroupDocs.Metadata search engine in read-only mode.{{< /alert >}}
+{{< alert style="info" >}}
+Not all possible properties are presented in the [KnowPropertyDescriptors](https://apireference.groupdocs.com/net/metadata/groupdocs.metadata.common/metadatapackage/properties/knowpropertydescriptors) collection. The library provides information on the most frequently used properties only. If there is no descriptor for some property it is still accessible through the GroupDocs.Metadata search engine in read-only mode.
+{{< /alert >}}
 
 ## More resources
 ### GitHub examples

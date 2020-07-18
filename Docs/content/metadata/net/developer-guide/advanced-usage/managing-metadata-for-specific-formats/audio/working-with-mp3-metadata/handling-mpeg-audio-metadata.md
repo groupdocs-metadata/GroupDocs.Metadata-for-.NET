@@ -13,7 +13,11 @@ hideChildren: False
   
 MP3 (formally MPEG-1 Audio Layer III or MPEG-2 Audio Layer III) is a coding format for digital audio. Originally defined as the third audio format of the MPEG-1 standard, it was retained and further extended — defining additional bitrates and support for more audio channels — as the third audio format of the subsequent MPEG-2 standard. The GroupDocs.Metadata API allows reading some common MPEG audio properties from MP3 files.
 
-{{< alert style="info" >}}For more information on the MP3 and MPEG standards please check the following articles:https://en.wikipedia.org/wiki/MP3https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group{{< /alert >}}
+{{< alert style="info" >}}
+For more information on the MP3 and MPEG standards please check the following articles:
+* [https://en.wikipedia.org/wiki/MP3](https://en.wikipedia.org/wiki/MP3)
+* [https://en.wikipedia.org/wiki/Moving\_Picture\_Experts\_Group](https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group)
+{{< /alert >}}
 
   
 
