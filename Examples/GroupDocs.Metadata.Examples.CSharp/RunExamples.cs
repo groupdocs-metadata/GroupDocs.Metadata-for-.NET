@@ -318,6 +318,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //ReadIptcDataSets.Run();
             //UpdateIptcProperties.Run();
             //SetCustomIptcDataSet.Run();
+            //AddRepeatableIptcDataSet.Run();
             //RemoveIptcMetadata.Run();
 
             #endregion

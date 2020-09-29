@@ -5,6 +5,7 @@
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Iptc
 {
     using System;
+    using Common;
     using Standards.Iptc;
 
     /// <summary>
@@ -24,7 +25,18 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                         Console.WriteLine(dataSet.RecordNumber);
                         Console.WriteLine(dataSet.DataSetNumber);
                         Console.WriteLine(dataSet.AlternativeName);
-                        Console.WriteLine(dataSet.Value);
+                        if (dataSet.Value.Type == MetadataPropertyType.PropertyValueArray)
+                        {
+                            foreach (var value in dataSet.Value.ToArray<PropertyValue>())
+                            {
+                                Console.Write("{0}, ", value);
+                            }
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine(dataSet.Value);
+                        }
                     }
                 }
             }

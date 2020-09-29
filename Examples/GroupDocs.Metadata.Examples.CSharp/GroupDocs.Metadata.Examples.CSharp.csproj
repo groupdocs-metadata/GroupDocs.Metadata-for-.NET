@@ -160,6 +160,7 @@
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\RemoveExifMetadata.cs" />
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\SetCustomExifTag.cs" />
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Exif\UpdateExifProperties.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\AddRepeatableIptcDataSet.cs" />
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\ReadBasicIptcProperties.cs" />
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\ReadIptcDataSets.cs" />
     <Compile Include="AdvancedUsage\WorkingWithMetadataStandards\Iptc\RemoveIptcMetadata.cs" />
