@@ -71,17 +71,28 @@ In some cases, it's necessary to read all IPTC datasets (metadata properties) fr
 ```csharp
 using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
 {
-	IIptc root = metadata.GetRootPackage() as IIptc;
-	if (root != null && root.IptcPackage != null)
-	{
-		foreach (var dataSet in root.IptcPackage.ToDataSetList())
-		{
-			Console.WriteLine(dataSet.RecordNumber);
-			Console.WriteLine(dataSet.DataSetNumber);
-			Console.WriteLine(dataSet.AlternativeName);
-			Console.WriteLine(dataSet.Value);
-		}
-	}
+    IIptc root = metadata.GetRootPackage() as IIptc;
+    if (root != null && root.IptcPackage != null)
+    {
+        foreach (var dataSet in root.IptcPackage.ToDataSetList())
+        {
+            Console.WriteLine(dataSet.RecordNumber);
+            Console.WriteLine(dataSet.DataSetNumber);
+            Console.WriteLine(dataSet.AlternativeName);
+            if (dataSet.Value.Type == MetadataPropertyType.PropertyValueArray)
+            {
+                foreach (var value in dataSet.Value.ToArray<PropertyValue>())
+                {
+                    Console.Write("{0}, ", value);
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine(dataSet.Value);
+            }
+        }
+    }
 }
 ```
 
@@ -165,6 +176,39 @@ using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
 
 		metadata.Save(Constants.OutputPsd);
 	}
+}
+```
+
+## Adding repeatable IPTC IIM datasets
+
+According to the [IPTC IIM specification](https://www.iptc.org/std/IIM/4.2/specification/IIMV4.2.pdf) some datasets can be added to a record multiple times. The code snippet below demonstrates how to add a repeatable dataset to a record.
+
+**AdvancedUsage.WorkingWithMetadataStandards.<WBR>Iptc.AddRepeatableIptcDataSet**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.PsdWithIptc))
+{
+    IIptc root = (IIptc)metadata.GetRootPackage();
+    // Set the IPTC package if it's missing
+    if (root.IptcPackage == null)
+    {
+        root.IptcPackage = new IptcRecordSet();
+    }
+    root.IptcPackage.Add(new IptcDataSet((byte)IptcRecordType.ApplicationRecord, (byte)IptcApplicationRecordDataSet.Keywords, "keyword 1"));
+    root.IptcPackage.Add(new IptcDataSet((byte)IptcRecordType.ApplicationRecord, (byte)IptcApplicationRecordDataSet.Keywords, "keyword 2"));
+    root.IptcPackage.Add(new IptcDataSet((byte)IptcRecordType.ApplicationRecord, (byte)IptcApplicationRecordDataSet.Keywords, "keyword 3"));
+    metadata.Save(Constants.OutputPsd);
+}
+ 
+// Check the output file
+using (Metadata metadata = new Metadata(Constants.OutputPsd))
+{
+    IIptc root = (IIptc)metadata.GetRootPackage();
+    var keywordsProperty = root.IptcPackage.ApplicationRecord[(byte)IptcApplicationRecordDataSet.Keywords];
+    foreach (var value in keywordsProperty.Value.ToArray<PropertyValue>())
+    {
+        Console.WriteLine(value);
+    }
 }
 ```
 
