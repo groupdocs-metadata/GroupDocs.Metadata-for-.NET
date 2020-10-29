@@ -33,6 +33,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Email;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Font;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Jpeg.MakerNote;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Png;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Tiff;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Peer2Peer;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Video.Asf;
@@ -49,6 +50,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.ExtractingSpecificMetadataPackages;
     using Migration.UsingCustomReplaceHandler;
     using Migration.WorkingWithRegularExpressions;
+    
 
     internal class RunExamples
     {
@@ -218,6 +220,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //MakerNoteReadSonyProperties.Run();
 
             //Jpeg2000ReadComments.Run();
+
+            //PngReadTextChunks.Run();
 
             //PsdReadNativeMetadataProperties.Run();
             //PsdReadImageResourceBlocks.Run();

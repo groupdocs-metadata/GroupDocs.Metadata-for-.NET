@@ -132,6 +132,7 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadNikonProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadPanasonicProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg\MakerNote\MakerNoteReadSonyProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Png\PngReadTextChunks.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadBasicExifProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadImageResourceBlocks.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Psd\PsdReadNativeMetadataProperties.cs" />
