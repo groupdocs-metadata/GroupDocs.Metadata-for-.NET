@@ -20,8 +20,6 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                 if (root.DicomPackage != null)
                 {
                     Console.WriteLine(root.DicomPackage.BitsAllocated);
-                    Console.WriteLine(root.DicomPackage.LengthValue);
-                    Console.WriteLine(root.DicomPackage.DicomFound);
                     Console.WriteLine(root.DicomPackage.HeaderOffset);
                     Console.WriteLine(root.DicomPackage.NumberOfFrames);
 
