@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2021 GroupDocs. All Rights Reserved.
 // </copyright>
 
 using GroupDocs.Metadata.Common;
