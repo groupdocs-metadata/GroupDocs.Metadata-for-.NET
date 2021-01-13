@@ -185,6 +185,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             #region Note
 
             //NoteReadInspectionProperties.Run();
+            //NoteReadDocumentStatistics.Run();
 
             #endregion
 
@@ -236,6 +237,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //AsfReadNativeMetadataProperties.Run();
 
             //AviReadHeaderProperties.Run();
+            //AviReadInfoMetadata.Run();
 
             //FlvReadHeaderProperties.Run();
 
@@ -262,6 +264,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //MP3ReadMpegAudioMetadata.Run();
 
             //WavReadNativeMetadataProperties.Run();
+            //WavReadInfoMetadata.Run();
 
             #endregion
 

@@ -63,6 +63,7 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateID3V1Tag.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateID3V2Tag.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3UpdateLyricsTag.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\Wav\WavReadInfoMetadata.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\Wav\WavReadNativeMetadataProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardFilterCardProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardReadCardProperties.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadFileFormatProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramUpdateBuiltInProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramUpdateCustomProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Note\NoteReadDocumentStatistics.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Note\NoteReadInspectionProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadBuiltInProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfReadCustomProperties.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Peer2Peer\TorrentUpdateNativeMetadataProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Asf\AsfReadNativeMetadataProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Avi\AviReadHeaderProperties.cs" />
+    <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Avi\AviReadInfoMetadata.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Flv\FlvReadHeaderProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Matroska\MatroskaReadNativeMetadataProperties.cs" />
     <Compile Include="AdvancedUsage\ManagingMetadataForSpecificFormats\Video\Matroska\MatroskaReadSubtitles.cs" />
