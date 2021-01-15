@@ -37,6 +37,31 @@ using (Metadata metadata = new Metadata(Constants.InputWav))
 }
 ```
 
+## Extract RIFF INFO chunk metadata
+
+The WAV format is derived from the RIFF container which acts as a wrapper for various audio and video coding formats. As a derivative of RIFF, WAV files can be tagged with metadata in the INFO chunk. The chunk may include information such as the title of the work, the author, the creation date, and copyright information. Here is an example of how the RIFF INFO metadata can be extracted:
+
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Audio.Wav.WavReadInfoMetadata**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputWav))
+{
+    var root = metadata.GetRootPackage<WavRootPackage>();
+    if (root.RiffInfoPackage != null)
+    {
+        Console.WriteLine(root.RiffInfoPackage.Artist);
+        Console.WriteLine(root.RiffInfoPackage.Comment);
+        Console.WriteLine(root.RiffInfoPackage.Copyright);
+        Console.WriteLine(root.RiffInfoPackage.CreationDate);
+        Console.WriteLine(root.RiffInfoPackage.Software);
+        Console.WriteLine(root.RiffInfoPackage.Engineer);
+        Console.WriteLine(root.RiffInfoPackage.Genre);
+ 
+        // ...
+    }
+}
+```
+
 ## Working with XMP metadata
 
 GroupDocs.Metadata for .NET also allows managing XMP metadata in WAV files. For more details please refer to the following guide: [Handling metadata in WAV files]({{< ref "metadata/net/developer-guide/advanced-usage/managing-metadata-for-specific-formats/audio/handling-metadata-in-wav-files.md" >}})

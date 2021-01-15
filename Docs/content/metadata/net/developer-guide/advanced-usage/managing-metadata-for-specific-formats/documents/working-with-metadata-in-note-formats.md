@@ -38,6 +38,22 @@ using (Metadata metadata = new Metadata(Constants.InputOne))
 }
 ```
 
+## Reading document statistics
+
+Most office applications are able to display simple text statistics for loaded documents. It can be an estimated word count, page count, character count, etc. The GroupDocs.Metadata API provides similar functionality for some document formats. The following code sample demonstrates how to obtain the text statistics for a Note document.
+
+**AdvancedUsage.ManagingMetadataForSpecificFormats.<WBR>Document.Note.<WBR>NoteReadDocumentStatistics**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputOne))
+{
+    var root = metadata.GetRootPackage<NoteRootPackage>();
+    Console.WriteLine(root.DocumentStatistics.CharacterCount);
+    Console.WriteLine(root.DocumentStatistics.PageCount);
+    Console.WriteLine(root.DocumentStatistics.WordCount);
+}
+```
+
 ## More resources
 ### GitHub examples
 You may easily run the code above and see the feature in action in our GitHub examples:
