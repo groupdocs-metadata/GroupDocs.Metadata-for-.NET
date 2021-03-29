@@ -96,6 +96,23 @@ using (Metadata metadata = new Metadata(Constants.InputEml))
 }
 ```
 
+## Updating email fields
+
+GroupDocs.Metadata for .NET also allows the user to update some common email fields. The code sample below demonstrates how to alter the email subject and recipients.
+
+**AdvancedUsage.ManagingMetadataForSpecificFormats.Email.EmailUpdateEmailFields**
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputEml))
+{
+    var root = metadata.GetRootPackage<EmailRootPackage>();
+    root.EmailPackage.Recipients = new string[] { "sample@aspose.com" };
+    root.EmailPackage.CarbonCopyRecipients = new string[] { "sample@groupdocs.com" };
+    root.EmailPackage.Subject = "RE: test subject";
+    metadata.Save(Constants.OutputEml);
+}
+```
+
 ## More resources
 ### GitHub examples
 You may easily run the code above and see the feature in action in our GitHub examples:

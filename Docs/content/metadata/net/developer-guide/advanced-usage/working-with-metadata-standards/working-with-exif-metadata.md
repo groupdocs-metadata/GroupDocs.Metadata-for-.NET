@@ -108,15 +108,21 @@ The GroupDocs.Metadata API also supports reading specific EXIF tags using an ind
 ```csharp
 using (Metadata metadata = new Metadata(Constants.TiffWithExif))
 {
-	IExif root = metadata.GetRootPackage() as IExif;
-	if (root != null && root.ExifPackage != null)
-	{
-		TiffAsciiTag software = (TiffAsciiTag)root.ExifPackage[TiffTagID.Software];
-		if (software != null)
-		{
-			Console.WriteLine("Software: {0}", software.Value);
-		}
-	}
+    IExif root = metadata.GetRootPackage() as IExif;
+    if (root != null && root.ExifPackage != null)
+    {
+        TiffAsciiTag software = (TiffAsciiTag)root.ExifPackage[TiffTagID.Software];
+        if (software != null)
+        {
+            Console.WriteLine("Software: {0}", software.Value);
+        }
+ 
+        TiffUndefinedTag comment = (TiffUndefinedTag)root.ExifPackage.ExifIfdPackage[TiffTagID.UserComment];
+        if (comment != null)
+        {
+            Console.WriteLine("Comment: {0}", comment.InterpretedValue);
+        }
+    }
 }
 ```
 
