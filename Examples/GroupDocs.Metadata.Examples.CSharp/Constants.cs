@@ -8,11 +8,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
     public static class Constants
     {
-        public const string ResourcesPath = @"..\..\..\Resources\";
+        static Constants()
+        {
+            if (!Directory.Exists(OutputPath))
+                Directory.CreateDirectory(OutputPath);
+        }
 
-        public static readonly string LicenseFilePath = Path.Combine(ResourcesPath, "GroupDocs.Metadata.NET.lic");
+        public const string ResourcesPath = @".\Resources\";
 
-        public static readonly string InputPath = Path.Combine(ResourcesPath, @"SampleFiles\Input");
+        public static readonly string LicenseFilePath = @"C:\Licenses\GroupDocs.Metadata.NET.lic";
+
+        public static readonly string InputPath = Path.Combine(ResourcesPath, @"SampleFiles");
         public static readonly string OutputPath = Path.Combine(ResourcesPath, @"SampleFiles\Output");
 
         

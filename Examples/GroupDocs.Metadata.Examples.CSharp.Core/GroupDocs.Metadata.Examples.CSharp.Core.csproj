@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  
+  <Import Project="..\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems" Label="Shared" />
+  
+  <ItemGroup>
+    <PackageReference Include="GroupDocs.Metadata" Version="21.2.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

@@ -6,3 +6,9 @@ Examples/Resources/GroupDocs.Metadata.NET.lic
 Examples/GroupDocs.Metadata.Examples.CSharp/.vs/
 Examples/GroupDocs.Metadata.Examples.CSharp/packages/
 deploy_key
+Examples/packages/
+Examples/GroupDocs.Metadata.Examples.CSharp.Framework/bin/
+Examples/GroupDocs.Metadata.Examples.CSharp.Framework/obj/
+Examples/GroupDocs.Metadata.Examples.CSharp.Core/obj/
+Examples/GroupDocs.Metadata.Examples.CSharp.Core/bin/
+Examples/.vs/

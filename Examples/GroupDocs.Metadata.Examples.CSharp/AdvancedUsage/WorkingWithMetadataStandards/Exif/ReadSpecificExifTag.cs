@@ -13,6 +13,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     /// </summary>
     public static class ReadSpecificExifTag
     {
+        /*
         public static void Run()
         {
             using (Metadata metadata = new Metadata(Constants.TiffWithExif))
@@ -25,8 +26,15 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                     {
                         Console.WriteLine("Software: {0}", software.Value);
                     }
+
+                    TiffUndefinedTag comment = (TiffUndefinedTag)root.ExifPackage.ExifIfdPackage[TiffTagID.UserComment];
+                    if (comment != null)
+                    {
+                        Console.WriteLine("Comment: {0}", comment.InterpretedValue);
+                    }
                 }
             }
         }
+        */
     }
 }

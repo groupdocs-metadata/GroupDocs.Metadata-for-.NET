@@ -50,7 +50,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.ExtractingSpecificMetadataPackages;
     using Migration.UsingCustomReplaceHandler;
     using Migration.WorkingWithRegularExpressions;
-    
+
 
     internal class RunExamples
     {
@@ -113,6 +113,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //TraverseWholeMetadataTree.Run();
             //GettingKnownPropertyDescriptors.Run();
             //ExportingMetadataProperties.Run();
+            //WorkingWithInterpretedValues.Run();
 
             #region Managing metadata for specific formats
 
@@ -286,6 +287,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //EmlReadNativeMetadataProperties.Run();
             //MsgReadNativeMetadataProperties.Run();
             //EmailRemoveAttachments.Run();
+            //EmailUpdateEmailFields.Run();
 
             //OpenTypeReadNativeMetadataProperties.Run();
             //OpenTypeReadDigitalSignatureProperties.Run();

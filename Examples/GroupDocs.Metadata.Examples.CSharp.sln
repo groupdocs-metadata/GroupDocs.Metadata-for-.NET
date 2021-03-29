@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GroupDocs.Metadata.Examples.CSharp", "GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.shproj", "{A8DC2339-7E3C-4A05-AED3-A5CC30F3813F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Metadata.Examples.CSharp.Framework", "GroupDocs.Metadata.Examples.CSharp.Framework\GroupDocs.Metadata.Examples.CSharp.Framework.csproj", "{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Metadata.Examples.CSharp.Core", "GroupDocs.Metadata.Examples.CSharp.Core\GroupDocs.Metadata.Examples.CSharp.Core.csproj", "{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems*{a8dc2339-7e3c-4a05-aed3-a5cc30f3813f}*SharedItemsImports = 13
+		GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems*{cd03028a-4dc3-48ff-92d7-bad21c580dae}*SharedItemsImports = 4
+		GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems*{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD03028A-4DC3-48FF-92D7-BAD21C580DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE82DD09-C6C8-4494-8D01-BFDD2A6B9AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88D27916-848B-4022-83BA-29E4A22A3C7C}
+	EndGlobalSection
+EndGlobal
