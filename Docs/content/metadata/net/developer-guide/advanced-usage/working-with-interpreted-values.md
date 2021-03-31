@@ -1,7 +1,7 @@
 ---
 id: working-with-interpreted-values
 url: metadata/net/working-with-interpreted-values
-title: Traverse a whole metadata tree
+title: Working with interpreted values
 weight: 8
 description: ""
 keywords: 
