@@ -11,7 +11,6 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     /// </summary>
     public static class EmailUpdateEmailFields
     {
-        /*
         public static void Run()
         {
             using (Metadata metadata = new Metadata(Constants.InputEml))
@@ -25,6 +24,5 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                 metadata.Save(Constants.OutputEml);
             }
         }
-        */
     }
 }

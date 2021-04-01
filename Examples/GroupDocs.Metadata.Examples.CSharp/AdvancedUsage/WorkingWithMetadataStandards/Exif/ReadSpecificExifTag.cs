@@ -13,7 +13,6 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     /// </summary>
     public static class ReadSpecificExifTag
     {
-        /*
         public static void Run()
         {
             using (Metadata metadata = new Metadata(Constants.TiffWithExif))
@@ -35,6 +34,5 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                 }
             }
         }
-        */
     }
 }

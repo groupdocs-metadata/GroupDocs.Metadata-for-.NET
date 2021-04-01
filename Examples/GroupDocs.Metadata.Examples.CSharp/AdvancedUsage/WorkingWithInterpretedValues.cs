@@ -13,7 +13,6 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
     /// </summary>
     public class WorkingWithInterpretedValues
     {
-        /*
         public static void Run()
         {
             foreach (string file in Directory.GetFiles(Constants.InputPath))
@@ -37,6 +36,5 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
                 }
             }
         }
-        */
     }
 }
