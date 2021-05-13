@@ -280,9 +280,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //VCardFilterCardProperties.Run();
 
             //CadReadNativeMetadataProperties.Run();
+            //DxfUpdateNativeMetadataProperties.Run();
 
             //EpubReadNativeMetadataProperties.Run();
+            //EpubUpdateNativeMetadataProperties.Run();
             //EpubReadDublinCoreProperties.Run();
+            //EpubUpdateDublinCoreProperties.Run();
 
             //EmlReadNativeMetadataProperties.Run();
             //MsgReadNativeMetadataProperties.Run();

@@ -18,17 +18,14 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<EpubRootPackage>();
 
-                if (root.DublinCorePackage != null)
-                {
-                    Console.WriteLine(root.DublinCorePackage.Rights);
-                    Console.WriteLine(root.DublinCorePackage.Publisher);
-                    Console.WriteLine(root.DublinCorePackage.Title);
-                    Console.WriteLine(root.DublinCorePackage.Creator);
-                    Console.WriteLine(root.DublinCorePackage.Language);
-                    Console.WriteLine(root.DublinCorePackage.Date);
+                Console.WriteLine(root.DublinCorePackage.Rights);
+                Console.WriteLine(root.DublinCorePackage.Publisher);
+                Console.WriteLine(root.DublinCorePackage.Title);
+                Console.WriteLine(root.DublinCorePackage.Creator);
+                Console.WriteLine(root.DublinCorePackage.Language);
+                Console.WriteLine(root.DublinCorePackage.Date);
 
-                    // ...
-                }
+                // ...
             }
         }
     }

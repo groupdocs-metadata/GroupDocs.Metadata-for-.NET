@@ -39,6 +39,30 @@ using (Metadata metadata = new Metadata(Constants.InputDxf))
 }
 ```
 
+## Updating DXF metadata
+
+The GroupDocs.Metadata API also allows updating metadata properties in a DXF drawing. Please check the code sample below.
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputDxf))
+{
+    var root = metadata.GetRootPackage<CadRootPackage>();
+ 
+    root.CadPackage.SetProperties(p => p.Name == "Author", new PropertyValue("GroupDocs"));
+    root.CadPackage.SetProperties(p => p.Name == "Comments", new PropertyValue("test comment"));
+    root.CadPackage.SetProperties(p => p.Name == "HyperlinkBase", new PropertyValue("test hyperlink base"));
+    root.CadPackage.SetProperties(p => p.Name == "Keywords", new PropertyValue("test keywords"));
+    root.CadPackage.SetProperties(p => p.Name == "LastSavedBy", new PropertyValue("test editor"));
+    root.CadPackage.SetProperties(p => p.Name == "RevisionNumber", new PropertyValue("test revision number"));
+    root.CadPackage.SetProperties(p => p.Name == "Subject", new PropertyValue("test subject"));
+    root.CadPackage.SetProperties(p => p.Name == "Title", new PropertyValue("test title"));
+    root.CadPackage.SetProperties(p => p.Name == "CreatedDateTime", new PropertyValue(DateTime.Now.AddDays(-1)));
+    root.CadPackage.SetProperties(p => p.Name == "ModifiedDateTime", new PropertyValue(DateTime.Now));
+ 
+    metadata.Save(Constants.OutputDxf);
+}
+```
+
 ## More resources
 ### GitHub examples
 You may easily run the code above and see the feature in action in our GitHub examples:

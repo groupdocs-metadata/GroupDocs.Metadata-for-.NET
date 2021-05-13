@@ -35,6 +35,29 @@ using (Metadata metadata = new Metadata(Constants.InputEpub))
 	Console.WriteLine(root.EpubPackage.Version);
 	Console.WriteLine(root.EpubPackage.UniqueIdentifier);
 	Console.WriteLine(root.EpubPackage.ImageCover != null ? root.EpubPackage.ImageCover.Length : 0);
+	Console.WriteLine(root.EpubPackage.Description);
+	Console.WriteLine(root.EpubPackage.Title);
+
+	// ...
+}
+```
+
+## Updating EPUB format-specific properties
+
+The GroupDocs.Metadata API also supports updating some metadata properties of an EPUB file. Please see the code snippet below to learn how to do that.
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputEpub))
+{
+    var root = metadata.GetRootPackage<EpubRootPackage>();
+    root.EpubPackage.Creator = "GroupDocs";
+    root.EpubPackage.Description = "test e-book";
+    root.EpubPackage.Format = "EPUB";
+    root.EpubPackage.Date = DateTime.Now.ToString();
+ 
+    // ...
+ 
+    metadata.Save(Constants.OutputEpub);
 }
 ```
 
@@ -49,17 +72,33 @@ using (Metadata metadata = new Metadata(Constants.InputEpub))
 {
 	var root = metadata.GetRootPackage<EpubRootPackage>();
 
-	if (root.DublinCorePackage != null)
-	{
-		Console.WriteLine(root.DublinCorePackage.Rights);
-		Console.WriteLine(root.DublinCorePackage.Publisher);
-		Console.WriteLine(root.DublinCorePackage.Title);
-		Console.WriteLine(root.DublinCorePackage.Creator);
-		Console.WriteLine(root.DublinCorePackage.Language);
-		Console.WriteLine(root.DublinCorePackage.Date);
+	Console.WriteLine(root.DublinCorePackage.Rights);
+	Console.WriteLine(root.DublinCorePackage.Publisher);
+	Console.WriteLine(root.DublinCorePackage.Title);
+	Console.WriteLine(root.DublinCorePackage.Creator);
+	Console.WriteLine(root.DublinCorePackage.Language);
+	Console.WriteLine(root.DublinCorePackage.Date);
 
-		// ...
-	}
+	// ...
+}
+```
+
+## Updating Dublin Core Metadata
+
+The GroupDocs.Metadata API also allows updating DublinCore metadata properties in an EPUB file. Please check the code sample below.
+
+```csharp
+using (Metadata metadata = new Metadata(Constants.InputEpub))
+{
+    var root = metadata.GetRootPackage<EpubRootPackage>();
+    root.DublinCorePackage.SetProperties(p => p.Name == "dc:creator", new PropertyValue("GroupDocs"));
+    root.DublinCorePackage.SetProperties(p => p.Name == "dc:description", new PropertyValue("test e-book"));
+    root.DublinCorePackage.SetProperties(p => p.Name == "dc:title", new PropertyValue("test EPUB"));
+    root.DublinCorePackage.SetProperties(p => p.Name == "dc:date", new PropertyValue(DateTime.Now.ToString()));
+  
+    // ...
+  
+    metadata.Save(Constants.OutputEpub);
 }
 ```
 

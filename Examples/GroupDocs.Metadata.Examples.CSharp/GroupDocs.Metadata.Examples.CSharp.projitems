@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardReadCardProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\BusinessCard\VCardReadCardPropertiesWithParameters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Cad\CadReadNativeMetadataProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Cad\DxfUpdateNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadBuiltInProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadCustomProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Diagram\DiagramReadDocumentStatistics.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Document\WordProcessing\WordProcessingUpdateInspectionProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubReadDublinCoreProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubReadNativeMetadataProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubUpdateDublinCoreProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\EpubUpdateNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\EmailRemoveAttachments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\EmlReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\EmailUpdateEmailFields.cs" />

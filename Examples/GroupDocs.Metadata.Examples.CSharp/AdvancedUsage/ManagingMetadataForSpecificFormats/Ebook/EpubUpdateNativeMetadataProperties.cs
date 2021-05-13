@@ -4,13 +4,13 @@
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Ebook
 {
-    using System;
     using Formats.Ebook;
+    using System;
 
     /// <summary>
-    /// This code sample shows how to read EPUB format-specific metadata properties.
+    /// This code sample shows how to update EPUB format-specific metadata properties.
     /// </summary>
-    public static class EpubReadNativeMetadataProperties
+    public class EpubUpdateNativeMetadataProperties
     {
         public static void Run()
         {
@@ -18,13 +18,14 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<EpubRootPackage>();
 
-                Console.WriteLine(root.EpubPackage.Version);
-                Console.WriteLine(root.EpubPackage.UniqueIdentifier);
-                Console.WriteLine(root.EpubPackage.ImageCover != null ? root.EpubPackage.ImageCover.Length : 0);
-                Console.WriteLine(root.EpubPackage.Description);
-                Console.WriteLine(root.EpubPackage.Title);
+                root.EpubPackage.Creator = "GroupDocs";
+                root.EpubPackage.Description = "test e-book";
+                root.EpubPackage.Format = "EPUB";
+                root.EpubPackage.Date = DateTime.Now.ToString();
 
                 // ...
+
+                metadata.Save(Constants.OutputEpub);
             }
         }
     }
