@@ -11,7 +11,6 @@
 
 Directory | Description
 --------- | -----------
-[Docs](https://docs.groupdocs.com/metadata/net/)  | Product documentation containing Developer's Guide, Release Notes & more.
 [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples)  | C# examples and sample files in order to quickly get started with Metadata API.
 [Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins) | Visual Studio plugins related to GroupDocs.Metadata.
 [Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) | Open-source front-end applications demonstrating some of use cases.
