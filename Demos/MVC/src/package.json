@@ -1,0 +1,19 @@
+{
+  "name": "groupdocs.metadata-for-.net-mvc",
+  "version": "1.0.0",
+  "description": "![Alt text](https://raw.githubusercontent.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET-MVC/master/src/Resources/metadata/images/banner.png \"GroupDocs.Metadata\")\r # GroupDocs.Metadata for .NET MVC Example\r ###### version 1.8.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET-MVC.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET-MVC/issues"
+  },
+  "homepage": "https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET-MVC#readme"
+}

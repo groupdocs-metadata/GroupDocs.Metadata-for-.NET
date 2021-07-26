@@ -1,0 +1,138 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "metadata": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "less"
+        }
+      },
+      "root": "apps/metadata",
+      "sourceRoot": "apps/metadata/src",
+      "prefix": "client",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "../resources/metadata",
+            "index": "apps/metadata/src/index.html",
+            "main": "apps/metadata/src/main.ts",
+            "polyfills": "apps/metadata/src/polyfills.ts",
+            "tsConfig": "apps/metadata/tsconfig.app.json",
+            "assets": ["apps/metadata/src/favicon.ico", "apps/metadata/src/assets"],
+            "styles": ["apps/metadata/src/styles.less"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/metadata/src/environments/environment.ts",
+                  "with": "apps/metadata/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "metadata:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "metadata:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "metadata:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/metadata/tsconfig.app.json",
+              "apps/metadata/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/metadata/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/metadata/jest.config.js",
+            "tsConfig": "apps/metadata/tsconfig.spec.json",
+            "setupFile": "apps/metadata/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "metadata-e2e": {
+      "root": "apps/metadata-e2e",
+      "sourceRoot": "apps/metadata-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/metadata-e2e/cypress.json",
+            "tsConfig": "apps/metadata-e2e/tsconfig.e2e.json",
+            "devServerTarget": "metadata:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "metadata:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/metadata-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/metadata-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "metadata"
+}
