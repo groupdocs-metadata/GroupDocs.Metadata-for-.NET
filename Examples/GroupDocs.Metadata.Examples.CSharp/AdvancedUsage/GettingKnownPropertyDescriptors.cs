@@ -17,7 +17,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
             using (Metadata metadata = new Metadata(Constants.InputDoc))
             {
                 var root = metadata.GetRootPackage<WordProcessingRootPackage>();
-                foreach (var descriptor in root.DocumentProperties.KnowPropertyDescriptors)
+                foreach (var descriptor in root.DocumentProperties.PropertyDescriptors)
                 {
                     Console.WriteLine(descriptor.Name);
                     Console.WriteLine(descriptor.Type);
