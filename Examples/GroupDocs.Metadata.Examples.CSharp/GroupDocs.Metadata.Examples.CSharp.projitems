@@ -95,6 +95,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Font\OpenTypeReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Bmp\BmpReadHeaderProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Dicom\DicomReadNativeMetadataProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Dng\DngReadFileFormatProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Gif\GifReadFileFormatProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\ImageReadFileFormatProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Jpeg2000\Jpeg2000ReadComments.cs" />
@@ -325,6 +326,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\protected.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample1.dng">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\signed.pdf">

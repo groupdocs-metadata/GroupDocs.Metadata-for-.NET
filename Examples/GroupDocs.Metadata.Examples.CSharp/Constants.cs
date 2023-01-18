@@ -16,7 +16,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         public const string ResourcesPath = @".\Resources\";
 
-        public static readonly string LicenseFilePath = @"C:\Licenses\GroupDocs.Metadata.NET.lic";
+        public static readonly string LicenseFilePath = @"C:\Work\License\GroupDocs.Total.NET.lic";
 
         public static readonly string InputPath = Path.Combine(ResourcesPath, @"SampleFiles");
         public static readonly string OutputPath = Path.Combine(ResourcesPath, @"SampleFiles\Output");
@@ -35,6 +35,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string InputJpeg = Path.Combine(InputPath, "input.jpg");
         public static readonly string InputPng = Path.Combine(InputPath, "input.png");
         public static readonly string InputGif = Path.Combine(InputPath, "input.gif");
+        public static readonly string InputDng = Path.Combine(InputPath, "sample1.dng");
         public static readonly string InputMpp = Path.Combine(InputPath, "input.mpp");
         public static readonly string InputBmp = Path.Combine(InputPath, "input.bmp");
         public static readonly string InputJpeg2000 = Path.Combine(InputPath, "input.jp2");
