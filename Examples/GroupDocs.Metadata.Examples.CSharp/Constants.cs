@@ -16,7 +16,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         public const string ResourcesPath = @".\Resources\";
 
-        public static readonly string LicenseFilePath = @"C:\Work\License\GroupDocs.Total.NET.lic";
+        public static readonly string LicenseFilePath = @"";
 
         public static readonly string InputPath = Path.Combine(ResourcesPath, @"SampleFiles");
         public static readonly string OutputPath = Path.Combine(ResourcesPath, @"SampleFiles\Output");
@@ -77,6 +77,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string NikonJpeg = Path.Combine(InputPath, "nikon_raw.jpg");
         public static readonly string PanasonicJpeg = Path.Combine(InputPath, "panasonic_raw.jpg");
         public static readonly string SonyJpeg = Path.Combine(InputPath, "sony_raw.jpg");
+        public static readonly string InputCr2 = Path.Combine(InputPath, "input.CR2");
 
 
         public static readonly string OutputDocx = Path.Combine(OutputPath, "output.docx");

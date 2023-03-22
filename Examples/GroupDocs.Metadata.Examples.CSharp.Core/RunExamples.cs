@@ -2,6 +2,8 @@
 //   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
 // </copyright>
 
+
+
 namespace GroupDocs.Metadata.Examples.CSharp
 {
     using BasicUsage;
@@ -50,6 +52,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.ExtractingSpecificMetadataPackages;
     using Migration.UsingCustomReplaceHandler;
     using Migration.WorkingWithRegularExpressions;
+    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
+    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
 
 
     internal class RunExamples
@@ -230,6 +234,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //PsdReadBasicExifProperties.Run();
 
             //TiffReadBasicIptcProperties.Run();
+
+            //Cr2ReadFileFormatProperties.Run();
+
+            //DngReadFileFormatProperties.Run();
 
             #endregion
 
