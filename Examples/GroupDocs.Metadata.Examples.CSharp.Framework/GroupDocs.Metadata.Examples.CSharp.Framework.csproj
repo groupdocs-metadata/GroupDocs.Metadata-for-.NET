@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>GroupDocs.Metadata.Examples.CSharp</RootNamespace>
     <AssemblyName>GroupDocs.Metadata.Examples.CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -35,8 +35,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Metadata, Version=23.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Metadata.23.3.0\lib\net45\GroupDocs.Metadata.dll</HintPath>
+    <Reference Include="GroupDocs.Metadata, Version=23.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Metadata.23.5.0\lib\net472\GroupDocs.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
