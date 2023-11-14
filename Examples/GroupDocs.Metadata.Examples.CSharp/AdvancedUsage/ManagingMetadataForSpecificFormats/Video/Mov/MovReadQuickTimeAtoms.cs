@@ -18,11 +18,14 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<MovRootPackage>();
 
+                Console.WriteLine(root.MovPackage.Copyright);
+
                 foreach (var atom in root.MovPackage.Atoms)
                 {
                     Console.WriteLine(atom.Type);
                     Console.WriteLine(atom.Offset);
                     Console.WriteLine(atom.Size);
+                    
 
                     // ...
                 }

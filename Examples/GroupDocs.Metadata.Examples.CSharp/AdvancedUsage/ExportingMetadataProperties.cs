@@ -23,6 +23,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
                     ExportManager manager = new ExportManager(root);
 
                     manager.Export(Constants.OutputXls, ExportFormat.Xls);
+                    manager.Export(Constants.OutputXml, ExportFormat.Xml);
+                    manager.Export(Constants.OutputCsv, ExportFormat.Csv);
                 }
             }
         }

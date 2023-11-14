@@ -8,7 +8,7 @@
   <Import Project="..\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems" Label="Shared" />
   
   <ItemGroup>
-    <PackageReference Include="GroupDocs.Metadata" Version="23.8.0" />
+    <PackageReference Include="GroupDocs.Metadata" Version="23.11.0" />
   </ItemGroup>
 
 </Project>
