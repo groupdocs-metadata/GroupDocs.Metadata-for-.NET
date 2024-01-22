@@ -16,6 +16,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
         {
             using (Metadata metadata = new Metadata(Constants.InputDxf))
             {
+                
                 var root = metadata.GetRootPackage<CadRootPackage>();
 
                 Console.WriteLine(root.CadPackage.AcadVersion);

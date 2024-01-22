@@ -3,6 +3,9 @@
 // </copyright>
 
 
+using System.Linq;
+using GroupDocs.Metadata.Common;
+using GroupDocs.Metadata.Tagging;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -66,7 +69,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Quick Start
 
-            SetLicenseFromFile.Run();
+            //SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
             //SetMeteredLicense.Run();
 
@@ -118,6 +121,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //GettingKnownPropertyDescriptors.Run();
             //ExportingMetadataProperties.Run();
             //WorkingWithInterpretedValues.Run();
+            //FindMetadataPropertiesByGroupTag.Run();
 
             #region Managing metadata for specific formats
 
@@ -305,6 +309,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //TorrentReadNativeMetadataProperties.Run();
             //TorrentUpdateNativeMetadataProperties.Run();
+
+            //SevenZipReadNativeMetadataProperties.Run();
+            //RarReadNativeMetadataProperties.Run();
+            //TarReadNativeMetadataProperties.Run();
 
             #endregion
 

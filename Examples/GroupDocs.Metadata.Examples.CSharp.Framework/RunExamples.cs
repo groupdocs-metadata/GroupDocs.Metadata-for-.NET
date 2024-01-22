@@ -2,6 +2,10 @@
 //   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
 // </copyright>
 
+using System.Linq;
+using GroupDocs.Metadata.Common;
+using GroupDocs.Metadata.Tagging;
+
 namespace GroupDocs.Metadata.Examples.CSharp
 {
     using BasicUsage;
@@ -61,10 +65,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Console.WriteLine("Open RunExamples.cs.");
             Console.WriteLine("In Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
-
             #region Quick Start
 
-            SetLicenseFromFile.Run();
+            //SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
             //SetMeteredLicense.Run();
 
@@ -116,6 +119,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //GettingKnownPropertyDescriptors.Run();
             //ExportingMetadataProperties.Run();
             //WorkingWithInterpretedValues.Run();
+            //FindMetadataPropertiesByGroupTag.Run();
 
             #region Managing metadata for specific formats
 
@@ -303,6 +307,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             //TorrentReadNativeMetadataProperties.Run();
             //TorrentUpdateNativeMetadataProperties.Run();
+
+            //SevenZipReadNativeMetadataProperties.Run();
+            //RarReadNativeMetadataProperties.Run();
+            //TarReadNativeMetadataProperties.Run();
 
             #endregion
 

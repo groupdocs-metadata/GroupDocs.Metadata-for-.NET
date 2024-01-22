@@ -14,11 +14,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingPropertyValues\ExtractUsingAcceptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingPropertyValues\ExtractUsingType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\FindMetadataPropertiesByGroupTag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GettingKnownPropertyDescriptors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromLocalDisk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadingFileOfSpecificFormat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadPasswordProtectedDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\SevenZipReadNativeMetadataProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\RarReadNativeMetadataProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Archive\TarReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadApeTag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadID3V1Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Audio\MP3\MP3ReadID3V2Tag.cs" />
@@ -254,6 +258,9 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\exif.psd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.7z">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.CR2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -302,6 +309,12 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.pptx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.tar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\input.torrent">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
