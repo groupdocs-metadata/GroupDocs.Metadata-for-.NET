@@ -57,6 +57,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.WorkingWithRegularExpressions;
     using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
     using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
+    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.ThreeD;
 
 
     internal class RunExamples
@@ -313,6 +314,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //SevenZipReadNativeMetadataProperties.Run();
             //RarReadNativeMetadataProperties.Run();
             //TarReadNativeMetadataProperties.Run();
+
+            //DaeReadNativeMetadataProperties.Run();
+            //FbxReadNativeMetadataProperties.Run();
+            //StlReadNativeMetadataProperties.Run();
+            //ThreeDSReadNativeMetadataProperties.Run();
 
             #endregion
 
