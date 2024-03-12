@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GroupDocs.Metadata.Formats.Raw.Cr2;
-using GroupDocs.Metadata.Formats.Raw.Tag;
+﻿// <copyright company="Aspose Pty Ltd">
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+// </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw
 {
-    internal class Cr2ReadFileFormatProperties
+    using System;
+    using GroupDocs.Metadata.Formats.Raw.Cr2;
+    using GroupDocs.Metadata.Formats.Raw.Tag;
+    /// <summary>
+    /// This code sample demonstrates how to get metadata from a Cr2 file.
+    /// </summary>
+    public static class Cr2ReadFileFormatProperties
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # Cr2ReadFileFormatProperties : How to get metadata from a Cr2 file.\n");
             using (Metadata metadata = new Metadata(Constants.InputCr2))
             {
                 var root = metadata.GetRootPackage<Cr2RootPackage>();

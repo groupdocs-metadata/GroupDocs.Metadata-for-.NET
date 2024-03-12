@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Psd
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # PsdReadBasicExifProperties : How to extract basic EXIF metadata properties from a PSD image.\n");
             using (Metadata metadata = new Metadata(Constants.PsdWithExif))
             {
                 var root = metadata.GetRootPackage<PsdRootPackage>();

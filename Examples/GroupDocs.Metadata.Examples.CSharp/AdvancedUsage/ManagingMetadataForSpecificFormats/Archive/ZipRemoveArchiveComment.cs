@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Archive
 {
     using Formats.Archive;
+    using System;
 
     /// <summary>
     /// The following code snippet shows how to remove the user comment from a ZIP archive.
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ZipRemoveArchiveComment : How to remove the user comment from a ZIP archive.\n");
             using (Metadata metadata = new Metadata(Constants.InputZip))
             {
                 var root = metadata.GetRootPackage<ZipRootPackage>();

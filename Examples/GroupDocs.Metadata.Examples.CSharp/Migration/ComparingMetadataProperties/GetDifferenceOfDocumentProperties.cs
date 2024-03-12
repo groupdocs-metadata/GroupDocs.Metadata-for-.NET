@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.Migration.ComparingMetadataProperties
@@ -16,6 +16,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.Migration.ComparingMetadataProperti
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Migration] # GetDifferenceOfDocumentProperties : How to get the difference of two collections of properties extracted from different files.\n");
             // The predicate to extract metadata properties we want to compare
             // In this code sample we retrieve built-in document properties
             Common.Func<MetadataProperty, bool> predicate = p => p.Tags.Contains(Tags.Document.BuiltIn);

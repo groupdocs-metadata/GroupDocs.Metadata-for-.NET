@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 
@@ -15,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ExtractingPropertyVal
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractUsingType : How to extract the property value using the Type property\n");
             using (Metadata metadata = new Metadata(Constants.InputDocx))
             {
                 // Fetch all metadata properties from the file

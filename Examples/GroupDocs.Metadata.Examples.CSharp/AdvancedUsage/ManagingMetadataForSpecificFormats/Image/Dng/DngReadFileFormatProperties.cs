@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 using System;
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # DngReadFileFormatProperties : How to detect the version of a loaded DNG image and extract some additional file format information.\n");
             using (Metadata metadata = new Metadata(Constants.InputDng))
             {
                 var root = metadata.GetRootPackage<DngRootPackage>();

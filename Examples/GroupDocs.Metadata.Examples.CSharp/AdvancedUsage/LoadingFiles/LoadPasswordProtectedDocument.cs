@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.LoadingFiles
 {
     using Options;
+    using System;
 
     /// <summary>
     /// This example demonstrates how to load a password-protected document.
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.LoadingFiles
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # LoadPasswordProtectedDocument : How to load a password-protected document.\n");
             // Specify the password
             var loadOptions = new LoadOptions
             {

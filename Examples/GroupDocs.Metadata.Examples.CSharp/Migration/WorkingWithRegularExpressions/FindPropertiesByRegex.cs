@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.Migration.WorkingWithRegularExpressions
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.Migration.WorkingWithRegularExpress
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Migration] # FindPropertiesByRegex : How to search for metadata properties using a regular expression.\n");
             Regex pattern = new Regex("author|company", RegexOptions.IgnoreCase);
 
             using (Metadata metadata = new Metadata(Constants.InputDocx))

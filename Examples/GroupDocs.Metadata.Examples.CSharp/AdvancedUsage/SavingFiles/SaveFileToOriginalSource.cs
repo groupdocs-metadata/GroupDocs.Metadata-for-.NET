@@ -1,9 +1,10 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.SavingFiles
 {
+    using System;
     using System.IO;
 
     /// <summary>
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.SavingFiles
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # SaveFileToOriginalSource : How to save the modified content to the underlying source.\n");
             // Constants.InputPpt is an absolute or relative path to your document. Ex: @"C:\Docs\test.ppt"
             File.Delete(Constants.OutputPpt);
             File.Copy(Constants.InputPpt, Constants.OutputPpt);

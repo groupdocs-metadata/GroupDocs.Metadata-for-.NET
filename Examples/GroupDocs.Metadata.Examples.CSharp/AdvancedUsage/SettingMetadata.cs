@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
@@ -16,6 +16,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # SettingMetadata : How to set metadata properties by various criteria regardless of the file format.\n");
             foreach (string file in Directory.GetFiles(Constants.InputPath))
             {
                 using (Metadata metadata = new Metadata(file))
@@ -32,7 +34,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
                         // Set the copyright notice
                         var affected = metadata.SetProperties(
                             p => p.Tags.Contains(Tags.Legal.Copyright), 
-                            new PropertyValue("Copyright (C) 2011-2023 GroupDocs. All Rights Reserved."));
+                            new PropertyValue("Copyright (C) 2011-2024 GroupDocs. All Rights Reserved."));
 
                         Console.WriteLine("Affected properties: {0}", affected);
 

@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ImageReadFileFormatProperties : How to extract common image properties such as width and height, MIME type, byte order, etc.\n");
             using (Metadata metadata = new Metadata(Constants.InputPng))
             {
                 var root = metadata.GetRootPackage<ImageRootPackage>();

@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Exif
@@ -15,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ReadSpecificExifTag : How to read a specific TIFF/EXIF tag by its identifier.\n");
             using (Metadata metadata = new Metadata(Constants.TiffWithExif))
             {
                 IExif root = metadata.GetRootPackage() as IExif;

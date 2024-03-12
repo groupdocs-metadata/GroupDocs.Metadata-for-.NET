@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//  Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//  Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 
@@ -10,12 +10,14 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using System;
 
     /// <summary>
-    /// This example shows how to upadte Dublin Core metadata in EPUB files.
+    /// This example shows how to update Dublin Core metadata in EPUB files.
     /// </summary>
     public class EpubUpdateDublinCoreProperties
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # EpubUpdateDublinCoreProperties : How to update Dublin Core metadata in EPUB files.\n");
             using (Metadata metadata = new Metadata(Constants.InputEpub))
             {
                 var root = metadata.GetRootPackage<EpubRootPackage>();

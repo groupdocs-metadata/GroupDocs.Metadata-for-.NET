@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # TiffReadBasicIptcProperties : How to extract basic IPTC metadata properties from a TIFF image.\n");
             using (Metadata metadata = new Metadata(Constants.TiffWithIptc))
             {
                 var root = metadata.GetRootPackage<TiffRootPackage>();

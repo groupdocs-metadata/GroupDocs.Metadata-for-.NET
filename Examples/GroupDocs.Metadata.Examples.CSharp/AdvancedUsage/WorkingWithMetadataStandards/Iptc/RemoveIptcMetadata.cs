@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Iptc
 {
     using Standards.Iptc;
+    using System;
 
     /// <summary>
     /// This code sample shows how to remove IPTC metadata from a file.
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # RemoveIptcMetadata : How to remove IPTC metadata from a file.\n");
             using (Metadata metadata = new Metadata(Constants.JpegWithIptc))
             {
                 IIptc root = metadata.GetRootPackage() as IIptc;

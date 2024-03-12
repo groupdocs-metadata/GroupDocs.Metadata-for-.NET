@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 using GroupDocs.Metadata.Common;
@@ -18,6 +18,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # SevenZipReadNativeMetadataProperties : How to get metadata from a SevenZip archive.\n");
             using (Metadata metadata = new Metadata(Constants.InputSevenZip))
             {
                 var root = metadata.GetRootPackage<SevenZipRootPackage>();

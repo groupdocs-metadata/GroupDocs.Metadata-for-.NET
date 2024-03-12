@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Xmp
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # AddCustomXmpPackage : How to add a custom XMP package to a file of any supported format.\n");
             using (Metadata metadata = new Metadata(Constants.InputJpeg))
             {
                 IXmp root = metadata.GetRootPackage() as IXmp;
@@ -22,7 +24,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                     var packet = new XmpPacketWrapper();
                     
                     var custom = new XmpPackage("gd", "https://groupdocs.com");
-                    custom.Set("gd:Copyright", "Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.");
+                    custom.Set("gd:Copyright", "Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.");
                     custom.Set("gd:CreationDate", DateTime.Today);
                     custom.Set("gd:Company", XmpArray.From(new [] { "Aspose", "GroupDocs" }, XmpArrayType.Ordered));
 

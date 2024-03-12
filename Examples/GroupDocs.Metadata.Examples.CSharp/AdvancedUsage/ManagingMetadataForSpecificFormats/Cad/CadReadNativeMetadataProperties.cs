@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Cad
@@ -14,9 +14,10 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # CadReadNativeMetadataProperties : How to read metadata of a CAD drawing.\n");
             using (Metadata metadata = new Metadata(Constants.InputDxf))
             {
-                
                 var root = metadata.GetRootPackage<CadRootPackage>();
 
                 Console.WriteLine(root.CadPackage.AcadVersion);

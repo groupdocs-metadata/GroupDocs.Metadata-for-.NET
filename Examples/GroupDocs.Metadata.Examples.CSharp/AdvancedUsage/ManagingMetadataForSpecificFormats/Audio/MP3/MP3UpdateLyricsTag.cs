@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright> 
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3
 {
     using Formats.Audio;
+    using System;
 
     /// <summary>
     /// This example shows how to update the Lyrics tag in an MP3 file
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # MP3UpdateLyricsTag : How to update the Lyrics tag in an MP3 file.\n");
             using (Metadata metadata = new Metadata(Constants.MP3WithLyrics))
             {
                 var root = metadata.GetRootPackage<MP3RootPackage>();

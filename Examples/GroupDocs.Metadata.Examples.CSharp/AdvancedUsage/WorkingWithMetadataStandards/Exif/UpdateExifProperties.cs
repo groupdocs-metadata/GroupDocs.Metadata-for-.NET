@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Exif
 {
     using Standards.Exif;
+    using System;
 
     /// <summary>
     /// This code sample demonstrates how to update common EXIF properties.
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # UpdateExifProperties : How to update common EXIF properties.\n");
             using (Metadata metadata = new Metadata(Constants.InputJpeg))
             {
                 IExif root = metadata.GetRootPackage() as IExif;
@@ -24,7 +27,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                         root.ExifPackage = new ExifPackage();
                     }
 
-                    root.ExifPackage.Copyright = "Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.";
+                    root.ExifPackage.Copyright = "Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.";
                     root.ExifPackage.ImageDescription = "test image";
                     root.ExifPackage.Software = "GroupDocs.Metadata";
 

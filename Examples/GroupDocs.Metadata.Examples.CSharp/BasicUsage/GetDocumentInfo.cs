@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
@@ -14,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Basic Usage] # GetDocumentInfo : How to extract basic format information from a file.\n");
             // Constants.InputXlsx is an absolute or relative path to your document. Ex: @"C:\Docs\source.xlsx"
             using (Metadata metadata = new Metadata(Constants.InputXlsx))
             {

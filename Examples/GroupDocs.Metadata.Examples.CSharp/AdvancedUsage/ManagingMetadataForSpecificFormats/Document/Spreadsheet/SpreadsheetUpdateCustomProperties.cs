@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Spreadsheet
 {
     using Formats.Document;
+    using System;
 
     /// <summary>
     /// This code snippet demonstrates how to update custom metadata properties in a spreadsheet.
@@ -13,6 +14,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # SpreadsheetUpdateCustomProperties : How to update custom metadata properties in a spreadsheet.\n");
             using (Metadata metadata = new Metadata(Constants.InputXls))
             {
                 var root = metadata.GetRootPackage<SpreadsheetRootPackage>();

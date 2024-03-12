@@ -1,10 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 
 using System.Linq;
 using GroupDocs.Metadata.Common;
+using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
 using GroupDocs.Metadata.Tagging;
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -70,7 +71,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Quick Start
 
-            //SetLicenseFromFile.Run();
+            SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
             //SetMeteredLicense.Run();
 
@@ -319,6 +320,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             //FbxReadNativeMetadataProperties.Run();
             //StlReadNativeMetadataProperties.Run();
             //ThreeDSReadNativeMetadataProperties.Run();
+
+            //GisReadNativeMetadataProperties.Run();
 
             #endregion
 

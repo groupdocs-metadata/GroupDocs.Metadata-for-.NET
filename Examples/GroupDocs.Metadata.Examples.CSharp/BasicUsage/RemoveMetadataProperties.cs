@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
@@ -15,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Basic Usage] # RemoveMetadataProperties : How to remove specific metadata properties using various criteria.\n");
             // Constants.InputDocx is an absolute or relative path to your document. Ex: @"C:\Docs\source.docx"
             using (Metadata metadata = new Metadata(Constants.InputDocx))
             {

@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 using GroupDocs.Metadata.Formats.ThreeD.Dae;
@@ -15,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # DaeReadNativeMetadataProperties : How to get metadata from a Dae file.\n");
             using (Metadata metadata = new Metadata(Constants.InputDae))
             {
                 var root = metadata.GetRootPackage<DaeRootPackage>();

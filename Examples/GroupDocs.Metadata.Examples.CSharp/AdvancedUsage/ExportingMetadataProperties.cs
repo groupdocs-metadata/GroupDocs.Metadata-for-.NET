@@ -6,6 +6,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
 {
     using GroupDocs.Metadata.Common;
     using GroupDocs.Metadata.Export;
+    using System;
 
     /// <summary>
     /// This example demonstrates how to export metadata properties to an Excel workbook.
@@ -14,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExportingMetadataProperties : How to export metadata properties to an Excel workbook.\n");
             using (Metadata metadata = new Metadata(Constants.InputDoc))
             {
                 RootMetadataPackage root = metadata.GetRootPackage();

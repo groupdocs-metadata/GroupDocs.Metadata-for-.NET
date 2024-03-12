@@ -18,6 +18,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractingMetadata : How to extract metadata properties by various criteria regardless of the file format.\n");
             foreach (string file in Directory.GetFiles(Constants.InputPath))
             {
                 using (Metadata metadata = new Metadata(file))

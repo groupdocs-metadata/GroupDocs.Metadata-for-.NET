@@ -8,12 +8,14 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
     using Standards.Iptc;
 
     /// <summary>
-    /// This code sample shows hot to update basic IPTC metadata properties.
+    /// This code sample shows how to update basic IPTC metadata properties.
     /// </summary>
     public static class UpdateIptcProperties
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # UpdateIptcProperties : How to update basic IPTC metadata properties.\n");
             using (Metadata metadata = new Metadata(Constants.InputJpeg))
             {
                 IIptc root = metadata.GetRootPackage() as IIptc;

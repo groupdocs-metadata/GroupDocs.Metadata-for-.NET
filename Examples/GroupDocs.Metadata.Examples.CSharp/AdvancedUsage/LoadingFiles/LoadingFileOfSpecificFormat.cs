@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.LoadingFiles
@@ -17,6 +17,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.LoadingFiles
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # LoadingFileOfSpecificFormat : How to load a file of some particular format\n");
             // Explicitly specifying the format of a file to load you can spare some time on detecting the format
             var loadOptions = new LoadOptions(FileFormat.Spreadsheet);
 

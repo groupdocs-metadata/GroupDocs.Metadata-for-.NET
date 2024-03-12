@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -86,6 +86,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string InputDae = Path.Combine(InputPath, "input.dae");
         public static readonly string InputFbx = Path.Combine(InputPath, "input.fbx");
         public static readonly string InputStl = Path.Combine(InputPath, "input.stl");
+
+        public static readonly string InputKml = Path.Combine(InputPath, "input.kml");
 
 
         public static readonly string OutputDocx = Path.Combine(OutputPath, "output.docx");

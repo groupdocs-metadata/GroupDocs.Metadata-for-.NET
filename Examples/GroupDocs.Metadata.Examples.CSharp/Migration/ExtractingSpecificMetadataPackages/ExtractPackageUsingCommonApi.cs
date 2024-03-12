@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.Migration.ExtractingSpecificMetadataPackages
@@ -15,6 +15,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.Migration.ExtractingSpecificMetadat
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Migration] # ExtractPackageUsingCommonApi : How to extract Dublin Core metadata regardless of the file format.\n");
             using (Metadata metadata = new Metadata(Constants.InputDocx))
             {
                 var property = metadata.FindProperties(p => p.Value.RawValue is DublinCorePackage).FirstOrDefault();
