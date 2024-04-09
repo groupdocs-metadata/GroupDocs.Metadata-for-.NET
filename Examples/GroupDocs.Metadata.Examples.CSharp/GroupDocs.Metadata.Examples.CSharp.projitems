@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingPropertyValues\ExtractUsingType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\FindMetadataPropertiesByGroupTag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GettingKnownPropertyDescriptors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ImportMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromLocalDisk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadingFileOfSpecificFormat.cs" />
@@ -241,6 +242,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\panasonic_raw.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\pdf.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sony_raw.JPG">

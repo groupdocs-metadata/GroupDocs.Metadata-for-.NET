@@ -113,8 +113,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string OutputTorrent = Path.Combine(OutputPath, "output.torrent");
         public static readonly string OutputCsv = Path.Combine(OutputPath, "output.csv");
         public static readonly string OutputEpub = Path.Combine(OutputPath, "output.epub");
-        public static readonly string OutputDxf = Path.Combine(InputPath, "output.dxf");
+        public static readonly string OutputDxf = Path.Combine(OutputPath, "output.dxf");
         public static readonly string OutputXml = Path.Combine(OutputPath, "output.xml");
+
+        public static readonly string ImportPdf = Path.Combine(InputPath, "pdf.json");
     }
 }
 
