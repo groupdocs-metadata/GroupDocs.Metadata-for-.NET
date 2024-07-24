@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\AddingMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\CopyToMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExportingMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractingPropertyValues\ExtractUsingAcceptor.cs" />
@@ -264,6 +265,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\copy.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\exif.psd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

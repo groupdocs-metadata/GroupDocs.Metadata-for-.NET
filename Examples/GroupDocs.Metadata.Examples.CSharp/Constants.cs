@@ -28,6 +28,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string InputVsdx = Path.Combine(InputPath, "input.vsdx");
         public static readonly string InputVdx = Path.Combine(InputPath, "input.vdx");
         public static readonly string InputPdf = Path.Combine(InputPath, "input.pdf");
+        public static readonly string CopyPdf = Path.Combine(InputPath, "copy.pdf");
         public static readonly string InputOne = Path.Combine(InputPath, "input.one");
         public static readonly string InputDoc = Path.Combine(InputPath, "input.doc");
         public static readonly string InputPpt = Path.Combine(InputPath, "input.ppt");
