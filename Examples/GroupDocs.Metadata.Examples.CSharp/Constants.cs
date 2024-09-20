@@ -111,6 +111,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string OutputMp3 = Path.Combine(OutputPath, "output.mp3");
         public static readonly string OutputZip = Path.Combine(OutputPath, "output.zip");
         public static readonly string OutputEml = Path.Combine(OutputPath, "output.eml");
+        public static readonly string OutputMsg = Path.Combine(OutputPath, "output.msg");
         public static readonly string OutputTorrent = Path.Combine(OutputPath, "output.torrent");
         public static readonly string OutputCsv = Path.Combine(OutputPath, "output.csv");
         public static readonly string OutputEpub = Path.Combine(OutputPath, "output.epub");

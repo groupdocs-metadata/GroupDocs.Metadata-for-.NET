@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadingFileOfSpecificFormat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadPasswordProtectedDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\MsgUpdateEmailFields.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Gis\GisReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\ThreeD\FbxReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\ThreeD\StlReadNativeMetadataProperties.cs" />

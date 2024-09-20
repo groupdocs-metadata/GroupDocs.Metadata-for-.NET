@@ -2,10 +2,7 @@
 //   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using System.Linq;
-using GroupDocs.Metadata.Common;
 using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
-using GroupDocs.Metadata.Tagging;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -67,6 +64,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Console.WriteLine("Open RunExamples.cs.");
             Console.WriteLine("In Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
+
+            
+
             #region Quick Start
 
             SetLicenseFromFile.Run();
@@ -77,12 +77,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Basic Usage
 
-            //GetDocumentInfo.Run();
-            //FindMetadataProperties.Run();
-            //RemoveMetadataProperties.Run();
-            //SetMetadataProperties.Run();
-            //CleanMetadata.Run();
-            //GenerateFilePreview.Run();
+            GetDocumentInfo.Run();
+            FindMetadataProperties.Run();
+            RemoveMetadataProperties.Run();
+            SetMetadataProperties.Run();
+            CleanMetadata.Run();
+            GenerateFilePreview.Run();
 
             #endregion
 
@@ -90,38 +90,40 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Extracting Property Values
 
-            //ExtractUsingType.Run();
-            //ExtractUsingAcceptor.Run();
+            ExtractUsingType.Run();
+            ExtractUsingAcceptor.Run();
 
             #endregion
 
             #region Loading Files
 
-            //LoadFromLocalDisk.Run();
-            //LoadFromStream.Run();
-            //LoadingFileOfSpecificFormat.Run();
-            //LoadPasswordProtectedDocument.Run();
+            LoadFromLocalDisk.Run();
+            LoadFromStream.Run();
+            LoadingFileOfSpecificFormat.Run();
+            LoadPasswordProtectedDocument.Run();
 
             #endregion
 
             #region Saving Files
 
-            //SaveFileToOriginalSource.Run();
-            //SaveFileToSpecifiedLocation.Run();
-            //SaveFileToSpecifiedStream.Run();
+            SaveFileToOriginalSource.Run();
+            SaveFileToSpecifiedLocation.Run();
+            SaveFileToSpecifiedStream.Run();
 
             #endregion
 
-            //ExtractingMetadata.Run();
-            //UpdatingMetadata.Run();
-            //RemovingMetadata.Run();
-            //AddingMetadata.Run();
-            //SettingMetadata.Run();
-            //TraverseWholeMetadataTree.Run();
-            //GettingKnownPropertyDescriptors.Run();
-            //ExportingMetadataProperties.Run();
-            //WorkingWithInterpretedValues.Run();
-            //FindMetadataPropertiesByGroupTag.Run();
+            ExtractingMetadata.Run();
+            UpdatingMetadata.Run();
+            RemovingMetadata.Run();
+            AddingMetadata.Run();
+            SettingMetadata.Run();
+            TraverseWholeMetadataTree.Run();
+            GettingKnownPropertyDescriptors.Run();
+            ExportingMetadataProperties.Run();
+            WorkingWithInterpretedValues.Run();
+            FindMetadataPropertiesByGroupTag.Run();
+            ImportMetadata.Run();
+            CopyToMetadata.Run();
 
             #region Managing metadata for specific formats
 
@@ -129,81 +131,81 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region WordProcessing
 
-            //WordProcessingReadBuiltInProperties.Run();
-            //WordProcessingUpdateBuiltInProperties.Run();
-            //WordProcessingReadCustomProperties.Run();
-            //WordProcessingUpdateCustomProperties.Run();
-            //WordProcessingReadInspectionProperties.Run();
-            //WordProcessingUpdateInspectionProperties.Run();
-            //WordProcessingReadDublinCoreProperties.Run();
-            //WordProcessingReadDocumentStatistics.Run();
-            //WordProcessingUpdateDocumentStatistics.Run();
-            //WordProcessingReadFileFormatProperties.Run();
+            WordProcessingReadBuiltInProperties.Run();
+            WordProcessingUpdateBuiltInProperties.Run();
+            WordProcessingReadCustomProperties.Run();
+            WordProcessingUpdateCustomProperties.Run();
+            WordProcessingReadInspectionProperties.Run();
+            WordProcessingUpdateInspectionProperties.Run();
+            WordProcessingReadDublinCoreProperties.Run();
+            WordProcessingReadDocumentStatistics.Run();
+            WordProcessingUpdateDocumentStatistics.Run();
+            WordProcessingReadFileFormatProperties.Run();
 
             #endregion
 
             #region Spreadsheet
 
-            //SpreadsheetReadBuiltInProperties.Run();
-            //SpreadsheetReadCustomProperties.Run();
-            //SpreadsheetReadFileFormatProperties.Run();
-            //SpreadsheetReadInspectionProperties.Run();
-            //SpreadsheetUpdateBuiltInProperties.Run();
-            //SpreadsheetUpdateCustomProperties.Run();
-            //SpreadsheetUpdateInspectionProperties.Run();
+            SpreadsheetReadBuiltInProperties.Run();
+            SpreadsheetReadCustomProperties.Run();
+            SpreadsheetReadFileFormatProperties.Run();
+            SpreadsheetReadInspectionProperties.Run();
+            SpreadsheetUpdateBuiltInProperties.Run();
+            SpreadsheetUpdateCustomProperties.Run();
+            SpreadsheetUpdateInspectionProperties.Run();
 
             #endregion
 
             #region Presentation
 
-            //PresentationReadBuiltInProperties.Run();
-            //PresentationReadCustomProperties.Run();
-            //PresentationReadDocumentStatistics.Run();
-            //PresentationReadFileFormatProperties.Run();
-            //PresentationReadInspectionProperties.Run();
-            //PresentationUpdateBuiltInProperties.Run();
-            //PresentationUpdateCustomProperties.Run();
-            //PresentationUpdateInspectionProperties.Run();
+            PresentationReadBuiltInProperties.Run();
+            PresentationReadCustomProperties.Run();
+            PresentationReadDocumentStatistics.Run();
+            PresentationReadFileFormatProperties.Run();
+            PresentationReadInspectionProperties.Run();
+            PresentationUpdateBuiltInProperties.Run();
+            PresentationUpdateCustomProperties.Run();
+            PresentationUpdateInspectionProperties.Run();
 
             #endregion
 
             #region Pdf
 
-            //PdfReadBuiltInProperties.Run();
-            //PdfReadCustomProperties.Run();
-            //PdfReadDocumentStatistics.Run();
-            //PdfReadFileFormatProperties.Run();
-            //PdfReadInspectionProperties.Run();
-            //PdfUpdateBuiltInProperties.Run();
-            //PdfUpdateCustomProperties.Run();
-            //PdfUpdateInspectionProperties.Run();
+            PdfReadBuiltInProperties.Run();
+            PdfReadCustomProperties.Run();
+            PdfReadDocumentStatistics.Run();
+            PdfReadFileFormatProperties.Run();
+            PdfReadInspectionProperties.Run();
+            PdfUpdateBuiltInProperties.Run();
+            PdfUpdateCustomProperties.Run();
+            PdfUpdateInspectionProperties.Run();
 
             #endregion
 
             #region Diagram
 
-            //DiagramReadBuiltInProperties.Run();
-            //DiagramReadCustomProperties.Run();
-            //DiagramReadDocumentStatistics.Run();
-            //DiagramReadFileFormatProperties.Run();
-            //DiagramUpdateBuiltInProperties.Run();
-            //DiagramUpdateCustomProperties.Run();
+            DiagramReadBuiltInProperties.Run();
+            DiagramReadCustomProperties.Run();
+            DiagramReadDocumentStatistics.Run();
+            DiagramReadFileFormatProperties.Run();
+            DiagramUpdateBuiltInProperties.Run();
+            DiagramUpdateCustomProperties.Run();
 
             #endregion
 
             #region Note
 
-            //NoteReadInspectionProperties.Run();
-            //NoteReadDocumentStatistics.Run();
+            NoteReadInspectionProperties.Run();
+            NoteReadDocumentStatistics.Run();
 
             #endregion
 
             #region ProjectManagement
 
-            //ProjectManagementReadBuiltInProperties.Run();
-            //ProjectManagementReadCustomProperties.Run();
-            //ProjectManagementUpdateBuiltInProperties.Run();
-            //ProjectManagementUpdateCustomProperties.Run();
+            ProjectManagementReadBuiltInProperties.Run();
+            ProjectManagementReadCustomProperties.Run();
+            ProjectManagementUpdateBuiltInProperties.Run();
+            ProjectManagementUpdateCustomProperties.Run();
 
             #endregion
 
@@ -211,115 +213,116 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Image
 
-            //ImageReadFileFormatProperties.Run();
+            ImageReadFileFormatProperties.Run();
 
-            //BmpReadHeaderProperties.Run();
+            BmpReadHeaderProperties.Run();
 
-            //DicomReadNativeMetadataProperties.Run();
+            DicomReadNativeMetadataProperties.Run();
 
-            //GifReadFileFormatProperties.Run();
+            GifReadFileFormatProperties.Run();
 
-            //JpegReadImageResourceBlocks.Run();
-            //JpegDetectBarcodes.Run();
-            //JpegRemoveImageResourceBlocks.Run();
+            JpegReadImageResourceBlocks.Run();
+            JpegDetectBarcodes.Run();
+            JpegRemoveImageResourceBlocks.Run();
 
-            //MakerNoteReadAllTags.Run();
-            //MakerNoteReadCanonProperties.Run();
-            //MakerNoteReadNikonProperties.Run();
-            //MakerNoteReadPanasonicProperties.Run();
-            //MakerNoteReadSonyProperties.Run();
+            MakerNoteReadAllTags.Run();
+            MakerNoteReadCanonProperties.Run();
+            MakerNoteReadNikonProperties.Run();
+            MakerNoteReadPanasonicProperties.Run();
+            MakerNoteReadSonyProperties.Run();
 
-            //Jpeg2000ReadComments.Run();
+            Jpeg2000ReadComments.Run();
 
-            //PngReadTextChunks.Run();
+            PngReadTextChunks.Run();
 
-            //PsdReadNativeMetadataProperties.Run();
-            //PsdReadImageResourceBlocks.Run();
-            //PsdReadBasicExifProperties.Run();
+            PsdReadNativeMetadataProperties.Run();
+            PsdReadImageResourceBlocks.Run();
+            PsdReadBasicExifProperties.Run();
 
-            //TiffReadBasicIptcProperties.Run();
+            TiffReadBasicIptcProperties.Run();
 
-            //Cr2ReadFileFormatProperties.Run();
+            Cr2ReadFileFormatProperties.Run();
 
-            //DngReadFileFormatProperties.Run();
+            DngReadFileFormatProperties.Run();
 
             #endregion
 
             #region Video
 
-            //AsfReadNativeMetadataProperties.Run();
+            AsfReadNativeMetadataProperties.Run();
 
-            //AviReadHeaderProperties.Run();
-            //AviReadInfoMetadata.Run();
+            AviReadHeaderProperties.Run();
+            AviReadInfoMetadata.Run();
 
-            //FlvReadHeaderProperties.Run();
+            FlvReadHeaderProperties.Run();
 
-            //MatroskaReadNativeMetadataProperties.Run();
-            //MatroskaReadSubtitles.Run();
+            MatroskaReadNativeMetadataProperties.Run();
+            MatroskaReadSubtitles.Run();
 
-            //MovReadQuickTimeAtoms.Run();
+            MovReadQuickTimeAtoms.Run();
 
             #endregion
 
             #region Audio
 
-            //MP3ReadID3V1Tag.Run();
-            //MP3UpdateID3V1Tag.Run();
-            //MP3RemoveID3V1Tag.Run();
-            //MP3ReadID3V2Tag.Run();
-            //MP3UpdateID3V2Tag.Run();
-            //MP3RemoveID3V2Tag.Run();
-            //MP3ReadLyricsTag.Run();
-            //MP3UpdateLyricsTag.Run();
-            //MP3RemoveLyricsTag.Run();
-            //MP3ReadApeTag.Run();
-            //MP3RemoveApeTag.Run();
-            //MP3ReadMpegAudioMetadata.Run();
+            MP3ReadID3V1Tag.Run();
+            MP3UpdateID3V1Tag.Run();
+            MP3RemoveID3V1Tag.Run();
+            MP3ReadID3V2Tag.Run();
+            MP3UpdateID3V2Tag.Run();
+            MP3RemoveID3V2Tag.Run();
+            MP3ReadLyricsTag.Run();
+            MP3UpdateLyricsTag.Run();
+            MP3RemoveLyricsTag.Run();
+            MP3ReadApeTag.Run();
+            MP3RemoveApeTag.Run();
+            MP3ReadMpegAudioMetadata.Run();
 
-            //WavReadNativeMetadataProperties.Run();
-            //WavReadInfoMetadata.Run();
+            WavReadNativeMetadataProperties.Run();
+            WavReadInfoMetadata.Run();
 
             #endregion
 
             #region Other formats
 
-            //ZipReadNativeMetadataProperties.Run();
-            //ZipUpdateArchiveComment.Run();
-            //ZipRemoveArchiveComment.Run();
+            ZipReadNativeMetadataProperties.Run();
+            ZipUpdateArchiveComment.Run();
+            ZipRemoveArchiveComment.Run();
 
-            //VCardReadCardProperties.Run();
-            //VCardReadCardPropertiesWithParameters.Run();
-            //VCardFilterCardProperties.Run();
+            VCardReadCardProperties.Run();
+            VCardReadCardPropertiesWithParameters.Run();
+            VCardFilterCardProperties.Run();
 
-            //CadReadNativeMetadataProperties.Run();
-            //DxfUpdateNativeMetadataProperties.Run();
+            CadReadNativeMetadataProperties.Run();
+            DxfUpdateNativeMetadataProperties.Run();
 
-            //EpubReadNativeMetadataProperties.Run();
-            //EpubUpdateNativeMetadataProperties.Run();
-            //EpubReadDublinCoreProperties.Run();
-            //EpubUpdateDublinCoreProperties.Run();
+            EpubReadNativeMetadataProperties.Run();
+            EpubUpdateNativeMetadataProperties.Run();
+            EpubReadDublinCoreProperties.Run();
+            EpubUpdateDublinCoreProperties.Run();
 
-            //EmlReadNativeMetadataProperties.Run();
-            //MsgReadNativeMetadataProperties.Run();
-            //EmailRemoveAttachments.Run();
-            //EmailUpdateEmailFields.Run();
+            EmlReadNativeMetadataProperties.Run();
+            MsgReadNativeMetadataProperties.Run();
+            EmailRemoveAttachments.Run();
+            EmailUpdateEmailFields.Run();
+            MsgUpdateEmailFields.Run();
 
-            //OpenTypeReadNativeMetadataProperties.Run();
-            //OpenTypeReadDigitalSignatureProperties.Run();
+            OpenTypeReadNativeMetadataProperties.Run();
+            OpenTypeReadDigitalSignatureProperties.Run();
 
-            //TorrentReadNativeMetadataProperties.Run();
-            //TorrentUpdateNativeMetadataProperties.Run();
+            TorrentReadNativeMetadataProperties.Run();
+            TorrentUpdateNativeMetadataProperties.Run();
 
-            //SevenZipReadNativeMetadataProperties.Run();
-            //RarReadNativeMetadataProperties.Run();
-            //TarReadNativeMetadataProperties.Run();
+            SevenZipReadNativeMetadataProperties.Run();
+            RarReadNativeMetadataProperties.Run();
+            TarReadNativeMetadataProperties.Run();
 
-            //DaeReadNativeMetadataProperties.Run();
-            //FbxReadNativeMetadataProperties.Run();
-            //StlReadNativeMetadataProperties.Run();
-            //ThreeDSReadNativeMetadataProperties.Run();
+            DaeReadNativeMetadataProperties.Run();
+            FbxReadNativeMetadataProperties.Run();
+            StlReadNativeMetadataProperties.Run();
+            ThreeDSReadNativeMetadataProperties.Run();
 
-            //GisReadNativeMetadataProperties.Run();
+            GisReadNativeMetadataProperties.Run();
 
             #endregion
 
@@ -329,32 +332,32 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Xmp
 
-            //ReadXmpProperties.Run();
-            //UpdateXmpProperties.Run();
-            //AddCustomXmpPackage.Run();
-            //RemoveXmpMetadata.Run();
+            ReadXmpProperties.Run();
+            UpdateXmpProperties.Run();
+            AddCustomXmpPackage.Run();
+            RemoveXmpMetadata.Run();
 
             #endregion
 
             #region Exif
 
-            //ReadBasicExifProperties.Run();
-            //ReadExifTags.Run();
-            //UpdateExifProperties.Run();
-            //SetCustomExifTag.Run();
-            //RemoveExifMetadata.Run();
-            //ReadSpecificExifTag.Run();
+            ReadBasicExifProperties.Run();
+            ReadExifTags.Run();
+            UpdateExifProperties.Run();
+            SetCustomExifTag.Run();
+            RemoveExifMetadata.Run();
+            ReadSpecificExifTag.Run();
 
             #endregion
 
             #region Iptc
 
-            //ReadBasicIptcProperties.Run();
-            //ReadIptcDataSets.Run();
-            //UpdateIptcProperties.Run();
-            //SetCustomIptcDataSet.Run();
-            //AddRepeatableIptcDataSet.Run();
-            //RemoveIptcMetadata.Run();
+            ReadBasicIptcProperties.Run();
+            ReadIptcDataSets.Run();
+            UpdateIptcProperties.Run();
+            SetCustomIptcDataSet.Run();
+            AddRepeatableIptcDataSet.Run();
+            RemoveIptcMetadata.Run();
 
             #endregion
 
@@ -364,17 +367,17 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Migration from old versions
 
-            //FindPropertiesByRegex.Run();
-            //UpdatePropertiesByRegex.Run();
+            FindPropertiesByRegex.Run();
+            UpdatePropertiesByRegex.Run();
 
-            //GetIntersectionOfExifProperties.Run();
-            //GetDifferenceOfDocumentProperties.Run();
+            GetIntersectionOfExifProperties.Run();
+            GetDifferenceOfDocumentProperties.Run();
 
-            //ExportPropertiesToCsv.Run();
+            ExportPropertiesToCsv.Run();
 
-            //UpdatePropertyValue.Run();
+            UpdatePropertyValue.Run();
 
-            //ExtractPackageUsingCommonApi.Run();
+            ExtractPackageUsingCommonApi.Run();
 
             #endregion
 
