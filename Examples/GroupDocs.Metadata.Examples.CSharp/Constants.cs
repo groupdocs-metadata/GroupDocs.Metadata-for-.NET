@@ -54,6 +54,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string InputVcf = Path.Combine(InputPath, "input.vcf");
         public static readonly string InputDxf = Path.Combine(InputPath, "input.dxf");
         public static readonly string InputEpub = Path.Combine(InputPath, "input.epub");
+        public static readonly string InputFb2 = Path.Combine(InputPath, "input.fb2");
         public static readonly string InputEml = Path.Combine(InputPath, "input.eml");
         public static readonly string InputMsg = Path.Combine(InputPath, "input.msg");
         public static readonly string InputTtf = Path.Combine(InputPath, "input.ttf");
