@@ -74,8 +74,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #endregion
 
-            GroupDocs.Metadata.Common.FileType.FromExtension(".png");
-
             #region Basic Usage
 
             GetDocumentInfo.Run();
@@ -301,6 +299,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             EpubUpdateNativeMetadataProperties.Run();
             EpubReadDublinCoreProperties.Run();
             EpubUpdateDublinCoreProperties.Run();
+
+            Fb2ReadProperties.Run();
 
             EmlReadNativeMetadataProperties.Run();
             MsgReadNativeMetadataProperties.Run();

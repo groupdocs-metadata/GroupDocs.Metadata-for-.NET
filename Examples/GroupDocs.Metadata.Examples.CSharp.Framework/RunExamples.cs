@@ -301,6 +301,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             EpubReadDublinCoreProperties.Run();
             EpubUpdateDublinCoreProperties.Run();
 
+            Fb2ReadProperties.Run();
+
             EmlReadNativeMetadataProperties.Run();
             MsgReadNativeMetadataProperties.Run();
             EmailRemoveAttachments.Run();
