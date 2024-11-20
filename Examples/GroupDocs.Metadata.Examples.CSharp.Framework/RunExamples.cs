@@ -302,6 +302,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             EpubUpdateDublinCoreProperties.Run();
 
             Fb2ReadProperties.Run();
+            MobiReadProperties.Run();
 
             EmlReadNativeMetadataProperties.Run();
             MsgReadNativeMetadataProperties.Run();
