@@ -9,6 +9,7 @@
     <Import_RootNamespace>GroupDocs.Metadata.Examples.CSharp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\LoadingFiles\LoadFromUri.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\AddingMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\CopyToMetadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExportingMetadataProperties.cs" />

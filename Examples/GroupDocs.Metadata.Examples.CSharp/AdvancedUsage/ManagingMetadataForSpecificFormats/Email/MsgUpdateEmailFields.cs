@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//  Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//  Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Email
@@ -18,7 +18,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("[Example Advanced Usage] # MsgUpdateEmailFields : How to update fields of an email message.\n");
 
-            var sender = "sender@sender.com";
+            var senderEmail = "sender@sender.com";
             var deliveryTime = DateTime.Now;
             var headerName = "X-Custom-Header";
             var headerValue = "Custom Value";
@@ -29,13 +29,22 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             var headerSIDName = "X-SID-Result";
             var headerSIDValue = "PASS";
 
+            var body = "text";
+            var senderName = "sender";
+
+            var categories = new string[] {"test1", "test2"};
+
             using (Metadata metadata = new Metadata(Constants.InputMsg))
             {
                 var root = metadata.GetRootPackage<MsgRootPackage>();
 
-                Console.WriteLine("Sender before: {0}", root.EmailPackage.Sender);
+                Console.WriteLine("SenderEmailAddress before: {0}", root.EmailPackage.SenderEmailAddress);
 
-                root.EmailPackage.Sender = sender;
+                root.EmailPackage.SenderEmailAddress = senderEmail;
+
+                Console.WriteLine("SenderName before: {0}", root.EmailPackage.SenderName);
+
+                root.EmailPackage.SenderName = senderName;
 
                 Console.WriteLine("Delivery Time before: {0}", root.EmailPackage.DeliveryTime);
 
@@ -46,9 +55,21 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                     Console.WriteLine("Header before: name - {0}, value = {1}", header.Name, header.InterpretedValue.ToString());
                 }
 
+                if (root.EmailPackage.Categories != null) 
+                    foreach (var category in root.EmailPackage.Categories)
+                    {
+                        Console.WriteLine("Category before: {0}", category);
+                    }
+
+                root.EmailPackage.Categories = categories;
+
                 root.EmailPackage.Headers.Set(headerName, new PropertyValue(headerValue));
                 root.EmailPackage.Headers.Set(headerNameChange, new PropertyValue(headerValueChange));
                 root.EmailPackage.Headers.Set(headerSIDName, new PropertyValue(headerSIDValue));
+
+                Console.WriteLine("Body before: {0}", root.EmailPackage.Body);
+
+                root.EmailPackage.Body = body;
 
                 metadata.Save(Constants.OutputMsg);
             }
@@ -57,14 +78,24 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<MsgRootPackage>();
 
-                Console.WriteLine("Sender after: {0}", root.EmailPackage.Sender);
+                Console.WriteLine("SenderEmailAddress after: {0}", root.EmailPackage.SenderEmailAddress);
+
+                Console.WriteLine("SenderName after: {0}", root.EmailPackage.SenderName);
 
                 Console.WriteLine("Delivery Time after: {0}", root.EmailPackage.DeliveryTime);
+
+                Console.WriteLine("Body after: {0}", root.EmailPackage.Body);
 
                 foreach (var header in root.EmailPackage.Headers)
                 {
                     Console.WriteLine("Header after: name - {0}, value = {1}", header.Name, header.Value.RawValue.ToString());
                 }
+
+                if (root.EmailPackage.Categories != null) 
+                    foreach (var category in root.EmailPackage.Categories)
+                    {
+                        Console.WriteLine("Category after: {0}", category);
+                    }
             }
         }
     }

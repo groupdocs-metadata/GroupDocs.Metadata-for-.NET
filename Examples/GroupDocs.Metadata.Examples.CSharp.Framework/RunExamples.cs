@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
 using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
@@ -101,6 +101,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             LoadFromStream.Run();
             LoadingFileOfSpecificFormat.Run();
             LoadPasswordProtectedDocument.Run();
+            LoadFromUri.Run();
 
             #endregion
 

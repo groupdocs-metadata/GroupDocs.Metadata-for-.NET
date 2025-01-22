@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//  Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//  Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Email
@@ -20,7 +20,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<MsgRootPackage>();
 
-                Console.WriteLine(root.EmailPackage.Sender);
+                Console.WriteLine(root.EmailPackage.SenderEmailAddress);
                 Console.WriteLine(root.EmailPackage.Subject);
                 foreach (string recipient in root.EmailPackage.Recipients)
                 {
