@@ -7,6 +7,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
     using Formats.Email;
     using GroupDocs.Metadata.Common;
     using System;
+    using System.IO;
 
     /// <summary>
     /// This code sample shows how to update fields of an email message.
@@ -33,6 +34,12 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             var senderName = "sender";
 
             var categories = new string[] {"test1", "test2"};
+
+            var name = "tree.jpg";
+            var attachmentPath = Constants.AttachmentJpg;
+            byte[] bytes;
+
+            
 
             using (Metadata metadata = new Metadata(Constants.InputMsg))
             {
@@ -61,6 +68,11 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                         Console.WriteLine("Category before: {0}", category);
                     }
 
+                foreach (var att in root.EmailPackage.Attachments)
+                {
+                    Console.WriteLine("Attachment before: name - {0}, length = {1}", att.Name, att.Content.Length);
+                }
+
                 root.EmailPackage.Categories = categories;
 
                 root.EmailPackage.Headers.Set(headerName, new PropertyValue(headerValue));
@@ -70,6 +82,15 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                 Console.WriteLine("Body before: {0}", root.EmailPackage.Body);
 
                 root.EmailPackage.Body = body;
+
+                using (FileStream fsSource = new FileStream(attachmentPath,
+                           FileMode.Open, FileAccess.Read))
+                {
+                    bytes = new byte[fsSource.Length];
+                    var attachments = new MsgAttachmentPackage[1];
+                    attachments[0] = new MsgAttachmentPackage(name, bytes);
+                    root.EmailPackage.Attachments = attachments;
+                }
 
                 metadata.Save(Constants.OutputMsg);
             }
@@ -96,6 +117,11 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                     {
                         Console.WriteLine("Category after: {0}", category);
                     }
+
+                foreach (var att in root.EmailPackage.Attachments)
+                {
+                    Console.WriteLine("Attachment after: name - {0}, length = {1}", att.Name, att.Content.Length);
+                }
             }
         }
     }

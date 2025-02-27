@@ -27,9 +27,9 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                     Console.WriteLine(recipient);
                 }
 
-                foreach (var attachedFileName in root.EmailPackage.AttachedFileNames)
+                foreach (var attachment in root.EmailPackage.Attachments)
                 {
-                    Console.WriteLine(attachedFileName);
+                    Console.WriteLine(attachment.Name);
                 }
 
                 foreach (var header in root.EmailPackage.Headers)

@@ -121,6 +121,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string OutputXml = Path.Combine(OutputPath, "output.xml");
 
         public static readonly string ImportPdf = Path.Combine(InputPath, "pdf.json");
+
+        public static readonly string AttachmentJpg = Path.Combine(InputPath, "attachment.jpg");
     }
 }
 
