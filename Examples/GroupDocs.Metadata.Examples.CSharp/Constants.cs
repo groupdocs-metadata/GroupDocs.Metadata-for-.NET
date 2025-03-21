@@ -92,6 +92,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
         public static readonly string InputKml = Path.Combine(InputPath, "input.kml");
 
+        public static readonly string InputOgg = Path.Combine(InputPath, "input.ogg");
+
 
         public static readonly string OutputDocx = Path.Combine(OutputPath, "output.docx");
         public static readonly string OutputPptx = Path.Combine(OutputPath, "output.pptx");

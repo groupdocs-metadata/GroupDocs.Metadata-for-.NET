@@ -40,6 +40,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                 Console.WriteLine(root.EmailPackage.Body);
                 Console.WriteLine(root.EmailPackage.DeliveryTime);
 
+                Console.WriteLine(root.EmailPackage.SenderSmtpAddress);
+
                 // ...
             }
         }

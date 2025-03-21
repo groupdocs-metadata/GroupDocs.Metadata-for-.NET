@@ -281,6 +281,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             WavReadNativeMetadataProperties.Run();
             WavReadInfoMetadata.Run();
 
+            OggReadNativeMetadataProperties.Run();
+
             #endregion
 
             #region Other formats
