@@ -4,6 +4,7 @@
 
 
 using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
+using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Svg;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -245,6 +246,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             DngReadFileFormatProperties.Run();
 
+            SvgUpdateXmpProperties.Run();
+
             #endregion
 
             #region Video
@@ -326,6 +329,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             FbxReadNativeMetadataProperties.Run();
             StlReadNativeMetadataProperties.Run();
             ThreeDSReadNativeMetadataProperties.Run();
+            GltfReadNativeMetadataProperties.Run();
 
             GisReadNativeMetadataProperties.Run();
 

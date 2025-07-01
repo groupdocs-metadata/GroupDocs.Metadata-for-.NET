@@ -2,6 +2,8 @@
 //  Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
+using GroupDocs.Metadata.Formats.Email.Msg;
+
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Email
 {
     using Formats.Email;
@@ -39,11 +41,15 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             var attachmentPath = Constants.AttachmentJpg;
             byte[] bytes;
 
-            
+            var senderSmtpEmail = "sender1@sender.com";
 
             using (Metadata metadata = new Metadata(Constants.InputMsg))
             {
                 var root = metadata.GetRootPackage<MsgRootPackage>();
+
+                Console.WriteLine("PR_DISPLAY_NAME before: {0}", root.GetString(MsgKnownProperties.PR_DISPLAY_NAME));
+
+                Console.WriteLine("PR_DISPLAY_CC before: {0}", root.GetString(MsgKnownProperties.PR_DISPLAY_CC));
 
                 Console.WriteLine("SenderEmailAddress before: {0}", root.EmailPackage.SenderEmailAddress);
 
@@ -91,6 +97,10 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                     attachments[0] = new MsgAttachmentPackage(name, bytes);
                     root.EmailPackage.Attachments = attachments;
                 }
+                
+                Console.WriteLine("SenderSmtpAddress before: {0}", root.EmailPackage.SenderSmtpAddress);
+
+                root.EmailPackage.SenderSmtpAddress = senderSmtpEmail;
 
                 metadata.Save(Constants.OutputMsg);
             }
@@ -99,6 +109,10 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
             {
                 var root = metadata.GetRootPackage<MsgRootPackage>();
 
+                Console.WriteLine("PR_DISPLAY_NAME after: {0}", root.GetString(MsgKnownProperties.PR_DISPLAY_NAME));
+
+                Console.WriteLine("PR_DISPLAY_CC after: {0}", root.GetString(MsgKnownProperties.PR_DISPLAY_CC));
+
                 Console.WriteLine("SenderEmailAddress after: {0}", root.EmailPackage.SenderEmailAddress);
 
                 Console.WriteLine("SenderName after: {0}", root.EmailPackage.SenderName);
@@ -106,6 +120,8 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
                 Console.WriteLine("Delivery Time after: {0}", root.EmailPackage.DeliveryTime);
 
                 Console.WriteLine("Body after: {0}", root.EmailPackage.Body);
+
+                Console.WriteLine("SenderSmtpAddress after: {0}", root.EmailPackage.SenderSmtpAddress);
 
                 foreach (var header in root.EmailPackage.Headers)
                 {

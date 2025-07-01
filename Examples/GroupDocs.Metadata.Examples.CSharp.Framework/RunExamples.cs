@@ -2,7 +2,7 @@
 //   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
+
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -52,9 +52,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.ExtractingSpecificMetadataPackages;
     using Migration.UsingCustomReplaceHandler;
     using Migration.WorkingWithRegularExpressions;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.ThreeD;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.ThreeD;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Svg;
 
 
     internal class RunExamples
@@ -245,6 +247,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Cr2ReadFileFormatProperties.Run();
 
             DngReadFileFormatProperties.Run();
+
+            SvgUpdateXmpProperties.Run();
 
             #endregion
 

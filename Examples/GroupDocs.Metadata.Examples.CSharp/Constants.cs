@@ -84,11 +84,13 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string PanasonicJpeg = Path.Combine(InputPath, "panasonic_raw.jpg");
         public static readonly string SonyJpeg = Path.Combine(InputPath, "sony_raw.jpg");
         public static readonly string InputCr2 = Path.Combine(InputPath, "input.CR2");
+        public static readonly string InputSvg = Path.Combine(InputPath, "input.svg");
 
         public static readonly string Input3ds = Path.Combine(InputPath, "input.3ds");
         public static readonly string InputDae = Path.Combine(InputPath, "input.dae");
         public static readonly string InputFbx = Path.Combine(InputPath, "input.fbx");
         public static readonly string InputStl = Path.Combine(InputPath, "input.stl");
+        public static readonly string InputGltf = Path.Combine(InputPath, "input.gltf");
 
         public static readonly string InputKml = Path.Combine(InputPath, "input.kml");
 
@@ -121,6 +123,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string OutputEpub = Path.Combine(OutputPath, "output.epub");
         public static readonly string OutputDxf = Path.Combine(OutputPath, "output.dxf");
         public static readonly string OutputXml = Path.Combine(OutputPath, "output.xml");
+        public static readonly string OutputSvg = Path.Combine(OutputPath, "output.svg");
 
         public static readonly string ImportPdf = Path.Combine(InputPath, "pdf.json");
 

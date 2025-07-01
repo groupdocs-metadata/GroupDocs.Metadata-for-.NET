@@ -17,7 +17,20 @@ namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
             Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("[Example Basic Usage] # FindMetadataProperties : How to search for specific metadata properties using tags.\n");
             // Constants.InputPptx is an absolute or relative path to your document. Ex: @"C:\Docs\source.pptx"
-            using (Metadata metadata = new Metadata(Constants.InputPptx))
+
+            using (Metadata metadata = new Metadata(Constants.JpegWithExif))
+            {
+                // Fetch all the properties satisfying the predicate:
+                // property contains the name of the last document editor OR the date/time the document was last modified
+                var properties = metadata.FindProperties(p => p.Name != null);
+                foreach (var property in properties)
+                {
+                    Console.WriteLine("Property name: {0}, Property value: {1}", property.Name, property.InterpretedValue);
+                }
+            }
+
+
+            /*using (Metadata metadata = new Metadata(Constants.InputPptx))
             {
                 // Fetch all the properties satisfying the predicate:
                 // property contains the name of the last document editor OR the date/time the document was last modified
@@ -26,7 +39,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
                 {
                     Console.WriteLine("Property name: {0}, Property value: {1}", property.Name, property.Value);
                 }
-            }
+            }*/
         }
     }
 }
