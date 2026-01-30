@@ -3,6 +3,7 @@
 // </copyright>
 
 
+using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Avif;
 
 namespace GroupDocs.Metadata.Examples.CSharp
 {
@@ -250,6 +251,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             SvgUpdateXmpProperties.Run();
 
+            AvifReadProperties.Run();
+
             #endregion
 
             #region Video
@@ -331,6 +334,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             FbxReadNativeMetadataProperties.Run();
             StlReadNativeMetadataProperties.Run();
             ThreeDSReadNativeMetadataProperties.Run();
+            GltfReadNativeMetadataProperties.Run();
 
             GisReadNativeMetadataProperties.Run();
 

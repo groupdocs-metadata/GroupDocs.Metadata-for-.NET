@@ -4,6 +4,7 @@
 
 
 using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Gis;
+using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Avif;
 using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Svg;
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -247,6 +248,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
             DngReadFileFormatProperties.Run();
 
             SvgUpdateXmpProperties.Run();
+
+            AvifReadProperties.Run();
 
             #endregion
 

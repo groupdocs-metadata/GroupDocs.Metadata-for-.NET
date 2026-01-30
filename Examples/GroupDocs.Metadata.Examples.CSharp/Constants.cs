@@ -85,6 +85,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string SonyJpeg = Path.Combine(InputPath, "sony_raw.jpg");
         public static readonly string InputCr2 = Path.Combine(InputPath, "input.CR2");
         public static readonly string InputSvg = Path.Combine(InputPath, "input.svg");
+        public static readonly string InputAvif = Path.Combine(InputPath, "input.avif");
 
         public static readonly string Input3ds = Path.Combine(InputPath, "input.3ds");
         public static readonly string InputDae = Path.Combine(InputPath, "input.dae");

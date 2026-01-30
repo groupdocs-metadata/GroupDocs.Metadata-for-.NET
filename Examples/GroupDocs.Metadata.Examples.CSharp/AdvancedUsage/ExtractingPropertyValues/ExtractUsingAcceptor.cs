@@ -117,6 +117,11 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ExtractingPropertyVal
             {
                 Console.WriteLine("Property value array extracted: {0}", value?.Length ?? 0);
             }
+
+            protected override void Accept(object value)
+            {
+                Console.WriteLine("Guid value extracted: {0}", value);
+            }
         }
     }
 }
