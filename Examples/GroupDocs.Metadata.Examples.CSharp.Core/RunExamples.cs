@@ -181,6 +181,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             PdfUpdateBuiltInProperties.Run();
             PdfUpdateCustomProperties.Run();
             PdfUpdateInspectionProperties.Run();
+            PdfDetectivePdfA.Run();
 
             #endregion
 
