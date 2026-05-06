@@ -70,8 +70,6 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Quick Start
 
-            PdfDetectivePdfA.Run();
-            return;
             SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
             //SetMeteredLicense.Run();
