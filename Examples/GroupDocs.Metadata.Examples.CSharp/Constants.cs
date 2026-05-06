@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
 namespace GroupDocs.Metadata.Examples.CSharp
@@ -126,6 +126,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string OutputDxf = Path.Combine(OutputPath, "output.dxf");
         public static readonly string OutputXml = Path.Combine(OutputPath, "output.xml");
         public static readonly string OutputSvg = Path.Combine(OutputPath, "output.svg");
+        public static readonly string OutputWav = Path.Combine(OutputPath, "output.wav");
+        public static readonly string OutputOgg = Path.Combine(OutputPath, "output.ogg");
+        public static readonly string OutputAvi = Path.Combine(OutputPath, "output.avi");
+        public static readonly string OutputMov = Path.Combine(OutputPath, "output.mov");
+        public static readonly string OutputFbx = Path.Combine(OutputPath, "output.fbx");
 
         public static readonly string ImportPdf = Path.Combine(InputPath, "pdf.json");
 

@@ -70,6 +70,8 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             #region Quick Start
 
+            PdfDetectivePdfA.Run();
+            return;
             SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
             //SetMeteredLicense.Run();
@@ -181,7 +183,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             PdfUpdateBuiltInProperties.Run();
             PdfUpdateCustomProperties.Run();
             PdfUpdateInspectionProperties.Run();
-            PdfDetectivePdfA.Run();
+           
 
             #endregion
 
@@ -237,12 +239,15 @@ namespace GroupDocs.Metadata.Examples.CSharp
             Jpeg2000ReadComments.Run();
 
             PngReadTextChunks.Run();
+            PngUpdateXmpProperties.Run();
 
             PsdReadNativeMetadataProperties.Run();
             PsdReadImageResourceBlocks.Run();
             PsdReadBasicExifProperties.Run();
 
             TiffReadBasicIptcProperties.Run();
+            TiffUpdateExifProperties.Run();
+            TiffUpdateIptcProperties.Run();
 
             Cr2ReadFileFormatProperties.Run();
 
@@ -267,6 +272,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
             MatroskaReadSubtitles.Run();
 
             MovReadQuickTimeAtoms.Run();
+            MovUpdateXmpProperties.Run();
 
             #endregion
 
@@ -286,9 +292,10 @@ namespace GroupDocs.Metadata.Examples.CSharp
             MP3ReadMpegAudioMetadata.Run();
 
             WavReadNativeMetadataProperties.Run();
-            WavReadInfoMetadata.Run();
+            WavReadInfoMetadata.Run();           
 
             OggReadNativeMetadataProperties.Run();
+            
 
             #endregion
 
@@ -331,6 +338,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
 
             DaeReadNativeMetadataProperties.Run();
             FbxReadNativeMetadataProperties.Run();
+            FbxUpdateNativeMetadataProperties.Run();
             StlReadNativeMetadataProperties.Run();
             ThreeDSReadNativeMetadataProperties.Run();
             GltfReadNativeMetadataProperties.Run();

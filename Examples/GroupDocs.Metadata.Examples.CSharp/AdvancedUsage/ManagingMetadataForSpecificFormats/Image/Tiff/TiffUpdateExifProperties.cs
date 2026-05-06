@@ -1,22 +1,22 @@
-﻿// <copyright company="Aspose Pty Ltd">
+// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
-namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataStandards.Exif
+namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Tiff
 {
-    using Standards.Exif;
     using System;
+    using Standards.Exif;
 
     /// <summary>
-    /// This code sample demonstrates how to update common EXIF properties.
+    /// This code sample demonstrates how to update EXIF metadata properties in a TIFF image.
     /// </summary>
-    public static class UpdateExifProperties
+    public static class TiffUpdateExifProperties
     {
         public static void Run()
         {
             Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("[Example Advanced Usage] # UpdateExifProperties : How to update common EXIF properties.\n");
-            using (Metadata metadata = new Metadata(Constants.InputJpeg))
+            Console.WriteLine("[Example Advanced Usage] # TiffUpdateExifProperties : How to update EXIF metadata properties in a TIFF image.\n");
+            using (Metadata metadata = new Metadata(Constants.TiffWithExif))
             {
                 IExif root = metadata.GetRootPackage() as IExif;
                 if (root != null)
@@ -28,8 +28,9 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
                     }
 
                     root.ExifPackage.Copyright = "Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.";
-                    root.ExifPackage.ImageDescription = "test image";
+                    root.ExifPackage.ImageDescription = "test TIFF image";
                     root.ExifPackage.Software = "GroupDocs.Metadata";
+                    root.ExifPackage.Artist = "GroupDocs";
 
                     // ...
 
@@ -39,7 +40,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.WorkingWithMetadataSt
 
                     // ...
 
-                    metadata.Save(Constants.OutputJpeg);
+                    metadata.Save(Constants.OutputTiff);
                 }
             }
         }
