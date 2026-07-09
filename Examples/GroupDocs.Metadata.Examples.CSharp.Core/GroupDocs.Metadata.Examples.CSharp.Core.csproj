@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net60;net80;net70;net90</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
   </PropertyGroup>
-  
-  <Import Project="..\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems" Label="Shared" />
-  
+
+	<Import Project="..\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems" Label="Shared" />
+	
+	<ItemGroup>
+	  <PackageReference Include="GroupDocs.Metadata" Version="26.6.0" />
+	</ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="GroupDocs.Metadata" Version="26.5.0" />
+    <ProjectReference Include="..\GroupDocs.Metadata.Examples.CSharp.Framework\GroupDocs.Metadata.Examples.CSharp.Framework.csproj" />
   </ItemGroup>
+
 
 </Project>

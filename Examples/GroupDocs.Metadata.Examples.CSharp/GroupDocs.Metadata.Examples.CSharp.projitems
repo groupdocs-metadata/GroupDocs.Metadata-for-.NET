@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Document\Pdf\PdfDetectivePdfA.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\MobiReadProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Ebook\Fb2ReadProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\MsgCheckFieldsAfterSave.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Email\MsgUpdateEmailFields.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Gis\GisReadNativeMetadataProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ManagingMetadataForSpecificFormats\Image\Avif\AvifReadProperties.cs" />
@@ -419,6 +420,9 @@
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\subtitles.mkv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\test.msg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>
