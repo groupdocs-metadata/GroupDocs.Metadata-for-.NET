@@ -1,23 +1,16 @@
-# Metadata Viewer & Editing API
+## GroupDocs.Metadata for .NET
 
-[GroupDocs.Metadata for .NET](https://products.groupdocs.com/metadata/net) provides easy ways to manage metadata of various document formats. It enables the user to read, write, update and remove metadata of Word, Excel,  PowerPoint & PDF documents as well as images, videos, audios, emails, fonts, diagrams and many other popular file formats.
 
-<p align="center">
 
-  <a title="Download complete GroupDocs.Metadata for .NET source code" href="https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/archive/master.zip">
-	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
-  </a>
-</p>
+[Product Page](https://products.groupdocs.com/metadata/net) | [Docs](https://docs.groupdocs.com/metadata/net/) | [Demos](https://products.groupdocs.com/metadata/net/demos) | [API Reference](https://reference.groupdocs.com/metadata/net/) | [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET) | [Blog](https://blog.groupdocs.com/categories/groupdocs.metadata-product-family/) | [Releases](https://releases.groupdocs.com/metadata/net/) | [Free Support](https://forum.groupdocs.com/c/metadata/) | [Temporary License](https://purchase.groupdocs.com/temp-license)
 
-Directory | Description
---------- | -----------
-[Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Examples)  | C# examples and sample files in order to quickly get started with Metadata API.
-[Plugins](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Plugins) | Visual Studio plugins related to GroupDocs.Metadata.
-[Showcases](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET/tree/master/Showcases) | Open-source front-end applications demonstrating some of use cases.
 
-## Document Metadata Processing Features
 
-- Read, update and remove metadata from [60+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
+GroupDocs.Metadata for .NET is a full-featured .NET class library enabling developers to read, edit, and remove metadata from over 110 document, image, audio, video, and other file formats—including Word, Excel, PowerPoint, PDF, images like JPEG, PNG, TIFF, HEIF, and AVIF, audio and video formats, emails, CAD, fonts, and more—while supporting major metadata standards such as XMP, EXIF, IPTC, ID3, and format-specific properties.
+
+### Features
+
+- Read, update and remove metadata from [110+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
 - Search, update and remove particular metadata properties as per specified criteria.
 - Use tags to easily manipulate most common metadata properties in a unified manner.
 - Load password-protected documents.
@@ -31,57 +24,65 @@ Directory | Description
 - [Traverse a whole metadata tree](https://docs.groupdocs.com/metadata/net/traverse-a-whole-metadata-tree/).
 - Work with the APEv2, ID3v1, ID3v2, Lyrics & other tags of MP3 metadata.
 
-## Read & Write Metadata
+See the [Features overview](https://docs.groupdocs.com/metadata/net/features-overview/) documentation topic for more details.
 
-**Microsoft Word:** DOC, DOT, DOCX, DOCM, DOTX\
-**Microsoft Excel:** XLSX, XLSM, XLTM, XLS\
-**Microsoft PowerPoint:** PPTX, PPTM, PPSX, PPSM, POTX, POTM, PPT, PPS\
-**Microsoft Visio:** VSD, VDX, VSDX, VSS, VSX\
-**Microsoft OneNote:** ONE\
-**Microsoft Project:** MPP\
-**OpenOffice:** ODS, ODT, OTF, OTC\
-**Audio:** MP3, WAV\
-**Video:** AVI, MOV / QT, ASF, FLV\
-**Email:** EML, MSG, VCF, VCR\
-**Image:** BMP, GIF, JPG, JPEG, JPE, JP2, PNG, TIFF, DICOM, WEBP\
-**Archive:** ZIP\
-**Font:** TTF, TTC\
-**Metafile:** EMF, WMF\
-**Adobe Photoshop:** PSD\
-**AutoCAD:** DWG, DXF\
-**Portable:** PDF\
-**eBook:** EPUB, DJVU, DJV\
-**Other:** TORRENT
+### Supported formats
 
-## Develop & Deploy GroupDocs.Metadata Anywhere
+## Supported Formats (high level)
 
-**Microsoft Windows:** Windows Desktop & Server (x86, x64), Windows Azure\
-**macOS:** Mac OS X\
-**Linux:** Ubuntu, OpenSUSE, CentOS, and others\
-**Development Environments:** Microsoft Visual Studio, Xamarin.Android, Xamarin.IOS, Xamarin.Mac, MonoDevelop 2.4 and later\
-**Supported Frameworks:** .NET Framework 2.0 or higher, .NET Standard 2.0, .NET Core 2.1 & 2.0, Mono Framework 1.2 or higher
+This API supports a broad set of document and media formats, including:
 
-## Get Started with GroupDocs.Metadata for .NET
+- **Word Processing**: DOC, DOCX, DOCM, ODT, DOT, DOTM
+- **Spreadsheets**: XLS, XLSX, XLSM, ODS, XLSB, XLT
+- **Presentations**: PPT, PPTX, PPS, PPSX, POT, POTM
+- **PDF**: PDF
+- **Images**: JPG, PNG, TIFF, BMP, GIF, PSD
+- **Audio/Video**: MP3, WAV, OGG, AVI, MOV, MKV, ASF, FLV, MK3D
+- **Email**: EML, MSG
+- **eBook**: EPUB, MOBI, FB2
+- **Archives**: ZIP, RAR, 7Z, TAR, CB7, CBR
+- **Fonts**: OTF, TTF, TTC, OTC
+- **CAD**: DWG, DXF
+- **3D**: FBX, STL, 3DS, DAE, GLTF
+- **Visio**: VSD, VSDX, VDX, VSS, VSX, VTX
+- **OneNote**: ONE
+- **GIS**: KML, GPX, GEOJSON, GML, OSM, SHP
+- **Other formats**: MPP, MPT, TORRENT, VCF, VCR
 
-Are you ready to give GroupDocs.Metadata for .NET a try? Simply execute `Install-Package GroupDocs.Metadata` from Package Manager Console in Visual Studio to fetch & reference GroupDocs.Metadata assembly in your project. If you already have GroupDocs.Metadata for .NET and want to upgrade it, please execute `Update-Package GroupDocs.Metadata` to get the latest version.
+Supports **110+ formats**. See the [supported file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/) table for the complete list.
 
-## Remove All Metadata Properties from a PDF
+### Supported Frameworks
+
+**Supported Frameworks:** .NET Framework 4.7.2 or higher, .NET 6.0 or higher, .NET 8.0 or higher
+
+### Getting Started
+
+
+To get started with `GroupDocs.Metadata` install the package using the command at the top of this NuGet page, or run:
+
+```powershell
+dotnet add package GroupDocs.Metadata
+```
+
+You can run the following C# samples to see how the library works. Also check the [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET) repository for other common use cases.
+
+#### Remove All Metadata Properties from a PDF
 
 ```csharp
-using (Metadata metadata = new Metadata(Constants.InputPdf))
+using (Metadata metadata = new Metadata("input.pdf"))
 {
     // Remove detected metadata packages
     var affected = metadata.Sanitize();
     Console.WriteLine("Properties removed: {0}", affected);
 
-    metadata.Save(Constants.OutputPdf);
+    metadata.Save("output.pdf");
 }
 ```
 
-## Extract Metadata from Various Files
+#### Extract Metadata from Various Files
 
 ```csharp
-foreach (string file in Directory.GetFiles(Constants.InputPath))
+foreach (string file in Directory.GetFiles("input"))
 {
     using (Metadata metadata = new Metadata(file))
     {
@@ -113,4 +114,12 @@ foreach (string file in Directory.GetFiles(Constants.InputPath))
 }
 ```
 
-[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/metadata/net) | [Documentation](https://docs.groupdocs.com/metadata/net/) | [Demo](https://products.groupdocs.app/metadata/family) | [API Reference](https://apireference.groupdocs.com/metadata/net) | [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET) | [Blog](https://blog.groupdocs.com/category/metadata/) | [Search](https://search.groupdocs.com/) | [Free Support](https://forum.groupdocs.com/c/metadata) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
+
+
+Explore the sample projects in this repository or open [documentation](https://docs.groupdocs.com/metadata/net/) for more topics.
+
+### Support
+
+Our technical support is available to all users, including those evaluating our product. We offer assistance through our [Free Support Forum](https://forum.groupdocs.com/c/metadata/) and [Paid Support Helpdesk](https://helpdesk.groupdocs.com/). Let us know if you have any questions or issues, and we'll do our best to help you.
+
+[Product Page](https://products.groupdocs.com/metadata/net) | [Docs](https://docs.groupdocs.com/metadata/net/) | [Demos](https://products.groupdocs.com/metadata/net/demos) | [API Reference](https://reference.groupdocs.com/metadata/net/) | [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET) | [Blog](https://blog.groupdocs.com/categories/groupdocs.metadata-product-family/) | [Releases](https://releases.groupdocs.com/metadata/net/) | [Free Support](https://forum.groupdocs.com/c/metadata/) | [Temporary License](https://purchase.groupdocs.com/temp-license)
