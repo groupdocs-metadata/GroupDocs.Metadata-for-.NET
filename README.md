@@ -10,7 +10,7 @@ GroupDocs.Metadata for .NET is a full-featured .NET class library enabling devel
 
 ### Features
 
-- Read, update and remove metadata from [110+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
+- Read, update and remove metadata from [115+ file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/).
 - Search, update and remove particular metadata properties as per specified criteria.
 - Use tags to easily manipulate most common metadata properties in a unified manner.
 - Load password-protected documents.
@@ -40,7 +40,7 @@ This API supports a broad set of document and media formats, including:
 - **Audio/Video**: MP3, WAV, OGG, AVI, MOV, MKV, ASF, FLV, MK3D
 - **Email**: EML, MSG
 - **eBook**: EPUB, MOBI, FB2
-- **Archives**: ZIP, RAR, 7Z, TAR, CB7, CBR
+- **Archives**: ZIP, RAR, 7Z, TAR, AAR, BZ2
 - **Fonts**: OTF, TTF, TTC, OTC
 - **CAD**: DWG, DXF
 - **3D**: FBX, STL, 3DS, DAE, GLTF
@@ -49,7 +49,7 @@ This API supports a broad set of document and media formats, including:
 - **GIS**: KML, GPX, GEOJSON, GML, OSM, SHP
 - **Other formats**: MPP, MPT, TORRENT, VCF, VCR
 
-Supports **110+ formats**. See the [supported file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/) table for the complete list.
+Supports **115+ formats**. See the [supported file formats](https://docs.groupdocs.com/metadata/net/supported-document-formats/) table for the complete list.
 
 ### Supported Frameworks
 
@@ -66,51 +66,72 @@ dotnet add package GroupDocs.Metadata
 
 You can run the following C# samples to see how the library works. Also check the [Examples](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-.NET) repository for other common use cases.
 
-#### Remove All Metadata Properties from a PDF
+#### Remove all recognized metadata properties from a file
+
+Sometimes you may need to just remove all or clean metadata properties without applying any filters.
 
 ```csharp
 using (Metadata metadata = new Metadata("input.pdf"))
 {
-    // Remove detected metadata packages
-    var affected = metadata.Sanitize();
-    Console.WriteLine("Properties removed: {0}", affected);
+	// Remove detected metadata packages
+	var affected = metadata.Sanitize();
+	Console.WriteLine("Properties removed: {0}", affected);
 
-    metadata.Save("output.pdf");
+	metadata.Save("output.pdf");
 }
 ```
 
-#### Extract Metadata from Various Files
+#### Use tags to find most common metadata properties
+
+To make manipulating metadata in your code easier we attach specific tags to the most commonly used metadata properties extracted from a file.
 
 ```csharp
-foreach (string file in Directory.GetFiles("input"))
+// "input.pptx" is an absolute or relative path to your document. Ex: @"C:\Docs\source.pptx"
+using (Metadata metadata = new Metadata("input.pptx"))
 {
-    using (Metadata metadata = new Metadata(file))
-    {
-        if (metadata.FileFormat != FileFormat.Unknown && !metadata.GetDocumentInfo().IsEncrypted)
-        {
-            Console.WriteLine();
-            Console.WriteLine(file);
+	// Fetch all the properties satisfying the predicate:
+	// property contains the name of the last document editor OR the date/time the document was last modified
+	var properties = metadata.FindProperties(p => p.Tags.Contains(Tags.Person.Editor) || p.Tags.Contains(Tags.Time.Modified));
 
-            // fetch all metadata properties that fall into a particular category
-            var properties = metadata.FindProperties(p => p.Tags.Any(t => t.Category == Tags.Content));
-            Console.WriteLine("The metadata properties describing some characteristics of the file content: title, keywords, language, etc.");
-            foreach (var property in properties)
-            {
-                Console.WriteLine("{0} = {1}", property.Name, property.Value);
-            }
+	foreach (var property in properties)
+	{
+		Console.WriteLine("Property name: {0}, Property value: {1}", property.Name, property.Value);
+	}
+}
+```
 
-            // fetch all properties having a specific type and value
-            var year = DateTime.Today.Year;
-            properties = metadata.FindProperties(p => p.Value.Type == MetadataPropertyType.DateTime &&
-                                                     p.Value.ToStruct(DateTime.MinValue).Year == year);
+#### Generate Document Preview
 
-            Console.WriteLine("All datetime properties with the year value equal to the current year");
-            foreach (var property in properties)
-            {
-                Console.WriteLine("{0} = {1}", property.Name, property.Value);
-            }
-        }
-    }
+If you need to implement a UI for your application it can be useful to generate image previews for a document the users are going to work with.
+
+```csharp
+using (Metadata metadata = new Metadata("input.docx"))
+{
+	PreviewOptions previewOptions = new PreviewOptions(pageNumber => File.Create($"output\\result_{pageNumber}.png"));
+	previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+	previewOptions.PageNumbers = new int[] { 1 };
+	metadata.GeneratePreview(previewOptions);
+}
+```
+
+#### Get Document Info
+
+GroupDocs.Metadata allows users to get meta information of a document which includes.
+
+```csharp
+// "input.xlsx" is an absolute or relative path to your document. Ex: @"C:\Docs\source.xlsx"
+using (Metadata metadata = new Metadata("input.xlsx"))
+{
+	if (metadata.FileFormat != FileFormat.Unknown)
+	{
+		IDocumentInfo info = metadata.GetDocumentInfo();
+		Console.WriteLine("File format: {0}", info.FileType.FileFormat);
+		Console.WriteLine("File extension: {0}", info.FileType.Extension);
+		Console.WriteLine("MIME Type: {0}", info.FileType.MimeType);
+		Console.WriteLine("Number of pages: {0}", info.PageCount);
+		Console.WriteLine("Document size: {0} bytes", info.Size);
+		Console.WriteLine("Is document encrypted: {0}", info.IsEncrypted);
+	}
 }
 ```
 
