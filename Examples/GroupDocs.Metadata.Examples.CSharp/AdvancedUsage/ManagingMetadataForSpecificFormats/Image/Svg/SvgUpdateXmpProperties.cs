@@ -2,15 +2,12 @@
 //   Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using GroupDocs.Metadata.Formats.Image.Svg;
-
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Svg
 {
     using System;
     using Formats.Image;
-    using GroupDocs.Metadata.Standards.Xmp.Schemes;
-    using GroupDocs.Metadata.Standards.Xmp;
-    using Microsoft.SqlServer.Server;
+    using Standards.Xmp;
+    using Standards.Xmp.Schemes;
 
     /// <summary>
     /// This code sample shows how to read the header of a BMP file.

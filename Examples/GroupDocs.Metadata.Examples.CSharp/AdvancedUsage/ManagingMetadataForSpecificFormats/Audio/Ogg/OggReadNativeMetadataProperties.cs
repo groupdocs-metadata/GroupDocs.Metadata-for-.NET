@@ -2,11 +2,10 @@
 //   Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using GroupDocs.Metadata.Formats.Audio.Ogg;
-
-namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Cad
+namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Ogg
 {
     using System;
+    using Formats.Audio;
 
     /// <summary>
     /// This code sample shows how to read metadata of ogg file.

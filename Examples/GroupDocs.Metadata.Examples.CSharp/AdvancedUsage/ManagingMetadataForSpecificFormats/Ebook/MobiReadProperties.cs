@@ -2,8 +2,6 @@
 //  Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using GroupDocs.Metadata.Formats.Ebook.Mobi;
-
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Ebook
 {
     using System;

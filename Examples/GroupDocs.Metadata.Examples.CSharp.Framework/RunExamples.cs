@@ -14,6 +14,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using AdvancedUsage.ExtractingPropertyValues;
     using AdvancedUsage.LoadingFiles;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Ogg;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Wav;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Note;
@@ -330,6 +331,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             SevenZipReadNativeMetadataProperties.Run();
             RarReadNativeMetadataProperties.Run();
             TarReadNativeMetadataProperties.Run();
+
+            GzipReadNativeMetadataProperties.Run();
+            Bz2ReadNativeMetadataProperties.Run();
+            XzReadNativeMetadataProperties.Run();
+            ZstdReadNativeMetadataProperties.Run();
+            AarReadNativeMetadataProperties.Run();
 
             DaeReadNativeMetadataProperties.Run();
             FbxReadNativeMetadataProperties.Run();

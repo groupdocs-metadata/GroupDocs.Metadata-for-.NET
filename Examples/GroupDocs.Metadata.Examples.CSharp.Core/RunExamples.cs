@@ -16,6 +16,7 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using AdvancedUsage.ExtractingPropertyValues;
     using AdvancedUsage.LoadingFiles;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.MP3;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Ogg;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Audio.Wav;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Diagram;
     using AdvancedUsage.ManagingMetadataForSpecificFormats.Document.Note;
@@ -55,9 +56,9 @@ namespace GroupDocs.Metadata.Examples.CSharp
     using Migration.ExtractingSpecificMetadataPackages;
     using Migration.UsingCustomReplaceHandler;
     using Migration.WorkingWithRegularExpressions;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
-    using GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.ThreeD;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw;
+    using AdvancedUsage.ManagingMetadataForSpecificFormats.ThreeD;
 
 
     internal class RunExamples
@@ -333,6 +334,12 @@ namespace GroupDocs.Metadata.Examples.CSharp
             SevenZipReadNativeMetadataProperties.Run();
             RarReadNativeMetadataProperties.Run();
             TarReadNativeMetadataProperties.Run();
+
+            GzipReadNativeMetadataProperties.Run();
+            Bz2ReadNativeMetadataProperties.Run();
+            XzReadNativeMetadataProperties.Run();
+            ZstdReadNativeMetadataProperties.Run();
+            AarReadNativeMetadataProperties.Run();
 
             DaeReadNativeMetadataProperties.Run();
             FbxReadNativeMetadataProperties.Run();

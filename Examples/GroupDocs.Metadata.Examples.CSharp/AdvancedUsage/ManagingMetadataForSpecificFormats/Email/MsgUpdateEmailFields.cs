@@ -2,8 +2,6 @@
 //  Copyright (C) 2011-2026 GroupDocs. All Rights Reserved.
 // </copyright>
 
-using GroupDocs.Metadata.Formats.Email.Msg;
-
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Email
 {
     using Formats.Email;

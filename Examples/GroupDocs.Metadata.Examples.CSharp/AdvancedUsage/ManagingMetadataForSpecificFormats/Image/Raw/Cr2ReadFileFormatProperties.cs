@@ -5,8 +5,7 @@
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Raw
 {
     using System;
-    using GroupDocs.Metadata.Formats.Raw.Cr2;
-    using GroupDocs.Metadata.Formats.Raw.Tag;
+    using GroupDocs.Metadata.Formats.Raw;
     /// <summary>
     /// This code sample demonstrates how to get metadata from a Cr2 file.
     /// </summary>

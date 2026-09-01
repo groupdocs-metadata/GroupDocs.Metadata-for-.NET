@@ -3,7 +3,7 @@
 // </copyright>
 
 using System;
-using GroupDocs.Metadata.Formats.Image.Dng;
+using GroupDocs.Metadata.Formats.Image;
 
 namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSpecificFormats.Image.Dng
 {

@@ -28,18 +28,6 @@ namespace GroupDocs.Metadata.Examples.CSharp.BasicUsage
                     Console.WriteLine("Property name: {0}, Property value: {1}", property.Name, property.InterpretedValue);
                 }
             }
-
-
-            /*using (Metadata metadata = new Metadata(Constants.InputPptx))
-            {
-                // Fetch all the properties satisfying the predicate:
-                // property contains the name of the last document editor OR the date/time the document was last modified
-                var properties = metadata.FindProperties(p => p.Tags.Contains(Tags.Person.Editor) || p.Tags.Contains(Tags.Time.Modified));
-                foreach (var property in properties)
-                {
-                    Console.WriteLine("Property name: {0}, Property value: {1}", property.Name, property.Value);
-                }
-            }*/
         }
     }
 }

@@ -52,6 +52,11 @@ namespace GroupDocs.Metadata.Examples.CSharp
         public static readonly string InputRar = Path.Combine(InputPath, "input.rar");
         public static readonly string InputTar = Path.Combine(InputPath, "input.tar");
         public static readonly string InputSevenZip = Path.Combine(InputPath, "input.7z");
+        public static readonly string InputGzip = Path.Combine(InputPath, "input.gz");
+        public static readonly string InputBz2 = Path.Combine(InputPath, "input.bz2");
+        public static readonly string InputXz = Path.Combine(InputPath, "input.xz");
+        public static readonly string InputZstd = Path.Combine(InputPath, "input.zst");
+        public static readonly string InputAar = Path.Combine(InputPath, "input.aar");
         public static readonly string InputVcf = Path.Combine(InputPath, "input.vcf");
         public static readonly string InputDxf = Path.Combine(InputPath, "input.dxf");
         public static readonly string InputEpub = Path.Combine(InputPath, "input.epub");
