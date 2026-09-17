@@ -26,6 +26,8 @@ GroupDocs.Metadata for .NET is a full-featured .NET class library enabling devel
 
 See the [Features overview](https://docs.groupdocs.com/metadata/net/features-overview/) documentation topic for more details.
 
+See the [Features overview](https://docs.groupdocs.com/metadata/net/features-overview/) documentation topic for more details.
+
 ### Supported formats
 
 ## Supported Formats (high level)

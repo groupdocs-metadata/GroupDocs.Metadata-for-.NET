@@ -1,0 +1,11 @@
+# GroupDocs.Metadata for .NET — examples
+
+> On-premise SDK examples. Formats: 115+. TFMs: net472, net6.0, net8.0
+
+- Docs: https://docs.groupdocs.com/metadata/net/
+- Formats: https://docs.groupdocs.com/metadata/net/supported-document-formats/
+- Package: https://www.nuget.org/packages/GroupDocs.Metadata/
+- API reference: https://reference.groupdocs.com/metadata/net/
+- Releases: https://releases.groupdocs.com/metadata/net/
+- Agent guide: AGENTS.md
+- MCP (link only): https://docs.groupdocs.com/mcp

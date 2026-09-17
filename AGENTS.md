@@ -1,10 +1,10 @@
-# GroupDocs.Metadata for .NET — AGENTS.md
+﻿# GroupDocs.Metadata for .NET — AGENTS.md
 
 > Instructions for AI agents working with **.NET** examples in this repository.
 
-GroupDocs.Metadata for .NET lets applications read, search, edit, and remove metadata — including EXIF, XMP, IPTC, Office properties, PDF info, and ID3 — from **110+** document, image, audio, video, archive, font, CAD, GIS, and ebook formats, without Microsoft Office or Adobe dependencies.
+GroupDocs.Metadata for .NET lets applications read, search, edit, and remove metadata — including EXIF, XMP, IPTC, Office properties, PDF info, and ID3 — from **115+** document, image, audio, video, archive, font, CAD, GIS, and ebook formats, without Microsoft Office or Adobe dependencies.
 
-**Supported formats:** **110+** file formats — authoritative table: [https://docs.groupdocs.com/metadata/net/supported-document-formats/](https://docs.groupdocs.com/metadata/net/supported-document-formats/)
+**Supported formats:** **115+** file formats — authoritative table: [https://docs.groupdocs.com/metadata/net/supported-document-formats/](https://docs.groupdocs.com/metadata/net/supported-document-formats/)
 
 **Human overview:** see [README.md](README.md) in this repository.
 
@@ -109,7 +109,7 @@ dotnet build GroupDocs.Metadata.sln
 ## House rules
 
 1. **Stay on-platform** — generate **.NET** code only; do not mix C#, Java, Python, and Node.js snippets from other GroupDocs.Metadata platforms unless the user explicitly asks for a comparison.
-2. **Use canonical format count** — say **110+** (link to the formats table); never invent `60+`, `70+`, or `50+` counts.
+2. **Use canonical format count** — say **115+** (link to the formats table); never invent `60+`, `70+`, or `50+` counts.
 3. **Prefer samples in this repo** — when adding or fixing examples, follow existing folder and naming conventions; reuse bundled sample files under `Examples/` (or equivalent) when present.
 4. **License before full runs** — evaluation builds work with limitations until `SetLicense` / `setLicense` is applied; document the license path when adding new entry points.
 5. **Link official docs** — API details belong in [https://reference.groupdocs.com/metadata/net/](https://reference.groupdocs.com/metadata/net/); keep AGENTS.md oriented to repository navigation and safe defaults.
