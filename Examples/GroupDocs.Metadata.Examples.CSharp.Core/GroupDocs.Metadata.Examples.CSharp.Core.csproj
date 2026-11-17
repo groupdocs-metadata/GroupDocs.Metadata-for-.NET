@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
 	<Import Project="..\GroupDocs.Metadata.Examples.CSharp\GroupDocs.Metadata.Examples.CSharp.projitems" Label="Shared" />
 
 	<ItemGroup>
-	  <PackageReference Include="GroupDocs.Metadata" Version="26.8.0" />
+	  <PackageReference Include="GroupDocs.Metadata" Version="26.11.0" />
 	</ItemGroup>
 
   <ItemGroup>

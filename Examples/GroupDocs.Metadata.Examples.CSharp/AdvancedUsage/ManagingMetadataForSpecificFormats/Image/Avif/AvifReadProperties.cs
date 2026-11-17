@@ -8,7 +8,7 @@ namespace GroupDocs.Metadata.Examples.CSharp.AdvancedUsage.ManagingMetadataForSp
 {
     using System;
     using GroupDocs.Metadata.Common;
-    using GroupDocs.Metadata.Formats.Image.Avif;
+    using GroupDocs.Metadata.Formats.Image;
 
     /// <summary>
     /// This code sample shows how to read the header of a AVIF file.
